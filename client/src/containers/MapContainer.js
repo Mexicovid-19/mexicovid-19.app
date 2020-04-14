@@ -2,7 +2,8 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 
 const useMap = () => {
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWlsZHJlZGciLCJhIjoiY2s4eHc2cGpiMWJsbzNscXEzcTE5dzhtMiJ9.MPadSAVs6Jr1gOs7hfYVpQ';
+  mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
+  
   const mapRef = React.useRef(null);
   const [state, setState] = React.useState({
     lng: 5,
@@ -29,13 +30,17 @@ const useMap = () => {
         });
       });
 
-    callAPI();
+      callStatesGEOJSON();
   }, []);
 
-  let callAPI = ()  => {
-    fetch("http://localhost:9000/testAPI")
-        .then(res => res.text())
-        .then(res => console.log(res));
+  let callStatesGEOJSON = ()  => {
+    const response = fetch(`${process.env.REACT_APP_API_URL}/map/states`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
+    })
+    .then(res => res.text())
+    .then(res => console.log(res));
   }
 
   return {

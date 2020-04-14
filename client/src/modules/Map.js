@@ -5,13 +5,13 @@ import { MapContext } from '../contexts/MapContext';
 const Map = ({classes}) => {
     const {state, mapRef} = React.useContext(MapContext);
     const {lat, lng, zoom} = state;
-
+    console.log("API_KEY: ", process.env.PUBLIC_URL);
     return (
         <div>
           <div className={classes.sidebarStyle}>
             <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
           </div>
-          <div id="map" ref={mapRef} className={classes.mapContainer} />
+          <div ref={mapRef} className={classes.mapContainer} />
         </div>
       );
 }
