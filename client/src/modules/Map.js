@@ -1,15 +1,17 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { MapContext } from '../contexts/MapContext';
+import CustomizedSlider from './Slider';
 
 const Map = ({classes}) => {
-    const {state, mapRef} = React.useContext(MapContext);
-    const {lat, lng, zoom} = state;
-    console.log("API_KEY: ", process.env.PUBLIC_URL);
+    const {stateMap, mapRef, map, showPopup} = React.useContext(MapContext);
+    const {lat, lng, zoom} = stateMap;
+      
     return (
         <div>
           <div className={classes.sidebarStyle}>
             <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
+            <CustomizedSlider/>
           </div>
           <div ref={mapRef} className={classes.mapContainer} />
         </div>
