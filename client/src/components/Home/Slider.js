@@ -4,7 +4,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
-import { AppContext } from '../contexts/AppContext';
+import { HomeContext } from '../../contexts/HomeContext';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -80,7 +80,7 @@ const PrettoSlider = withStyles({
 
 const CustomizedSlider = () => {
 	const classes = useStyles();
-	const {state, changeDate } = React.useContext(AppContext);
+	const {state, changeDate } = React.useContext(HomeContext);
 		let max = 0;
 
 	if(!state.dates) {

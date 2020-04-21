@@ -1,28 +1,55 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Map from './modules/Map';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-const App = ({ classes }) => {
-  
-  return (
-    <div className="App">
-      <Map/>
-    </div>
-  );
+import Home from './components/Home';
+import Team from './components/Team';
+import { HomeContextProvider } from './contexts/HomeContext';
+import { MapContextProvider } from './contexts/MapContext';
+
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    typography: {
+        fontFamily: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          "'Lato', sans-serif",
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+        ].join(','),
+    }
+  });
+
+class App extends Component {
+  render() {
+    const App = () => (
+      <div>
+        <ThemeProvider theme={theme}>
+            <Switch>
+            <Route exact path='/'>
+                <HomeContextProvider>
+                    <MapContextProvider>
+                        <Home />
+                    </MapContextProvider>
+                </HomeContextProvider>
+            </Route>
+            <Route path='/about-us' component={Team}/>
+            </Switch>
+        </ThemeProvider>
+      </div>
+    )
+    return (
+      <Switch>
+        <App/>
+      </Switch>
+    );
+  }
 }
 
-const styles = () => ({
-  container: {
-    width: '100%'
-  },
-
-  [`@media (max-width: ${1000}px)`]: {
-    header: {
-      display: 'block',
-      width: '80%',
-      margin: 'auto'
-    }
-  }
-});
-
-export default withStyles(styles)(App);
+export default App;

@@ -1,7 +1,7 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
-import { AppContext } from '../contexts/AppContext';
+import { HomeContext } from '../contexts/HomeContext';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -18,7 +18,7 @@ const useMap = () => {
 
   const {statesConfirm,
          statesSuspicious, 
-         state } = React.useContext(AppContext);
+         state } = React.useContext(HomeContext);
 
   const [stateMap, setState] = React.useState({
     lng: -105.330835,

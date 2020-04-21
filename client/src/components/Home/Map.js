@@ -1,32 +1,33 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { MapContext } from '../contexts/MapContext';
+import { MapContext } from '../../contexts/MapContext';
 import CustomizedSlider from './Slider';
 
 const Map = ({classes}) => {
-    const {stateMap, mapRef, map, showPopup} = React.useContext(MapContext);
+    const {stateMap, mapRef} = React.useContext(MapContext);
     const {lat, lng, zoom} = stateMap;
-      
+    
+    
     return (
-        <div>
+        <div className={classes.mapContainer}>
           <div className={classes.sidebarStyle}>
             <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
             <CustomizedSlider/>
           </div>
-          <div ref={mapRef} className={classes.mapContainer} />
+          <div ref={mapRef} className={classes.map} />
         </div>
       );
 }
 
 const styles = () => ({
     map: {
-      height: '85vh !important'
+      height: '100% !important'
     },
 
     sidebarStyle: {
         display: 'inline-block',
         position: 'absolute',
-        top: '0',
+        top: '50px',
         left: '0',
         margin: '12px',
         backgroundColor: '#404040',
@@ -37,11 +38,7 @@ const styles = () => ({
     },
         
     mapContainer: {
-        position: 'absolute',
-        top: '0',
-        right: '0',
-        left: '0',
-        bottom: '0',
+      height: '89vh'
     }
   });
    

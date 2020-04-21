@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const useApp = () => {
+const useHome = () => {
   const [statesConfirm, setStatesConfirm] = React.useState(null);
   const [statesSuspicious, setStatesSuspicious] = React.useState(null);
   const [state, setState ] = React.useState({
@@ -66,4 +66,4 @@ const useApp = () => {
   }
 }
 
-export default useApp;
+export default useHome;
