@@ -2,18 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
-import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import { HomeContext } from '../../contexts/HomeContext';
-
+import * as colors from '../../constants/colors';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: 300 + theme.spacing(3) * 2,
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  slider: {
+    width: '70%',
+    marginRight: '20px',
+    flexGrow: '1'
   },
   margin: {
     height: theme.spacing(3),
   },
+  date: {
+    color: colors.BROWN_LIGHTER
+  }
 }));
 
 function ValueLabelComponent(props) {
@@ -34,8 +45,9 @@ ValueLabelComponent.propTypes = {
 
 const PrettoSlider = withStyles({
   root: {
-    color: '#52af77',
-    height: 8,
+    height: '8px',
+    color: colors.BROWN_LIGHT,
+    padding: '2px 0'
   },
   thumb: {
     height: 24,
@@ -90,17 +102,23 @@ const CustomizedSlider = () => {
 	max = state.dates.length - 1;
 	
   return (
-    <div className={classes.root}>
-      <Typography gutterBottom>{state.date}</Typography>
-			<PrettoSlider 
-				min={0} 
-				step={1} 
-				max={max} 
-				onChange={changeDate}
-				scale={(x) => state.dates[x]} 
-				valueLabelDisplay="auto"
-				aria-label="pretto slider" 
-				defaultValue={max} />
+    <div className={classes.container} >
+        <Typography className={classes.date}>Abril 4, 2020</Typography>
+        <Button color="inherit">Sospechosos</Button>
+        <Button color="inherit">Descesos</Button>
+      <div className={classes.slider}>
+        <div className={classes.root}>
+          <PrettoSlider 
+            min={0} 
+            step={1} 
+            max={max} 
+            onChange={changeDate}
+            scale={(x) => state.dates[x]} 
+            valueLabelDisplay="auto"
+            aria-label="pretto slider" 
+            defaultValue={max} />
+        </div>
+      </div>
     </div>
   );
 }

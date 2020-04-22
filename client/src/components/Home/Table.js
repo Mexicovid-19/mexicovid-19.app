@@ -112,12 +112,11 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
-  const { numSelected } = props;
-
+  
   return (
     <Toolbar>
       <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Nutrition
+          <Typography gutterBottom>4/8/2020</Typography>
       </Typography>
     </Toolbar>
   );
@@ -133,15 +132,14 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '300px'
   },
   paper: {
-    width: '100%',
-    marginBottom: theme.spacing(2),
+    width: '100%'
   },
   table: {
     minWidth: 150,
   },
   tableContainer: {
     overflowY: 'scroll',
-    height: '77vh',
+    height: '78vh',
   },
   visuallyHidden: {
     border: 0,
