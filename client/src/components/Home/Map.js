@@ -28,7 +28,6 @@ const Map = ({classes}) => {
               return(
                 <Typography className={classes.numbers}>{text}</Typography>
               )
-              
             })
             }
             </div>
@@ -54,11 +53,12 @@ const styles = () => ({
       width: '300px',
       position: 'absolute',
       bottom: '0px',
-      marginBottom: '100px',
+      marginBottom: '45px',
       zIndex: '1',
     },
 
     sidebarStyle: {
+        borderTop: '1px solid white',
         display: 'inline-block',
         position: 'absolute',
         left: '0',

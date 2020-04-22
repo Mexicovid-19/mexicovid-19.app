@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import { HomeContext } from '../../contexts/HomeContext';
 import MyResponsiveLine from './LineChart';
 import AspectRatioRoundedIcon from '@material-ui/icons/AspectRatioRounded';
+import * as colors from '../../constants/colors'
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -58,6 +59,7 @@ const EnhancedTableHead =(props) => {
         {headCells.map((headCell) => (
           <TableCell
             padding='none'
+            className={classes.headerCell}
             key={headCell.id}
             align={ 'right' }
             sortDirection={orderBy === headCell.id ? order : false}
@@ -85,7 +87,6 @@ EnhancedTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
@@ -95,14 +96,17 @@ const useToolbarStyles = makeStyles((theme) => ({
   root: {
     padding: '0px',
     height: '30vh',
-    width: '300px'
+    width: '300px',
+    borderTop: '1px solid white'
   },
   icon: {
     position: 'absolute',
-    bottom: '0px',
+    top: '0px',
     left: '0px',
     color: 'blue',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: 'white',
+    zIndex: '1'
   },
   highlight:
     theme.palette.type === 'light'
@@ -131,7 +135,7 @@ const EnhancedTableToolbar = (props) => {
 };
 
 EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
+  data: PropTypes.number.isRequired,
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -144,6 +148,24 @@ const useStyles = makeStyles((theme) => ({
   },
   table: {
     minWidth: 150,
+    backgroundColor: colors.BLACK
+  },
+  headerCell: {
+    backgroundColor: '#222',
+    color: '#fafafa',
+    '&:hover': {
+        backgroundColor: colors.BLACK,
+        color: colors.WHITE
+    },
+    '&:active': {
+        backgroundColor: colors.BLACK,
+        color: colors.WHITE
+    },
+    '&:focus': {
+        backgroundColor: colors.BLACK,
+        color: colors.WHITE
+    },
+
   },
   tableContainer: {
     overflowY: 'scroll',
@@ -186,7 +208,7 @@ const EnhancedTable = () => {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar data={dataChart} numSelected={selected.length} />
+        <EnhancedTableToolbar data={dataChart} />
         <TableContainer className={classes.tableContainer}>
           <Table
             stickyHeader
@@ -219,9 +241,9 @@ const EnhancedTable = () => {
                       key={row.name}
                       selected={isItemSelected}
                     >
-                      <TableCell padding='none' align="right">{row.position}</TableCell>
-                      <TableCell padding='none' align="right">{row.state}</TableCell>
-                      <TableCell padding='none' align="right">{row.data}</TableCell>
+                      <TableCell className={classes.headerCell} padding='none' align="right">{row.position}</TableCell>
+                      <TableCell className={classes.headerCell} padding='none' align="right">{row.state}</TableCell>
+                      <TableCell className={classes.headerCell} padding='none' align="right">{row.data}</TableCell>
                     </TableRow>
                   );
                 })}
