@@ -9,9 +9,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import { MapContext } from '../../contexts/MapContext';
+import MyResponsiveLine from './LineChart';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -92,8 +92,9 @@ EnhancedTableHead.propTypes = {
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1),
+    padding: '0px',
+    height: '30vh',
+    width: '300px'
   },
   highlight:
     theme.palette.type === 'light'
@@ -105,19 +106,122 @@ const useToolbarStyles = makeStyles((theme) => ({
           color: theme.palette.text.primary,
           backgroundColor: theme.palette.secondary.dark,
         },
-  title: {
-    flex: '1 1 100%',
-  },
+  
 }));
 
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
-  
+  const data = [
+    {
+      "id": "germany",
+      "data": [
+        {
+          "x": "plane",
+          "y": 200
+        },
+        {
+          "x": "helicopter",
+          "y": 105
+        },
+        {
+          "x": "boat",
+          "y": 30
+        },
+        {
+          "x": "train",
+          "y": 191
+        },
+        {
+          "x": "subway",
+          "y": 49
+        },
+        {
+          "x": "bus",
+          "y": 265
+        },
+        {
+          "x": "car",
+          "y": 130
+        },
+        {
+          "x": "moto",
+          "y": 202
+        },
+        {
+          "x": "bicycle",
+          "y": 11
+        },
+        {
+          "x": "horse",
+          "y": 109
+        },
+        {
+          "x": "skateboard",
+          "y": 120
+        },
+        {
+          "x": "others",
+          "y": 211
+        }
+      ]
+    },
+    {
+      "id": "norway",
+      "data": [
+        {
+          "x": "plane",
+          "y": 60
+        },
+        {
+          "x": "helicopter",
+          "y": 89
+        },
+        {
+          "x": "boat",
+          "y": 52
+        },
+        {
+          "x": "train",
+          "y": 71
+        },
+        {
+          "x": "subway",
+          "y": 37
+        },
+        {
+          "x": "bus",
+          "y": 220
+        },
+        {
+          "x": "car",
+          "y": 71
+        },
+        {
+          "x": "moto",
+          "y": 88
+        },
+        {
+          "x": "bicycle",
+          "y": 245
+        },
+        {
+          "x": "horse",
+          "y": 76
+        },
+        {
+          "x": "skateboard",
+          "y": 300
+        },
+        {
+          "x": "others",
+          "y": 82
+        }
+      ]
+    }
+  ];
   return (
-    <Toolbar>
-      <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          <Typography gutterBottom>4/8/2020</Typography>
-      </Typography>
+    <Toolbar className={classes.root}>
+        <MyResponsiveLine data={data}/>
     </Toolbar>
   );
 };

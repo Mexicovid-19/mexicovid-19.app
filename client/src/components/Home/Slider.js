@@ -12,18 +12,41 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    placeContent: 'space-between'
   },
   slider: {
-    width: '70%',
+    width: '50%',
     marginRight: '20px',
-    flexGrow: '1'
   },
   margin: {
     height: theme.spacing(3),
   },
   date: {
     color: colors.BROWN_LIGHTER
+  }, 
+  buttonsContainer: {
+    width: '20%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  buttons: {
+    borderRadius: '0px',
+    minWidth: '120px',
+    '&:hover': {
+    backgroundColor: colors.BLACK,
+    borderColor: colors.BLACK,
+    boxShadow: 'none',
+  },
+  '&:active': {
+    
+  },
+  '&:focus': {
+    backgroundColor: colors.BLACK,
+    borderColor: colors.BLACK,
+  },
+
   }
 }));
 
@@ -104,21 +127,24 @@ const CustomizedSlider = () => {
   return (
     <div className={classes.container} >
         <Typography className={classes.date}>Abril 4, 2020</Typography>
-        <Button color="inherit">Sospechosos</Button>
-        <Button color="inherit">Descesos</Button>
-      <div className={classes.slider}>
-        <div className={classes.root}>
-          <PrettoSlider 
-            min={0} 
-            step={1} 
-            max={max} 
-            onChange={changeDate}
-            scale={(x) => state.dates[x]} 
-            valueLabelDisplay="auto"
-            aria-label="pretto slider" 
-            defaultValue={max} />
+        
+        <div className={classes.slider}>
+          <div className={classes.root}>
+            <PrettoSlider 
+              min={0} 
+              step={1} 
+              max={max} 
+              onChange={changeDate}
+              scale={(x) => state.dates[x]} 
+              valueLabelDisplay="auto"
+              aria-label="pretto slider" 
+              defaultValue={max} />
+          </div>
         </div>
-      </div>
+        <div className={classes.buttonsContainer}>
+          <Button variant="outlined" size="small" className={classes.buttons} color="inherit">Sospechosos</Button>
+          <Button variant="outlined" size="small" className={classes.buttons} color="inherit">Descesos</Button>
+        </div>
     </div>
   );
 }
