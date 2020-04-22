@@ -2,13 +2,17 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Map from './Map';
 import Header from '../Header';
+import SortableTable from './Table';
 
 const Home = ({ classes }) => {
   
   return (
-    <div className="Home">
+    <div className={classes.container}>
       <Header/>
-      <Map/>
+      <div className={classes.Mapcontainer}>
+        <Map/>
+        <SortableTable/>
+      </div>
     </div>
   );
 }
@@ -16,6 +20,11 @@ const Home = ({ classes }) => {
 const styles = () => ({
   container: {
     width: '100%'
+  },
+
+  Mapcontainer: {
+    display: 'flex',
+    flexDirection: 'row'
   },
 
   [`@media (max-width: ${1000}px)`]: {

@@ -5,13 +5,12 @@ import CustomizedSlider from './Slider';
 
 const Map = ({classes}) => {
     const {stateMap, mapRef} = React.useContext(MapContext);
-    const {lat, lng, zoom} = stateMap;
-    
+    const {zoom} = stateMap;
     
     return (
         <div className={classes.mapContainer}>
           <div className={classes.sidebarStyle}>
-            <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
+            <div>{` Zoom: ${zoom}`}</div>
             <CustomizedSlider/>
           </div>
           <div ref={mapRef} className={classes.map} />
@@ -21,7 +20,7 @@ const Map = ({classes}) => {
 
 const styles = () => ({
     map: {
-      height: '100% !important'
+      height: '100% !important',
     },
 
     sidebarStyle: {
@@ -38,7 +37,8 @@ const styles = () => ({
     },
         
     mapContainer: {
-      height: '89vh'
+      height: '89vh',
+      flex: '2'
     }
   });
    

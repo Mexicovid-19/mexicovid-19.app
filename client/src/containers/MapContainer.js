@@ -14,8 +14,9 @@ const useMap = () => {
     "suspicious": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
   };
   const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
-
-
+  const[rowsTable, setRowsTable] = React.useState([]);
+  const[rows, setRows] = React.useState([]);
+  
   const {statesConfirm,
          statesSuspicious, 
          state } = React.useContext(HomeContext);
@@ -54,17 +55,20 @@ const useMap = () => {
 
   React.useEffect(() => {
     if(statesConfirm && statesSuspicious && statesGeOJSON) {  
-      /*let confirm = statesConfirm.map(stateMex => {
-        return stateMex.confirmados[state.date]; 
-      });
-      
-      confirm.sort((a,b) => a - b);
-      let thresholdsNum = [confirm[0], confirm[4], confirm[8], confirm[12], confirm[16], confirm[20],confirm[24],confirm[28]];
-      
-      let stepsList = thresholdsNum.map((num, i) => {
-          return [Number(num), thresholdColor["confirm"][i]];
-      });*/
-      
+      let rowsConfirm = [];
+      let rowsDeads = [];
+      statesConfirm.sort((a,b) => b.confirmados[state.date] -a.confirmados[state.date]);
+      for(var i = 0; i < statesConfirm.length; i++) {
+        rowsConfirm.push(createData(i+1, statesConfirm[i].estado, Number(statesConfirm[i].confirmados[state.date])));
+      }
+
+      statesSuspicious.sort((a,b) => b.sospechosos[state.date] -a.sospechosos[state.date]);
+      for(var i = 0; i < statesSuspicious.length; i++) {
+        rowsDeads.push(createData(i+1, statesSuspicious[i].estado, Number(statesSuspicious[i].sospechosos[state.date])));
+      }
+
+      setRowsTable([rowsConfirm, rowsDeads]);
+
       let fillColor = getSteps();
      
       map.on('load', function() {
@@ -105,6 +109,13 @@ const useMap = () => {
     }
       
   }, [state]);
+
+  React.useEffect(() => {
+    if(rowsTable.length > 0) {
+      setRows(rowsTable[0]);
+      console.log(rowsTable);
+    }
+  }, [rowsTable]);
 
   let callStatesGEOJSON = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/map/states`, {})
@@ -174,12 +185,17 @@ const useMap = () => {
     return geojson;
   }
 
+  let createData = (position, state, data) => {
+    return { position, state, data };
+  }
+  
   return {
     mapRef,
     stateMap,
     map,
     showPopup,
-    popup
+    popup,
+    rows
   }
 }
 
