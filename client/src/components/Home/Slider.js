@@ -8,6 +8,8 @@ import { HomeContext } from '../../contexts/HomeContext';
 import * as colors from '../../constants/colors';
 import Typography from '@material-ui/core/Typography';
 import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
+import { MONTHS } from '../../constants/date';
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -152,7 +154,9 @@ const CustomizedSlider = () => {
 		return null;
 	}
 	
-	max = state.dates.length - 1;
+  max = state.dates.length - 1;
+  let formatedDate = new Date(state.date);
+  formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, 2020`;
 	
   return (
     <div className={classes.container} >
@@ -170,7 +174,7 @@ const CustomizedSlider = () => {
           </div>
         </div>
         <div className={classes.textContainer}>
-          <Typography className={classes.text}>Abril 4, 2020 |</Typography>
+          <Typography className={classes.text}>{formatedDate} |</Typography>
           <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> 1,000 </Typography>
           <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> 2,000 </Typography>
         </div>

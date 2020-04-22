@@ -1,0 +1,1 @@
+export const MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septimbre','Octubre','Noviembre','Diciembre'];
