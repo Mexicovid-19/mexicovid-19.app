@@ -10,8 +10,9 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
-import { MapContext } from '../../contexts/MapContext';
+import { HomeContext } from '../../contexts/HomeContext';
 import MyResponsiveLine from './LineChart';
+import AspectRatioRoundedIcon from '@material-ui/icons/AspectRatioRounded';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -96,6 +97,13 @@ const useToolbarStyles = makeStyles((theme) => ({
     height: '30vh',
     width: '300px'
   },
+  icon: {
+    position: 'absolute',
+    bottom: '0px',
+    left: '0px',
+    color: 'blue',
+    cursor: 'pointer'
+  },
   highlight:
     theme.palette.type === 'light'
       ? {
@@ -110,117 +118,13 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTableToolbar = (props) => {
+  const {  data } = props;
+  
   const classes = useToolbarStyles();
-  const data = [
-    {
-      "id": "germany",
-      "data": [
-        {
-          "x": "plane",
-          "y": 200
-        },
-        {
-          "x": "helicopter",
-          "y": 105
-        },
-        {
-          "x": "boat",
-          "y": 30
-        },
-        {
-          "x": "train",
-          "y": 191
-        },
-        {
-          "x": "subway",
-          "y": 49
-        },
-        {
-          "x": "bus",
-          "y": 265
-        },
-        {
-          "x": "car",
-          "y": 130
-        },
-        {
-          "x": "moto",
-          "y": 202
-        },
-        {
-          "x": "bicycle",
-          "y": 11
-        },
-        {
-          "x": "horse",
-          "y": 109
-        },
-        {
-          "x": "skateboard",
-          "y": 120
-        },
-        {
-          "x": "others",
-          "y": 211
-        }
-      ]
-    },
-    {
-      "id": "norway",
-      "data": [
-        {
-          "x": "plane",
-          "y": 60
-        },
-        {
-          "x": "helicopter",
-          "y": 89
-        },
-        {
-          "x": "boat",
-          "y": 52
-        },
-        {
-          "x": "train",
-          "y": 71
-        },
-        {
-          "x": "subway",
-          "y": 37
-        },
-        {
-          "x": "bus",
-          "y": 220
-        },
-        {
-          "x": "car",
-          "y": 71
-        },
-        {
-          "x": "moto",
-          "y": 88
-        },
-        {
-          "x": "bicycle",
-          "y": 245
-        },
-        {
-          "x": "horse",
-          "y": 76
-        },
-        {
-          "x": "skateboard",
-          "y": 300
-        },
-        {
-          "x": "others",
-          "y": 82
-        }
-      ]
-    }
-  ];
+  
   return (
     <Toolbar className={classes.root}>
+        <AspectRatioRoundedIcon className={classes.icon} />
         <MyResponsiveLine data={data}/>
     </Toolbar>
   );
@@ -243,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     overflowY: 'scroll',
-    height: '78vh',
+    height: '58vh',
   },
   visuallyHidden: {
     border: 0,
@@ -259,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTable = () => {
-  const {rows} = React.useContext(MapContext);
+  const {rows, dataChart} = React.useContext(HomeContext);
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('ranking');
@@ -282,7 +186,7 @@ const EnhancedTable = () => {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar data={dataChart} numSelected={selected.length} />
         <TableContainer className={classes.tableContainer}>
           <Table
             stickyHeader

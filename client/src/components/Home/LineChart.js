@@ -10,12 +10,11 @@ import * as colors from '../../constants/colors';
 
 const MyResponsiveLine = ({ data  }) => {
     
-    console.log(data);
     return(
         <ResponsiveLine
         colors={[colors.RED, colors.BLUE_LIGHT]}
         data={data}
-        margin={{ top: 20, right: 10, bottom: 40, left: 30 }}
+        margin={{ top: 10, right: 10, bottom: 45, left: 45 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         axisTop={null}
@@ -23,16 +22,15 @@ const MyResponsiveLine = ({ data  }) => {
         axisBottom={{
             orient: 'bottom',
             tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'fechas',
+            tickPadding: 0,
+            tickRotation: -90,
             legendOffset: 36,
             legendPosition: 'middle'
         }}
         axisLeft={{
             orient: 'left',
             tickSize: 5,
-            tickPadding: 5,
+            tickPadding: 0,
             tickRotation: 0,
             legend: 'casos',
             legendOffset: -40,
@@ -48,7 +46,34 @@ const MyResponsiveLine = ({ data  }) => {
         pointLabelYOffset={-12}
         enableArea={true}
         areaOpacity={0.7}
-        useMesh={true}
+        useMesh={false}
+        legends={[
+            {
+                anchor: 'top-left',
+                fill: '#ff0000',
+                direction: 'row',
+                justify: false,
+                translateX: 0,
+                translateY: 0,
+                itemsSpacing: 5,
+                itemDirection: 'left-to-right',
+                itemWidth: 90,
+                itemHeight: 20,
+                itemOpacity: 0.75,
+                symbolSize: 12,
+                symbolShape: 'circle',
+                symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                effects: [
+                    {
+                        on: 'hover',
+                        style: {
+                            itemBackground: 'rgba(0, 0, 0, .03)',
+                            itemOpacity: 1
+                        }
+                    }
+                ]
+            }
+        ]}
     />)
 }
 
