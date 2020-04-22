@@ -22,10 +22,10 @@ const useMap = () => {
          state } = React.useContext(HomeContext);
 
   const [stateMap, setState] = React.useState({
-    lng: -105.330835,
-    lat: 25.19238733,
-    zoom: 4.5
-  });
+    lng: -97.8116,
+    lat: 24.6040,
+    zoom: 4.2
+  }); 
   
   React.useEffect(() => {
     setMap(
