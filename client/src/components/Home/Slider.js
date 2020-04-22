@@ -7,7 +7,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { HomeContext } from '../../contexts/HomeContext';
 import * as colors from '../../constants/colors';
 import Typography from '@material-ui/core/Typography';
-
+import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -16,37 +16,67 @@ const useStyles = makeStyles((theme) => ({
     placeContent: 'space-between'
   },
   slider: {
-    width: '50%',
-    marginRight: '20px',
+    width: '30%'
   },
   margin: {
     height: theme.spacing(3),
   },
-  date: {
-    color: colors.BROWN_LIGHTER
-  }, 
   buttonsContainer: {
     width: '20%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
-  buttons: {
+  buttonConfirm: {
     borderRadius: '0px',
     minWidth: '120px',
     '&:hover': {
-    backgroundColor: colors.BLACK,
-    borderColor: colors.BLACK,
-    boxShadow: 'none',
+      backgroundColor: colors.BLACK,
+      borderColor: colors.BLACK,
+      boxShadow: 'none',
+    },
+    '&:active': {
+      backgroundColor: colors.BLUE,
+      borderColor: colors.BLUE,
+    },
+    '&:focus': {
+      backgroundColor: colors.BLUE,
+      borderColor: colors.BLUE,
+    },
   },
-  '&:active': {
-    
+  buttonDead: {
+    borderRadius: '0px',
+    minWidth: '120px',
+    '&:hover': {
+      backgroundColor: colors.BLACK,
+      borderColor: colors.BLACK,
+      boxShadow: 'none',
+    },
+    '&:active': {
+      backgroundColor: colors.RED,
+      borderColor: colors.RED,
+    },
+    '&:focus': {
+      backgroundColor: colors.RED,
+      borderColor: colors.RED,
+    }
   },
-  '&:focus': {
-    backgroundColor: colors.BLACK,
-    borderColor: colors.BLACK,
+  textContainer: {
+    display: 'flex',
+    flexDirection: 'row'
+  }, 
+  text: {
+    display: 'flex',
+    margin: '0px 10px',
+    letterSpacing: '2px',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-
+  dotConfirm: {
+    color: colors.BLUE_LIGHT
+  },
+  dotDeads: {
+    color: colors.RED
   }
 }));
 
@@ -69,16 +99,16 @@ ValueLabelComponent.propTypes = {
 const PrettoSlider = withStyles({
   root: {
     height: '8px',
-    color: colors.BROWN_LIGHT,
+    color: '#fff',
     padding: '2px 0'
   },
   thumb: {
-    height: 24,
-    width: 24,
+    height: 18,
+    width: 18,
     backgroundColor: '#fff',
     border: '2px solid currentColor',
-    marginTop: -8,
-    marginLeft: -12,
+    marginTop: -6,
+    marginLeft: -9,
     '&:focus, &:hover, &$active': {
       boxShadow: 'inherit',
     },
@@ -109,7 +139,7 @@ const PrettoSlider = withStyles({
   markActive: {
     opacity: 1,
     backgroundColor: 'currentColor',
-  }
+  },
 })(Slider);
 
 
@@ -126,8 +156,6 @@ const CustomizedSlider = () => {
 	
   return (
     <div className={classes.container} >
-        <Typography className={classes.date}>Abril 4, 2020</Typography>
-        
         <div className={classes.slider}>
           <div className={classes.root}>
             <PrettoSlider 
@@ -141,9 +169,14 @@ const CustomizedSlider = () => {
               defaultValue={max} />
           </div>
         </div>
+        <div className={classes.textContainer}>
+          <Typography className={classes.text}>Abril 4, 2020 |</Typography>
+          <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> 1,000 </Typography>
+          <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> 2,000 </Typography>
+        </div>
         <div className={classes.buttonsContainer}>
-          <Button variant="outlined" size="small" className={classes.buttons} color="inherit">Sospechosos</Button>
-          <Button variant="outlined" size="small" className={classes.buttons} color="inherit">Descesos</Button>
+          <Button variant="outlined" size="small" className={classes.buttonConfirm} color="inherit">Confimados</Button>
+          <Button variant="outlined" size="small" className={classes.buttonDead} color="inherit">Descesos</Button>
         </div>
     </div>
   );
