@@ -82,13 +82,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: colors.WHITE,
+    color: colors.BLACK,
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+  },
+}))(Tooltip);
+
 function ValueLabelComponent(props) {
   const { children, open, value } = props;
 
   return (
-    <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+    <LightTooltip open={open} enterTouchDelay={0} placement="top" title={value}>
       {children}
-    </Tooltip>
+    </LightTooltip>
   );
 }
 
@@ -147,12 +156,19 @@ const PrettoSlider = withStyles({
 
 const CustomizedSlider = () => {
 	const classes = useStyles();
-	const {state, changeDate } = React.useContext(HomeContext);
-		let max = 0;
+	const {state, changeDate, dataChart } = React.useContext(HomeContext);
+  let max = 0;
+  let totalConfirm = 0;
+  let totalDeads = 0;
 
 	if(!state.dates) {
 		return null;
-	}
+  }
+  
+  if(dataChart.length > 0) {
+    totalConfirm = dataChart[0].data.find((x) => { return x.x === state.shortDate }).y;
+    totalDeads = dataChart[1].data.find((x) => { return x.x === state.shortDate }).y;
+  }
 	
   max = state.dates.length - 1;
   let formatedDate = new Date(state.date);
@@ -161,8 +177,10 @@ const CustomizedSlider = () => {
   return (
     <div className={classes.container} >
         <div className={classes.slider}>
+          <Typography className={classes.text}>Fecha </Typography>
           <div className={classes.root}>
             <PrettoSlider 
+              ValueLabelComponent={ValueLabelComponent}
               min={0} 
               step={1} 
               max={max} 
@@ -174,9 +192,9 @@ const CustomizedSlider = () => {
           </div>
         </div>
         <div className={classes.textContainer}>
-          <Typography className={classes.text}>{formatedDate} |</Typography>
-          <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> 1,000 </Typography>
-          <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> 2,000 </Typography>
+          <Typography className={classes.text}>{formatedDate} | Totales:</Typography>
+          <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> {totalConfirm} </Typography>
+          <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {totalDeads} </Typography>
         </div>
         <div className={classes.buttonsContainer}>
           <Button variant="outlined" size="small" className={classes.buttonConfirm} color="inherit">Confimados</Button>

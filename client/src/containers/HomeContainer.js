@@ -6,6 +6,7 @@ const useHome = () => {
   const [statesDeads, setStatesDeads] = React.useState(null);
   const [state, setState ] = React.useState({
     date: '',
+    shortDate: '',
     dates : null,
     states : null
   })
@@ -30,9 +31,13 @@ const useHome = () => {
       }
 
       let date = single_date;
-
+      
+      let shortDate = new Date(date);
+      shortDate = `${shortDate.getDate()}/${shortDate.getMonth() + 1}`
+    
       setState({
         date : date,
+        shortDate: shortDate,
         dates : dates,  
         states : states
       })
@@ -110,7 +115,7 @@ const useHome = () => {
         casos += Number(element[label][single_date]);
       });
       shortDate = new Date(single_date);
-      shortDate = `${shortDate.getDate()} / ${shortDate.getMonth() + 1}`
+      shortDate = `${shortDate.getDate()}/${shortDate.getMonth() + 1}`
       dataChart.push(chartPoint(shortDate, casos));
     }
 
@@ -120,16 +125,19 @@ const useHome = () => {
     }
   }
 
-  let chartPoint = (x,y) =>{
+  let chartPoint = (x, y) =>{
     return {x, y}
   }
 
   let changeDate = (e, pos) => {
     let date = state.dates[pos];
+    let shortDate = new Date(date);
+    shortDate = `${shortDate.getDate()}/${shortDate.getMonth() + 1}`
     
     setState({
       ...state,
-      date: date
+      date: date,
+      shortDate: shortDate
     })
   }
 
