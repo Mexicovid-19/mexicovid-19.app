@@ -34,7 +34,7 @@ const AlertDialogSlide = (props) => {
         <Button onClick={handleClose} classes={{root: classes.cross}}>
           <CloseIcon />
         </Button>
-        <Typography> Grafica de Casos</Typography>
+        <Typography className={classes.title}> Grafica de Casos</Typography>
         <DialogContent classes={{root: classes.chartatyle}}>
           <MyResponsiveLine data={data} isSmall={false}  />
         </DialogContent>
@@ -53,17 +53,20 @@ const styles = (thme) => ({
   root: {
     margin: 0
   },
+  title: {
+    textAlign: 'center',
+    color: 'white',
+    paddingTop: '10px',
+  },
   chartatyle: {
     paddingLeft: '50px',
     paddingRight: '60px',
     paddingBottom: '50px'
   },
   cross: {
-    color: 'white',
-    width: '50px !important',
-    height: '50px !important',
-    marginRight: '0px !important',
-    Right: '0px !important'
+    right: '0px',
+    position: 'absolute',
+    color: 'white'
   }
 });
 
