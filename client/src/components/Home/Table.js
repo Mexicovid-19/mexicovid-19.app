@@ -169,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     overflowY: 'scroll',
-    height: '58vh',
+    height: 'calc(70vh - 64px)',
     borderTop: '1px solid white'
   },
   visuallyHidden: {

@@ -10,19 +10,20 @@ const useMap = () => {
   const [map, setMap] = React.useState(null);
   const [statesGeOJSON, setStatesGeOJSON] = React.useState(null);
   const thresholdColor = {
-    "confirm": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
-    "deads": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
-    "suspicious": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
+    "sospechosos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
+    "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
+    "muertes": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
   };
   const [thresholdsNum, setThresholdNum] = React.useState({
-    "confirm": [],
-    "deads": [],
+    "confirmados": [],
+    "sospechosos": [],
   })
   
   const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
   
   const {statesConfirm,
-         statesDeads, 
+         statesDeads,
+         selectedLabel, 
          state } = React.useContext(HomeContext);
 
   const [stateMap, setState] = React.useState({
@@ -59,7 +60,7 @@ const useMap = () => {
 
   React.useEffect(() => {
     if(statesConfirm && statesDeads && statesGeOJSON) {  
-      let fillColor = getSteps("confirm");
+      let fillColor = getSteps(selectedLabel);
      
       map.on('load', function() {
         let geojson = setUpGEOJson();
@@ -89,7 +90,7 @@ const useMap = () => {
 
   React.useEffect(() => {
     if(map && state.date) {
-      let fillColor = getSteps("confirm");
+      let fillColor = getSteps(selectedLabel);
       if(map.loaded() && map.isStyleLoaded()) {
         map.setPaintProperty('pref', 'fill-color', fillColor);
         map.on("mousemove", (e) => {
@@ -98,7 +99,7 @@ const useMap = () => {
       }     
     }
       
-  }, [state]);
+  }, [state, selectedLabel]);
 
   let callStatesGEOJSON = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/map/states`, {})
@@ -108,19 +109,25 @@ const useMap = () => {
   }
 
   let getSteps = (label) => {
-    let confirm = statesConfirm.map(stateMex => {
-      return stateMex.confirmados[state.date]; 
+    let statesData = statesConfirm;
+
+    if(label === "sospechosos") {
+      statesData = statesDeads;
+    }
+
+    let data = statesData.map(stateMex => {
+      return stateMex[label][state.date]; 
     });
     
-    confirm.sort((a,b) => a - b);
-    let thresholdsNumLabel = [confirm[0], confirm[4], confirm[8], confirm[12], confirm[16], confirm[20],confirm[24],confirm[31]];
+    data.sort((a,b) => a - b);
+    let thresholdsNumLabel = [data[0], data[4], data[8], data[12], data[16], data[20],data[24],data[31]];
     
     let stepsList = thresholdsNumLabel.map((num, i) => {
-        return [Number(num), thresholdColor["confirm"][i]];
+        return [Number(num), thresholdColor[label][i]];
     });
     
     let fillColor = {
-      property: "confirmados-" + state.date,
+      property: label + "-" + state.date,
       stops: stepsList
     };
 
