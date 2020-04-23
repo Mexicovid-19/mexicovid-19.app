@@ -84,6 +84,9 @@ const useMap = () => {
             'fill-outline-color': '#FFF'
           }
         });
+
+        var nav = new mapboxgl.NavigationControl();
+        map.addControl(nav, 'bottom-right');
       });
     }
   }, [statesGeOJSON, statesConfirm, statesDeads]);
