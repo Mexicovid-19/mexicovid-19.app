@@ -56,7 +56,7 @@ const EnhancedTableHead =(props) => {
   ];
 
   return (
-    <TableHead>
+    <TableHead className={{root: classes.headstyle}}> 
       <TableRow>
         {headCells.map((headCell) => (
           <TableCell
@@ -67,6 +67,7 @@ const EnhancedTableHead =(props) => {
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
+              classes = {{active:classes.headstyle, icon:classes.headstyle, root:classes.headstyle}}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
@@ -119,7 +120,7 @@ const useToolbarStyles = makeStyles((theme) => ({
       : {
           color: theme.palette.text.primary,
           backgroundColor: theme.palette.secondary.dark,
-        },
+  },
   
 }));
 
@@ -188,6 +189,9 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: 20,
     width: 1,
+  },
+  headstyle: {
+    color: 'WHITE !important',
   },
 }));
 
