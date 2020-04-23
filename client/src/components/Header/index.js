@@ -21,13 +21,25 @@ const useStyles = makeStyles((theme) => ({
   bar: {
     backgroundColor: colors.BLACK + ' !important'
   },
-
+  name: {
+    flex: '1'
+  },
   buttons: {
     display: 'flex',
-    justifyContent: 'space-evenly',
-    flexGrow: 1
+    justifyContent: 'space-between',
+    flex: '2'
+  },
+  button: {
+    '&:hover': {
+      borderBottom: '1px solid',
+      borderRadius: '0px',
+    }
+  },
+  img: {
+    maxWidth: '30px',
+    verticalAlign: 'top',
+    marginRight: '10px',
   }
-
 }));
 
 const Header = ({classes}) => {
@@ -36,7 +48,8 @@ const Header = ({classes}) => {
     <div className={classes.root}>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Link to={'./'}>
+          <Link to={'./'} className={classes.name}>
+            <img className={classes.img} title="logo" src='/img/192x192.png'/>
             <button variant="raised">
               <Typography variant="h6" className={classes.title}>
                 COVID-19 en México
@@ -44,12 +57,12 @@ const Header = ({classes}) => {
             </button>
           </Link>
           <div className={classes.buttons}>
-            <Button color="inherit">Métodologia</Button>
-            <Button color="inherit">Seguimiento a estados</Button>
-            <Button color="inherit">Investigación</Button>
+            <Button className={classes.button} color="inherit">Métodologia</Button>
+            <Button className={classes.button} color="inherit">Seguimiento a estados</Button>
+            <Button className={classes.button} color="inherit">Investigación</Button>
             <Link to={'./about-us'}>
               <button variant="raised">
-              <Button color="inherit">Acerca de nosotros</Button>
+              <Button className={classes.button} color="inherit">Acerca de nosotros</Button>
               </button>
             </Link>
           </div>
