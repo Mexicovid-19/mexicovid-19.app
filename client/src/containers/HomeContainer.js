@@ -85,10 +85,10 @@ const useHome = () => {
 
   
   React.useEffect(() => {
-    if(rowsTable.length > 0) {
-      setRows(rowsTable[0]);
+    if(selectedLabel && rowsTable.length > 0) {
+      setRows(rowsTable[selectedLabel === "confirmados" ? 0 : 1]);
     }
-  }, [rowsTable]);
+  }, [rowsTable, selectedLabel]);
 
   let callStatesConfirm = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/map/data/confirmados`, {})

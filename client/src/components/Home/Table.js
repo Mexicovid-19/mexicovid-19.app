@@ -42,7 +42,7 @@ function stableSort(array, comparator) {
 }
 
 const EnhancedTableHead =(props) => {
-  const { classes, order, orderBy, onRequestSort } = props;
+  const { classes, order, orderBy, onRequestSort, labelCasos } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -50,7 +50,7 @@ const EnhancedTableHead =(props) => {
   const headCells = [
     { id: 'position', numeric: true, disablePadding: true, label: 'Ranking' },
     { id: 'state', numeric: false, disablePadding: false, label: 'Estado' },
-    { id: 'data', numeric: true, disablePadding: false, label: 'Confirmados' }
+    { id: 'data', numeric: true, disablePadding: false, label: labelCasos }
   ];
 
   return (
@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTable = () => {
-  const {rows, dataChart} = React.useContext(HomeContext);
+  const {rows, dataChart, selectedLabel} = React.useContext(HomeContext);
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('ranking');
@@ -225,6 +225,7 @@ const EnhancedTable = () => {
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
+              labelCasos={selectedLabel}
             />
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
