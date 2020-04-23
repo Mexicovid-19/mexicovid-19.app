@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     placeContent: 'space-between'
   },
   slider: {
-    width: '30%'
+    width: '20%'
   },
   margin: {
     height: theme.spacing(3),
