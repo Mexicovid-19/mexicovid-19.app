@@ -13,7 +13,9 @@ import Paper from '@material-ui/core/Paper';
 import { HomeContext } from '../../contexts/HomeContext';
 import MyResponsiveLine from './LineChart';
 import AspectRatioRoundedIcon from '@material-ui/icons/AspectRatioRounded';
-import * as colors from '../../constants/colors'
+import * as colors from '../../constants/colors';
+import Button from "@material-ui/core/Button";
+import AlertDialogSlide from './DialogChart';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -122,17 +124,21 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTableToolbar = (props) => {
-  const {  data } = props;
-  
+  const {data, clickOpen, clickClose, openDial} = props;
+
   const classes = useToolbarStyles();
-  
+
   return (
     <Toolbar className={classes.root}>
-        <AspectRatioRoundedIcon className={classes.icon} />
+        <button>
+          <AspectRatioRoundedIcon className={classes.icon} onClick={clickOpen}/>
+        </button>
         <MyResponsiveLine data={data}/>
+        <AlertDialogSlide handleClose={clickClose} open={openDial} data={data}/>
     </Toolbar>
   );
 };
+
 
 EnhancedTableToolbar.propTypes = {
   data: PropTypes.number.isRequired,
@@ -206,10 +212,21 @@ const EnhancedTable = () => {
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
   
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+};  
+
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar data={dataChart} />
+        <EnhancedTableToolbar data={dataChart} clickOpen={handleClickOpen} clickClose={handleClose} openDial={open}/>
         <TableContainer className={classes.tableContainer}>
           <Table
             stickyHeader
