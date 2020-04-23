@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Map from './Map';
 import Header from '../Header';
-import SortableTable from './Table';
+import EnhacedTable from './Table';
 
 const Home = ({ classes }) => {
   
@@ -11,7 +11,7 @@ const Home = ({ classes }) => {
       <Header/>
       <div className={classes.Mapcontainer}>
         <Map/>
-        <SortableTable/>
+        <EnhacedTable/>
       </div>
     </div>
   );

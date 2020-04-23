@@ -13,8 +13,8 @@ const useHome = () => {
   const[rowsTable, setRowsTable] = React.useState([]);
   const[rows, setRows] = React.useState([]);
   const [dataChart, setDataChart] = React.useState([]);
+  const [selectedLabel, setSelectedLabel] = React.useState(null);
   
-
   React.useEffect(() => {
     callStatesConfirm();
     callStatesDeads();
@@ -54,6 +54,8 @@ const useHome = () => {
       for(var i = 0; i < statesDeads.length; i++) {
         rowsDeads.push(createTableData(i+1, statesDeads[i].estado, Number(statesDeads[i].sospechosos[state.date])));
       } 
+
+      onSelectLabel("confirmados");
     }
   }, [statesConfirm, statesDeads]);
 
@@ -83,10 +85,10 @@ const useHome = () => {
 
   
   React.useEffect(() => {
-    if(rowsTable.length > 0) {
-      setRows(rowsTable[0]);
+    if(selectedLabel && rowsTable.length > 0) {
+      setRows(rowsTable[selectedLabel === "confirmados" ? 0 : 1]);
     }
-  }, [rowsTable]);
+  }, [rowsTable, selectedLabel]);
 
   let callStatesConfirm = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/map/data/confirmados`, {})
@@ -141,13 +143,19 @@ const useHome = () => {
     })
   }
 
+  let onSelectLabel = (selected) => {
+    setSelectedLabel(selected);
+  }
+
   return {
     statesConfirm,
     statesDeads,
     state,
     rows,
     dataChart,
-    changeDate
+    changeDate,
+    onSelectLabel,
+    selectedLabel
   }
 }
 

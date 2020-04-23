@@ -1,35 +1,33 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { MapContext } from '../../contexts/MapContext';
+import { HomeContext } from '../../contexts/HomeContext';
 import CustomizedSlider from './Slider';
 import Typography from '@material-ui/core/Typography';
-import { BLACK } from '../../constants/colors';
+import { BLACK, WHITE } from '../../constants/colors';
+import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
 
 const Map = ({classes}) => {
     const {stateMap, mapRef, thresholdsNum} = React.useContext(MapContext);
-    const {zoom} = stateMap;
+    const {selectedLabel} = React.useContext(HomeContext);
     
     return (
         <div className={classes.mapContainer}>
           <div className={classes.sidebarStyle}>
-            <CustomizedSlider/>
+            <CustomizedSlider />
           </div>
           <div className={classes.containerGradient}>
-            <div className={classes.colorsGradient}></div>
+            <div className={selectedLabel === "confirmados" ? classes.colorsGradientBlue : classes.colorsGradientRed}></div>
             <div className={classes.numsWrapper}>
-            {thresholdsNum["confirm"].map((num, index) => {
-              let text = num;
-              if(index == 0) {
-                text = '-' + num;
-              } else if(index == thresholdsNum["confirm"].length - 1) {
-                text = '+' + num;
-              }
-
+            <RemoveRoundedIcon className={classes.icons}/>
+            {selectedLabel && thresholdsNum[selectedLabel].map((num, index) => {
               return(
-                <Typography className={classes.numbers}>{text}</Typography>
+                <Typography className={classes.numbers}>{num}</Typography>
               )
             })
             }
+            <AddRoundedIcon className={classes.icons}/>
             </div>
           </div>
           <div ref={mapRef} className={classes.map} />
@@ -42,9 +40,21 @@ const styles = () => ({
       height: '100% !important',
     },
 
-    colorsGradient: {
+    icons: {
+      color: WHITE,
+      fontSize: '16px'
+    },
+
+    colorsGradientRed: {
       background: 'linear-gradient(to right, #fff5f0,#fee0d2,#fcbba1,#fc9272,#fb6a4a,#ef3b2c,#cb181d,#99000d)',
-      height: '5px',
+      height: '10px',
+      width: '100%',
+      position: 'absolute'
+    },
+
+    colorsGradientBlue: {
+      background: 'linear-gradient(to right, #f7fbff,#deebf7,#c6dbef,#9ecae1,#6baed6,#4292c6,#2171b5,#084594)',
+      height: '10px',
       width: '100%',
       position: 'absolute'
     },
@@ -53,8 +63,8 @@ const styles = () => ({
       width: '300px',
       position: 'absolute',
       bottom: '0px',
-      marginBottom: '45px',
-      zIndex: '1',
+      zIndex: '10',
+      backgroundColor: BLACK
     },
 
     sidebarStyle: {
@@ -71,18 +81,21 @@ const styles = () => ({
     },
         
     mapContainer: {
-      height: '89vh',
+      height: 'calc(100vh - 64px)',
       flex: '2'
     },
 
     numsWrapper: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-around',
+      justifyContent: 'space-evenly',
+      alignItems: 'center',
+      marginTop: '10px'
     },
 
     numbers: {
-      color: '#fff'
+      color: '#fff',
+      fontSize: '12px'
     }
   });
    

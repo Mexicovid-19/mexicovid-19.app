@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
-  buttonConfirm: {
+  button: {
     borderRadius: '0px',
     minWidth: '120px',
     '&:hover': {
@@ -37,10 +37,12 @@ const useStyles = makeStyles((theme) => ({
       borderColor: colors.BLACK,
       boxShadow: 'none',
     },
-    '&:active': {
-      backgroundColor: colors.BLUE,
-      borderColor: colors.BLUE,
-    },
+  },
+  buttonConfirm: {
+    borderRadius: '0px',
+    minWidth: '120px',
+    backgroundColor: colors.BLUE,
+    borderColor: colors.BLUE,
     '&:focus': {
       backgroundColor: colors.BLUE,
       borderColor: colors.BLUE,
@@ -49,15 +51,8 @@ const useStyles = makeStyles((theme) => ({
   buttonDead: {
     borderRadius: '0px',
     minWidth: '120px',
-    '&:hover': {
-      backgroundColor: colors.BLACK,
-      borderColor: colors.BLACK,
-      boxShadow: 'none',
-    },
-    '&:active': {
-      backgroundColor: colors.RED,
-      borderColor: colors.RED,
-    },
+    backgroundColor: colors.RED,
+    borderColor: colors.RED,
     '&:focus': {
       backgroundColor: colors.RED,
       borderColor: colors.RED,
@@ -156,7 +151,7 @@ const PrettoSlider = withStyles({
 
 const CustomizedSlider = () => {
 	const classes = useStyles();
-	const {state, changeDate, dataChart } = React.useContext(HomeContext);
+	const {state, changeDate, dataChart, onSelectLabel, selectedLabel } = React.useContext(HomeContext);
   let max = 0;
   let totalConfirm = 0;
   let totalDeads = 0;
@@ -173,7 +168,7 @@ const CustomizedSlider = () => {
   max = state.dates.length - 1;
   let formatedDate = new Date(state.date);
   formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, 2020`;
-	
+  
   return (
     <div className={classes.container} >
         <div className={classes.slider}>
@@ -197,8 +192,8 @@ const CustomizedSlider = () => {
           <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {totalDeads} </Typography>
         </div>
         <div className={classes.buttonsContainer}>
-          <Button variant="outlined" size="small" className={classes.buttonConfirm} color="inherit">Confimados</Button>
-          <Button variant="outlined" size="small" className={classes.buttonDead} color="inherit">Descesos</Button>
+          <Button variant="outlined" size="small" className={selectedLabel === 'confirmados' ? classes.buttonConfirm : classes.button} color="inherit" onClick={() => onSelectLabel("confirmados")}>Confimados</Button>
+          <Button variant="outlined" size="small" className={selectedLabel === 'sospechosos' ? classes.buttonDead : classes.button} color="inherit" onClick={() => onSelectLabel("sospechosos")}>Descesos</Button>
         </div>
     </div>
   );
