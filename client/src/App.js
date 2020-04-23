@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
 import Team from './components/Team';
+import Methodology from './components/Methodology';
 import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
 
@@ -41,6 +42,9 @@ class App extends Component {
                 </HomeContextProvider>
             </Route>
             <Route path='/about-us' component={Team}/>
+            <Route path='/methodology' component={Methodology}>
+              <Methodology />
+            </Route>
             </Switch>
         </ThemeProvider>
       </div>

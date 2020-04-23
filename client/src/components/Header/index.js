@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 import * as colors from '../../constants/colors';
 
 const useStyles = makeStyles((theme) => ({
+  fixed: {
+    position: 'fixed',
+    width: '100%',
+  },
   root: {
     flexGrow: 2,
   },
@@ -35,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: '0px',
     }
   },
+  selectedBtn: {
+    borderBottom: '1px solid',
+    borderRadius: '0px',
+  },
   img: {
     maxWidth: '30px',
     verticalAlign: 'top',
@@ -42,10 +50,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Header = ({classes}) => {
+const Header = ({ classes, fixed=false}) => {
     classes = useStyles();
+    let location = window.location.pathname;
+    
     return (
-    <div className={classes.root}>
+    <div className={fixed? classes.fixed : classes.root}>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
           <Link to={'./'} className={classes.name}>
@@ -57,13 +67,16 @@ const Header = ({classes}) => {
             </button>
           </Link>
           <div className={classes.buttons}>
-            <Button className={classes.button} color="inherit">Métodologia</Button>
-            <Button className={classes.button} color="inherit">Seguimiento a estados</Button>
-            <Button className={classes.button} color="inherit">Investigación</Button>
             <Link to={'./about-us'}>
-              <button variant="raised">
-              <Button className={classes.button} color="inherit">Acerca de nosotros</Button>
-              </button>
+              <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Acerca de nosotros</Button>
+            </Link>
+            <Link to={'./methodology'}>
+              <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
+            </Link>
+            <Button className={location === '/states' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento a estados</Button>
+            <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
+            <Link to={'./'}>
+              <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
             </Link>
           </div>
         </Toolbar>
