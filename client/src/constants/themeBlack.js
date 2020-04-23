@@ -69,8 +69,8 @@ export const themeBlack = {
     },
     crosshair: {
         line: {
-            stroke: '#000000',
-            strokeWidth: 1,
+            stroke: '#fff',
+            strokeWidth: 2,
             strokeOpacity: 0.35,
         },
     },
