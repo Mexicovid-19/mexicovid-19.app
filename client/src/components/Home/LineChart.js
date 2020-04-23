@@ -12,14 +12,17 @@ import { themeBlack } from '../../constants/themeBlack';
 const MyResponsiveLine = ({ data, isSmall=true  }) => {
     let axisBottom = null;
     let axisLeft = null;
+    var Defaultmargin = { top: 10, right: 10, bottom: 15, left: 15 };
+    var legendTy = 0;
     if(!isSmall) {
         axisBottom = {
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 0,
             tickRotation: -90,
-            legendOffset: 36,
-            legendPosition: 'middle'
+            legendOffset: 50,
+            legendPosition: 'middle',
+            legend: 'FECHA'
         };
 
         axisLeft = {
@@ -27,10 +30,18 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
             tickSize: 5,
             tickPadding: 0,
             tickRotation: 0,
-            legend: 'casos',
-            legendOffset: -40,
+            legend: 'CASOS',
+            legendOffset: -45,
             legendPosition: 'middle'
         };
+        Defaultmargin = { 
+            top: 30, 
+            right: 30, 
+            bottom: 60, 
+            left: 60 
+        };
+        legendTy = -15;
+
     }
 
     return(
@@ -38,7 +49,7 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
         theme={themeBlack}
         colors={[colors.RED, colors.BLUE_LIGHT]}
         data={data}
-        margin={{ top: 10, right: 10, bottom: 15, left: 15 }}
+        margin={Defaultmargin}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         axisTop={null}
@@ -55,8 +66,8 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
         enableArea={true}
         areaOpacity={0.7}
         useMesh={!isSmall}
-        enableGridX={!isSmall}
-        enableGridY={!isSmall}
+        enableGridX={false}
+        enableGridY={false}
         legends={[
             {
                 anchor: 'top',
@@ -64,7 +75,7 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
                 direction: 'row',
                 justify: false,
                 translateX: 0,
-                translateY: 0,
+                translateY: legendTy,
                 itemsSpacing: 5,
                 itemDirection: 'left-to-right',
                 itemWidth: 90,
@@ -74,15 +85,7 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
                 symbolShape: 'circle',
                 symbolBorderColor: 'rgba(0, 0, 0, .5)',
                 itemTextColor: '#fff',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemBackground: 'rgba(0, 0, 0, .03)',
-                            itemOpacity: 1
-                        }
-                    }
-                ]
+                
             }
         ]}
     />)
