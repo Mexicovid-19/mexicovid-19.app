@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Header from '../Header';
+import Footer from '../Footer';
 import * as colors from '../../constants/colors';
 
 const Methodology = ({ classes }) => {
@@ -34,6 +35,7 @@ const Methodology = ({ classes }) => {
             </div>
         </section>
       </div>
+      <Footer/>
     </div>
   );
 }
@@ -45,7 +47,6 @@ const styles = () => ({
   },
 
   MethologyContainer: {
-    height: '100vh',
     width: '70%',
     margin: 'auto',
     paddingTop: '64px',

@@ -59,7 +59,7 @@ const Header = ({ classes, fixed=false}) => {
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
           <Link to={'./'} className={classes.name}>
-            <img className={classes.img} title="logo" src='/img/192x192.png'/>
+            <img className={classes.img} title="logo tec" src='/img/192x192.png'/>
             <button variant="raised">
               <Typography variant="h6" className={classes.title}>
                 COVID-19 en México
