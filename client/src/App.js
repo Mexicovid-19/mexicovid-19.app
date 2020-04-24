@@ -7,7 +7,7 @@ import Methodology from './components/Methodology';
 import Regions from './components/Regions';
 import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
-
+import './css/index.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({

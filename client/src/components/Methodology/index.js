@@ -1,5 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Header from '../Header';
 import Footer from '../Footer';
 import * as colors from '../../constants/colors';
@@ -9,11 +11,14 @@ const Methodology = ({ classes }) => {
   return (
     <div className={classes.container}>
       <Header fixed={true}/>
-      <div className={classes.MethologyContainer}>
+      <main className={classes.MethologyContainer}>
+        <header className={classes.header}>
+          <Typography className={classes.h1} variant={'h1'}>Metodología</Typography>	
+        </header>
           <navbar className={classes.navbar}>
-          <a href="#info">Fuente de Información</a>
-          <a href="#data">Metodología de Visualización de Datos</a>
-          <a href="#politic">Política de Divulgación de Información</a>
+            <Button className={classes.label} href="#info">Fuente de Información</Button>	
+            <Button className={classes.label} href="#data">Metodología de Visualización de Datos</Button>
+            <Button className={classes.label} href="#politic">Política de Divulgación de Información</Button>
           </navbar>
         <section id="info" className={classes.row}>
             <div className={classes.title}>Fuente de Información</div>
@@ -34,51 +39,72 @@ const Methodology = ({ classes }) => {
                 Esta página es elaborada y mantenida por un grupo de profesores y estudiantes del Tecnológico de Monterrey. Las inconsistencias y errores son competencia de los autores de esta página y no de la Institución. Asimismo, las posturasy y opiniones aquí vertidas representan la posición personal de los autores y no del Tecnológico de Monterrey.
             </div>
         </section>
-      </div>
+      </main>
       <Footer/>
     </div>
   );
 }
 
 const styles = () => ({
+  
   container: {
     width: '100%',
     backgroundColor: colors.GRAY,
   },
-
+  
   MethologyContainer: {
     width: '70%',
-    margin: 'auto',
+		margin: 'auto',
+		padding: '25px',
     paddingTop: '128px',
     backgroundColor: colors.WHITE
   },
 
+  h1: {
+		fontSize: '36px'
+	},
+
+	header: {
+		borderBottom: `1px solid ${colors.BLACK}`,
+		display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'space-between',
+	},
+
+  label:{
+    flex: '1',
+    textAlign: 'center',
+  },
+
   row: {
-      display: 'flex',
-      flexDirection: 'row',
-      border: '1px solid #222222'
+    display: 'flex',
+    flexDirection: 'row',
+    margin: '50px 0px',
+    borderRadius: '5px',
+    padding: '20px',
+    paddingTop: '64px',
+    backgroundColor: colors.GRAY,
   },
 
   title: {
-    padding: '50px',
+    padding: '20px',
     flex: '1',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   content: {
-    padding: '20px 50px',
-    flex: '2',
+    padding: '20px',
+    flex: '5',
     display: 'flex',
     textAlign: 'justify'
   },
 
   navbar: {
-    margin: '20px',
+    margin: '20px 0px',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    listStyleType: 'none'
   },
 
   [`@media (max-width: ${1000}px)`]: {
