@@ -9,7 +9,7 @@ import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 
 const Map = ({classes}) => {
-    const {stateMap, mapRef, thresholdsNum} = React.useContext(MapContext);
+    const { mapRef, thresholdsNum} = React.useContext(MapContext);
     const {selectedLabel} = React.useContext(HomeContext);
     
     return (

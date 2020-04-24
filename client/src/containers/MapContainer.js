@@ -25,27 +25,27 @@ const useMap = () => {
          statesDeads,
          selectedLabel, 
          state } = React.useContext(HomeContext);
-
-  const [stateMap, setState] = React.useState({
-    lng: -97.8116,
-    lat: 24.6040,
-    zoom: 4.2
-  }); 
   
   React.useEffect(() => {
     setMap(
       new mapboxgl.Map({
       container: mapRef.current,
       style: 'mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko',
-      center: [stateMap.lng, stateMap.lat],
-      zoom : stateMap.zoom
+      center: [-97.8116, 24.6040],
+      zoom : 4.2
     }));
   }, []);
 
   React.useEffect(() => {
+    if(map) {
+      callStatesGEOJSON();
+    }
+  }, [map]);
+
+  React.useEffect(() => {
     if(statesConfirm && statesDeads && statesGeOJSON) {  
       let fillColor = getSteps(selectedLabel);
-      
+     
       map.on('load', function() {
         let geojson = setUpGEOJson();
         
@@ -74,22 +74,6 @@ const useMap = () => {
       });
     }
   }, [statesGeOJSON, statesConfirm, statesDeads]);
-
-  React.useEffect(() => {
-    if(map) {
-      map.on('move', () => {
-        const { lng, lat } = map.getCenter();
-    
-        setState({
-          lng: lng.toFixed(4),
-          lat: lat.toFixed(4),
-          zoom: map.getZoom().toFixed(2)
-        });
-      });
-
-      callStatesGEOJSON(); 
-    }
-  }, [map]);
 
   React.useEffect(() => {
     if(map && state.date) {
@@ -182,7 +166,6 @@ const useMap = () => {
   
   return {
     mapRef,
-    stateMap,
     map,
     showPopup,
     popup,
