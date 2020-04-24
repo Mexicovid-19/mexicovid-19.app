@@ -159,10 +159,10 @@ const CustomizedSlider = () => {
 	if(!state.dates) {
 		return null;
   }
-  
+
   if(dataChart.length > 0) {
-    totalConfirm = dataChart[0].data.find((x) => { return x.x === state.shortDate }).y;
-    totalDeads = dataChart[1].data.find((x) => { return x.x === state.shortDate }).y;
+    totalConfirm = dataChart[0].data.find((x) => { return x.x === state.date }).y;
+    totalDeads = dataChart[1].data.find((x) => { return x.x === state.date }).y;
   }
 	
   max = state.dates.length - 1;

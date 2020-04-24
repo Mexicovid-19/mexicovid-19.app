@@ -116,9 +116,8 @@ const useHome = () => {
       data.forEach(element => {
         casos += Number(element[label][single_date]);
       });
-      shortDate = new Date(single_date);
-      shortDate = `${shortDate.getDate()}/${shortDate.getMonth() + 1}`
-      dataChart.push(chartPoint(shortDate, casos));
+
+      dataChart.push(chartPoint(single_date, casos));
     }
 
     return {
