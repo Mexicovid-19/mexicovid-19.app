@@ -8,13 +8,6 @@ import { Link } from 'react-router-dom';
 import * as colors from '../../constants/colors';
 
 const useStyles = makeStyles((theme) => ({
-  fixed: {
-    position: 'fixed',
-    width: '100%',
-  },
-  root: {
-    flexGrow: 2,
-  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -55,8 +48,7 @@ const Header = ({ classes, fixed=false}) => {
     let location = window.location.pathname;
     
     return (
-    <div className={fixed? classes.fixed : classes.root}>
-      <AppBar position="static" className={classes.bar}>
+      <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
         <Toolbar>
           <Link to={'./'} className={classes.name}>
             <img className={classes.img} title="logo tec" src='/img/192x192.png'/>
@@ -73,7 +65,9 @@ const Header = ({ classes, fixed=false}) => {
             <Link to={'./methodology'}>
               <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
             </Link>
-            <Button className={location === '/states' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento a estados</Button>
+            <Link to={'./regions'}>
+            <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
+            </Link>
             <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
             <Link to={'./'}>
               <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
@@ -81,7 +75,6 @@ const Header = ({ classes, fixed=false}) => {
           </div>
         </Toolbar>
       </AppBar>
-    </div>
   );
 }
 

@@ -49,7 +49,7 @@ const styles = () => ({
   MethologyContainer: {
     width: '70%',
     margin: 'auto',
-    paddingTop: '64px',
+    paddingTop: '128px',
     backgroundColor: colors.WHITE
   },
 

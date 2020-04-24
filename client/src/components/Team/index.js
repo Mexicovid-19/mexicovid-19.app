@@ -46,7 +46,7 @@ const styles = () => ({
   teamsContainer: {
     width: '70%',
     margin: 'auto',
-    paddingTop: '64px',
+    paddingTop: '128px',
     backgroundColor: colors.WHITE
   },
 
