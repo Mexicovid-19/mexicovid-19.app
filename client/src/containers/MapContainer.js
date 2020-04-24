@@ -2,6 +2,7 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import { HomeContext } from '../contexts/HomeContext';
+import * as colors from './../constants/colors';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -71,6 +72,7 @@ const useMap = () => {
 
         var nav = new mapboxgl.NavigationControl();
         map.addControl(nav, 'bottom-right');
+        map.on('mousemove', showPopup);
       });
     }
   }, [statesGeOJSON, statesConfirm, statesDeads]);
@@ -80,9 +82,7 @@ const useMap = () => {
       let fillColor = getSteps(selectedLabel);
       if(map.loaded() && map.isStyleLoaded()) {
         map.setPaintProperty('pref', 'fill-color', fillColor);
-        map.on("mousemove", (e) => {
-          showPopup(e);
-        });
+        map.on('mousemove', showPopup);
       }     
     }
       
@@ -132,16 +132,20 @@ const useMap = () => {
       popup
       .setLngLat(e.lngLat)
       .setHTML(
-        ` <label>Estado:</label>
-          <span>${features[0].properties.ESTADO}</span>
-          <br>
-          <label>Confirmados:</label>
-          <span>${features[0].properties["confirmados-" + state.date]}</span>
-          <br>
-          <label>Decesos:</label>
-          <span>${features[0].properties["decesos-" + state.date]}</span>
-        `
+        ` 
+          <div style='display: flex; flex-direction: column; align-items: center; padding: 10px'>
+            <span style='border-bottom: 1px solid; width: 100%; text-align: center;'>
+              ${features[0].properties.ESTADO}
+            </span>
+            <span style='display: flex;'>
+              <svg style='width: 15px; height: 15px'>
+                <circle r="5" cx="6" cy="10" fill=${selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
+              </svg>
+              ${features[0].properties[ selectedLabel + "-" + state.date]} ${selectedLabel} 
+            </span>
+          </div>`
         )
+      .setMaxWidth(400)
       .addTo(map);
     } else {
       popup.remove();
