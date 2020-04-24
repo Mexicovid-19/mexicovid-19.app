@@ -19,8 +19,8 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 0,
-            tickRotation: -90,
-            legendOffset: 50,
+            tickRotation: -31,
+            legendOffset: 55,
             legendPosition: 'middle',
             legend: 'FECHA'
         };
@@ -70,8 +70,9 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
         enableGridY={false}
         legends={[
             {
+                colors: 'BLUE',
                 anchor: 'top',
-                fill: '#ff0000',
+                fill: colors.WHITE,
                 direction: 'row',
                 justify: false,
                 translateX: 0,
@@ -84,7 +85,7 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
                 symbolSize: 12,
                 symbolShape: 'circle',
                 symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                itemTextColor: '#fff',
+                itemTextColor: colors.WHITE,
                 
             }
         ]}
