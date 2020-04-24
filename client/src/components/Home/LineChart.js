@@ -14,6 +14,7 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
     let axisLeft = null;
     var Defaultmargin = { top: 10, right: 10, bottom: 15, left: 15 };
     var legendTy = 0;
+    var legendTx = 0;
     if(!isSmall) {
         axisBottom = {
             orient: 'bottom',
@@ -35,23 +36,24 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
             legendPosition: 'middle'
         };
         Defaultmargin = { 
-            top: 30, 
-            right: 30, 
+            top: 60, 
+            right: 60, 
             bottom: 60, 
             left: 60 
         };
-        legendTy = -15;
+        legendTy = -20;
+        legendTx = 20;
 
     }
 
     return(
         <ResponsiveLine
         theme={themeBlack}
-        colors={[colors.RED, colors.BLUE_LIGHT]}
+        colors={[colors.RED,colors.BLUE_LIGHT]}
         data={data}
         margin={Defaultmargin}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
+        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
         axisTop={null}
         axisRight={null}
         axisBottom={axisBottom}
@@ -64,7 +66,7 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
         pointLabel="y"
         pointLabelYOffset={-12}
         enableArea={true}
-        areaOpacity={0.7}
+        areaOpacity={.6}
         useMesh={!isSmall}
         enableGridX={false}
         enableGridY={false}
@@ -75,7 +77,7 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
                 fill: colors.WHITE,
                 direction: 'row',
                 justify: false,
-                translateX: 0,
+                translateX: legendTx,
                 translateY: legendTy,
                 itemsSpacing: 5,
                 itemDirection: 'left-to-right',
