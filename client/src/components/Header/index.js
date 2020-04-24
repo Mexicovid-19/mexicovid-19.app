@@ -59,18 +59,18 @@ const Header = ({ classes, fixed=false}) => {
             </button>
           </Link>
           <div className={classes.buttons}>
-            <Link to={'./about-us'}>
-              <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Acerca de nosotros</Button>
+            <Link to={'./'}>
+              <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
+            </Link>
+            <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
+            <Link to={'./regions'}>
+              <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
             </Link>
             <Link to={'./methodology'}>
               <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
             </Link>
-            <Link to={'./regions'}>
-            <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
-            </Link>
-            <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
-            <Link to={'./'}>
-              <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
+            <Link to={'./about-us'}>
+              <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
             </Link>
           </div>
         </Toolbar>

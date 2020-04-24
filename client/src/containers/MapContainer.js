@@ -10,13 +10,13 @@ const useMap = () => {
   const [map, setMap] = React.useState(null);
   const [statesGeOJSON, setStatesGeOJSON] = React.useState(null);
   const thresholdColor = {
-    "sospechosos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
+    "decesos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
     "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
     "muertes": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
   };
   const [thresholdsNum, setThresholdNum] = React.useState({
     "confirmados": [],
-    "sospechosos": [],
+    "decesos": [],
   })
   
   const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
@@ -98,7 +98,7 @@ const useMap = () => {
   let getSteps = (label) => {
     let statesData = statesConfirm;
 
-    if(label === "sospechosos") {
+    if(label === "decesos") {
       statesData = statesDeads;
     }
 
@@ -138,8 +138,8 @@ const useMap = () => {
           <label>Confirmados:</label>
           <span>${features[0].properties["confirmados-" + state.date]}</span>
           <br>
-          <label>Sospechosos:</label>
-          <span>${features[0].properties["sospechosos-" + state.date]}</span>
+          <label>Decesos:</label>
+          <span>${features[0].properties["decesos-" + state.date]}</span>
         `
         )
       .addTo(map);
@@ -151,13 +151,14 @@ const useMap = () => {
   let setUpGEOJson = () => {
     let geojson = statesGeOJSON;
       geojson.features = geojson.features.sort((a,b) => a.properties.CVE_ENT - b.properties.CVE_ENT);
-      
+      console.log(geojson)
+      console.log(statesConfirm)
       for(var i = 0; i < 32; i++) {
         for(var j in statesConfirm[i].confirmados) {
           geojson.features[i].properties["confirmados-" + j] = Number(statesConfirm[i].confirmados[j]);
         }
-        for(var j in statesDeads[i].sospechosos) {
-          geojson.features[i].properties["sospechosos-" + j] = Number(statesDeads[i].sospechosos[j]);
+        for(var j in statesDeads[i].decesos) {
+          geojson.features[i].properties["decesos-" + j] = Number(statesDeads[i].decesos[j]);
         }
       }
     

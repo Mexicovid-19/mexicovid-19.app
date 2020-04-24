@@ -53,31 +53,31 @@ router.post('/data/confirmados', function(req, res) {
 	
 });
 
-router.post('/data/sospechosos', function(req, res) {
+router.post('/data/decesos', function(req, res) {
 	var fs = require('fs');
 	var d3 = require('d3');
-	var sospechosos;
+	var decesos;
 	var myjson = [];
 	
-	fs.readFile("data/sospechosos.csv", "utf8", function(err, data){
+	fs.readFile("data/decesos.csv", "utf8", function(err, data){
 		console.log("Getting suspicious data");
 
 		if(err) {
 			throw err;
 		}
 		
-		sospechosos = d3.csvParse(data.trim());
+		decesos = d3.csvParse(data.trim());
 		
-		for(var i = 0; i < sospechosos.length; i++) {
-			var id = sospechosos[i]["ID"];
-			var estado = sospechosos[i].ESTADO;
+		for(var i = 0; i < decesos.length; i++) {
+			var id = decesos[i]["ID"];
+			var estado = decesos[i].ESTADO;
 			
-			delete sospechosos[i]["ID"];
-			delete sospechosos[i].ESTADO;
+			delete decesos[i]["ID"];
+			delete decesos[i].ESTADO;
 			var data = {
 				"id": id,
 				"estado": estado,
-				"sospechosos": sospechosos[i]
+				"decesos": decesos[i]
 			}
 			
 			myjson.push(data);

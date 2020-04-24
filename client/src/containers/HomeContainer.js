@@ -45,9 +45,9 @@ const useHome = () => {
       }
       
       let deadsData = [...statesDeads];
-      deadsData.sort((a,b) => b.sospechosos[date] -a.sospechosos[date]);
+      deadsData.sort((a,b) => b.decesos[date] -a.decesos[date]);
       for(var i = 0; i < deadsData.length; i++) {
-        rowsDeads.push(createTableData(i+1, deadsData[i].estado, Number(deadsData[i].sospechosos[state.date])));
+        rowsDeads.push(createTableData(i+1, deadsData[i].estado, Number(deadsData[i].decesos[state.date])));
       } 
 
       onSelectLabel("confirmados");
@@ -64,7 +64,7 @@ const useHome = () => {
   React.useEffect(() => {
     if(state && state.date && statesConfirm && statesDeads) {
       if(dataChart.length == 0)
-        setDataChart([createChartData(statesConfirm, "confirmados"),createChartData(statesDeads, "sospechosos")]);
+        setDataChart([createChartData(statesDeads, "decesos"),createChartData(statesConfirm, "confirmados")]);
       
       let rowsConfirm = [];
       let rowsDeads = [];
@@ -78,10 +78,10 @@ const useHome = () => {
       }
 
       let deadsData = [...statesDeads];
-      deadsData.sort((a,b) => b.sospechosos[state.date] -a.sospechosos[state.date]);
+      deadsData.sort((a,b) => b.decesos[state.date] -a.decesos[state.date]);
       for(var i = 0; i < deadsData.length; i++) {
         //update just the last number
-        rowsDeads.push(createTableData(i+1, deadsData[i].estado, Number(deadsData[i].sospechosos[state.date])));
+        rowsDeads.push(createTableData(i+1, deadsData[i].estado, Number(deadsData[i].decesos[state.date])));
       }
 
       setRowsTable([rowsConfirm, rowsDeads]);
@@ -103,7 +103,7 @@ const useHome = () => {
   }
 
   let callStatesDeads = ()  => {
-    axios.post(`${process.env.REACT_APP_API_URL}/map/data/sospechosos`, {})
+    axios.post(`${process.env.REACT_APP_API_URL}/map/data/decesos`, {})
     .then(res => {
       setStatesDeads(res.data);
     });
