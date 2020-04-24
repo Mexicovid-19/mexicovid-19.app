@@ -43,25 +43,9 @@ const useMap = () => {
   }, []);
 
   React.useEffect(() => {
-    if(map) {
-      map.on('move', () => {
-        const { lng, lat } = map.getCenter();
-    
-        setState({
-          lng: lng.toFixed(4),
-          lat: lat.toFixed(4),
-          zoom: map.getZoom().toFixed(2)
-        });
-      });
-
-      callStatesGEOJSON();
-    }
-  }, [map]);
-
-  React.useEffect(() => {
     if(statesConfirm && statesDeads && statesGeOJSON) {  
       let fillColor = getSteps(selectedLabel);
-     
+      
       map.on('load', function() {
         let geojson = setUpGEOJson();
         
@@ -90,6 +74,22 @@ const useMap = () => {
       });
     }
   }, [statesGeOJSON, statesConfirm, statesDeads]);
+
+  React.useEffect(() => {
+    if(map) {
+      map.on('move', () => {
+        const { lng, lat } = map.getCenter();
+    
+        setState({
+          lng: lng.toFixed(4),
+          lat: lat.toFixed(4),
+          zoom: map.getZoom().toFixed(2)
+        });
+      });
+
+      callStatesGEOJSON(); 
+    }
+  }, [map]);
 
   React.useEffect(() => {
     if(map && state.date) {

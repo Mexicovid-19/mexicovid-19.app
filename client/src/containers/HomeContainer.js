@@ -44,15 +44,17 @@ const useHome = () => {
 
       let rowsConfirm = [];
       let rowsDeads = [];
-      
-      statesConfirm.sort((a,b) => b.confirmados[date] -a.confirmados[date]);
-      for(var i = 0; i < statesConfirm.length; i++) {
-        rowsConfirm.push(createTableData(i+1, statesConfirm[i].estado, Number(statesConfirm[i].confirmados[date])));
+
+      let confirmData = [...statesConfirm];
+      confirmData.sort((a,b) => b.confirmados[date] -a.confirmados[date]);
+      for(var i = 0; i < confirmData.length; i++) {
+        rowsConfirm.push(createTableData(i+1, confirmData[i].estado, Number(confirmData[i].confirmados[date])));
       }
       
-      statesDeads.sort((a,b) => b.sospechosos[date] -a.sospechosos[date]);
-      for(var i = 0; i < statesDeads.length; i++) {
-        rowsDeads.push(createTableData(i+1, statesDeads[i].estado, Number(statesDeads[i].sospechosos[state.date])));
+      let deadsData = [...statesDeads];
+      deadsData.sort((a,b) => b.sospechosos[date] -a.sospechosos[date]);
+      for(var i = 0; i < deadsData.length; i++) {
+        rowsDeads.push(createTableData(i+1, deadsData[i].estado, Number(deadsData[i].sospechosos[state.date])));
       } 
 
       onSelectLabel("confirmados");
@@ -66,17 +68,20 @@ const useHome = () => {
       
       let rowsConfirm = [];
       let rowsDeads = [];
-
-      statesConfirm.sort((a,b) => b.confirmados[state.date] -a.confirmados[state.date]);
-      for(var i = 0; i < statesConfirm.length; i++) {
+      let confirmData = [...statesConfirm];
+      
+      confirmData.sort((a,b) => b.confirmados[state.date] - a.confirmados[state.date]);
+      
+      for(var i = 0; i < confirmData.length; i++) {
         //update just the last number
-        rowsConfirm.push(createTableData(i+1, statesConfirm[i].estado, Number(statesConfirm[i].confirmados[state.date])));
+        rowsConfirm.push(createTableData(i+1, confirmData[i].estado, Number(confirmData[i].confirmados[state.date])));
       }
 
-      statesDeads.sort((a,b) => b.sospechosos[state.date] -a.sospechosos[state.date]);
-      for(var i = 0; i < statesDeads.length; i++) {
+      let deadsData = [...statesDeads];
+      deadsData.sort((a,b) => b.sospechosos[state.date] -a.sospechosos[state.date]);
+      for(var i = 0; i < deadsData.length; i++) {
         //update just the last number
-        rowsDeads.push(createTableData(i+1, statesDeads[i].estado, Number(statesDeads[i].sospechosos[state.date])));
+        rowsDeads.push(createTableData(i+1, deadsData[i].estado, Number(deadsData[i].sospechosos[state.date])));
       }
 
       setRowsTable([rowsConfirm, rowsDeads]);
