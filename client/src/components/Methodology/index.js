@@ -20,7 +20,7 @@ const Methodology = ({ classes }) => {
             <Button className={classes.label} href="#data">Metodología de Visualización de Datos</Button>
             <Button className={classes.label} href="#politic">Política de Divulgación de Información</Button>
           </navbar>
-        <section id="info" className={classes.row}>
+        <section id="info" className={`${classes.row} ${classes.topSection}`}>
             <div className={classes.title}>Fuente de Información</div>
             <div className={classes.content}>
                 El mapa coroplético de número de contagios, la gráfica de líneas de número de contagios en el tiempo y la tabla por estados proceden de los reportes diarios que realiza la Secretaría de Salud en la conferencia de prensa otorgada a las 7 pm. Los reportes diarios pueden ser descargados de la siguiente liga oficial mantenida por la autoridad federal: Coronavirus (Covid-19) Comunicado Técnico Diario . Los datos aportados por la Secretaria de Salud se reportan en un formato .pdf; uno para casos sospechosos y otro para confirmados. Los archivos reportan cada caso individual y el estado donde ocurrió. Nuestro equipo procesa en el software estadístico R la reconfiguración de estos archivos en una base estatal. La base mencionada se puede descargar de la liga ubicada en la parte superior de esta página.
@@ -81,9 +81,12 @@ const styles = () => ({
     flexDirection: 'row',
     margin: '50px 0px',
     borderRadius: '5px',
-    padding: '20px',
-    paddingTop: '64px',
+    padding: '64px 20px',
     backgroundColor: colors.GRAY,
+  },
+
+  topSection: {
+    margin: '0px'
   },
 
   title: {
