@@ -35,13 +35,6 @@ const useHome = () => {
       let shortDate = new Date(date);
       shortDate = `${shortDate.getDate()}/${shortDate.getMonth() + 1}`
     
-      setState({
-        date : date,
-        shortDate: shortDate,
-        dates : dates,  
-        states : states
-      })
-
       let rowsConfirm = [];
       let rowsDeads = [];
 
@@ -58,6 +51,13 @@ const useHome = () => {
       } 
 
       onSelectLabel("confirmados");
+
+      setState({
+        date : date,
+        shortDate: shortDate,
+        dates : dates,  
+        states : states
+      })
     }
   }, [statesConfirm, statesDeads]);
 
