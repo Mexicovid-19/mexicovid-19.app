@@ -67,7 +67,7 @@ const Methodology = ({ classes }) => {
               </Grid>  
             </div>
             <div className={classes.content}>
-                Esta página es elaborada y mantenida por un grupo de profesores y estudiantes del Tecnológico de Monterrey. Las inconsistencias y errores son competencia de los autores de esta página y no de la Institución. Asimismo, las posturasy y opiniones aquí vertidas representan la posición personal de los autores y no del Tecnológico de Monterrey.
+                Esta página es elaborada y mantenida por un grupo de profesores y estudiantes del Tecnológico de Monterrey. Las inconsistencias y errores son competencia de los autores de esta página y no de la Institución. Asimismo, las posturas y opiniones aquí vertidas representan la posición personal de los autores y no del Tecnológico de Monterrey.
             </div>
         </section>
       </main>

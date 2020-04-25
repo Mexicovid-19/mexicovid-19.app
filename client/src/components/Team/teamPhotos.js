@@ -292,7 +292,6 @@ const styles = () => ({
         cursor: 'pointer',
         color: colors.BLACK,
     },
-
 });
 
    

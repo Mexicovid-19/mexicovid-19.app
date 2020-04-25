@@ -30,8 +30,8 @@ const styles = () => ({
 	header: {
 		borderBottom: `1px solid ${colors.BLACK}`,
 		display: 'flex',
-    alignItems: 'baseline',
-    justifyContent: 'space-between',
+    	alignItems: 'baseline',
+    	justifyContent: 'space-between',
 	},
 
 	label: {

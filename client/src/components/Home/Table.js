@@ -127,7 +127,6 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
   const {data, clickOpen, clickClose, openDial} = props;
-
   const classes = useToolbarStyles();
 
   return (
