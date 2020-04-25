@@ -11,13 +11,16 @@ const Team = ({classes}) => {
   
   return (
     <div className={classes.container}>
-      <Header isFixed={true}/>
+      <Header fixed={true}/>
       <div className={classes.teamsContainer}>
-        <div className="container text-center">
-          <Typography align={'center'} variant={'h1'}>¿Quiénes Somos?</Typography>      
+        <header className={classes.header}>
+            <Typography className={classes.h1} variant={'h1'}>¿Quiénes Somos?</Typography>	
+        </header>
+        <div className="container text-justify">      
+          <section className={classes.section}>
           <div>
-            <Typography>
-              La plataforma <a href="www.mexicovid19.mx">www.mexicovid19.mx</a> 
+            <Typography align = {"justify"} className={classes.textclass}>
+              La plataforma <a href="www.mexicovid19.app">www.mexicovid19.mx </a> 
               es un esfuerzo conjunto de un grupo de alumnos y profesores del Tecnológico de 
               Monterrey para dar seguimiento y fácil acceso a la información de salud más relevante 
               en el contexto de la pandemia de Coronavirus en México. Mediante herramientas de 
@@ -29,8 +32,9 @@ const Team = ({classes}) => {
               ejecución de las visualizaciones de información cuantitativa y desarrollo de la plataforma.
             </Typography>  
           </div>
+          </section>
           <PhotoGrid/>
-        </div>
+        </div>   
       </div>
       <Footer/>
     </div>
@@ -38,6 +42,13 @@ const Team = ({classes}) => {
 }
 
 const styles = () => ({
+  section: {
+		margin: '20px 0px',
+    borderRadius: '5px',
+    padding: '20px',
+    backgroundColor: colors.GRAY,
+	},
+  
   container: {
     width: '100%',
     backgroundColor: colors.GRAY,
@@ -45,27 +56,28 @@ const styles = () => ({
 
   teamsContainer: {
     width: '70%',
-    margin: 'auto',
+		margin: 'auto',
+		padding: '25px',
     paddingTop: '128px',
     backgroundColor: colors.WHITE
   },
+  
+  header: {
+		borderBottom: `1px solid ${colors.BLACK}`,
+		display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'space-between',
+  },
 
-  photoGridContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
+  h1: {
+		fontSize: '36px'
+	},
   
-  photoGrid: {
-    width: '900px',
-    display: 'flex',
-    justifyContent: 'flex-start',
-  },
+  textclass: {
+    marginTop: '0px',
+    marginBottom: '0px'
+  }, 
   
-  photoGridItem: {
-    border: '1px solid #fff',
-    width: '300px',
-    height: '300px',
-  },
 });
  
 export default withStyles(styles)(Team);

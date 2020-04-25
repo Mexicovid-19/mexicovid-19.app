@@ -40,9 +40,9 @@ const styles = () => ({
 
 	section: {
 		margin: '20px 0px',
-    borderRadius: '5px',
-    padding: '20px',
-    backgroundColor: colors.GRAY,
+    	borderRadius: '5px',
+    	padding: '20px',
+    	backgroundColor: colors.GRAY,
 	},
 
   [`@media (max-width: ${1000}px)`]: {
