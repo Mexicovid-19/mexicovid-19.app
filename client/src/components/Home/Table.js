@@ -102,15 +102,16 @@ const useToolbarStyles = makeStyles((theme) => ({
     width: '300px',
     borderTop: '1px solid white'
   },
+
   icon: {
     position: 'absolute',
     top: '0px',
     left: '0px',
-    color: 'blue',
     cursor: 'pointer',
-    color: 'white',
+    color: colors.WHITE,
     zIndex: '1'
   },
+  
   highlight:
     theme.palette.type === 'light'
       ? {

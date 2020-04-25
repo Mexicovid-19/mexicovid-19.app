@@ -154,7 +154,7 @@ const PhotoGrid = ({classes}) => {
                 Equipo Interdisciplinario de Profesores
             </Typography>
             <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
-                <div className={classes.photoGridItem}> 
+                <div className={classes.photoGridItemTeacher}> 
                     <p className="names" align={'center'}>Dr. Alejandro Díaz Domínguez</p>
                     <img src="images/alejandrodiaz.png" className="img-responsive" alt="Image"/>
                     <p>
@@ -166,7 +166,7 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-                <div className={classes.photoGridItem}>
+                <div className={classes.photoGridItemTeacher}>
                     <p className="names" align={'center'}>Dr. Alfredo Galván Galván</p>
                     <img src="images/alfredogalvan.jpg" className="img-responsive" alt="Image"/>
                     <p>
@@ -178,7 +178,7 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-                <div className={classes.photoGridItem}>
+                <div className={classes.photoGridItemTeacher}>
                     <p className="names" align={'center'}>Dr. Fernando Gómez Zaldívar</p>
                     <img src="images/fernandogomez.png" className="img-responsive" alt="Image"/>
                     <p>
@@ -190,7 +190,7 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-                <div className={classes.photoGridItem}>
+                <div className={classes.photoGridItemTeacher}>
                     <p className="names" align={'center'}>Dr. Diego Fabián Lozano</p>
                     <img src="images/fabianlozano.png" className="img-responsive" alt="Image"/>
                     <p>
@@ -199,7 +199,7 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-                <div className={classes.photoGridItem}> 
+                <div className={classes.photoGridItemTeacher}> 
                     <p className="names" align={'center'}>Dra. Grissel Olivera Martínez</p>
                     <img src="images/grisselolivera.png" className="img-responsive" alt="Image"/>
                     <p>
@@ -211,7 +211,7 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-                <div className={classes.photoGridItem}>
+                <div className={classes.photoGridItemTeacher}>
                     <p className="names" align={'center'}><a href="https://www.edmundomolinamx.org/" target="_blank">Dr. Edmundo Molina</a></p>
                     <img src="images/edmundomolina.jpg" className="img-responsive" alt="Image"/>
                     <p>
@@ -223,7 +223,7 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-                <div className={classes.photoGridItem}>
+                <div className={classes.photoGridItemTeacher}>
                     <p className="names" align={'center'}><a href="www.robertoponcelopez.com" target="_blank">Dr. Roberto Ponce López</a></p>
                     <img src="images/robertoponce.png" className="img-responsive" alt="Image"/>
                     <p>
@@ -235,7 +235,7 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-                <div className={classes.photoGridItem}> 
+                <div className={classes.photoGridItemTeacher}> 
                     <p className="names" align={'center'}>Mta. Azucena Rojas Parra</p>
                     <img src="images/azucenarojas.png" className="img-responsive" alt="Image"/>
                     <p>
@@ -272,14 +272,27 @@ const styles = () => ({
         marginBottom: '150px !important'
     },
 
+    photoGridItemTeacher: {
+        border: '1px solid #fff',
+        width: '300px',
+        height: '300px',
+        marginTop: '30px !important',
+        marginBottom: '80px !important'
+    },
+
     contactText:{
         display:'flex',
         
     },
 
     iconspace: {
-        marginRight: '5px'
-    }
+        marginRight: '5px',
+        top: '0px',
+        left: '0px',
+        cursor: 'pointer',
+        color: colors.BLACK,
+    },
+
 });
 
    
