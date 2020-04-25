@@ -29,8 +29,6 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/sebastianfajardo.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Ingeniería en Desarrollo Sustentable. Sus intereses profesionales son el análisis de datos espaciales y el desarrollo Regional. </p>
                 </div>
-            </Grid>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Marcelo Galán González</p>
                     <img src="images/marcelogalan.jpeg" className="img-responsive" alt="Image"/>
@@ -46,8 +44,6 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/joseangelgarcia.png" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Relaciones Internacionales.</p>
                 </div>
-            </Grid>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Paola Gonzalez</p>
                     <img src="images/paolagonzalez.png" className="img-responsive" alt="Image"/>
@@ -63,8 +59,6 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/cinthiajanette.png" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Gobierno y Transformación Pública. Intereses profesionales en emprendimiento público y desarrollo de políticas públicas.</p>
                 </div>
-            </Grid>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}> 
                     <p className="names" align={'center'}>Alicia Landín</p>
                     <img src="images/alicelandin.png" className="img-responsive" alt="Image"/>
@@ -80,8 +74,6 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/veronicamarquez.png" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Relaciones Internacionales. Sus intereses son la historia, la diplomacia,  el emprendimiento social y la búsqueda del respeto a los derechos humanos.</p>
                 </div>
-            </Grid>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Sebastián Marquinez Rodríguez</p>
                     <img src="images/sebastianmarquinez.png" className="img-responsive" alt="Image"/>
@@ -97,8 +89,6 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/felipemercado.png" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Derecho. Intereses profesionales en derecho internacional, debate, política y emprendimiento social.</p>
                 </div>
-            </Grid>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Juan Antonio Muñoz</p>
                     <img src="images/juanantoniomunos.png" className="img-responsive" alt="Image"/>
@@ -114,8 +104,6 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/pedropacheco.png" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Arquitectura. Tiene intereses profesionales en planeación y regeneración urbana así como restauración y rehabitiación de edificaciones.</p>
                 </div>
-            </Grid> 
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Lucía Retes Colfer</p>
                     <img src="images/luciaeretes.png" className="img-responsive" alt="Image"/>
@@ -131,8 +119,6 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/danielschulz.png" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Economía. Intereses profesionales en Finanzas y Sociología.</p>
                 </div>
-            </Grid>   
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Idalee Vargas</p>
                     <img src="images/idaleevargas.png" className="img-responsive" alt="Image"/>
@@ -204,8 +190,6 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-            </Grid>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Dr. Diego Fabián Lozano</p>
                     <img src="images/fabianlozano.png" className="img-responsive" alt="Image"/>
@@ -239,8 +223,6 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
-            </Grid>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}><a href="www.robertoponcelopez.com" target="_blank">Dr. Roberto Ponce López</a></p>
                     <img src="images/robertoponce.png" className="img-responsive" alt="Image"/>
