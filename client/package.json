@@ -15,7 +15,9 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "tableau-api": "^2.2.3",
+    "tableau-react": "^1.2.2"
   },
   "scripts": {
     "start": "react-scripts start .env",
