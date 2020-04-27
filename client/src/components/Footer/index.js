@@ -76,7 +76,7 @@ const Footer = ({ classes, fixed=false}) => {
                 </div>
             </div>
         </div>
-        <img className={classes.img} title="logo tec escuelas" src='/img/logo.png'/>
+        <img className={classes.img} title="logo tec escuelas" src='/img/logoEGTP-MENUnuevo-01.png'/>
     </div>
   );
 }
