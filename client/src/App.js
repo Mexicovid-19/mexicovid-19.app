@@ -9,6 +9,7 @@ import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
 import './css/index.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import AvailableBeds from './components/AvailableBeds';
 
 const theme = createMuiTheme({
     typography: {
@@ -45,6 +46,7 @@ class App extends Component {
             <Route path='/about-us' component={Team}/>
             <Route path='/regions' component={Regions}/>
             <Route path='/methodology' component={Methodology}/>
+            <Route path='/availabeds' component={AvailableBeds}/>
             </Switch>
         </ThemeProvider>
       </div>
