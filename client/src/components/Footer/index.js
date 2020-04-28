@@ -34,9 +34,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '10px',
   },
   img: {
-    maxHeight: '75px',
     display: 'flex',
-    justifyContent: 'end',
+    justifyContent: 'center',
+    width: '20%',
+    height: '8%'
   }
 }));
 
@@ -52,10 +53,10 @@ const Footer = ({ classes, fixed=false}) => {
           <div className={classes.columns}>
             <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Inicio</Typography></Link>
             <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Investigación</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Gráficos por Región</Typography></Link>
+            <Link to={'./regions'} className={classes.name}><Typography className={classes.rows}>Gráficos por Región</Typography></Link>
             <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Simulaciones</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Metodologías</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Acerca de Nosotros</Typography></Link>
+            <Link to={'./methodology'} className={classes.name}><Typography className={classes.rows}>Metodologías</Typography></Link>
+            <Link to={'./about-us'} className={classes.name}><Typography className={classes.rows}>Acerca de Nosotros</Typography></Link>
           </div>
         </div>
         <div className={classes.columnsContainer}>
@@ -71,12 +72,15 @@ const Footer = ({ classes, fixed=false}) => {
         <div className={classes.columnsContainer}>
           <Typography className={classes.title}>Seguimiento por Región</Typography>
           <div className={classes.columns}>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Estados</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Municipios</Typography></Link>
+            <Link to={'./regions'} className={classes.name}><Typography className={classes.rows}>Estados</Typography></Link>
+            <Link to={'./regions'} className={classes.name}><Typography className={classes.rows}>Municipios</Typography></Link>
           </div>
         </div>
       </div>
-      <img className={classes.img} title="logo tec escuelas" src='/img/logoEGTP-MENUnuevo-01.png'/>
+      <div className={classes.img}>      
+        <img   title="logo tec escuelas" src='/img/LogoEscuelaGobernanza.png'/>
+        <img   title="logo tec escuelas" src='/img/LogoEscuelaIngenieria.png'/>
+      </div>
     </div>
   );
 }
