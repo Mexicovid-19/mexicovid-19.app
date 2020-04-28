@@ -7,24 +7,31 @@ import * as colors from '../../constants/colors';
 import Header from '../Header';
 import Footer from '../Footer';
 import States from './States';
+import Municipalities from './Municipalities';
 
 const Regions = ({ classes }) => {
-  
-  return (
-    <div className={classes.container}>
-      <Header fixed={true}/>
-			<div className={classes.regionsContainer}>
-				<header className={classes.header}>
-					<Typography className={classes.h1} variant={'h1'}>Seguimiento por Estado</Typography>	
-					<Button className={classes.label}>Seguimiento por Municipio <ArrowForwardIosRoundedIcon/></Button>	
-				</header>
-				<main>
-					<States/>
-				</main>
-			</div>
-      <Footer/>
-    </div>
-  );
+	const [isEstate, setEstate] = React.useState(true);
+
+	const changeval = () => {
+		setEstate(!isEstate);
+		console.log(isEstate);
+	};
+
+	return (
+		<div className={classes.container}>
+		<Header fixed={true}/>
+				<div className={classes.regionsContainer}>
+					<header className={classes.header}>
+						<Typography className={classes.h1} variant={'h1'}>{isEstate ? 'Seguimiento por Estado' : 'Seguimiento por Municipio'}</Typography>	
+						<Button className={classes.label} onClick={changeval}> {isEstate ? 'Seguimiento por Municipio' : 'Seguimiento por Estado'}<ArrowForwardIosRoundedIcon/></Button>	
+					</header>
+					<main>
+						{isEstate ?<States/>: <Municipalities/>}
+					</main>
+				</div>
+		<Footer/>
+		</div>
+	);
 }
 
 const styles = () => ({
