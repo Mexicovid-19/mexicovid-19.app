@@ -39,9 +39,9 @@ const Footer = ({ classes}) => {
           </div>
         </div>
       </div>
-      <div className={classes.img}>      
-        <img   title="logo tec escuelas" src='/img/LogoEscuelaGobernanza.png'/>
-        <img   title="logo tec escuelas" src='/img/LogoEscuelaIngenieria.png'/>
+      <div className={classes.img}>   
+        <img   title="logo tec Escuelas Gobernanza" src='/img/LogoEscuelaGobernanza.png'/>
+        <img   title="logo tec Escuela Ingenieria" src='/img/LogoEscuelaIngenieria.png'/>
       </div>
     </div>
   );
