@@ -3,10 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { MapContext } from '../../contexts/MapContext';
 import { HomeContext } from '../../contexts/HomeContext';
 import CustomizedSlider from './Slider';
-import Typography from '@material-ui/core/Typography';
 import { BLACK, WHITE } from '../../constants/colors';
-import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
-import AddRoundedIcon from '@material-ui/icons/AddRounded';
+import ColorsGradientBar from './ColorGradientBar';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum} = React.useContext(MapContext);
@@ -18,19 +16,7 @@ const Map = ({classes}) => {
       <div className={classes.sidebarStyle}>
         {!isMobile && <CustomizedSlider />}
       </div>
-      <div className={classes.containerGradient}>
-        <div className={selectedLabel === "confirmados" ? classes.colorsGradientBlue : classes.colorsGradientRed}></div>
-        <div className={classes.numsWrapper}>
-            <RemoveRoundedIcon className={classes.icons}/>
-              {selectedLabel && thresholdsNum[selectedLabel].map((num, index) => {
-                return(
-                  <Typography className={classes.numbers}>{num}</Typography>
-                )
-              })
-              }
-          <AddRoundedIcon className={classes.icons}/>
-        </div>
-      </div>
+      {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
       <div ref={mapRef} className={classes.map}/>
     </div>
   );
@@ -42,7 +28,6 @@ const styles = () => ({
   },
 
   show: {
-    height: 'calc(100vh - 64px)',
     flex: '2'
   },
 
@@ -110,7 +95,13 @@ const styles = () => ({
     },
     show: {
       display: 'block'
-    }
+    },
+    sidebarStyle: {
+      display: 'none'
+    },
+    map: {
+      height: 'calc(100vh - 170px) !important',
+    },
   }
 });
    

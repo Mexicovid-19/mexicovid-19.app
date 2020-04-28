@@ -7,7 +7,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import * as colors from '../../constants/colors';
 import { HomeContext } from '../../contexts/HomeContext';
+import { MapContext } from '../../contexts/MapContext';
 import ButtonControl from './ButtonControl';
+import ColorGradientBar from './ColorGradientBar';
 import Map from './Map';
 import Header from '../Header';
 import EnhacedTable from './Table';
@@ -19,6 +21,7 @@ const Home = ({ classes }) => {
     isMap,
     onChangeTab,
     state } = React.useContext(HomeContext);
+    const { thresholdsNum } = React.useContext(MapContext);
     
     const isMobile = window.innerWidth < 1000;
     
@@ -34,9 +37,14 @@ const Home = ({ classes }) => {
         <Map/>
         {(!isMobile || !isMap) && <EnhacedTable/>}
       </div>
-      <div className={classes.bottomButtons}>
-        <Button className={isMap ? classes.btn : classes.selected} color="inherit" onClick={() => onChangeTab(false)}><TimelineOutlinedIcon className={classes.icons}/>Gráfica</Button>	
-        <Button className={isMap ? classes.selected : classes.btn} color="inherit" onClick={() => onChangeTab(true)}><MapIcon className={classes.icons}/>Mapa</Button>	
+      <div className={classes.fixedMobile}>
+        <div className={classes.buttonsContainer}>
+          {isMap && <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
+          <div className={classes.bottomButtons}>
+            <Button className={isMap ? classes.btn : classes.selected} color="inherit" onClick={() => onChangeTab(false)}><TimelineOutlinedIcon className={classes.icons}/>Gráfica</Button>	
+            <Button className={isMap ? classes.selected : classes.btn} color="inherit" onClick={() => onChangeTab(true)}><MapIcon className={classes.icons}/>Mapa</Button>	
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -52,20 +60,17 @@ const styles = () => ({
     flexDirection: 'row'
   },
 
-  bottomButtons: {
+  buttonControl: {
     display: 'none'
   },
 
-  buttonControl: {
+  fixedMobile: {
     display: 'none'
   },
 
   [`@media (max-width: ${1000}px)`]: {
     bottomButtons: {
-      position: 'fixed',
-      backgroundColor: colors.BLACK,
       display: 'flex',
-      bottom: 0,
       width: '100%',
       justifyContent: 'space-around',
       padding: '5px 0px',
@@ -85,14 +90,27 @@ const styles = () => ({
       }
     },
     buttonControl: {
-      display: 'flex',
       color: colors.WHITE,
       background: colors.BLACK,
       padding: '5px',
+      display: 'flex',
       justifyContent: 'space-around'
     },
     expandIcon: {
       color: colors.WHITE
+    },
+    buttonsContainer: {
+      background: colors.BLACK,
+      display: 'flex',
+      flexDirection: 'column',
+      color: colors.WHITE,
+    },
+    fixedMobile: {
+      display: 'inline',
+      position: 'fixed',
+      height: 'fit-content',
+      width: '100%',
+      bottom: '0',
     }
   }
 });

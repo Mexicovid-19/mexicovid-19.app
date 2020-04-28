@@ -25,7 +25,8 @@ const useMap = () => {
   const {statesConfirm,
          statesDeads,
          selectedLabel, 
-         state } = React.useContext(HomeContext);
+         state,
+        isMap } = React.useContext(HomeContext);
   
   React.useEffect(() => {
     setMap(
@@ -87,6 +88,12 @@ const useMap = () => {
     }
       
   }, [state, selectedLabel]);
+
+  React.useEffect(() => {
+    if(map && map.loaded() && map.isStyleLoaded()) {
+      map.resize();
+    }
+  }, [isMap]);
 
   let callStatesGEOJSON = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/map/states`, {})
