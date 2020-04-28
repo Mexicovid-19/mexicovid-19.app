@@ -4,12 +4,13 @@ var router = express.Router();
 router.post('/states', function(req, res) {
 	var fs = require('fs');
 	
-	fs.readFile("data/Mexico_Estados.geojson", "utf8", function(err, data){
+	fs.readFile("data/home/Mexico_Estados.geojson", "utf8", function(err, data){
 		if(err) {
-			throw err;
+			res.statusMessage = "states file didn't load."
+			res.status(404).end();
+		} else {
+			res.status(200).json(JSON.parse(data));
 		}
-		
-		res.status(200).json(JSON.parse(data));
 	});
 	
 	return res;
@@ -22,7 +23,7 @@ router.post('/data/confirmados', function(req, res) {
 	var positivos;
 	var myjson = [];
 
-	fs.readFile("data/positivos.csv", "utf8", function(err, data){
+	fs.readFile("data/home/positivos.csv", "utf8", function(err, data){
 		console.log("Getting positive data");
 
 		if(err) {
@@ -59,7 +60,7 @@ router.post('/data/decesos', function(req, res) {
 	var decesos;
 	var myjson = [];
 	
-	fs.readFile("data/decesos.csv", "utf8", function(err, data){
+	fs.readFile("data/home/decesos.csv", "utf8", function(err, data){
 		console.log("Getting suspicious data");
 
 		if(err) {
