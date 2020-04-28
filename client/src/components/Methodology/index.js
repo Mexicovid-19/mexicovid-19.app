@@ -21,8 +21,8 @@ const Methodology = ({ classes }) => {
         </header>
           <navbar className={classes.navbar}>
             <Button className={classes.label} href="#info" ><FindInPageIcon className={classes.icons}/>Fuente de Información</Button>	
-            <Button className={classes.label} href="#data" ><TimelineOutlinedIcon className={classes.icons}/>Metodología de Visualización de Datos</Button>
-            <Button className={classes.label} href="#politic" ><PolicyIcon className={classes.iconsPoly}/>Política de Divulgación de Información</Button>
+            <Button className={classes.label} href="#data" ><TimelineOutlinedIcon className={classes.icons}/>Visualización de Datos</Button>
+            <Button className={classes.label} href="#politic" ><PolicyIcon className={classes.icons}/>Política de Divulgación</Button>
           </navbar>
         <section id="info" className={`${classes.row} ${classes.topSection}`}>
             <div className={classes.title}>
@@ -150,25 +150,9 @@ const styles = () => ({
     display: 'flex',
     flexDirection: 'row',
   },
-
-  [`@media (max-width: ${1000}px)`]: {
-    header: {
-      display: 'block',
-      width: '80%',
-      margin: 'auto'
-    }
-  },
   
   icons: {
     marginRight: '15px',
-    top: '0px',
-    left: '0px',
-    cursor: 'pointer',
-    color: colors.BLACK,
-  },
-
-  iconsPoly: {
-    marginLeft: '40px',
     top: '0px',
     left: '0px',
     cursor: 'pointer',
@@ -179,6 +163,27 @@ const styles = () => ({
     width: '50px',
     height: '50px',
     color: colors.BLACK,
+  },
+  
+  [`@media (max-width: ${1000}px)`]: {
+    
+    MethologyContainer: {
+      width: '100%',
+      paddingTop: '60px'
+    },
+
+    row: {
+      flexDirection: 'column',
+    },
+
+    label: {
+      minHeight: '50px',
+      justifyContent: 'space-evenly'
+    },
+
+    navbar: {
+      flexDirection: 'column'
+    }
   },
 });
 
