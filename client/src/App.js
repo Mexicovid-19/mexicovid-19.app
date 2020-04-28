@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import Home from './components/Home';
 import Team from './components/Team';
 import Methodology from './components/Methodology';
@@ -10,27 +9,30 @@ import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
 import './css/index.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import AvailableBeds from './components/AvailableBeds';
+import ConfirmAge from './components/ConfirmAge';
 
 const theme = createMuiTheme({
     typography: {
-        fontFamily: [
-          '-apple-system',
-          'BlinkMacSystemFont',
-          "'Lato', sans-serif",
-          '"Segoe UI"',
-          'Roboto',
-          '"Helvetica Neue"',
-          'Arial',
-          'sans-serif',
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-        ].join(','),
-        color: '#fff'
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        "'Lato', sans-serif",
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+      color: '#fff'
     }
   });
 
 class App extends Component {
+  
   render() {
     const App = () => (
       <div>
@@ -50,6 +52,8 @@ class App extends Component {
               </RegionContextProvider>
             </Route>
             <Route path='/methodology' component={Methodology}/>
+            <Route path='/availablebeds' component={AvailableBeds}/>
+            <Route path='/confirmage' component={ConfirmAge}/>
             </Switch>
         </ThemeProvider>
       </div>
