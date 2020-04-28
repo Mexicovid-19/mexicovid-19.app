@@ -14,7 +14,8 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
     var Defaultmargin = { top: 10, right: 10, bottom: 15, left: 15 };
     var legendTy = 0;
     var legendTx = 0;
-    if(!isSmall) {
+
+    if( !isSmall ) {
         axisBottom = {
             orient: 'bottom',
             tickSize: 5,

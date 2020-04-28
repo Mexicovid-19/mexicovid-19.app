@@ -4,46 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import * as colors from '../../constants/colors';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    borderTop: `10px ridge ${colors.WHITE}`,
-    backgroundColor: '#222222',
-    height: 'fit-content',
-    display: 'flex',
-    marginTop: '50px',
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  title: {
-    marginBottom: '20px',
-    borderBottom: `1px solid ${colors.WHITE}`
-  },
-  content: {
-    display: 'flex',
-    flexDirection: 'row',
-    color: colors.WHITE,
-    width: '80%',
-    margin: 'auto'
-  },
-  columnsContainer: {
-    flex: 1,
-    padding: '30px 50px'
-  },
-  rows: {
-    fontSize: '12px',
-    marginBottom: '10px',
-  },
-  img: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: '20%',
-    height: '8%'
-  }
-}));
-
-const Footer = ({ classes, fixed=false}) => {
+const Footer = ({ classes}) => {
     classes = useStyles();
-    let location = window.location.pathname;
     
     return (
     <div className={classes.root}>
@@ -84,5 +46,62 @@ const Footer = ({ classes, fixed=false}) => {
     </div>
   );
 }
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    borderTop: `10px ridge ${colors.WHITE}`,
+    backgroundColor: '#222222',
+    height: 'fit-content',
+    display: 'flex',
+    marginTop: '50px',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  title: {
+    marginBottom: '20px',
+    borderBottom: `1px solid ${colors.WHITE}`
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'row',
+    color: colors.WHITE,
+    width: '80%',
+    margin: 'auto'
+  },
+  columnsContainer: {
+    flex: 1,
+    padding: '30px 50px'
+  },
+  rows: {
+    fontSize: '12px',
+    marginBottom: '10px',
+  },
+  img: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '20%',
+    height: '8%'
+  },
+
+  [`@media (max-width: ${1000}px)`]: {
+    columnsContainer: {
+      padding: '10px'
+    },
+    content: {
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    rows: {
+      textAlign: 'center'
+    },
+    title: {
+      textAlign: 'center'
+    },
+    root: {
+      marginTop: '0px',
+    }
+  }
+}));
 
 export default Footer;

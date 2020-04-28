@@ -2,11 +2,36 @@ import { ResponsiveLine } from '@nivo/line'
 import React from 'react';
 import { themeBlack } from '../../constants/themeBlack';
 
-const MyResponsiveLine = ({ data }) => {
+const MyResponsiveLine = ({ data, isSmall=false }) => {
+	let marginConstrains = { top: 50, right: 110, bottom: 165, left: 60 }
+	let legendsConstrains = [{
+		anchor: 'top-right',
+		direction: 'column',
+		justify: false,
+		translateX: 88,
+		translateY: 0,
+		itemsSpacing: 0,
+		itemDirection: 'left-to-right',
+		itemWidth: 80,
+		itemHeight: 20,
+		itemOpacity: 0.75,
+		symbolSize: 12,
+		symbolShape: 'circle',
+		symbolBorderColor: 'rgba(0, 0, 0, .5)'
+	}]
+	let tickRotation = -45;
+
+	if( !isSmall ) {
+		marginConstrains = { top: 50, right: 10, bottom: 165, left: 30 };
+		legendsConstrains = [];
+		tickRotation = -60;
+		
+	}
+
 	return(
 	<ResponsiveLine
 		data={data}
-		margin={{ top: 50, right: 110, bottom: 165, left: 60 }}
+		margin={marginConstrains}
 		xScale={{ type: 'point' }}
 		yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
 		curve="natural" 
@@ -16,7 +41,7 @@ const MyResponsiveLine = ({ data }) => {
 				orient: 'bottom',
 				tickSize: 5,
 				tickPadding: 5,
-				tickRotation: -45,
+				tickRotation: tickRotation,
 				legend: 'fechas',
 				legendOffset: 55,
 				legendPosition: 'middle'
@@ -41,32 +66,7 @@ const MyResponsiveLine = ({ data }) => {
 		pointLabelYOffset={-12}
 		enableSlices="x"
 		useMesh={true}
-		legends={[
-				{
-						anchor: 'top-right',
-						direction: 'column',
-						justify: false,
-						translateX: 88,
-						translateY: 0,
-						itemsSpacing: 0,
-						itemDirection: 'left-to-right',
-						itemWidth: 80,
-						itemHeight: 20,
-						itemOpacity: 0.75,
-						symbolSize: 12,
-						symbolShape: 'circle',
-						symbolBorderColor: 'rgba(0, 0, 0, .5)',
-						effects: [
-								{
-										on: 'hover',
-										style: {
-												itemBackground: 'rgba(0, 0, 0, .03)',
-												itemOpacity: 1
-										}
-								}
-						]
-				}
-		]}
+		legends={legendsConstrains}
 		motionStiffness={160}
 		motionDamping={20}
 	/>
