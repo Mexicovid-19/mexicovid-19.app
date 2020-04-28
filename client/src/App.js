@@ -13,20 +13,20 @@ import ConfirmAge from './components/ConfirmAge';
 
 const theme = createMuiTheme({
     typography: {
-        fontFamily: [
-          '-apple-system',
-          'BlinkMacSystemFont',
-          "'Lato', sans-serif",
-          '"Segoe UI"',
-          'Roboto',
-          '"Helvetica Neue"',
-          'Arial',
-          'sans-serif',
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-        ].join(','),
-        color: '#fff'
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        "'Lato', sans-serif",
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+      color: '#fff'
     }
   });
 
@@ -36,20 +36,20 @@ class App extends Component {
     const App = () => (
       <div>
         <ThemeProvider theme={theme}>
-            <Switch>
-            <Route exact path='/'>
-                <HomeContextProvider>
-                    <MapContextProvider>
-                        <Home />
-                    </MapContextProvider>
-                </HomeContextProvider>
-            </Route>
-            <Route path='/about-us' component={Team}/>
-            <Route path='/regions' component={Regions}/>
-            <Route path='/methodology' component={Methodology}/>
-            <Route path='/availablebeds' component={AvailableBeds}/>
-            <Route path='/confirmage' component={ConfirmAge}/>
-            </Switch>
+          <Switch>
+          <Route exact path='/'>
+              <HomeContextProvider>
+                <MapContextProvider>
+                  <Home/>
+                </MapContextProvider>
+              </HomeContextProvider>
+          </Route>
+          <Route path='/about-us' component={Team}/>
+          <Route path='/regions' component={Regions}/>
+          <Route path='/methodology' component={Methodology}/>
+          <Route path='/availablebeds' component={AvailableBeds}/>
+          <Route path='/confirmage' component={ConfirmAge}/>
+          </Switch>
         </ThemeProvider>
       </div>
     )
