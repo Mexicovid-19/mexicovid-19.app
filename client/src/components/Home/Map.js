@@ -9,30 +9,30 @@ import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 
 const Map = ({classes}) => {
-    const { mapRef, thresholdsNum} = React.useContext(MapContext);
-    const {selectedLabel} = React.useContext(HomeContext);
-    
-    return (
-        <div className={classes.mapContainer}>
-          <div className={classes.sidebarStyle}>
-            <CustomizedSlider />
-          </div>
-          <div className={classes.containerGradient}>
-            <div className={selectedLabel === "confirmados" ? classes.colorsGradientBlue : classes.colorsGradientRed}></div>
-            <div className={classes.numsWrapper}>
+  const { mapRef, thresholdsNum} = React.useContext(MapContext);
+  const {selectedLabel} = React.useContext(HomeContext);
+  
+  return (
+    <div className={classes.mapContainer}>
+      <div className={classes.sidebarStyle}>
+        <CustomizedSlider />
+      </div>
+      <div className={classes.containerGradient}>
+        <div className={selectedLabel === "confirmados" ? classes.colorsGradientBlue : classes.colorsGradientRed}></div>
+        <div className={classes.numsWrapper}>
             <RemoveRoundedIcon className={classes.icons}/>
-            {selectedLabel && thresholdsNum[selectedLabel].map((num, index) => {
-              return(
-                <Typography className={classes.numbers}>{num}</Typography>
-              )
-            })
-            }
-            <AddRoundedIcon className={classes.icons}/>
-            </div>
-          </div>
-          <div ref={mapRef} className={classes.map}/>
+              {selectedLabel && thresholdsNum[selectedLabel].map((num, index) => {
+                return(
+                  <Typography className={classes.numbers}>{num}</Typography>
+                )
+              })
+              }
+          <AddRoundedIcon className={classes.icons}/>
         </div>
-      );
+      </div>
+      <div ref={mapRef} className={classes.map}/>
+    </div>
+  );
 }
 
 const styles = () => ({
@@ -68,16 +68,16 @@ const styles = () => ({
   },
 
   sidebarStyle: {
-      borderTop: '1px solid white',
-      display: 'inline-block',
-      position: 'absolute',
-      left: '0',
-      backgroundColor: BLACK,
-      color: '#ffffff',
-      zIndex: '1 !important',
-      padding: '6px',
-      fontWeight: 'bold',
-      width: 'calc(100% - 300px)'
+    borderTop: '1px solid white',
+    display: 'inline-block',
+    position: 'absolute',
+    left: '0',
+    backgroundColor: BLACK,
+    color: '#ffffff',
+    zIndex: '1 !important',
+    padding: '6px',
+    fontWeight: 'bold',
+    width: 'calc(100% - 300px)'
   },
       
   mapContainer: {
@@ -99,4 +99,4 @@ const styles = () => ({
   }
 });
    
-  export default withStyles(styles)(Map);
+export default withStyles(styles)(Map);

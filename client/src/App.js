@@ -11,6 +11,8 @@ import './css/index.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import AvailableBeds from './components/AvailableBeds';
 import ConfirmAge from './components/ConfirmAge';
+import MunicipalitiesFollow from './components/MunicipalitiesFollow';
+import DistributionEstate from './components/DistributionEstate';
 
 const theme = createMuiTheme({
     typography: {
@@ -37,11 +39,11 @@ class App extends Component {
     const App = () => (
       <div>
         <ThemeProvider theme={theme}>
-            <Switch>
+          <Switch>
             <Route exact path='/'>
                 <HomeContextProvider>
                     <MapContextProvider>
-                        <Home />
+                      <Home/>
                     </MapContextProvider>
                 </HomeContextProvider>
             </Route>
@@ -54,7 +56,9 @@ class App extends Component {
             <Route path='/methodology' component={Methodology}/>
             <Route path='/availablebeds' component={AvailableBeds}/>
             <Route path='/confirmage' component={ConfirmAge}/>
-            </Switch>
+            <Route path='/municipalitiesfollow' component={MunicipalitiesFollow}/>
+            <Route path='/distributionestate' component={DistributionEstate}/>
+          </Switch>
         </ThemeProvider>
       </div>
     )

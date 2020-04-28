@@ -2,7 +2,6 @@ import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import * as colors from '../../constants/colors';
 import { themeBlack } from '../../constants/themeBlack';
-
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
@@ -25,7 +24,6 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
             legendPosition: 'middle',
             legend: 'FECHA'
         };
-
         axisLeft = {
             orient: 'left',
             tickSize: 5,
@@ -43,7 +41,6 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
         };
         legendTy = -20;
         legendTx = 20;
-
     }
 
     return(
@@ -91,7 +88,8 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
                 
             }
         ]}
-    />)
+        />
+    )
 }
 
 export default MyResponsiveLine;
