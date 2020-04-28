@@ -1,27 +1,24 @@
 import { ResponsiveLine } from '@nivo/line'
 import React from 'react';
-import { ResponsiveLine } from '@nivo/line';
-import * as colors from '../../constants/colors';
 import { themeBlack } from '../../constants/themeBlack';
 
 const MyResponsiveLine = ({ data }) => {
 	return(
 	<ResponsiveLine
-		theme={themeBlack}
 		data={data}
-		margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+		margin={{ top: 50, right: 110, bottom: 165, left: 60 }}
 		xScale={{ type: 'point' }}
-		yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-		curve="natural"
+		yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
+		curve="natural" 
 		axisTop={null}
 		axisRight={null}
 		axisBottom={{
 				orient: 'bottom',
 				tickSize: 5,
 				tickPadding: 5,
-				tickRotation: 0,
-				legend: 'transportation',
-				legendOffset: 36,
+				tickRotation: -45,
+				legend: 'fechas',
+				legendOffset: 55,
 				legendPosition: 'middle'
 		}}
 		axisLeft={{
@@ -29,7 +26,7 @@ const MyResponsiveLine = ({ data }) => {
 				tickSize: 5,
 				tickPadding: 5,
 				tickRotation: 0,
-				legend: 'count',
+				legend: 'casos',
 				legendOffset: -40,
 				legendPosition: 'middle'
 		}}
