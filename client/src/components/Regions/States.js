@@ -3,11 +3,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import * as colors from '../../constants/colors';
 import Button from '@material-ui/core/Button';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import MyResponsiveLine from './LineChart';
 import { RegionContext } from '../../contexts/RegionContext';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import LaunchIcon from '@material-ui/icons/Launch';
 
 const top100Films = [
 	{ title: 'Aguascalientes', id: 'AGS' }
@@ -36,12 +36,16 @@ const States = ({ classes }) => {
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Disponibilidad de camas para hospitalización y en unidades de cuidado intensivo (UCI)</Typography>
 				<p> Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel estatal que han requerido hospitalización, así como los casos graves que se encuentran en cuidado intensivo. Su objetivo es identificar las entidades federativas en las cuales, dada la evolución de los casos, será necesario destinar mayores recursos e infraestructura para lograr atender la demanda de atención médica. Para identificar el número y tipo de casos se utiliza la información más desagregada que el Gobierno Federal empezó a publicar a partir del 13 de abril. Respecto al número de camas a nivel estatal se utiliza la información de la Secretaría de Salud de 2018.</p>
-				<Button target= "_blank" href="/availablebeds"  className={classes.button} color="inherit">Abrir grafica <ArrowForwardIcon/></Button>
+				<div className={classes.buttonPlace}>
+					<Button target= "_blank" href="/availablebeds"  className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
+				</div>
 			</section>
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Casos confirmados acumulados de COVID-19 por rango de edad</Typography>
 				<p>Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel Estatatal.</p>
-				<Button target= "_blank" href="/confirmage"  className={classes.button} color="inherit">Abrir grafica <ArrowForwardIcon/></Button>
+				<div className={classes.buttonPlace}>
+					<Button target= "_blank" href="/confirmage"  className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
+				</div>
 			</section>
 		</React.Fragment>
 	);
@@ -76,10 +80,18 @@ const styles = () => ({
 	},
 
 	button: {
-		'&:hover': {
-		borderBottom: '1px solid',
 		borderRadius: '0px',
-		}
+		justifyContent: 'end'
+	},
+
+	buttonPlace: {
+		color: 'black',
+		minHeight: '40px',
+		textAlign: 'right'
+	},
+
+	icon: {
+		marginLeft: '5px'
 	},
 
   	[`@media (max-width: ${1000}px)`]: {
