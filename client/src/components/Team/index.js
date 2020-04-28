@@ -20,7 +20,7 @@ const Team = ({classes}) => {
           <section className={classes.section}>
           <div>
             <Typography align = {"justify"} className={classes.textclass}>
-              La plataforma <a href="www.mexicovid19.app">www.mexicovid19.mx </a> 
+              La plataforma <a href="https://www.mexicovid19.mx">www.mexicovid19.mx </a> 
               es un esfuerzo conjunto de un grupo de alumnos y profesores del Tecnológico de 
               Monterrey para dar seguimiento y fácil acceso a la información de salud más relevante 
               en el contexto de la pandemia de Coronavirus en México. Mediante herramientas de 

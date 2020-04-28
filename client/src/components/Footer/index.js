@@ -93,6 +93,9 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
       textAlign: 'center'
+    },
+    root: {
+      marginTop: '0px',
     }
   }
 }));

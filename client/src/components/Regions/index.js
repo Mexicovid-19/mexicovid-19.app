@@ -12,18 +12,21 @@ import Municipalities from './Municipalities';
 const Regions = ({ classes }) => {
 	const [isEstate, setEstate] = React.useState(true);
 
-	const changeval = () => {
+	const change = () => {
 		setEstate(!isEstate);
 		console.log(isEstate);
 	};
 
+	const isMobile = window.innerWidth < 1000;
+	const title = `Seguimiento por ${isEstate ? 'Estado' : 'Municipio'}`;
+	const subtitle = `${isMobile ? '' : 'Seguimiento por'} ${isEstate ? 'Municipio' : 'Estado'}`;
 	return (
 		<div className={classes.container}>
 		<Header fixed={true}/>
 				<div className={classes.regionsContainer}>
 					<header className={classes.header}>
-						<Typography className={classes.h1} variant={'h1'}>{isEstate ? 'Seguimiento por Estado' : 'Seguimiento por Municipio'}</Typography>	
-						<Button className={classes.label} onClick={changeval}> {isEstate ? 'Seguimiento por Municipio' : 'Seguimiento por Estado'}<ArrowForwardIosRoundedIcon/></Button>	
+						<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
+						<Button className={classes.label} onClick={change}> {subtitle} <ArrowForwardIosRoundedIcon/></Button>	
 					</header>
 					<main>
 						{isEstate ?<States/>: <Municipalities/>}
@@ -66,7 +69,14 @@ const styles = () => ({
 	[`@media (max-width: ${1000}px)`]: {
 		regionsContainer: {
 			width: '100%',
-			padding: '10px'
+			padding: '10px',
+			paddingTop: '60px'
+		},
+		header: {
+			alignItems: 'flex-end'
+		},
+		h1: {
+			fontSize: '24px'
 		},
   }
 });
