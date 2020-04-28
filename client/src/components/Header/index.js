@@ -4,10 +4,100 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import * as colors from '../../constants/colors';
+import IconButton from '@material-ui/core/IconButton';
+import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+
+const LinkElement = (props) => {
+  const {classes, element, url} = props;
+
+  return (
+    <NavLink to={url} className={classes}>
+      {element}
+    </NavLink>
+  )
+}
+
+const Header = ({ classes, fixed=false}) => {
+    classes = useStyles();
+    let location = window.location.pathname;
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+      
+  return (
+    <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
+      <Toolbar>
+        <Link to={'./'} className={classes.name}>
+          <img className={classes.img} title="logo tec" src='/img/Logotipo_Vertical_Blanco_Sin_Fondo_notext.png'/>
+          <button variant="raised">
+            <Typography variant="h6" className={classes.title}>
+              COVID-19 en México
+            </Typography>
+          </button>
+        </Link>
+        <IconButton className={classes.menuIcon} aria-label="menu" onClick={handleClick}>
+          <MenuRoundedIcon />
+        </IconButton>
+        <Menu
+          id="menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+          PaperProps={{
+            style: {
+              width: '100%',
+              backgroundColor: colors.BLACK,
+              color: colors.WHITE,
+              textTransform: 'uppercase',
+              border: '2px solid white',
+            },
+          }}
+        >
+          <LinkElement url='./' element={
+            <MenuItem><Typography variant="span" className={classes.title}>Inicio</Typography></MenuItem>
+          }/>
+          <MenuItem><Typography variant="span" className={classes.title}>Investigación</Typography></MenuItem>
+          <LinkElement url='./regions' element={
+            <MenuItem><Typography variant="span" className={classes.title}>Seguimiento por Región</Typography></MenuItem>
+          }/>
+          <LinkElement url='./methodology' element={
+            <MenuItem><Typography variant="span" className={classes.title}>Metodlogía</Typography></MenuItem>
+          }/>
+          <LinkElement url='./about-us' element={
+            <MenuItem><Typography variant="span" className={classes.title}>Nosotros</Typography></MenuItem>
+          }/>
+        </Menu>
+        <div className={classes.buttons}>
+          <LinkElement url='./' element={
+            <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
+          }/>
+          <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
+          <LinkElement url='./regions' element={
+            <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
+          }/>
+          <LinkElement url='./methodology' element={
+            <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
+          }/>
+          <LinkElement url='./about-us' element={
+            <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
+          }/>          
+        </div>
+      </Toolbar>
+    </AppBar>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -50,56 +140,25 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '10px',
   },
 
-  [`@media (min-width: ${999}px)`]: {
-    header: {
-      display: 'block',
-      width: '80%',
-      margin: 'auto'
-    }
+  menuIcon: {
+    display: 'none'
   },
 
-  [`@media (min-width: ${600}px)`]: {
-    header: {
-      display: 'block',
-      width: '80%',
-      margin: 'auto'
-    }
+  [`@media (max-width: ${999}px)`]: {
+    buttons: {
+      display: 'none'
+    },
+
+    menuIcon: {
+      display: 'flex',
+      color: colors.WHITE
+    },
+  },
+
+  [`@media (max-width: ${600}px)`]: {
+    
   }
 }));
 
-const Header = ({ classes, fixed=false}) => {
-    classes = useStyles();
-    let location = window.location.pathname;
-
-  return (
-    <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
-      <Toolbar>
-        <Link to={'./'} className={classes.name}>
-          <img className={classes.img} title="logo tec" src='/img/Logotipo_Vertical_Blanco_Sin_Fondo_notext.png'/>
-          <button variant="raised">
-            <Typography variant="h6" className={classes.title}>
-              COVID-19 en México
-            </Typography>
-          </button>
-        </Link>
-        <div className={classes.buttons}>
-          <Link to={'./'}>
-            <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
-          </Link>
-          <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
-          <Link to={'./regions'}>
-            <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
-          </Link>
-          <Link to={'./methodology'}>
-            <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
-          </Link>
-          <Link to={'./about-us'}>
-            <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
-          </Link>
-        </div>
-      </Toolbar>
-    </AppBar>
-  );
-}
 
 export default Header;

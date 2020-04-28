@@ -28,17 +28,17 @@ const Regions = ({ classes }) => {
 }
 
 const styles = () => ({
-	container: {
-    	width: '100%',
-    	backgroundColor: colors.GRAY,
- 	},
+  container: {
+    width: '100%',
+    backgroundColor: colors.GRAY,
+  },
 
-  	regionsContainer: {
-    	width: '70%',
+  regionsContainer: {
+    width: '70%',
 		margin: 'auto',
 		padding: '25px',
-    	paddingTop: '128px',
-    	backgroundColor: colors.WHITE
+    paddingTop: '128px',
+    backgroundColor: colors.WHITE
 	},
 	
 	h1: {
@@ -48,8 +48,8 @@ const styles = () => ({
 	header: {
 		borderBottom: `1px solid ${colors.BLACK}`,
 		display: 'flex',
-    	alignItems: 'baseline',
-    	justifyContent: 'space-between',
+    alignItems: 'baseline',
+    justifyContent: 'space-between',
 	},
 
 	label: {
@@ -61,7 +61,7 @@ const styles = () => ({
 			width: '100%',
 			padding: '10px'
 		},
-  	}
+  }
 });
 
 export default withStyles(styles)(Regions);
