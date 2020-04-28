@@ -17,6 +17,7 @@ import DistributionEstate from './components/DistributionEstate';
 const theme = createMuiTheme({
     typography: {
       fontFamily: [
+        'Raleway', 
         '-apple-system',
         'BlinkMacSystemFont',
         "'Lato', sans-serif",

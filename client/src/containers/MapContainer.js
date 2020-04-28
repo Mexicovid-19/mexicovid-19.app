@@ -134,11 +134,11 @@ const useMap = () => {
       .setHTML(
         ` 
           <div style='display: flex; flex-direction: column; align-items: center; padding: 10px'>
-            <span style='border-bottom: 1px solid; width: 100%; text-align: center;'>
+            <span style='border-bottom: 1px solid; width: 100%; text-align: center; font-family: Raleway; font-weight:bold'>
               ${features[0].properties.ESTADO}
             </span>
             <span style='display: flex;'>
-              <svg style='width: 15px; height: 15px'>
+              <svg style='width: 15px; height: 15px; font-family: Raleway; font-weight:bold'>
                 <circle r="5" cx="6" cy="10" fill=${selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
               </svg>
               ${features[0].properties[ selectedLabel + "-" + state.date]} ${selectedLabel} 
@@ -148,7 +148,7 @@ const useMap = () => {
       .setMaxWidth(400)
       .addTo(map);
     } else {
-      popup.remove();
+        popup.remove();
     }
   }
 
