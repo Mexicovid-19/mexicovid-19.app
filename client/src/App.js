@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import Home from './components/Home';
 import Team from './components/Team';
 import Methodology from './components/Methodology';
@@ -32,6 +31,7 @@ const theme = createMuiTheme({
   });
 
 class App extends Component {
+  
   render() {
     const App = () => (
       <div>

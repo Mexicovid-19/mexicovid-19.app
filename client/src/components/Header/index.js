@@ -6,11 +6,14 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import * as colors from '../../constants/colors';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+
   title: {
     flexGrow: 1,
   },
@@ -18,35 +21,58 @@ const useStyles = makeStyles((theme) => ({
   bar: {
     backgroundColor: colors.BLACK + ' !important'
   },
+
   name: {
     flex: '1'
   },
+
   buttons: {
     display: 'flex',
     justifyContent: 'space-between',
     flex: '2'
   },
+
   button: {
     '&:hover': {
       borderBottom: '1px solid',
       borderRadius: '0px',
     }
   },
+
   selectedBtn: {
     borderBottom: '1px solid',
     borderRadius: '0px',
   },
+
   img: {
     maxWidth: '30px',
     verticalAlign: 'top',
     marginRight: '10px',
+  },
+
+  [`@media (min-width: ${999}px)`]: {
+    header: {
+      display: 'block',
+      width: '80%',
+      margin: 'auto'
+    }
+  },
+
+  [`@media (min-width: ${600}px)`]: {
+    header: {
+      display: 'block',
+      width: '80%',
+      margin: 'auto'
+    }
   }
+
+
 }));
 
 const Header = ({ classes, fixed=false}) => {
     classes = useStyles();
     let location = window.location.pathname;
-    
+
     return (
       <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
         <Toolbar>
