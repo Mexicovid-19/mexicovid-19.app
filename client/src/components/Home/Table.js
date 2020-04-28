@@ -72,12 +72,12 @@ const EnhancedTableHead =(props) => {
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
             >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <span className={classes.visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </span>
-              ) : null}
+            {headCell.label}
+            {orderBy === headCell.id ? (
+              <span className={classes.visuallyHidden}>
+                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+              </span>
+            ) : null}
             </TableSortLabel>
           </TableCell>
         ))}
@@ -131,15 +131,14 @@ const EnhancedTableToolbar = (props) => {
 
   return (
     <Toolbar className={classes.root}>
-        <button>
-          <AspectRatioRoundedIcon className={classes.icon} onClick={clickOpen}/>
-        </button>
-        <MyResponsiveLine data={data}/>
-        <AlertDialogSlide handleClose={clickClose} open={openDial} data={data}/>
+      <button>
+        <AspectRatioRoundedIcon className={classes.icon} onClick={clickOpen}/>
+      </button>
+      <MyResponsiveLine data={data}/>
+      <AlertDialogSlide handleClose={clickClose} open={openDial} data={data}/>
     </Toolbar>
   );
 };
-
 
 EnhancedTableToolbar.propTypes = {
   data: PropTypes.number.isRequired,

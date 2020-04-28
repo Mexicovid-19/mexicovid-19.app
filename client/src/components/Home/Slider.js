@@ -88,7 +88,6 @@ const LightTooltip = withStyles((theme) => ({
 
 function ValueLabelComponent(props) {
   const { children, open, value } = props;
-
   return (
     <LightTooltip open={open} enterTouchDelay={0} placement="top" title={value}>
       {children}
@@ -171,30 +170,30 @@ const CustomizedSlider = () => {
   
   return (
     <div className={classes.container} >
-        <div className={classes.slider}>
-          <Typography className={classes.text}>Fecha </Typography>
-          <div className={classes.root}>
-            <PrettoSlider 
-              ValueLabelComponent={ValueLabelComponent}
-              min={0} 
-              step={1} 
-              max={max} 
-              onChange={changeDate}
-              scale={(x) => state.dates[x]} 
-              valueLabelDisplay="auto"
-              aria-label="pretto slider" 
-              defaultValue={max} />
-          </div>
+      <div className={classes.slider}>
+        <Typography className={classes.text}>Fecha </Typography>
+        <div className={classes.root}>
+          <PrettoSlider 
+            ValueLabelComponent={ValueLabelComponent}
+            min={0} 
+            step={1} 
+            max={max} 
+            onChange={changeDate}
+            scale={(x) => state.dates[x]} 
+            valueLabelDisplay="auto"
+            aria-label="pretto slider" 
+            defaultValue={max} />
         </div>
-        <div className={classes.textContainer}>
-          <Typography className={classes.text}>{formatedDate} | Totales:</Typography>
-          <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> {totalConfirm} </Typography>
-          <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {totalDeads} </Typography>
-        </div>
-        <div className={classes.buttonsContainer}>
-          <Button variant="outlined" size="small" className={selectedLabel === 'confirmados' ? classes.buttonConfirm : classes.button} color="inherit" onClick={() => onSelectLabel("confirmados")}>Confimados</Button>
-          <Button variant="outlined" size="small" className={selectedLabel === 'decesos' ? classes.buttonDead : classes.button} color="inherit" onClick={() => onSelectLabel("decesos")}>Decesos</Button>
-        </div>
+      </div>
+      <div className={classes.textContainer}>
+        <Typography className={classes.text}>{formatedDate} | Totales:</Typography>
+        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> {totalConfirm} </Typography>
+        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {totalDeads} </Typography>
+      </div>
+      <div className={classes.buttonsContainer}>
+        <Button variant="outlined" size="small" className={selectedLabel === 'confirmados' ? classes.buttonConfirm : classes.button} color="inherit" onClick={() => onSelectLabel("confirmados")}>Confimados</Button>
+        <Button variant="outlined" size="small" className={selectedLabel === 'decesos' ? classes.buttonDead : classes.button} color="inherit" onClick={() => onSelectLabel("decesos")}>Decesos</Button>
+      </div>
     </div>
   );
 }
