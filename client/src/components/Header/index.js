@@ -65,42 +65,40 @@ const useStyles = makeStyles((theme) => ({
       margin: 'auto'
     }
   }
-
-
 }));
 
 const Header = ({ classes, fixed=false}) => {
     classes = useStyles();
     let location = window.location.pathname;
 
-    return (
-      <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
-        <Toolbar>
-          <Link to={'./'} className={classes.name}>
-            <img className={classes.img} title="logo tec" src='/img/Logotipo_Vertical_Blanco_Sin_Fondo_notext.png'/>
-            <button variant="raised">
-              <Typography variant="h6" className={classes.title}>
-                COVID-19 en México
-              </Typography>
-            </button>
+  return (
+    <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
+      <Toolbar>
+        <Link to={'./'} className={classes.name}>
+          <img className={classes.img} title="logo tec" src='/img/Logotipo_Vertical_Blanco_Sin_Fondo_notext.png'/>
+          <button variant="raised">
+            <Typography variant="h6" className={classes.title}>
+              COVID-19 en México
+            </Typography>
+          </button>
+        </Link>
+        <div className={classes.buttons}>
+          <Link to={'./'}>
+            <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
           </Link>
-          <div className={classes.buttons}>
-            <Link to={'./'}>
-              <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
-            </Link>
-            <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
-            <Link to={'./regions'}>
-              <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
-            </Link>
-            <Link to={'./methodology'}>
-              <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
-            </Link>
-            <Link to={'./about-us'}>
-              <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
-            </Link>
-          </div>
-        </Toolbar>
-      </AppBar>
+          <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
+          <Link to={'./regions'}>
+            <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
+          </Link>
+          <Link to={'./methodology'}>
+            <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
+          </Link>
+          <Link to={'./about-us'}>
+            <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
+          </Link>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 }
 

@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import Header from '../Header/';
-import Footer from '../Footer/';
 import * as colors from '../../constants/colors';
 import tableau from 'tableau-react'; 
-import NewWindow from 'react-new-window';
 
 const ConfirmAge = ({ classes }) => {
     
@@ -53,7 +50,7 @@ const styles = () => ({
   textclass: {
     marginTop: '0px',
     marginBottom: '0px'
-  }, 
-    
+  },   
 });
+
 export default withStyles(styles)(ConfirmAge);
