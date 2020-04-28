@@ -9,6 +9,7 @@ import * as colors from '../../constants/colors';
 import Typography from '@material-ui/core/Typography';
 import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
 import { MONTHS } from '../../constants/date';
+import ButtonControl from './ButtonControl';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -22,41 +23,6 @@ const useStyles = makeStyles((theme) => ({
   },
   margin: {
     height: theme.spacing(3),
-  },
-  buttonsContainer: {
-    width: '20%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
-  button: {
-    borderRadius: '0px',
-    minWidth: '120px',
-    '&:hover': {
-      backgroundColor: colors.BLACK,
-      borderColor: colors.BLACK,
-      boxShadow: 'none',
-    },
-  },
-  buttonConfirm: {
-    borderRadius: '0px',
-    minWidth: '120px',
-    backgroundColor: colors.BLUE,
-    borderColor: colors.BLUE,
-    '&:focus': {
-      backgroundColor: colors.BLUE,
-      borderColor: colors.BLUE,
-    },
-  },
-  buttonDead: {
-    borderRadius: '0px',
-    minWidth: '120px',
-    backgroundColor: colors.RED,
-    borderColor: colors.RED,
-    '&:focus': {
-      backgroundColor: colors.RED,
-      borderColor: colors.RED,
-    }
   },
   textContainer: {
     display: 'flex',
@@ -190,10 +156,7 @@ const CustomizedSlider = () => {
         <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> {totalConfirm} </Typography>
         <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {totalDeads} </Typography>
       </div>
-      <div className={classes.buttonsContainer}>
-        <Button variant="outlined" size="small" className={selectedLabel === 'confirmados' ? classes.buttonConfirm : classes.button} color="inherit" onClick={() => onSelectLabel("confirmados")}>Confimados</Button>
-        <Button variant="outlined" size="small" className={selectedLabel === 'decesos' ? classes.buttonDead : classes.button} color="inherit" onClick={() => onSelectLabel("decesos")}>Decesos</Button>
-      </div>
+      <ButtonControl onSelectLabel={onSelectLabel} selectedLabel={selectedLabel}/>
     </div>
   );
 }

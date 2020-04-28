@@ -122,7 +122,12 @@ const useToolbarStyles = makeStyles((theme) => ({
           color: theme.palette.text.primary,
           backgroundColor: theme.palette.secondary.dark,
   },
-  
+  [`@media (max-width: ${1000}px)`]: {
+    root: {
+      width: '100%',
+      height: '200px'
+    }
+  }
 }));
 
 const EnhancedTableToolbar = (props) => {
@@ -154,7 +159,8 @@ const useStyles = makeStyles((theme) => ({
   },
   table: {
     minWidth: 150,
-    backgroundColor: colors.BLACK
+    backgroundColor: colors.BLACK,
+    padding: '10px'
   },
   headerCell: {
     backgroundColor: '#222',
@@ -192,6 +198,16 @@ const useStyles = makeStyles((theme) => ({
   headstyle: {
     color: 'WHITE !important',
   },
+  
+  [`@media (max-width: ${1000}px)`]: {
+    root: {
+      maxWidth: '100%'
+    },
+    tableContainer: {
+      height: 'calc(60vh - 64px)',
+      marginBottom: '45px'
+    }
+  }
 }));
 
 const EnhancedTable = () => {

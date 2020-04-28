@@ -10,12 +10,13 @@ import AddRoundedIcon from '@material-ui/icons/AddRounded';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum} = React.useContext(MapContext);
-  const {selectedLabel} = React.useContext(HomeContext);
+  const {selectedLabel, isMap} = React.useContext(HomeContext);
   
+  let isMobile = window.innerWidth < 1000;
   return (
-    <div className={classes.mapContainer}>
+    <div className={isMap ? classes.show : classes.mapContainer}>
       <div className={classes.sidebarStyle}>
-        <CustomizedSlider />
+        {!isMobile && <CustomizedSlider />}
       </div>
       <div className={classes.containerGradient}>
         <div className={selectedLabel === "confirmados" ? classes.colorsGradientBlue : classes.colorsGradientRed}></div>
@@ -38,6 +39,11 @@ const Map = ({classes}) => {
 const styles = () => ({
   map: {
     height: '100% !important',
+  },
+
+  show: {
+    height: 'calc(100vh - 64px)',
+    flex: '2'
   },
 
   icons: {
@@ -96,6 +102,15 @@ const styles = () => ({
   numbers: {
     color: '#fff',
     fontSize: '12px'
+  },
+
+  [`@media (max-width: ${1000}px)`]: {
+    mapContainer: {
+      display: 'none'
+    },
+    show: {
+      display: 'block'
+    }
   }
 });
    

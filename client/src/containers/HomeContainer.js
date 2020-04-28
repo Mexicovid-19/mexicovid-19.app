@@ -14,6 +14,7 @@ const useHome = () => {
   const[rows, setRows] = React.useState([]);
   const [dataChart, setDataChart] = React.useState([]);
   const [selectedLabel, setSelectedLabel] = React.useState(null);
+  const [isMap, setIsMap] = React.useState(false);
   
   React.useEffect(() => {
     callStatesConfirm();
@@ -151,6 +152,10 @@ const useHome = () => {
     setSelectedLabel(selected);
   }
 
+  let onChangeTab = (bool) => {
+    setIsMap(bool);
+  }
+
   return {
     statesConfirm,
     statesDeads,
@@ -159,7 +164,9 @@ const useHome = () => {
     dataChart,
     changeDate,
     onSelectLabel,
-    selectedLabel
+    selectedLabel,
+    isMap,
+    onChangeTab
   }
 }
 
