@@ -8,12 +8,39 @@ import { themeBlack } from '../../constants/themeBlack';
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-const MyResponsiveLine = ({ data, isSmall=true  }) => {
+const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false  }) => {
+    console.log(data);
     let axisBottom = null;
     let axisLeft = null;
     var Defaultmargin = { top: 10, right: 10, bottom: 15, left: 15 };
     var legendTy = 0;
     var legendTx = 0;
+    var colorArray = [colors.RED,colors.BLUE_LIGHT];
+    var dataContent = data;
+
+    if ( isMobile ) {
+        axisLeft = {
+            orient: 'left',
+            tickSize: 5,
+            tickPadding: 0,
+            tickRotation: 0,
+            legend: 'CASOS',
+            legendOffset: -45,
+            legendPosition: 'middle'
+        };
+
+        Defaultmargin = { top: 10, right: 10, bottom: 15, left: 50 };
+        
+        if( data.length ) {
+            dataContent = [data[isConfirm ? 1 : 0]];
+        }
+
+        if( isConfirm ) {
+            colorArray = [colors.BLUE_LIGHT];
+        } else {
+            colorArray = [colors.RED];
+        }
+    }
 
     if( !isSmall ) {
         axisBottom = {
@@ -47,8 +74,8 @@ const MyResponsiveLine = ({ data, isSmall=true  }) => {
     return(
         <ResponsiveLine
         theme={themeBlack}
-        colors={[colors.RED,colors.BLUE_LIGHT]}
-        data={data}
+        colors={colorArray}
+        data={dataContent}
         margin={Defaultmargin}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}

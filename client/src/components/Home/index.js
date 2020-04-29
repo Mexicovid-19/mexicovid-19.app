@@ -3,7 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import MapIcon from '@material-ui/icons/Map';
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import ExpandLessRoundedIcon from '@material-ui/icons/ExpandLessRounded';
 import Typography from '@material-ui/core/Typography';
 import * as colors from '../../constants/colors';
 import { HomeContext } from '../../contexts/HomeContext';
@@ -24,7 +25,13 @@ const Home = ({ classes }) => {
     state } = React.useContext(HomeContext);
     const { thresholdsNum } = React.useContext(MapContext);
     
-    const isMobile = window.innerWidth < 1000;
+  const isMobile = window.innerWidth < 1000;
+
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  let expandHandler = () => {
+    setIsExpanded(!isExpanded);
+  }
     
   return (
     <div className={classes.container}>
@@ -33,9 +40,12 @@ const Home = ({ classes }) => {
         <div className={classes.buttonControl}>
           <ButtonControl onSelectLabel={onSelectLabel} selectedLabel={selectedLabel}/>
           <Typography className={classes.text}> {state.date} </Typography>
-          <ExpandMoreIcon className={classes.expandIcon} />
+          {
+            isExpanded
+            ? <ExpandLessRoundedIcon onClick={expandHandler} className={classes.expandIcon} />
+            : <ExpandMoreRoundedIcon onClick={expandHandler} className={classes.expandIcon} />}
         </div>
-        <Slider/>
+        {isExpanded && <Slider/>}
       </div>
       <div className={classes.Mapcontainer}>
         <Map/>

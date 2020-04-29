@@ -131,15 +131,17 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTableToolbar = (props) => {
-  const {data, clickOpen, clickClose, openDial} = props;
+  const {data, clickOpen, clickClose, openDial, isConfirm} = props;
   const classes = useToolbarStyles();
+  console.log(data, isConfirm);
+  const isMobile = window.innerWidth < 1000;
 
   return (
     <Toolbar className={classes.root}>
       <button>
-        <AspectRatioRoundedIcon className={classes.icon} onClick={clickOpen}/>
+        {!isMobile && <AspectRatioRoundedIcon className={classes.icon} onClick={clickOpen}/>}
       </button>
-      <MyResponsiveLine data={data}/>
+      <MyResponsiveLine data={data} isMobile={isMobile} isConfirm={isConfirm}/>
       <AlertDialogSlide handleClose={clickClose} open={openDial} data={data}/>
     </Toolbar>
   );
@@ -245,7 +247,7 @@ const EnhancedTable = () => {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar data={dataChart} clickOpen={handleClickOpen} clickClose={handleClose} openDial={open}/>
+        <EnhancedTableToolbar data={dataChart} clickOpen={handleClickOpen} clickClose={handleClose} openDial={open} isConfirm={selectedLabel == "confirmados"}/>
         <TableContainer className={classes.tableContainer}>
           <Table
             stickyHeader
