@@ -13,6 +13,7 @@ import ColorGradientBar from './ColorGradientBar';
 import Map from './Map';
 import Header from '../Header';
 import EnhacedTable from './Table';
+import Slider from './Slider';
 
 const Home = ({ classes }) => {
   const { 
@@ -27,11 +28,14 @@ const Home = ({ classes }) => {
     
   return (
     <div className={classes.container}>
-      <Header/>
-      <div className={classes.buttonControl}>
-        <ButtonControl onSelectLabel={onSelectLabel} selectedLabel={selectedLabel}/>
-        <Typography className={classes.text}> {state.date} </Typography>
-        <ExpandMoreIcon className={classes.expandIcon} />
+      <Header fixed={isMobile}/>
+      <div className={classes.buttonControlContainer}>
+        <div className={classes.buttonControl}>
+          <ButtonControl onSelectLabel={onSelectLabel} selectedLabel={selectedLabel}/>
+          <Typography className={classes.text}> {state.date} </Typography>
+          <ExpandMoreIcon className={classes.expandIcon} />
+        </div>
+        <Slider/>
       </div>
       <div className={classes.Mapcontainer}>
         <Map/>
@@ -60,7 +64,7 @@ const styles = () => ({
     flexDirection: 'row'
   },
 
-  buttonControl: {
+  buttonControlContainer: {
     display: 'none'
   },
 
@@ -69,6 +73,10 @@ const styles = () => ({
   },
 
   [`@media (max-width: ${1000}px)`]: {
+    container: {
+      marginTop: '56px'
+    },
+
     bottomButtons: {
       display: 'flex',
       width: '100%',
@@ -90,8 +98,6 @@ const styles = () => ({
       }
     },
     buttonControl: {
-      color: colors.WHITE,
-      background: colors.BLACK,
       padding: '5px',
       display: 'flex',
       justifyContent: 'space-around'
@@ -111,6 +117,13 @@ const styles = () => ({
       height: 'fit-content',
       width: '100%',
       bottom: '0',
+      zIndex: '10'
+    },
+    buttonControlContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      color: colors.WHITE,
+      background: colors.BLACK,
     }
   }
 });

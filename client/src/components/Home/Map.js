@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { MapContext } from '../../contexts/MapContext';
 import { HomeContext } from '../../contexts/HomeContext';
-import CustomizedSlider from './Slider';
+import CustomizedSlider from './CustomizedSlider';
 import { BLACK, WHITE } from '../../constants/colors';
 import ColorsGradientBar from './ColorGradientBar';
 

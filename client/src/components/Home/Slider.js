@@ -1,47 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
-import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
 import { HomeContext } from '../../contexts/HomeContext';
-import * as colors from '../../constants/colors';
 import Typography from '@material-ui/core/Typography';
-import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
 import { MONTHS } from '../../constants/date';
-import ButtonControl from './ButtonControl';
-
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    placeContent: 'space-between'
-  },
-  slider: {
-    width: '20%'
-  },
-  margin: {
-    height: theme.spacing(3),
-  },
-  textContainer: {
-    display: 'flex',
-    flexDirection: 'row'
-  }, 
-  text: {
-    display: 'flex',
-    margin: '0px 10px',
-    letterSpacing: '2px',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  dotConfirm: {
-    color: colors.BLUE_LIGHT
-  },
-  dotDeads: {
-    color: colors.RED
-  }
-}));
+import * as colors from '../../constants/colors';
+import Tooltip from '@material-ui/core/Tooltip';
+import PropTypes from 'prop-types';
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -66,6 +31,28 @@ ValueLabelComponent.propTypes = {
   open: PropTypes.bool.isRequired,
   value: PropTypes.number.isRequired,
 };
+
+const useStyles = makeStyles((theme) => ({
+  slider: {
+    width: '20%'
+  },
+  text: {
+    display: 'flex',
+    margin: '0px 10px',
+    letterSpacing: '2px',
+    flexDirection: 'row',
+    alignItems: 'center',
+	},
+	[`@media (max-width: ${1000}px)`]: {
+    slider: {
+      width: '100%',
+			display: 'flex',
+			marginTop: '10px',
+			marginBottom: '10px',
+			justifyContent: 'center'
+    }
+  }
+}));
 
 const PrettoSlider = withStyles({
   root: {
@@ -110,13 +97,17 @@ const PrettoSlider = withStyles({
   markActive: {
     opacity: 1,
     backgroundColor: 'currentColor',
-  },
+	},
+	[`@media (max-width: ${1000}px)`]: {
+    root: {
+      width: '70vw',
+    }
+  }
 })(Slider);
-
 
 const CustomizedSlider = () => {
 	const classes = useStyles();
-	const {state, changeDate, dataChart, onSelectLabel, selectedLabel } = React.useContext(HomeContext);
+	const {state, changeDate, dataChart} = React.useContext(HomeContext);
   let max = 0;
   let totalConfirm = 0;
   let totalDeads = 0;
@@ -135,29 +126,21 @@ const CustomizedSlider = () => {
   formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, 2020`;
   
   return (
-    <div className={classes.container} >
-      <div className={classes.slider}>
-        <Typography className={classes.text}>Fecha </Typography>
-        <div className={classes.root}>
-          <PrettoSlider 
-            ValueLabelComponent={ValueLabelComponent}
-            min={0} 
-            step={1} 
-            max={max} 
-            onChange={changeDate}
-            scale={(x) => state.dates[x]} 
-            valueLabelDisplay="auto"
-            aria-label="pretto slider" 
-            defaultValue={max} />
-        </div>
-      </div>
-      <div className={classes.textContainer}>
-        <Typography className={classes.text}>{formatedDate} | Totales:</Typography>
-        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> {totalConfirm} </Typography>
-        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {totalDeads} </Typography>
-      </div>
-      <ButtonControl onSelectLabel={onSelectLabel} selectedLabel={selectedLabel}/>
-    </div>
+    <div className={classes.slider}>
+			<Typography className={classes.text}>Fecha </Typography>
+			<div className={classes.root}>
+				<PrettoSlider
+					ValueLabelComponent={ValueLabelComponent}
+					min={0}
+					step={1}
+					max={max}
+					onChange={changeDate}
+					scale={(x) => state.dates[x]}
+					valueLabelDisplay="auto"
+					aria-label="pretto slider"
+					defaultValue={max} />
+			</div>
+		</div>
   );
 }
 
