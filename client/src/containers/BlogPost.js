@@ -13,9 +13,11 @@ import { config } from "../config";
 import { getEmojiByName, getNameByEmoji } from '../Utils/emoji';
 import { getAuthenticatedUser } from '../Utils/auth'
 import { Loader } from "../components/Common";
-import { PostContainer, PostTitle, PostDate, PostDateLink, PostReaction, BackButton } from "../components/Post";
+import { PostContainer, PostTitle, PostDate, PostDateLink, PostReaction, BackButton, Time} from "../components/Post";
 import { AuthorDetails, AuthorAvatar, AuthorName } from "../components/Post/Author";
 import { GithubLogin } from '../components/Header'
+import {Header} from "../components/Header";
+import Divider from '@material-ui/core/Divider';
 
 export default function BlogHome() {
   const issueNumber = parseInt(window.location.href.split("/").pop());
@@ -120,6 +122,7 @@ export default function BlogHome() {
 
   return (
     <>
+      
       {post.title && (
         <PostContainer>
           <BackButton onClick={() => onBackClick()}>Regresar</BackButton>
@@ -131,8 +134,12 @@ export default function BlogHome() {
               <div>
                 {/*Aqui la foto*/}
                 <PostDate>
-                  Fecha publicación: {moment(post.updatedAt).format("DD MMM YYYY")}. Tiempo de lectura: {readingTime(post.body).minutes} min.
+                  Fecha publicación: {moment(post.updatedAt).format("DD MMM YYYY")}
                 </PostDate>
+                <Divider/>
+                <Time>
+                  Tiempo de lectura: {readingTime(post.body).minutes} min.
+                </Time>
               </div>
             </AuthorDetails>
           </div>
