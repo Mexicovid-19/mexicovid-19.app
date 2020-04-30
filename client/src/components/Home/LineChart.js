@@ -1,12 +1,7 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import * as colors from '../../constants/colors';
-import { themeBlack } from '../../constants/themeBlack';
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
+import { themeBlack } from '../../constants/chartThemes';
 
 const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false  }) => {
     console.log(data);

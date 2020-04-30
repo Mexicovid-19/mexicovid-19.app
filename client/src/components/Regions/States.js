@@ -1,36 +1,68 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import * as colors from '../../constants/colors';
 import Button from '@material-ui/core/Button';
-import MyResponsiveLine from './LineChart';
-import { RegionContext } from '../../contexts/RegionContext';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import LaunchIcon from '@material-ui/icons/Launch';
-
-const top100Films = [
-	{ title: 'Aguascalientes', id: 'AGS' }
-  ];
+import * as colors from '../../constants/colors';
+import MyResponsiveLine from './LineChart';
+import { RegionContext } from '../../contexts/RegionContext';
+import AddRoundedIcon from '@material-ui/icons/AddRounded';
+import Chip from '@material-ui/core/Chip';
+import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const States = ({ classes }) => {
-	const {dataChart} = React.useContext(RegionContext)
-	let location = window.location.pathname;
+	const {
+		selectedStates, 
+		statesToChart,
+		states, 
+		handleClick, 
+		stateValue, 
+		stateChange, 
+		handleDelete,
+		addAll,
+		deleteAll
+	} = React.useContext(RegionContext);
 	
 	return (
 		<React.Fragment>
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Número de Confirmados Positivos por Estado y por 100,000 Habitantes</Typography>
 				<p><u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.</p>
-				<div className={classes.chart}>
+				<div className={classes.selector}>
 					<Autocomplete
-						id="combo-box-demo"
-						options={top100Films}
+						id="estados-mexico-100k"
+						options={states}
 						getOptionLabel={(option) => option.title}
 						style={{ width: 300 }}
-						renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+						inputValue={stateValue}
+						onInputChange={(event, newValue) => {stateChange( newValue);}}
+						renderInput={(params) => <TextField {...params} label="Estados" />}
 					/>
-					<MyResponsiveLine data={dataChart}/>
+					<Button
+						onClick={handleClick}
+						startIcon={<VisibilityIcon />}
+					>
+						Visualizar
+					</Button>
+					<Button onClick={addAll} startIcon={<AddRoundedIcon />}>Agregar Todos</Button>
+					<Button onClick={deleteAll} startIcon={<DeleteIcon />}>Eliminar Todos</Button>
+				</div>
+				<div className={classes.chipContainer}>
+					{selectedStates.map((state, index) => {
+						return(
+						<Chip
+							size="small"
+							label={state.title}
+							onDelete={(e) => {handleDelete(state.id)}}
+							style={{ backgroundColor: colors.WHITE }}
+						/>)
+					})}
+				</div>
+				<div className={classes.chart}>
+					<MyResponsiveLine data={statesToChart}/>
 				</div>
 			</section>
 			<section className={classes.section}>
@@ -75,7 +107,7 @@ const styles = () => ({
 	},
 
 	chart: {
-		height: '800px',
+		height: '600px',
 		width: '100%',
 	},
 
@@ -92,6 +124,21 @@ const styles = () => ({
 
 	icon: {
 		marginLeft: '5px'
+	},
+
+	selector: {
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'flex-end'
+	},
+
+	chipContainer: {
+		display: 'flex',
+		justifyContent: 'center',
+		flexWrap: 'wrap',
+		'& > *': {
+			margin: '5px',
+		},
 	},
 
   	[`@media (max-width: ${1000}px)`]: {
