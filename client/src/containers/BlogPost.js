@@ -95,54 +95,7 @@ export default function BlogHome() {
     </SyntaxHighlighter>
   );
 
-  const toggleReaction = async (emoji) => {
-    let reactions = postReactions;
-    const user = await getAuthenticatedUser();
-    const existingReaction = reactions.filter(r => (r.emoji === emoji && r.by === user.login))
-
-    if (existingReaction.length === 0) {
-      const reactionToAdd = {
-        by: user.login,
-        emoji: emoji,
-      }
-
-      // Add the reaction
-      await userClient(userToken).mutate({
-        mutation: gql`
-          mutation AddReaction {
-            addReaction(input:{subjectId:"${postNodeId}",content:${getNameByEmoji(emoji)},clientMutationId:"${user.node_id}"}) {
-              reaction {
-                id
-              }
-            }
-          }
-        `
-      });
-
-      reactions.push(reactionToAdd);
-    } else {
-      // Remove the reaction
-      await userClient(userToken).mutate({
-        mutation: gql`
-          mutation RemoveReaction {
-            removeReaction(input:{subjectId:"${postNodeId}",content:${getNameByEmoji(emoji)},clientMutationId:"${user.node_id}"}) {
-              reaction {
-                id
-              }
-            }
-          }
-        `
-      });
-
-      // Remove the reaction from the state
-      reactions = reactions.filter(r => !(r.by === user.login && r.emoji === emoji))
-    }
-
-    setPostReactions(reactions);
-    reactionsContainer.current.forceUpdate(); // refresh the counter
-    setReactionPopup(false); // hiding the reactions choice
-  }
-
+  
   useEffect(() => {
     if (!loading) {
       if (data) {
@@ -169,19 +122,16 @@ export default function BlogHome() {
     <>
       {post.title && (
         <PostContainer>
-          <BackButton onClick={() => onBackClick()}>Back</BackButton>
+          <BackButton onClick={() => onBackClick()}>Regresar</BackButton>
 
           <PostTitle>{post.title}</PostTitle>
           <div>
             <AuthorDetails>
-              <AuthorAvatar src={post.author.avatarUrl} alt={post.author.login} />
+              {/*Aqui se puede jalar el autor como el primer string del issue */}
               <div>
-                <AuthorName>{post.author.login}</AuthorName>
+                {/*Aqui la foto*/}
                 <PostDate>
-                  {moment(post.updatedAt).format("DD MMM YYYY")} .{readingTime(post.body).minutes} Min Read .
-                  <PostDateLink href={post.url} target="_black">
-                    View On Github
-                  </PostDateLink>
+                  Fecha publicación: {moment(post.updatedAt).format("DD MMM YYYY")}. Tiempo de lectura: {readingTime(post.body).minutes} min.
                 </PostDate>
               </div>
             </AuthorDetails>
