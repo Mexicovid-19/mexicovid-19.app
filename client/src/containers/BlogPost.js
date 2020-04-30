@@ -4,7 +4,6 @@ import Markdown from "markdown-to-jsx";
 import readingTime from "reading-time";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { GithubSelector, GithubCounter } from "react-reactions";
 import { userClient } from '../Utils/apollo'
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
@@ -18,6 +17,8 @@ import { AuthorDetails, AuthorAvatar, AuthorName } from "../components/Post/Auth
 import { GithubLogin } from '../components/Header'
 import {Header} from "../components/Header";
 import Divider from '@material-ui/core/Divider';
+import MarkdownView from 'react-showdown';
+import showdown from 'showdown';
 
 export default function BlogHome() {
   const issueNumber = parseInt(window.location.href.split("/").pop());
@@ -120,6 +121,19 @@ export default function BlogHome() {
     window.history.back();
   };
 
+  console.log(post);
+
+  let converter = new showdown.Converter({
+    ghCompatibleHeaderId: true,
+    strikethrough: true, 
+    tables: true,
+    metadata: true
+  })
+
+  const textmd = post.body;
+
+
+  
   return (
     <>
       
@@ -129,35 +143,23 @@ export default function BlogHome() {
 
           <PostTitle>{post.title}</PostTitle>
           <div>
-            <AuthorDetails>
-              {/*Aqui se puede jalar el autor como el primer string del issue */}
-              <div>
-                {/*Aqui la foto*/}
-                <PostDate>
+          <PostDate>
                   Fecha publicación: {moment(post.updatedAt).format("DD MMM YYYY")}
                 </PostDate>
                 <Divider/>
                 <Time>
-                  Tiempo de lectura: {readingTime(post.body).minutes} min.
+                  Tiempo de lectura: {Math.round(readingTime(post.body).minutes)} min.
                 </Time>
-              </div>
-            </AuthorDetails>
           </div>
-          <Markdown
+          <MarkdownView
+            markdown={textmd}
             options={{
-              overrides: {
-                a: {
-                  component: HyperLink
-                },
-                pre: {
-                  component: CodeBlock
-                }
-              }
+              tables: true, emoji: true,
+              ghCompatibleHeaderId: true,
+              strikethrough: true, 
+              metadata: true
             }}
-          >
-            {post.body}
-          </Markdown>
-
+          />
         </PostContainer>
       )}
     </>

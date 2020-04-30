@@ -10,5 +10,5 @@ const ReadingTime = styled.p`
 `
 
 export const CardReadingTime = ({ time }) => (
-  <ReadingTime>{Math.round(time)} min. de lectura</ReadingTime>
+  <ReadingTime>Aprox. {Math.round(time)} min. de lectura</ReadingTime>
 )

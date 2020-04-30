@@ -9,9 +9,8 @@ const StyledCategory = styled.div`
   font-size: 12px;
   text-transform: uppercase;
   color: #fff;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 28px;
-  font-family: "Quicksand";
   margin-right: 10px;
 `
 

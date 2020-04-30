@@ -9,6 +9,7 @@ import { Loader } from '../components/Common'
 import { BlogContainer } from '../components/Blog'
 import { Card } from '../components/Blog/Card'
 
+
 const GET_POSTS = gql`
 {
   repository(owner: "${config.githubUserName}", name: "${config.githubRepo}") {
@@ -52,6 +53,7 @@ const Blog = () => {
       if (data) {
         setPosts(data?.repository?.issues?.nodes)
         console.log("ya cargo los datos")
+        console.log(posts)
       }
     }
   }, [loading, error, data]);
