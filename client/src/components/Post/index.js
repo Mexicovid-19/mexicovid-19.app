@@ -5,3 +5,4 @@ export { PostDateLink } from "./PostDateLink";
 export { PostReaction } from "./PostReaction";
 export { BackButton } from "./BackButton";
 export { Time } from "./Time";
+export { Text } from "./Text";

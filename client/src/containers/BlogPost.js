@@ -12,13 +12,14 @@ import { config } from "../config";
 import { getEmojiByName, getNameByEmoji } from '../Utils/emoji';
 import { getAuthenticatedUser } from '../Utils/auth'
 import { Loader } from "../components/Common";
-import { PostContainer, PostTitle, PostDate, PostDateLink, PostReaction, BackButton, Time} from "../components/Post";
+import { PostContainer, PostTitle, PostDate, PostDateLink, PostReaction, BackButton, Time, Text} from "../components/Post";
 import { AuthorDetails, AuthorAvatar, AuthorName } from "../components/Post/Author";
 import { GithubLogin } from '../components/Header'
 import {Header} from "../components/Header";
 import Divider from '@material-ui/core/Divider';
 import MarkdownView from 'react-showdown';
 import showdown from 'showdown';
+import '../css/Blog.css';
 
 export default function BlogHome() {
   const issueNumber = parseInt(window.location.href.split("/").pop());
@@ -136,30 +137,28 @@ export default function BlogHome() {
   
   return (
     <>
-      
       {post.title && (
         <PostContainer>
           <BackButton onClick={() => onBackClick()}>Regresar</BackButton>
 
           <PostTitle>{post.title}</PostTitle>
           <div>
-          <PostDate>
-                  Fecha publicación: {moment(post.updatedAt).format("DD MMM YYYY")}
-                </PostDate>
-                <Divider/>
                 <Time>
                   Tiempo de lectura: {Math.round(readingTime(post.body).minutes)} min.
                 </Time>
           </div>
-          <MarkdownView
-            markdown={textmd}
-            options={{
-              tables: true, emoji: true,
-              ghCompatibleHeaderId: true,
-              strikethrough: true, 
-              metadata: true
-            }}
-          />
+          <Text>
+            <MarkdownView
+              markdown={textmd}
+              options={{
+                tasklists:true,
+                tables: true, emoji: true,
+                ghCompatibleHeaderId: true,
+                strikethrough: true, 
+                metadata: true
+              }}
+            />
+          </Text>
         </PostContainer>
       )}
     </>

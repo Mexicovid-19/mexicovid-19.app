@@ -1,0 +1,229 @@
+
+  /*Blog posts*/
+  
+  .first-letter,
+  .authorName a {
+    color: rgba(0, 0, 0, 0.84);
+    text-rendering: optimizeLegibility;
+  }
+  p,
+  i,
+  a,
+  li {
+    margin-top: 21px;
+    font-family: "Quicksand";
+    font-size: 21px;
+    letter-spacing: -0.03px;
+    line-height: 1.58;
+  }
+  
+
+  
+  blockquote {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-style: italic;
+    letter-spacing: -0.36px;
+    line-height: 44.4px;
+    overflow-wrap: break-word;
+    margin: 30px 0 33px 0;
+    /* text-align: center; */
+    color: rgba(0, 0, 0, 0.68);
+    padding: 0 0 0 50px;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    padding: 3px 5px;
+  }
+  
+  pre > code {
+    background: transparent !important;
+    font-family: "Quicksand";
+    font-size: 18px;
+    padding: 0px;
+  }
+  
+  pre {
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 20px !important;
+  }
+  
+  mark,
+  .highlighted {
+    background: #7dffb3;
+  }
+  
+  .first-letter {
+    overflow-wrap: break-word;
+    font-family: "Playfair Display", serif;
+    font-size: 60px;
+    line-height: 60px;
+    display: block;
+    position: relative;
+    float: left;
+    margin: 0px 7px 0 -5px;
+  }
+  
+  .subtitle {
+    font-family: "Shadows Into Light", sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+    margin: 0 0 24px 0;
+  }
+  
+  ::selection {
+    background-color: lavender;
+  }
+  
+  /* Slide up */
+  
+  .blog-post-anchor {
+    color: #343139;
+    text-decoration: none;
+    box-shadow: inset 0 -0.125em 0 #0e0d0d;
+    transition: box-shadow 270ms cubic-bezier(0.77, 0, 0.175, 1), color 270ms cubic-bezier(0.77, 0, 0.175, 1);
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+  
+  .blog-post-anchor:hover {
+    box-shadow: inset 0 -1.125em 0 #080808;
+    color: white;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    p,
+    i,
+    a,
+    li {
+      font-size: 18px;
+    }
+    blockquote {
+      font-size: 20px;
+    }
+  }
+  #post{
+    display: flex;
+    flex-direction: column;
+    background: var(--theme-ui-colors-white);
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    width: 100%;
+    position: relative;
+  }
+  
+  
+  #post > main, #post > header{
+    padding: 16px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #post>header{
+    height: 40vh;
+    background: var(--theme-ui-colors-red);
+    text-align: center;
+    justify-content: center;
+  }
+  
+  #post>header>h1[name="title"]{
+    font-size: 3em;
+    margin: 0px;
+    margin-top: auto;
+  }
+  #post>header>h2[name="description"]{
+    font-size: 1.5em;
+    margin: 16px;
+  }
+  #post>header>span[name="author"]{
+    font-weight: 600;
+    margin-top: auto;
+    margin-bottom: 32px;
+    background-color: var(--theme-ui-colors-white);
+    padding: 8px 16px;
+    color: black
+  }
+  
+  
+  #post>main>*{
+    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #post>main img{
+    max-width: 100%;
+    margin: 0px auto;
+    display: block;
+  }
+  #post>main>pre{
+    padding: 16px;
+    background-color: var(--theme-ui-colors-black);
+    border-radius: 8px;
+    color: var(--theme-ui-colors-white);
+  }
+  #post>main>blockquote{
+    background: var(--theme-ui-colors-sunken);
+    padding: 0px 24px;
+    border-left: 3px solid;
+  }
+  #post>main>table{
+    border-collapse: collapse;
+  }
+  #post>main>table, #post>main>table th, #post>main>table td{
+    border: 0.5px solid var(--theme-ui-colors-muted);
+    padding: 8px
+  }
+  
+  
+  @media only screen and (max-width: 600px){
+    #navbar{
+        flex-wrap: wrap;
+    }
+    #navbar ul[name="nav_sections"]{
+        flex: 1
+    }
+    #navbar input{
+        margin: 8px;
+        flex: 1;
+        padding: 16px
+    }
+  }
+  
+  .sc-fznZeY > .iOfber>p{
+    margin-bottom:2rem;
+  }
+  .sc-fznZeY > .iOfber>p{
+    margin-bottom:2rem;
+  }
+  
+  .sc-fznZeY > .iOfber>table{
+    border-collapse: collapse;
+  }
+  .sc-fznZeY > .iOfber>table, .sc-fznZeY > .iOfber>table th, .sc-fznZeY > .iOfber>table td{
+    border: 0.5px solid var(#8492a6);
+    padding: 8px
+  }

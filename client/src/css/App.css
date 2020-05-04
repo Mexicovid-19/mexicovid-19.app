@@ -251,3 +251,18 @@ img {
       padding: 16px
   }
 }
+
+.sc-fznZeY > .iOfber>p{
+  margin-bottom:2rem;
+}
+.sc-fznZeY > .iOfber>p{
+  margin-bottom:2rem;
+}
+
+.sc-fznZeY > .iOfber>table{
+  border-collapse: collapse;
+}
+.sc-fznZeY > .iOfber>table, .sc-fznZeY > .iOfber>table th, .sc-fznZeY > .iOfber>table td{
+  border: 0.5px solid var(#8492a6);
+  padding: 8px
+}

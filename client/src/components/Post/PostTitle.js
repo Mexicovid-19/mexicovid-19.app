@@ -8,4 +8,5 @@ export const PostTitle = styled.h1`
   line-height: 1;
   font-weight:bold;
   text-align: center;
+  margin-top:2rem;
 `
