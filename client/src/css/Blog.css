@@ -1,6 +1,46 @@
 
   /*Blog posts*/
-  
+  :root{
+    --theme-ui-colors-darker: #121217;
+    --theme-ui-colors-dark: #17171d;
+    --theme-ui-colors-darkless: #252429;
+    --theme-ui-colors-black: #1f2d3d;
+    --theme-ui-colors-steel: #273444;
+    --theme-ui-colors-slate: #3c4858;
+    --theme-ui-colors-muted: #8492a6;
+    --theme-ui-colors-smoke: #e0e6ed;
+    --theme-ui-colors-snow: #f9fafc;
+    --theme-ui-colors-white: #ffffff;
+    --theme-ui-colors-red: #ec3750;
+    --theme-ui-colors-orange: #ff8c37;
+    --theme-ui-colors-yellow: #f1c40f;
+    --theme-ui-colors-green: #33d6a6;
+    --theme-ui-colors-cyan: #5bc0de;
+    --theme-ui-colors-blue: #338eda;
+    --theme-ui-colors-twitter: #1da1f2;
+    --theme-ui-colors-facebook: #3b5998;
+    --theme-ui-colors-instagram: #e1306c;
+    --theme-ui-colors-text: #1f2d3d;
+    --theme-ui-colors-background: #ffffff;
+    --theme-ui-colors-elevated: #ffffff;
+    --theme-ui-colors-sheet: #f9fafc;
+    --theme-ui-colors-sunken: #e0e6ed;
+    --theme-ui-colors-border: #e0e6ed;
+    --theme-ui-colors-placeholder: #8492a6;
+    --theme-ui-colors-secondary: #3c4858;
+    --theme-ui-colors-primary: #ec3750;
+    --theme-ui-colors-accent: #338eda;
+
+
+
+
+    --wm-color-text-primary: black;
+    --wm-color-text-secondary: #3c4858;
+    --wm-color-background: white;
+    --wm-color-foreground: white;
+    --wm-color-nav: rgba(255,255,255)
+
+}
   .first-letter,
   .authorName a {
     color: rgba(0, 0, 0, 0.84);
@@ -16,9 +56,7 @@
     letter-spacing: -0.03px;
     line-height: 1.58;
   }
-  
 
-  
   blockquote {
     font-family: "Playfair Display", serif;
     font-size: 25px;
@@ -197,21 +235,7 @@
     border: 0.5px solid var(--theme-ui-colors-muted);
     padding: 8px
   }
-  
-  
-  @media only screen and (max-width: 600px){
-    #navbar{
-        flex-wrap: wrap;
-    }
-    #navbar ul[name="nav_sections"]{
-        flex: 1
-    }
-    #navbar input{
-        margin: 8px;
-        flex: 1;
-        padding: 16px
-    }
-  }
+
   
   .sc-fznZeY > .iOfber>p{
     margin-bottom:2rem;
@@ -223,7 +247,11 @@
   .sc-fznZeY > .iOfber>table{
     border-collapse: collapse;
   }
-  .sc-fznZeY > .iOfber>table, .sc-fznZeY > .iOfber>table th, .sc-fznZeY > .iOfber>table td{
-    border: 0.5px solid var(#8492a6);
-    padding: 8px
-  }
+table{
+    border-collapse: collapse;
+    width:100%;
+}
+th,td{
+    border: 0.5px solid var(--theme-ui-colors-muted);
+    padding: 8px;
+}
