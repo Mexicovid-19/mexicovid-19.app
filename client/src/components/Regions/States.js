@@ -62,7 +62,7 @@ const States = ({ classes }) => {
 					})}
 				</div>
 				<div className={classes.chart}>
-					<MyResponsiveLine data={statesToChart}/>
+					<MyResponsiveLine data={statesToChart} className={{root: classes.chartatyle}}/>
 				</div>
 			</section>
 			<section className={classes.section}>
@@ -139,6 +139,12 @@ const styles = () => ({
 		'& > *': {
 			margin: '5px',
 		},
+	},
+		
+	chartatyle: {
+		paddingLeft: '50px',
+		paddingRight: '60px',
+		paddingBottom: '50px'
 	},
 
   	[`@media (max-width: ${1000}px)`]: {

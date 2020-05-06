@@ -43,8 +43,8 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 				tickSize: 5,
 				tickPadding: 5,
 				tickRotation: tickRotation,
-				legend: 'fechas',
-				legendOffset: 55,
+				legend: 'Fecha',
+				legendOffset: 80,
 				legendPosition: 'middle'
 		}}
 		axisLeft={{
@@ -52,8 +52,8 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 				tickSize: 5,
 				tickPadding: 5,
 				tickRotation: 0,
-				legend: 'casos',
-				legendOffset: -40,
+				legend: 'Tasa de confirmados por 100 mil habitantes',
+				legendOffset: -26,
 				legendPosition: 'middle'
 		}}
 		enableGridX={false}

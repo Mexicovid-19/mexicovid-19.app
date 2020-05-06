@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Team from './components/Team';
 import Methodology from './components/Methodology';
 import Regions from './components/Regions';
+import Simulation from './components/Simulation';
 import { RegionContextProvider } from './contexts/RegionContext';
 import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
@@ -54,6 +55,7 @@ class App extends Component {
                 <Regions/>
               </RegionContextProvider>
             </Route>
+            <Route path='/simulation' component={Simulation}/>
             <Route path='/methodology' component={Methodology}/>
             <Route path='/availablebeds' component={AvailableBeds}/>
             <Route path='/confirmage' component={ConfirmAge}/>
