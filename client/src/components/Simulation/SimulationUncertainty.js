@@ -23,7 +23,9 @@ const SimulationUncertainty = ({ classes }) => {
 
 const styles = () => ({
 	h2: {
-		fontSize: '24px'
+		fontSize: '24px',
+		marginBottom: '10px',
+		marginTop: '10px',
 	},
 
 	header: {
