@@ -8,7 +8,7 @@ const ButtonControl = (props) => {
   
   return (
     <div className={classes.buttonsContainer}>
-        <Button variant="outlined" size="small" className={selectedLabel === 'confirmados' ? classes.buttonConfirm : classes.button} color="inherit" onClick={() => onSelectLabel("confirmados")}>Confimados</Button>
+        <Button variant="outlined" size="small" className={selectedLabel === 'confirmados' ? classes.buttonConfirm : classes.button} color="inherit" onClick={() => onSelectLabel("confirmados")}>Confirmados</Button>
         <Button variant="outlined" size="small" className={selectedLabel === 'decesos' ? classes.buttonDead : classes.button} color="inherit" onClick={() => onSelectLabel("decesos")}>Decesos</Button>
     </div>
   );

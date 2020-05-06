@@ -6,7 +6,6 @@ import * as colors from './../constants/colors';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
-  
   const mapRef = React.useRef(null);
   const [map, setMap] = React.useState(null);
   const [statesGeOJSON, setStatesGeOJSON] = React.useState(null);

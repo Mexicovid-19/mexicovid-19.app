@@ -39,7 +39,7 @@ const Header = ({ classes, fixed=false}) => {
     <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
       <Toolbar>
         <Link to={'./'} className={classes.name}>
-          <img className={classes.img} title="logo tec" src='/img/Logotipo_Vertical_Blanco_Sin_Fondo_notext.png'/>
+          <img className={classes.img} title="logo tec" src={process.env.PUBLIC_URL + '/img/Logotipo_Vertical_Blanco_Sin_Fondo_notext.png'}/>
           <button variant="raised">
             <Typography variant="h6" className={classes.title}>
               COVID-19 en México
