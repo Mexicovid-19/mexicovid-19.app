@@ -65,7 +65,6 @@ const Blog = () => {
     <>
       <Header fixed={true}/>
         <BlogContainer>
-        
           {
             loading
             ? <Loader />
