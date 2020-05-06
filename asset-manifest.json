@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mexicovid-19.app/static/css/main.57339499.chunk.css",
-    "main.js": "/mexicovid-19.app/static/js/main.5a2dd9e9.chunk.js",
-    "main.js.map": "/mexicovid-19.app/static/js/main.5a2dd9e9.chunk.js.map",
+    "main.js": "/mexicovid-19.app/static/js/main.2ec632dd.chunk.js",
+    "main.js.map": "/mexicovid-19.app/static/js/main.2ec632dd.chunk.js.map",
     "runtime-main.js": "/mexicovid-19.app/static/js/runtime-main.d75811e0.js",
     "runtime-main.js.map": "/mexicovid-19.app/static/js/runtime-main.d75811e0.js.map",
     "static/js/2.1ba2e856.chunk.js": "/mexicovid-19.app/static/js/2.1ba2e856.chunk.js",
     "static/js/2.1ba2e856.chunk.js.map": "/mexicovid-19.app/static/js/2.1ba2e856.chunk.js.map",
     "index.html": "/mexicovid-19.app/index.html",
-    "precache-manifest.1e724e8a48e0c6b546752a00fb1ad833.js": "/mexicovid-19.app/precache-manifest.1e724e8a48e0c6b546752a00fb1ad833.js",
+    "precache-manifest.b3b96a4a24b615912316193c88517052.js": "/mexicovid-19.app/precache-manifest.b3b96a4a24b615912316193c88517052.js",
     "service-worker.js": "/mexicovid-19.app/service-worker.js",
     "static/css/main.57339499.chunk.css.map": "/mexicovid-19.app/static/css/main.57339499.chunk.css.map",
     "static/js/2.1ba2e856.chunk.js.LICENSE.txt": "/mexicovid-19.app/static/js/2.1ba2e856.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.d75811e0.js",
     "static/js/2.1ba2e856.chunk.js",
     "static/css/main.57339499.chunk.css",
-    "static/js/main.5a2dd9e9.chunk.js"
+    "static/js/main.2ec632dd.chunk.js"
   ]
 }
