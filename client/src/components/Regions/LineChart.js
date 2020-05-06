@@ -1,6 +1,6 @@
 import { ResponsiveLine } from '@nivo/line'
 import React from 'react';
-import { themeBlack } from '../../constants/themeBlack';
+import { STATE_COLORS } from '../../constants/states';
 
 const MyResponsiveLine = ({ data, isSmall=false }) => {
 	let marginConstrains = { top: 50, right: 110, bottom: 165, left: 60 }
@@ -25,12 +25,13 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 		marginConstrains = { top: 50, right: 10, bottom: 165, left: 30 };
 		legendsConstrains = [];
 		tickRotation = -60;
-		
 	}
 
 	return(
 	<ResponsiveLine
 		data={data}
+		colors={{ scheme: 'spectral' }}
+		lineWidth={3}
 		margin={marginConstrains}
 		xScale={{ type: 'point' }}
 		yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
@@ -64,7 +65,7 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 		pointBorderColor={{ from: 'serieColor' }}
 		pointLabel="y"
 		pointLabelYOffset={-12}
-		enableSlices="x"
+		enableSlices={false}
 		useMesh={true}
 		legends={legendsConstrains}
 		motionStiffness={160}

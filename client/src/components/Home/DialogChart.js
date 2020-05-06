@@ -9,7 +9,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import MyResponsiveLine from './LineChart';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { themeBlack } from '../../constants/themeBlack';
+import { themeBlack } from '../../constants/chartThemes';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;

@@ -14,7 +14,6 @@ const Regions = ({ classes }) => {
 
 	const change = () => {
 		setEstate(!isEstate);
-		console.log(isEstate);
 	};
 
 	const isMobile = window.innerWidth < 1000;
@@ -26,7 +25,9 @@ const Regions = ({ classes }) => {
 				<div className={classes.regionsContainer}>
 					<header className={classes.header}>
 						<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
-						<Button className={classes.label} onClick={change}> {subtitle} <ArrowForwardIosRoundedIcon/></Button>	
+						<Button className={classes.label} onClick={change}> 
+							{subtitle} <ArrowForwardIosRoundedIcon/>
+						</Button>	
 					</header>
 					<main>
 						{isEstate ?<States/>: <Municipalities/>}
