@@ -12,6 +12,8 @@ import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Chip from '@material-ui/core/Chip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCircleRounded';
+import LocalHospitalRoundedIcon from '@material-ui/icons/LocalHospitalRounded';
 
 const States = ({ classes }) => {
 	const {
@@ -68,16 +70,26 @@ const States = ({ classes }) => {
 			</section>
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Disponibilidad de camas para hospitalización y en unidades de cuidado intensivo (UCI)</Typography>
-				<p> Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel estatal que han requerido hospitalización, así como los casos graves que se encuentran en cuidado intensivo. Su objetivo es identificar las entidades federativas en las cuales, dada la evolución de los casos, será necesario destinar mayores recursos e infraestructura para lograr atender la demanda de atención médica. Para identificar el número y tipo de casos se utiliza la información más desagregada que el Gobierno Federal empezó a publicar a partir del 13 de abril. Respecto al número de camas a nivel estatal se utiliza la información de la Secretaría de Salud de 2018.</p>
-				<div className={classes.buttonPlace}>
-					<Button target= "_blank" href="/availablebeds"  className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
+				<div className={classes.sectioncontainer}>
+					<LocalHospitalRoundedIcon classes={{root: classes.iconcontainer}} fontSize="large"/>
+					<div>
+						<p className={classes.textcontainer}> Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel estatal que han requerido hospitalización, así como los casos graves que se encuentran en cuidado intensivo. Su objetivo es identificar las entidades federativas en las cuales, dada la evolución de los casos, será necesario destinar mayores recursos e infraestructura para lograr atender la demanda de atención médica. Para identificar el número y tipo de casos se utiliza la información más desagregada que el Gobierno Federal empezó a publicar a partir del 13 de abril. Respecto al número de camas a nivel estatal se utiliza la información de la Secretaría de Salud de 2018.</p>
+						<div className={classes.buttonPlace}>
+							<Button target= "_blank" href="/availablebeds"  className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
+						</div>
+					</div>
 				</div>
 			</section>
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Casos confirmados acumulados de COVID-19 por rango de edad</Typography>
-				<p>Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel Estatatal.</p>
-				<div className={classes.buttonPlace}>
-					<Button target= "_blank" href="/confirmage"  className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
+				<div className={classes.sectioncontainer}>
+					<SupervisedUserCircleRoundedIcon classes={{root: classes.iconcontainer}}/>
+					<div>
+						<p className={classes.textcontainer}>Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel Estatatal.</p>
+						<div className={classes.buttonPlace}>
+							<Button target= "_blank" href="/confirmage"  className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
+						</div>
+					</div>
 				</div>
 			</section>
 		</React.Fragment>
@@ -86,7 +98,9 @@ const States = ({ classes }) => {
 
 const styles = () => ({
 	h2: {
-		fontSize: '24px'
+		fontSize: '24px',
+		marginBottom: '10px',
+		marginTop: '10px',
 	},
 
 	header: {
@@ -126,6 +140,12 @@ const styles = () => ({
 	icon: {
 		marginLeft: '5px'
 	},
+	
+	iconcontainer: {
+		height: '100% !important',
+		width: '15% !important',
+		color: colors.BLACK,
+	},
 
 	selector: {
 		display: 'flex',
@@ -148,7 +168,27 @@ const styles = () => ({
 		paddingBottom: '50px'
 	},
 
-  	[`@media (max-width: ${1000}px)`]: {	
+	sectioncontainer:{
+		display: 'flex',
+		flexDirection: 'row',
+	},
+
+	textcontainer:{
+		textAlign:'justify',
+	},
+
+	[`@media (max-width: ${1000}px)`]: {
+		sectioncontainer:{
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems:'center',
+		},
+		
+		iconcontainer: {
+			height: '100% !important',
+			width: '50% !important',
+			color: colors.BLACK,
+		},
 	},
 	
 });
