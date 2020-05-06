@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "990b40b87be00d9dd92ddbf5cfd3e9ca",
+    "revision": "9e7d48d632cf1bb0cbe2690f4037cee7",
     "url": "/mexicovid-19.app/index.html"
   },
   {
-    "revision": "74339eca2b5a982eef2d",
+    "revision": "69b88758c0e305d7feff",
     "url": "/mexicovid-19.app/static/css/main.57339499.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mexicovid-19.app/static/js/2.1ba2e856.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "74339eca2b5a982eef2d",
-    "url": "/mexicovid-19.app/static/js/main.4419b1f0.chunk.js"
+    "revision": "69b88758c0e305d7feff",
+    "url": "/mexicovid-19.app/static/js/main.5a2dd9e9.chunk.js"
   },
   {
     "revision": "27fbaf428f2dfe1f7ecf",
