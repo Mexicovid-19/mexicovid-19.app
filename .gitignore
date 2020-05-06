@@ -2,6 +2,11 @@
 
 # dependencies
 /node_modules
+/api/node_modules
+
+cert.pem
+key.pem
+
 /.pnp
 .pnp.js
 
@@ -17,6 +22,11 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+
+.env.development
+.env.test
+.env.production
 
 npm-debug.log*
 yarn-debug.log*
