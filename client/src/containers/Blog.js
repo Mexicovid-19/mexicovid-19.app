@@ -6,8 +6,9 @@ import { config } from "../config";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Loader } from '../components/Common'
-import { BlogContainer } from '../components/Blog'
-import { Card } from '../components/Blog/Card'
+import { BlogContainer } from '../components/Blog';
+import { Card } from '../components/Blog/Card';
+import { Blogcarousel } from '../components/Blogcarousel';
 
 
 const GET_POSTS = gql`
@@ -58,10 +59,13 @@ const Blog = () => {
     }
   }, [loading, error, data]);
 
+  //<Blogcarousel/> meterlo despues de blog container
+
   return (
     <>
       <Header fixed={true}/>
         <BlogContainer>
+        
           {
             loading
             ? <Loader />
