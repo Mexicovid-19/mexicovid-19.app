@@ -103,6 +103,7 @@ const styles = () => ({
       height: 'calc(100vh - 170px) !important',
     },
   }
+  
 });
    
 export default withStyles(styles)(Map);

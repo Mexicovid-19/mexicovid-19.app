@@ -22,8 +22,9 @@ const Home = ({ classes }) => {
     selectedLabel,
     isMap,
     onChangeTab,
-    state } = React.useContext(HomeContext);
-    const { thresholdsNum } = React.useContext(MapContext);
+    state 
+  } = React.useContext(HomeContext);
+  const { thresholdsNum } = React.useContext(MapContext);
     
   const isMobile = window.innerWidth < 1000;
 
@@ -93,11 +94,13 @@ const styles = () => ({
       justifyContent: 'space-around',
       padding: '5px 0px',
     },
+
     btn: {
       color: colors.WHITE,
       backgroundColor: colors.BLACK,
       width: '100%',
     },
+
     selected: {
       width: '100%',
       backgroundColor: colors.WHITE,
@@ -107,20 +110,24 @@ const styles = () => ({
         color: colors.BLACK,
       }
     },
+
     buttonControl: {
       padding: '5px',
       display: 'flex',
       justifyContent: 'space-around'
     },
+    
     expandIcon: {
       color: colors.WHITE
     },
+    
     buttonsContainer: {
       background: colors.BLACK,
       display: 'flex',
       flexDirection: 'column',
       color: colors.WHITE,
     },
+    
     fixedMobile: {
       display: 'inline',
       position: 'fixed',
@@ -129,6 +136,7 @@ const styles = () => ({
       bottom: '0',
       zIndex: '10'
     },
+    
     buttonControlContainer: {
       display: 'flex',
       flexDirection: 'column',
@@ -136,6 +144,7 @@ const styles = () => ({
       background: colors.BLACK,
     }
   }
+  
 });
 
 export default withStyles(styles)(Home);

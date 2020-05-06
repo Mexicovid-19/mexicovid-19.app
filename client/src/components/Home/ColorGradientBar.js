@@ -10,17 +10,16 @@ const ColorGradientBar = (props) => {
   
   return (
     <div className={classes.containerGradient}>
-        <div className={selectedLabel === "confirmados" ? classes.colorsGradientBlue : classes.colorsGradientRed}></div>
-        <div className={classes.numsWrapper}>
-            <RemoveRoundedIcon className={classes.icons}/>
-                {selectedLabel && thresholdsNum[selectedLabel].map((num, index) => {
-                return(
-                    <Typography className={classes.numbers}>{num}</Typography>
-                	)
-                })
-                }
-            <AddRoundedIcon className={classes.icons}/>
-        </div>
+      <div className={selectedLabel === "confirmados" ? classes.colorsGradientBlue : classes.colorsGradientRed}></div>
+      <div className={classes.numsWrapper}>
+        <RemoveRoundedIcon className={classes.icons}/>
+          {selectedLabel && thresholdsNum[selectedLabel].map((num, index) => {
+            return(
+              <Typography className={classes.numbers}>{num}</Typography>
+            )})
+          }
+        <AddRoundedIcon className={classes.icons}/>
+      </div>
     </div>
   );
 }

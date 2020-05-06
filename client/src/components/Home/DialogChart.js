@@ -29,7 +29,7 @@ const AlertDialogSlide = (props) => {
         onClose={handleClose}
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
-        >
+      >
         <Button onClick={handleClose} classes={{root: classes.cross}}>
           <CloseIcon />
         </Button>
@@ -48,24 +48,29 @@ const styles = (thme) => ({
     width: '100% !important' ,
     background: '#222222' 
   },
+
   root: {
     margin: 0
   },
+
   title: {
     textAlign: 'center',
     color: 'white',
     paddingTop: '10px',
   },
+
   chartatyle: {
     paddingLeft: '50px',
     paddingRight: '60px',
     paddingBottom: '50px'
   },
+
   cross: {
     right: '0px',
     position: 'absolute',
     color: 'white'
   }
+  
 });
 
 export default withStyles(styles)(AlertDialogSlide);

@@ -4,7 +4,6 @@ import useRegion from '../containers/RegionContainer';
 const RegionContext = React.createContext();
 const RegionContextProvider = (props) => { 
   const val = useRegion();
-
   return (<RegionContext.Provider value={val}>{props.children}</RegionContext.Provider>);
 };
 

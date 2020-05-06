@@ -16,24 +16,24 @@ import MunicipalitiesFollow from './components/MunicipalitiesFollow';
 import DistributionEstate from './components/DistributionEstate';
 
 const theme = createMuiTheme({
-    typography: {
-      fontFamily: [
-        'Raleway', 
-        '-apple-system',
-        'BlinkMacSystemFont',
-        "'Lato', sans-serif",
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-      color: '#fff'
-    }
-  });
+  typography: {
+    fontFamily: [
+      'Raleway', 
+      '-apple-system',
+      'BlinkMacSystemFont',
+      "'Lato', sans-serif",
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    color: '#fff'
+  }
+});
 
 class App extends Component {
   
@@ -43,11 +43,11 @@ class App extends Component {
         <ThemeProvider theme={theme}>
           <Switch>
             <Route exact path='/'>
-                <HomeContextProvider>
-                    <MapContextProvider>
-                      <Home/>
-                    </MapContextProvider>
-                </HomeContextProvider>
+              <HomeContextProvider>
+                <MapContextProvider>
+                  <Home/>
+                </MapContextProvider>
+              </HomeContextProvider>
             </Route>
             <Route path='/about-us' component={Team}/>
             <Route path='/regions' >

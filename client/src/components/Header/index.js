@@ -22,18 +22,18 @@ const LinkElement = (props) => {
 }
 
 const Header = ({ classes, fixed=false}) => {
-    classes = useStyles();
-    let location = window.location.pathname;
+  classes = useStyles();
+  let location = window.location.pathname;
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-  
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
       
   return (
     <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
@@ -165,6 +165,5 @@ const useStyles = makeStyles((theme) => ({
     
   }
 }));
-
 
 export default Header;

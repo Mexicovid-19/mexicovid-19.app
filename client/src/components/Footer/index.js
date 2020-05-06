@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import * as colors from '../../constants/colors';
 
 const Footer = ({ classes}) => {
-    classes = useStyles();
+  classes = useStyles();
     
-    return (
+  return (
     <div className={classes.root}>
       <div className={classes.content}>
         <div className={classes.columnsContainer}>
@@ -47,7 +47,6 @@ const Footer = ({ classes}) => {
   );
 }
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     borderTop: `10px ridge ${colors.WHITE}`,
@@ -58,10 +57,12 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center'
   },
+
   title: {
     marginBottom: '20px',
     borderBottom: `1px solid ${colors.WHITE}`
   },
+
   content: {
     display: 'flex',
     flexDirection: 'row',
@@ -69,14 +70,17 @@ const useStyles = makeStyles((theme) => ({
     width: '80%',
     margin: 'auto'
   },
+
   columnsContainer: {
     flex: 1,
     padding: '30px 50px'
   },
+
   rows: {
     fontSize: '12px',
     marginBottom: '10px',
   },
+  
   img: {
     display: 'flex',
     justifyContent: 'center',

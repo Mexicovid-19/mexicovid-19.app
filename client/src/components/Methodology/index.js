@@ -19,56 +19,56 @@ const Methodology = ({ classes }) => {
         <header className={classes.header}>
           <Typography className={classes.h1} variant={'h1'}>Metodología</Typography>	
         </header>
-          <navbar className={classes.navbar}>
-            <Button className={classes.label} href="#info" ><FindInPageIcon className={classes.icons}/>Fuente de Información</Button>	
-            <Button className={classes.label} href="#data" ><TimelineOutlinedIcon className={classes.icons}/>Visualización de Datos</Button>
-            <Button className={classes.label} href="#politic" ><PolicyIcon className={classes.icons}/>Política de Divulgación</Button>
-          </navbar>
+        <navbar className={classes.navbar}>
+          <Button className={classes.label} href="#info" ><FindInPageIcon className={classes.icons}/>Fuente de Información</Button>	
+          <Button className={classes.label} href="#data" ><TimelineOutlinedIcon className={classes.icons}/>Visualización de Datos</Button>
+          <Button className={classes.label} href="#politic" ><PolicyIcon className={classes.icons}/>Política de Divulgación</Button>
+        </navbar>
         <section id="info" className={`${classes.row} ${classes.topSection}`}>
-            <div className={classes.title}>
-              <Grid container direction="column" justify="center" alignItems="center">
-                <Grid>
-                  <div className={classes.textTitle}>Fuente de Información</div>
-                </Grid>
-                <Grid>
-                  <div><FindInPageIcon className={classes.bigIcons}/></div>
-                </Grid>
-              </Grid>  
-            </div>
-            <div className={classes.content}>
-                El mapa coroplético de número de contagios, la gráfica de líneas de número de contagios en el tiempo y la tabla por estados proceden de los reportes diarios que realiza la Secretaría de Salud en la conferencia de prensa otorgada a las 7 pm. Los reportes diarios pueden ser descargados de la siguiente liga oficial mantenida por la autoridad federal: Coronavirus (Covid-19) Comunicado Técnico Diario . Los datos aportados por la Secretaria de Salud se reportan en un formato .pdf; uno para casos sospechosos y otro para confirmados. Los archivos reportan cada caso individual y el estado donde ocurrió. Nuestro equipo procesa en el software estadístico R la reconfiguración de estos archivos en una base estatal. La base mencionada se puede descargar de la liga ubicada en la parte superior de esta página.
-                Los totales de casos positivos y sospechosos se calculan con base en los archivos .pdf que registran los archivos oficiales por caso y que se descargan de la liga mantenida por la autoridad federal. Las divergencias en las cifras de totales reportados por la autoridad federal en la conferencia de prensa diaria a las 7:00 PM y los totales registrados en la documentación diaria que da a conocer la Secretaría de Salud (utilizada en esta visualización), corresponden a variaciones de criterio en las fuentes fedeales y posiblemente a diferencias de horario en el corte para la elaboración de los reportes registrados por la Secretaria de Salud y aquéllos para la conferencia de prensa.
-            </div>
+          <div className={classes.title}>
+            <Grid container direction="column" justify="center" alignItems="center">
+              <Grid>
+                <div className={classes.textTitle}>Fuente de Información</div>
+              </Grid>
+              <Grid>
+                <div><FindInPageIcon className={classes.bigIcons}/></div>
+              </Grid>
+            </Grid>  
+          </div>
+          <div className={classes.content}>
+            El mapa coroplético de número de contagios, la gráfica de líneas de número de contagios en el tiempo y la tabla por estados proceden de los reportes diarios que realiza la Secretaría de Salud en la conferencia de prensa otorgada a las 7 pm. Los reportes diarios pueden ser descargados de la siguiente liga oficial mantenida por la autoridad federal: Coronavirus (Covid-19) Comunicado Técnico Diario . Los datos aportados por la Secretaria de Salud se reportan en un formato .pdf; uno para casos sospechosos y otro para confirmados. Los archivos reportan cada caso individual y el estado donde ocurrió. Nuestro equipo procesa en el software estadístico R la reconfiguración de estos archivos en una base estatal. La base mencionada se puede descargar de la liga ubicada en la parte superior de esta página.
+            Los totales de casos positivos y sospechosos se calculan con base en los archivos .pdf que registran los archivos oficiales por caso y que se descargan de la liga mantenida por la autoridad federal. Las divergencias en las cifras de totales reportados por la autoridad federal en la conferencia de prensa diaria a las 7:00 PM y los totales registrados en la documentación diaria que da a conocer la Secretaría de Salud (utilizada en esta visualización), corresponden a variaciones de criterio en las fuentes fedeales y posiblemente a diferencias de horario en el corte para la elaboración de los reportes registrados por la Secretaria de Salud y aquéllos para la conferencia de prensa.
+          </div>
         </section>
         <section id="data" className={classes.row}>
-            <div className={classes.title}>
-              <Grid container direction="column" justify="center" alignItems="center">
-                <Grid>
-                  <div className={classes.textTitle}>Metodología de Visualización de Datos</div>
-                </Grid>
-                <Grid>
-                  <div><TimelineOutlinedIcon className={classes.bigIcons}/></div>
-                </Grid>
-              </Grid>  
-            </div>
-            <div className={classes.content}>
-                Las visualizaciones de información cuantitativa son construidas en Javascript, HTML y CSS utilizando las librerías de Mapbox GL y D3. El método de partición del número de casos confirmados y sospechosos para la construcción de los mapas coropléticos es por cuantiles. Con este propósito, los datos de cada día por estado son ordenados de menor a mayor en un array y particionados en seis categorías. El suavizado de la curva de casos por fechas es a través del Centripetal Catmull-Rom spline
-            </div>
+          <div className={classes.title}>
+            <Grid container direction="column" justify="center" alignItems="center">
+              <Grid>
+                <div className={classes.textTitle}>Metodología de Visualización de Datos</div>
+              </Grid>
+              <Grid>
+                <div><TimelineOutlinedIcon className={classes.bigIcons}/></div>
+              </Grid>
+            </Grid>  
+          </div>
+          <div className={classes.content}>
+            Las visualizaciones de información cuantitativa son construidas en Javascript, HTML y CSS utilizando las librerías de Mapbox GL y D3. El método de partición del número de casos confirmados y sospechosos para la construcción de los mapas coropléticos es por cuantiles. Con este propósito, los datos de cada día por estado son ordenados de menor a mayor en un array y particionados en seis categorías. El suavizado de la curva de casos por fechas es a través del Centripetal Catmull-Rom spline
+          </div>
         </section>
         <section id="politic" className={classes.row}>
-            <div className={classes.title}>
-              <Grid container direction="column" justify="center" alignItems="center">
-                <Grid>
-                  <div className={classes.textTitle}>Política de Divulgación de Información</div>
-                </Grid>
-                <Grid>
-                  <div><PolicyIcon className={classes.bigIcons}/></div>
-                </Grid>
-              </Grid>  
-            </div>
-            <div className={classes.content}>
-                Esta página es elaborada y mantenida por un grupo de profesores y estudiantes del Tecnológico de Monterrey. Las inconsistencias y errores son competencia de los autores de esta página y no de la Institución. Asimismo, las posturas y opiniones aquí vertidas representan la posición personal de los autores y no del Tecnológico de Monterrey.
-            </div>
+          <div className={classes.title}>
+            <Grid container direction="column" justify="center" alignItems="center">
+              <Grid>
+                <div className={classes.textTitle}>Política de Divulgación de Información</div>
+              </Grid>
+              <Grid>
+                <div><PolicyIcon className={classes.bigIcons}/></div>
+              </Grid>
+            </Grid>  
+          </div>
+          <div className={classes.content}>
+            Esta página es elaborada y mantenida por un grupo de profesores y estudiantes del Tecnológico de Monterrey. Las inconsistencias y errores son competencia de los autores de esta página y no de la Institución. Asimismo, las posturas y opiniones aquí vertidas representan la posición personal de los autores y no del Tecnológico de Monterrey.
+          </div>
         </section>
       </main>
       <Footer/>
@@ -77,7 +77,6 @@ const Methodology = ({ classes }) => {
 }
 
 const styles = () => ({
-  
   container: {
     width: '100%',
     backgroundColor: colors.GRAY,
@@ -166,7 +165,6 @@ const styles = () => ({
   },
   
   [`@media (max-width: ${1000}px)`]: {
-    
     MethologyContainer: {
       width: '100%',
       paddingTop: '60px'
@@ -185,6 +183,7 @@ const styles = () => ({
       flexDirection: 'column'
     }
   },
+  
 });
 
 export default withStyles(styles)(Methodology);

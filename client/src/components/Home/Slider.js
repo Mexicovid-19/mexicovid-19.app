@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   slider: {
     width: '20%'
   },
+
   text: {
     display: 'flex',
     margin: '0px 10px',
@@ -43,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
 	},
-	[`@media (max-width: ${1000}px)`]: {
+  
+  [`@media (max-width: ${1000}px)`]: {
     slider: {
       width: '100%',
 			display: 'flex',
@@ -52,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 			justifyContent: 'center'
     }
   }
+
 }));
 
 const PrettoSlider = withStyles({
@@ -60,6 +63,7 @@ const PrettoSlider = withStyles({
     color: '#fff',
     padding: '2px 0'
   },
+  
   thumb: {
     height: 18,
     width: 18,
@@ -71,7 +75,9 @@ const PrettoSlider = withStyles({
       boxShadow: 'inherit',
     },
   },
+  
   active: {},
+
   valueLabel: {
     left: 'calc(-50% + 11px)',
     top: -22,
@@ -80,29 +86,35 @@ const PrettoSlider = withStyles({
       color: '#fff',
     },
   },
+  
   track: {
     height: 8,
     borderRadius: 4,
   },
+  
   rail: {
     height: 8,
     borderRadius: 4,
 	},
-	mark: {
+  
+  mark: {
     backgroundColor: '#bfbfbf',
     height: 8,
     width: 1,
     marginTop: -3,
   },
+  
   markActive: {
     opacity: 1,
     backgroundColor: 'currentColor',
 	},
-	[`@media (max-width: ${1000}px)`]: {
+  
+  [`@media (max-width: ${1000}px)`]: {
     root: {
       width: '70vw',
     }
   }
+  
 })(Slider);
 
 const CustomizedSlider = () => {

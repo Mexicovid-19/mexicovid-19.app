@@ -21,7 +21,7 @@ const Regions = ({ classes }) => {
 	const subtitle = `${isMobile ? '' : 'Seguimiento por'} ${isEstate ? 'Municipio' : 'Estado'}`;
 	return (
 		<div className={classes.container}>
-		<Header fixed={true}/>
+			<Header fixed={true}/>
 				<div className={classes.regionsContainer}>
 					<header className={classes.header}>
 						<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
@@ -33,23 +33,23 @@ const Regions = ({ classes }) => {
 						{isEstate ?<States/>: <Municipalities/>}
 					</main>
 				</div>
-		<Footer/>
+			<Footer/>
 		</div>
 	);
 }
 
 const styles = () => ({
-  container: {
-    width: '100%',
-    backgroundColor: colors.GRAY,
-  },
+	container: {
+    	width: '100%',
+    	backgroundColor: colors.GRAY,
+  	},
 
-  regionsContainer: {
-    width: '70%',
+  	regionsContainer: {
+		width: '70%',
 		margin: 'auto',
 		padding: '25px',
-    paddingTop: '128px',
-    backgroundColor: colors.WHITE
+		paddingTop: '128px',
+		backgroundColor: colors.WHITE
 	},
 	
 	h1: {
@@ -59,8 +59,8 @@ const styles = () => ({
 	header: {
 		borderBottom: `1px solid ${colors.BLACK}`,
 		display: 'flex',
-    alignItems: 'baseline',
-    justifyContent: 'space-between',
+    	alignItems: 'baseline',
+    	justifyContent: 'space-between',
 	},
 
 	label: {
@@ -79,7 +79,8 @@ const styles = () => ({
 		h1: {
 			fontSize: '24px'
 		},
-  }
+	  }
+	  
 });
 
 export default withStyles(styles)(Regions);

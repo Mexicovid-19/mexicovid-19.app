@@ -72,12 +72,12 @@ const EnhancedTableHead =(props) => {
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
             >
-            {headCell.label}
-            {orderBy === headCell.id ? (
-              <span className={classes.visuallyHidden}>
-                {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-              </span>
-            ) : null}
+              {headCell.label}
+              {orderBy === headCell.id ? (
+                <span className={classes.visuallyHidden}>
+                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                </span>
+              ) : null}
             </TableSortLabel>
           </TableCell>
         ))}
@@ -122,12 +122,14 @@ const useToolbarStyles = makeStyles((theme) => ({
           color: theme.palette.text.primary,
           backgroundColor: theme.palette.secondary.dark,
   },
+
   [`@media (max-width: ${1000}px)`]: {
     root: {
       width: '100%',
       height: '200px'
     }
   }
+
 }));
 
 const EnhancedTableToolbar = (props) => {
@@ -156,14 +158,17 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     maxWidth: '300px'
   },
+
   paper: {
     width: '100%'
   },
+
   table: {
     minWidth: 150,
     backgroundColor: colors.BLACK,
     padding: '10px'
   },
+
   headerCell: {
     backgroundColor: '#222',
     color: '#fafafa',
@@ -179,13 +184,14 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: colors.BLACK,
         color: colors.WHITE
     },
-
   },
+
   tableContainer: {
     overflowY: 'scroll',
     height: 'calc(70vh - 64px)',
     borderTop: '1px solid white'
   },
+
   visuallyHidden: {
     border: 0,
     clip: 'rect(0 0 0 0)',
@@ -197,6 +203,7 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
+
   headstyle: {
     color: 'WHITE !important',
   },
@@ -210,6 +217,7 @@ const useStyles = makeStyles((theme) => ({
       height: '100%'
     }
   }
+
 }));
 
 const EnhancedTable = () => {
@@ -241,8 +249,7 @@ const EnhancedTable = () => {
 
   const handleClose = () => {
     setOpen(false);
-};  
-
+  };  
 
   return (
     <div className={classes.root}>

@@ -48,6 +48,7 @@ const styles = () => ({
     marginTop: '0px',
     marginBottom: '0px'
   }, 
+  
 });
 
 export default withStyles(styles)(MunicipalitiesFollow);

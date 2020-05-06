@@ -15,16 +15,20 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     placeContent: 'space-between'
   },
+
   slider: {
     width: '20%'
   },
+
   margin: {
     height: theme.spacing(3),
   },
+
   textContainer: {
     display: 'flex',
     flexDirection: 'row'
   }, 
+
   text: {
     display: 'flex',
     margin: '0px 10px',
@@ -32,12 +36,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
   },
+
   dotConfirm: {
     color: colors.BLUE_LIGHT
   },
+
   dotDeads: {
     color: colors.RED
   }
+  
 }));
 
 const CustomizedSlider = () => {

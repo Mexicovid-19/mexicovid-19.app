@@ -78,8 +78,8 @@ const styles = () => ({
 	},
 
   	[`@media (max-width: ${1000}px)`]: {
-		
- 	},
+	},
+	 
 });
 
 export default withStyles(styles)(Municipalities);

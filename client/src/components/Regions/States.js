@@ -53,12 +53,13 @@ const States = ({ classes }) => {
 				<div className={classes.chipContainer}>
 					{selectedStates.map((state, index) => {
 						return(
-						<Chip
-							size="small"
-							label={state.title}
-							onDelete={(e) => {handleDelete(state.id)}}
-							style={{ backgroundColor: colors.WHITE }}
-						/>)
+							<Chip
+								size="small"
+								label={state.title}
+								onDelete={(e) => {handleDelete(state.id)}}
+								style={{ backgroundColor: colors.WHITE }}
+							/>
+						)
 					})}
 				</div>
 				<div className={classes.chart}>
@@ -147,9 +148,9 @@ const styles = () => ({
 		paddingBottom: '50px'
 	},
 
-  	[`@media (max-width: ${1000}px)`]: {
-		
- 	},
+  	[`@media (max-width: ${1000}px)`]: {	
+	},
+	
 });
 
 export default withStyles(styles)(States);
