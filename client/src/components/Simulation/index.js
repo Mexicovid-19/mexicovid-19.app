@@ -34,8 +34,8 @@ const styles = () => ({
 
   regionsContainer: {
     width: '70%',
-		margin: 'auto',
-		padding: '25px',
+	margin: 'auto',
+	padding: '25px',
     paddingTop: '128px',
     backgroundColor: colors.WHITE
 	},
@@ -67,7 +67,7 @@ const styles = () => ({
 		h1: {
 			fontSize: '24px'
 		},
-  }
+  	}
 });
 
 export default withStyles(styles)(Simulation);

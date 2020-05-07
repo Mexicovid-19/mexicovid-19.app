@@ -104,7 +104,14 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
       marginTop: '0px',
-    }
+    },
+
+    img: {
+      width: '50%',
+      display: 'flex',
+      flexFlow: 'wrap',
+    },
+    
   }
   
 }));
