@@ -77,6 +77,20 @@ const styles = () => ({
     marginTop: '0px',
     marginBottom: '0px'
   }, 
+
+  [`@media (max-width: ${1000}px)`]: {
+		teamsContainer: {
+			width: '100%',
+			padding: '10px',
+			paddingTop: '60px'
+		},
+		header: {
+			alignItems: 'flex-end'
+		},
+		h1: {
+			fontSize: '24px'
+		},
+  }
   
 });
  
