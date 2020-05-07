@@ -14,6 +14,7 @@ import AvailableBeds from './components/AvailableBeds';
 import ConfirmAge from './components/ConfirmAge';
 import MunicipalitiesFollow from './components/MunicipalitiesFollow';
 import DistributionEstate from './components/DistributionEstate';
+import Uncertainty from './components/Uncertainty';
 
 const theme = createMuiTheme({
   typography: {
@@ -61,6 +62,7 @@ class App extends Component {
             <Route path='/confirmage' component={ConfirmAge}/>
             <Route path='/municipalitiesfollow' component={MunicipalitiesFollow}/>
             <Route path='/distributionestate' component={DistributionEstate}/>
+            <Route path='/uncertainty' component={Uncertainty}/>
           </Switch>
         </ThemeProvider>
       </div>

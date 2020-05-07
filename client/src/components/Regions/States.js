@@ -32,7 +32,7 @@ const States = ({ classes }) => {
 		<React.Fragment>
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Número de Confirmados Positivos por Estado y por 100,000 Habitantes</Typography>
-				<p><u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.</p>
+				<p className={classes.textcontainer}><u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.</p>
 				<div className={classes.selector}>
 					<Autocomplete
 						id="estados-mexico-100k"
@@ -84,7 +84,7 @@ const States = ({ classes }) => {
 				<Typography className={classes.h2} variant={'h2'}>Casos confirmados acumulados de COVID-19 por rango de edad</Typography>
 				<div className={classes.sectioncontainer}>
 					<SupervisedUserCircleRoundedIcon classes={{root: classes.iconcontainer}}/>
-					<div>
+					<div className={classes.agesectioncontainer}>
 						<p className={classes.textcontainer}>Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel Estatatal.</p>
 						<div className={classes.buttonPlace}>
 							<Button target= "_blank" href="/confirmage"  className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
@@ -134,7 +134,8 @@ const styles = () => ({
 	buttonPlace: {
 		color: 'black',
 		minHeight: '40px',
-		textAlign: 'right'
+		textAlign: 'right',
+		alignSelf: 'flex-end',
 	},
 
 	icon: {
@@ -172,6 +173,13 @@ const styles = () => ({
 		display: 'flex',
 		flexDirection: 'row',
 	},
+
+	agesectioncontainer: {
+		width: '100%',
+		display: 'inline-grid',
+		flexDirection: 'column',
+	},
+
 
 	textcontainer:{
 		textAlign:'justify',

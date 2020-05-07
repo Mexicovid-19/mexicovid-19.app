@@ -16,7 +16,7 @@ const Footer = ({ classes}) => {
             <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Inicio</Typography></Link>
             <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Investigación</Typography></Link>
             <Link to={'./regions'} className={classes.name}><Typography className={classes.rows}>Gráficos por Región</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Simulaciones</Typography></Link>
+            <Link to={'./simulation'} className={classes.name}><Typography className={classes.rows}>Simulaciones</Typography></Link>
             <Link to={'./methodology'} className={classes.name}><Typography className={classes.rows}>Metodologías</Typography></Link>
             <Link to={'./about-us'} className={classes.name}><Typography className={classes.rows}>Acerca de Nosotros</Typography></Link>
           </div>
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   img: {
     display: 'flex',
     justifyContent: 'center',
-    width: '20%',
+    width: '24%',
     height: '8%'
   },
 
@@ -106,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '0px',
     }
   }
+  
 }));
 
 export default Footer;

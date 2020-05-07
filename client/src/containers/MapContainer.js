@@ -18,14 +18,15 @@ const useMap = () => {
     "confirmados": [],
     "decesos": [],
   })
-  
+  const isMobile = window.innerWidth < 1000;
   const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
   
   const {statesConfirm,
          statesDeads,
          selectedLabel, 
          state,
-        isMap } = React.useContext(HomeContext);
+        isMap 
+  } = React.useContext(HomeContext);
   
   React.useEffect(() => {
     setMap(
@@ -35,7 +36,21 @@ const useMap = () => {
       center: [-97.8116, 24.6040],
       zoom : 4.2
     }));
+
+    if (isMobile){
+      setMap(
+        new mapboxgl.Map({
+        container: mapRef.current,
+        style: 'mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko',
+        center: [-100.8116, 24.6040],
+        zoom : 3.2
+      }));
+    };
+    
+
+
   }, []);
+
 
   React.useEffect(() => {
     if(map) {
