@@ -5,11 +5,12 @@ import { HomeContext } from '../../contexts/HomeContext';
 import CustomizedSlider from './CustomizedSlider';
 import { BLACK, WHITE } from '../../constants/colors';
 import ColorsGradientBar from './ColorGradientBar';
+import LoaderView from '../Loader';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum} = React.useContext(MapContext);
   const {selectedLabel, isMap} = React.useContext(HomeContext);
-  
+  console.log("mapref", mapRef);
   let isMobile = window.innerWidth < 1000;
   return (
     <div className={isMap ? classes.show : classes.mapContainer}>
@@ -17,7 +18,13 @@ const Map = ({classes}) => {
         {!isMobile && <CustomizedSlider />}
       </div>
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
-      <div ref={mapRef} className={classes.map}/>
+      {mapRef.current 
+        ?<div ref={mapRef} className={classes.map}/>
+        : <React.Fragment>
+            <LoaderView/>
+            <div ref={mapRef}></div>
+          </React.Fragment>
+      }
     </div>
   );
 }
