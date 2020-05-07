@@ -61,14 +61,13 @@ const useMap = () => {
   React.useEffect(() => {
     if(statesConfirm && statesDeads && statesGeOJSON) {  
       let fillColor = getSteps(selectedLabel);
-     
-      map.on('load', function() {
-        let geojson = setUpGEOJson();
-        
+      let geojson = setUpGEOJson();
+      if(map.loaded()) {
         map.addSource('pref', {
           type: 'geojson',
           data: geojson
         });
+        console.log("adding layer:")
         map.addLayer({
           'id': 'pref',
           'type': 'fill',
@@ -88,20 +87,52 @@ const useMap = () => {
         var nav = new mapboxgl.NavigationControl();
         map.addControl(nav, 'bottom-right');
         map.on('mousemove', showPopup);
-      });
+      } else {
+        map.on('load', function() {
+          let geojson = setUpGEOJson();
+          
+          map.addSource('pref', {
+            type: 'geojson',
+            data: geojson
+          });
+          console.log("adding layer:")
+          map.addLayer({
+            'id': 'pref',
+            'type': 'fill',
+            'source': 'pref',
+            'paint': {
+              'fill-color': fillColor,
+              'fill-opacity': [
+                  'case',
+                  ['boolean', ['feature-state', 'hover'], false],
+                  1,
+                  1,
+              ],
+              'fill-outline-color': '#FFF'
+            }
+          });
+  
+          var nav = new mapboxgl.NavigationControl();
+          map.addControl(nav, 'bottom-right');
+          map.on('mousemove', showPopup);
+        });
+      }
+      
     }
   }, [statesGeOJSON, statesConfirm, statesDeads]);
 
   React.useEffect(() => {
     if(map && state.date) {
+      console.log("map?", map.getLayer());
       let fillColor = getSteps(selectedLabel);
       if(map.loaded() && map.isStyleLoaded()) {
+        console.log("map?", map.getLayer());
         map.setPaintProperty('pref', 'fill-color', fillColor);
         map.on('mousemove', showPopup);
-      }     
+      }
     }
       
-  }, [state, selectedLabel]);
+  }, [state, selectedLabel, statesGeOJSON, statesConfirm, statesDeads]);
 
   React.useEffect(() => {
     if(map && map.loaded() && map.isStyleLoaded()) {
