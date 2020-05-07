@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   img: {
     display: 'flex',
     justifyContent: 'center',
-    width: '20%',
+    width: '24%',
     height: '8%'
   },
 
@@ -106,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '0px',
     }
   }
+  
 }));
 
 export default Footer;
