@@ -4,8 +4,8 @@
 /node_modules
 /api/node_modules
 
-cert.pem
-key.pem
+*.pem
+*.ca-bundle
 
 /.pnp
 .pnp.js
