@@ -14,9 +14,11 @@ const Map = ({classes}) => {
   let isMobile = window.innerWidth < 1000;
   return (
     <div className={isMap ? classes.show : classes.mapContainer}>
-      <div className={classes.loaderContainer}>
-        {!statesConfirm && <div className={classes.loader}><LoaderView/></div>}
-      </div>
+      {!statesConfirm && 
+        <div className={classes.loaderContainer}>
+          <div className={classes.loader}><LoaderView/></div>
+        </div>
+      }
       <div className={classes.sidebarStyle}>
         {!isMobile && <CustomizedSlider />}
       </div>
