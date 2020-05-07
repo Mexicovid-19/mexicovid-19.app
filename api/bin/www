@@ -19,8 +19,9 @@ app.set('port', port);
 
 // This line is from the Node.js HTTPS documentation.
 var options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
+  key: fs.readFileSync(__dirname + '/cert/mexicovid19.key.pem'),
+  cert: fs.readFileSync(__dirname + '/cert/mexicovid19_app.crt.pem'),
+  ca: fs.readFileSync(__dirname + '/cert/mexicovid19_app.ca-bundle')
 };
 
 /**
@@ -29,7 +30,7 @@ var options = {
 
 //var server = http.createServer(app);
 // Create an HTTP service.
-http.createServer(app);
+//http.createServer(app);
 // Create an HTTPS service identical to the HTTP service.
 var server = https.createServer(options, app).listen(443);
 /**
