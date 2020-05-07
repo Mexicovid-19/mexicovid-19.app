@@ -14,7 +14,7 @@ var fs = require('fs');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '443');
+var port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
 
 // This line is from the Node.js HTTPS documentation.
@@ -32,7 +32,7 @@ var options = {
 // Create an HTTP service.
 //http.createServer(app);
 // Create an HTTPS service identical to the HTTP service.
-var server = https.createServer(options, app).listen(443);
+var server = https.createServer(options, app).listen(port);
 /**
  * Listen on provided port, on all network interfaces.
  */

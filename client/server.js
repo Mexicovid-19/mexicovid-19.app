@@ -35,7 +35,10 @@ var options = {
   // Create an HTTP service.
   //http.createServer(app);
   // Create an HTTPS service identical to the HTTP service.
-  var server = https.createServer(options, app).listen(3000);
+  var port = normalizePort(process.env.PORT || '443');
+  app.set('port', port);
+
+  var server = https.createServer(options, app).listen(port);
   /**
    * Listen on provided port, on all network interfaces.
    */
