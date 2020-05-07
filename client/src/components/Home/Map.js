@@ -9,22 +9,19 @@ import LoaderView from '../Loader';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum} = React.useContext(MapContext);
-  const {selectedLabel, isMap} = React.useContext(HomeContext);
-  console.log("mapref", mapRef);
+  const {selectedLabel, isMap, statesConfirm} = React.useContext(HomeContext);
+  console.log("mapref", statesConfirm);
   let isMobile = window.innerWidth < 1000;
   return (
     <div className={isMap ? classes.show : classes.mapContainer}>
+      <div className={classes.loaderContainer}>
+        {!statesConfirm && <div className={classes.loader}><LoaderView/></div>}
+      </div>
       <div className={classes.sidebarStyle}>
         {!isMobile && <CustomizedSlider />}
       </div>
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
-      {mapRef.current 
-        ?<div ref={mapRef} className={classes.map}/>
-        : <React.Fragment>
-            <LoaderView/>
-            <div ref={mapRef}></div>
-          </React.Fragment>
-      }
+      <div ref={mapRef} className={classes.map}></div>
     </div>
   );
 }
@@ -94,6 +91,20 @@ const styles = () => ({
   numbers: {
     color: '#fff',
     fontSize: '12px'
+  },
+
+  loaderContainer: {
+    position: 'absolute',
+    zIndex: '100',
+    right: 'auto',
+    display: 'flex',
+    height: 'inherit',
+    width: 'calc(100% - 300px)',
+  },
+
+  loader: {
+    width: 'fit-content',
+    margin: 'auto',
   },
 
   [`@media (max-width: ${1000}px)`]: {

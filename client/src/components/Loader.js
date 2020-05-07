@@ -1,15 +1,15 @@
 import Loader from 'react-loader-spinner';
 import React from 'react';
+import * as colors from '../constants/colors';
  
 const LoaderView = ({classes}) => {
   return(
 		<Loader
-			type="ThreeDots"
-			color="#00BFFF"
-			height={100}
-			width={100}
-			timeout={3000} //3 secs
-
+			type="Puff"
+			color={colors.BLACK}
+			secondaryColor={colors.BLACK}
+			height={300}
+			width={300}
 		/>
 	);
 }
