@@ -13,9 +13,18 @@ const SimulationUncertainty = ({ classes }) => {
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Edmundo Molina, Fernando Gómez y Luis Serra</Typography>
 				<p className={classes.textcontainer}>Este modelo de difusión de COVID19 constituye una versión modificada del modelo SIR. Considera parámetros sobre la infectividad y mortalidad del COVID19, el impacto del distanciamiento social y, de manera muy importante, el rezago en la información entre el número real de infectados y el número de casos confirmados. En este ejercicio de modelación se integran además los datos de población ocupada total y producción bruta total de los censos económicos 2014 (último disponible con el nivel de desagregación requerido para el análisis), así como de la población estatal de la encuesta intercensal 2015 y el tamaño de empresas del Directorio Estadístico Nacional de Unidades Económicas (DENUE) de 2019. El modelo utilizado para el análisis todavía está en desarrollo y requiere refinamientos en relación a los efectos de externalidades geográficas, elasticidades de sustitución e impactos de la política de confinamiento.</p>
-				<div className={classes.buttonPlace}>
-					<Button  className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
-				</div>
+				<section className={classes.bottominfocontainer} >
+					<div className={classes.writterscontainer}>
+						<p className={classes.textcontainer}>Edmundo Molina, doctor en análisis de sistemas y política pública por la Pardee RAND Graduate School<a href="https://twitter.com/EdmundoMolinaMx" target="_blank" className={classes.twitterclass}> @EdmundoMolinaMx</a></p>
+						<p className={classes.textcontainer}>Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey <a href="https://twitter.com/fgmzz" target="_blank" className={classes.twitterclass}> @fgmzz</a></p>
+						<p className={classes.textcontainer}>Luis Serra, doctor en economía por la Universidad de Warwick <a href="https://twitter.com" target="_blank" className={classes.twitterclass}> @luisserra23</a></p>
+						<p className={classes.textcontainer}>Profesores-investigadores en la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey.</p>
+						<p className={classes.textcontainer}>Los resultados presentados son parte de una investigación en curso. Las opiniones aquí reflejadas representan la opinión personal de los autores y no de la institución donde laboran.</p>
+					</div>
+					<div className={classes.buttonPlace}>
+						<Button  target= "_blank" href="/uncertainty" className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>
+					</div>
+				</section>
 			</section>
 		</React.Fragment>
 	);
@@ -59,7 +68,8 @@ const styles = () => ({
 	buttonPlace: {
 		color: 'black',
 		minHeight: '40px',
-		textAlign: 'right'
+		textAlign: 'right',
+		alignSelf: 'flex-end',
 	},
 
 	icon: {
@@ -89,6 +99,23 @@ const styles = () => ({
 
 	textcontainer:{
 		textAlign:'justify',
+	},
+
+	writterscontainer:{
+		fontSize:'10px',
+		width: '90%',
+		alignSelf: 'flex-end',
+		lineHeight: '16px !important',
+	},
+
+
+	bottominfocontainer:{
+		display: 'flex',
+		marginTop: '50px',
+	},
+
+	twitterclass:{
+		fontWeight: '700',
 	},
 
   	[`@media (max-width: ${1000}px)`]: {
