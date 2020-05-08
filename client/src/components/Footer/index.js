@@ -6,6 +6,7 @@ import * as colors from '../../constants/colors';
 
 const Footer = ({ classes}) => {
   classes = useStyles();
+  const url= process.env.PUBLIC_URL;
     
   return (
     <div className={classes.root}>
@@ -13,29 +14,29 @@ const Footer = ({ classes}) => {
         <div className={classes.columnsContainer}>
           <Typography className={classes.title}>Menu</Typography>
           <div className={classes.columns}>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Inicio</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Investigación</Typography></Link>
-            <Link to={'./regions'} className={classes.name}><Typography className={classes.rows}>Gráficos por Región</Typography></Link>
-            <Link to={'./simulation'} className={classes.name}><Typography className={classes.rows}>Simulaciones</Typography></Link>
-            <Link to={'./methodology'} className={classes.name}><Typography className={classes.rows}>Metodologías</Typography></Link>
-            <Link to={'./about-us'} className={classes.name}><Typography className={classes.rows}>Acerca de Nosotros</Typography></Link>
+            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Inicio</Typography></Link>
+            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Investigación</Typography></Link>
+            <Link to={url+'/regions'} className={classes.name}><Typography className={classes.rows}>Gráficos por Región</Typography></Link>
+            <Link to={url+'/simulation'} className={classes.name}><Typography className={classes.rows}>Simulaciones</Typography></Link>
+            <Link to={url+'/methodology'} className={classes.name}><Typography className={classes.rows}>Metodologías</Typography></Link>
+            <Link to={url+'/about-us'} className={classes.name}><Typography className={classes.rows}>Acerca de Nosotros</Typography></Link>
           </div>
         </div>
         <div className={classes.columnsContainer}>
           <Typography className={classes.title}>Investigación</Typography>
           <div className={classes.columns}>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Infraestructura Hospitalaria</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Economía</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Analisis de la base de pruebas</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Confirmados positivos en los Estado</Typography></Link>
-            <Link to={'./'} className={classes.name}><Typography className={classes.rows}>Información clínica de pacientes diagnosticados con covid-19 en México</Typography></Link>
+            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Infraestructura Hospitalaria</Typography></Link>
+            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Economía</Typography></Link>
+            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Analisis de la base de pruebas</Typography></Link>
+            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Confirmados positivos en los Estado</Typography></Link>
+            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Información clínica de pacientes diagnosticados con covid-19 en México</Typography></Link>
           </div>
         </div>
         <div className={classes.columnsContainer}>
           <Typography className={classes.title}>Seguimiento por Región</Typography>
           <div className={classes.columns}>
-            <Link to={'./regions'} className={classes.name}><Typography className={classes.rows}>Estados</Typography></Link>
-            <Link to={'./regions'} className={classes.name}><Typography className={classes.rows}>Municipios</Typography></Link>
+            <Link to={url+'/regions'} className={classes.name}><Typography className={classes.rows}>Estados</Typography></Link>
+            <Link to={url+'/regions'} className={classes.name}><Typography className={classes.rows}>Municipios</Typography></Link>
           </div>
         </div>
       </div>

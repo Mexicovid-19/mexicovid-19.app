@@ -116,6 +116,7 @@ const styles = () => ({
 
 	twitterclass:{
 		fontWeight: '700',
+		fontSize:'10px'
 	},
 
   	[`@media (max-width: ${1000}px)`]: {

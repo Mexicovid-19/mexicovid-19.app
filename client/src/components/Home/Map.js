@@ -10,7 +10,7 @@ import LoaderView from '../Loader';
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum} = React.useContext(MapContext);
   const {selectedLabel, isMap, statesConfirm} = React.useContext(HomeContext);
-  console.log("mapref", statesConfirm);
+  
   let isMobile = window.innerWidth < 1000;
   return (
     <div className={isMap ? classes.show : classes.mapContainer}>

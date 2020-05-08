@@ -1,0 +1,184 @@
+
+  /*Blog posts*/
+  :root{
+    --theme-ui-colors-darker: #121217;
+    --theme-ui-colors-dark: #17171d;
+    --theme-ui-colors-darkless: #252429;
+    --theme-ui-colors-black: #1f2d3d;
+    --theme-ui-colors-steel: #273444;
+    --theme-ui-colors-slate: #3c4858;
+    --theme-ui-colors-muted: #8492a6;
+    --theme-ui-colors-smoke: #e0e6ed;
+    --theme-ui-colors-snow: #f9fafc;
+    --theme-ui-colors-white: #ffffff;
+    --theme-ui-colors-red: #ec3750;
+    --theme-ui-colors-orange: #ff8c37;
+    --theme-ui-colors-yellow: #f1c40f;
+    --theme-ui-colors-green: #33d6a6;
+    --theme-ui-colors-cyan: #5bc0de;
+    --theme-ui-colors-blue: #338eda;
+    --theme-ui-colors-twitter: #1da1f2;
+    --theme-ui-colors-facebook: #3b5998;
+    --theme-ui-colors-instagram: #e1306c;
+    --theme-ui-colors-text: #1f2d3d;
+    --theme-ui-colors-background: #ffffff;
+    --theme-ui-colors-elevated: #ffffff;
+    --theme-ui-colors-sheet: #f9fafc;
+    --theme-ui-colors-sunken: #e0e6ed;
+    --theme-ui-colors-border: #e0e6ed;
+    --theme-ui-colors-placeholder: #8492a6;
+    --theme-ui-colors-secondary: #3c4858;
+    --theme-ui-colors-primary: #ec3750;
+    --theme-ui-colors-accent: #338eda;
+
+
+
+
+    --wm-color-text-primary: black;
+    --wm-color-text-secondary: #3c4858;
+    --wm-color-background: white;
+    --wm-color-foreground: white;
+    --wm-color-nav: rgba(255,255,255)
+
+}
+  .first-letter,
+  .authorName a {
+    color: rgba(0, 0, 0, 0.84);
+    text-rendering: optimizeLegibility;
+  }
+  .BlogContainer>p{
+    margin-top: 21px;
+    font-family: "Raleway";
+    font-size: 18px;
+    letter-spacing: -0.03px;
+    line-height: 1.58;
+  }
+
+  .BlogContainer>blockquote {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-style: italic;
+    letter-spacing: -0.36px;
+    line-height: 44.4px;
+    overflow-wrap: break-word;
+    margin: 30px 0 33px 0;
+    /* text-align: center; */
+    color: rgba(0, 0, 0, 0.68);
+    padding: 0 0 0 50px;
+  }
+  
+  .BlogContainer>code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    padding: 3px 5px;
+  }
+  
+  .BlogContainer>pre > code {
+    background: transparent !important;
+    font-family: "Quicksand";
+    font-size: 18px;
+    padding: 0px;
+  }
+  
+  .BlogContainer>pre {
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 20px !important;
+  }
+  
+  .BlogContainer>mark,
+  .highlighted {
+    background: #7dffb3;
+  }
+  
+  .first-letter {
+    overflow-wrap: break-word;
+    font-family: "Playfair Display", serif;
+    font-size: 60px;
+    line-height: 60px;
+    display: block;
+    position: relative;
+    float: left;
+    margin: 0px 7px 0 -5px;
+  }
+  
+  .subtitle {
+    font-family: "Shadows Into Light", sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+    margin: 0 0 24px 0;
+  }
+  
+  ::selection {
+    background-color: lavender;
+  }
+  
+  /* Slide up */
+  
+  .blog-post-anchor {
+    color: #343139;
+    text-decoration: none;
+    box-shadow: inset 0 -0.125em 0 #0e0d0d;
+    transition: box-shadow 270ms cubic-bezier(0.77, 0, 0.175, 1), color 270ms cubic-bezier(0.77, 0, 0.175, 1);
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+  
+  .blog-post-anchor:hover {
+    box-shadow: inset 0 -1.125em 0 #080808;
+    color: white;
+  }
+  
+  .BlogContainer> img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .BlogContainer>p,
+    i,
+    a,
+    li {
+      font-size: 18px;
+    }
+    blockquote {
+      font-size: 20px;
+    }
+  }
+ 
+  
+  .BlogContainer>.sc-fznZeY > .iOfber>p{
+    margin-bottom:2rem;
+  }
+  .BlogContainer>.sc-fznZeY > .iOfber>p{
+    margin-bottom:2rem;
+  }
+  
+  .BlogContainer>.sc-fznZeY > .iOfber>table{
+    border-collapse: collapse;
+  }
+  .BlogContainer>table{
+    border-collapse: collapse;
+    width:100%;
+}
+.BlogContainer>th>td{
+  border: 0.5px solid var(--theme-ui-colors-muted);
+  padding: 8px;
+}
+
+
+.Blogs{
+  margin-top: 20rem;
+}
