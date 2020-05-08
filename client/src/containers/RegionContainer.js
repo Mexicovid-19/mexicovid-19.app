@@ -19,7 +19,6 @@ const useRegion = () => {
 
   React.useEffect(() => {
     if( dataChart.length > 0 ) {
-      console.log(dataChart)
       for(var state in dataChart) {
         if(state < 5) {
           statesBool[state] = true;
