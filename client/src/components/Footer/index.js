@@ -41,8 +41,8 @@ const Footer = ({ classes}) => {
         </div>
       </div>
       <div className={classes.img}>   
-        <img   title="logo tec Escuelas Gobernanza" src={process.env.PUBLIC_URL +'/img/LogoEscuelaGobernanza.png'}/>
-        <img   title="logo tec Escuela Ingenieria" src={process.env.PUBLIC_URL +'/img/LogoEscuelaIngenieria.png'}/>
+        <img   title="logo tec Escuelas Gobernanza" src={process.env.PUBLIC_URL +'/img/EGyTP.png'}/>
+        <img   title="logo tec Escuela Ingenieria" src={process.env.PUBLIC_URL +'/img/ING.png'}/>
       </div>
     </div>
   );
