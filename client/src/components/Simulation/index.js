@@ -9,7 +9,7 @@ import SimulationUncertainty from './SimulationUncertainty';
 const Simulation = ({ classes }) => {
 
 	const isMobile = window.innerWidth < 1000;
-	const title = `ANÁLISIS DE SIMULACIÓN DEL COVID-19 BAJO INCERTIDUMBRE`;
+	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
 	return (
 		<div className={classes.container}>
 		<Header fixed={true}/>
