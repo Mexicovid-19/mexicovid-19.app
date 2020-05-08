@@ -71,8 +71,7 @@ export const Card = ({ blog, onClick }) => {
     setLabels(labels);
   }, [blog.labels.nodes]);
   var imgurl = tomd.split('---')[1];
-  console.log(imgurl)
-
+  
   return (
     <CardContainer>
      <CardHeader>
