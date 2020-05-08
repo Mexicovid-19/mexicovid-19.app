@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     img: {
-      width: '50%',
+      width: '80%',
       display: 'flex',
       flexFlow: 'wrap',
     },

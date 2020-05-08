@@ -7,6 +7,7 @@ import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTw
 import { MONTHS } from '../../constants/date';
 import Slider from './Slider';
 import ButtonControl from './ButtonControl';
+import { numberWithCommas } from '../../Utils/numberWCommas'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -72,8 +73,8 @@ const CustomizedSlider = () => {
       <Slider/>
       <div className={classes.textContainer}>
         <Typography className={classes.text}>{formatedDate} | Totales:</Typography>
-        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> {totalConfirm} </Typography>
-        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {totalDeads} </Typography>
+        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> {numberWithCommas(totalConfirm)} </Typography>
+        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {numberWithCommas(totalDeads)} </Typography>
       </div>
       <ButtonControl onSelectLabel={onSelectLabel} selectedLabel={selectedLabel}/>
     </div>
