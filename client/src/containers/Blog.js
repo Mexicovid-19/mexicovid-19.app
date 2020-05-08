@@ -13,6 +13,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import {Helmet} from 'react-helmet';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -97,9 +98,15 @@ const Blog = () => {
   const { posts, loading, openBlog, categories, category, onChangeCategory } = React.useContext(BlogContext);
   const classes = useStyles();
   const isMobile = window.innerWidth < 1000;
-
+  document.title = "Investigación | MexiCOVID";
   return (
     <div className={classes.container}>
+      <Helmet>
+        <title>Investigación | MexiCOVID</title>
+        <meta name="description" content="Artículos e investigaciones sobre COVID-19 y su impacto en México" />
+        <meta property="og:image" content="http://mexicovid19.app/img/mediashare/blog.PNG" />
+        <meta name="keywords" content="tec mexicovid, coronavirus mexico tec,casos coronavirus investigacion,coronavirus impacto economico,coronavirus impacto social"/>
+      </Helmet>
       <Header fixed={true}/>
         <main className={classes.BlogsContainer}>
         <header className={classes.header}>

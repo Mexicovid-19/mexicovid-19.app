@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './css/index.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
@@ -6,6 +6,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { client } from './Utils/apollo';
 import Router from './Router';
 import GithubCallback from './containers/GithubCallback';
+import ReactGA from 'react-ga'
+
 
 const theme = createMuiTheme({
   typography: {
@@ -26,9 +28,13 @@ const theme = createMuiTheme({
     color: '#fff'
   }
 });
+ReactGA.initialize('G-FP731512QW')
+
+console.log(ReactGA.initialize('G-FP731512QW'))
 
 const Application = () => {
   const urlParams = new URLSearchParams(window.location.search);
+  
 
   if (urlParams.get('code')) {
     return <GithubCallback />
