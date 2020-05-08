@@ -98,7 +98,7 @@ const Header = ({ classes, fixed=false}) => {
             <Button className={location === '/simulation' ? classes.selectedBtn : classes.button} color="inherit">Simulaciones</Button>
           }/>
           <LinkElement url='/methodology' element={
-            <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
+            <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Metodología</Button>
           }/>
           <LinkElement url='/about-us' element={
             <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
