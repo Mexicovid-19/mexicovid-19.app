@@ -7,4 +7,5 @@ export const CardDescription = styled.p`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   line-height: 1.58;
+  font-family:'Raleway';
 `

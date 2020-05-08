@@ -16,6 +16,7 @@ import AspectRatioRoundedIcon from '@material-ui/icons/AspectRatioRounded';
 import * as colors from '../../constants/colors';
 import Button from "@material-ui/core/Button";
 import AlertDialogSlide from './DialogChart';
+import { numberWithCommas } from '../../Utils/numberWCommas';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -289,7 +290,7 @@ const EnhancedTable = () => {
                     >
                       <TableCell className={classes.headerCell} padding='none' align="right">{row.position}</TableCell>
                       <TableCell className={classes.headerCell} padding='none' align="right">{row.state}</TableCell>
-                      <TableCell className={classes.headerCell} padding='none' align="right">{row.data}</TableCell>
+                      <TableCell className={classes.headerCell} padding='none' align="right">{numberWithCommas(row.data)}</TableCell>
                     </TableRow>
                   );
                 })}

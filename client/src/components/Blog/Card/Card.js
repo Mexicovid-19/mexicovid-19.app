@@ -44,15 +44,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Card = ({ blog }) => {
+export const Card = ({ blog, onClick }) => {
   const [labels, setLabels] = useState([]);
-  const history = useHistory();
   const classes = useStyles();
-
-  const openBlog = (title, number) => {
-    history.push(`/blog/${title}/${number}`);
-  }
-
 
   let converter = new showdown.Converter({
     ghCompatibleHeaderId: true,
@@ -69,8 +63,6 @@ export const Card = ({ blog }) => {
   var html = conv.makeHtml(tomd);
   var metadata = converter.getMetadata(); // returns an object with the document metadata
   
-  
-
   useEffect(() => {
     const labels = blog.labels.nodes.filter((value) => {
       return value.name !== "blog";
@@ -79,8 +71,7 @@ export const Card = ({ blog }) => {
     setLabels(labels);
   }, [blog.labels.nodes]);
   var imgurl = tomd.split('---')[1];
-  console.log(imgurl)
-
+  
   return (
     <CardContainer>
      <CardHeader>
@@ -93,7 +84,7 @@ export const Card = ({ blog }) => {
         </>
         <CardReadingTime time={readingTime(blog.body).minutes} />
       </CardHeader>
-      <div onClick={() => openBlog(blog.title, blog.number)}>
+      <div onClick={() => onClick(blog.title, blog.number)}>
         <div className={classes.root}>
             <Grid container spacing={0}>
               <Grid item sm={4}>

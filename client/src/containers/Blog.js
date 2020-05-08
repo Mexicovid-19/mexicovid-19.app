@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { gql } from "apollo-boost";
-import { useQuery } from '@apollo/react-hooks';
+import React from "react";
 
-import { config } from "../config";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Loader } from '../components/Common'
+import  Loader  from '../components/Loaders';
 import { BlogContainer } from '../components/Blog';
 import { Card } from '../components/Blog/Card';
-import { Blogcarousel } from '../components/Blogcarousel';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import 'showdown-youtube';
+import { BlogContext } from '../contexts/BlogContext';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -39,8 +40,29 @@ const useStyles = makeStyles((theme) => ({
     margin: '5rem auto 0'
   },
   disclaimer:{
-    textAlign:'center',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    fontSize: '12px',
+    lineHeight: '15px',
+    textAlign: 'justify'
+  },
+  imgSelector: {
+    maxWidth: '30px',
+    marginRight: '20px'
+  },
+  itemContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  selectorContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: '20px 0px'
+  },
+  form: {
+    flex: 1,
+    maxWidth: '300px'
   },
   [`@media (max-width: ${1000}px)`]: {
 		BlogsContainer: {
@@ -53,83 +75,90 @@ const useStyles = makeStyles((theme) => ({
 		},
 		h1: {
 			fontSize: '24px'
-		},
+    },
+    form: {
+      maxWidth: '100%'
+    },
   }
 }));
 
-const GET_POSTS = gql`{
-  repository(owner: "${config.githubUserName}", name: "${config.githubRepo}") {
-    issues(first: 100, states: OPEN, filterBy: { labels: "blog" }) {
-      nodes {
-        title
-        body
-        bodyHTML
-        bodyText
-        number
-        labels(first: 100) {
-          nodes {
-            color
-            name
-            id
-          }
-        }
-        author {
-          url
-          avatarUrl
-          login
-        }
-        updatedAt
-        id
-      }
-    }
-  }
+const ContentItem = ({classes, category}) => {
+  const { img, alt, text } = category;
+  
+  return (
+    <div className={classes.itemContainer}>
+      <img className={classes.imgSelector} src={img} alt={alt}/>
+      {text}  
+    </div>
+  );
 }
-`
+
 const Blog = () => {
-  const [posts, setPosts] = useState([]);
-  const { loading, error, data } = useQuery(GET_POSTS);
+  const { posts, loading, openBlog, categories, category, onChangeCategory } = React.useContext(BlogContext);
   const classes = useStyles();
+  const isMobile = window.innerWidth < 1000;
 
-  useEffect(() => {
-    if (!loading) {
-      if (error) {
-        console.error(error)
-      }
-
-      if (data) {
-        setPosts(data?.repository?.issues?.nodes)
-        console.log("ya cargo los datos")
-        console.log(posts)
-      }
-    }
-  }, [loading, error, data]);
-
-  //<Blogcarousel/> meterlo despues de blog container   Investigación y Análisis de Covid-19 en México
-
-  //blog carousel añadir tag del objeto de informacion(mapeado)
   return (
     <div className={classes.container}>
       <Header fixed={true}/>
         <main className={classes.BlogsContainer}>
         <header className={classes.header}>
-              <Typography className={classes.h1} variant={'h1'}>Investigación de COVID-19 en México</Typography>	
-          </header>
-          <BlogContainer className={classes.white}>
-            <div>
-            <Blogcarousel/> 
-            {
-              loading 
-              ? <Loader />
-              : posts.map((v, i) => {
-                  return <Card blog={v} key={i} />;
-                })
-            }
-            </div>
-          </BlogContainer>
-          <h1 className={classes.disclaimer}>
-            Los resultados de esta sección de Investigación y Análisis provienen de investigaciones en curso y no son resultados definitivos. Adicionalmente, las opiniones vertidas son a título personal de los investigadores y e investigadoras y no reflejan la posición oficial del Tecnológico de Monterrey ni de la Escuela de Gobierno y Transformación Pública.
-          </h1>
-        </main>
+          <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
+        </header>
+        <section className={classes.selectorContainer}>
+          <div>
+            Las investigaciones realizadas puedes encontrarlas organizadas por categorias. Selecciona la categoria de interés:
+          </div>
+          <FormControl  classes={{ root: classes.form}}>
+            <InputLabel id="category-selector">Categoria</InputLabel>
+            <Select
+              labelId="category-selector"
+              value={category}
+              onChange={onChangeCategory}
+              label="Categoria"
+            >
+              <MenuItem value={0}>
+                Todos
+              </MenuItem>
+              <MenuItem value={1}>
+                <ContentItem category={categories[1]} classes={classes}/>
+              </MenuItem>
+              <MenuItem value={2}>
+                <ContentItem category={categories[2]} classes={classes}/>
+              </MenuItem>
+              <MenuItem value={3}>
+                <ContentItem category={categories[3]} classes={classes}/>
+              </MenuItem>
+              <MenuItem value={4}>
+                <ContentItem category={categories[4]} classes={classes}/>
+              </MenuItem>
+              <MenuItem value={5}>
+                <ContentItem category={categories[5]} classes={classes}/>
+              </MenuItem>
+              <MenuItem value={6}>
+                <ContentItem category={categories[6]} classes={classes}/>
+              </MenuItem>
+              <MenuItem value={7}>
+                <ContentItem category={categories[7]} classes={classes}/>
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </section>
+        <BlogContainer className={classes.white}>
+          <div>
+          {
+            loading 
+            ? <Loader />
+            : posts.map((v, i) => {
+                return <Card blog={v} onClick={openBlog} key={i} />;
+              })
+          }
+          </div>
+        </BlogContainer>
+        <span className={classes.disclaimer}>
+          Los resultados de esta sección de Investigación y Análisis provienen de investigaciones en curso y no son resultados definitivos. Adicionalmente, las opiniones vertidas son a título personal de los investigadores y e investigadoras y no reflejan la posición oficial del Tecnológico de Monterrey ni de la Escuela de Gobierno y Transformación Pública.
+        </span>
+      </main>
       <Footer/>
     </div>
   );

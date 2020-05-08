@@ -5,6 +5,5 @@ export const BlogContainer = styled.div`
   margin-top:0rem !important;
   width: 100%;
   max-width: 1100px;
-  padding: 20px 10px;
   background-color: #FAFAFA;
 `

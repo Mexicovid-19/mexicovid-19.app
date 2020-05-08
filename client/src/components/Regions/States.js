@@ -32,7 +32,7 @@ const States = ({ classes }) => {
 		<React.Fragment>
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Número de Confirmados Positivos por Estado y por 100,000 Habitantes</Typography>
-				<p className={classes.textcontainer}><u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.</p>
+				<p className={classes.textcontainer1}><u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.</p>
 				<div className={classes.selector}>
 					<Autocomplete
 						id="estados-mexico-100k"
@@ -45,12 +45,12 @@ const States = ({ classes }) => {
 					/>
 					<Button
 						onClick={handleClick}
-						startIcon={<VisibilityIcon />}
+						startIcon={<AddRoundedIcon />}
 					>
-						Visualizar
+						Agregar
 					</Button>
-					<Button onClick={addAll} startIcon={<AddRoundedIcon />}>Agregar Todos</Button>
-					<Button onClick={deleteAll} startIcon={<DeleteIcon />}>Eliminar Todos</Button>
+					<Button onClick={addAll} startIcon={<AddRoundedIcon />}> Todos</Button>
+					<Button onClick={deleteAll} startIcon={<DeleteIcon />}>Eliminar</Button>
 				</div>
 				<div className={classes.chipContainer}>
 					{selectedStates.map((state, index) => {
@@ -101,6 +101,7 @@ const styles = () => ({
 		fontSize: '24px',
 		marginBottom: '10px',
 		marginTop: '10px',
+		fontWeight: 'bold'
 	},
 
 	header: {
@@ -182,7 +183,12 @@ const styles = () => ({
 
 
 	textcontainer:{
+		textAlign:'justify'
+	},
+
+	textcontainer1:{
 		textAlign:'justify',
+		margin: '25px 0px'
 	},
 
 	[`@media (max-width: ${1000}px)`]: {

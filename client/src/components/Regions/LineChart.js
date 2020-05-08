@@ -31,9 +31,8 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 	<ResponsiveLine
 		data={data}
 		colors={{ scheme: 'spectral' }}
-		lineWidth={3}
+		lineWidth={2}
 		margin={marginConstrains}
-		xScale={{ type: 'point' }}
 		yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
 		curve="natural" 
 		axisTop={null}
@@ -45,7 +44,17 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 				tickRotation: tickRotation,
 				legend: 'Fecha',
 				legendOffset: 80,
-				legendPosition: 'middle'
+				legendPosition: 'middle',
+				tickValues: 4
+		}}
+		theme={{
+			crosshair: {
+				line: {
+					strokeWidth: 2,
+					stroke: "#000",
+					strokeOpacity: 1,
+				},
+			},
 		}}
 		axisLeft={{
 				orient: 'left',
@@ -58,8 +67,7 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 		}}
 		enableGridX={false}
 		enableGridY={false}
-		enablePoints={false}
-		pointSize={10}
+		pointSize={5}
 		pointColor={{ theme: 'background' }}
 		pointBorderWidth={2}
 		pointBorderColor={{ from: 'serieColor' }}
@@ -70,6 +78,27 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 		legends={legendsConstrains}
 		motionStiffness={160}
 		motionDamping={20}
+		tooltip={({ point }) => {
+            return (
+                <div
+                    style={{
+                        background: 'white',
+                        padding: '9px 12px',
+                        border: '1px solid #ccc',
+                    }}
+                >
+				<div
+					key={point.id}
+					style={{
+						color: point.serieColor,
+						padding: '3px 0',
+					}}
+				>
+				<strong>{point.serieId}</strong> {point.data.yFormatted}
+			</div>
+			</div>
+            )
+        }}
 	/>
 	)
 }
