@@ -85,7 +85,6 @@ const GET_POSTS = gql`{
   }
 }
 `
-
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const { loading, error, data } = useQuery(GET_POSTS);
