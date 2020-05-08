@@ -12,7 +12,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { config } from "../config";
 import { getEmojiByName, getNameByEmoji } from '../Utils/emoji';
 import { getAuthenticatedUser } from '../Utils/auth'
-import { Loader } from "../components/Common";
+import  Loader  from '../components/Loaders';
 import { PostContainer, PostTitle, PostDate, PostDateLink, PostReaction, BackButton, Time, Text} from "../components/Post";
 import { AuthorDetails, AuthorAvatar, AuthorName } from "../components/Post/Author";
 import { GithubLogin } from '../components/Header'

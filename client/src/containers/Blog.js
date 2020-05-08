@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Loader } from '../components/Common'
+import  Loader  from '../components/Loaders';
 import { BlogContainer } from '../components/Blog';
 import { Card } from '../components/Blog/Card';
 import { makeStyles } from '@material-ui/core/styles';
