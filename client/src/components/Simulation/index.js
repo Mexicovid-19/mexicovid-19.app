@@ -5,13 +5,21 @@ import * as colors from '../../constants/colors';
 import Header from '../Header';
 import Footer from '../Footer';
 import SimulationUncertainty from './SimulationUncertainty';
+import { Helmet } from 'react-helmet';
 
 const Simulation = ({ classes }) => {
 
 	const isMobile = window.innerWidth < 1000;
+	document.title = "Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID";
 	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
 	return (
 		<div className={classes.container}>
+		<Helmet>
+			<title>Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID</title>
+			<meta name="description" content="Metodología utilizada en MexiCOVID19" />
+			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/incertidumbre.PNG" />
+			<meta name="keywords" content="simulacion incertidumbre, coronavirus mexico tec,casos coronavirus simulacion,coronavirus simulacion,cuanto tiempo falta coronavirus"/>
+		</Helmet>
 		<Header fixed={true}/>
 				<div className={classes.regionsContainer}>
 					<header className={classes.header}>

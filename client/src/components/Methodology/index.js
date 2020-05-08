@@ -9,11 +9,17 @@ import FindInPageIcon from '@material-ui/icons/FindInPage';
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import PolicyIcon from '@material-ui/icons/Policy';
 import Grid from '@material-ui/core/Grid';
+import { Helmet } from 'react-helmet';
 
 const Methodology = ({ classes }) => {
-  
+  document.title = "Metodología | MexiCOVID";
   return (
     <div className={classes.container}>
+      <Helmet>
+			<title>Metodología | MexiCOVID</title>
+			<meta name="description" content="Metodología utilizada en MexiCOVID19" />
+			<meta name="keywords" content="metodologia,usos tecnologias, coronavirus mexico tec,casos coronavirus metodologia,coronavirus ciencia,politica divulgacion"/>
+			</Helmet>
       <Header fixed={true}/>
       <main className={classes.MethologyContainer}>
         <header className={classes.header}>

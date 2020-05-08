@@ -1,6 +1,9 @@
 {
-  "short_name": "Mexicovid-19",
-  "name": "Mapa de Mexico Covid-19",
+  "short_name": "MexiCOVID",
+  "name": "Mexicovid-19",
+  "description": "Seguimiento diario a la evoluación del Covid-19 en México",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,7 +22,5 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "display": "standalone"
 }
