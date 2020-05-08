@@ -1,6 +1,5 @@
 import React from 'react';
 import InfiniteCarousel from 'react-leaf-carousel';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -10,71 +9,95 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const Blogcarousel= () => {
-    const classes = useStyles();
+const icons = [{
+        img: "icons/iconosInfraestructura.png" ,
+        alt: "iconosInfraestructura",
+        text: "    Infraestructura"
+    },        
+    {
+        img: "icons/iconosEconomia.png" ,
+        alt: "iconosEconomia",
+        text: "    Economía"
+    },        
+    {
+        img: "icons/iconosExaminacion.png" ,
+        alt: "iconosExaminacion",
+        text: "    Analisis de pruebas"
+    },        
+    {
+        img: "icons/iconosConfirmados.png" ,
+        alt: "iconosConfirmados",
+        text: "    Confirmados"
+    },        
+    {
+        img: "icons/iconosDesglose.png" ,
+        alt: "iconosDesglose",
+        text: "    Información clinica"
+    },        
+    {
+        img: "icons/iconosGeografia.png" ,
+        alt: "iconosGeografia",
+        text: "    Geografía"
+    }
+]
+
+const Element = (props) => {
+    const {
+        classes,
+        img,
+        alt,
+        text,
+        onClick,
+        key
+    } = props;
+    console.log("key",key)
     return (
-    <InfiniteCarousel
-        breakpoints={[
-        {
-            breakpoint: 500,
-            settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            },
-        },
-        {
-            breakpoint: 768,
-            settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            },
-        },
-        ]}
-        showSides={true}
-        sidesOpacity={.1}
-        sideSize={.1}
-        slidesToScroll={1}
-        slidesToShow={4}
-        scrollOnDevice={true}
-    >
         <div>
-            <img src="icons/iconosInfraestructura.png" alt="iconosInfraestructura"/>
-            <div className={classes.labelp}>
-                Infraestructura
+            <img src={img} alt={alt}/>
+            <div className={classes.labelp} onClick={onClick}>
+                {text}
             </div>
         </div>
-        <div>
-            <img src="icons/iconosEconomia.png" alt="iconosEconomia"/>
-            <div className={classes.labelp}>
-                Economía
-            </div>
-        </div>
-        <div>
-            <img src="icons/iconosExaminacion.png" alt="iconosExaminacion"/>
-            <div className={classes.labelp}>
-                Analisis de pruebas
-            </div>
-        </div>
-        <div>
-            <img src="icons/iconosConfirmados.png" alt="iconosConfirmados"/>
-            <div className={classes.labelp}>
-                Confirmados
-            </div>
-        </div>
-        <div>
-            <img src="icons/iconosDesglose.png" alt="iconosDesglose"/>
-            <div className={classes.labelp}>
-                Información clinica
-            </div>
-        </div>
-        <div>
-            <img src="icons/iconosGeografia.png" alt="iconosGeografia"/>
-            <div className={classes.labelp}>
-                Geografía
-            </div>
-        </div>
-    </InfiniteCarousel>
     );
+}
+
+const Blogcarousel = ( props ) => {
+    const { posts, onClick } = props;
+    const classes = useStyles();
+    console.log(posts, icons)
+    return (
+        <InfiniteCarousel
+            breakpoints={[
+            {
+                breakpoint: 500,
+                settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                },
+            },
+            ]}
+            showSides={true}
+            sidesOpacity={.1}
+            sideSize={.1}
+            slidesToScroll={1}
+            slidesToShow={4}
+            scrollOnDevice={true}
+            animationDuration={500}
+        >
+            {
+                posts.map((v, i) => {
+                  return <Element blog={v} onClick={onClick} key={i} />;
+                })
+            }
+        </InfiniteCarousel>
+        );
 }
 
 export default Blogcarousel;

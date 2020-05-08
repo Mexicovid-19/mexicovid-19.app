@@ -7,6 +7,7 @@ import Regions from './components/Regions';
 import { RegionContextProvider } from './contexts/RegionContext';
 import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
+import { BlogContextProvider } from './contexts/BlogContext';
 import './css/index.css';
 import AvailableBeds from './components/AvailableBeds';
 import ConfirmAge from './components/ConfirmAge';
@@ -43,7 +44,11 @@ const Router = () => {
         <Route path='/distributionestate' component={DistributionEstate}/>
         <Route path='/simulation' component={Simulation}/>
         <Route path='/uncertainty' component={Uncertainty}/>
-        <Route exact path="/blog" component={Blog} />
+        <Route exact path="/blog">
+            <BlogContextProvider>
+              <Blog/>
+            </BlogContextProvider>
+        </Route>
         <Route exact path="/blog/:title/:issueNumber" component={BlogPost}/>
       </Switch>
     </BrowserRouter>
