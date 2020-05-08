@@ -54,7 +54,9 @@ const useMap = () => {
 
   React.useEffect(() => {
     if(map) {
-      callStatesGEOJSON();
+      map.on('load', function() {
+        callStatesGEOJSON();
+      })
     }
   }, [map]);
 
@@ -62,71 +64,38 @@ const useMap = () => {
     if(statesConfirm && statesDeads && statesGeOJSON) {  
       let fillColor = getSteps(selectedLabel);
       let geojson = setUpGEOJson();
-      if(map.loaded()) {
-        map.addSource('pref', {
-          type: 'geojson',
-          data: geojson
-        });
-        console.log("adding layer:")
-        map.addLayer({
-          'id': 'pref',
-          'type': 'fill',
-          'source': 'pref',
-          'paint': {
-            'fill-color': fillColor,
-            'fill-opacity': [
-                'case',
-                ['boolean', ['feature-state', 'hover'], false],
-                1,
-                1,
-            ],
-            'fill-outline-color': '#FFF'
-          }
-        });
 
-        var nav = new mapboxgl.NavigationControl();
-        map.addControl(nav, 'bottom-right');
-        map.on('mousemove', showPopup);
-      } else {
-        map.on('load', function() {
-          let geojson = setUpGEOJson();
-          
-          map.addSource('pref', {
-            type: 'geojson',
-            data: geojson
-          });
-          console.log("adding layer:")
-          map.addLayer({
-            'id': 'pref',
-            'type': 'fill',
-            'source': 'pref',
-            'paint': {
-              'fill-color': fillColor,
-              'fill-opacity': [
-                  'case',
-                  ['boolean', ['feature-state', 'hover'], false],
-                  1,
-                  1,
-              ],
-              'fill-outline-color': '#FFF'
-            }
-          });
-  
-          var nav = new mapboxgl.NavigationControl();
-          map.addControl(nav, 'bottom-right');
-          map.on('mousemove', showPopup);
-        });
-      }
-      
+      map.addSource('pref', {
+        type: 'geojson',
+        data: geojson
+      });
+      console.log(" if adding layer:");
+      map.addLayer({
+        'id': 'pref',
+        'type': 'fill',
+        'source': 'pref',
+        'paint': {
+          'fill-color': fillColor,
+          'fill-opacity': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              1,
+              1,
+          ],
+          'fill-outline-color': '#FFF'
+        }
+      });
+
+      map.on('mousemove', showPopup);
+      var nav = new mapboxgl.NavigationControl();
+      map.addControl(nav, 'bottom-right');
     }
   }, [statesGeOJSON, statesConfirm, statesDeads]);
 
   React.useEffect(() => {
     if(map && state.date) {
-      console.log("map?", map.getLayer());
       let fillColor = getSteps(selectedLabel);
       if(map.loaded() && map.isStyleLoaded()) {
-        console.log("map?", map.getLayer());
         map.setPaintProperty('pref', 'fill-color', fillColor);
         map.on('mousemove', showPopup);
       }

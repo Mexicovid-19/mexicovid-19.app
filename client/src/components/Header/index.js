@@ -38,7 +38,11 @@ const Header = ({ classes, fixed=false}) => {
   return (
     <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
       <Toolbar>
+<<<<<<< HEAD
         <Link to={'/'} className={classes.name}>
+=======
+        <Link to={process.env.PUBLIC_URL} className={classes.name}>
+>>>>>>> 6ba3f3b029b5429bf0ed0354e109943f213ffa0c
           <img className={classes.img} title="logo tec" src={process.env.PUBLIC_URL + '/img/Logotipo_Vertical_Blanco_Sin_Fondo_notext.png'}/>
           <button variant="raised">
             <Typography variant="h6" className={classes.title}>

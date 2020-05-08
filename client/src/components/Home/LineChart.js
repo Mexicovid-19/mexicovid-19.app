@@ -4,7 +4,6 @@ import * as colors from '../../constants/colors';
 import { themeBlack } from '../../constants/chartThemes';
 
 const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false  }) => {
-    console.log(data);
     let axisBottom = null;
     let axisLeft = null;
     var Defaultmargin = { top: 10, right: 10, bottom: 15, left: 15 };
