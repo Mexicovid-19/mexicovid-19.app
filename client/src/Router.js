@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
 import Team from './components/Team';
@@ -15,10 +15,13 @@ import MunicipalitiesFollow from './components/MunicipalitiesFollow';
 import DistributionEstate from './components/DistributionEstate';
 import Simulation from './components/Simulation';
 import Uncertainty from './components/Uncertainty';
-
+import Research1 from './components/Research1'
 
 import Blog from "./containers/Blog"
 import BlogPost from "./containers/BlogPost";
+import NotFoundPage from "./components/NotFoundPage";
+
+import ReactGA from 'react-ga';
 
 const Router = () => {
   return (
@@ -44,12 +47,14 @@ const Router = () => {
         <Route path='/distributionestate' component={DistributionEstate}/>
         <Route path='/simulation' component={Simulation}/>
         <Route path='/uncertainty' component={Uncertainty}/>
-        <Route exact path="/blog">
+        <Route exact path="/investigation">
             <BlogContextProvider>
               <Blog/>
             </BlogContextProvider>
         </Route>
-        <Route exact path="/blog/:title/:issueNumber" component={BlogPost}/>
+        <Route exact path="/investigation/:title/:issueNumber" component={BlogPost}/>
+        <Route path='/Research1' component={Research1}/>
+        <Route path="*" component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   );

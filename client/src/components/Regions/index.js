@@ -8,6 +8,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import States from './States';
 import Municipalities from './Municipalities';
+import { Helmet } from 'react-helmet';
 
 const Regions = ({ classes }) => {
 	const [isEstate, setEstate] = React.useState(true);
@@ -17,10 +18,17 @@ const Regions = ({ classes }) => {
 	};
 
 	const isMobile = window.innerWidth < 1000;
+	document.title = "Seguimiento por municipio | MexiCOVID";
 	const title = `Seguimiento por ${isEstate ? 'Estado' : 'Municipio'}`;
 	const subtitle = `${isMobile ? '' : 'Seguimiento por'} ${isEstate ? 'Municipio' : 'Estado'}`;
 	return (
 		<div className={classes.container}>
+			<Helmet>
+			<title>Seguimiento por regiones | MexiCOVID</title>
+			<meta name="description" content="Seguimiento a la evoluación del Covid-19 en México por regiones" />
+			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/regiones.PNG" />
+			<meta name="keywords" content="coronavirus,regiones coronavirus, coronavirus mexico,casos coronavirus,coronavirus estados,Mexicovid regiones"/>
+			</Helmet>
 			<Header fixed={true}/>
 				<div className={classes.regionsContainer}>
 					<header className={classes.header}>

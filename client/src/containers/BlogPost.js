@@ -24,6 +24,7 @@ import showdown from 'showdown';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import youtube from 'showdown-youtube';
+import {Helmet} from 'react-helmet';
 import '../css/Blog.css';
 
 import Button from '@material-ui/core/Button';
@@ -201,13 +202,19 @@ export default withStyles(styles)(function BlogHome({classes}) {
 
   const isMobile = window.innerWidth < 1000;
   const textmd = post.body;
+  document.title = post.title+" | MexiCOVID";
   return (
     <div className={classes.section}>
+      <Helmet>
+          <title>{post.title+" | MexiCOVID"}</title>
+          <meta name="description" content={post.body}/>
+          <meta name="keywords" content="tec mexicovid, coronavirus mexico tec,casos coronavirus investigacion,coronavirus impacto economico,coronavirus impacto social"/>
+      </Helmet>
       <Header fixed={true}/>
       <div className={classes.teamsContainer}>
         <header className={classes.header}>
           <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
-          <Button className={classes.label} href="/blog"> 
+          <Button className={classes.label} href="/investigation"> 
             <ArrowBackIosRoundedIcon/>
             Regresar
           </Button>

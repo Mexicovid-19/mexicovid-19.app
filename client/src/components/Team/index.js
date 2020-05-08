@@ -6,11 +6,17 @@ import Header from '../Header/';
 import Footer from '../Footer/';
 import * as colors from '../../constants/colors';
 import PhotoGrid from './teamPhotos';
+import { Helmet } from 'react-helmet';
 
 const Team = ({classes}) => {
-  
+  document.title = "¿Quiénes Somos? | MexiCOVID";
   return (
     <div className={classes.container}>
+      <Helmet>
+          <title>¿Quiénes Somos? | MexiCOVID</title>
+          <meta name="description" content="La plataforma www.mexicovid19.mx es un esfuerzo conjunto de un grupo de alumnos y profesores del Tecnológico de Monterrey para dar seguimiento y fácil acceso a la información de salud más relevante en el contexto de la pandemia de Coronavirus en México. " />
+          <meta name="keywords" content="equipo mexicovid,quienes somos covid,quienes somos mexicovid"/>
+      </Helmet>
       <Header fixed={true}/>
       <div className={classes.teamsContainer}>
         <header className={classes.header}>
@@ -20,7 +26,7 @@ const Team = ({classes}) => {
           <section className={classes.section}>
           <div>
             <Typography align = {"justify"} className={classes.textclass}>
-              La plataforma <a href="https://www.mexicovid19.mx">www.mexicovid19.mx </a> 
+              La plataforma <a href="process.env.PUBLIC_URL">mexicovid19.app </a> 
               es un esfuerzo conjunto de un grupo de alumnos y profesores del Tecnológico de 
               Monterrey para dar seguimiento y fácil acceso a la información de salud más relevante 
               en el contexto de la pandemia de Coronavirus en México. Mediante herramientas de 

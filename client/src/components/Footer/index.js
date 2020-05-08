@@ -25,11 +25,11 @@ const Footer = ({ classes}) => {
         <div className={classes.columnsContainer}>
           <Typography className={classes.title}>Investigación</Typography>
           <div className={classes.columns}>
-            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Infraestructura Hospitalaria</Typography></Link>
-            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Economía</Typography></Link>
-            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Analisis de la base de pruebas</Typography></Link>
-            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Confirmados positivos en los Estado</Typography></Link>
-            <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Información clínica de pacientes diagnosticados con covid-19 en México</Typography></Link>
+            <Link to={url+'/investigation'} className={classes.name}><Typography className={classes.rows}>Infraestructura Hospitalaria</Typography></Link>
+            <Link to={url+'/investigation'} className={classes.name}><Typography className={classes.rows}>Economía</Typography></Link>
+            <Link to={url+'/investigation'} className={classes.name}><Typography className={classes.rows}>Analisis de la base de pruebas</Typography></Link>
+            <Link to={url+'/investigation'} className={classes.name}><Typography className={classes.rows}>Confirmados positivos en los Estado</Typography></Link>
+            <Link to={url+'/investigation'} className={classes.name}><Typography className={classes.rows}>Información clínica de pacientes diagnosticados con covid-19 en México</Typography></Link>
           </div>
         </div>
         <div className={classes.columnsContainer}>
@@ -41,8 +41,8 @@ const Footer = ({ classes}) => {
         </div>
       </div>
       <div className={classes.img}>   
-        <img   title="logo tec Escuelas Gobernanza" src={process.env.PUBLIC_URL +'/img/LogoEscuelaGobernanza.png'}/>
-        <img   title="logo tec Escuela Ingenieria" src={process.env.PUBLIC_URL +'/img/LogoEscuelaIngenieria.png'}/>
+        <img   title="logo tec Escuelas Gobernanza" src={process.env.PUBLIC_URL +'/img/EGyTP.png'}/>
+        <img   title="logo tec Escuela Ingenieria" src={process.env.PUBLIC_URL +'/img/ING.png'}/>
       </div>
     </div>
   );

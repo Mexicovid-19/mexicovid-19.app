@@ -15,6 +15,7 @@ import Map from './Map';
 import Header from '../Header';
 import EnhacedTable from './Table';
 import Slider from './Slider';
+import { Helmet } from 'react-helmet';
 
 const Home = ({ classes }) => {
   const { 
@@ -33,9 +34,16 @@ const Home = ({ classes }) => {
   let expandHandler = () => {
     setIsExpanded(!isExpanded);
   }
-    
+  document.title = "MexiCOVID: COVID-19 en México";  
   return (
     <div className={classes.container}>
+      <Helmet>
+          <title>MexiCOVID: COVID-19 en México</title>
+          <meta name="description" content="Seguimiento diario a la evoluación del Covid-19 en México @ITESM" />
+          <meta property="og:image" content="http://mexicovid19.app/img/mediashare/home.PNG" />
+          <meta name="keywords" content="coronavirus,mapa coronavirus, coronavirus mexico,casos coronavirus,coronavirus tec,Mexicovid"/>
+      </Helmet>
+      
       <Header fixed={isMobile}/>
       <div className={classes.buttonControlContainer}>
         <div className={classes.buttonControl}>

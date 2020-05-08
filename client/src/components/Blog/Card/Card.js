@@ -42,6 +42,11 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '100%',
     paddingRight:'0.9rem'
   },
+  dateInfo:{
+    fontWeight:'600',
+    marginBottom:'1rem',
+    fontStyle: 'italic'
+  }
 }));
 
 export const Card = ({ blog, onClick }) => {
@@ -70,7 +75,9 @@ export const Card = ({ blog, onClick }) => {
 
     setLabels(labels);
   }, [blog.labels.nodes]);
-  var imgurl = tomd.split('---')[1];
+  var imgurl = tomd.split('---')[1].split('*')[0].slice(0, -1);
+  var date = tomd.split('---')[1].split('*')[1];
+  //console.log(date)
   
   return (
     <CardContainer>
@@ -95,6 +102,9 @@ export const Card = ({ blog, onClick }) => {
               <Grid item sm={8} container>
                       <CardTitle>{blog.title}</CardTitle>
                       <CardDescription>
+                      <div className={classes.dateInfo}>
+                        {date}
+                      </div>
                       <MarkdownView
                             markdown={blog.body}
                             options={{
