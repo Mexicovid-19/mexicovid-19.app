@@ -96,7 +96,7 @@ const useBlog = () => {
 
     
   const openBlog = (title, number) => {
-    history.push(`/blog/${title}/${number}`);
+    history.push(`/investigation/${title}/${number}`);
   }
 
   const onChangeCategory = (e) => {

@@ -104,7 +104,7 @@ const Blog = () => {
       <Helmet>
         <title>Investigación | MexiCOVID</title>
         <meta name="description" content="Artículos e investigaciones sobre COVID-19 y su impacto en México" />
-        <meta property="og:image" content="http://mexicovid19.app/img/mediashare/blog.PNG" />
+        <meta property="og:image" content="http://mexicovid19.app/img/mediashare/investigation.PNG" />
         <meta name="keywords" content="tec mexicovid, coronavirus mexico tec,casos coronavirus investigacion,coronavirus impacto economico,coronavirus impacto social"/>
       </Helmet>
       <Header fixed={true}/>

@@ -214,7 +214,7 @@ export default withStyles(styles)(function BlogHome({classes}) {
       <div className={classes.teamsContainer}>
         <header className={classes.header}>
           <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
-          <Button className={classes.label} href="/blog"> 
+          <Button className={classes.label} href="/investigation"> 
             <ArrowBackIosRoundedIcon/>
             Regresar
           </Button>
