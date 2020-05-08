@@ -18,25 +18,26 @@ var port = normalizePort(process.env.PORT || '443');
 app.set('port', port);
 
 // This line is from the Node.js HTTPS documentation.
+/*
 var options = {
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem')
 };
-
+*/
 /**
  * Create HTTP server.
  */
 
-//var server = http.createServer(app);
+var server = http.createServer(app);
 // Create an HTTP service.
 http.createServer(app);
 // Create an HTTPS service identical to the HTTP service.
-var server = https.createServer(options, app).listen(443);
+//var server = https.createServer(options, app).listen(443);
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-//server.listen(port);
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
