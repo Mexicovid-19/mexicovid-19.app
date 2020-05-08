@@ -13,6 +13,7 @@ import ConfirmAge from './components/ConfirmAge';
 import MunicipalitiesFollow from './components/MunicipalitiesFollow';
 import DistributionEstate from './components/DistributionEstate';
 import Simulation from './components/Simulation';
+import Uncertainty from './components/Uncertainty';
 
 
 import Blog from "./containers/Blog"
@@ -41,6 +42,7 @@ const Router = () => {
         <Route path='/municipalitiesfollow' component={MunicipalitiesFollow}/>
         <Route path='/distributionestate' component={DistributionEstate}/>
         <Route path='/simulation' component={Simulation}/>
+        <Route path='/uncertainty' component={Uncertainty}/>
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/blog/:title/:issueNumber" component={BlogPost}/>
       </Switch>
