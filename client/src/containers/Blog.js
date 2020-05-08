@@ -75,7 +75,10 @@ const useStyles = makeStyles((theme) => ({
 		},
 		h1: {
 			fontSize: '24px'
-		},
+    },
+    form: {
+      maxWidth: '100%'
+    },
   }
 }));
 
@@ -93,13 +96,14 @@ const ContentItem = ({classes, category}) => {
 const Blog = () => {
   const { posts, loading, openBlog, categories, category, onChangeCategory } = React.useContext(BlogContext);
   const classes = useStyles();
-  
+  const isMobile = window.innerWidth < 1000;
+
   return (
     <div className={classes.container}>
       <Header fixed={true}/>
         <main className={classes.BlogsContainer}>
         <header className={classes.header}>
-          <Typography className={classes.h1} variant={'h1'}>Investigación de COVID-19 en México</Typography>	
+          <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
         </header>
         <section className={classes.selectorContainer}>
           <div>

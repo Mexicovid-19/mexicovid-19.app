@@ -26,6 +26,9 @@ import Typography from '@material-ui/core/Typography';
 import youtube from 'showdown-youtube';
 import '../css/Blog.css';
 
+import Button from '@material-ui/core/Button';
+import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
+
 const styles = () => ({
   section: {
     margin: '20px 0px',
@@ -68,6 +71,9 @@ const styles = () => ({
   divide:{
     color:colors.BLACK,
   },
+  label: {
+		color: colors.GRAY_LIGHT
+	},
   [`@media (max-width: ${1000}px)`]: {
 		teamsContainer: {
 			width: '100%',
@@ -175,7 +181,12 @@ export default withStyles(styles)(function BlogHome({classes}) {
   }, [loading, error, data, setReactionFun]);
 
   if (loading) {
-    return <Loader />;
+    return (
+    <React.Fragment>
+      <Header/>
+      <Loader />
+    </React.Fragment>
+    );
   }
 
 
@@ -188,34 +199,39 @@ export default withStyles(styles)(function BlogHome({classes}) {
     metadata: true
   })
 
+  const isMobile = window.innerWidth < 1000;
   const textmd = post.body;
   return (
     <div className={classes.section}>
       <Header fixed={true}/>
       <div className={classes.teamsContainer}>
-      <header className={classes.header}>
-              <Typography className={classes.h1} variant={'h1'}>Investigación de COVID-19 en México</Typography>	
-          </header>
+        <header className={classes.header}>
+          <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
+          <Button className={classes.label} href="/blog"> 
+            <ArrowBackIosRoundedIcon/>
+            Regresar
+          </Button>
+        </header>
         {post.title && (
           <PostContainer>
-              <PostTitle>{post.title}</PostTitle>
+            <PostTitle>{post.title}</PostTitle>
             <div>
-                  <Time>
-                    Tiempo de lectura: {Math.round(readingTime(post.body).minutes)} min.
-                  </Time>
+              <Time>
+                Tiempo de lectura: {Math.round(readingTime(post.body).minutes)} min.
+              </Time>
             </div>
-                <MarkdownView
-                  markdown={textmd}
-                  options={{
-                    tasklists:true,
-                    tables: true, emoji: true,
-                    ghCompatibleHeaderId: true,
-                    strikethrough: true, 
-                    metadata: true,
-                    extensions: ['youtube']
-                  }}
-                  className="BlogContainer"
-                />
+            <MarkdownView
+              markdown={textmd}
+              options={{
+                tasklists:true,
+                tables: true, emoji: true,
+                ghCompatibleHeaderId: true,
+                strikethrough: true, 
+                metadata: true,
+                extensions: ['youtube']
+              }}
+              className="BlogContainer"
+            />
           </PostContainer>
         )}
       </div>

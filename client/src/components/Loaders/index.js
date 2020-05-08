@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   
 
 const LoaderView = () => {
-	const classes = useStyles();
+const classes = useStyles();
 
   return(
 	  <div className={classes.slider}>
