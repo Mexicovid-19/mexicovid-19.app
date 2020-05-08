@@ -51,6 +51,7 @@ const styles = () => ({
 		fontSize: '24px',
 		marginBottom: '10px',
 		marginTop: '10px',
+		fontWeight: 'bold'
 	},
 
 	header: {

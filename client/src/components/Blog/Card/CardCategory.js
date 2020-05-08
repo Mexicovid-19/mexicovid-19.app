@@ -9,9 +9,10 @@ const StyledCategory = styled.div`
   font-size: 12px;
   text-transform: uppercase;
   color: #fff;
-  font-weight: 700;
+  letter-spacing: 1px;
   line-height: 28px;
   margin-right: 10px;
+  font-family:'Raleway';
 `
 
 export const CardCategory = ({ value }) => (

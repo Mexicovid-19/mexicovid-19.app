@@ -9,38 +9,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const icons = [{
-        img: "icons/iconosInfraestructura.png" ,
-        alt: "iconosInfraestructura",
-        text: "    Infraestructura"
-    },        
-    {
-        img: "icons/iconosEconomia.png" ,
-        alt: "iconosEconomia",
-        text: "    Economía"
-    },        
-    {
-        img: "icons/iconosExaminacion.png" ,
-        alt: "iconosExaminacion",
-        text: "    Analisis de pruebas"
-    },        
-    {
-        img: "icons/iconosConfirmados.png" ,
-        alt: "iconosConfirmados",
-        text: "    Confirmados"
-    },        
-    {
-        img: "icons/iconosDesglose.png" ,
-        alt: "iconosDesglose",
-        text: "    Información clinica"
-    },        
-    {
-        img: "icons/iconosGeografia.png" ,
-        alt: "iconosGeografia",
-        text: "    Geografía"
-    }
-]
-
 const Element = (props) => {
     const {
         classes,
