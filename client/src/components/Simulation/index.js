@@ -28,6 +28,7 @@ const Simulation = ({ classes }) => {
 					<main>
 						<SimulationUncertainty/>
 					</main>
+					<p className={classes.textcontainer}>Los resultados presentados son parte de una investigación en curso. Las opiniones aquí reflejadas representan la opinión personal de los autores y no de la institución donde laboran.</p>
 				</div>
 		<Footer/>
 		</div>
@@ -61,6 +62,11 @@ const styles = () => ({
 
 	label: {
 		color: colors.GRAY_LIGHT
+	},
+	
+	textcontainer:{
+		textAlign:'justify',
+		fontSize:'10px',
 	},
 
 	[`@media (max-width: ${1000}px)`]: {
