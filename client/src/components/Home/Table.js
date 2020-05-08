@@ -135,7 +135,6 @@ const useToolbarStyles = makeStyles((theme) => ({
 const EnhancedTableToolbar = (props) => {
   const {data, clickOpen, clickClose, openDial, isConfirm} = props;
   const classes = useToolbarStyles();
-  console.log(data, isConfirm);
   const isMobile = window.innerWidth < 1000;
 
   return (

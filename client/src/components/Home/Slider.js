@@ -146,7 +146,7 @@ const CustomizedSlider = () => {
 					min={0}
 					step={1}
 					max={max}
-					onChange={changeDate}
+          onChangeCommitted={changeDate}
 					scale={(x) => state.dates[x]}
 					valueLabelDisplay="auto"
 					aria-label="pretto slider"
