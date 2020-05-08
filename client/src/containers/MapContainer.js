@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import { HomeContext } from '../contexts/HomeContext';
 import * as colors from './../constants/colors';
+import { numberWithCommas } from '../Utils/numberWCommas';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -162,7 +163,7 @@ const useMap = () => {
               <svg style='width: 15px; height: 15px; font-family: Raleway; font-weight:bold'>
                 <circle r="5" cx="6" cy="10" fill=${selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
               </svg>
-              ${features[0].properties[ selectedLabel + "-" + state.date]} ${selectedLabel} 
+              ${numberWithCommas(features[0].properties[ selectedLabel + "-" + state.date])} ${selectedLabel} 
             </span>
           </div>`
         )
