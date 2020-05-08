@@ -14,7 +14,7 @@ import MunicipalitiesFollow from './components/MunicipalitiesFollow';
 import DistributionEstate from './components/DistributionEstate';
 import Simulation from './components/Simulation';
 import Uncertainty from './components/Uncertainty';
-
+import research1 from './components/Research1';
 
 import Blog from "./containers/Blog"
 import BlogPost from "./containers/BlogPost";
@@ -42,6 +42,7 @@ const Router = () => {
         <Route path='/municipalitiesfollow' component={MunicipalitiesFollow}/>
         <Route path='/distributionestate' component={DistributionEstate}/>
         <Route path='/simulation' component={Simulation}/>
+        <Route path='/research1' component={research1}/>
         <Route path='/uncertainty' component={Uncertainty}/>
         <Route exact path="/blog" component={Blog} />
         <Route exact path="/blog/:title/:issueNumber" component={BlogPost}/>

@@ -7,4 +7,5 @@ export const BlogContainer = styled.div`
   max-width: 1100px;
   padding: 20px 10px;
   background-color: #FAFAFA;
+  font-family: "Raleway";
 `
