@@ -45,6 +45,7 @@
     "react-syntax-highlighter": "^12.2.1",
     "reading-time": "^1.2.0",
     "showdown": "^1.9.1",
+    "showdown-youtube": "^1.2.1",
     "styled-components": "^5.0.1",
     "tableau-react": "^1.2.2"
   },

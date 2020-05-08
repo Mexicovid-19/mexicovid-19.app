@@ -15,7 +15,7 @@ const LinkElement = (props) => {
   const {classes, element, url} = props;
 
   return (
-    <NavLink to={url} className={classes}>
+    <NavLink to={process.env.PUBLIC_URL+url} className={classes}>
       {element}
     </NavLink>
   )
@@ -65,38 +65,42 @@ const Header = ({ classes, fixed=false}) => {
             },
           }}
         >
-          <LinkElement url='./' element={
+          <LinkElement url='/' element={
             <MenuItem><Typography variant="span" className={classes.title}>Inicio</Typography></MenuItem>
           }/>
-          <MenuItem><Typography variant="span" className={classes.title}>Investigación</Typography></MenuItem>
-          <LinkElement url='./regions' element={
+          <LinkElement url='/blog' element={
+            <MenuItem><Typography variant="span" className={classes.title}>Investigación</Typography></MenuItem>
+          }/>
+          <LinkElement url='/regions' element={
             <MenuItem><Typography variant="span" className={classes.title}>Seguimiento por Región</Typography></MenuItem>
           }/>
-          <LinkElement url='./simulation' element={
+          <LinkElement url='/simulation' element={
             <MenuItem><Typography variant="span" className={classes.title}>Simulaciones</Typography></MenuItem>
           }/>
-          <LinkElement url='./methodology' element={
+          <LinkElement url='/methodology' element={
             <MenuItem><Typography variant="span" className={classes.title}>Metodología</Typography></MenuItem>
           }/>
-          <LinkElement url='./about-us' element={
+          <LinkElement url='/about-us' element={
             <MenuItem><Typography variant="span" className={classes.title}>Nosotros</Typography></MenuItem>
           }/>
         </Menu>
         <div className={classes.buttons}>
-          <LinkElement url='./' element={
+          <LinkElement url='/' element={
             <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
           }/>
-          <Button className={location === '/investigation' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
-          <LinkElement url='./regions' element={
+          <LinkElement url='/blog' element={
+            <Button className={location === '/blog' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
+          }/>
+          <LinkElement url='/regions' element={
             <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
           }/>
-          <LinkElement url='./simulation' element={
+          <LinkElement url='/simulation' element={
             <Button className={location === '/simulation' ? classes.selectedBtn : classes.button} color="inherit">Simulaciones</Button>
           }/>
-          <LinkElement url='./methodology' element={
+          <LinkElement url='/methodology' element={
             <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Métodologia</Button>
           }/>
-          <LinkElement url='./about-us' element={
+          <LinkElement url='/about-us' element={
             <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
           }/>          
         </div>
