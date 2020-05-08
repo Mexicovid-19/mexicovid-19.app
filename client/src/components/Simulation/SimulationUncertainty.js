@@ -19,7 +19,6 @@ const SimulationUncertainty = ({ classes }) => {
 						<p className={classes.textcontainer}>Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey <a href="https://twitter.com/fgmzz" target="_blank" className={classes.twitterclass}> @fgmzz</a></p>
 						<p className={classes.textcontainer}>Luis Serra, doctor en economía por la Universidad de Warwick <a href="https://twitter.com" target="_blank" className={classes.twitterclass}> @luisserra23</a></p>
 						<p className={classes.textcontainer}>Profesores-investigadores en la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey.</p>
-						<p className={classes.textcontainer}>Los resultados presentados son parte de una investigación en curso. Las opiniones aquí reflejadas representan la opinión personal de los autores y no de la institución donde laboran.</p>
 					</div>
 					<div className={classes.buttonPlace}>
 						<Button  target= "_blank" href="/uncertainty" className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon}/></Button>

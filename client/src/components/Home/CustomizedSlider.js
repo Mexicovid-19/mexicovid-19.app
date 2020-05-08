@@ -73,8 +73,8 @@ const CustomizedSlider = () => {
       <Slider/>
       <div className={classes.textContainer}>
         <Typography className={classes.text}>{formatedDate} | Totales:</Typography>
-        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/> {numberWithCommas(totalConfirm)} </Typography>
-        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/> {numberWithCommas(totalDeads)} </Typography>
+        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotConfirm}/>{numberWithCommas(totalDeads)}</Typography>
+        <Typography className={classes.text}><FiberManualRecordTwoToneIcon className={classes.dotDeads}/>{numberWithCommas(totalConfirm)}</Typography>
       </div>
       <ButtonControl onSelectLabel={onSelectLabel} selectedLabel={selectedLabel}/>
     </div>
