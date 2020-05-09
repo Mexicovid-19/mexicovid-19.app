@@ -100,73 +100,75 @@ const Blog = () => {
   const isMobile = window.innerWidth < 1000;
   document.title = "Investigación | MexiCOVID";
   return (
-    <div className={classes.container}>
+    <div>
       <Helmet>
         <title>Investigación | MexiCOVID</title>
         <meta name="description" content="Artículos e investigaciones sobre COVID-19 y su impacto en México" />
-        <meta property="og:image" content="http://mexicovid19.app/img/mediashare/investigation.PNG" />
+        <meta property="og:image" content="http://mexicovid19.app/img/mediashare/research.PNG" />
         <meta name="keywords" content="tec mexicovid, coronavirus mexico tec,casos coronavirus investigacion,coronavirus impacto economico,coronavirus impacto social"/>
       </Helmet>
-      <Header fixed={true}/>
-        <main className={classes.BlogsContainer}>
-        <header className={classes.header}>
-          <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
-        </header>
-        <section className={classes.selectorContainer}>
-          <div>
-            Las investigaciones realizadas puedes encontrarlas organizadas por categorias. Selecciona la categoria de interés:
-          </div>
-          <FormControl  classes={{ root: classes.form}}>
-            <InputLabel id="category-selector">Categoria</InputLabel>
-            <Select
-              labelId="category-selector"
-              value={category}
-              onChange={onChangeCategory}
-              label="Categoria"
-            >
-              <MenuItem value={0}>
-                Todos
-              </MenuItem>
-              <MenuItem value={1}>
-                <ContentItem category={categories[1]} classes={classes}/>
-              </MenuItem>
-              <MenuItem value={2}>
-                <ContentItem category={categories[2]} classes={classes}/>
-              </MenuItem>
-              <MenuItem value={3}>
-                <ContentItem category={categories[3]} classes={classes}/>
-              </MenuItem>
-              <MenuItem value={4}>
-                <ContentItem category={categories[4]} classes={classes}/>
-              </MenuItem>
-              <MenuItem value={5}>
-                <ContentItem category={categories[5]} classes={classes}/>
-              </MenuItem>
-              <MenuItem value={6}>
-                <ContentItem category={categories[6]} classes={classes}/>
-              </MenuItem>
-              <MenuItem value={7}>
-                <ContentItem category={categories[7]} classes={classes}/>
-              </MenuItem>
-            </Select>
-          </FormControl>
-        </section>
-        <BlogContainer className={classes.white}>
-          <div>
-          {
-            loading 
-            ? <Loader />
-            : posts.map((v, i) => {
-                return <Card blog={v} onClick={openBlog} key={i} />;
-              })
-          }
-          </div>
-        </BlogContainer>
-        <span className={classes.disclaimer}>
-          Los resultados de esta sección de Investigación y Análisis provienen de investigaciones en curso y no son resultados definitivos. Adicionalmente, las opiniones vertidas son a título personal de los investigadores y e investigadoras y no reflejan la posición oficial del Tecnológico de Monterrey ni de la Escuela de Gobierno y Transformación Pública.
-        </span>
-      </main>
-      <Footer/>
+      <div className={classes.container}>
+        <Header fixed={true}/>
+          <main className={classes.BlogsContainer}>
+          <header className={classes.header}>
+            <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
+          </header>
+          <section className={classes.selectorContainer}>
+            <div>
+              Las investigaciones realizadas puedes encontrarlas organizadas por categorias. Selecciona la categoria de interés:
+            </div>
+            <FormControl  classes={{ root: classes.form}}>
+              <InputLabel id="category-selector">Categoria</InputLabel>
+              <Select
+                labelId="category-selector"
+                value={category}
+                onChange={onChangeCategory}
+                label="Categoria"
+              >
+                <MenuItem value={0}>
+                  Todos
+                </MenuItem>
+                <MenuItem value={1}>
+                  <ContentItem category={categories[1]} classes={classes}/>
+                </MenuItem>
+                <MenuItem value={2}>
+                  <ContentItem category={categories[2]} classes={classes}/>
+                </MenuItem>
+                <MenuItem value={3}>
+                  <ContentItem category={categories[3]} classes={classes}/>
+                </MenuItem>
+                <MenuItem value={4}>
+                  <ContentItem category={categories[4]} classes={classes}/>
+                </MenuItem>
+                <MenuItem value={5}>
+                  <ContentItem category={categories[5]} classes={classes}/>
+                </MenuItem>
+                <MenuItem value={6}>
+                  <ContentItem category={categories[6]} classes={classes}/>
+                </MenuItem>
+                <MenuItem value={7}>
+                  <ContentItem category={categories[7]} classes={classes}/>
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </section>
+          <BlogContainer className={classes.white}>
+            <div>
+            {
+              loading 
+              ? <Loader />
+              : posts.map((v, i) => {
+                  return <Card blog={v} onClick={openBlog} key={i} />;
+                })
+            }
+            </div>
+          </BlogContainer>
+          <span className={classes.disclaimer}>
+            Los resultados de esta sección de Investigación y Análisis provienen de investigaciones en curso y no son resultados definitivos. Adicionalmente, las opiniones vertidas son a título personal de los investigadores y e investigadoras y no reflejan la posición oficial del Tecnológico de Monterrey ni de la Escuela de Gobierno y Transformación Pública.
+          </span>
+        </main>
+        <Footer/>
+      </div>
     </div>
   );
 }

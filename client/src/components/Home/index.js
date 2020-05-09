@@ -36,14 +36,14 @@ const Home = ({ classes }) => {
   }
   document.title = "MexiCOVID: COVID-19 en México";  
   return (
-    <div className={classes.container}>
+    <div>
       <Helmet>
           <title>MexiCOVID: COVID-19 en México</title>
           <meta name="description" content="Seguimiento diario a la evoluación del Covid-19 en México @ITESM" />
           <meta property="og:image" content="http://mexicovid19.app/img/mediashare/home.PNG" />
           <meta name="keywords" content="coronavirus,mapa coronavirus, coronavirus mexico,casos coronavirus,coronavirus tec,Mexicovid"/>
       </Helmet>
-      
+    <div className={classes.container}>
       <Header fixed={isMobile}/>
       <div className={classes.buttonControlContainer}>
         <div className={classes.buttonControl}>
@@ -69,6 +69,7 @@ const Home = ({ classes }) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
