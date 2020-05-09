@@ -4,6 +4,20 @@ import { config } from "../config";
 import { gql } from "apollo-boost";
 import { useHistory } from "react-router-dom";
 
+var getUrlParams = function () {
+  var url = window.location.href;
+	var params = {};
+	var parser = document.createElement('a');
+	parser.href = url;
+	var query = parser.search.substring(1);
+	var vars = query.split('&');
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split('=');
+		params[pair[0]] = decodeURIComponent(pair[1]);
+	}
+	return params;
+};
+
 const useBlog = () => {
   const [posts, setPosts] = React.useState([]);
   const [category, setCategory] = React.useState(0);
@@ -82,6 +96,16 @@ const useBlog = () => {
     
   const { loading, error, data } = useQuery(GET_POSTS);
 
+  React.useEffect( () => {
+    let params = getUrlParams();
+
+    if( typeof(params) !== "undefined") {
+      let categoriesLen = categories.length;
+      if( categoriesLen > params.cat)
+        setCategory(params.cat);
+    }
+  }, []);
+
   React.useEffect(() => {
     if (!loading) {
       if (error) {
@@ -100,7 +124,6 @@ const useBlog = () => {
   }
 
   const onChangeCategory = (e) => {
-    console.log("CATEGORY",e)
     setCategory(e.target.value);
   }
     
