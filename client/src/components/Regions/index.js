@@ -9,18 +9,16 @@ import Footer from '../Footer';
 import States from './States';
 import Municipalities from './Municipalities';
 import { Helmet } from 'react-helmet';
+import { RegionContext } from '../../contexts/RegionContext';
 
 const Regions = ({ classes }) => {
-	const [isEstate, setEstate] = React.useState(true);
-
-	const change = () => {
-		setEstate(!isEstate);
-	};
+	const { isState, changeState } = React.useContext(RegionContext);
+	
 
 	const isMobile = window.innerWidth < 1000;
 	document.title = "Seguimiento por municipio | MexiCOVID";
-	const title = `Seguimiento por ${isEstate ? 'Estado' : 'Municipio'}`;
-	const subtitle = `${isMobile ? '' : 'Seguimiento por'} ${isEstate ? 'Municipio' : 'Estado'}`;
+	const title = `Seguimiento por ${isState ? 'Estado' : 'Municipio'}`;
+	const subtitle = `${isMobile ? '' : 'Seguimiento por'} ${isState ? 'Municipio' : 'Estado'}`;
 	return (
 		<div>
 			<Helmet>
@@ -36,14 +34,14 @@ const Regions = ({ classes }) => {
 			<div className={classes.container}>
 				<Header fixed={true}/>
 					<div className={classes.regionsContainer}>
-						<header className={classes.header}>
+						<header id="header" className={classes.header}>
 							<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
-							<Button className={classes.label} onClick={change}> 
+							<Button className={classes.label} onClick={changeState}> 
 								{subtitle} <ArrowForwardIosRoundedIcon/>
-							</Button>	
+							</Button>
 						</header>
 						<main>
-							{isEstate ?<States/>: <Municipalities/>}
+							{isState ?<States/>: <Municipalities/>}
 						</main>
 					</div>
 				<Footer/>
