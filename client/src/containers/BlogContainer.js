@@ -100,7 +100,10 @@ const useBlog = () => {
       }
 
       if (data) {
-        setPosts(data?.repository?.issues?.nodes)
+        if( data && data.repository && data.repository.issues) {
+          let _post = data.repository.issues.nodes;
+          setPosts(_post.reverse())
+        }
       }
     }
   }, [loading, error, data]);
