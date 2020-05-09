@@ -11,9 +11,9 @@ import { RegionContext } from '../../contexts/RegionContext';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Chip from '@material-ui/core/Chip';
 import DeleteIcon from '@material-ui/icons/Delete';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCircleRounded';
 import LocalHospitalRoundedIcon from '@material-ui/icons/LocalHospitalRounded';
+import Loader from '../Loaders/';
 
 const States = ({ classes }) => {
 	const {
@@ -28,45 +28,51 @@ const States = ({ classes }) => {
 		deleteAll
 	} = React.useContext(RegionContext);
 	
+	const isMobile = window.innerWidth < 1000;
 	return (
 		<React.Fragment>
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Número de Confirmados Positivos por Estado y por 100,000 Habitantes</Typography>
 				<p className={classes.textcontainer1}><u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.</p>
-				<div className={classes.selector}>
-					<Autocomplete
-						id="estados-mexico-100k"
-						options={states}
-						getOptionLabel={(option) => option.title}
-						style={{ width: 300 }}
-						inputValue={stateValue}
-						onInputChange={(event, newValue) => {stateChange( newValue);}}
-						renderInput={(params) => <TextField {...params} label="Estados" />}
-					/>
-					<Button
-						onClick={handleClick}
-						startIcon={<AddRoundedIcon />}
-					>
-						Agregar
-					</Button>
-					<Button onClick={addAll} startIcon={<AddRoundedIcon />}> Todos</Button>
-					<Button onClick={deleteAll} startIcon={<DeleteIcon />}>Eliminar</Button>
-				</div>
-				<div className={classes.chipContainer}>
-					{selectedStates.map((state, index) => {
-						return(
-							<Chip
-								size="small"
-								label={state.title}
-								onDelete={(e) => {handleDelete(state.id)}}
-								style={{ backgroundColor: colors.WHITE }}
-							/>
-						)
-					})}
-				</div>
-				<div className={classes.chart}>
-					<MyResponsiveLine data={statesToChart} className={{root: classes.chartatyle}}/>
-				</div>
+				{selectedStates.length == 0 ?
+					<Loader/>	
+					:
+					<div className={classes.graphContainer}>
+						<div className={classes.selectorContainer}>
+							<div className={classes.selector}>
+								<Autocomplete
+									id="estados-mexico-100k"
+									options={states}
+									getOptionLabel={(option) => option.title}
+									style={{ width: isMobile ? '100%' : '200px' }}
+									inputValue={stateValue}
+									onInputChange={(event, newValue) => {stateChange( newValue);}}
+									renderInput={(params) => <TextField {...params} label="Estados" />}
+								/>
+								<Button onClick={handleClick} startIcon={<AddRoundedIcon />}>Agregar</Button>
+								<Button onClick={addAll} startIcon={<AddRoundedIcon />}> Todos</Button>
+								<Button onClick={deleteAll} startIcon={<DeleteIcon />}>Eliminar</Button>
+							</div>
+							<div className={classes.chipContainer}>
+								{selectedStates.length > 0 &&
+									selectedStates.map((state, index) => {
+										return(
+											<Chip
+												size="small"
+												label={state.title}
+												onDelete={(e) => {handleDelete(state.id)}}
+												style={{ backgroundColor: state.id === "NACIONAL" ? colors.WHITE : state.color }}
+											/>
+										)
+									})
+								}
+							</div>
+						</div>
+						<div className={classes.chart}>
+							{statesToChart && <MyResponsiveLine data={statesToChart} isSmall={isMobile} className={{root: classes.chartatyle}}/>}
+						</div>
+					</div>
+				}
 			</section>
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Disponibilidad de camas para hospitalización y en unidades de cuidado intensivo (UCI)</Typography>
@@ -123,7 +129,7 @@ const styles = () => ({
 	},
 
 	chart: {
-		height: '600px',
+		height: '500px',
 		width: '100%',
 	},
 
@@ -151,8 +157,8 @@ const styles = () => ({
 
 	selector: {
 		display: 'flex',
-		justifyContent: 'space-between',
-		alignItems: 'flex-end'
+		alignItems: 'normal',
+		flexDirection: 'column'
 	},
 
 	chipContainer: {
@@ -190,6 +196,13 @@ const styles = () => ({
 		textAlign:'justify',
 		margin: '25px 0px'
 	},
+	selectorContainer: {
+		display: 'flex'
+	},
+	graphContainer: {
+		backgroundColor: colors.WHITE,
+    	padding: '20px'
+	},
 
 	[`@media (max-width: ${1000}px)`]: {
 		sectioncontainer:{
@@ -202,6 +215,18 @@ const styles = () => ({
 			height: '100% !important',
 			width: '50% !important',
 			color: colors.BLACK,
+		},
+		chart: {
+			height: '300px'
+		},
+		selector:{
+			flexDirection: 'column'
+		},
+		graphContainer: {
+			padding: '5px'
+		},
+		selectorContainer: {
+			flexDirection: 'column'
 		},
 	},
 	

@@ -38,6 +38,13 @@ router.post('/data/states', function(req, res) {
 			}			
 		}
 
+		//sort 
+		var len = array.data[0].data.length
+		
+		array.data.sort((a,b) => {
+			return b.data[len - 1].y - a.data[len - 1].y
+		})
+
 		res.status(200).json(array.data);
 	});
 
