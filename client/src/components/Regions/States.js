@@ -60,7 +60,7 @@ const States = ({ classes }) => {
 									size="small"
 									label={state.title}
 									onDelete={(e) => {handleDelete(state.id)}}
-									style={{ backgroundColor: colors.WHITE }}
+									style={{ backgroundColor: state.color }}
 								/>
 							)
 						})

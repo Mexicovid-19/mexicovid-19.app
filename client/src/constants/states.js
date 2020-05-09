@@ -67,5 +67,5 @@ export const STATE_COLORS = {
     'VER':{color: '#fdb462', title: 'Veracruz'},
     'YUC':{color: '#b3de69', title: 'Yucatan'},
     'ZAC':{color: '#fccde5', title: 'Zacatecas'},
-    'NACIONAL':{color: '#000', title: 'Nacional'}
+    'NACIONAL':{color: '#fff', title: 'Nacional'}
 }

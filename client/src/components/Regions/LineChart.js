@@ -29,7 +29,7 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
 	const styleById = {
 		"NACIONAL": {
 			strokeDasharray: '6, 6',
-        	strokeWidth: 8,
+        	strokeWidth: 4,
 		},
 		default: {
 			strokeWidth: 2,
@@ -106,7 +106,7 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
 		legends={legendsConstrains}
 		motionStiffness={160}
 		motionDamping={20}
-		layers={['grid', 'markers', 'axes', 'areas', DashedLine, 'crosshair', 'lines', 'points', 'slices', 'mesh', 'legends']}
+		layers={['grid', 'markers', 'axes', 'areas', DashedLine, 'crosshair', 'points', 'slices', 'mesh', 'legends']}
 		tooltip={({ point }) => {
             return (
                 <div
@@ -120,7 +120,7 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
                 >
 					<div
 						style={{
-							backgroundColor: point.serieColor,
+							backgroundColor: STATE_COLORS[point.serieId].color,
 							padding: '3px 0',
 							width: '15px',
 							height: '15px',
@@ -136,7 +136,7 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
 							padding: '3px 0',
 						}}
 						>
-						<strong>{point.serieId}</strong> {point.data.yFormatted}
+						<strong>{STATE_COLORS[point.serieId].title}</strong> {point.data.yFormatted}
 					</div>
 					
 				</div>
