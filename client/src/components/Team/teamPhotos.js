@@ -211,7 +211,7 @@ const PhotoGrid = ({classes}) => {
             <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItemTeacher}> 
                     <p className="names" align={'center'}>Dr. Alejandro Díaz Domínguez</p>
-                    <img src="images/alejandrodiaz.jpg" className="img-responsive" alt="Image"/>
+                    <img src="images/Alejandrodiaz.jpg" className="img-responsive" alt="Image"/>
                     <p>
                         <Grid>
                             <a href="mailto:alejandrod.dominguez@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>alejandrod.dominguez@tec.mx</a>
@@ -279,7 +279,7 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}><a href="www.robertoponcelopez.com" target="_blank">Dr. Roberto Ponce López</a></p>
+                    <p className="names" align={'center'}><a href="http://www.robertoponcelopez.com" target="_blank">Dr. Roberto Ponce López</a></p>
                     <img src="images/robertoponce.jpg" className="img-responsive" alt="Image"/>
                     <p>
                         <Grid>
@@ -291,7 +291,7 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}> 
-                    <p className="names" align={'center'}>Mta. Azucena Rojas Parra</p>
+                    <p className="names" align={'center'}>Mpa. Azucena Rojas Parra</p>
                     <img src="images/azucenarojas.jpg" className="img-responsive" alt="Image"/>
                     <p>
                         <Grid>
