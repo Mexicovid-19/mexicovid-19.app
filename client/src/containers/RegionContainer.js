@@ -24,8 +24,7 @@ const useRegion = () => {
     callDataChart();
 
     let params = getUrlParams();
-
-    if( typeof(params) !== "undefined") {
+    if( typeof(params.show) !== "undefined") {
       setIsState(params.show == "States");
     }
   }, []);
