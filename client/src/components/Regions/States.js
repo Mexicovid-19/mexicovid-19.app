@@ -11,9 +11,9 @@ import { RegionContext } from '../../contexts/RegionContext';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Chip from '@material-ui/core/Chip';
 import DeleteIcon from '@material-ui/icons/Delete';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCircleRounded';
 import LocalHospitalRoundedIcon from '@material-ui/icons/LocalHospitalRounded';
+import Loader from '../Loaders/';
 
 const States = ({ classes }) => {
 	const {
@@ -27,7 +27,7 @@ const States = ({ classes }) => {
 		addAll,
 		deleteAll
 	} = React.useContext(RegionContext);
-	
+	console.log(statesToChart)
 	return (
 		<React.Fragment>
 			<section className={classes.section}>
@@ -53,19 +53,22 @@ const States = ({ classes }) => {
 					<Button onClick={deleteAll} startIcon={<DeleteIcon />}>Eliminar</Button>
 				</div>
 				<div className={classes.chipContainer}>
-					{selectedStates.map((state, index) => {
-						return(
-							<Chip
-								size="small"
-								label={state.title}
-								onDelete={(e) => {handleDelete(state.id)}}
-								style={{ backgroundColor: colors.WHITE }}
-							/>
-						)
-					})}
+					{selectedStates.length > 0 ? 
+						selectedStates.map((state, index) => {
+							return(
+								<Chip
+									size="small"
+									label={state.title}
+									onDelete={(e) => {handleDelete(state.id)}}
+									style={{ backgroundColor: colors.WHITE }}
+								/>
+							)
+						})
+						: <Loader/>
+					}
 				</div>
 				<div className={classes.chart}>
-					<MyResponsiveLine data={statesToChart} className={{root: classes.chartatyle}}/>
+					{statesToChart && <MyResponsiveLine data={statesToChart} className={{root: classes.chartatyle}}/>}
 				</div>
 			</section>
 			<section className={classes.section}>
@@ -123,7 +126,7 @@ const styles = () => ({
 	},
 
 	chart: {
-		height: '600px',
+		height: '500px',
 		width: '100%',
 	},
 
@@ -203,6 +206,9 @@ const styles = () => ({
 			width: '50% !important',
 			color: colors.BLACK,
 		},
+		chart: {
+			height: '600px'
+		}
 	},
 	
 });

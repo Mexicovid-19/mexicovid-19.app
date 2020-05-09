@@ -22,15 +22,42 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 	let tickRotation = -45;
 
 	if( !isSmall ) {
-		marginConstrains = { top: 50, right: 10, bottom: 165, left: 30 };
+		marginConstrains = { top: 50, right: 10, bottom: 105, left: 50 };
 		legendsConstrains = [];
 		tickRotation = -60;
 	}
+	const styleById = {
+		"NACIONAL": {
+			strokeDasharray: '6, 6',
+        	strokeWidth: 8,
+		},
+		default: {
+			strokeWidth: 2,
+		},
+	}
 
+	const DashedLine = ({ series, lineGenerator, xScale, yScale }) => {
+		console.log(series)
+		return series.map(({ id, data, color }) => (
+			<path
+				key={id}
+				d={lineGenerator(
+					data.map(d => ({
+						x: xScale(d.data.x),
+						y: yScale(d.data.y),
+					}))
+				)}
+				fill="none"
+				stroke={STATE_COLORS[id].color}
+				style={styleById[id] || styleById.default}
+			/>
+		))
+	}
+	
 	return(
 	<ResponsiveLine
 		data={data}
-		colors={{ scheme: 'spectral' }}
+		
 		lineWidth={2}
 		margin={marginConstrains}
 		yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
@@ -62,11 +89,12 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 				tickPadding: 5,
 				tickRotation: 0,
 				legend: 'Tasa de confirmados por 100 mil habitantes',
-				legendOffset: -26,
+				legendOffset: -40,
 				legendPosition: 'middle'
 		}}
 		enableGridX={false}
 		enableGridY={false}
+		enablePoints={false}
 		pointSize={5}
 		pointColor={{ theme: 'background' }}
 		pointBorderWidth={2}
@@ -78,6 +106,7 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
 		legends={legendsConstrains}
 		motionStiffness={160}
 		motionDamping={20}
+		layers={['grid', 'markers', 'axes', 'areas', DashedLine, 'crosshair', 'lines', 'points', 'slices', 'mesh', 'legends']}
 		tooltip={({ point }) => {
             return (
                 <div
