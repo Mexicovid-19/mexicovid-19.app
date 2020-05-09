@@ -2,7 +2,7 @@ import { ResponsiveLine } from '@nivo/line'
 import React from 'react';
 import { STATE_COLORS } from '../../constants/states';
 
-const MyResponsiveLine = ({ data, isSmall=false }) => {
+const MyResponsiveLine = ({ data, isSmall=false, }) => {
 	let marginConstrains = { top: 50, right: 110, bottom: 165, left: 60 }
 	let legendsConstrains = [{
 		anchor: 'top-right',
@@ -84,19 +84,33 @@ const MyResponsiveLine = ({ data, isSmall=false }) => {
                     style={{
                         background: 'white',
                         padding: '9px 12px',
-                        border: '1px solid #ccc',
-                    }}
-                >
-				<div
-					key={point.id}
-					style={{
-						color: point.serieColor,
-						padding: '3px 0',
+						border: '1px solid #ccc',
+						display: 'flex',
+						alignItems: 'center',
 					}}
-				>
-				<strong>{point.serieId}</strong> {point.data.yFormatted}
-			</div>
-			</div>
+                >
+					<div
+						style={{
+							backgroundColor: point.serieColor,
+							padding: '3px 0',
+							width: '15px',
+							height: '15px',
+							marginRight: '8px',
+							borderRadius: '15px'
+						}}
+						>
+					</div>
+					<div
+						key={point.id}
+						style={{
+							color: 'black',
+							padding: '3px 0',
+						}}
+						>
+						<strong>{point.serieId}</strong> {point.data.yFormatted}
+					</div>
+					
+				</div>
             )
         }}
 	/>
