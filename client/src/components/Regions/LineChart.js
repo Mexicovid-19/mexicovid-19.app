@@ -3,28 +3,27 @@ import React from 'react';
 import { STATE_COLORS } from '../../constants/states';
 
 const MyResponsiveLine = ({ data, isSmall=false, }) => {
-	let marginConstrains = { top: 50, right: 110, bottom: 165, left: 60 }
-	let legendsConstrains = [{
-		anchor: 'top-right',
-		direction: 'column',
-		justify: false,
-		translateX: 88,
-		translateY: 0,
-		itemsSpacing: 0,
-		itemDirection: 'left-to-right',
-		itemWidth: 80,
-		itemHeight: 20,
-		itemOpacity: 0.75,
-		symbolSize: 12,
-		symbolShape: 'circle',
-		symbolBorderColor: 'rgba(0, 0, 0, .5)'
-	}]
-	let tickRotation = -45;
+	let marginConstrains = { top: 20, right: 10, bottom: 50, left: 50 };
+	let legendsConstrains = [];
+	let tickRotation = -90;
+	let grid = false;
+	let axisBottom = null
 
 	if( !isSmall ) {
-		marginConstrains = { top: 50, right: 10, bottom: 105, left: 50 };
+		marginConstrains = { top: 20, right: 10, bottom: 105, left: 50 };
 		legendsConstrains = [];
 		tickRotation = -60;
+		grid = true;
+		axisBottom = {
+			orient: 'bottom',
+			tickSize: 5,
+			tickPadding: 5,
+			tickRotation: tickRotation,
+			legend: 'Fecha',
+			legendOffset: 80,
+			legendPosition: 'middle',
+			tickValues: 4
+		}
 	}
 	const styleById = {
 		"NACIONAL": {
@@ -64,16 +63,7 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
 		curve="natural" 
 		axisTop={null}
 		axisRight={null}
-		axisBottom={{
-				orient: 'bottom',
-				tickSize: 5,
-				tickPadding: 5,
-				tickRotation: tickRotation,
-				legend: 'Fecha',
-				legendOffset: 80,
-				legendPosition: 'middle',
-				tickValues: 4
-		}}
+		axisBottom={axisBottom}
 		theme={{
 			crosshair: {
 				line: {
@@ -92,13 +82,9 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
 				legendOffset: -40,
 				legendPosition: 'middle'
 		}}
-		enableGridX={false}
+		enableGridX={grid}
 		enableGridY={false}
 		enablePoints={false}
-		pointSize={5}
-		pointColor={{ theme: 'background' }}
-		pointBorderWidth={2}
-		pointBorderColor={{ from: 'serieColor' }}
 		pointLabel="y"
 		pointLabelYOffset={-12}
 		enableSlices={false}

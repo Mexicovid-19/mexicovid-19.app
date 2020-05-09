@@ -1,7 +1,7 @@
 export const STATES = [
     
     { title: 'Aguascalientes', id: 'AGS', color: '#8dd3c7'},
-    { title: 'Baja California', id: 'BC', color: '#ffffb3'},
+    { title: 'Baja California', id: 'BC', color: '#ffe928'},
     { title: 'Baja California Sur', id: 'BCS', color: '#bebada'},
     { title: 'Campeche', id: 'CAMP', color: '#fb8072'},
     { title: 'Chiapas', id: 'CHIS', color: '#80b1d3'},
@@ -13,7 +13,7 @@ export const STATES = [
     { title: 'Guanajuato', id: 'GTO', color: '#ccebc5'},
     { title: 'Guerrero', id: 'GRO', color: '#ffed6f'},
     { title: 'Hidalgo', id: 'HGO', color: '#8dd3c7'},
-    { title: 'Jalisco', id: 'JAL', color: '#ffffb3'},
+    { title: 'Jalisco', id: 'JAL', color: '#ffe928'},
     { title: 'México', id: 'MEX', color: '#bebada'},
     { title: 'Michoacán', id: 'MICH', color: '#fb8072'},
     { title: 'Morelos', id: 'MOR', color: '#80b1d3'},
@@ -25,7 +25,7 @@ export const STATES = [
     { title: 'Quintana Roo', id: 'QROO', color: '#ccebc5'},
     { title: 'San Luis Potosí', id: 'SLP', color: '#8dd3c7'},
     { title: 'Sinaloa', id: 'SIN', color: '#ffed6f'},
-    { title: 'Sonora', id: 'SON', color: '#ffffb3'},
+    { title: 'Sonora', id: 'SON', color: '#ffe928'},
     { title: 'Tabasco', id: 'TAB', color: '#bebada'},
     { title: 'Tamaulipas', id: 'TAMP', color: '#fb8072'},
     { title: 'Tlaxcala', id: 'TLAX', color: '#80b1d3'},
@@ -36,7 +36,7 @@ export const STATES = [
 
 export const STATE_COLORS = {
     'AGS':{color: '#8dd3c7', title: 'Aguascalientes'},
-    'BC':{color: '#ffffb3', title: 'Baja California'},
+    'BC':{color: '#ffe928', title: 'Baja California'},
     'BCS':{color: '#bebada', title: 'Baja California Sur'},
     'CAMP':{color: '#fb8072', title: 'Campeche'},
     'CHIS':{color: '#80b1d3', title: 'Chiapas'},
@@ -48,7 +48,7 @@ export const STATE_COLORS = {
     'GTO':{color: '#ccebc5', title: 'Guanajuato'},
     'GRO':{color: '#ffed6f', title: 'Guerrero'},
     'HGO':{color: '#8dd3c7', title: 'Hidalgo'},
-    'JAL':{color: '#ffffb3', title: 'Jalisco'},
+    'JAL':{color: '#ffe928', title: 'Jalisco'},
     'MEX':{color: '#bebada', title: 'México'},
     'MICH':{color: '#fb8072', title: 'Michoacán'},
     'MOR':{color: '#80b1d3', title: 'Morelos'},
@@ -60,12 +60,12 @@ export const STATE_COLORS = {
     'QROO':{color: '#ccebc5', title: 'Quintana Roo'},
     'SLP':{color: '#ffed6f', title: 'San Luis Potosí'},
     'SIN':{color: '#8dd3c7', title: 'Sinaloa'},
-    'SON':{color: '#ffffb3', title: 'Sonora'},
+    'SON':{color: '#ffe928', title: 'Sonora'},
     'TAB':{color: '#bebada', title: 'Tabasco'},
     'TAMP':{color: '#fb8072', title: 'Tamaulipas'},
     'TLAX':{color: '#80b1d3', title: 'Tlaxcala'},
     'VER':{color: '#fdb462', title: 'Veracruz'},
     'YUC':{color: '#b3de69', title: 'Yucatan'},
     'ZAC':{color: '#fccde5', title: 'Zacatecas'},
-    'NACIONAL':{color: '#fff', title: 'Nacional'}
+    'NACIONAL':{color: '#000', title: 'Nacional'}
 }
