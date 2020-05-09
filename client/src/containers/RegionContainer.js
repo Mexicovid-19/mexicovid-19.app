@@ -1,9 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { STATES } from '../constants/states';
+import { STATE_COLORS } from '../constants/states';
+
+const genStates = (title, id, color) => {
+  return {title, id, color};
+}
 
 const useRegion = () => {
-  const [states, _] = React.useState([...STATES, {title: 'Nacional', id: 'Nacional', color: '#fff'}]);
+  const [states, setStates] = React.useState([]);
   const [dataChart, setDataChart] = React.useState([]);
   
   const [statesBool, setstatesBool] = React.useState(Array(33).fill(false));
@@ -11,7 +15,8 @@ const useRegion = () => {
   const [statesToChart, setStatesToChart] = React.useState([]);
   const [selectedStates, setSelectedStates] = React.useState([]);
   
-  const [stateValue, setStateValue] = React.useState(states[32]);
+  const [stateValue, setStateValue] = React.useState("");
+  const [nationalIndex, setNationalIndex] = React.useState(0);
   
   React.useEffect(() => {
     callDataChart();
@@ -19,19 +24,37 @@ const useRegion = () => {
 
   React.useEffect(() => {
     if( dataChart.length > 0 ) {
+      
+      let _states = [];
       for(var state in dataChart) {
+        let {title, color} = STATE_COLORS[dataChart[state].id];
+        _states.push(genStates(title, dataChart[state].id, color));
+
+        if( dataChart[state].id == "NACIONAL") {
+          setNationalIndex(state);
+        }
+      }
+      
+      setStates(_states);
+    }
+  }, [dataChart]);
+
+  React.useEffect(() => {
+    if( states.length > 0 ) {
+      
+      for(var state in states) {
         if(state < 5) {
           statesBool[state] = true;
           selectedStates.push(states[state]);
           statesToChart.push(dataChart[state]);
         }
       }
-      
+      console.log(selectedStates)
       setstatesBool([...statesBool]);
       setSelectedStates([...selectedStates]);
       setStatesToChart([...statesToChart]);
     }
-  }, [dataChart]);
+  }, [states]);
   
   let callDataChart = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/region/data/states`, {})
@@ -45,6 +68,7 @@ const useRegion = () => {
   };
 
   let handleClick = () => {
+    console.log("stateValue", stateValue)
     if(stateValue === "")
       return;
 
@@ -101,8 +125,8 @@ const useRegion = () => {
     let arr = new Array(32).fill(false);
     arr.push(true);
     setstatesBool(arr);
-    setSelectedStates([states[32]]);
-    setStatesToChart([dataChart[32]]);
+    setSelectedStates([states[nationalIndex]]);
+    setStatesToChart([dataChart[nationalIndex]]);
   }
 
   return {
