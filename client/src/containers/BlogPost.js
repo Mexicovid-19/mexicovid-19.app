@@ -204,45 +204,51 @@ export default withStyles(styles)(function BlogHome({classes}) {
   const textmd = post.body;
   document.title = post.title+" | MexiCOVID";
   return (
-    <div className={classes.section}>
+    <div>
       <Helmet>
           <title>{post.title+" | MexiCOVID"}</title>
           <meta name="description" content={post.body}/>
           <meta name="keywords" content="tec mexicovid, coronavirus mexico tec,casos coronavirus investigacion,coronavirus impacto economico,coronavirus impacto social"/>
+          
+          <meta property="og:title" content={post.title+" | MexiCOVID"}/>
+          <meta property="og:description" content={post.body}/>
+
       </Helmet>
-      <Header fixed={true}/>
-      <div className={classes.teamsContainer}>
-        <header className={classes.header}>
-          <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
-          <Button className={classes.label} href="/investigation"> 
-            <ArrowBackIosRoundedIcon/>
-            Regresar
-          </Button>
-        </header>
-        {post.title && (
-          <PostContainer>
-            <PostTitle>{post.title}</PostTitle>
-            <div>
-              <Time>
-                Tiempo de lectura: {Math.round(readingTime(post.body).minutes)} min.
-              </Time>
-            </div>
-            <MarkdownView
-              markdown={textmd}
-              options={{
-                tasklists:true,
-                tables: true, emoji: true,
-                ghCompatibleHeaderId: true,
-                strikethrough: true, 
-                metadata: true,
-                extensions: ['youtube']
-              }}
-              className="BlogContainer"
-            />
-          </PostContainer>
-        )}
+      <div className={classes.section}>
+        <Header fixed={true}/>
+        <div className={classes.teamsContainer}>
+          <header className={classes.header}>
+            <Typography className={classes.h1} variant={'h1'}>Investigación {!isMobile && "de COVID-19 en México"}</Typography>	
+            <Button className={classes.label} href="/research"> 
+              <ArrowBackIosRoundedIcon/>
+              Regresar
+            </Button>
+          </header>
+          {post.title && (
+            <PostContainer>
+              <PostTitle>{post.title}</PostTitle>
+              <div>
+                <Time>
+                  Tiempo de lectura: {Math.round(readingTime(post.body).minutes)} min.
+                </Time>
+              </div>
+              <MarkdownView
+                markdown={textmd}
+                options={{
+                  tasklists:true,
+                  tables: true, emoji: true,
+                  ghCompatibleHeaderId: true,
+                  strikethrough: true, 
+                  metadata: true,
+                  extensions: ['youtube']
+                }}
+                className="BlogContainer"
+              />
+            </PostContainer>
+          )}
+        </div>
+        <Footer/>
       </div>
-      <Footer/>
     </div>
   );
 })

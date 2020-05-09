@@ -106,7 +106,7 @@ export const Card = ({ blog, onClick }) => {
                         {date}
                       </div>
                       <MarkdownView
-                            markdown={blog.body}
+                            markdown={blog.body.substring(0,600)+"..."}
                             options={{
                               tasklists:true,
                               tables: true, emoji: true,

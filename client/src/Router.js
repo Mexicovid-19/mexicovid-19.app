@@ -47,12 +47,12 @@ const Router = () => {
         <Route path='/distributionestate' component={DistributionEstate}/>
         <Route path='/simulation' component={Simulation}/>
         <Route path='/uncertainty' component={Uncertainty}/>
-        <Route exact path="/investigation">
+        <Route exact path="/research">
             <BlogContextProvider>
               <Blog/>
             </BlogContextProvider>
         </Route>
-        <Route exact path="/investigation/:title/:issueNumber" component={BlogPost}/>
+        <Route exact path="/research/:title/:issueNumber" component={BlogPost}/>
         <Route path='/Research1' component={Research1}/>
         <Route path="*" component={NotFoundPage} />
       </Switch>

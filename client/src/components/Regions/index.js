@@ -22,26 +22,32 @@ const Regions = ({ classes }) => {
 	const title = `Seguimiento por ${isEstate ? 'Estado' : 'Municipio'}`;
 	const subtitle = `${isMobile ? '' : 'Seguimiento por'} ${isEstate ? 'Municipio' : 'Estado'}`;
 	return (
-		<div className={classes.container}>
+		<div>
 			<Helmet>
 			<title>Seguimiento por regiones | MexiCOVID</title>
 			<meta name="description" content="Seguimiento a la evoluación del Covid-19 en México por regiones" />
 			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/regiones.PNG" />
 			<meta name="keywords" content="coronavirus,regiones coronavirus, coronavirus mexico,casos coronavirus,coronavirus estados,Mexicovid regiones"/>
+			
+			<meta property="og:title" content="Seguimiento a la evoluación del Covid-19 en México por regiones"/>
+			<meta property="og:description" content="Seguimiento por regiones a la evoluación del Covid-19 en México @ITESM"/>
+
 			</Helmet>
-			<Header fixed={true}/>
-				<div className={classes.regionsContainer}>
-					<header className={classes.header}>
-						<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
-						<Button className={classes.label} onClick={change}> 
-							{subtitle} <ArrowForwardIosRoundedIcon/>
-						</Button>	
-					</header>
-					<main>
-						{isEstate ?<States/>: <Municipalities/>}
-					</main>
-				</div>
-			<Footer/>
+			<div className={classes.container}>
+				<Header fixed={true}/>
+					<div className={classes.regionsContainer}>
+						<header className={classes.header}>
+							<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
+							<Button className={classes.label} onClick={change}> 
+								{subtitle} <ArrowForwardIosRoundedIcon/>
+							</Button>	
+						</header>
+						<main>
+							{isEstate ?<States/>: <Municipalities/>}
+						</main>
+					</div>
+				<Footer/>
+			</div>
 		</div>
 	);
 }

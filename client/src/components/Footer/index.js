@@ -25,11 +25,11 @@ const Footer = ({ classes}) => {
         <div className={classes.columnsContainer}>
           <Typography className={classes.title}>Investigación</Typography>
           <div className={classes.columns}>
-            <Link to={url+'/investigation?cat=1'} className={classes.name}><Typography className={classes.rows}>Infraestructura Hospitalaria</Typography></Link>
-            <Link to={url+'/investigation?cat=2'} className={classes.name}><Typography className={classes.rows}>Economía</Typography></Link>
-            <Link to={url+'/investigation?cat=3'} className={classes.name}><Typography className={classes.rows}>Analisis de la base de pruebas</Typography></Link>
-            <Link to={url+'/investigation?cat=4'} className={classes.name}><Typography className={classes.rows}>Confirmados positivos en los Estado</Typography></Link>
-            <Link to={url+'/investigation?cat=5'} className={classes.name}><Typography className={classes.rows}>Información clínica de pacientes diagnosticados con covid-19 en México</Typography></Link>
+            <Link to={url+'/research?cat=1'} className={classes.name}><Typography className={classes.rows}>Infraestructura Hospitalaria</Typography></Link>
+            <Link to={url+'/research?cat=2'} className={classes.name}><Typography className={classes.rows}>Economía</Typography></Link>
+            <Link to={url+'/research?cat=3'} className={classes.name}><Typography className={classes.rows}>Analisis de la base de pruebas</Typography></Link>
+            <Link to={url+'/research?cat=4'} className={classes.name}><Typography className={classes.rows}>Confirmados positivos en los Estado</Typography></Link>
+            <Link to={url+'/research?cat=5'} className={classes.name}><Typography className={classes.rows}>Información clínica de pacientes diagnosticados con covid-19 en México</Typography></Link>
           </div>
         </div>
         <div className={classes.columnsContainer}>

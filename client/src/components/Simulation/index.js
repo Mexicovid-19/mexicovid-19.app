@@ -13,24 +13,30 @@ const Simulation = ({ classes }) => {
 	document.title = "Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID";
 	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
 	return (
-		<div className={classes.container}>
-		<Helmet>
+		<div>
+			<Helmet>
 			<title>Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID</title>
-			<meta name="description" content="Metodología utilizada en MexiCOVID19" />
+			<meta name="description" content="Simulaciones del COVID19 bajo incertidumbre" />
 			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/incertidumbre.PNG" />
 			<meta name="keywords" content="simulacion incertidumbre, coronavirus mexico tec,casos coronavirus simulacion,coronavirus simulacion,cuanto tiempo falta coronavirus"/>
-		</Helmet>
-		<Header fixed={true}/>
-				<div className={classes.regionsContainer}>
-					<header className={classes.header}>
-						<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
-					</header>
-					<main>
-						<SimulationUncertainty/>
-					</main>
-					<p className={classes.textcontainer}>Los resultados presentados son parte de una investigación en curso. Las opiniones aquí reflejadas representan la opinión personal de los autores y no de la institución donde laboran.</p>
-				</div>
-		<Footer/>
+			
+          	<meta property="og:title" content="Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID"/>
+          	<meta property="og:description" content="Simulaciones del COVID19 bajo incertidumbre"/>
+
+			</Helmet>
+			<div className={classes.container}>
+			<Header fixed={true}/>
+					<div className={classes.regionsContainer}>
+						<header className={classes.header}>
+							<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
+						</header>
+						<main>
+							<SimulationUncertainty/>
+						</main>
+						<p className={classes.textcontainer}>Los resultados presentados son parte de una investigación en curso. Las opiniones aquí reflejadas representan la opinión personal de los autores y no de la institución donde laboran.</p>
+					</div>
+			<Footer/>
+			</div>
 		</div>
 	);
 }
