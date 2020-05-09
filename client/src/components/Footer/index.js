@@ -34,6 +34,8 @@ const Footer = ({ classes}) => {
             <Link to={url+'/research?cat=3'} onClick={click} className={classes.name}><Typography className={classes.rows}>Analisis de la base de pruebas</Typography></Link>
             <Link to={url+'/research?cat=4'} onClick={click} className={classes.name}><Typography className={classes.rows}>Confirmados positivos en los Estado</Typography></Link>
             <Link to={url+'/research?cat=5'} onClick={click} className={classes.name}><Typography className={classes.rows}>Información clínica de pacientes diagnosticados con covid-19 en México</Typography></Link>
+            <Link to={url+'/research?cat=6'} onClick={click} className={classes.name}><Typography className={classes.rows}>Geografía</Typography></Link>
+            <Link to={url+'/research?cat=7'} onClick={click} className={classes.name}><Typography className={classes.rows}>Comercio</Typography></Link>
           </div>
         </div>
         <div className={classes.columnsContainer}>
