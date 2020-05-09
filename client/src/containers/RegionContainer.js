@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { STATE_COLORS } from '../constants/states';
+import { getUrlParams } from '../Utils/tools';
 
 const genStates = (title, id, color) => {
   return {title, id, color};
@@ -17,9 +18,16 @@ const useRegion = () => {
   
   const [stateValue, setStateValue] = React.useState("");
   const [nationalIndex, setNationalIndex] = React.useState(0);
+  const [isState, setIsState] = React.useState(true);
   
   React.useEffect(() => {
     callDataChart();
+
+    let params = getUrlParams();
+
+    if( typeof(params) !== "undefined") {
+      setIsState(params.show == "States");
+    }
   }, []);
 
   React.useEffect(() => {
@@ -55,6 +63,11 @@ const useRegion = () => {
       setStatesToChart([...statesToChart]);
     }
   }, [states]);
+
+  
+	let changeState = () => {
+		setIsState(!isState);
+	};
   
   let callDataChart = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/region/data/states`, {})
@@ -139,7 +152,9 @@ const useRegion = () => {
     stateValue,
     stateChange,
     addAll,
-    deleteAll
+    deleteAll,
+    changeState,
+    isState
   }
 }
 
