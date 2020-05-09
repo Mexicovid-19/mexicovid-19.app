@@ -21,6 +21,11 @@ return (
       <title>Seguimiento por regiones | MexiCOVID</title>
       <meta name="description" content="Con los datos historicos publicadso por la Dirección Generall de Epidemiología de la Secretaría de Salud, este esfuerzo busca responder a distintas interrogantes." />
       <meta name="keywords" content="coronavirus,regiones coronavirus, coronavirus mexico,casos coronavirus,coronavirus estados,Mexicovid regiones"/>
+      
+      <meta property="og:title" content="Seguimiento por regiones | MexiCOVID"/>
+      <meta property="og:description" content="Con los datos historicos publicadso por la Dirección Generall de Epidemiología de la Secretaría de Salud, este esfuerzo busca responder a distintas interrogantes."/>
+
+
       </Helmet>
       <div ref={vizContainerCam}></div>
     </div>

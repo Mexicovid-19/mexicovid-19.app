@@ -28,6 +28,10 @@ const Regions = ({ classes }) => {
 			<meta name="description" content="Seguimiento a la evoluación del Covid-19 en México por regiones" />
 			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/regiones.PNG" />
 			<meta name="keywords" content="coronavirus,regiones coronavirus, coronavirus mexico,casos coronavirus,coronavirus estados,Mexicovid regiones"/>
+			
+			<meta property="og:title" content="Seguimiento a la evoluación del Covid-19 en México por regiones"/>
+			<meta property="og:description" content="Seguimiento por regiones a la evoluación del Covid-19 en México @ITESM"/>
+
 			</Helmet>
 			<div className={classes.container}>
 				<Header fixed={true}/>

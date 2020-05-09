@@ -16,9 +16,13 @@ const Simulation = ({ classes }) => {
 		<div>
 			<Helmet>
 			<title>Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID</title>
-			<meta name="description" content="Metodología utilizada en MexiCOVID19" />
+			<meta name="description" content="Simulaciones del COVID19 bajo incertidumbre" />
 			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/incertidumbre.PNG" />
 			<meta name="keywords" content="simulacion incertidumbre, coronavirus mexico tec,casos coronavirus simulacion,coronavirus simulacion,cuanto tiempo falta coronavirus"/>
+			
+          	<meta property="og:title" content="Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID"/>
+          	<meta property="og:description" content="Simulaciones del COVID19 bajo incertidumbre"/>
+
 			</Helmet>
 			<div className={classes.container}>
 			<Header fixed={true}/>

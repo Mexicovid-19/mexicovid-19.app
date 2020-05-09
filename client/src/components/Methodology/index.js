@@ -19,7 +19,11 @@ const Methodology = ({ classes }) => {
 			<title>Metodología | MexiCOVID</title>
 			<meta name="description" content="Metodología utilizada en MexiCOVID19" />
 			<meta name="keywords" content="metodologia,usos tecnologias, coronavirus mexico tec,casos coronavirus metodologia,coronavirus ciencia,politica divulgacion"/>
-			</Helmet>
+			
+      <meta property="og:title" content="Metodología | MexiCOVID"/>
+      <meta property="og:description" content="Información sobre la metodología utilizada en MexiCOVID19"/>
+
+      </Helmet>
       <div className={classes.container}>
         <Header fixed={true}/>
         <main className={classes.MethologyContainer}>

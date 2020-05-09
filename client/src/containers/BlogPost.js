@@ -209,6 +209,10 @@ export default withStyles(styles)(function BlogHome({classes}) {
           <title>{post.title+" | MexiCOVID"}</title>
           <meta name="description" content={post.body}/>
           <meta name="keywords" content="tec mexicovid, coronavirus mexico tec,casos coronavirus investigacion,coronavirus impacto economico,coronavirus impacto social"/>
+          
+          <meta property="og:title" content={post.title+" | MexiCOVID"}/>
+          <meta property="og:description" content={post.body}/>
+
       </Helmet>
       <div className={classes.section}>
         <Header fixed={true}/>

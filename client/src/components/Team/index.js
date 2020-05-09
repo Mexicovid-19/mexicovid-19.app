@@ -16,6 +16,10 @@ const Team = ({classes}) => {
           <title>¿Quiénes Somos? | MexiCOVID</title>
           <meta name="description" content="La plataforma www.mexicovid19.mx es un esfuerzo conjunto de un grupo de alumnos y profesores del Tecnológico de Monterrey para dar seguimiento y fácil acceso a la información de salud más relevante en el contexto de la pandemia de Coronavirus en México. " />
           <meta name="keywords" content="equipo mexicovid,quienes somos covid,quienes somos mexicovid"/>
+
+          <meta property="og:title" content="¿Quiénes Somos? | MexiCOVID"/>
+          <meta property="og:description" content="La plataforma www.mexicovid19.mx es un esfuerzo conjunto de un grupo de alumnos y profesores del Tecnológico de Monterrey para dar seguimiento y fácil acceso a la información de salud más relevante en el contexto de la pandemia de Coronavirus en México."/>
+
       </Helmet>
       <div className={classes.container}>
         <Header fixed={true}/>
