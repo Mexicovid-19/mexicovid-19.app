@@ -49,9 +49,10 @@ const useStyles = makeStyles((theme) => ({
     slider: {
       width: '100%',
 			display: 'flex',
-			marginTop: '10px',
-			marginBottom: '10px',
-			justifyContent: 'center'
+			margin: '10px 0px'
+    },
+    text: {
+      margin: '0px 5px',
     }
   }
 
@@ -74,6 +75,9 @@ const PrettoSlider = withStyles({
     '&:focus, &:hover, &$active': {
       boxShadow: 'inherit',
     },
+    '&:after': {
+      display: "none"
+    }
   },
   
   active: {},
@@ -111,7 +115,7 @@ const PrettoSlider = withStyles({
   
   [`@media (max-width: ${1000}px)`]: {
     root: {
-      width: '70vw',
+      width: '80vw',
     }
   }
   
@@ -119,27 +123,20 @@ const PrettoSlider = withStyles({
 
 const CustomizedSlider = () => {
 	const classes = useStyles();
-	const {state, changeDate, dataChart} = React.useContext(HomeContext);
+	const {state, changeDate} = React.useContext(HomeContext);
   let max = 0;
-  let totalConfirm = 0;
-  let totalDeads = 0;
-
-	if(!state.dates) {
+  
+  if(!state.dates) {
 		return null;
   }
 
-  if(dataChart.length > 0) {
-    totalConfirm = dataChart[0].data.find((x) => { return x.x === state.date }).y;
-    totalDeads = dataChart[1].data.find((x) => { return x.x === state.date }).y;
-  }
-	
   max = state.dates.length - 1;
   let formatedDate = new Date(state.date);
   formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, 2020`;
   
   return (
     <div className={classes.slider}>
-			<Typography className={classes.text}>Fecha </Typography>
+    	<Typography className={classes.text}>Fecha </Typography>
 			<div className={classes.root}>
 				<PrettoSlider
 					ValueLabelComponent={ValueLabelComponent}
