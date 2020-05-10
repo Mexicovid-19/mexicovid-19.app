@@ -26,17 +26,18 @@
     <meta property="og:description" content="Seguimiento diario a la evolución del Covid-19 en México @ITESM"/>
     <meta property="og:url" content="https://mexicovid19.app/"/>
     
+    <meta property="fb:app_id" content="1128132474210055" id="ember94" class="ember-view">
+
     <meta name="keywords" content="coronavirus,mapa coronavirus, coronavirus mexico,casos coronavirus,coronavirus tec,Mexicovid,mexicovid19"/>
     <meta name="description" content="Seguimiento diario a la evolución del Covid-19 en México @ITESM"/>  
 
-    <meta property="twitter:card" content="Seguimiento diario a la evolución del Covid-19 en México @ITESM">
-    <meta property="twitter:site" content="@MexiCovid_19">
-    <meta property="twitter:title" content="MexiCOVID: Covid-19 en México">
-    <meta property="twitter:description" content="Seguimiento diario a la evolución del Covid-19 en México @ITESM">
-    <meta property="twitter:creator" content="@MexiCovid_19">
-    <meta property="twitter:image:src" content="https://mexicovid19.app/img/mediashare/home.PNG">        
-    <meta property="twitter:domain" content="https://mexicovid19.app/">
-    <meta name="twitter:url" content="https://mexicovid19.app/" />
+    <meta name"twitter:title" content="MexiCOVID: Covid-19 en México">
+    <meta name="twitter:description" content="Seguimiento diario a la evolución del Covid-19 en México, simulaciones e investigaciones (Tec de Monterrey)" id="ember98" class="ember-view">
+    <meta name="twitter:site" content="@MexiCovid_19" id="ember100" class="ember-view">
+    <meta name="twitter:domain" content="MexiCovid19" id="ember102" class="ember-view">
+    <meta name="twitter:image" content="https://mexicovid19.app/img/mediashare/home.PNG" id="ember104" class="ember-view">
+    <meta name="twitter:image:alt" content="Entra e informate sobre los datos del coronavirus" id="ember106" class="ember-view">
+    <meta name="twitter:card" content="summary_large_image" id="ember108" class="ember-view">
 
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -88,5 +89,20 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('worker.js').then(function(registration) {
+            console.log('Worker registration successful', registration.scope);
+          }, function(err) {
+            console.log('Worker registration failed', err);
+          }).catch(function(err) {
+            console.log(err);
+          });
+        });
+      } else {
+        console.log('Service Worker is not supported by browser.');
+      }
+    </script>
   </body>
 </html>
