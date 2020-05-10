@@ -15,6 +15,7 @@ import Map from './Map';
 import Header from '../Header';
 import EnhacedTable from './Table';
 import Slider from './Slider';
+import TotalMobile from './TotalMobile';
 import { Helmet } from 'react-helmet';
 
 const Home = ({ classes }) => {
@@ -58,6 +59,7 @@ const Home = ({ classes }) => {
             ? <ExpandLessRoundedIcon onClick={expandHandler} className={classes.expandIcon} />
             : <ExpandMoreRoundedIcon onClick={expandHandler} className={classes.expandIcon} />}
         </div>
+        <TotalMobile/>
         {isExpanded && <Slider/>}
       </div>
       <div className={classes.Mapcontainer}>

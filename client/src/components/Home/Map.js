@@ -23,7 +23,8 @@ const Map = ({classes}) => {
         {!isMobile && <CustomizedSlider />}
       </div>
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
-      <div ref={mapRef} className={classes.map}></div>
+      <div ref={mapRef} className={classes.map}>
+      </div>
     </div>
   );
 }
