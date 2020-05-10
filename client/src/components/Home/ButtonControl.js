@@ -56,7 +56,18 @@ const styles = () => ({
 
   [`@media (max-width: ${1000}px)`]: {
     buttonsContainer: {
-      width: 'fit-content'
+      width: '100%',
+      justifyContent: 'center',
+      marginBottom: '10px'
+    },
+    buttonConfirm: {
+      width: '49%'
+    },
+    buttonDead: {
+      width: '49%'
+    },
+    button: {
+      width: '49%'
     }
   }
   
