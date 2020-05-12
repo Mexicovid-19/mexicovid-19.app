@@ -90,15 +90,20 @@ const PhotoGrid = ({classes}) => {
                     <p>Estudiante de Licenciatura en Gobierno y Transformación Pública. Interesado en análisis de datos y diseño de políticas públicas.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
-                    <p className="names" align={'center'}>Cinthia Janette Lara Luna</p>
-                    <img src="images/cinthiajanette.jpg" className="img-responsive" alt="Image"/>
-                    <p>Estudiante de Licenciatura en Gobierno y Transformación Pública. Intereses profesionales en emprendimiento público y desarrollo de políticas públicas.</p>
+                    <p className="names" align={'center'}>Ximena Jiménez Martínez</p>
+                    <img src="images/ximenajimenez.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Licenciatura en Administración Financiera. Sus intereses profesionales son el desarrollo de sistemas que fomenten la inclusión financiera en la población.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
                     <p className="names" align={'center'}>Alicia Landín</p>
                     <img src="images/alicelandin.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Ingeniería en Desarrollo Sustentable. Intereses profesionales en el desarrollo y planeación urbana, Sistemas de Información Geográfica y políticas públicas.</p>
-                </div>  
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>Cinthia Janette Lara Luna</p>
+                    <img src="images/cinthiajanette.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Licenciatura en Gobierno y Transformación Pública. Intereses profesionales en emprendimiento público y desarrollo de políticas públicas.</p>
+                </div>
                 <div className={classes.photoGridItem}> 
                     <p className="names" align={'center'}>Lorena Lazos</p>
                     <img src="images/lorenalazos.jpg" className="img-responsive" alt="Image"/>
