@@ -15,7 +15,8 @@ exports.create = function (req, res) {
         if (response) {
             res.status(201).send(response);
         } else if (error) {
-            res.status(400).send(error);
+            res.statusMessage = 'duplicated data';
+            return res.status(400).end();
         }
     });
 }

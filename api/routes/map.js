@@ -21,6 +21,11 @@ router.get('/municipality/find/CVE_ENT', function(req, res) {
 	let {cve_ent} = req.query;
 	var fs = require('fs');
 
+	if(!cve_ent) {
+		res.statusMessage = "CVE_ENT is missing in the query"
+		return res.status(406).end();
+	}
+
 	fs.readFile("data/home/municipios_geometry.json", "utf8", function(err, data){
 		if(err) {
 			res.statusMessage = "file didn't load."
@@ -114,10 +119,9 @@ router.post('/data/decesos', function(req, res) {
 
 
 router.get('/municipios_data', function(req, res) {
-	let {cve_ent} = req.query;
 	var fs = require('fs');
 
-	fs.readFile("data/home/municipios_poblacion_ent_mun.csv", "utf8", function(err, data){
+	fs.readFile("data/region/municipios_poblacion_entmun.csv", "utf8", function(err, data){
 		if(err) {
 			res.statusMessage = "file didn't load."
 			res.status(404).end();
