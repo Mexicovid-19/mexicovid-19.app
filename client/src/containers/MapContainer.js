@@ -7,9 +7,11 @@ import { numberWithCommas } from '../Utils/numberWCommas';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
+
   const mapRef = React.useRef(null);
   const [map, setMap] = React.useState(null);
   const [statesGeOJSON, setStatesGeOJSON] = React.useState(null);
+  const [munGeOJSON, setMunGeOJSON] = React.useState(null);
   const thresholdColor = {
     "decesos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
     "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
@@ -21,7 +23,7 @@ const useMap = () => {
   })
   const isMobile = window.innerWidth < 1000;
   const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
-  
+  const [isMapContainer, setIsMapContainer] = React.useState(false);
   const {statesConfirm,
          statesDeads,
          selectedLabel, 
@@ -88,6 +90,7 @@ const useMap = () => {
       });
 
       map.on('mousemove', showPopup);
+      map.on('click', 'pref', openMapContainer);
       var nav = new mapboxgl.NavigationControl();
       map.addControl(nav, 'bottom-right');
     }
@@ -99,6 +102,7 @@ const useMap = () => {
       if(map.loaded() && map.isStyleLoaded()) {
         map.setPaintProperty('pref', 'fill-color', fillColor);
         map.on('mousemove', showPopup);
+        map.on('click', 'pref', openMapContainer);
       }
     }
       
@@ -114,6 +118,18 @@ const useMap = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/map/states`, {})
     .then(res => {
       setStatesGeOJSON(res.data);
+    });
+  }
+
+  let callMunGEOJSON = ( state )  => {
+    let cve_ent = String(state);
+    if(cve_ent.length == 1) {
+      cve_ent = "0" + cve_ent;
+    } 
+    axios.get(`${process.env.REACT_APP_API_URL}/map/municipality/find/CVE_ENT?cve_ent=${cve_ent}`, {})
+    .then(res => {
+      console.log(res.data);
+      setMunGeOJSON(res.data);
     });
   }
 
@@ -177,8 +193,7 @@ const useMap = () => {
   let setUpGEOJson = () => {
     let geojson = statesGeOJSON;
       geojson.features = geojson.features.sort((a,b) => a.properties.CVE_ENT - b.properties.CVE_ENT);
-      console.log(geojson)
-      console.log(statesConfirm)
+      
       for(var i = 0; i < 32; i++) {
         for(var j in statesConfirm[i].confirmados) {
           geojson.features[i].properties["confirmados-" + j] = Number(statesConfirm[i].confirmados[j]);
@@ -190,13 +205,34 @@ const useMap = () => {
     
     return geojson;
   }
-  
+
+  let openMapContainer = (e) => {
+    var features = map.queryRenderedFeatures(e.point, {
+      layers: ["pref"]
+    });
+    
+    if(features.length > 0) {
+      callMunGEOJSON(features[0].properties.CVE_ENT)
+    }
+
+    setIsMapContainer(true);
+  }
+
+  let setUpMunGEOJson = () => {
+    let geojson = munGeOJSON;
+      
+    
+    return geojson;
+  }
   return {
     mapRef,
     map,
     showPopup,
     popup,
-    thresholdsNum
+    thresholdsNum,
+
+    openMapContainer,
+    isMapContainer
   }
 }
 
