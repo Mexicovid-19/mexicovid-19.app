@@ -47,8 +47,8 @@ const Footer = ({ classes}) => {
         </div>
       </div>
       <div className={classes.img}>   
-        <img   title="logo tec Escuelas Gobernanza" src={process.env.PUBLIC_URL +'/img/EGyTP.png'}/>
-        <img   title="logo tec Escuela Ingenieria" src={process.env.PUBLIC_URL +'/img/ING.png'}/>
+        <img   className={classes.imglogo} title="logo tec Escuelas Gobernanza" src={process.env.PUBLIC_URL +'/img/EGyTP.png'}/>
+        <img   className={classes.imglogo} title="logo tec Escuela Ingenieria" src={process.env.PUBLIC_URL +'/img/ING.png'}/>
       </div>
     </div>
   );
@@ -91,7 +91,10 @@ const useStyles = makeStyles((theme) => ({
   img: {
     display: 'flex',
     justifyContent: 'center',
-    width: '24%',
+  },
+  
+  imglogo: {
+    maxHeight: '150px'
   },
 
   [`@media (max-width: ${1000}px)`]: {
