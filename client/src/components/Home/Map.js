@@ -6,6 +6,7 @@ import CustomizedSlider from './CustomizedSlider';
 import { BLACK, WHITE } from '../../constants/colors';
 import ColorsGradientBar from './ColorGradientBar';
 import LoaderView from '../Loader';
+import MunMap from './munMap';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum} = React.useContext(MapContext);
@@ -21,6 +22,9 @@ const Map = ({classes}) => {
       }
       <div className={classes.sidebarStyle}>
         {!isMobile && <CustomizedSlider />}
+      </div>
+      <div className={classes.munContainer}>
+        <MunMap/>
       </div>
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
       <div ref={mapRef} className={classes.map}></div>
@@ -107,6 +111,16 @@ const styles = () => ({
   loader: {
     width: 'fit-content',
     margin: 'auto',
+  },
+
+  munContainer: {
+    height: 'calc(100vh - 125px)',
+    width: '300px',
+    position: 'absolute',
+    backgroundColor: WHITE,
+    zIndex: '10',
+    right: '300px',
+    top: '125px',
   },
 
   [`@media (max-width: ${1000}px)`]: {

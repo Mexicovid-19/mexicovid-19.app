@@ -1,0 +1,37 @@
+(function () {
+    var mongoose = require('mongoose');
+    var municipio = mongoose.model('municipios');
+    /**
+     * Function to execute the create query to create the municipios.
+     * @param {*} data municipio data
+     * @param {*} callback callback function.
+     */
+    exports.createMunicipio = function (data, callback) {
+        municipio.create(data).then((response) => {
+            callback(null, response);
+        }, (error) => {
+            callback(error, null);
+        });
+    };
+
+    /**
+     * Funtion to find the municipio from collections.
+     * @param {*} query condition or expression to find the municipio from collection.
+     * @param {*} callback callback function
+     */
+    exports.findMunicipio = function (query, callback) {
+        municipio.findOne(query, callback);
+    };
+
+    /**
+     * Function to execute the update query.
+     * @param {*} query Condition or filter to find the user.
+     * @param {*} data data which we need to update.
+     * @param {*} options 
+     */
+    exports.updateMunicipio = function (query, data, options, callback) {
+        municipio.findOneAndUpdate(query, data, options, (err, response) => {
+            callback(err, response);
+        });
+    }
+})()

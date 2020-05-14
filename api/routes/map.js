@@ -17,6 +17,28 @@ router.post('/states', function(req, res) {
 	
 });
 
+router.get('/municipality/find/CVE_ENT', function(req, res) {
+	let {cve_ent} = req.query;
+	var fs = require('fs');
+
+	fs.readFile("data/home/municipios_geometry.json", "utf8", function(err, data){
+		if(err) {
+			res.statusMessage = "file didn't load."
+			res.status(404).end();
+		} else {
+			let jsonData = JSON.parse(data);
+			let features = jsonData.features;
+			
+			const results = features.filter(feature => feature.properties.CVE_ENT == cve_ent);
+
+			geojson = {"type":"FeatureCollection","features": results};
+			res.status(200).json(geojson);
+		}
+	});
+	
+	return res;
+});
+
 router.post('/data/confirmados', function(req, res) {
 	var fs = require('fs');
 	var d3 = require('d3');
