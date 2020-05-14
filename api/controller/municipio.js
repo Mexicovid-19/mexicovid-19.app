@@ -5,7 +5,7 @@ var municipioService = require('../service/municipios');
  */
 exports.create = function (req, res) {
     var body = new Municipio(req.body);
-    if ( !body.cve_ent && !body.cve_mun && !body.nombre ) {
+    if ( (!body.cve_ent_mun || !body.cve_ent && !body.cve_mun) && !body.nombre ) {
         res.statusMessage = 'CVE_ENT or CVE_MUN or name is missing';
         res.status(400).end();
         return;
@@ -74,6 +74,7 @@ exports.update = function (req, res) {
 
 class Municipio {
     constructor(munData) {
+        this.cve_ent_mun = munData.cve_ent_mun || '';
         this.cve_ent = munData.cve_ent || '';
         this.cve_mun = munData.cve_mun || '';
         this.nombre = munData.nombre || '';

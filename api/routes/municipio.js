@@ -17,4 +17,39 @@ router.get('/municipio/:state', municipio.findByEnt);
  */
 router.put('/update', municipio.update);
 
+router.get('/load_data', function(req, res) {
+	var fs = require('fs');
+
+	fs.readFile("data/region/municipios_poblacion_entmun.csv", "utf8", function(err, data){
+		if(err) {
+			res.statusMessage = "file didn't load."
+			res.status(404).end();
+		} else {
+            var d3 = require('d3');
+            let muns = d3.csvParse(data.slice(1));
+            
+            muns.forEach(mun => {
+                if(mun["cve_ent_mun"].length != 5) {
+                    mun["cve_ent_mun"] =  "0" + mun["cve_ent_mun"];
+                }
+
+                let id = mun["cve_ent_mun"];
+                //last 3
+                mun["cve_mun"] = id.substr(-3);  
+                //delete last 3
+                mun["cve_ent"] = id.slice(0, -3);
+                
+                let _req = {
+                    "body": mun
+                }
+                municipio.create(_req,res);
+            });
+			
+			res.status(200).json(muns);
+		}
+	});
+	
+	return res;
+});
+
 module.exports = router;

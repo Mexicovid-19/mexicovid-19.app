@@ -112,4 +112,23 @@ router.post('/data/decesos', function(req, res) {
 	
 });
 
+
+router.get('/municipios_data', function(req, res) {
+	let {cve_ent} = req.query;
+	var fs = require('fs');
+
+	fs.readFile("data/home/municipios_poblacion_ent_mun.csv", "utf8", function(err, data){
+		if(err) {
+			res.statusMessage = "file didn't load."
+			res.status(404).end();
+		} else {
+			let jsonData = JSON.parse(data);
+			
+			res.status(200).json(jsonData);
+		}
+	});
+	
+	return res;
+});
+
 module.exports = router;

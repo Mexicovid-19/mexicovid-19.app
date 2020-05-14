@@ -1,6 +1,11 @@
 const mongoose = require( 'mongoose' );
 
 const municipioSchema = mongoose.Schema({
+    cve_ent_mun: {
+        type: String,
+        required: true,
+        unique: true
+    },
     cve_ent: {
         type: String,
         required: true
