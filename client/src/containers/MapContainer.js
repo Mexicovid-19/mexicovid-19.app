@@ -4,6 +4,7 @@ import axios from 'axios';
 import { HomeContext } from '../contexts/HomeContext';
 import * as colors from './../constants/colors';
 import { numberWithCommas } from '../Utils/numberWCommas';
+import '../css/Map.css';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -36,7 +37,7 @@ const useMap = () => {
       style: 'mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko',
       center: [-97.8116, 24.6040],
       zoom : 4.2
-    }));
+    },));
 
     if (isMobile){
       setMap(
@@ -68,7 +69,8 @@ const useMap = () => {
 
       map.addSource('pref', {
         type: 'geojson',
-        data: geojson
+        data: geojson,
+        attribution: 'ⓘCifras oficiales del Gobierno de México'
       });
       console.log(" if adding layer:");
       map.addLayer({
