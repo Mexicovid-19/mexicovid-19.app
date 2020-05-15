@@ -64,7 +64,7 @@ exports.update = function (req, res) {
         return;
     }
 
-    userService.updateMunicipio(query, data, options, (err, response) => {
+    municipioService.updateMunicipio(query, data, options, (err, response) => {
         if (response) {
             res.status(200).send(response);
         } else if (err) {

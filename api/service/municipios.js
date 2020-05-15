@@ -24,6 +24,15 @@
     };
 
     /**
+     * Funtion to find the municipio from collections.
+     * @param {*} query condition or expression to find the municipio from collection.
+     * @param {*} callback callback function
+     */
+    exports.findMunicipioByEnt = function (query, callback) {
+        municipio.find(query, callback);
+    };
+
+    /**
      * Function to execute the update query.
      * @param {*} query Condition or filter to find the user.
      * @param {*} data data which we need to update.
