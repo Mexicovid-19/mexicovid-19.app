@@ -10,6 +10,11 @@ router.post('/', estado.create);
 /**
  * TO get the single estado by their state CVE_ENT
  */
+router.get('/todos', estado.getAll);
+
+/**
+ * TO get the single estado by their state CVE_ENT
+ */
 router.get('/estado/:state', estado.findByEnt);
 
 /**

@@ -45,6 +45,6 @@ const estadosSchema = mongoose.Schema({
     ]
 });
 
-const estados = mongoose.model( 'estadoss', estadosSchema );
+const estados = mongoose.model( 'estados', estadosSchema );
 
 module.exports = { estados };

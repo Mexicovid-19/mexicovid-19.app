@@ -23,6 +23,20 @@ exports.create = function (req, res) {
 }
 
 /**
+ * Function to create the estado in estado collection.
+ */
+exports.getAll = function (req, res) {
+   estadoService.getAll( function (error, response) {
+        if (response) {
+            res.status(200).send(response);
+        } else if (error) {
+            res.statusMessage = 'there where problems with the database';
+            return res.status(500).end();
+        }
+    });
+}
+
+/**
  * Function to find estado from estado collection.
  */
 exports.findByEnt = function (req, res) {

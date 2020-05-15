@@ -19,6 +19,15 @@
      * @param {*} query condition or expression to find the estado from collection.
      * @param {*} callback callback function
      */
+    exports.getAll = function ( callback) {
+        estado.find(callback);
+    };
+
+    /**
+     * Funtion to find the estado from collections.
+     * @param {*} query condition or expression to find the estado from collection.
+     * @param {*} callback callback function
+     */
     exports.findEstado = function (query, callback) {
         estado.findOne(query, callback);
     };
