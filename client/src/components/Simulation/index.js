@@ -5,18 +5,19 @@ import * as colors from '../../constants/colors';
 import Header from '../Header';
 import Footer from '../Footer';
 import SimulationUncertainty from './SimulationUncertainty';
+import SimulationEconomy from './SimulationEconomy';
 import { Helmet } from 'react-helmet';
 
 const Simulation = ({ classes }) => {
 
 	const isMobile = window.innerWidth < 1000;
 	document.title = "Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID";
-	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
+	const title = `Simulaciones del COVID-19`;
 	return (
 		<div>
 			<Helmet>
-			<title>Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID</title>
-			<meta name="description" content="Simulaciones del COVID19 bajo incertidumbre" />
+			<title>Simulaciones | MexiCOVID</title>
+			<meta name="description" content="Simulaciones del COVID-19" />
 			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/incertidumbre.PNG" />
 			<meta name="keywords" content="simulacion incertidumbre, coronavirus mexico tec,casos coronavirus simulacion,coronavirus simulacion,cuanto tiempo falta coronavirus"/>
 			
@@ -32,6 +33,7 @@ const Simulation = ({ classes }) => {
 						</header>
 						<main>
 							<SimulationUncertainty/>
+							<SimulationEconomy/>
 						</main>
 						<p className={classes.textcontainer}>Los resultados presentados son parte de una investigación en curso. Las opiniones aquí reflejadas representan la opinión personal de los autores y no de la institución donde laboran.</p>
 					</div>
