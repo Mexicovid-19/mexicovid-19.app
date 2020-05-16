@@ -8,7 +8,6 @@ import ColorsGradientBar from './ColorGradientBar';
 import LoaderView from '../Loader';
 import MunMap from './munMap';
 import MunMapMov from './munMapMov';
-import { colors } from '@material-ui/core';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum, isMapMunicipio} = React.useContext(MapContext);
@@ -122,7 +121,7 @@ const styles = () => ({
 
   munContainer: {
     height: 'calc(100vh - 125px)',
-    width: '300px',
+    width: 'calc(50vw - 300px)',
     position: 'absolute',
     backgroundColor: WHITE,
     zIndex: '10',

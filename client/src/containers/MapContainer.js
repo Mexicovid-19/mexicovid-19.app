@@ -12,7 +12,6 @@ const useMap = () => {
   const mapRef = React.useRef(null);
   const [map, setMap] = React.useState(null);
   const [statesGeOJSON, setStatesGeOJSON] = React.useState(null);
-  const [munGeOJSON, setMunGeOJSON] = React.useState(null);
   const thresholdColor = {
     "decesos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
     "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
@@ -25,7 +24,7 @@ const useMap = () => {
   const isMobile = window.innerWidth < 1000;
   const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
   const [isMapMunicipio, setIsMapMunicipio] = React.useState(false);
-  const [stateSelected, setStateSelected] = React.useState("");
+  const [stateSelected, setStateSelected] = React.useState(null);
   const {statesConfirm,
          statesDeads,
          selectedLabel, 
@@ -115,8 +114,8 @@ const useMap = () => {
   }, [isMap]);
 
   React.useEffect(() => {
-    if(stateSelected !== "") {
-      callMunData(stateSelected);
+    if(stateSelected) {
+      callMunData(stateSelected.cve_ent);
     }
   }, [stateSelected])
 
@@ -207,8 +206,16 @@ const useMap = () => {
     
     if(features.length > 0) {
       let cve_ent = String(features[0].properties.CVE_ENT);
+      let nombre = features[0].properties.ESTADO;
       cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
-      setStateSelected(cve_ent);
+      console.log(features[0].properties);
+      setStateSelected(
+        {
+          cve_ent,
+          nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
+          abrev: features[0].properties.ABREV
+        }
+      );
     }
     
     setIsMapMunicipio(true);

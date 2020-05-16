@@ -11,6 +11,9 @@ const useMapMunicipio = () => {
     const [munGEOJSON, setMunGEOJSON] = React.useState(null);
     const mapRef = React.useRef(null);
     const [map, setMap] = React.useState(null);
+    const [selectedMun, setSelectedMun] = React.useState(null);
+    const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
+    
     const thresholdColor = {
         "decesos": ['#eff3ff','#bdd7e7','#6baed6','#2171b5'],
         "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
@@ -47,7 +50,7 @@ const useMapMunicipio = () => {
     React.useEffect(() => {
         if(map && map.loaded() && stateSelected) {
             setMunGEOJSON(null);
-            callMunGEOJSON(stateSelected);
+            callMunGEOJSON(stateSelected.cve_ent);
         }
     }, [stateSelected])
 
@@ -56,28 +59,24 @@ const useMapMunicipio = () => {
             var nav = new mapboxgl.NavigationControl();
             map.on('load', function() {
                 if(!munGEOJSON) {
-                    callMunGEOJSON(stateSelected);
+                    callMunGEOJSON(stateSelected.cve_ent);
                 }
 
-                map.addControl(nav, 'bottom-right');
+                map.addControl(nav, 'top-right');
             })
         }
     }, [map]);
 
     React.useEffect(() => {
-        console.log("data fetched", munGEOJSON, munData);
         if(munData && munGEOJSON && munData.length == munGEOJSON.features.length) {  
             let fillColor = getSteps(selectedLabel);
-            console.log(stateSelected);
             let geojson = setUpGEOJson();
-            //console.log(geojson);
-            //console.log(fillColor);
+            
             if(map.getLayer("pref") !== undefined) {
                 map.removeLayer('pref');
             }
 
             if(map.getSource("pref") !== undefined) {
-                console.log(map.getSource("pref"))
                 map.removeSource('pref');
             }
             
@@ -102,22 +101,25 @@ const useMapMunicipio = () => {
                 }
             });
         
-          //map.on('mousemove', showPopup);
+          map.on('mousemove', showPopup);
           //map.on('click', 'pref', openMapContainer);
           
         }
       }, [munGEOJSON, munData]);
 
-    let callMunGEOJSON = (stateSelected)  => {
-        axios.get(`${process.env.REACT_APP_API_URL}/map/municipality/find/CVE_ENT?cve_ent=${stateSelected}`, {})
+    let callMunGEOJSON = (cve_ent)  => {
+        axios.get(`${process.env.REACT_APP_API_URL}/map/municipality/find/CVE_ENT?cve_ent=${cve_ent}`, {})
         .then(res => {
             setMunGEOJSON(res.data);
         });
     }
 
     let setUpGEOJson = () => {
-        console.log(munGEOJSON)
         let geojson = munGEOJSON;
+        map.fitBounds([
+            [-98.57510979964474, 17.089858429960742],
+            [-99.9061039346325, 16.822738437941883]
+            ]);
         geojson.features = geojson.features.sort((a,b) => a.properties.CVE_ENT - b.properties.CVE_ENT);
         for (let index = 0; index < munData.length; index++) {
             for (const confIndex in munData[index].confirmados) {
@@ -160,9 +162,40 @@ const useMapMunicipio = () => {
         return fillColor;
     }
 
+    let showPopup = (e) => {
+        var features = map.queryRenderedFeatures(e.point, {
+          layers: ["pref"]
+        });
+        
+        if(features.length > 0 && munData) {
+            setSelectedMun(features[0].properties.NOM_MUN)
+            console.log(features[0].properties.NOM_MUN)
+            popup
+            .setLngLat(e.lngLat)
+            .setHTML(
+                ` 
+                <div style='display: flex; flex-direction: column; align-items: center; padding: 10px'>
+                    <span style='border-bottom: 1px solid; width: 100%; text-align: center; font-family: Raleway; font-weight:bold'>
+                    ${features[0].properties.NOM_MUN}
+                    </span>
+                    <span style='display: flex;'>
+                    <svg style='width: 15px; height: 15px; font-family: Raleway; font-weight:bold'>
+                        <circle r="5" cx="6" cy="10" fill=${selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
+                    </svg>
+                    ${numberWithCommas(features[0].properties[ selectedLabel + "-" + "17/04/2020"])} ${selectedLabel} 
+                    </span>
+                </div>`
+                )
+            .setMaxWidth(400)
+            .addTo(map);
+        } else {
+            popup.remove();
+        }
+      }
   return {
     callMunGEOJSON,
-    mapRef
+    mapRef,
+    selectedMun
   }
 }
 
