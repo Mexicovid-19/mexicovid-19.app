@@ -6,7 +6,7 @@ var municipioService = require('../service/municipios');
  */
 exports.create = function (req, res) {
     var body = new Estado(req.body);
-    if (!body.cve_ent  && !body.nombre ) {
+    if (!body.cve_ent  && !body.nombre && !body.abbrev ) {
         res.statusMessage = 'CVE_ENT or name is missing';
         res.status(400).end();
         return;
@@ -82,12 +82,13 @@ exports.update = function (req, res) {
 }
 
 class Estado {
-    constructor(munData) {
-        this.cve_ent = munData.cve_ent || '';
-        this.nombre = munData.nombre || '';
-        this.poblacion = munData.poblacion || 0;
-        this.decesos = munData.decesos || [];
-        this.confirmados = munData.confirmados || [];
-        this.pruebas = munData.pruebas || [];
+    constructor(estData) {
+        this.cve_ent = estData.cve_ent || '';
+        this.abbrev = estData.abbrev || '';
+        this.nombre = estData.nombre || '';
+        this.poblacion = estData.poblacion || 0;
+        this.decesos = estData.decesos || [];
+        this.confirmados = estData.confirmados || [];
+        this.pruebas = estData.pruebas || [];
     }
 }

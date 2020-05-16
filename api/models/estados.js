@@ -9,6 +9,10 @@ const estadosSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    abbrev: {
+        type: String,
+        required: true
+    },
     poblacion: {
         type: Number,
         default: 0

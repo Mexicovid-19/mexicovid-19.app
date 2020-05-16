@@ -13,6 +13,8 @@ var regionRouter = require('./routes/region');
 var municipioRouter = require('./routes/municipio');
 var estadoRouter = require('./routes/estado');
 
+var csvEstadoRouter = require('./csvReader/estados');
+
 require('./connection');
 
 var app = express();
@@ -27,6 +29,8 @@ app.use('/map', mapRouter);
 app.use('/region', regionRouter);
 app.use('/municipio', municipioRouter);
 app.use('/estado', estadoRouter);
+
+app.use('/csv', csvEstadoRouter);
 
 // error handler
 app.use(function(err, req, res, next) {
