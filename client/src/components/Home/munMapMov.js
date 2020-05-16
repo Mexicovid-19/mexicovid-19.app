@@ -12,6 +12,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 import ColorGradientBar from './ColorGradientBar';
+import { HomeContext } from '../../contexts/HomeContext';
+import { MapMunicipioContext } from '../../contexts/MapMunicipioContext';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -20,15 +22,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const MunMapMov = (props) => {
     const {classes} = props;
-    const {openMapContainer,closeMapContainer,isMapContainer,selectedLabel,thresholdsNum} = React.useContext(MapContext);
+    const {openMapContainer,closeMapContainer,isMapMunicipio,thresholdsNum} = React.useContext(MapContext);
+    const {selectedLabel} = React.useContext(HomeContext);
+    const { mapRef } = React.useContext(MapMunicipioContext);
     console.log(openMapContainer);
     console.log(closeMapContainer);
-    console.log(isMapContainer);
+    console.log(isMapMunicipio);
 
 
     return (
         <Dialog
-        open={isMapContainer}
+        open={isMapMunicipio}
         TransitionComponent={Transition}
         keepMounted
         classes={{
@@ -56,7 +60,7 @@ const MunMapMov = (props) => {
                 <div className={classes.boxmaxgrapcontainer}>
                     <div className={classes.munmapContainermov}>
                         <div className={classes.mapboxcontainer}>
-                            <p>ESNAUSER </p>
+                            <div ref={mapRef} className={classes.map}></div>
                         </div>
                         <div className={classes.namestatemuncontainer}>
                             <p>San Luis Potosi</p>

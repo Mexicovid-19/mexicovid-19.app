@@ -229,7 +229,6 @@ const useMap = () => {
     openMapContainer,
     closeMapContainer,
     isMapMunicipio
-    
   }
 }
 
