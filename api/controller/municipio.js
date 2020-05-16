@@ -36,12 +36,13 @@ exports.findByEnt = function (req, res) {
         return;
     }
 
-    municipioService.findMunicipio(query, function (error, response) {
+    municipioService.findMunicipioByEnt(query, function (error, response) {
         if (error) {
             res.status(404).send(error);
             return;
         }
         if (response) {
+            console.log(response.length)
             res.status(200).send(response);
             return;
         }
@@ -75,7 +76,7 @@ exports.update = function (req, res) {
 
 class Municipio {
     constructor(munData) {
-        this.cve_ent_mun = munData.cve_ent_mun || '';
+        this.cve_ent_mun = munData.cve_ent_mun || ( munData.cve_ent.toString()+munData.cve_mun.toString() || '');
         this.cve_ent = munData.cve_ent || '';
         this.cve_mun = munData.cve_mun || '';
         this.nombre = munData.nombre || '';
@@ -83,6 +84,6 @@ class Municipio {
         this.decesos = munData.decesos || [];
         this.confirmados = munData.confirmados || [];
         this.pruebas = munData.pruebas || [];
-        this.indice_vulnerabilidad = munData.indice_vulnerabilidad || 0;
+        this.indice_vulnerabilidad = munData.indice_vulnerabilidad || -1;
     }
 }

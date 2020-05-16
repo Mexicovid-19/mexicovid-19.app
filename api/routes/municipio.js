@@ -10,7 +10,7 @@ router.post('/', municipio.create);
 /**
  * TO get the single municipio by their state CVE_ENT
  */
-router.get('/municipio/:state', municipio.findByEnt);
+router.get('/:cve_ent', municipio.findByEnt);
 
 /**
  * To update the user data by filter condition

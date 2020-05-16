@@ -1,31 +1,37 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import * as colors from '../../constants/colors';
+import { MapMunicipioContext } from '../../contexts/MapMunicipioContext';
 
-const MunMap = (props) => {
-    const {classes} = props;
-
+const MunMap = ({classes}) => {
+    const { mapRef } = React.useContext(MapMunicipioContext);
+    
     return (
         <div className={classes.container}>
-            <div className={classes.containermap}> 
+            <div className={classes.containerMap}>     
+                <div ref={mapRef} className={classes.map}></div>
             </div>
-            <div className={classes.containermungraph}>
+            <div className={classes.containerMungraph}>
             </div>        
         </div>
     )
 }
 
 const styles = () => ({
+    map: {
+        height: '100% !important',
+    },
     container: {
         width: '100%',
         height: '100%',
+        backgroundColor: colors.BLACK
     }, 
-    containermap: {
+    containerMap: {
         width: '100%',
         height: '50%',
         backgroundColor: colors.BLACK
     },
-    containermungraph: {
+    containerMungraph: {
         width: '100%',
         height: '50%',
         backgroundColor: colors.BLUE

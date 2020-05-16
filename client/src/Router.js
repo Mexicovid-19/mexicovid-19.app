@@ -7,6 +7,7 @@ import Regions from './components/Regions';
 import { RegionContextProvider } from './contexts/RegionContext';
 import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
+import { MapMunicipioContextProvider } from './contexts/MapMunicipioContext';
 import { BlogContextProvider } from './contexts/BlogContext';
 import './css/index.css';
 import AvailableBeds from './components/AvailableBeds';
@@ -30,7 +31,9 @@ const Router = () => {
         <Route exact path='/'>
             <HomeContextProvider>
                 <MapContextProvider>
-                    <Home/>
+                  <MapMunicipioContextProvider>
+                      <Home/>
+                  </MapMunicipioContextProvider>
                 </MapContextProvider>
             </HomeContextProvider>
         </Route>

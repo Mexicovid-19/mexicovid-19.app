@@ -29,7 +29,7 @@
      * @param {*} callback callback function
      */
     exports.findMunicipioByEnt = function (query, callback) {
-        municipio.find(query, callback);
+        municipio.find(query).sort({"cve_mun": 1}).exec(callback);
     };
 
     /**

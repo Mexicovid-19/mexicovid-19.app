@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var municipio = require('../controller/municipio');
 
 router.post('/states', function(req, res) {
 	var fs = require('fs');
@@ -34,8 +35,8 @@ router.get('/municipality/find/CVE_ENT', function(req, res) {
 			let jsonData = JSON.parse(data);
 			let features = jsonData.features;
 			
-			const results = features.filter(feature => feature.properties.CVE_ENT == cve_ent);
-
+			let results = features.filter(feature => feature.properties.CVE_ENT == cve_ent);
+			results = results.sort((a,b) => Number(a.properties.CVE_MUN) - Number(b.properties.CVE_MUN));
 			geojson = {"type":"FeatureCollection","features": results};
 			res.status(200).json(geojson);
 		}
@@ -126,30 +127,14 @@ router.get('/municipios_data', function(req, res) {
 			res.statusMessage = "file didn't load."
 			res.status(404).end();
 		} else {
-			let jsonData = JSON.parse(data);
+			// let jsonData = JSON.parse(data);
 			
-			res.status(200).json(jsonData);
+			res.status(200).json(data);
 		}
 	});
 	
 	return res;
 });
 
-router.get('/municipios_data', function(req, res) {
-	var fs = require('fs');
-
-	fs.readFile("data/region/municipios_poblacion_entmun.csv", "utf8", function(err, data){
-		if(err) {
-			res.statusMessage = "file didn't load."
-			res.status(404).end();
-		} else {
-			let jsonData = JSON.parse(data);
-			
-			res.status(200).json(jsonData);
-		}
-	});
-	
-	return res;
-});
 
 module.exports = router;
