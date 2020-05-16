@@ -73,7 +73,8 @@ exports.update = function (req, res) {
     estadoService.getAll( function (error, response) {
         if (response) {
             response.forEach(state => {
-                municipioService.findMunicipioByEnt({cve_ent: state.cve_ent}, function(err, resp) {
+                let query = {cve_ent: state.cve_ent};
+                municipioService.findMunicipioByEnt(query, function(err, resp) {
                     if(resp) {
                         let decesos = state.decesos;
                         let confirmados = state.confirmados;
@@ -82,7 +83,7 @@ exports.update = function (req, res) {
 
                         resp.forEach(mun => {
                             poblacion += mun.poblacion;
-                            
+
                             for(var i in mun.decesos) {
                                 let index = decesos.findIndex((el) => el.date == mun.decesos[i].date)
                                 
@@ -126,6 +127,15 @@ exports.update = function (req, res) {
                             }
                             
                         });
+
+                        let data = {decesos, confirmados, pruebas, poblacion};
+                        estadoService.updateEstado(query, data, options, (err, response) => {
+                            if (response) {
+                                res.status(200).send(response);
+                            } else if (err) {
+                                res.status(400).send(err);
+                            }
+                        });
                     }
                 })
             });
@@ -134,14 +144,6 @@ exports.update = function (req, res) {
         } else if (error) {
             res.statusMessage = 'there where problems with the database';
             return res.status(500).end();
-        }
-    });
-
-    estadoService.updateEstado(query, data, options, (err, response) => {
-        if (response) {
-            res.status(200).send(response);
-        } else if (err) {
-            res.status(400).send(err);
         }
     });
 }
