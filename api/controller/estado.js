@@ -81,67 +81,53 @@ exports.update = function (req, res) {
                         let pruebas = state.pruebas;
                         let poblacion = 0;
 
-                        resp.forEach(mun => {
-                            poblacion += mun.poblacion;
+                        let allDecesos = resp.map(l=>l.decesos).flat().reduce((accum, curr)=>{
+                            let found = accum.find(l=>l.date === curr.date);
+                            if(found) found.count += curr.count;
+                            else accum.push(curr);
+                            return accum
+                        }, []);
+                        
+                        let allConfirmados = resp.map(l=>l.confirmados).flat().reduce((accum, curr)=>{
+                            let found = accum.find(l=>l.date === curr.date);
+                            if(found) found.count += curr.count;
+                            else accum.push(curr);
+                            return accum
+                        }, []);
 
-                            for(var i in mun.decesos) {
-                                let index = decesos.findIndex((el) => el.date == mun.decesos[i].date)
-                                
-                                //if found
-                                if(index > 0) {
-                                    state.decesos[index].count += mun.decesos[i].count;
-                                } else {
-                                    state.decesos[index] = {
-                                        date: mun.decesos[i].date,
-                                        count: mun.decesos[i].count
-                                    }
-                                }
-                            }
+                        let allPruebas = resp.map(l=>l.pruebas).flat().reduce((accum, curr)=>{
+                            let found = accum.find(l=>l.date === curr.date);
+                            if(found) found.count += curr.count;
+                            else accum.push(curr);
+                            return accum
+                        }, []);
 
-                            for(var i in mun.confirmados) {
-                                let index = confirmados.findIndex((el) => el.date == mun.confirmados[i].date)
-                                
-                                //if found
-                                if(index > 0) {
-                                    state.confirmados[index].count += mun.confirmados[i].count;
-                                } else {
-                                    state.confirmados[index] = {
-                                        date: mun.confirmados[i].date,
-                                        count: mun.confirmados[i].count
-                                    }
-                                }
-                            }
+                        let allPoblacion = resp.map(l=>l.poblacion).reduce((accum, curr)=>accum+curr, 0);
 
-                            for(var i in mun.pruebas) {
-                                let index = pruebas.findIndex((el) => el.date == mun.pruebas[i].date)
-                                
-                                //if found
-                                if(index > 0) {
-                                    state.pruebas[index].count += mun.pruebas[i].count;
-                                } else {
-                                    state.pruebas[index] = {
-                                        date: mun.pruebas[i].date,
-                                        count: mun.pruebas[i].count
-                                    }
-                                }
-                            }
-                            
-                        });
+                        
 
-                        let data = {decesos, confirmados, pruebas, poblacion};
-                        estadoService.updateEstado(query, data, null, (err, response) => {
-                            if (response) { 
-                                res.status(200).send(response);
+                        let _state = {
+                            // ...state,
+                            decesos: allDecesos,
+                            confirmados: allConfirmados, 
+                            pruebas: allPruebas,
+                            poblacion: allPoblacion,
+                        }
+
+                         estadoService.updateEstado(query, _state, null, (err, response) => {
+                            if (response) {
+                                // res.status(200).send(response);
+                                console.log("RESPONSE", response)
                             } else if (err) {
                                 // res.status(400).send(err);
-                                return;
+                                console.log(err)
                             }
                         });
                     }
                 })
             });
             
-            res.status(200).send(response);
+            res.status(200).send({status: "updated"});
         } else if (error) {
             res.statusMessage = 'there where problems with the database';
             return res.status(500).end();
