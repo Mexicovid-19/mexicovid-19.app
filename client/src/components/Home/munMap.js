@@ -8,20 +8,34 @@ const MunMap = ({classes}) => {
     
     return (
         <div className={classes.container}>
-            <div ref={mapRef} className={classes.map}></div>
+            <div className={classes.containerMap}>     
+                <div ref={mapRef} className={classes.map}></div>
+            </div>
+            <div className={classes.containerMungraph}>
+            </div>        
         </div>
     )
 }
 
 const styles = () => ({
-  container: {
-      width: '100%',
-      height: '50%',
-      backgroundColor: colors.BLACK
-  },
-  map: {
-    height: '100% !important',
-  },
+    map: {
+        height: '100% !important',
+    },
+    container: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: colors.BLACK
+    }, 
+    containerMap: {
+        width: '100%',
+        height: '50%',
+        backgroundColor: colors.BLACK
+    },
+    containerMungraph: {
+        width: '100%',
+        height: '50%',
+        backgroundColor: colors.BLUE
+    }
 });
    
 export default withStyles(styles)(MunMap);

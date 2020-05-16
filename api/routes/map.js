@@ -127,30 +127,14 @@ router.get('/municipios_data', function(req, res) {
 			res.statusMessage = "file didn't load."
 			res.status(404).end();
 		} else {
-			let jsonData = JSON.parse(data);
+			// let jsonData = JSON.parse(data);
 			
-			res.status(200).json(jsonData);
+			res.status(200).json(data);
 		}
 	});
 	
 	return res;
 });
 
-router.get('/municipios_data', function(req, res) {
-	var fs = require('fs');
-
-	fs.readFile("data/region/municipios_poblacion_entmun.csv", "utf8", function(err, data){
-		if(err) {
-			res.statusMessage = "file didn't load."
-			res.status(404).end();
-		} else {
-			let jsonData = JSON.parse(data);
-			
-			res.status(200).json(jsonData);
-		}
-	});
-	
-	return res;
-});
 
 module.exports = router;

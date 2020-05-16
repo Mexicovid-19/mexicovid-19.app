@@ -214,6 +214,10 @@ const useMap = () => {
     setIsMapMunicipio(true);
   }
 
+  let closeMapContainer = (e) => {
+    setIsMapMunicipio(false);
+  }
+
   return {
     mapRef,
     map,
@@ -223,7 +227,9 @@ const useMap = () => {
     stateSelected,
 
     openMapContainer,
+    closeMapContainer,
     isMapMunicipio
+
   }
 }
 
