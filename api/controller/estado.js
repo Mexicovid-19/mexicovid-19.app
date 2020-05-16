@@ -129,11 +129,12 @@ exports.update = function (req, res) {
                         });
 
                         let data = {decesos, confirmados, pruebas, poblacion};
-                        estadoService.updateEstado(query, data, options, (err, response) => {
-                            if (response) {
+                        estadoService.updateEstado(query, data, null, (err, response) => {
+                            if (response) { 
                                 res.status(200).send(response);
                             } else if (err) {
-                                res.status(400).send(err);
+                                // res.status(400).send(err);
+                                return;
                             }
                         });
                     }

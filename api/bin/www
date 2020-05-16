@@ -22,7 +22,7 @@ app.set('port', portNormalized);
 var options = {}
 
 // Create an HTTPS service identical to the HTTP service.
-var server = http.createServer(options, app).listen(port);
+var server = http.createServer(app).listen(port);
 
 server.on('error', onError);
 server.on('listening', onListening);
@@ -84,5 +84,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }
