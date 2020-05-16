@@ -9,7 +9,7 @@ import LoaderView from '../Loader';
 import MunMap from './munMap';
 
 const Map = ({classes}) => {
-  const { mapRef, thresholdsNum, isMapContainer} = React.useContext(MapContext);
+  const { mapRef, thresholdsNum, isMapMunicipio} = React.useContext(MapContext);
   const {selectedLabel, isMap, statesConfirm} = React.useContext(HomeContext);
   
   let isMobile = window.innerWidth < 1000;
@@ -23,7 +23,7 @@ const Map = ({classes}) => {
       <div className={classes.sidebarStyle}>
         {!isMobile && <CustomizedSlider />}
       </div>
-      {isMapContainer && 
+      {isMapMunicipio && 
       <div className={classes.munContainer}>
         <MunMap/>
       </div>}

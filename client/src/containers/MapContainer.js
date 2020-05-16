@@ -2,6 +2,7 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import { HomeContext } from '../contexts/HomeContext';
+import { MapMunicipioContext } from '../contexts/MapMunicipioContext';
 import * as colors from './../constants/colors';
 import { numberWithCommas } from '../Utils/numberWCommas';
 
@@ -23,12 +24,14 @@ const useMap = () => {
   })
   const isMobile = window.innerWidth < 1000;
   const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
-  const [isMapContainer, setIsMapContainer] = React.useState(false);
+  const [isMapMunicipio, setIsMapMunicipio] = React.useState(false);
+  const [stateSelected, setStateSelected] = React.useState("");
   const {statesConfirm,
          statesDeads,
          selectedLabel, 
          state,
-        isMap 
+        isMap,
+        callMunData
   } = React.useContext(HomeContext);
   
   React.useEffect(() => {
@@ -49,9 +52,6 @@ const useMap = () => {
         zoom : 3.2
       }));
     };
-    
-
-
   }, []);
 
 
@@ -72,7 +72,7 @@ const useMap = () => {
         type: 'geojson',
         data: geojson
       });
-      console.log(" if adding layer:");
+      
       map.addLayer({
         'id': 'pref',
         'type': 'fill',
@@ -114,22 +114,16 @@ const useMap = () => {
     }
   }, [isMap]);
 
+  React.useEffect(() => {
+    if(stateSelected !== "") {
+      callMunData(stateSelected);
+    }
+  }, [stateSelected])
+
   let callStatesGEOJSON = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/map/states`, {})
     .then(res => {
       setStatesGeOJSON(res.data);
-    });
-  }
-
-  let callMunGEOJSON = ( state )  => {
-    let cve_ent = String(state);
-    if(cve_ent.length == 1) {
-      cve_ent = "0" + cve_ent;
-    } 
-    axios.get(`${process.env.REACT_APP_API_URL}/map/municipality/find/CVE_ENT?cve_ent=${cve_ent}`, {})
-    .then(res => {
-      console.log(res.data);
-      setMunGeOJSON(res.data);
     });
   }
 
@@ -202,7 +196,7 @@ const useMap = () => {
           geojson.features[i].properties["decesos-" + j] = Number(statesDeads[i].decesos[j]);
         }
       }
-    
+    console.log(geojson);
     return geojson;
   }
 
@@ -212,27 +206,24 @@ const useMap = () => {
     });
     
     if(features.length > 0) {
-      callMunGEOJSON(features[0].properties.CVE_ENT)
+      let cve_ent = String(features[0].properties.CVE_ENT);
+      cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
+      setStateSelected(cve_ent);
     }
-
-    setIsMapContainer(true);
-  }
-
-  let setUpMunGEOJson = () => {
-    let geojson = munGeOJSON;
-      
     
-    return geojson;
+    setIsMapMunicipio(true);
   }
+
   return {
     mapRef,
     map,
     showPopup,
     popup,
     thresholdsNum,
+    stateSelected,
 
     openMapContainer,
-    isMapContainer
+    isMapMunicipio
   }
 }
 

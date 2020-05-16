@@ -10,6 +10,7 @@ const useHome = () => {
     dates : null,
     states : null
   })
+  const [munData, setMunData] = React.useState(null);
   const[rowsTable, setRowsTable] = React.useState([]);
   const[rows, setRows] = React.useState([]);
   const [dataChart, setDataChart] = React.useState([]);
@@ -109,6 +110,13 @@ const useHome = () => {
       setStatesDeads(res.data);
     });
   }
+
+  let callMunData = (cve_ent)  => {
+    axios.get(`${process.env.REACT_APP_API_URL}/municipio/${cve_ent}`, {})
+    .then(res => {
+      setMunData(res.data);
+    });
+  }
   
   let createTableData = (position, state, data) => {
     return { position, state, data };
@@ -166,7 +174,9 @@ const useHome = () => {
     onSelectLabel,
     selectedLabel,
     isMap,
-    onChangeTab
+    onChangeTab,
+    callMunData,
+    munData
   }
 }
 

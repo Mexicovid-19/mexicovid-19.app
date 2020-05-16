@@ -36,12 +36,13 @@ exports.findByEnt = function (req, res) {
         return;
     }
 
-    municipioService.findMunicipio(query, function (error, response) {
+    municipioService.findMunicipioByEnt(query, function (error, response) {
         if (error) {
             res.status(404).send(error);
             return;
         }
         if (response) {
+            console.log(response.length)
             res.status(200).send(response);
             return;
         }

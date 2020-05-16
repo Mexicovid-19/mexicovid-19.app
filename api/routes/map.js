@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var municipio = require('../controller/municipio');
 
 router.post('/states', function(req, res) {
 	var fs = require('fs');
@@ -34,8 +35,8 @@ router.get('/municipality/find/CVE_ENT', function(req, res) {
 			let jsonData = JSON.parse(data);
 			let features = jsonData.features;
 			
-			const results = features.filter(feature => feature.properties.CVE_ENT == cve_ent);
-
+			let results = features.filter(feature => feature.properties.CVE_ENT == cve_ent);
+			results = results.sort((a,b) => Number(a.properties.CVE_MUN) - Number(b.properties.CVE_MUN));
 			geojson = {"type":"FeatureCollection","features": results};
 			res.status(200).json(geojson);
 		}
