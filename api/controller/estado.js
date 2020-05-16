@@ -70,7 +70,72 @@ exports.findByEnt = function (req, res) {
  * Function to uodate the estado data by filter condition.
  */
 exports.update = function (req, res) {
-    //municipioService.findMunicipioByEnt()
+    estadoService.getAll( function (error, response) {
+        if (response) {
+            response.forEach(state => {
+                municipioService.findMunicipioByEnt({cve_ent: state.cve_ent}, function(err, resp) {
+                    if(resp) {
+                        let decesos = state.decesos;
+                        let confirmados = state.confirmados;
+                        let pruebas = state.pruebas;
+                        let poblacion = 0;
+
+                        resp.forEach(mun => {
+                            poblacion += mun.poblacion;
+                            
+                            for(var i in mun.decesos) {
+                                let index = decesos.findIndex((el) => el.date == mun.decesos[i].date)
+                                
+                                //if found
+                                if(index > 0) {
+                                    state.decesos[index].count += mun.decesos[i].count;
+                                } else {
+                                    state.decesos[index] = {
+                                        date: mun.decesos[i].date,
+                                        count: mun.decesos[i].count
+                                    }
+                                }
+                            }
+
+                            for(var i in mun.confirmados) {
+                                let index = confirmados.findIndex((el) => el.date == mun.confirmados[i].date)
+                                
+                                //if found
+                                if(index > 0) {
+                                    state.confirmados[index].count += mun.confirmados[i].count;
+                                } else {
+                                    state.confirmados[index] = {
+                                        date: mun.confirmados[i].date,
+                                        count: mun.confirmados[i].count
+                                    }
+                                }
+                            }
+
+                            for(var i in mun.pruebas) {
+                                let index = pruebas.findIndex((el) => el.date == mun.pruebas[i].date)
+                                
+                                //if found
+                                if(index > 0) {
+                                    state.pruebas[index].count += mun.pruebas[i].count;
+                                } else {
+                                    state.pruebas[index] = {
+                                        date: mun.pruebas[i].date,
+                                        count: mun.pruebas[i].count
+                                    }
+                                }
+                            }
+                            
+                        });
+                    }
+                })
+            });
+            
+            res.status(200).send(response);
+        } else if (error) {
+            res.statusMessage = 'there where problems with the database';
+            return res.status(500).end();
+        }
+    });
 
     estadoService.updateEstado(query, data, options, (err, response) => {
         if (response) {
