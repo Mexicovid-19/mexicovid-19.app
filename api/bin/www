@@ -2,6 +2,7 @@
 var app = require('../app');
 var debug = require('debug')('api:server');
 var https = require('https');
+var http = require('http');
 var fs = require('fs');
 var { port } = require('../config');
 /**
@@ -12,14 +13,16 @@ var portNormalized = normalizePort(port);
 app.set('port', portNormalized); 
 
 // This line is from the Node.js HTTPS documentation.
-var options = {
-  key: fs.readFileSync(__dirname + '/cert/mexicovid19.key.pem'),
-  cert: fs.readFileSync(__dirname + '/cert/mexicovid19_app.crt.pem'),
-  ca: fs.readFileSync(__dirname + '/cert/mexicovid19_app.ca-bundle')
-};
+// var options = {
+//   key: fs.readFileSync(__dirname + '/cert/mexicovid19.key.pem'),
+//   cert: fs.readFileSync(__dirname + '/cert/mexicovid19_app.crt.pem'),
+//   ca: fs.readFileSync(__dirname + '/cert/mexicovid19_app.ca-bundle')
+// };
+
+var options = {}
 
 // Create an HTTPS service identical to the HTTP service.
-var server = https.createServer(options, app).listen(port);
+var server = http.createServer(options, app).listen(port);
 
 server.on('error', onError);
 server.on('listening', onListening);
