@@ -3,16 +3,19 @@ import { withStyles } from '@material-ui/core/styles';
 import { MapContext } from '../../contexts/MapContext';
 import { HomeContext } from '../../contexts/HomeContext';
 import CustomizedSlider from './CustomizedSlider';
-import { BLACK, WHITE } from '../../constants/colors';
+import { BLACK, WHITE, BLUE } from '../../constants/colors';
 import ColorsGradientBar from './ColorGradientBar';
 import LoaderView from '../Loader';
 import MunMap from './munMap';
+import MunMapMov from './munMapMov';
+import { colors } from '@material-ui/core';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum, isMapContainer} = React.useContext(MapContext);
   const {selectedLabel, isMap, statesConfirm} = React.useContext(HomeContext);
-  
+
   let isMobile = window.innerWidth < 1000;
+
   return (
     <div className={isMap ? classes.show : classes.mapContainer}>
       {!statesConfirm && 
@@ -23,10 +26,14 @@ const Map = ({classes}) => {
       <div className={classes.sidebarStyle}>
         {!isMobile && <CustomizedSlider />}
       </div>
-      {isMapContainer && 
-      <div className={classes.munContainer}>
-        <MunMap/>
-      </div>}
+      {isMapContainer && !isMobile ? 
+        <div className={classes.munContainer}>
+          <MunMap/>
+        </div> 
+        :
+        <div>
+          <MunMapMov/>
+        </div>}
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
       <div ref={mapRef} className={classes.map}></div>
     </div>
