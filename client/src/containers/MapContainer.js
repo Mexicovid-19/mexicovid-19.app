@@ -218,12 +218,16 @@ const useMap = () => {
     setIsMapContainer(true);
   }
 
+  let closeMapContainer = (e) => {
+    setIsMapContainer(false);
+  }
+
+
   let setUpMunGEOJson = () => {
     let geojson = munGeOJSON;
-      
-    
     return geojson;
   }
+
   return {
     mapRef,
     map,
@@ -232,7 +236,9 @@ const useMap = () => {
     thresholdsNum,
 
     openMapContainer,
+    closeMapContainer,
     isMapContainer
+
   }
 }
 
