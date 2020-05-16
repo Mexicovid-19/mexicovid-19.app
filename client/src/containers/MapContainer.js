@@ -237,8 +237,8 @@ const useMap = () => {
 
     openMapContainer,
     closeMapContainer,
-    isMapContainer
-
+    isMapContainer,
+    selectedLabel
   }
 }
 
