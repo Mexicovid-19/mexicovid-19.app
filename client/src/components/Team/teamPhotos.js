@@ -11,6 +11,124 @@ const PhotoGrid = ({classes}) => {
     return (
         <div className="container-fluid bg-3 text-center">    
             <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
+                Equipo Interdisciplinario de Profesores
+            </Typography>
+            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
+                <div className={classes.photoGridItemTeacher}> 
+                    <p className="names" align={'center'}>Dr. Alejandro Díaz Domínguez</p>
+                    <img src="images/Alejandrodiaz.jpg" className="img-responsive" alt="Image"/>
+                    <p>
+                        <Grid>
+                            <a href="mailto:alejandrod.dominguez@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>alejandrod.dominguez@tec.mx</a>
+                        </Grid>
+                        <Grid container direction="row" justify="flex-start" alignItems="center">
+                            <a href="https://twitter.com/alejdiazd" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@alejdiazd</a>
+                        </Grid>
+                    </p>
+                </div>
+                <div className={classes.photoGridItemTeacher}>
+                    <p className="names" align={'center'}>Dr. Alfredo Galván Galván</p>
+                    <img src="images/alfredogalvan.jpg" className="img-responsive" alt="Image"/>
+                    <p>
+                        <Grid>
+                            <a href="mailto:alfredo.galvan@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>alfredo.galvan@tec.mx</a>
+                        </Grid>
+                        <Grid container direction="row" justify="flex-start" alignItems="center">
+                            <a href="https://twitter.com/jagalvan2" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@jagalvan2</a>
+                        </Grid>
+                    </p>
+                </div>
+                <div className={classes.photoGridItemTeacher}>
+                    <p className="names" align={'center'}>Dr. Fernando Gómez Zaldívar</p>
+                    <img src="images/fernandogomez.jpg" className="img-responsive" alt="Image"/>
+                    <p>
+                        <Grid>
+                            <a href="mailto:fergo7@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>fergo7@tec.mx</a>
+                        </Grid>
+                        <Grid container direction="row" justify="flex-start" alignItems="center">
+                            <a href="https://twitter.com/fgmzz" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@fgmzz</a>
+                        </Grid>
+                    </p>
+                </div>
+                <div className={classes.photoGridItemTeacher}>
+                    <p className="names" align={'center'}>Dr. Diego Fabián Lozano</p>
+                    <img src="images/fabianlozano.jpg" className="img-responsive" alt="Image"/>
+                    <p>
+                        <Grid>
+                            <a href="images/fabianlozano.jpg" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>dflozano@tec.mx</a>
+                        </Grid>
+                    </p>
+                </div>
+                <div className={classes.photoGridItemTeacher}> 
+                    <p className="names" align={'center'}>Dra. Grissel Olivera Martínez</p>
+                    <img src="images/grisselolivera.jpg" className="img-responsive" alt="Image"/>
+                    <p>
+                        <Grid>
+                            <a href="mailto:grissel.olivera@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>grissel.olivera@tec.mx</a>
+                        </Grid>
+                        <Grid container direction="row" justify="flex-start" alignItems="center">
+                            <a href="https://twitter.com/grissel_olivera" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@grissel_olivera</a>
+                        </Grid>
+                    </p>
+                </div>
+                <div className={classes.photoGridItemTeacher}>
+                    <p className="names" align={'center'}><a href="https://www.edmundomolinamx.org/" target="_blank">Dr. Edmundo Molina</a></p>
+                    <img src="images/edmundomolina.jpg" className="img-responsive" alt="Image"/>
+                    <p>
+                        <Grid>
+                            <a href="mailto:edmundo.molina@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>edmundo.molina@tec.mx</a>
+                        </Grid>
+                        <Grid container direction="row" justify="flex-start" alignItems="center">
+                            <a href="https://twitter.com/EdmundoMolinaMx" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@EdmundoMolinaMx</a>
+                        </Grid>
+                    </p>
+                </div>
+                <div className={classes.photoGridItemTeacher}>
+                    <p className="names" align={'center'}><a href="http://www.robertoponcelopez.com" target="_blank">Dr. Roberto Ponce López</a></p>
+                    <img src="images/robertoponce.jpg" className="img-responsive" alt="Image"/>
+                    <p>
+                        <Grid>
+                            <a href="mailto:rpl@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>rpl@tec.mx</a>
+                        </Grid>
+                        <Grid container direction="row" justify="flex-start" alignItems="center">
+                            <a href="https://twitter.com/roponmx" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@roponmx</a>
+                        </Grid>
+                    </p>
+                </div>
+                <div className={classes.photoGridItemTeacher}> 
+                    <p className="names" align={'center'}>Mpa. Azucena Rojas Parra</p>
+                    <img src="images/azucenarojas.jpg" className="img-responsive" alt="Image"/>
+                    <p>
+                        <Grid>
+                            <a href="mailto:azuropa@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>azuropa@tec.mx</a>
+                        </Grid>
+                        <Grid container direction="row" justify="flex-start" alignItems="center">
+                            <a href="https://twitter.com/azuropa" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@azuropa</a>
+                        </Grid>
+                    </p>
+                </div>
+            </Grid>
+            <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
+                Equipo de Desarrollo Web 
+            </Typography>
+            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
+                <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>Mildred Irais Gil Melchor</p>
+                    <img src="images/mildred.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Ingeniería en Tecnologías Computacionales, apasionada por el desarrollo de tecnología y su impacto en la vida diaria. Equipo de desarrollo web.</p>
+                </div>
+                <div className={classes.photoGridItem}>
+                    <p className="names" align={'center'}>Ángel Francisco Figueroa Rivera</p>
+                    <img src="images/angelfigueroa.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Ingeniería Mecatrónica con intereses en el área de software y las aplicaciones móviles industriales. Equipo de desarrollo web.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>Juan Carlos Garfias</p>
+                    <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante  de ingeniería en Tecnologías Computacionales, amante de las tecnologías emergentes. Equipo de desarrollo web.</p>
+                </div>
+            </Grid>      
+            <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
                 Equipo de Investigación 
             </Typography>
             <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
@@ -28,11 +146,6 @@ const PhotoGrid = ({classes}) => {
                     <p className="names" align={'center'}>Abigail Barrera Suárez</p>
                     <img src="images/abigailbarrera.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Relaciones Internacionales. Sus intereses van desde la interpretación de datos y el uso de tecnologías en el área de gobierno hasta la redacción y la pintura.</p>
-                </div>
-                <div className={classes.photoGridItem}> 
-                    <p className="names" align={'center'}>René Vivian Chong</p>
-                    <img src="images/renevivian.jpg" className="img-responsive" alt="Image"/>
-                    <p>Sus intereses profesionales son la redacción, sociología Latinoamericana y  la protección a los derechos de los niños.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
                     <p className="names" align={'center'}>Lucía Cuellar D´Amico</p>
@@ -179,6 +292,11 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/danielschulz.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Economía. Intereses profesionales en Finanzas y Sociología.</p>
                 </div>
+                <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>Gabriela Nayeli Suárez Rodríguez</p>
+                    <img src="images/gabrielasuarez.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Licenciatura en Economía. Sus principales intereses son el estudio de la Economía del desarrollo y el impacto de las políticas públicas en la distribución de la riqueza.</p>
+                </div>
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Idalee Vargas</p>
                     <img src="images/idaleevargas.jpg" className="img-responsive" alt="Image"/>
@@ -190,124 +308,6 @@ const PhotoGrid = ({classes}) => {
                     <p>Estudiante de Licenciatura en Economía. Intereses profesionales en economía, finanzas, política y en investigación, búsqueda e interpretación de datos.</p>
                 </div>
             </Grid>
-            <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
-                Equipo de Desarrollo Web 
-            </Typography>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
-                <div className={classes.photoGridItem}> 
-                    <p className="names" align={'center'}>Mildred Irais Gil Melchor</p>
-                    <img src="images/mildred.jpg" className="img-responsive" alt="Image"/>
-                    <p>Estudiante de Ingeniería en Tecnologías Computacionales, apasionada por el desarrollo de tecnología y su impacto en la vida diaria. Equipo de desarrollo web.</p>
-                </div>
-                <div className={classes.photoGridItem}>
-                    <p className="names" align={'center'}>Ángel Francisco Figueroa Rivera</p>
-                    <img src="images/angelfigueroa.jpg" className="img-responsive" alt="Image"/>
-                    <p>Estudiante de Ingeniería Mecatrónica con intereses en el área de software y las aplicaciones móviles industriales. Equipo de desarrollo web.</p>
-                </div>
-                <div className={classes.photoGridItem}> 
-                    <p className="names" align={'center'}>Juan Carlos Garfias</p>
-                    <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/>
-                    <p>Estudiante  de ingeniería en Tecnologías Computacionales, amante de las tecnologías emergentes. Equipo de desarrollo web.</p>
-                </div>
-            </Grid>
-            <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
-                Equipo Interdisciplinario de Profesores
-            </Typography>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
-                <div className={classes.photoGridItemTeacher}> 
-                    <p className="names" align={'center'}>Dr. Alejandro Díaz Domínguez</p>
-                    <img src="images/Alejandrodiaz.jpg" className="img-responsive" alt="Image"/>
-                    <p>
-                        <Grid>
-                            <a href="mailto:alejandrod.dominguez@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>alejandrod.dominguez@tec.mx</a>
-                        </Grid>
-                        <Grid container direction="row" justify="flex-start" alignItems="center">
-                            <a href="https://twitter.com/alejdiazd" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@alejdiazd</a>
-                        </Grid>
-                    </p>
-                </div>
-                <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}>Dr. Alfredo Galván Galván</p>
-                    <img src="images/alfredogalvan.jpg" className="img-responsive" alt="Image"/>
-                    <p>
-                        <Grid>
-                            <a href="mailto:alfredo.galvan@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>alfredo.galvan@tec.mx</a>
-                        </Grid>
-                        <Grid container direction="row" justify="flex-start" alignItems="center">
-                            <a href="https://twitter.com/jagalvan2" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@jagalvan2</a>
-                        </Grid>
-                    </p>
-                </div>
-                <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}>Dr. Fernando Gómez Zaldívar</p>
-                    <img src="images/fernandogomez.jpg" className="img-responsive" alt="Image"/>
-                    <p>
-                        <Grid>
-                            <a href="mailto:fergo7@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>fergo7@tec.mx</a>
-                        </Grid>
-                        <Grid container direction="row" justify="flex-start" alignItems="center">
-                            <a href="https://twitter.com/fgmzz" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@fgmzz</a>
-                        </Grid>
-                    </p>
-                </div>
-                <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}>Dr. Diego Fabián Lozano</p>
-                    <img src="images/fabianlozano.jpg" className="img-responsive" alt="Image"/>
-                    <p>
-                        <Grid>
-                            <a href="images/fabianlozano.jpg" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>dflozano@tec.mx</a>
-                        </Grid>
-                    </p>
-                </div>
-                <div className={classes.photoGridItemTeacher}> 
-                    <p className="names" align={'center'}>Dra. Grissel Olivera Martínez</p>
-                    <img src="images/grisselolivera.jpg" className="img-responsive" alt="Image"/>
-                    <p>
-                        <Grid>
-                            <a href="mailto:grissel.olivera@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>grissel.olivera@tec.mx</a>
-                        </Grid>
-                        <Grid container direction="row" justify="flex-start" alignItems="center">
-                            <a href="https://twitter.com/grissel_olivera" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@grissel_olivera</a>
-                        </Grid>
-                    </p>
-                </div>
-                <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}><a href="https://www.edmundomolinamx.org/" target="_blank">Dr. Edmundo Molina</a></p>
-                    <img src="images/edmundomolina.jpg" className="img-responsive" alt="Image"/>
-                    <p>
-                        <Grid>
-                            <a href="mailto:edmundo.molina@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>edmundo.molina@tec.mx</a>
-                        </Grid>
-                        <Grid container direction="row" justify="flex-start" alignItems="center">
-                            <a href="https://twitter.com/EdmundoMolinaMx" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@EdmundoMolinaMx</a>
-                        </Grid>
-                    </p>
-                </div>
-                <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}><a href="http://www.robertoponcelopez.com" target="_blank">Dr. Roberto Ponce López</a></p>
-                    <img src="images/robertoponce.jpg" className="img-responsive" alt="Image"/>
-                    <p>
-                        <Grid>
-                            <a href="mailto:rpl@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>rpl@tec.mx</a>
-                        </Grid>
-                        <Grid container direction="row" justify="flex-start" alignItems="center">
-                            <a href="https://twitter.com/roponmx" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@roponmx</a>
-                        </Grid>
-                    </p>
-                </div>
-                <div className={classes.photoGridItemTeacher}> 
-                    <p className="names" align={'center'}>Mpa. Azucena Rojas Parra</p>
-                    <img src="images/azucenarojas.jpg" className="img-responsive" alt="Image"/>
-                    <p>
-                        <Grid>
-                            <a href="mailto:azuropa@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>azuropa@tec.mx</a>
-                        </Grid>
-                        <Grid container direction="row" justify="flex-start" alignItems="center">
-                            <a href="https://twitter.com/azuropa" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@azuropa</a>
-                        </Grid>
-                    </p>
-                </div>
-            </Grid>       
         </div>
     );
 };
