@@ -14,6 +14,7 @@ import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 import ColorGradientBar from './ColorGradientBar';
 import { HomeContext } from '../../contexts/HomeContext';
 import { MapMunicipioContext } from '../../contexts/MapMunicipioContext';
+import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -43,35 +44,41 @@ const MunMapMov = (props) => {
         hideBackdrop = {true}
         disableBackdropClick={true}
         >
-            <DialogTitle>
-                <div className={classes.closecontainer}>
-                    <Button onClick={closeMapContainer}  classes={{root:classes.rootbutton}} color={colors.BLACK}>
+            <DialogTitle classes={{root: classes.rootDTitle}}>
+                <div className={classes.closeContainer}>
+                    <Button onClick={closeMapContainer}  classes={{root:classes.rootButton}} color={colors.BLACK}>
                         <RemoveRoundedIcon fontSize={'large'}/>
                     </Button>
                 </div>
-                <div  className={classes.titlecontainer}>
-                    <svg className={classes.dotstyle}>
-                        <circle r="5" cx="6" cy="10" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
-                    </svg>
-                    {selectedLabel === 'confirmados' ? <p>25,000</p> : <p>1,250</p>}
+                <div  className={classes.titleContainer}>
+                    <p>SanLuisPotosi</p>  
                 </div>
             </DialogTitle>
-            <DialogContent classes={{root:classes.rootdiagcont}}>
-                <div className={classes.boxmaxgrapcontainer}>
-                    <div className={classes.munmapContainermov}>
-                        <div className={classes.mapboxcontainer}>
+            <DialogContent classes={{root:classes.rootDCont}}>
+                <div className={classes.informationContainer}>
+                    <div className={classes.munMapContainerMov}>
+                        <div className={classes.nombrePobContainer}>
+                            <div className={classes.pobContainer}>
+                                <div><PeopleAltRoundedIcon/></div>
+                                <div><p>Pob: 15,000</p></div>
+                            </div>
+                            <div className={classes.stateNameContainer}>
+                                <svg className={classes.dotStyle}>
+                                    <circle r="5" cx="6" cy="10" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
+                                </svg>
+                                {selectedLabel === 'confirmados' ? <p>25,000</p> : <p>1,250</p>}
+                            </div>
+                        </div>
+                        <div className={classes.mapboxContainer}>
                             <div ref={mapRef} className={classes.map}></div>
                         </div>
-                        <div className={classes.namestatemuncontainer}>
-                            <p>San Luis Potosi</p>
-                        </div>
-                        <div className={classes.slidermuncontainer}>
+                        <div className={classes.colorNumsContainer}>
                             <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
                         </div>
                     </div> 
-                    <div className={classes.mungraphContainermov}>
+                    <div className={classes.munGraphContainerMov}>
                         <div className={classes.graphmun}>
-                            <p></p> 
+                            <p>UNA GRAFICA MUY PADRE</p> 
                         </div>
                     </div> 
                 </div>
@@ -97,14 +104,17 @@ const styles = () => ({
     scrollPaper:{
         display: 'inherit !important'
     },
-    closecontainer: {
+    rootDTitle:{
+        padding: '0px 0px 12px 0px',
+    },
+    closeContainer: {
         display: 'flex',
         justifyContent: 'center',
     },
-    rootbutton:{
+    rootButton:{
         width: '20%',
     },
-    titlecontainer: {
+    titleContainer: {
         height: '45px',
         display: 'flex',
         fontFamily: 'Raleway',
@@ -112,60 +122,80 @@ const styles = () => ({
         alignItems: 'center',
         fontSize: '40px',
     },
-    dotstyle:{
+    rootDCont:{
+        padding: 'inherit !important',
+    },
+    informationContainer: {
+        height: '1000px',
+    },  
+    munMapContainerMov: {
+        display: 'flow-root',
+    },
+    nombrePobContainer: {
+        minHeight: '15%',
+        display: 'flex',
+        justifyContent: 'center',
+        fontFamily: 'Raleway',
+        flexDirection: 'row',
+        flexWrap: 'nowrap',
+        alignContent: 'center',
+        margin: '10px 0px',
+	    alignItems: 'stretch',
+    },
+    pobContainer:{
+        fontSize: '20px',
+        fontFamily: 'Raleway',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '50%',
+        height: '100%',
+    },
+    stateNameContainer:{
+        fontSize: '35px',
+        fontFamily: 'Raleway',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '50%',
+        height: '100%',
+    },
+    dotStyle:{
         width: '15px', 
         height: '15px', 
         fontFamily: 'Raleway', 
         fontWeight: 'bold',
     },
-    rootdiagcont:{
-        padding: 'inherit !important',
-    },
-    boxmaxgrapcontainer: {
-        height: '1000px',
-        display: 'table',
-        width: '100%',
-        margin: '0px',
-    },
-    
-    munmapContainermov: {
-        height: '60% !important',
-        display: 'flow-root',
-    },
-    mapboxcontainer: {
-        minHeight: '75%',
+    mapboxContainer: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderColor: 'aqua',
-        border: 'solid', 
     },
-    namestatemuncontainer: {
-        minHeight: '5%',
+    map:{
+        height: '350px',
+        width: '80%',
+    },
+    colorNumsContainer: {
+        minHeight: '15%',
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'center',
-        borderColor: 'aqua',
-        border: 'solid',
+        position: 'relative',
+         margin: '0px 0px 10px 0px',
     },
-    slidermuncontainer: {
-        minHeight: '20%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderColor: 'aqua',
-        border: 'solid',
-    },
-    mungraphContainermov: {
-        height: '40% !important',
+    munGraphContainerMov: {
+        height: '30% !important',
         display: 'flow-root',
     },
     graphmun: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
         borderColor: 'aqua',
         border: 'solid',
+        height: '370px',
+        display: 'flex',
+	    flexDirection: 'column',
+	    flexWrap: 'nowrap',
+	    justifyContent: 'center',
+	    alignItems: 'center',
+	    alignContent: 'stretch',
     },
 });
    
