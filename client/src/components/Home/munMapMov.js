@@ -25,11 +25,7 @@ const MunMapMov = (props) => {
     const {openMapContainer,closeMapContainer,isMapMunicipio,thresholdsNum} = React.useContext(MapContext);
     const {selectedLabel} = React.useContext(HomeContext);
     const { mapRef } = React.useContext(MapMunicipioContext);
-    console.log(openMapContainer);
-    console.log(closeMapContainer);
-    console.log(isMapMunicipio);
-
-
+    
     return (
         <Dialog
         open={isMapMunicipio}

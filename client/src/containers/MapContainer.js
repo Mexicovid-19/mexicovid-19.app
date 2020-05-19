@@ -189,6 +189,7 @@ const useMap = () => {
       
       for(var i = 0; i < 32; i++) {
         for(var j in statesConfirm[i].confirmados) {
+          console.log(statesConfirm)
           geojson.features[i].properties["confirmados-" + j] = Number(statesConfirm[i].confirmados[j]);
         }
         for(var j in statesDeads[i].decesos) {
