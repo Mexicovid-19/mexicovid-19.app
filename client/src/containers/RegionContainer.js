@@ -141,6 +141,13 @@ const useRegion = () => {
     setStatesToChart([dataChart[nationalIndex]]);
   }
 
+  let callIndicators = () => {
+    axios.post(`${process.env.REACT_APP_API_URL}/indicators/data/indicators`, {})
+      .then(res => {
+        callIndicators(res.data);
+      });
+  }
+
   return {
     statesToChart,
     selectedStates,
@@ -153,7 +160,8 @@ const useRegion = () => {
     addAll,
     deleteAll,
     changeState,
-    isState
+    isState,
+    callIndicators
   }
 }
 

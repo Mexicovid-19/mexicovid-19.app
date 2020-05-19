@@ -16,6 +16,7 @@ import DistributionEstate from './components/DistributionEstate';
 import Simulation from './components/Simulation';
 import Uncertainty from './components/Uncertainty';
 import Research1 from './components/Research1'
+import {IndicatorContextProvider} from './contexts/IndicatorContext';
 
 import Blog from "./containers/Blog"
 import BlogPost from "./containers/BlogPost";
@@ -36,9 +37,9 @@ const Router = () => {
         </Route>
         <Route path='/about-us' component={Team}/>
         <Route path='/regions' >
-            <RegionContextProvider>
-              <Regions/>
-            </RegionContextProvider>
+          <RegionContextProvider>
+            <Regions/>
+          </RegionContextProvider>
         </Route>
         <Route path='/methodology' component={Methodology}/>
         <Route path='/availablebeds' component={AvailableBeds}/>

@@ -15,6 +15,48 @@ import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCi
 import LocalHospitalRoundedIcon from '@material-ui/icons/LocalHospitalRounded';
 import Loader from '../Loaders/';
 
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box'; 
+import PropTypes from 'prop-types';
+import Heatmap from './Heatmap';
+
+
+function a11yProps(index) {
+	return {
+		id: `simple-tab-${index}`,
+		'aria-controls': `simple-tabpanel-${index}`,
+	};
+}
+
+function TabPanel(props) {
+	const { children, value, index, ...other } = props;
+
+	return (
+		<div
+			role="tabpanel"
+			hidden={value !== index}
+			id={`simple-tabpanel-${index}`}
+			aria-labelledby={`simple-tab-${index}`}
+			{...other}
+		>
+			{value === index && (
+				<Box p={3}>
+					<Typography>{children}</Typography>
+				</Box>
+			)}
+		</div>
+	);
+}
+
+TabPanel.propTypes = {
+	children: PropTypes.node,
+	index: PropTypes.any.isRequired,
+	value: PropTypes.any.isRequired,
+};
+
+
 const States = ({ classes }) => {
 	const {
 		selectedStates, 
@@ -28,9 +70,34 @@ const States = ({ classes }) => {
 		deleteAll
 	} = React.useContext(RegionContext);
 	
+	  
 	const isMobile = window.innerWidth < 1000;
+
+	const [value, setValue] = React.useState(0);
+
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
+	};
+
 	return (
 		<React.Fragment>
+			<section className = {classes.section}>
+				<Typography className={classes.h2} variant={'h2'}>Indicadores por Estado</Typography>
+				<p className={classes.textcontainer1}>Lorem ipsum dolor sit amet consectetur adipiscing elit sapien fusce aliquet himenaeos, magna natoque torquent non vestibulum fermentum risus donec ad.</p>
+				<AppBar position="static">
+					<Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+						<Tab label="Uno" {...a11yProps(0)} />
+						<Tab label="Dos" {...a11yProps(1)} />
+					</Tabs>
+				</AppBar>
+					<TabPanel value={value} index={0}>
+						<Heatmap></Heatmap>
+					</TabPanel>
+					<TabPanel value={value} index={1}>
+						Aqui va barchar
+					</TabPanel>
+			</section>
+
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Número de Confirmados Positivos por Estado y por 100,000 Habitantes</Typography>
 				<p className={classes.textcontainer1}><u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.</p>
