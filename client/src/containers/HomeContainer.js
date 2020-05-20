@@ -220,6 +220,7 @@ const useHome = () => {
   }
 
   return {
+    stateData,
     statesConfirm,
     statesDeads,
     state,
