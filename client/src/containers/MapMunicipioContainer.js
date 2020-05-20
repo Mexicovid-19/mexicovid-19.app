@@ -117,8 +117,8 @@ const useMapMunicipio = () => {
     let setUpGEOJson = () => {
         let geojson = munGEOJSON;
         map.fitBounds([
-            [-98.57510979964474, 17.089858429960742],
-            [-99.9061039346325, 16.822738437941883]
+            [-98.73951,19.69589],
+            [-99.46186,18.97411]
             ]);
         geojson.features = geojson.features.sort((a,b) => a.properties.CVE_ENT - b.properties.CVE_ENT);
         for (let index = 0; index < munData.length; index++) {

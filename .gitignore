@@ -5,13 +5,9 @@
 /api/node_modules
 
 *.pem
-<<<<<<< HEAD
 *.pem
 *.ca-bundle
 
-=======
-*.ca-bundle
->>>>>>> master
 
 /.pnp
 .pnp.js
