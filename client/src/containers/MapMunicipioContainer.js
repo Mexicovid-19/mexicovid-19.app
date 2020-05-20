@@ -18,7 +18,7 @@ const useMapMunicipio = () => {
         "decesos": ['#eff3ff','#bdd7e7','#6baed6','#2171b5'],
         "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
         "pruebas": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
-    };
+    }; 
     const [thresholdsNum, setThresholdNum] = React.useState({
     "confirmados": [],
     "decesos": [],
@@ -119,7 +119,7 @@ const useMapMunicipio = () => {
         map.fitBounds([
             [-98.73951,19.69589],
             [-99.46186,18.97411]
-            ]);
+            ]); 
         geojson.features = geojson.features.sort((a,b) => a.properties.CVE_ENT - b.properties.CVE_ENT);
         for (let index = 0; index < munData.length; index++) {
             for (const confIndex in munData[index].confirmados) {

@@ -5,7 +5,6 @@ import { HomeContext } from '../contexts/HomeContext';
 import { MapMunicipioContext } from '../contexts/MapMunicipioContext';
 import * as colors from './../constants/colors';
 import { numberWithCommas } from '../Utils/numberWCommas';
-import '../css/Map.css';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
