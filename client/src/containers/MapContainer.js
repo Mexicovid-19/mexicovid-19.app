@@ -30,7 +30,8 @@ const useMap = () => {
          selectedLabel, 
          state,
         isMap,
-        callMunData
+        callMunData,
+        stateData
   } = React.useContext(HomeContext);
   
   React.useEffect(() => {
@@ -63,7 +64,7 @@ const useMap = () => {
   }, [map]);
 
   React.useEffect(() => {
-    if(statesConfirm && statesDeads && statesGeOJSON) {  
+    if(stateData && statesConfirm && statesDeads && statesGeOJSON) {  
       let fillColor = getSteps(selectedLabel);
       let geojson = setUpGEOJson();
 
@@ -128,18 +129,17 @@ const useMap = () => {
   }
 
   let getSteps = (label) => {
-    let statesData = statesConfirm;
-
-    if(label === "decesos") {
-      statesData = statesDeads;
-    }
-
-    let data = statesData.map(stateMex => {
-      return stateMex[label][state.date]; 
+    let thresholdsNumLabel = [];
+    
+    let data = stateData.map(stateMex => {
+      return stateMex[label][state.dateIndex].count; 
     });
     
     data.sort((a,b) => a - b);
-    let thresholdsNumLabel = [data[0], data[4], data[8], data[12], data[16], data[20],data[24],data[31]];
+    let threshold = Math.floor(data.length / 8);
+    for(var step = 0; step < 8; step++) {
+      thresholdsNumLabel.push(data[step*threshold])
+    }
     
     let stepsList = thresholdsNumLabel.map((num, i) => {
         return [Number(num), thresholdColor[label][i]];
@@ -184,19 +184,38 @@ const useMap = () => {
     }
   }
 
+  let binarySearch = (inf, sup, val, arr) => {
+    if ( inf > sup)
+      return sup;
+    else {
+      var mid = inf + Math.floor((sup - inf) /2);
+        if(arr[mid].properties.CVE_ENT == val) {
+          return mid;
+        } else if( arr[mid].properties.CVE_ENT < val) {
+          return binarySearch(mid + 1, sup, val, arr)
+        } else {
+          return binarySearch(inf, mid - 1, val, arr)
+        }
+    }
+  }
+
   let setUpGEOJson = () => {
     let geojson = statesGeOJSON;
-      geojson.features = geojson.features.sort((a,b) => a.properties.CVE_ENT - b.properties.CVE_ENT);
-      
-      for(var i = 0; i < 32; i++) {
-        for(var j in statesConfirm[i].confirmados) {
-          geojson.features[i].properties["confirmados-" + j] = Number(statesConfirm[i].confirmados[j]);
-        }
-        for(var j in statesDeads[i].decesos) {
-          geojson.features[i].properties["decesos-" + j] = Number(statesDeads[i].decesos[j]);
-        }
+    let geojsonOrdered = [];
+    let dataCveEnt = stateData.map(el => Number(el.cve_ent))
+
+    for( var cveEntIndex in dataCveEnt) {
+      let index = binarySearch(0, geojson.features.length, dataCveEnt[cveEntIndex], geojson.features)
+      for(var j in state.dates) {
+        geojson.features[index].properties["confirmados-" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
+
+        geojson.features[index].properties["decesos-" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
       }
-    console.log(geojson);
+      geojsonOrdered.push(geojson.features[index])
+      geojson.features.splice(index,1)
+    }
+    
+    geojson.features = geojsonOrdered
     return geojson;
   }
 
@@ -209,7 +228,6 @@ const useMap = () => {
       let cve_ent = String(features[0].properties.CVE_ENT);
       let nombre = features[0].properties.ESTADO;
       cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
-      console.log(features[0].properties);
       setStateSelected(
         {
           cve_ent,

@@ -11,13 +11,13 @@ import MunMapMov from './munMapMov';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum, isMapMunicipio} = React.useContext(MapContext);
-  const {selectedLabel, isMap, statesConfirm} = React.useContext(HomeContext);
+  const {selectedLabel, isMap, stateData} = React.useContext(HomeContext);
 
   let isMobile = window.innerWidth < 1000;
 
   return (
     <div className={isMap ? classes.show : classes.mapContainer}>
-      {!statesConfirm && 
+      {!stateData && 
         <div className={classes.loaderContainer}>
           <div className={classes.loader}><LoaderView/></div>
         </div>
