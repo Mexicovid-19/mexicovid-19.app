@@ -26,12 +26,12 @@ const useMapMunicipio = () => {
 
     const {
         isMapMunicipio,
-        stateSelected,
-        state
+        stateSelected
     } = React.useContext(MapContext);
 
     const {
         munData,
+        state,
         selectedLabel
     } = React.useContext(HomeContext);
     
@@ -69,7 +69,7 @@ const useMapMunicipio = () => {
 
     React.useEffect(() => {
         if(munData && munGEOJSON && munData.length == munGEOJSON.features.length) {  
-            let fillColor = getSteps(selectedLabel);
+            let fillColor = state && state.date ? getSteps(selectedLabel) : '#FFF';
             let geojson = setUpGEOJson();
             
             if(map.getLayer("pref") !== undefined) {
@@ -107,6 +107,17 @@ const useMapMunicipio = () => {
         }
       }, [munGEOJSON, munData]);
 
+      React.useEffect(() => {
+        if(map && state && state.date) {
+          let fillColor = getSteps(selectedLabel);
+          if(map.loaded() && map.isStyleLoaded()) {
+            map.setPaintProperty('pref', 'fill-color', fillColor);
+            map.on('mousemove', showPopup);
+          }
+        }
+          
+      }, [state, selectedLabel, munGEOJSON, munData]);
+
     let callMunGEOJSON = (cve_ent)  => {
         axios.get(`${process.env.REACT_APP_API_URL}/map/municipality/find/CVE_ENT?cve_ent=${cve_ent}`, {})
         .then(res => {
@@ -134,9 +145,8 @@ const useMapMunicipio = () => {
     let getSteps = (label) => {
         let data;
         
-        let dateNumber = 16;
         data = munData.map((mun, index) => {
-            return mun[label][dateNumber].count;
+            return mun[label][state.dateIndex].count;
         });
         
         data.sort((a,b) => a - b);
@@ -152,7 +162,7 @@ const useMapMunicipio = () => {
         });
         
         let fillColor = {
-            property: label + "-" + "17/04/2020",
+            property: label + "-" + state.date,
             stops: stepsList
         };
         

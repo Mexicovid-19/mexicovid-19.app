@@ -63,7 +63,7 @@ const CustomizedSlider = () => {
     totalConfirm = dataChart[0].data.find((x) => { return x.x === state.date }).y;
     totalDeads = dataChart[1].data.find((x) => { return x.x === state.date }).y;
   }
-	console.log(state)
+	
   max = state.dates.length - 1;
   let formatedDate = new Date(state.date);
   formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, 2020`;
