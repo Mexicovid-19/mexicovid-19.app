@@ -5,6 +5,7 @@ import { HomeContext } from '../contexts/HomeContext';
 import { MapContext } from '../contexts/MapContext';
 import * as colors from './../constants/colors';
 import { numberWithCommas } from '../Utils/numberWCommas';
+import  { FITBOUNDS } from '../constants/statesLimits';
 
 const useMapMunicipio = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -102,13 +103,17 @@ const useMapMunicipio = () => {
             });
         
           map.on('mousemove', showPopup);
+
+          console.log(stateSelected.cve_ent);
+          map.fitBounds(FITBOUNDS[stateSelected.cve_ent].limites); 
+        
           //map.on('click', 'pref', openMapContainer);
           
         }
       }, [munGEOJSON, munData]);
 
       React.useEffect(() => {
-        if(map && state && state.date) {
+        if(map && munData && state && state.date) {
           let fillColor = getSteps(selectedLabel);
           if(map.loaded() && map.isStyleLoaded()) {
             map.setPaintProperty('pref', 'fill-color', fillColor);
@@ -127,11 +132,7 @@ const useMapMunicipio = () => {
 
     let setUpGEOJson = () => {
         let geojson = munGEOJSON;
-        map.fitBounds([
-            [-98.73951,19.69589],
-            [-99.46186,18.97411]
-            ]); 
-        geojson.features = geojson.features.sort((a,b) => a.properties.CVE_ENT - b.properties.CVE_ENT);
+        
         for (let index = 0; index < munData.length; index++) {
             for (const confIndex in munData[index].confirmados) {
                 geojson.features[index].properties["confirmados-" + munData[index].confirmados[confIndex].date] = Number(munData[index].confirmados[confIndex].count);
@@ -179,7 +180,6 @@ const useMapMunicipio = () => {
         
         if(features.length > 0 && munData) {
             setSelectedMun(features[0].properties.NOM_MUN)
-            console.log(features[0].properties.NOM_MUN)
             popup
             .setLngLat(e.lngLat)
             .setHTML(

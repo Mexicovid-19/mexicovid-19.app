@@ -41,7 +41,7 @@ const useMap = () => {
       style: 'mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko',
       center: [-97.8116, 24.6040],
       zoom : 4.2
-    },));
+    }));
 
     if (isMobile){
       setMap(
@@ -70,8 +70,7 @@ const useMap = () => {
 
       map.addSource('pref', {
         type: 'geojson',
-        data: geojson,
-        attribution: 'ⓘCifras oficiales del Gobierno de México'
+        data: geojson
       });
       
       map.addLayer({
@@ -208,7 +207,6 @@ const useMap = () => {
       let index = binarySearch(0, geojson.features.length, dataCveEnt[cveEntIndex], geojson.features)
       for(var j in state.dates) {
         geojson.features[index].properties["confirmados-" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
-
         geojson.features[index].properties["decesos-" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
       }
       geojsonOrdered.push(geojson.features[index])
