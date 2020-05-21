@@ -25,8 +25,7 @@ const useMap = () => {
   const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
   const [isMapMunicipio, setIsMapMunicipio] = React.useState(false);
   const [stateSelected, setStateSelected] = React.useState(null);
-  const {statesConfirm,
-         statesDeads,
+  const {
          selectedLabel, 
          state,
         isMap,
@@ -56,7 +55,7 @@ const useMap = () => {
 
 
   React.useEffect(() => {
-    if(map) {
+    if(map && !map.loaded()) {
       map.on('load', function() {
         callStatesGEOJSON();
       })
@@ -64,14 +63,16 @@ const useMap = () => {
   }, [map]);
 
   React.useEffect(() => {
-    if(stateData && statesConfirm && statesDeads && statesGeOJSON) {  
+    if(stateData && statesGeOJSON) {  
       let fillColor = getSteps(selectedLabel);
       let geojson = setUpGEOJson();
 
+      
       map.addSource('pref', {
         type: 'geojson',
         data: geojson
       });
+      
       
       map.addLayer({
         'id': 'pref',
@@ -91,22 +92,28 @@ const useMap = () => {
 
       map.on('mousemove', showPopup);
       map.on('click', 'pref', openMapContainer);
+      
       var nav = new mapboxgl.NavigationControl();
       map.addControl(nav, 'bottom-right');
+
+      setMap(map)
     }
-  }, [statesGeOJSON, statesConfirm, statesDeads]);
+  }, [statesGeOJSON, stateData]);
 
   React.useEffect(() => {
     if(map && state.date) {
       let fillColor = getSteps(selectedLabel);
       if(map.loaded() && map.isStyleLoaded()) {
+        map.off('mousemove', 'pref', showPopup);
         map.setPaintProperty('pref', 'fill-color', fillColor);
         map.on('mousemove', showPopup);
+        map.off('click', 'pref', openMapContainer);
         map.on('click', 'pref', openMapContainer);
+        setMap(map)
       }
     }
       
-  }, [state, selectedLabel, statesGeOJSON, statesConfirm, statesDeads]);
+  }, [state, selectedLabel, statesGeOJSON]);
 
   React.useEffect(() => {
     if(map && map.loaded() && map.isStyleLoaded()) {
@@ -145,7 +152,7 @@ const useMap = () => {
     });
     
     let fillColor = {
-      property: label + "-" + state.date,
+      property: label + "#" + state.date,
       stops: stepsList
     };
 
@@ -159,7 +166,7 @@ const useMap = () => {
       layers: ["pref"]
     });
     
-    if(features.length > 0 && statesConfirm && statesDeads) {
+    if(features.length > 0 && stateData) {
       popup
       .setLngLat(e.lngLat)
       .setHTML(
@@ -172,14 +179,15 @@ const useMap = () => {
               <svg style='width: 15px; height: 15px; font-family: Raleway; font-weight:bold'>
                 <circle r="5" cx="6" cy="10" fill=${selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
               </svg>
-              ${numberWithCommas(features[0].properties[ selectedLabel + "-" + state.date])} ${selectedLabel} 
+              ${numberWithCommas(features[0].properties[ selectedLabel + "#" + state.date])} ${selectedLabel} 
+              <button onClick="${(e) => openMapContainer(e)}">Ver mas</button>
             </span>
           </div>`
         )
       .setMaxWidth(400)
       .addTo(map);
     } else {
-        popup.remove();
+        //popup.remove();
     }
   }
 
@@ -206,8 +214,8 @@ const useMap = () => {
     for( var cveEntIndex in dataCveEnt) {
       let index = binarySearch(0, geojson.features.length, dataCveEnt[cveEntIndex], geojson.features)
       for(var j in state.dates) {
-        geojson.features[index].properties["confirmados-" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
-        geojson.features[index].properties["decesos-" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
+        geojson.features[index].properties["confirmados#" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
+        geojson.features[index].properties["decesos#" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
       }
       geojsonOrdered.push(geojson.features[index])
       geojson.features.splice(index,1)
@@ -218,6 +226,7 @@ const useMap = () => {
   }
 
   let openMapContainer = (e) => {
+    console.log("OPNE")
     var features = map.queryRenderedFeatures(e.point, {
       layers: ["pref"]
     });
@@ -236,6 +245,8 @@ const useMap = () => {
     }
     
     setIsMapMunicipio(true);
+    map.off('click', 'pref', openMapContainer);
+    map.on('click', 'pref', openMapContainer);
   }
 
   let closeMapContainer = (e) => {

@@ -49,7 +49,7 @@ const useMapMunicipio = () => {
     }, [isMapMunicipio])
 
     React.useEffect(() => {
-        if(map && map.loaded() && stateSelected) {
+        if(stateSelected && map && map.loaded()) {
             setMunGEOJSON(null);
             callMunGEOJSON(stateSelected.cve_ent);
         }
@@ -69,8 +69,10 @@ const useMapMunicipio = () => {
     }, [map]);
 
     React.useEffect(() => {
-        if(munData && munGEOJSON && munData.length == munGEOJSON.features.length) {  
-            let fillColor = state && state.date ? getSteps(selectedLabel) : '#FFF';
+        console.log(munGEOJSON, munData)
+        if(munData && munGEOJSON && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
+            let fillColor = getSteps(selectedLabel);
+            console.log(munGEOJSON.features[0].properties.CVE_ENT, munData[0].cve_ent)
             let geojson = setUpGEOJson();
             
             if(map.getLayer("pref") !== undefined) {
@@ -113,15 +115,15 @@ const useMapMunicipio = () => {
       }, [munGEOJSON, munData]);
 
       React.useEffect(() => {
-        if(map && munData && state && state.date) {
-          let fillColor = getSteps(selectedLabel);
+        if(munData && map && state && state.date && munGEOJSON && munGEOJSON.features[0].properties.CVE_ENT == munData.cve_ent) {
           if(map.loaded() && map.isStyleLoaded()) {
+            let fillColor = getSteps(selectedLabel);
             map.setPaintProperty('pref', 'fill-color', fillColor);
             map.on('mousemove', showPopup);
           }
         }
           
-      }, [state, selectedLabel, munGEOJSON, munData]);
+      }, [state, selectedLabel, munGEOJSON]);
 
     let callMunGEOJSON = (cve_ent)  => {
         axios.get(`${process.env.REACT_APP_API_URL}/map/municipality/find/CVE_ENT?cve_ent=${cve_ent}`, {})
@@ -132,12 +134,12 @@ const useMapMunicipio = () => {
 
     let setUpGEOJson = () => {
         let geojson = munGEOJSON;
-        
+        console.log(geojson, munData)
         for (let index = 0; index < munData.length; index++) {
             for (const confIndex in munData[index].confirmados) {
-                geojson.features[index].properties["confirmados-" + munData[index].confirmados[confIndex].date] = Number(munData[index].confirmados[confIndex].count);
-                geojson.features[index].properties["decesos-" + munData[index].decesos[confIndex].date] = Number(munData[index].decesos[confIndex].count);
-                geojson.features[index].properties["pruebas-" + munData[index].pruebas[confIndex].date] = Number(munData[index].pruebas[confIndex].count);
+                geojson.features[index].properties["confirmados#" + munData[index].confirmados[confIndex].date] = Number(munData[index].confirmados[confIndex].count);
+                geojson.features[index].properties["decesos#" + munData[index].decesos[confIndex].date] = Number(munData[index].decesos[confIndex].count);
+                geojson.features[index].properties["pruebas#" + munData[index].pruebas[confIndex].date] = Number(munData[index].pruebas[confIndex].count);
             }
         }
         return geojson;
@@ -163,7 +165,7 @@ const useMapMunicipio = () => {
         });
         
         let fillColor = {
-            property: label + "-" + state.date,
+            property: label + "#" + state.date,
             stops: stepsList
         };
         
@@ -192,7 +194,7 @@ const useMapMunicipio = () => {
                     <svg style='width: 15px; height: 15px; font-family: Raleway; font-weight:bold'>
                         <circle r="5" cx="6" cy="10" fill=${selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
                     </svg>
-                    ${numberWithCommas(features[0].properties[ selectedLabel + "-" + "17/04/2020"])} ${selectedLabel} 
+                    ${numberWithCommas(features[0].properties[ selectedLabel + "#" + state.date])} ${selectedLabel} 
                     </span>
                 </div>`
                 )
