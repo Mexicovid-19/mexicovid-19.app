@@ -20,6 +20,6 @@ router.get('/estado/:state', estado.findByEnt);
 /**
  * To update the user data by filter condition
  */
-//router.put('/update', estado.update);
+router.put('/update', estado.update);
 
 module.exports = router;
