@@ -8,13 +8,20 @@ import ColorsGradientBar from './ColorGradientBar';
 import LoaderView from '../Loader';
 import MunMap from './munMap';
 import MunMapMov from './munMapMov';
+import MapGL, { Source, Layer } from '@urbica/react-map-gl';
 
 const Map = ({classes}) => {
-  const { mapRef, thresholdsNum, isMapMunicipio} = React.useContext(MapContext);
+  const { mapRef, thresholdsNum, isMapMunicipio, geojson, fillColor} = React.useContext(MapContext);
   const {selectedLabel, isMap, stateData} = React.useContext(HomeContext);
 
-  let isMobile = window.innerWidth < 1000;
+  const [viewport, setViewport] = React.useState({
+    longitude: -100.8116,
+    latitude: 24.6040,
+    zoom: 3.2
+  });
 
+  let isMobile = window.innerWidth < 1000;
+  console.log(geojson, fillColor)
   return (
     <div className={isMap ? classes.show : classes.mapContainer}>
       {!stateData && 
@@ -33,7 +40,33 @@ const Map = ({classes}) => {
           <MunMapMov/>
         }
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
-      <div ref={mapRef} className={classes.map}></div>
+      {/*<div ref={mapRef} className={classes.map}></div>*/}
+      <MapGL
+        style={{ width: '100%', height: '100%' }}
+        mapStyle='mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko'
+        accessToken={process.env.REACT_APP_MAP_BOX_API_KEY}
+        latitude={viewport.latitude}
+        longitude={viewport.longitude}
+        zoom={viewport.zoom}
+        onViewportChange={setViewport}
+      >
+        <Source id='states' type='geojson' data={ geojson } />
+        {fillColor && <Layer
+          id='states'
+          type='fill'
+          source='states'
+          paint={{
+            'fill-color': fillColor,
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                1,
+            ],
+            'fill-outline-color': '#FFF'
+          }}
+        />}
+        </MapGL>;
     </div>
   );
 }
