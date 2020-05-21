@@ -56,7 +56,7 @@ const useMap = () => {
     callStatesGEOJSON();
   }, []);
 
-
+  /*
   React.useEffect(() => {
     if(map && !map.loaded()) {
       map.on('load', function() {
@@ -64,11 +64,12 @@ const useMap = () => {
       })
     }
   }, [map]);
-
+  */
   React.useEffect(() => {
-    if(state.date && stateData && statesGeOJSON) {  
+    if(state.date && stateData && statesGeOJSON && statesGeOJSON.features.length == 32) {  
       setFillColor(getSteps(selectedLabel));
-      setGeojson(setUpGEOJson());
+      setUpGEOJson();
+      
       //let fillColor = getSteps(selectedLabel);
       //let geojson = setUpGEOJson();
       /*
@@ -102,22 +103,7 @@ const useMap = () => {
       */
       
     }
-  }, [statesGeOJSON, stateData, state]);
-
-  React.useEffect(() => {
-    if(map && state.date) {
-      let fillColor = getSteps(selectedLabel);
-      if(map.loaded() && map.isStyleLoaded()) {
-        map.off('mousemove', 'pref', showPopup);
-        map.setPaintProperty('pref', 'fill-color', fillColor);
-        map.on('mousemove', showPopup);
-        map.off('click', 'pref', openMapContainer);
-        map.on('click', 'pref', openMapContainer);
-        setMap(map)
-      }
-    }
-      
-  }, [state, selectedLabel, statesGeOJSON]);
+  }, [selectedLabel, statesGeOJSON, stateData, state]);
 
   React.useEffect(() => {
     if(map && map.loaded() && map.isStyleLoaded()) {
@@ -132,11 +118,9 @@ const useMap = () => {
   }, [stateSelected])
 
   let callStatesGEOJSON = ()  => {
-    console.log("llamando geojson")
     axios.post(`${process.env.REACT_APP_API_URL}/map/states`, {})
     .then(res => {
       setStatesGeOJSON(res.data);
-      console.log(res.data)
     });
   }
 
@@ -198,8 +182,10 @@ const useMap = () => {
   }
 
   let binarySearch = (inf, sup, val, arr) => {
-    if ( inf > sup)
-      return sup;
+    if ( inf > sup){
+      console.log(sup, inf)
+      return sup < 0 ? 0: sup;
+    }
     else {
       var mid = inf + Math.floor((sup - inf) /2);
         if(arr[mid].properties.CVE_ENT == val) {
@@ -213,28 +199,31 @@ const useMap = () => {
   }
 
   let setUpGEOJson = () => {
-    let _geojson = statesGeOJSON;
+    let _geojson = JSON.parse(JSON.stringify(statesGeOJSON));;
     let geojsonOrdered = [];
     let dataCveEnt = stateData.map(el => Number(el.cve_ent))
-    console.log(_geojson.features.length, _geojson)
+    
     for( var cveEntIndex in dataCveEnt) {
       let index = binarySearch(0, _geojson.features.length, dataCveEnt[cveEntIndex], _geojson.features)
-      console.log(index, dataCveEnt[cveEntIndex])
-      for(var j in state.dates) {
-        console.log(_geojson.length)
-        _geojson.features[index].properties["confirmados#" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
-        _geojson.features[index].properties["decesos#" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
+    
+      if ( index >= 0 ) {
+        for(var j in state.dates) {
+          _geojson.features[index].properties["confirmados#" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
+          _geojson.features[index].properties["decesos#" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
+        }
+        geojsonOrdered.push(_geojson.features[index])
+        _geojson.features.splice(index,1)
+      } else {
+        console.log(index, "chale")
       }
-      geojsonOrdered.push(_geojson.features[index])
-      _geojson.features.splice(index,1)
     }
     
     _geojson.features = geojsonOrdered
-    return _geojson;
+    
+    setGeojson(_geojson);
   }
 
   let openMapContainer = (e) => {
-    console.log("OPNE")
     var features = map.queryRenderedFeatures(e.point, {
       layers: ["pref"]
     });
@@ -253,8 +242,6 @@ const useMap = () => {
     }
     
     setIsMapMunicipio(true);
-    map.off('click', 'pref', openMapContainer);
-    map.on('click', 'pref', openMapContainer);
   }
 
   let closeMapContainer = (e) => {
@@ -275,7 +262,9 @@ const useMap = () => {
 
     statesGeOJSON,
     fillColor,
-    geojson
+    geojson,
+    setStateSelected,
+    setIsMapMunicipio
   }
 }
 

@@ -8,20 +8,70 @@ import ColorsGradientBar from './ColorGradientBar';
 import LoaderView from '../Loader';
 import MunMap from './munMap';
 import MunMapMov from './munMapMov';
-import MapGL, { Source, Layer } from '@urbica/react-map-gl';
+import MapGL, { Popup, Source, Layer, FeatureState, NavigationControl } from '@urbica/react-map-gl';
+import { numberWithCommas } from '../../Utils/numberWCommas';
 
 const Map = ({classes}) => {
-  const { mapRef, thresholdsNum, isMapMunicipio, geojson, fillColor} = React.useContext(MapContext);
-  const {selectedLabel, isMap, stateData} = React.useContext(HomeContext);
+  const { mapRef, thresholdsNum, isMapMunicipio, geojson,statesGeOJSON, fillColor, setStateSelected, setIsMapMunicipio} = React.useContext(MapContext);
+  const {selectedLabel, isMap, stateData, state} = React.useContext(HomeContext);
+  const [hoveredState, setHoveredState] = React.useState(null)
+  const [hoveredStateId, setHoveredStateId] = React.useState(null);
 
+  const [lat, setLat] = React.useState(0);
+  const [lng, setLng] = React.useState(0);
   const [viewport, setViewport] = React.useState({
     longitude: -100.8116,
     latitude: 24.6040,
     zoom: 3.2
   });
 
+  const onClick = (event) => {
+    if (event.features.length > 0) {
+      let cve_ent = String(event.features[0].properties.CVE_ENT);
+      let nombre = event.features[0].properties.ESTADO;
+      cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
+      setStateSelected(
+        {
+          cve_ent,
+          nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
+          abrev: event.features[0].properties.ABREV
+        }
+      );
+    }
+    
+    setIsMapMunicipio(true);
+  }
+
+  const onHover = (event) => {
+    console.log(event)
+    if (event.features.length > 0) {
+      const nextHoveredStateId = event.features[0].id;
+      if (hoveredStateId !== nextHoveredStateId) {
+        console.log(hoveredStateId)
+        setHoveredStateId(nextHoveredStateId);
+      }
+
+      const _hoveredState = event.features[0].properties;
+      if (  _hoveredState !== hoveredState) {
+        setLat(event.lngLat.lat);
+        setLng(event.lngLat.lng);
+        setHoveredState(_hoveredState);
+      }
+    }
+  };
+  
+  const onLeave = () => {
+    if (hoveredStateId) {
+      setHoveredStateId(null);
+    }
+
+    if (hoveredState) {
+      setHoveredState(null);
+    }
+  };
+
   let isMobile = window.innerWidth < 1000;
-  console.log(geojson, fillColor)
+  
   return (
     <div className={isMap ? classes.show : classes.mapContainer}>
       {!stateData && 
@@ -40,8 +90,7 @@ const Map = ({classes}) => {
           <MunMapMov/>
         }
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
-      {/*<div ref={mapRef} className={classes.map}></div>*/}
-      <MapGL
+      {geojson && geojson.features.length == 32 && <MapGL
         style={{ width: '100%', height: '100%' }}
         mapStyle='mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko'
         accessToken={process.env.REACT_APP_MAP_BOX_API_KEY}
@@ -57,16 +106,24 @@ const Map = ({classes}) => {
           source='states'
           paint={{
             'fill-color': fillColor,
-            'fill-opacity': [
-                'case',
-                ['boolean', ['feature-state', 'hover'], false],
-                1,
-                1,
-            ],
+            'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 1, 0.8],
             'fill-outline-color': '#FFF'
           }}
+          onHover={onHover}
+          onLeave={onLeave}
+          onClick={onClick}
         />}
-        </MapGL>;
+        {hoveredState && <Popup longitude={lng} latitude={lat} closeButton={true} closeOnClick={true}>
+            <div>
+              <div>
+              {hoveredState.ESTADO}
+              {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel} 
+              </div>
+            </div>
+        </Popup>}
+        {hoveredStateId && <FeatureState id={hoveredStateId} source='states' state={{ hover: true }} />}
+        <NavigationControl showCompass showZoom position='bottom-right' />
+        </MapGL>};
     </div>
   );
 }
