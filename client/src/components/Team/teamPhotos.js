@@ -238,6 +238,11 @@ const PhotoGrid = ({classes}) => {
                     <p>Estudiante de Licenciaturas en Gobierno y Transformación Pública y en Economía. Sus intereses profesionales son la educación, la política mexicana, las finanzas, y la sociología.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>Brenda Guadalupe Martínez Orta</p>
+                    <img src="images/brendamartinez.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Ingeniería Física Industrial. Sus intereses van desde la astronomía hasta el análisis de datos para optimización.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
                     <p className="names" align={'center'}>Mónica Medellín Estrada</p>
                     <img src="images/monicamedellin.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Relaciones Internacionales. Sus intereses profesionales son los estudios para el desarrollo, ciudades y América Latina.</p>
@@ -300,7 +305,7 @@ const PhotoGrid = ({classes}) => {
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Idalee Vargas</p>
                     <img src="images/idaleevargas.jpg" className="img-responsive" alt="Image"/>
-                    <p>Estudiante de Licenciatura en Publicidad y Comunicación de Mercados (LPM). Sus intereses son la creatividad, redacción, nutrición y bienestar.</p>
+                    <p>Licenciatura de Economía. Intereses: Economía matemática, análisis de datos y desarrollo económico.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
                     <p className="names" align={'center'}>Arnulfo Emmanuel Zaldívar Ruenes</p>
