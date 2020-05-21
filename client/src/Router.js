@@ -37,9 +37,11 @@ const Router = () => {
         </Route>
         <Route path='/about-us' component={Team}/>
         <Route path='/regions' >
-          <RegionContextProvider>
-            <Regions/>
-          </RegionContextProvider>
+          <IndicatorContextProvider>
+            <RegionContextProvider>
+              <Regions/>
+            </RegionContextProvider>
+          </IndicatorContextProvider>
         </Route>
         <Route path='/methodology' component={Methodology}/>
         <Route path='/availablebeds' component={AvailableBeds}/>

@@ -7,7 +7,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import LaunchIcon from '@material-ui/icons/Launch';
 import * as colors from '../../constants/colors';
 import MyResponsiveLine from './LineChart';
-import { RegionContext } from '../../contexts/RegionContext';
+import { IndicatorContext } from '../../contexts/IndicatorContext';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Chip from '@material-ui/core/Chip';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -24,12 +24,12 @@ import { ResponsiveHeatMap } from '@nivo/heatmap'
 
 
 const Heatmap = ({ classes }) => {
-    const { data } = React.useContext(RegionContext);
-    console.log(data);
+    const { indicatorsData } = React.useContext(IndicatorContext);
+    console.log(indicatorsData)
     return (
         <div>
             <ResponsiveHeatMap
-                data={data}
+                data={'data'}
                 keys={[
                     'n_f1_aislamiento',
                     'n_f2_aislamiento',
