@@ -14,7 +14,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCircleRounded';
 import LocalHospitalRoundedIcon from '@material-ui/icons/LocalHospitalRounded';
 import Loader from '../Loaders/';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import { ResponsiveBar } from '@nivo/bar'
+import Grid from '@material-ui/core/Grid';
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
@@ -22,8 +28,15 @@ import { ResponsiveBar } from '@nivo/bar'
 // you'll often use just a few of them.
 const Barchart = ({ classes }) => {
     const { indicatorsData } = React.useContext(IndicatorContext);
+
+    const [age, setAge] = React.useState('');
+
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
+
     return(
-        <div style={{ height: 600, width: '100%' }}>
+        <div style={{ height: 600, width: '100%'}}>
             <ResponsiveBar
                 data={indicatorsData}
                 keys={[
@@ -44,7 +57,7 @@ const Barchart = ({ classes }) => {
 
                 ]}
                 indexBy="estado"
-                margin={{ top: 50, right: 130, bottom: 100, left: 60 }}
+                margin={{ top: 50, right: 250, bottom: 100, left: 60 }}
                 padding={0.3}
                 groupMode="grouped"
                 colors={{ scheme: 'nivo' }}
@@ -91,7 +104,7 @@ const Barchart = ({ classes }) => {
                     tickRotation: -90,
                     legend: 'Estados',
                     legendPosition: 'middle',
-                    legendOffset: 70,
+                    legendOffset: 65,
                 }}
                 axisLeft={{
                     tickSize: 5,
