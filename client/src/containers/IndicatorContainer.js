@@ -4,22 +4,10 @@ import axios from 'axios';
 const useIndicators = () => {
     
 
-    axios.post(`${process.env.REACT_APP_API_URL}/indicators/data/indicators`, {})
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-    });
-
-
-    let indicatorsData;
+    const [indicatorsData,setIndicators]=React.useState([]);
     React.useEffect(() => {
-        
-        let fourPackProducts = axios.post(`${process.env.REACT_APP_API_URL}/indicators/data/indicators`, {}).then(response => {
-            indicatorsData = response.data;
-            console.log(indicatorsData);
-            return indicatorsData;
+        axios.post(`${process.env.REACT_APP_API_URL}/indicators/data/indicators`, {}).then(response => {
+            setIndicators(response.data);
         })
     }, []);
 

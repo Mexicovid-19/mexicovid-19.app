@@ -21,6 +21,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box'; 
 import PropTypes from 'prop-types';
 import Heatmap from './Heatmap';
+import Barchart from './Barchart';
 
 
 function a11yProps(index) {
@@ -83,18 +84,18 @@ const States = ({ classes }) => {
 		<React.Fragment>
 			<section className = {classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Indicadores por Estado</Typography>
-				<p className={classes.textcontainer1}>Lorem ipsum dolor sit amet consectetur adipiscing elit sapien fusce aliquet himenaeos, magna natoque torquent non vestibulum fermentum risus donec ad.</p>
+				<p className={classes.textcontainer1}>Entre el 25 de marzo y el 12 de mayo un grupo de 32 estudiantes realizaron el seguimiento de medios locales y boletines oficiales de cada entidad federativa con la finalidad de monitorear eventos relacionados con: 1) medidas de aislamiento, 2) sucesos de inseguridad, 3) transparencia y comunicación, 4) salud pública y 5) economía. A partir de este seguimiento, los estudiantes contestaron un instrumento que denominamos ¿Quién es quién en los estados? El cual contiene 115 preguntas en torno a los cinco temas antes enunciados. Empleando la técnica de análisis factorial pudimos sintetizar la información mediante la obtención de 14 indicadores que se muestran en esta sección.</p>
 				<AppBar position="static">
 					<Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-						<Tab label="Uno" {...a11yProps(0)} />
-						<Tab label="Dos" {...a11yProps(1)} />
+						<Tab label="Heatmap" {...a11yProps(0)} />
+						<Tab label="Barras" {...a11yProps(1)} />
 					</Tabs>
 				</AppBar>
 					<TabPanel value={value} index={0}>
 						<Heatmap></Heatmap>
 					</TabPanel>
 					<TabPanel value={value} index={1}>
-						Aqui va barchar
+						<Barchart></Barchart>
 					</TabPanel>
 			</section>
 
@@ -295,6 +296,9 @@ const styles = () => ({
 		selectorContainer: {
 			flexDirection: 'column'
 		},
+		heat:{
+			height: '300px'
+		}
 	},
 	
 });

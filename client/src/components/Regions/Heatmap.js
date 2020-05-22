@@ -20,67 +20,60 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import { ResponsiveHeatMap } from '@nivo/heatmap'
+import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
 
 
 const Heatmap = ({ classes }) => {
     const { indicatorsData } = React.useContext(IndicatorContext);
     console.log(indicatorsData)
     return (
-        <div>
-            <ResponsiveHeatMap
-                data={'data'}
+        <div style={{ height: 600 ,width:'100%'}}>
+            <ResponsiveHeatMapCanvas
+                data={indicatorsData}
                 keys={[
-                    'n_f1_aislamiento',
-                    'n_f2_aislamiento',
-                    'n_f1b_aislamiento',
-                    'n_f1_seguridad',
-                    'n_f2_seguridad',
-                    'n_f2_transparenciaNL911',
-                    'n_f1_transparenciaNL911',
-                    'n_f1_salud',
-                    'n_f2_salud',
-                    'n_f3_salud',
-                    'n_f4_salud',
-                    'n_f1_economia',
-                    'n_f2_economia',
-                    'n_f3_economia'
+                    "N_F1_AISLAMIENTO",
+                    "N_F2_AISLAMIENTO",
+                    "N_F1B_AISLAMIENTO",
+                    "N_F1_SEGURIDAD",
+                    "N_F2_SEGURIDAD",
+                    "N_F2_TRANSPARENCIANL911",
+                    "N_F1_TRANSPARENCIANL911",
+                    "N_F1_SALUD", 
+                    "N_F2_SALUD",
+                    "N_F3_SALUD", 
+                    "N_F4_SALUD", 
+                    "N_F1_ECONOMIA",
+                    "N_F2_ECONOMIA",
+                    "N_F3_ECONOMIA",
+
                 ]}
-                indexBy="indicadores"
-                margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
-                forceSquare={true}
+                indexBy="estado"
+                margin={{ top: 170, right:0, bottom: 0, left: 60 }}
+                pixelRatio={1}
+                minValue={0.00}
+                maxValue={1.00}
+                forceSquare={false}
+                sizeVariation={0}
+                padding={1}
+                colors="nivo"
                 axisTop={{ orient: 'top', tickSize: 5, tickPadding: 5, tickRotation: -90, legend: '', legendOffset: 36 }}
                 axisRight={null}
                 axisBottom={null}
-                axisLeft={{
-                    orient: 'left',
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                    legend: 'country',
-                    legendPosition: 'middle',
-                    legendOffset: -40
-                }}
+                enableGridX={false}
+                enableGridY={true}
+                cellShape="rect"
                 cellOpacity={1}
-                cellBorderColor={{ from: 'color', modifiers: [['darker', 0.4]] }}
-                labelTextColor={{ from: 'color', modifiers: [['darker', 1.8]] }}
-                defs={[
-                    {
-                        id: 'lines',
-                        type: 'patternLines',
-                        background: 'inherit',
-                        color: 'rgba(0, 0, 0, 0.1)',
-                        rotation: -45,
-                        lineWidth: 4,
-                        spacing: 7
-                    }
-                ]}
-                fill={[{ id: 'lines' }]}
+                cellBorderWidth={0}
+                cellBorderColor={{ from: 'color', modifiers: [['darker', '0.6']] }}
+                enableLabels={false}
+                labelTextColor={{ from: 'color', modifiers: [['darker', '1.2']] }}
                 animate={true}
-                motionStiffness={80}
+                motionStiffness={120}
                 motionDamping={9}
-                hoverTarget="cell"
-                cellHoverOthersOpacity={0.25}
+                isInteractive={true}
+                hoverTarget="rowColumn"
+                cellHoverOpacity={1}
+                cellHoverOthersOpacity={0.5}
             />
         </div>
     );
