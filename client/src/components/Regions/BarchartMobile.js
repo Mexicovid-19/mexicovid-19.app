@@ -27,10 +27,10 @@ import { RegionContext } from '../../contexts/RegionContext';
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const Barchart = ({ classes }) => {
+const BarchartMobile = ({ classes }) => {
     const { indicatorsData } = React.useContext(IndicatorContext);
 
-    const [age, setAge,stateValue] = React.useState('');
+    const [age, setAge, stateValue] = React.useState('');
 
     const {
         states,
@@ -40,10 +40,11 @@ const Barchart = ({ classes }) => {
         setAge(event.target.value);
     };
 
-    return(
-        <div style={{ height: 600, width: '100%'}}>
+    return (
+        <div style={{ height: 960, width: '100%' }}>
             <ResponsiveBar
                 data={indicatorsData}
+                layout="horizontal"
                 keys={[
                     "N_F1_AISLAMIENTO",
                     "N_F2_AISLAMIENTO",
@@ -62,7 +63,7 @@ const Barchart = ({ classes }) => {
 
                 ]}
                 indexBy="estado"
-                margin={{ top: 50, right: 250, bottom: 100, left: 60 }}
+                margin={{ top: 300, right: 0, bottom: 100, left: 60 }}
                 padding={0.3}
                 groupMode="stacked"
                 colors={{ scheme: 'nivo' }}
@@ -107,17 +108,17 @@ const Barchart = ({ classes }) => {
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: -90,
-                    legend: 'Estados',
+                    legend: 'Conjunto de indicadores',
                     legendPosition: 'middle',
-                    legendOffset: 65,
+                    legendOffset: 40,
                 }}
                 axisLeft={{
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: 0,
-                    legend: 'Conjunto de indicadores',
+                    legend: 'Estados',
                     legendPosition: 'middle',
-                    legendOffset: -40
+                    legendOffset: -50
                 }}
                 enableLabel={false}
                 labelSkipWidth={12}
@@ -132,11 +133,11 @@ const Barchart = ({ classes }) => {
                         translateX: 120,
                         translateY: 0,
                         itemsSpacing: 2,
-                        itemWidth: 100,
+                        itemWidth: 90,
                         itemHeight: 20,
                         itemDirection: 'left-to-right',
                         itemOpacity: 0.85,
-                        symbolSize: 20,
+                        symbolSize: 15,
                         effects: [
                             {
                                 on: 'hover',
@@ -147,12 +148,27 @@ const Barchart = ({ classes }) => {
                         ]
                     }
                 ]}
+                legends={[
+                    {
+                        dataFrom: 'keys',
+                        anchor: 'top-left',
+                        direction: 'column',
+                        justify: false,
+                        translateX: -60,
+                        translateY: -300,
+                        itemWidth: 100,
+                        itemHeight: 20,
+                        itemsSpacing: 0,
+                        symbolSize: 14,
+                        itemDirection: 'left-to-right'
+                    }
+                ]}
                 animate={true}
                 motionStiffness={90}
                 motionDamping={15}
-            />   
+            />
         </div>
     );
 }
 
-export default Barchart;
+export default BarchartMobile;

@@ -28,6 +28,9 @@ const Heatmap = ({ classes }) => {
     console.log(indicatorsData)
     return (
         <div style={{ height: 600 ,width:'100%'}}>
+            {indicatorsData.length == 0 ?
+                <Loader />
+                :
             <ResponsiveHeatMapCanvas
                 data={indicatorsData}
                 keys={[
@@ -75,7 +78,7 @@ const Heatmap = ({ classes }) => {
                 cellHoverOpacity={1}
                 cellHoverOthersOpacity={0.5}
             />
-        </div>
+            }</div>
     );
 }
 

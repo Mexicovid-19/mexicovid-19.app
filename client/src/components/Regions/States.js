@@ -22,6 +22,7 @@ import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
 import Heatmap from './Heatmap';
 import Barchart from './Barchart';
+import BarchartMobile from './BarchartMobile';
 import SwipeableViews from 'react-swipeable-views';
 
 
@@ -68,6 +69,18 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
+function mobileDetect() {
+	// some js way to detect if user is on a mobile device
+	if (window.innerWidth < 1000){
+		return true
+	}
+	else{
+		return false;
+	}
+}
+
+
+
 const States = ({ classes }) => {
 	const {
 		selectedStates, 
@@ -99,12 +112,12 @@ const States = ({ classes }) => {
 			<section className = {classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Indicadores por Estado</Typography>
 				<p className={classes.textcontainer1}>Entre el 25 de marzo y el 12 de mayo un grupo de 32 estudiantes realizaron el seguimiento de medios locales y boletines oficiales de cada entidad federativa con la finalidad de monitorear eventos relacionados con: 1) medidas de aislamiento, 2) sucesos de inseguridad, 3) transparencia y comunicación, 4) salud pública y 5) economía. A partir de este seguimiento, los estudiantes contestaron un instrumento que denominamos ¿Quién es quién en los estados? El cual contiene 115 preguntas en torno a los cinco temas antes enunciados. Empleando la técnica de análisis factorial pudimos sintetizar la información mediante la obtención de 14 indicadores que se muestran en esta sección.</p>
-				<AppBar position="static" className={classes.chartChange}>
-					<Tabs value={value} onChange={handleChange} aria-label="simple tabs example" >
-						<Tab label="Heatmap" {...a11yProps(0)} />
-						<Tab label="Barras" {...a11yProps(1)} />
+				<div>
+					<Tabs value={value} onChange={handleChange} aria-label="simple tabs example" indicatorColor="primary">
+						<Tab label="Mapa de color" {...a11yProps(0)} />
+						<Tab label="Conjunto de indicadores" {...a11yProps(1)} />
 					</Tabs>
-				</AppBar>
+				</div>
 				<SwipeableViews
 					axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
 					index={value}
@@ -114,7 +127,8 @@ const States = ({ classes }) => {
 						<Heatmap></Heatmap>
 					</TabPanel>
 					<TabPanel value={value} index={1} style={{backgroundColor:'white'}}>
-						<Barchart></Barchart>
+						{mobileDetect() ? (<BarchartMobile />) : (<Barchart />)}
+						
 					</TabPanel>
 				</SwipeableViews>
 			</section>
@@ -318,7 +332,7 @@ const styles = () => ({
 		},
 		heat:{
 			height: '300px'
-		}
+		},
 	},
 	
 });
