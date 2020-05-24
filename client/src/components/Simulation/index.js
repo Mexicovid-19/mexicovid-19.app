@@ -5,28 +5,37 @@ import * as colors from '../../constants/colors';
 import Header from '../Header';
 import Footer from '../Footer';
 import SimulationUncertainty from './SimulationUncertainty';
+import ReactivacionEco from './ReactivacionEco';
 import { Helmet } from 'react-helmet';
 
 const Simulation = ({ classes }) => {
 
 	const isMobile = window.innerWidth < 1000;
-	document.title = "Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID";
+	document.title = "Prospectiva | MexiCOVID";
 	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
 	return (
 		<div>
 			<Helmet>
-			<title>Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID</title>
-			<meta name="description" content="Simulaciones del COVID19 bajo incertidumbre" />
+			<title>Prospectiva | MexiCOVID</title>
+			<meta name="description" content="Prospectiva y modelos del COVID19" />
 			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/incertidumbre.PNG" />
 			<meta name="keywords" content="simulacion incertidumbre, coronavirus mexico tec,casos coronavirus simulacion,coronavirus simulacion,cuanto tiempo falta coronavirus"/>
 			
-          	<meta property="og:title" content="Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID"/>
-          	<meta property="og:description" content="Simulaciones del COVID19 bajo incertidumbre"/>
+			<meta property="og:title" content="Prospectiva | MexiCOVID"/>
+				<meta property="og:description" content="Prospectiva y modelos del COVID19"/>
 
 			</Helmet>
 			<div className={classes.container}>
 			<Header fixed={true}/>
 					<div className={classes.regionsContainer}>
+						<header className={classes.header}>
+						<Typography className={classes.h1} variant={'h1'}>Tablero para la Toma de Decisión sobre Reactivación Económica por Entidad Federativa</Typography>
+						</header>
+						<main>
+							<ReactivacionEco/>
+						</main>
+					</div>
+				<div className={classes.regionsContainer1}>
 						<header className={classes.header}>
 							<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
 						</header>
@@ -51,8 +60,15 @@ const styles = () => ({
     width: '70%',
 	margin: 'auto',
 	padding: '25px',
-    paddingTop: '128px',
+    paddingTop: '118px',
     backgroundColor: colors.WHITE
+	},
+	regionsContainer1: {
+		width: '70%',
+		margin: 'auto',
+		padding: '25px',
+		paddingTop: '30px',
+		backgroundColor: colors.WHITE
 	},
 	
 	h1: {
@@ -81,13 +97,18 @@ const styles = () => ({
 			padding: '10px',
 			paddingTop: '60px'
 		},
+		regionsContainer1: {
+			width: '100%',
+			padding: '10px',
+			paddingTop: '20px'
+		},
 		header: {
 			alignItems: 'flex-end'
 		},
 		h1: {
 			fontSize: '24px'
 		},
-  	}
+	  },
 });
 
 export default withStyles(styles)(Simulation);

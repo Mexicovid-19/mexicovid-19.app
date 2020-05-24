@@ -6,7 +6,7 @@ import LaunchIcon from '@material-ui/icons/Launch';
 import * as colors from '../../constants/colors';
 
 const SimulationUncertainty = ({ classes }) => {
-	document.title = "Simulaciones | MexiCOVID";
+	document.title = "Prospectiva | MexiCOVID";
 	
 	return (
 		<React.Fragment>

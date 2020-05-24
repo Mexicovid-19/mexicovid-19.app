@@ -75,7 +75,7 @@ const Header = ({ classes, fixed=false}) => {
             <MenuItem><Typography variant="span" className={classes.title}>Seguimiento por Región</Typography></MenuItem>
           }/>
           <LinkElement url='/simulation' element={
-            <MenuItem><Typography variant="span" className={classes.title}>Simulaciones</Typography></MenuItem>
+            <MenuItem><Typography variant="span" className={classes.title}>Prospectiva</Typography></MenuItem>
           }/>
           <LinkElement url='/methodology' element={
             <MenuItem><Typography variant="span" className={classes.title}>Metodología</Typography></MenuItem>
@@ -95,7 +95,7 @@ const Header = ({ classes, fixed=false}) => {
             <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
           }/>
           <LinkElement url='/simulation' element={
-            <Button className={location === '/simulation' ? classes.selectedBtn : classes.button} color="inherit">Simulaciones</Button>
+            <Button className={location === '/simulation' ? classes.selectedBtn : classes.button} color="inherit">Prospectiva</Button>
           }/>
           <LinkElement url='/methodology' element={
             <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Metodología</Button>

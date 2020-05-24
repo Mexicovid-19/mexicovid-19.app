@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -15,6 +15,119 @@ import SupervisedUserCircleRoundedIcon from '@material-ui/icons/SupervisedUserCi
 import LocalHospitalRoundedIcon from '@material-ui/icons/LocalHospitalRounded';
 import Loader from '../Loaders/';
 
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box'; 
+import PropTypes from 'prop-types';
+import Heatmap from './Heatmap';
+import Barchart from './Barchart';
+import BarchartMobile from './BarchartMobile';
+import SwipeableViews from 'react-swipeable-views';
+
+
+function a11yProps(index) {
+	return {
+		id: `simple-tab-${index}`,
+		'aria-controls': `simple-tabpanel-${index}`,
+	};
+}
+
+function TabPanel(props) {
+	const { children, value, index, ...other } = props;
+
+	return (
+		<div
+			role="tabpanel"
+			hidden={value !== index}
+			id={`simple-tabpanel-${index}`}
+			aria-labelledby={`simple-tab-${index}`}
+			{...other}
+		>
+			{value === index && (
+				<Box p={3}>
+					<Typography>{children}</Typography>
+				</Box>
+			)}
+		</div>
+	);
+}
+
+TabPanel.propTypes = {
+	children: PropTypes.node,
+	index: PropTypes.any.isRequired,
+	value: PropTypes.any.isRequired,
+};
+
+const AntTabs = withStyles({
+	root: {
+		borderBottom: "1px solid #000000"
+	},
+	indicator: {
+		backgroundColor: "#000000"
+	}
+})(Tabs);
+
+const AntTab = withStyles(theme => ({
+	root: {
+		textTransform: "none",
+		minWidth: 72,
+		fontWeight: theme.typography.fontWeightBold,
+		marginRight: theme.spacing(4),
+		fontFamily: [
+			"-apple-system",
+			"BlinkMacSystemFont",
+			'"Segoe UI"',
+			"Roboto",
+			'"Helvetica Neue"',
+			"Arial",
+			"sans-serif",
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"'
+		].join(","),
+		"&:hover": {
+			color: "#3e3a3a",
+			opacity: 1
+		},
+		"&$selected": {
+			color: "#000000",
+			fontWeight: theme.typography.fontWeightBold
+		},
+		"&:focus": {
+			color: "#000000"
+		}
+	},
+	selected: {}
+}))(props => <Tab disableRipple {...props} />);
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		flexGrow: 1
+	},
+	padding: {
+		padding: theme.spacing(3)
+	},
+	demo1: {
+		backgroundColor: theme.palette.background.paper
+	},
+	demo2: {
+		backgroundColor: "#2e1534"
+	}
+}));
+
+function mobileDetect() {
+	// some js way to detect if user is on a mobile device
+	if (window.innerWidth < 1000){
+		return true
+	}
+	else{
+		return false;
+	}
+}
+
+
+
 const States = ({ classes }) => {
 	const {
 		selectedStates, 
@@ -28,9 +141,47 @@ const States = ({ classes }) => {
 		deleteAll
 	} = React.useContext(RegionContext);
 	
+	const theme = useTheme();
+	  
 	const isMobile = window.innerWidth < 1000;
+
+	const [value, setValue] = React.useState(0);
+
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
+	};
+	const handleChangeIndex = (index) => {
+		setValue(index);
+	};
+
 	return (
 		<React.Fragment>
+			<section className = {classes.section}>
+				<Typography className={classes.h2} variant={'h2'}>Indicadores por Estado</Typography>
+				<p className={classes.textcontainer1}>Entre el 25 de marzo y el 12 de mayo un grupo de 32 estudiantes realizaron el seguimiento de medios locales y boletines oficiales de cada entidad federativa con la finalidad de monitorear eventos relacionados con: 1) medidas de aislamiento, 2) sucesos de inseguridad, 3) transparencia y comunicación, 4) salud pública y 5) economía. A partir de este seguimiento, los estudiantes contestaron un instrumento que denominamos ¿Quién es quién en los estados? El cual contiene 115 preguntas en torno a los cinco temas antes enunciados. Empleando la técnica de análisis factorial pudimos sintetizar la información mediante la obtención de 14 indicadores que se muestran en esta sección.</p>
+				<div>
+					<div>
+						<AntTabs value={value} onChange={handleChange} aria-label="ant example">
+							<AntTab label="Mapa de color" {...a11yProps(1)} />
+							<AntTab label="Conjunto de indicadores" {...a11yProps(1)}/>
+						</AntTabs>
+					</div>
+					<SwipeableViews
+						axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+						index={value}
+						onChangeIndex={handleChangeIndex}
+					>
+						<TabPanel value={value} index={0} style={{backgroundColor:'white'}}>
+							<Heatmap></Heatmap>
+						</TabPanel>
+						<TabPanel value={value} index={1} style={{backgroundColor:'white'}}>
+							{mobileDetect() ? (<BarchartMobile />) : (<Barchart />)}
+							
+						</TabPanel>
+					</SwipeableViews>
+				</div>
+			</section>
+
 			<section className={classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Número de Confirmados Positivos por Estado y por 100,000 Habitantes</Typography>
 				<p className={classes.textcontainer1}><u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.</p>
@@ -228,6 +379,12 @@ const styles = () => ({
 		selectorContainer: {
 			flexDirection: 'column'
 		},
+		heat:{
+			height: '300px'
+		},
+		tabsContainer:{
+			backgroundColor:'white'
+		}
 	},
 	
 });

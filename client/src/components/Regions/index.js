@@ -16,7 +16,7 @@ const Regions = ({ classes }) => {
 	
 
 	const isMobile = window.innerWidth < 1000;
-	document.title = "Seguimiento por municipio | MexiCOVID";
+	document.title = "Seguimiento por regiones | MexiCOVID";
 	const title = `Seguimiento por ${isState ? 'Estado' : 'Municipio'}`;
 	const subtitle = `${isMobile ? '' : 'Seguimiento por'} ${isState ? 'Municipio' : 'Estado'}`;
 	return (
