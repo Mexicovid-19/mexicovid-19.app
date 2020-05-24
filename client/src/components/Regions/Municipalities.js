@@ -15,7 +15,7 @@ const top100Films = [
 const Municipalities = ({ classes }) => {
 	const {dataChart} = React.useContext(RegionContext)
 	let location = window.location.pathname;
-	
+	document.title = "Seguimiento por municipio | MexiCOVID";
 	return (
 		<React.Fragment>
             <section className={classes.section}>

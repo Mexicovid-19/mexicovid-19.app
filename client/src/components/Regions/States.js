@@ -59,13 +59,60 @@ TabPanel.propTypes = {
 	value: PropTypes.any.isRequired,
 };
 
-const useStyles = makeStyles((theme) => ({
+const AntTabs = withStyles({
 	root: {
-		backgroundColor: theme.palette.background.paper,
-		width: 500,
+		borderBottom: "1px solid #000000"
 	},
-	chartChange:{
-		backgroundColor:'black'
+	indicator: {
+		backgroundColor: "#000000"
+	}
+})(Tabs);
+
+const AntTab = withStyles(theme => ({
+	root: {
+		textTransform: "none",
+		minWidth: 72,
+		fontWeight: theme.typography.fontWeightBold,
+		marginRight: theme.spacing(4),
+		fontFamily: [
+			"-apple-system",
+			"BlinkMacSystemFont",
+			'"Segoe UI"',
+			"Roboto",
+			'"Helvetica Neue"',
+			"Arial",
+			"sans-serif",
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"'
+		].join(","),
+		"&:hover": {
+			color: "#3e3a3a",
+			opacity: 1
+		},
+		"&$selected": {
+			color: "#000000",
+			fontWeight: theme.typography.fontWeightBold
+		},
+		"&:focus": {
+			color: "#000000"
+		}
+	},
+	selected: {}
+}))(props => <Tab disableRipple {...props} />);
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		flexGrow: 1
+	},
+	padding: {
+		padding: theme.spacing(3)
+	},
+	demo1: {
+		backgroundColor: theme.palette.background.paper
+	},
+	demo2: {
+		backgroundColor: "#2e1534"
 	}
 }));
 
@@ -113,24 +160,26 @@ const States = ({ classes }) => {
 				<Typography className={classes.h2} variant={'h2'}>Indicadores por Estado</Typography>
 				<p className={classes.textcontainer1}>Entre el 25 de marzo y el 12 de mayo un grupo de 32 estudiantes realizaron el seguimiento de medios locales y boletines oficiales de cada entidad federativa con la finalidad de monitorear eventos relacionados con: 1) medidas de aislamiento, 2) sucesos de inseguridad, 3) transparencia y comunicación, 4) salud pública y 5) economía. A partir de este seguimiento, los estudiantes contestaron un instrumento que denominamos ¿Quién es quién en los estados? El cual contiene 115 preguntas en torno a los cinco temas antes enunciados. Empleando la técnica de análisis factorial pudimos sintetizar la información mediante la obtención de 14 indicadores que se muestran en esta sección.</p>
 				<div>
-					<Tabs value={value} onChange={handleChange} aria-label="simple tabs example" indicatorColor="primary">
-						<Tab label="Mapa de color" {...a11yProps(0)} />
-						<Tab label="Conjunto de indicadores" {...a11yProps(1)} />
-					</Tabs>
+					<div>
+						<AntTabs value={value} onChange={handleChange} aria-label="ant example">
+							<AntTab label="Mapa de color" {...a11yProps(1)} />
+							<AntTab label="Conjunto de indicadores" {...a11yProps(1)}/>
+						</AntTabs>
+					</div>
+					<SwipeableViews
+						axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+						index={value}
+						onChangeIndex={handleChangeIndex}
+					>
+						<TabPanel value={value} index={0} style={{backgroundColor:'white'}}>
+							<Heatmap></Heatmap>
+						</TabPanel>
+						<TabPanel value={value} index={1} style={{backgroundColor:'white'}}>
+							{mobileDetect() ? (<BarchartMobile />) : (<Barchart />)}
+							
+						</TabPanel>
+					</SwipeableViews>
 				</div>
-				<SwipeableViews
-					axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-					index={value}
-					onChangeIndex={handleChangeIndex}
-				>
-					<TabPanel value={value} index={0} style={{backgroundColor:'white'}}>
-						<Heatmap></Heatmap>
-					</TabPanel>
-					<TabPanel value={value} index={1} style={{backgroundColor:'white'}}>
-						{mobileDetect() ? (<BarchartMobile />) : (<Barchart />)}
-						
-					</TabPanel>
-				</SwipeableViews>
 			</section>
 
 			<section className={classes.section}>
@@ -333,6 +382,9 @@ const styles = () => ({
 		heat:{
 			height: '300px'
 		},
+		tabsContainer:{
+			backgroundColor:'white'
+		}
 	},
 	
 });

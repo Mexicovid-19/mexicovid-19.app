@@ -15,6 +15,7 @@ import MunicipalitiesFollow from './components/MunicipalitiesFollow';
 import DistributionEstate from './components/DistributionEstate';
 import Simulation from './components/Simulation';
 import Uncertainty from './components/Uncertainty';
+import ReaperturaEco from './components/ReaperturaEco';
 import Research1 from './components/Research1'
 import {IndicatorContextProvider} from './contexts/IndicatorContext';
 
@@ -50,6 +51,7 @@ const Router = () => {
         <Route path='/distributionestate' component={DistributionEstate}/>
         <Route path='/simulation' component={Simulation}/>
         <Route path='/uncertainty' component={Uncertainty}/>
+        <Route path='/reactivacion-economica' component={ReaperturaEco}/>
         <Route exact path="/research">
             <BlogContextProvider>
               <Blog/>

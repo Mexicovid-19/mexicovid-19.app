@@ -21,7 +21,7 @@ const Footer = ({ classes}) => {
             <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Inicio</Typography></Link>
             <Link to={url+'/research'} onClick={click} className={classes.name}><Typography className={classes.rows}>Investigación</Typography></Link>
             <Link to={url+'/regions'} onClick={click} className={classes.name}><Typography className={classes.rows}>Gráficos por Región</Typography></Link>
-            <Link to={url+'/simulation'} onClick={click} className={classes.name}><Typography className={classes.rows}>Simulaciones</Typography></Link>
+            <Link to={url+'/simulation'} onClick={click} className={classes.name}><Typography className={classes.rows}>Prospectiva</Typography></Link>
             <Link to={url+'/methodology'} onClick={click} className={classes.name}><Typography className={classes.rows}>Metodologías</Typography></Link>
             <Link to={url+'/about-us'} onClick={click} className={classes.name}><Typography className={classes.rows}>Acerca de Nosotros</Typography></Link>
           </div>
