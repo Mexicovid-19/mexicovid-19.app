@@ -70,7 +70,7 @@ const useMap = () => {
       map.addSource('pref', {
         type: 'geojson',
         data: geojson,
-        attribution: 'ⓘCifras oficiales del Gobierno de México'
+        attribution: 'ⓘ Cifras oficiales del Gobierno de México'
       });
       console.log(" if adding layer:");
       map.addLayer({
