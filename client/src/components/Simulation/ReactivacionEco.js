@@ -11,7 +11,7 @@ const SimulationUncertainty = ({ classes }) => {
     return (
         <React.Fragment>
             <section className={classes.section}>
-                <Typography className={classes.h2} variant={'h2'}>Dr. Fernando Gómez Zaldíva</Typography>
+                <Typography className={classes.h2} variant={'h2'}>Dr. Fernando Gómez Zaldívar</Typography>
                 <p className={classes.textcontainer}>Una reactivación económica estratégica requiere identificar las características económicas propias de cada región y sector económico. Este tablero presenta una serie de indicadores que permiten listar por orden de importancia 93 subsectores de acuerdo con: 1) importancia económica relativa; 2)nivel de riesgo epidemiológico por Covid19. El tomador o tomadora de decisión puede evaluar las disyuntivas entre economía y riesgo epidemiológico para los sectores y regiones. Esto abonará el diseño de políticas de reactivación industrial mejor articuladas que minimicen el impacto económico de la pandemia y reduzcan el nivel del rebrote de los contagios en el futuro.</p>
                 <section className={classes.bottominfocontainer} >
                     <div className={classes.writterscontainer}>

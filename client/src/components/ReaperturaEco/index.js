@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 const ReaperturaEco = ({ classes }) => {
     const vizContainer = React.useRef(null);
     React.useEffect(() => {
-        const vizUrl = "https://public.tableau.com/views/Tablerodereactivacineconmica_15898256803320/Tablerodereactivacineconmica?:increment_view_count=no&:embed=y&:embed_code_version=3&:loadOrderID=0&:display_count=y&:origin=viz_share_link";
+        const vizUrl = "https://public.tableau.com/views/Tablerodereactivacineconmica_15898256803320/Semforodereactivacinsectorial?:increment_view_count=no&:embed=y&:embed_code_version=3&:loadOrderID=0&:display_count=y&:origin=viz_share_link";
         let viz = new window.tableau.Viz(vizContainer, vizUrl);
     })
     document.title = "Reactivación económica | MexiCOVID";

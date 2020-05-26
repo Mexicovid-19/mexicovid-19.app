@@ -24,7 +24,7 @@ import Heatmap from './Heatmap';
 import Barchart from './Barchart';
 import BarchartMobile from './BarchartMobile';
 import SwipeableViews from 'react-swipeable-views';
-
+import IndicatorsDescription from './IndicatorsDescription';
 
 function a11yProps(index) {
 	return {
@@ -159,11 +159,13 @@ const States = ({ classes }) => {
 			<section className = {classes.section}>
 				<Typography className={classes.h2} variant={'h2'}>Indicadores por Estado</Typography>
 				<p className={classes.textcontainer1}>Entre el 25 de marzo y el 12 de mayo un grupo de 32 estudiantes realizaron el seguimiento de medios locales y boletines oficiales de cada entidad federativa con la finalidad de monitorear eventos relacionados con: 1) medidas de aislamiento, 2) sucesos de inseguridad, 3) transparencia y comunicación, 4) salud pública y 5) economía. A partir de este seguimiento, los estudiantes contestaron un instrumento que denominamos ¿Quién es quién en los estados? El cual contiene 115 preguntas en torno a los cinco temas antes enunciados. Empleando la técnica de análisis factorial pudimos sintetizar la información mediante la obtención de 14 indicadores que se muestran en esta sección.</p>
+				<p className={classes.textcontainer1}><b>Nota:</b> los indicadores representan los puntajes normalizados del análisis factorial; valores cercanos a cero indican ausencia o baja representación del indicador en el estado, mientras que puntajes cercanos a uno sugieren una alta representación.</p>
 				<div>
 					<div>
 						<AntTabs value={value} onChange={handleChange} aria-label="ant example">
 							<AntTab label="Mapa de color" {...a11yProps(1)} />
-							<AntTab label="Conjunto de indicadores" {...a11yProps(1)}/>
+							<AntTab label="Totales" {...a11yProps(1)}/>
+							<AntTab label="Definiciones" {...a11yProps(1)} />
 						</AntTabs>
 					</div>
 					<SwipeableViews
@@ -177,6 +179,9 @@ const States = ({ classes }) => {
 						<TabPanel value={value} index={1} style={{backgroundColor:'white'}}>
 							{mobileDetect() ? (<BarchartMobile />) : (<Barchart />)}
 							
+						</TabPanel>
+						<TabPanel value={value} index={2} style={{backgroundColor:'white'}}>
+							<IndicatorsDescription></IndicatorsDescription>
 						</TabPanel>
 					</SwipeableViews>
 				</div>

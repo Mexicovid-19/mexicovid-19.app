@@ -41,28 +41,27 @@ const Barchart = ({ classes }) => {
     };
 
     return(
-        <div style={{ height: 600, width: '100%'}}>
+        <div style={{ height: 800, width: '100%'}}>
             <ResponsiveBar
                 data={indicatorsData}
                 keys={[
-                    "N_F1_AISLAMIENTO",
-                    "N_F2_AISLAMIENTO",
-                    "N_F1B_AISLAMIENTO",
-                    "N_F1_SEGURIDAD",
-                    "N_F2_SEGURIDAD",
-                    "N_F2_TRANSPARENCIANL911",
-                    "N_F1_TRANSPARENCIANL911",
-                    "N_F1_SALUD",
-                    "N_F2_SALUD",
-                    "N_F3_SALUD",
-                    "N_F4_SALUD",
-                    "N_F1_ECONOMIA",
-                    "N_F2_ECONOMIA",
-                    "N_F3_ECONOMIA",
-
+                    "Paro de actividad económica  y cierre de espacios públicos",
+                    "Cierre obligatorio de oficinas gubernamentales",
+                    "Acciones de la sociedad para evitar la propagación de la pandemia",
+                    "Violencia interpersonal y sanciones a agresiones e incumplimiento de confinamiento",
+                    "Violencia en espacios públicos y acciones de gobierno para cuidar el orden",
+                    "Declaratorias de crítica hacia políticas federales y actos de corrupción",
+                    "Herramientas estatales de transparencia y comunicación sobre la evolución de la pandemia",
+                    "Saturación de hospitales, falta de personal médico y equipamiento",
+                    "Acciones de apoyo a población vulnerable o personal médico afectados por la pandemia",
+                    "Estrategias del estado para la detección, gestión y prevención del coronavirus COVID - 19",
+                    "Preparación de hospitales y provisión de recursos públicos y privados para hacer frente a la COVID - 19",
+                    "Apoyos de los gobiernos locales a las familias para aminorar las afectaciones económicas",
+                    "Endeudamiento y apoyos económicos",
+                    "Conflictos presupuestales generados a partir de la pandemia",
                 ]}
                 indexBy="estado"
-                margin={{ top: 50, right: 250, bottom: 100, left: 60 }}
+                margin={{ top: 0, right: 0, bottom: 380, left: 60 }}
                 padding={0.3}
                 groupMode="stacked"
                 colors={{ scheme: 'nivo' }}
@@ -126,11 +125,11 @@ const Barchart = ({ classes }) => {
                 legends={[
                     {
                         dataFrom: 'keys',
-                        anchor: 'bottom-right',
+                        anchor: 'bottom-left',
                         direction: 'column',
                         justify: false,
-                        translateX: 120,
-                        translateY: 0,
+                        translateX: -34,
+                        translateY: 380,
                         itemsSpacing: 2,
                         itemWidth: 100,
                         itemHeight: 20,
