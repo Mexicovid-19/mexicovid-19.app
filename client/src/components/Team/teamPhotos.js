@@ -127,6 +127,16 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante  de ingeniería en Tecnologías Computacionales, amante de las tecnologías emergentes. Equipo de desarrollo web.</p>
                 </div>
+                <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>María de Lourdes Badillo Granillo</p>
+                    <img src="images/lourdesBadilla.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Ingeniería en Tecnologías Computacionales. Busco desarrollar soluciones a problemas por medio de la programación y el emprendimiento.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>Eduardo Villalpando Mello</p>
+                    <img src="images/eduardovillalpan.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de ITC, apasionado por impactar positivamente la vida de muchas personas mediante la programación y el diseño</p>
+                </div>
             </Grid>      
             <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
                 Equipo de Investigación 
