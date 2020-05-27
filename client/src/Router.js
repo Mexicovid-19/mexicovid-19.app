@@ -15,7 +15,9 @@ import MunicipalitiesFollow from './components/MunicipalitiesFollow';
 import DistributionEstate from './components/DistributionEstate';
 import Simulation from './components/Simulation';
 import Uncertainty from './components/Uncertainty';
+import ReaperturaEco from './components/ReaperturaEco';
 import Research1 from './components/Research1'
+import {IndicatorContextProvider} from './contexts/IndicatorContext';
 
 import Blog from "./containers/Blog"
 import BlogPost from "./containers/BlogPost";
@@ -36,9 +38,11 @@ const Router = () => {
         </Route>
         <Route path='/about-us' component={Team}/>
         <Route path='/regions' >
+          <IndicatorContextProvider>
             <RegionContextProvider>
               <Regions/>
             </RegionContextProvider>
+          </IndicatorContextProvider>
         </Route>
         <Route path='/methodology' component={Methodology}/>
         <Route path='/availablebeds' component={AvailableBeds}/>
@@ -47,6 +51,7 @@ const Router = () => {
         <Route path='/distributionestate' component={DistributionEstate}/>
         <Route path='/simulation' component={Simulation}/>
         <Route path='/uncertainty' component={Uncertainty}/>
+        <Route path='/reactivacion-economica' component={ReaperturaEco}/>
         <Route exact path="/research">
             <BlogContextProvider>
               <Blog/>
