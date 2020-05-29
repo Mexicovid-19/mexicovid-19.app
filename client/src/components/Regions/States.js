@@ -8,6 +8,7 @@ import LaunchIcon from '@material-ui/icons/Launch';
 import * as colors from '../../constants/colors';
 import MyResponsiveLine from './LineChart';
 import { RegionContext } from '../../contexts/RegionContext';
+import MasterDetailView from '../MasterDetailView';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
 import {ArrowBack} from '@material-ui/icons';
@@ -253,39 +254,17 @@ const States = ({ classes }) => {
 	]
 
 	return (
-		// <React.Fragment>
-		<div className={classes.container}>
-			{sidebarVisible || !isMobile ? (
-				<div className={classes.sidebar}>
-					<header id="header" className={classes.header}>
-						<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
-						<Button className={classes.label} onClick={changeState}> 
-							{subtitle} <ArrowForwardIosRoundedIcon/>
-						</Button>
-					</header>
-
-					{sections.map((section, i)=>(
-						<section className = {classes.section} style={{borderColor: view==i? colors.BLUE : '', background: view==i? colors.GRAY : 'rgb(240,240,240)'}} onClick={()=>{
-							setView(i);
-							setSidebarVisible(false);
-						}}>
-							<Typography className={classes.h2} variant={'h2'}>{section.title}</Typography>
-							<p className={classes.textcontainer1} dangerouslySetInnerHTML={{__html: section.subtitle}}></p>
-							<p className={classes.textcontainer1} dangerouslySetInnerHTML={{__html: section.description}}></p>
-						</section>
-					))}
-				</div>
-			):null}
-			<div className={classes.content}>
-				<div style={{display: 'flex', alignItems: 'center', paddingLeft: isMobile? '16px': 0, paddingRight: isMobile? '16px': 0}}>
-					{isMobile ? (
-						<ArrowBack onClick={()=>{ setSidebarVisible(true) }} classes={{root: classes.backIcon}}></ArrowBack>
-					):null}
-					<Typography className={classes.h2} variant={'h2'}>{sections[view].title}</Typography>
-				</div>
-				{sections[view].render()}
-			</div>
-		</div>
+		<MasterDetailView
+			sections={sections}
+			sidebarHeader={
+				<header id="header" className={classes.header}>
+					<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
+					<Button className={classes.label} onClick={changeState}> 
+						{subtitle} <ArrowForwardIosRoundedIcon/>
+					</Button>
+				</header>
+			}
+		></MasterDetailView>
 	);
 }
 
