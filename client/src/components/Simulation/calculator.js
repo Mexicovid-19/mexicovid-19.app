@@ -1,30 +1,27 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import LaunchIcon from '@material-ui/icons/Launch';
-import * as colors from '../../constants/colors';
+// import React from 'react';
+// import { withStyles } from '@material-ui/core/styles';
+// import Typography from '@material-ui/core/Typography';
+// import Button from '@material-ui/core/Button';
+// import LaunchIcon from '@material-ui/icons/Launch';
+// import * as colors from '../../constants/colors';
 
 //Demanda Agregada :D
 
 // (Constantes INEGI PIB 2019) 
 // Las de los siguientes años se obtienen al usar la función TC
 //C: Consumo
-const C = {'2019': 12502876.50};
+const C = {2019: 12502876.50};
 //G: Gasto
-const G = {'2019': 2174999.06};
+const G = {2019: 2174999.06};
 //I: Inversión
-const I = {'2019': 3572212.47};
+const I = {2019: 3572212.47};
 //Inv: Inventarios 
-const Inv = {'2019': 97777.99};
+const Inv = {2019: 97777.99};
 //NX: Exportaciones
-const NX = {'2019': 41559.77};
+const NX = {2019: 41559.77};
 //e: Discrepancia Estadística 
-const e = {'2019': 135182.63};
-//PIB por año 
-const PIB = {
-    '2019': 18524608.41, 
-}
+const e = {2019: 135182.63};
+
 const PIB_r = {
 
 }
@@ -43,25 +40,38 @@ const TC_e2020 = 0;
 
 //TC por año
 const TC_C = {
-    '2020': TC_C2020,
+    2020: TC_C2020,
 }
 const TC_G = {
-    '2020': TC_G2020
+    2020: TC_G2020
 }
 const TC_I = {
-    '2020': TC_I2020
+    2020: TC_I2020
 }
 const TC_Inv = {
-    '2020': TC_Inv2020
+    2020: TC_Inv2020
 }
 const TC_NX = {
-    '2020': TC_NX2020
+    2020: TC_NX2020
 }
 const TC_e = {
-    '2020': TC_e2020
+    2020: TC_e2020
 }
 const TC_DABASE = { //Output del módulo
-    '2020': -11.2/100,
+    2020: -11.2/100,
+}
+
+
+//PIB por año 
+const PIB = {
+    2019: 18524608.41, 
+    2020: 0,
+    2021: 0,
+    2022: 0,
+    2023: 0,
+    2024: 0,
+    2025: 0,
+
 }
 
 const TC_PIB = { 
@@ -73,12 +83,10 @@ const TC_PIB = {
     '2024': 2/100,
     '2025': 2/100,
 }
-
-
-
 // A. Escenario Base SIN estímulo 2020
 //Calcular PIB en t
-function PIB(t){
+function getPIB(t){
+    parametersUpdate(t);
     PIB[t] = C[t] + G[t] + I[t] + Inv[t] + NX[t] + e[t];
     // TC_PIB[t] = PIB[t]/PIB[t-1] - 1;
     return PIB[t];
@@ -87,11 +95,22 @@ function PIB(t){
 
 function parametersUpdate(t){
     C[t] = C[t-1]*( 1 + TC_C[t]);
+    TC_C[t+1] = C[t]/C[t-1] - 1;
+
     G[t] = G[t-1]*( 1 + TC_G[t]);
+    TC_G[t+1] = G[t]/G[t-1] - 1;
+    
     I[t] = I[t-1]*( 1 + TC_I[t]);
+    TC_I[t+1] = I[t]/I[t-1] - 1;
+    
     Inv[t] = Inv[t-1]*( 1 + TC_Inv[t]);
+    TC_Inv[t+1] = Inv[t]/Inv[t-1] - 1;
+    
     NX[t] = NX[t-1]*( 1 + TC_NX[t]);
+    TC_NX[t+1] = NX[t]/NX[t-1] - 1;
+    
     e[t] = e[t-1]*( 1 + TC_e[t]);
+    TC_e[t+1] = e[t]/e[t-1] - 1;
 }
 
 function estimacionPIBConBaseEnTC(t){
@@ -117,18 +136,18 @@ let EFN = 0;
 //Multiplicador Estimado por Standard & Poors
 const MULT = 1.3; 
 
-function EF(t){
+function getEF(t){
     EF[t] = EFN/INPC[t]
     return EFN/INPC[t];
 }
 
 function EF_parametersUpdate(t){
     G[t] = G[t-1]*( 1 + TC_G[t]);
-    C[t] = C[t-1]*( 1 + TC_C[t]) + EF(t)*(MULT-1)*( C[t-1]/PIB[t-1] );
-    I[t] = I[t-1]*( 1 + TC_I[t]) + EF(t)*(MULT-1)*( I[t-1]/PIB[t-1] );
-    Inv[t] = Inv[t-1]*( 1 + TC_Inv[t]) + EF(t)*(MULT-1)*( Inv[t-1]/PIB[t-1] );
+    C[t] = C[t-1]*( 1 + TC_C[t]) + getEF(t)*(MULT-1)*( C[t-1]/PIB[t-1] );
+    I[t] = I[t-1]*( 1 + TC_I[t]) + getEF(t)*(MULT-1)*( I[t-1]/PIB[t-1] );
+    Inv[t] = Inv[t-1]*( 1 + TC_Inv[t]) + getEF(t)*(MULT-1)*( Inv[t-1]/PIB[t-1] );
     NX[t] = NX[t-1]*( 1 + TC_DABASE[t]);
-    e[t] = e[t-1]*( 1 + TC_e[t]) + EF(t)*(MULT-1)*( e[t-1]/PIB[t-1] );
+    e[t] = e[t-1]*( 1 + TC_e[t]) + getEF(t)*(MULT-1)*( e[t-1]/PIB[t-1] );
 }
 
 //C. PIB Real
@@ -302,6 +321,21 @@ function E(t){
 }
 
 //Costo financiero
-function EF(t){
+function CEF(t){
     return CF_C[t]+CF_O[t];
 }
+
+
+
+
+
+
+
+
+Object.keys(PIB).forEach(l=>{
+    if(l!=2019){
+        PIB[l] = getPIB(l)
+    }
+})
+
+console.log(PIB);
