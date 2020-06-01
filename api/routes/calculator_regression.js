@@ -68,6 +68,23 @@ class PIB{
             estimuloFiscal: true
         })
     }
+
+    /**
+     * Regresa FinanzasPublicas según parámetros, para el año con el respectivo PIB
+     * @returns {FinanzasPublicas}
+     * @param {object} options 
+     */
+    obtenerFinanzasPublicas(options){
+        return new FinanzasPublicas({
+            ...options,
+            anio: this.anio,
+            pib: this.pib,
+            inpc: this.inpc,
+            pibNominal: this.pibNominal,
+            estimuloFiscal: this.estimuloFiscal
+        })
+    }
+
     /**
      * Regresa el valor del pib en un año según datos preestablecidos de crecimiento
      * @returns {float} 
@@ -130,6 +147,33 @@ const datos = [
         discrepanciasEstadisticas: 135183
     }),
 ]
+
+
+
+// TODO: Finish class with methods to (iteratively) get values of nested objects according to documentation
+// This class is accessed through PIB.prototype.obtenerFinanzasPublicas
+//wip.
+class FinanzasPublicas{
+    constructor(options){
+        this.pib = options.pib;
+        this.inpc = options.inpc,
+        this.anio = options.anio;
+        this.rfsp = options.rfsp;
+        this.rfsp_p = options.rfsp_p;
+        this.ingresos = options.ingresos;
+        this.pibNominal = options.pibNominal;
+        this.gastoPrimario = options.gastoPrimario;
+        this.estimuloFiscal = options.estimuloFiscal;
+        this.costoFinanciero = options.costoFinanciero;
+    }
+
+}
+
+
+
+
+
+
 
 
 console.log(  
