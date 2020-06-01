@@ -11,7 +11,7 @@ var testAPIRouter = require('./routes/testAPI');
 var mapRouter = require('./routes/map');
 var regionRouter = require('./routes/region');
 var indicatorsRouter = require('./routes/indicators');
-var calculadora = require('./routes/calculadora')
+var calculadoraRouter = require('./routes/calculadora');
 
 var app = express();
 
