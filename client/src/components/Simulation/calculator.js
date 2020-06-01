@@ -325,13 +325,6 @@ function CEF(t){
     return CF_C[t]+CF_O[t];
 }
 
-
-
-
-
-
-
-
 Object.keys(PIB).forEach(l=>{
     if(l!=2019){
         PIB[l] = getPIB(l)
