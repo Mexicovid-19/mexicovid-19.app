@@ -20,7 +20,7 @@ const Regions = ({ classes }) => {
 	const title = `Seguimiento por ${isState ? 'Estado' : 'Municipio'}`;
 	const subtitle = `${isMobile ? '' : 'Seguimiento por'} ${isState ? 'Municipio' : 'Estado'}`;
 	return (
-		<div>
+		<div style={{display: 'flex', height: '100vh', flexDirection: 'column'}}>
 			<Helmet>
 			<title>Seguimiento por regiones | MexiCOVID</title>
 			<meta name="description" content="Seguimiento a la evoluación del Covid-19 en México por regiones" />
@@ -31,21 +31,11 @@ const Regions = ({ classes }) => {
 			<meta property="og:description" content="Seguimiento por regiones a la evoluación del Covid-19 en México @ITESM"/>
 
 			</Helmet>
+			<Header fixed={false}/>
 			<div className={classes.container}>
-				<Header fixed={true}/>
-					<div className={classes.regionsContainer}>
-						<header id="header" className={classes.header}>
-							<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
-							<Button className={classes.label} onClick={changeState}> 
-								{subtitle} <ArrowForwardIosRoundedIcon/>
-							</Button>
-						</header>
-						<main>
-							{isState ?<States/>: <Municipalities/>}
-						</main>
-					</div>
-				<Footer/>
+					{isState ?<States/>: <Municipalities/>}
 			</div>
+			{/* <Footer/> */}
 		</div>
 	);
 }
@@ -53,15 +43,12 @@ const Regions = ({ classes }) => {
 const styles = () => ({
 	container: {
     	width: '100%',
-    	backgroundColor: colors.GRAY,
-  	},
-
-  	regionsContainer: {
-		width: '70%',
-		margin: 'auto',
-		padding: '25px',
-		paddingTop: '128px',
-		backgroundColor: colors.WHITE
+		backgroundColor: colors.GRAY,
+		flex: 1, 
+		overflow: 'auto', 
+		display: 'flex', 
+		flexDirection: 'column', 
+		alignItems: 'center'
 	},
 	
 	h1: {
@@ -72,26 +59,26 @@ const styles = () => ({
 		borderBottom: `1px solid ${colors.BLACK}`,
 		display: 'flex',
     	alignItems: 'baseline',
-    	justifyContent: 'space-between',
+		justifyContent: 'space-between',
+		maxWidth: '900px',
 	},
 
 	label: {
 		color: colors.GRAY_LIGHT
 	},
 
-	[`@media (max-width: ${1000}px)`]: {
-		regionsContainer: {
-			width: '100%',
-			padding: '10px',
-			paddingTop: '60px'
-		},
-		header: {
-			alignItems: 'flex-end'
-		},
-		h1: {
-			fontSize: '24px'
-		},
-	  }
+	// [`@media (max-width: ${1000}px)`]: {
+	// 	regionsContainer: {
+	// 		width: '100%',
+	// 		padding: 0
+	// 	},
+	// 	header: {
+	// 		alignItems: 'flex-end'
+	// 	},
+	// 	h1: {
+	// 		fontSize: '24px'
+	// 	},
+	//   }
 	  
 });
 
