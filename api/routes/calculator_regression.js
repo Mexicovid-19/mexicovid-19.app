@@ -158,13 +158,46 @@ class FinanzasPublicas{
         this.pib = options.pib;
         this.inpc = options.inpc,
         this.anio = options.anio;
-        this.rfsp = options.rfsp;
-        this.rfsp_p = options.rfsp_p;
         this.ingresos = options.ingresos;
         this.pibNominal = options.pibNominal;
         this.gastoPrimario = options.gastoPrimario;
         this.estimuloFiscal = options.estimuloFiscal;
         this.costoFinanciero = options.costoFinanciero;
+        
+        this.rfsp = 
+            Object.values(this.ingresos).reduce((a,b)=>a+b,0)
+            - Object.values(this.gastoPrimario).reduce((a,b)=>a+b,0)
+            - Object.values(this.costoFinanciero).reduce((a,b)=>a+b,0)
+        ;
+        this.rfsp_p = 
+            Object.values(this.ingresos).reduce((a,b)=>a+b,0)
+            - Object.values(this.gastoPrimario).reduce((a,b)=>a+b,0)
+        ;
+        this.rfsp_p = options.rfsp_p;
+    }
+    obtenerEnPesosReales(){
+        let result = {
+            ingresos: {...this.ingresos},
+            gastoPrimario: {...this.gastoPrimario},
+            costoFinanciero: {...this.costoFinanciero}
+        }
+        Object.keys(result).forEach(l=>{
+            Object.keys(result[l]).forEach(key=>{
+                result.[l][key]*=this.pib;
+            });
+            result[l][total] = Object.values(result[l]).reduce((a,b)=>a+b, 0);
+        })
+        return result;
+    }
+    obtenerEnPesosNominales(){
+        let result = {...this.obtenerEnPesosReales()};
+        Object.keys(result).forEach(l=>{
+            Object.keys(result[l]).forEach(key=>{
+                result.[l][key]*=this.inpc;
+            });
+            result[l][total] = Object.values(result[l]).reduce((a,b)=>a+b, 0);
+        })
+        return result;
     }
 
 }
