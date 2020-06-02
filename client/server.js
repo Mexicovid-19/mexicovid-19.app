@@ -4,13 +4,13 @@ var compression = require('compression');
 var helmet = require('helmet');
 var https = require('https');
 var fs = require('fs');
-
+var path = require('path');
+require('dotenv').config()
 var app = express();
 app.use(helmet());
 app.use(compression()); 
 
 app.use(morgan("combined"));
-
 // Serve the static files from the build folder
 app.use(express.static( __dirname + "/build"));
 //app.use('/material-dashboard-react', express.static(__dirname + "/build"));
