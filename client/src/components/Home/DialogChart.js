@@ -18,6 +18,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const AlertDialogSlide = (props) => {
   const { classes, handleClose, open, data} = props;
   const [maxWidth, setMaxWidth] = React.useState('lg');
+  let _data = JSON.parse(JSON.stringify(data));
+  if(data.length){
+    _data[0].data = _data[0].data.map(l=>({
+      x: l.x.replace( new RegExp('/', 'g'), '-' ),
+      y: l.y
+    }))
+    _data[1].data = _data[0].data.map(l=>({
+      x: l.x.replace( new RegExp('/', 'g'), '-' ),
+      y: l.y
+    }))
+  }
   return (
     <div>
       <Dialog
@@ -35,7 +46,7 @@ const AlertDialogSlide = (props) => {
         </Button>
         <Typography className={classes.title}> Grafica de Casos</Typography>
         <DialogContent classes={{root: classes.chartatyle}}>
-          <MyResponsiveLine data={data} isSmall={false}  />
+          <MyResponsiveLine data={_data} isSmall={false}  />
         </DialogContent>
       </Dialog> 
     </div>

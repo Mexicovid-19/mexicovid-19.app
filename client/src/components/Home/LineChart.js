@@ -62,20 +62,33 @@ const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false 
             left: 60 
         };
         legendTy = -20;
-        legendTx = 20;
+        legendTx = 20; 
     }
-
+    console.log("object", dataContent)
     return(
         <ResponsiveLine
         theme={themeBlack}
         colors={colorArray}
         data={dataContent}
         margin={Defaultmargin}
-        xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
+        Scale={{
+          type: "time",
+          format: "%Y-%m-%d"   
+            // format: 'native'
+        }}
+        // xFormat="time:%d"
+        axisBottom={{
+
+            tickValues: 'every 2 days',
+            legend: 'time scale',
+            legendOffset: -12,
+        }}
+
+
+        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: 'true', reverse: false }}
         axisTop={null}
         axisRight={null}
-        axisBottom={axisBottom}
+        // axisBottom={axisBottom}
         axisLeft={axisLeft}
         lineWidth={2}
         pointSize={7}
