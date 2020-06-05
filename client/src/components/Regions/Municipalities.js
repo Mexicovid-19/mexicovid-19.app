@@ -7,6 +7,8 @@ import { RegionContext } from '../../contexts/RegionContext';
 import LaunchIcon from '@material-ui/icons/Launch';
 import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
 
+import MasterDetailView from "../MasterDetailView";
+
 import {
 	MapRoundedIcon,
 	AccessAlarmRoundedIcon,
@@ -33,7 +35,7 @@ const Municipalities = ({ classes }) => {
 			title: 'Seguimiento al COVID-19 en Municipios',
 			subtitle: 'Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel municipal, y permite tener un seguimiento mediante la evolución a lo largo del tiempo.',
 			description: '', 
-			render: ()=>(<iframe src="./municipalitiesfollow" className={classes.graphContainer}></iframe>)
+			render: ()=>(<iframe src="https://public.tableau.com/views/mexicovid19_municipal/Mapamunicipal?:embed=y&:embed_code_version=3&:loadOrderID=0&:display_count=y&:origin=viz_share_link" className={classes.graphContainer}></iframe>)
 		},
 		{
 			title: 'Distribución geográfica de pacientes diagosticados con Covid-19',
@@ -44,39 +46,17 @@ const Municipalities = ({ classes }) => {
 	]
 
 	return (
-		// <React.Fragment>
-		<div className={classes.container}>
-			{sidebarVisible || !isMobile ? (
-				<div className={classes.sidebar}>
-					<header id="header" className={classes.header}>
-						<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
-						<Button className={classes.label} onClick={changeState}> 
-							{subtitle} <ArrowForwardIosRoundedIcon/>
-						</Button>
-					</header>
-
-					{sections.map((section, i)=>(
-						<section className = {classes.section} style={{borderColor: view==i? colors.BLUE : '', background: view==i? colors.GRAY : 'rgb(240,240,240)'}} onClick={()=>{
-							setView(i);
-							setSidebarVisible(false);
-						}}>
-							<Typography className={classes.h2} variant={'h2'}>{section.title}</Typography>
-							<p className={classes.textcontainer1} dangerouslySetInnerHTML={{__html: section.subtitle}}></p>
-							<p className={classes.textcontainer1} dangerouslySetInnerHTML={{__html: section.description}}></p>
-						</section>
-					))}
-				</div>
-			):null}
-			<div className={classes.content}>
-				<div style={{display: 'flex', alignItems: 'center', paddingLeft: isMobile? '16px': 0, paddingRight: isMobile? '16px': 0}}>
-					{isMobile ? (
-						<ArrowBack onClick={()=>{ setSidebarVisible(true) }} classes={{root: classes.backIcon}}></ArrowBack>
-					):null}
-					<Typography className={classes.h2} variant={'h2'}>{sections[view].title}</Typography>
-				</div>
-				{sections[view].render()}
-			</div>
-		</div>
+		<MasterDetailView
+			sections={sections}
+			sidebarHeader={
+				<header id="header" className={classes.header}>
+					<Typography className={classes.h1} variant={'h1'}> {title} </Typography>	
+					<Button className={classes.label} onClick={changeState}> 
+						{subtitle} <ArrowForwardIosRoundedIcon/>
+					</Button>
+				</header>
+			}
+		></MasterDetailView>
 	);
 }
 
