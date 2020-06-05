@@ -4,23 +4,22 @@ import * as colors from '../../constants/colors';
 import { MapMunicipioContext } from '../../contexts/MapMunicipioContext';
 import { MapContext } from '../../contexts/MapContext';
 import Typography from '@material-ui/core/Typography';
+import MunicipalityData from './MunicipalityData';
+import { HomeContext } from "../../contexts/HomeContext";
 
 const MunMap = ({classes}) => {
     const { mapRef, selectedMun } = React.useContext(MapMunicipioContext);
     const { stateSelected } = React.useContext(MapContext);
+    const { munData } = React.useContext(HomeContext);
     
     return (
         <div className={classes.container}>
-            <div className={classes.containerMap}>   
-                <div className={classes.topBar}>
-                    <Typography align={'left'}>
-                        {stateSelected.nombre} | {selectedMun}
-                    </Typography>
-                </div>  
-                <div ref={mapRef} className={classes.map}></div>
-            </div>
             <div className={classes.containerMungraph}>
-            </div>        
+                <MunicipalityData state={stateSelected} mun={munData}/>
+            </div> 
+            <div className={classes.containerMap}>   
+                <div ref={mapRef} className={classes.map}></div>
+            </div>       
         </div>
     )
 }
@@ -36,16 +35,17 @@ const styles = () => ({
     }, 
     containerMap: {
         width: '100%',
-        height: '60%',
+        height: '55%',
         backgroundColor: colors.BLACK
     },
     containerMungraph: {
         width: '100%',
-        height: '40%',
-        backgroundColor: colors.BLUE
+        height: '45%',
+        backgroundColor: colors.BLACK,
+        borderTop: `1px solid ${colors.WHITE}`
     },
     topBar: {
-        borderTop: '1px solid white',
+        borderTop: `1px solid ${colors.WHITE}`,
         display: 'inline-block',
         position: 'absolute',
         left: '0',

@@ -17,8 +17,8 @@ const useMapMunicipio = () => {
     
     const thresholdColor = {
         "decesos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
-    "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
-    "pruebas": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
+        "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
+        "pruebas": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
     }; 
     const [thresholdsNum, setThresholdNum] = React.useState({
     "confirmados": [],
@@ -69,10 +69,8 @@ const useMapMunicipio = () => {
     }, [map]);
 
     React.useEffect(() => {
-        console.log(munGEOJSON, munData)
         if(munData && munGEOJSON && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
             let fillColor = getSteps(selectedLabel);
-            console.log(munGEOJSON.features[0].properties.CVE_ENT, munData[0].cve_ent)
             let geojson = setUpGEOJson();
             
             if(map.getLayer("pref") !== undefined) {
@@ -106,7 +104,6 @@ const useMapMunicipio = () => {
         
           map.on('mousemove', showPopup);
 
-          console.log(stateSelected.cve_ent);
           map.fitBounds(FITBOUNDS[stateSelected.cve_ent].limites); 
         
           //map.on('click', 'pref', openMapContainer);
@@ -134,7 +131,6 @@ const useMapMunicipio = () => {
 
     let setUpGEOJson = () => {
         let geojson = munGEOJSON;
-        console.log(geojson, munData)
         for (let index = 0; index < munData.length; index++) {
             for (const confIndex in munData[index].confirmados) {
                 geojson.features[index].properties["confirmados#" + munData[index].confirmados[confIndex].date] = Number(munData[index].confirmados[confIndex].count);
