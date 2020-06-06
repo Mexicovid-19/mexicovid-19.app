@@ -59,7 +59,7 @@ const StateData = ( props ) => {
                 <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
                     <TimelineOutlinedIcon className={classes.icons}/>
                 </Typography>
-                <Typography className={classes.boxText} align={'center'}>
+                <Typography className={`${classes.boxText} ${classes.graph}`} align={'center'}>
                     Gráfica
                 </Typography>
             </div>
@@ -120,7 +120,7 @@ const MunData = ( props ) => {
                     #3
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
-                    Ranking Estatal
+                    Estatal
                 </Typography>
             </div>
             <div className={classes.box}>
@@ -128,14 +128,14 @@ const MunData = ( props ) => {
                     #3
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
-                    Ranking Nacional
+                    Nacional
                 </Typography>
             </div>
             <div className={classes.box}>
                 <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
                     <TimelineOutlinedIcon className={classes.icons}/>
                 </Typography>
-                <Typography className={classes.boxText} align={'center'}>
+                <Typography className={`${classes.boxText} ${classes.graph}`} align={'center'}>
                     Gráfica
                 </Typography>
             </div>
@@ -146,7 +146,7 @@ const MunData = ( props ) => {
 
 const MunicipalityData = ( props ) => {
     const { classes, state, mun} = props;
-    console.log(mun)
+    
     return (
         <div className={classes.container}>
             <div className={classes.title}>
@@ -207,6 +207,9 @@ const styles = () => ({
     },
     boxText: {
         fontSize: '12px'
+    },
+    graph: {
+        cursor: 'pointer'
     },
     datos: {
         justifyContent: 'space-around',

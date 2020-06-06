@@ -24,7 +24,6 @@ const useMap = () => {
     "decesos": [],
   })
   const isMobile = window.innerWidth < 1000;
-  const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
   const [isMapMunicipio, setIsMapMunicipio] = React.useState(false);
   const [stateSelected, setStateSelected] = React.useState(null);
   const {
@@ -36,72 +35,13 @@ const useMap = () => {
   } = React.useContext(HomeContext);
   
   React.useEffect(() => {
-    /*setMap(
-      new mapboxgl.Map({
-      container: mapRef.current,
-      style: 'mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko',
-      center: [-97.8116, 24.6040],
-      zoom : 4.2
-    }));
- 
-    if (isMobile){
-      setMap(
-        new mapboxgl.Map({
-        container: mapRef.current,
-        style: 'mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko',
-        center: [-100.8116, 24.6040],
-        zoom : 3.2
-      }));
-    };*/
     callStatesGEOJSON();
   }, []);
 
-  /*
-  React.useEffect(() => {
-    if(map && !map.loaded()) {
-      map.on('load', function() {
-        callStatesGEOJSON();
-      })
-    }
-  }, [map]);
-  */
   React.useEffect(() => {
     if(state.date && stateData && statesGeOJSON && statesGeOJSON.features.length == 32) {  
       setFillColor(getSteps(selectedLabel));
       setUpGEOJson();
-      
-      //let fillColor = getSteps(selectedLabel);
-      //let geojson = setUpGEOJson();
-      /*
-      map.addSource('pref', {
-        type: 'geojson',
-        data: geojson
-      });
-      
-      map.addLayer({
-        'id': 'pref',
-        'type': 'fill',
-        'source': 'pref',
-        'paint': {
-          'fill-color': fillColor,
-          'fill-opacity': [
-              'case',
-              ['boolean', ['feature-state', 'hover'], false],
-              1,
-              1,
-          ],
-          'fill-outline-color': '#FFF'
-        }
-      });
-      
-      map.on('mousemove', showPopup);
-      map.on('click', 'pref', openMapContainer);
-      map.addControl(nav, 'bottom-right');
-
-      setMap(map)
-      var nav = new mapboxgl.NavigationControl();
-      */
-      
     }
   }, [selectedLabel, statesGeOJSON, stateData, state]);
 
@@ -149,36 +89,6 @@ const useMap = () => {
     thresholdsNum[label] = thresholdsNumLabel;
     setThresholdNum(thresholdsNum);
     return fillColor;
-  }
-
-  let showPopup = (e) => {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ["pref"]
-    });
-    
-    if(features.length > 0 && stateData) {
-      popup
-      .setLngLat(e.lngLat)
-      .setHTML(
-        ` 
-          <div style='display: flex; flex-direction: column; align-items: center; padding: 10px'>
-            <span style='border-bottom: 1px solid; width: 100%; text-align: center; font-family: Raleway; font-weight:bold'>
-              ${features[0].properties.ESTADO}
-            </span>
-            <span style='display: flex;'>
-              <svg style='width: 15px; height: 15px; font-family: Raleway; font-weight:bold'>
-                <circle r="5" cx="6" cy="10" fill=${selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
-              </svg>
-              ${numberWithCommas(features[0].properties[ selectedLabel + "#" + state.date])} ${selectedLabel} 
-              <button onClick="${(e) => openMapContainer(e)}">Ver mas</button>
-            </span>
-          </div>`
-        )
-      .setMaxWidth(400)
-      .addTo(map);
-    } else {
-        //popup.remove();
-    }
   }
 
   let binarySearch = (inf, sup, val, arr) => {
@@ -251,8 +161,6 @@ const useMap = () => {
   return {
     mapRef,
     map,
-    showPopup,
-    popup,
     thresholdsNum,
     stateSelected,
 
