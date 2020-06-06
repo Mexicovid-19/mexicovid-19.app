@@ -3,7 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import * as colors from '../../constants/colors';
 import { MapMunicipioContext } from '../../contexts/MapMunicipioContext';
 import { MapContext } from '../../contexts/MapContext';
+import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTwoTone';
+import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import Typography from '@material-ui/core/Typography';
+import { numberWithCommas } from '../../Utils/numberWCommas';
 
 const MunicipalityData = ( props ) => {
     const { classes, state, mun} = props;
@@ -12,38 +15,79 @@ const MunicipalityData = ( props ) => {
         <div className={classes.container}>
             <div className={classes.title}>
                 <Typography className={classes.state} align={'center'}>
-                    {state.nombre} /
-                </Typography>
-                <Typography className={classes.population} align={'center'} variant={'span'}>
-                    200,000 habitantes
+                    {state.nombre}
                 </Typography>
             </div>
-            {/* chart*/}
-            <div className={classes.pruebasIndice}>
-                <div className={classes.box}>
-                    <Typography align={'center'} variant={'span'}>
-                        10,500 
+            <div className={classes.casosContainer}>
+                <div className={classes.casosTotales}>
+                    <Typography className={classes.casos} align={'center'}>
+                        <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
+                        {numberWithCommas(3500)}
+                        / Totales
                     </Typography>
-                    <Typography className={classes.boxText} align={'center'} variant={'span'}>
+                </div>
+                <div className={classes.casosNuevos}>
+                    <Typography className={classes.casos} align={'center'}>
+                        <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
+                        {numberWithCommas(500)}
+                        / Nuevos
+                    </Typography>
+                </div>
+            </div>
+            <div className={classes.datos}>
+                <div className={classes.box}>
+                    <Typography className={classes.numberBox} align={'center'}>
+                        1,500 
+                    </Typography>
+                    <Typography className={classes.boxText} align={'center'}>
                         Pruebas
                     </Typography>
                 </div>
+                <div className={classes.box}>
+                    <Typography className={classes.numberBox} align={'center'}>
+                        900,000
+                    </Typography>
+                    <Typography className={classes.boxText} align={'center'}>
+                        Habitantes
+                    </Typography>
+                </div>
+            </div>
+            <div className={classes.datos}>
                 {/*<div className={classes.box}>
-                    <Typography align={'center'} variant={'span'}>
+                    <Typography align={'center'}>
                         ALTA
                     </Typography>
-                    <Typography className={classes.boxText} align={'center'} variant={'span'}>
+                    <Typography className={classes.boxText} align={'center'}>
                         Indice de 
                         <br/>
                         Vulnerabilidad
                     </Typography>
                 </div>*/}
+                <div className={classes.box}>
+                    <Typography className={classes.numberBox} align={'center'}>
+                        #3
+                    </Typography>
+                    <Typography className={classes.boxText} align={'center'}>
+                        Ranking
+                    </Typography>
+                </div>
+                <div className={classes.box}>
+                    <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
+                        <TimelineOutlinedIcon className={classes.icons}/>
+                    </Typography>
+                    <Typography className={classes.boxText} align={'center'}>
+                        Gráfica
+                    </Typography>
+                </div>
             </div>
         </div>
     )
 }
 
 const styles = () => ({
+    numberBox: {
+        fontWeight: 'bold'
+    },
     container: {
         margin: '8px',
         color: colors.WHITE
@@ -56,27 +100,49 @@ const styles = () => ({
     },
     state: {
         fontSize: '24px',
+        textTransform: 'capitalize'
+    },
+    casosContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginBottom: '10px'
+    }, 
+    casos: {
+        display: 'flex',
+    },
+    iconBox: {
+        fontSize: '0px'
     },
     box: {
         textAlign: 'center',
-        border: `5px solid ${colors.RED_LIGHTER}`,
-        backgroundColor: colors.RED_LIGHT,
-        borderRadius: '10px',
+        backgroundColor: colors.GRAY_BLUE,
+        borderRadius: '4px',
         borderStyle: 'solid',
         fontWeight: 'bold',
-        width: 'fit-content',
         fontSize: '18px',
-        padding: '5px 10px',
+        padding: '5px',
         display: 'flex',
         flexDirection: 'column',
-        color: colors.BLACK
+        color: colors.BLACK,
+        width: '30%',
+        maxHeight: '50px'
     },
     boxText: {
         fontSize: '12px'
     },
-    pruebasIndice: {
+    datos: {
+        justifyContent: 'space-around',
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: '10px'
+    },  
+    dotConfirm: {
+        color: colors.BLUE_LIGHT
+    },
+
+    dotDeads: {
+        color: colors.RED
     }
 });
    

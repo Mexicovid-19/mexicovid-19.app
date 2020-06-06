@@ -11,4 +11,5 @@ export const RED_LIGHTER = '#e7d3ca';
 export const WHITE = '#fafafa';
 export const GRAY = '#95a6a552';
 export const GRAY_LIGHT = '#a2a2a2';
+export const GRAY_BLUE = '#dadfdf';
 export const GRAY_DARK = '#333333';
