@@ -42,7 +42,8 @@ const styles = () => ({
         width: '100%',
         height: '45%',
         backgroundColor: colors.BLACK,
-        borderTop: `1px solid ${colors.WHITE}`
+        borderTop: `1px solid ${colors.WHITE}`,
+        borderBottom: `1px solid ${colors.WHITE}`
     },
     topBar: {
         borderTop: `1px solid ${colors.WHITE}`,
