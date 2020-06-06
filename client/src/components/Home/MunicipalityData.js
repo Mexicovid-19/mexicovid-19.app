@@ -8,6 +8,142 @@ import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import Typography from '@material-ui/core/Typography';
 import { numberWithCommas } from '../../Utils/numberWCommas';
 
+const StateData = ( props ) => {
+    const { classes, state } = props;
+    return (
+        <React.Fragment>
+        <div className={classes.casosContainer}>
+            <div className={classes.casosTotales}>
+                <Typography className={classes.casos} align={'center'}>
+                    <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
+                    {numberWithCommas(3500)}
+                    / Totales
+                </Typography>
+            </div>
+            <div className={classes.casosNuevos}>
+                <Typography className={classes.casos} align={'center'}>
+                    <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
+                    {numberWithCommas(500)}
+                    / Nuevos
+                </Typography>
+            </div>
+        </div>
+        <div className={classes.datos}>
+            <div className={classes.box}>
+                <Typography className={classes.numberBox} align={'center'}>
+                    1,500 
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Pruebas
+                </Typography>
+            </div>
+            <div className={classes.box}>
+                <Typography className={classes.numberBox} align={'center'}>
+                    900,000
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Habitantes
+                </Typography>
+            </div>
+        </div>
+        <div className={classes.datos}>
+            <div className={classes.box}>
+                <Typography className={classes.numberBox} align={'center'}>
+                    #3
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Ranking
+                </Typography>
+            </div>
+            <div className={classes.box}>
+                <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
+                    <TimelineOutlinedIcon className={classes.icons}/>
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Gráfica
+                </Typography>
+            </div>
+        </div>
+        </React.Fragment>
+    )
+}
+
+const MunData = ( props ) => {
+    const { classes, mun } = props;
+    return (
+        <React.Fragment>
+        <div className={classes.casosContainer}>
+            <div className={classes.casosTotales}>
+                <Typography className={classes.casos} align={'center'}>
+                    <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
+                    {numberWithCommas(3500)}
+                    / Totales
+                </Typography>
+            </div>
+            <div className={classes.casosNuevos}>
+                <Typography className={classes.casos} align={'center'}>
+                    <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
+                    {numberWithCommas(500)}
+                    / Nuevos
+                </Typography>
+            </div>
+        </div>
+        <div className={classes.datos}>
+            <div className={classes.box}>
+                <Typography className={classes.numberBox} align={'center'}>
+                    1,500 
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Pruebas
+                </Typography>
+            </div>
+            <div className={classes.box}>
+                <Typography className={classes.numberBox} align={'center'}>
+                    Alto
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Vulnerabilidad
+                </Typography>
+            </div>
+            <div className={classes.box}>
+                <Typography className={classes.numberBox} align={'center'}>
+                    900,000
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Habitantes
+                </Typography>
+            </div>
+        </div>
+        <div className={classes.datos}>
+            <div className={classes.box}>
+                <Typography className={classes.numberBox} align={'center'}>
+                    #3
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Ranking Estatal
+                </Typography>
+            </div>
+            <div className={classes.box}>
+                <Typography className={classes.numberBox} align={'center'}>
+                    #3
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Ranking Nacional
+                </Typography>
+            </div>
+            <div className={classes.box}>
+                <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
+                    <TimelineOutlinedIcon className={classes.icons}/>
+                </Typography>
+                <Typography className={classes.boxText} align={'center'}>
+                    Gráfica
+                </Typography>
+            </div>
+        </div>
+        </React.Fragment>
+    )
+}
+
 const MunicipalityData = ( props ) => {
     const { classes, state, mun} = props;
     console.log(mun)
@@ -18,68 +154,8 @@ const MunicipalityData = ( props ) => {
                     {state.nombre}
                 </Typography>
             </div>
-            <div className={classes.casosContainer}>
-                <div className={classes.casosTotales}>
-                    <Typography className={classes.casos} align={'center'}>
-                        <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
-                        {numberWithCommas(3500)}
-                        / Totales
-                    </Typography>
-                </div>
-                <div className={classes.casosNuevos}>
-                    <Typography className={classes.casos} align={'center'}>
-                        <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
-                        {numberWithCommas(500)}
-                        / Nuevos
-                    </Typography>
-                </div>
-            </div>
-            <div className={classes.datos}>
-                <div className={classes.box}>
-                    <Typography className={classes.numberBox} align={'center'}>
-                        1,500 
-                    </Typography>
-                    <Typography className={classes.boxText} align={'center'}>
-                        Pruebas
-                    </Typography>
-                </div>
-                <div className={classes.box}>
-                    <Typography className={classes.numberBox} align={'center'}>
-                        900,000
-                    </Typography>
-                    <Typography className={classes.boxText} align={'center'}>
-                        Habitantes
-                    </Typography>
-                </div>
-            </div>
-            <div className={classes.datos}>
-                {/*<div className={classes.box}>
-                    <Typography align={'center'}>
-                        ALTA
-                    </Typography>
-                    <Typography className={classes.boxText} align={'center'}>
-                        Indice de 
-                        <br/>
-                        Vulnerabilidad
-                    </Typography>
-                </div>*/}
-                <div className={classes.box}>
-                    <Typography className={classes.numberBox} align={'center'}>
-                        #3
-                    </Typography>
-                    <Typography className={classes.boxText} align={'center'}>
-                        Ranking
-                    </Typography>
-                </div>
-                <div className={classes.box}>
-                    <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
-                        <TimelineOutlinedIcon className={classes.icons}/>
-                    </Typography>
-                    <Typography className={classes.boxText} align={'center'}>
-                        Gráfica
-                    </Typography>
-                </div>
-            </div>
+            <MunData classes={classes} mun={mun}/>
+            {/*<StateData classes={classes} state={state}/>*/}
         </div>
     )
 }
@@ -97,6 +173,7 @@ const styles = () => ({
         flexDirection: 'row',
         display: 'flex',
         alignItems: 'baseline',
+        marginBottom: '10px'
     },
     state: {
         fontSize: '24px',
