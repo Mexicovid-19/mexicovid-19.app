@@ -122,7 +122,7 @@ const Map = ({classes}) => {
                 </span>
                 <span className={classes.pop1}>
                   <svg className={classes.pop2}>
-                    <circle r="7" cx="7" cy="8" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
+                    <circle r="7" cx="8" cy="9" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
                   </svg>
                   {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel}
                 </span>
@@ -147,17 +147,18 @@ const styles = () => ({
     fontWeight: 'bold',
     display: 'flex',
     justifyContent: 'center',
-    fontSize:'26px',
+    fontSize:'24px',
     padding: '10px',
     textTransform: 'capitalize',
   },
 
   pop1:{
     display: 'flex',
-    fontSize:'24px',
+    fontSize:'22px',
     fontFamily: 'Raleway',
     padding: '10px',
     justifyContent: 'center',
+    color: colors.GRAY_DARK,
   },
   pop2:{
     width: '20px',
@@ -166,7 +167,6 @@ const styles = () => ({
   },
   moreinf:{
     textAlign: 'right',
-    color: colors.GRAY_DARK,
     fontSize: '12px',
     justifyContent: 'inherit',
   },
