@@ -192,6 +192,9 @@ const useMapMunicipio = () => {
                     </svg>
                     ${numberWithCommas(features[0].properties[ selectedLabel + "#" + state.date])} ${selectedLabel} 
                     </span>
+                    <div style='text-align: right; color: #333333; font-size: 10px; justify-content: inherit'>
+                        Da Click para ver más.
+                    </div>
                 </div>`
                 )
             .setMaxWidth(400)

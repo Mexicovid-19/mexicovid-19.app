@@ -5,6 +5,7 @@ import { HomeContext } from '../../contexts/HomeContext';
 import CustomizedSlider from './CustomizedSlider';
 import { BLACK, WHITE, BLUE } from '../../constants/colors';
 import ColorsGradientBar from './ColorGradientBar';
+import * as colors from '../../constants/colors';
 import LoaderView from '../Loader';
 import MunMap from './munMap';
 import MunMapMov from './munMapMov';
@@ -113,11 +114,21 @@ const Map = ({classes}) => {
           onLeave={onLeave}
           onClick={onClick}
         />}
-        {hoveredState && <Popup longitude={lng} latitude={lat} closeButton={true} closeOnClick={true}>
+        {hoveredState && <Popup longitude={lng} latitude={lat} closeButton={false} closeOnClick={true} maxWidth={'600px'}>
             <div>
               <div>
-              {hoveredState.ESTADO}
-              {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel} 
+                <span className={classes.pop}>
+                  {hoveredState.ESTADO.toLowerCase()}
+                </span>
+                <span className={classes.pop1}>
+                  <svg className={classes.pop2}>
+                    <circle r="7" cx="7" cy="8" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
+                  </svg>
+                  {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel}
+                </span>
+              </div>
+              <div className={classes.moreinf}>
+                Da Click para ver más.
               </div>
             </div>
         </Popup>}
@@ -129,6 +140,37 @@ const Map = ({classes}) => {
 }
 
 const styles = () => ({
+  pop:{
+    borderBottom: '1px solid',
+    width: '100%', 
+    fontFamily: 'Raleway',
+    fontWeight: 'bold',
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize:'26px',
+    padding: '10px',
+    textTransform: 'capitalize',
+  },
+
+  pop1:{
+    display: 'flex',
+    fontSize:'24px',
+    fontFamily: 'Raleway',
+    padding: '10px',
+    justifyContent: 'center',
+  },
+  pop2:{
+    width: '20px',
+    height: '20px', 
+    fontFamily: 'Raleway', 
+  },
+  moreinf:{
+    textAlign: 'right',
+    color: colors.GRAY_DARK,
+    fontSize: '12px',
+    justifyContent: 'inherit',
+  },
+
   map: {
     height: '100% !important',
   },
