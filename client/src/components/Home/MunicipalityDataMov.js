@@ -7,6 +7,9 @@ import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTw
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import Typography from '@material-ui/core/Typography';
 import { numberWithCommas } from '../../Utils/numberWCommas';
+import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
+import LocalHospitalRoundedIcon from '@material-ui/icons/LocalHospitalRounded';
+import FormatListNumberedRoundedIcon from '@material-ui/icons/FormatListNumberedRounded';
 
 const StateData = ( props ) => {
     const { classes, state, selectedLabel } = props;
@@ -30,29 +33,38 @@ const StateData = ( props ) => {
         </div>
         <div className={classes.datos}>
             <div className={classes.box}>
-                <Typography className={classes.numberBox} align={'center'}>
-                    {numberWithCommas(state.pruebas)}
-                </Typography>
+                <div>
+                    <LocalHospitalRoundedIcon/>
+                </div>
                 <Typography className={classes.boxText} align={'center'}>
                     Pruebas
                 </Typography>
+                <Typography className={classes.numberBox} align={'center'}>
+                    {numberWithCommas(state.pruebas)}
+                </Typography>
             </div>
             <div className={classes.box}>
-                <Typography className={classes.numberBox} align={'center'}>
-                    {numberWithCommas(state.poblacion)}
-                </Typography>
+                <div>
+                    <PeopleAltRoundedIcon/>
+                </div>
                 <Typography className={classes.boxText} align={'center'}>
                     Habitantes
+                </Typography>
+                <Typography className={classes.numberBox} align={'center'}>
+                    {numberWithCommas(state.poblacion)}
                 </Typography>
             </div>
         </div>
         <div className={classes.datos}>
             <div className={classes.box}>
-                <Typography className={classes.numberBox} align={'center'}>
-                    #{state.ranking}
-                </Typography>
+                <div>
+                    <FormatListNumberedRoundedIcon/>
+                </div>
                 <Typography className={classes.boxText} align={'center'}>
                     Ranking
+                </Typography>
+                <Typography className={classes.numberBox} align={'center'}>
+                    #{state.ranking}
                 </Typography>
             </div>
             <div className={classes.box}>
@@ -144,16 +156,11 @@ const MunData = ( props ) => {
     )
 }
 
-const MunicipalityData = ( props ) => {
+const MunicipalityDataMov = ( props ) => {
     const { classes, state, mun, selectedLabel} = props;
     
     return (
         <div className={classes.container}>
-            <div className={classes.title}>
-                <Typography className={classes.state}  align={'center'}>
-                    {state.nombre}
-                </Typography>
-            </div>
             <StateData classes={classes} state={state} selectedLabel={selectedLabel}/>
             {/*<MunData classes={classes} mun={mun}/>*/}
         </div>
@@ -162,11 +169,12 @@ const MunicipalityData = ( props ) => {
 
 const styles = () => ({
     numberBox: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: '20px',
     },
     container: {
         margin: '8px',
-        color: colors.WHITE
+        color: colors.BLACK
     },
     title: {
         justifyContent: 'center',
@@ -202,8 +210,7 @@ const styles = () => ({
         display: 'flex',
         flexDirection: 'column',
         color: colors.BLACK,
-        width: '30%',
-        maxHeight: '50px'
+        width: '45%',
     },
     boxText: {
         fontSize: '12px'
@@ -226,4 +233,4 @@ const styles = () => ({
     }
 });
    
-export default withStyles(styles)(MunicipalityData);
+export default withStyles(styles)(MunicipalityDataMov);
