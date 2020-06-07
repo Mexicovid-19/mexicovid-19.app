@@ -5,7 +5,7 @@ import { HomeContext } from '../contexts/HomeContext';
 import { MapContext } from '../contexts/MapContext';
 import * as colors from './../constants/colors';
 import { numberWithCommas } from '../Utils/numberWCommas';
-import  { FITBOUNDS } from '../constants/statesLimits';
+import  { FITBOUNDS_VIEWPORT } from '../constants/statesLimits';
 
 const useMapMunicipio = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -16,7 +16,7 @@ const useMapMunicipio = () => {
     const [fillColor, setFillColor] = React.useState(null);
     const [map, setMap] = React.useState(null);
     const [selectedMun, setSelectedMun] = React.useState(null);
-    const [ bounds, setBounds] = React.useState(FITBOUNDS["09"].limites);
+    const [ bounds, setBounds] = React.useState(null);
     const thresholdColor = {
         "decesos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
         "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
@@ -47,9 +47,9 @@ const useMapMunicipio = () => {
         if(stateSelected) {
             setMunGEOJSON(null);
             callMunGEOJSON(stateSelected.cve_ent);
-            console.log(FITBOUNDS[stateSelected.cve_ent].limites[0], FITBOUNDS[stateSelected.cve_ent].limites[1])
+            //console.log(FITBOUNDS[stateSelected.cve_ent].limites[0], FITBOUNDS[stateSelected.cve_ent].limites[1])
             
-            setBounds(FITBOUNDS[stateSelected.cve_ent].limites);
+            //setBounds(FITBOUNDS[stateSelected.cve_ent].limites);
         }
     }, [stateSelected])
     
@@ -61,6 +61,13 @@ const useMapMunicipio = () => {
         if(state.date && munData && munGEOJSON && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
             setFillColor(getSteps(selectedLabel));
             setUpGEOJson();
+            console.log(munGEOJSON.features[0].properties.CVE_ENT, FITBOUNDS_VIEWPORT[munGEOJSON.features[0].properties.CVE_ENT].viewport);
+            setViewport({
+                ...viewport,
+                latitude: FITBOUNDS_VIEWPORT[munGEOJSON.features[0].properties.CVE_ENT].viewport.latitude,
+                longitude: FITBOUNDS_VIEWPORT[munGEOJSON.features[0].properties.CVE_ENT].viewport.longitude,
+                zoom: FITBOUNDS_VIEWPORT[munGEOJSON.features[0].properties.CVE_ENT].viewport.zoom,
+            })
         }
     }, [munGEOJSON, munData]);
 
