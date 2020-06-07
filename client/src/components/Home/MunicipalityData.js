@@ -70,7 +70,7 @@ const StateData = ( props ) => {
 
 const MunData = ( props ) => {
     const { classes, mun, selectedLabel } = props;
-    console.log(mun)
+    
     return (
         <React.Fragment>
         <div className={classes.casosContainer}>

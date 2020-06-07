@@ -65,23 +65,6 @@ const useHome = () => {
         }
 
         setRowsTable([rowsConfirm, rowsDeads]);
-
-        //sortMunData
-        if (munData) {
-          if ( selectedLabel == "confirmados") {
-            stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
-            munData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count)
-          } else {
-            stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
-            munData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count)
-          }
-        } else {
-          if ( selectedLabel == "confirmados") {
-            stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
-          } else {
-            stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
-          }
-        }
     }
   }, [state]);
 
@@ -141,6 +124,7 @@ const useHome = () => {
   }
 
   let changeDate = (e, pos) => {
+    console.log(state)
     let date = state.dates[pos];
     let dateIndex = pos;
     setState({
