@@ -39,6 +39,12 @@ const useMap = () => {
     if(state.date && stateData && statesGeOJSON && statesGeOJSON.features.length == 32) {  
       setFillColor(getSteps(selectedLabel));
       setUpGEOJson();
+      
+      if ( selectedLabel == "confirmados") {
+        stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
+      } else {
+        stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
+      }
 
       if( stateSelected ) {
         let data = stateSelected.data;
@@ -154,27 +160,6 @@ const useMap = () => {
     _geojson.features = geojsonOrdered
     
     setGeojson(_geojson);
-  }
-
-  let openMapContainer = (e) => {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ["pref"]
-    });
-    
-    if(features.length > 0) {
-      let cve_ent = String(features[0].properties.CVE_ENT);
-      let nombre = features[0].properties.ESTADO;
-      cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
-      setStateSelected(
-        {
-          cve_ent,
-          nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
-          abrev: features[0].properties.ABREV
-        }
-      );
-    }
-    
-    setIsMapMunicipio(true);
   }
 
   let closeMapContainer = (e) => {

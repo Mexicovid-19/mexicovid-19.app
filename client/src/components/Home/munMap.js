@@ -7,9 +7,10 @@ import MunicipalityData from './MunicipalityData';
 import { HomeContext } from "../../contexts/HomeContext";
 import MapGL, { Popup, Source, Layer, FeatureState, NavigationControl } from '@urbica/react-map-gl';
 import { numberWithCommas } from '../../Utils/numberWCommas';
+import LoaderView from '../Loader';
 
 const MunMap = ({classes}) => {
-    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds } = React.useContext(MapMunicipioContext);
+    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick } = React.useContext(MapMunicipioContext);
     const { stateSelected } = React.useContext(MapContext);
     const { munData, selectedLabel, state } = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
@@ -43,12 +44,17 @@ const MunMap = ({classes}) => {
             setHoveredState(null);
         }
     };
-
+    
     return (
         <div className={classes.container}>
             <div className={classes.containerMungraph}>
-                <MunicipalityData state={stateSelected} mun={munData} selectedLabel={selectedLabel}/>
+                <MunicipalityData state={stateSelected} mun={selectedMun} selectedLabel={selectedLabel}/>
             </div> 
+            {!munData && 
+            <div className={classes.loaderContainer}>
+                <div className={classes.loader}><LoaderView/></div>
+            </div>
+            }
             {geojson && geojson.features.length > 0 && 
             <MapGL
                 style={{ width: '100%', height: '55%' }}
@@ -58,6 +64,7 @@ const MunMap = ({classes}) => {
                 longitude={viewport.longitude}
                 zoom={viewport.zoom}
                 onViewportChange={setViewport}
+                viewportChangeMethod={'flyTo'}
             >
                 <Source id='states' type='geojson' data={ geojson } />
                 {fillColor && 
@@ -72,6 +79,7 @@ const MunMap = ({classes}) => {
                     }}
                     onHover={onHover}
                     onLeave={onLeave}
+                    onClick={onClick}
                 />}
                 {hoveredState && 
                 <Popup longitude={lng} latitude={lat} closeButton={false} closeOnClick={true} maxWidth={'600px'}>

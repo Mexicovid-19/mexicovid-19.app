@@ -56,7 +56,7 @@ const useHome = () => {
           rowsConfirm.push(createTableData(i+1, confirmData[i].estado.toUpperCase(), Number(confirmData[i].confirmados[state.dateIndex].count)));
         }
 
-        stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
+        stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
         let deadData = stateData.map(s => ({"estado": s.abbrev, "decesos": s.decesos}))
         deadData.sort((a,b) => b.decesos[state.dateIndex] -a.decesos[state.dateIndex]);
         for(var i = 0; i < deadData.length; i++) {
@@ -95,7 +95,6 @@ const useHome = () => {
     } else {
       setMunData(munDataArr[cve_ent]);  
     }
-    
   }
   
   let createTableData = (position, state, data) => {
@@ -125,6 +124,7 @@ const useHome = () => {
   }
 
   let changeDate = (e, pos) => {
+    console.log(state)
     let date = state.dates[pos];
     let dateIndex = pos;
     setState({
