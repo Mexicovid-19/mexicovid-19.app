@@ -44,7 +44,7 @@ const AlertDialogSlide = (props) => {
         <Button onClick={handleClose} classes={{root: classes.cross}}>
           <CloseIcon />
         </Button>
-        <Typography className={classes.title}> Grafica de Casos</Typography>
+        <Typography className={classes.title}> Gráfica de Casos</Typography>
         <DialogContent classes={{root: classes.chartatyle}}>
           <MyResponsiveLine data={data} isSmall={false}  />
         </DialogContent>
