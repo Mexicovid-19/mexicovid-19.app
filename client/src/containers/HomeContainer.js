@@ -4,8 +4,6 @@ import axios from 'axios';
 const useHome = () => {
   const [munDataArr, setMunDataArr] = React.useState({});
   const [stateData, setStateData] = React.useState(null);
-  const [statesConfirm, setStatesConfirm] = React.useState(null);
-  const [statesDeads, setStatesDeads] = React.useState(null);
   const [state, setState ] = React.useState({
     date: '',
     shortDate: '',
@@ -24,8 +22,7 @@ const useHome = () => {
   const [isMap, setIsMap] = React.useState(false);
   
   React.useEffect(() => {
-    callStatesConfirm();
-    callStatesDeads();
+    
     callStatesData();
   }, []);
 
@@ -88,20 +85,6 @@ const useHome = () => {
       setRows(rowsTable[selectedLabel === "confirmados" ? 0 : 1]);
     }
   }, [rowsTable, selectedLabel]);
-
-  let callStatesConfirm = ()  => {
-    axios.post(`${process.env.REACT_APP_API_URL}/map/data/confirmados`, {})
-    .then(res => {
-      setStatesConfirm(res.data);
-    });
-  }
-
-  let callStatesDeads = ()  => {
-    axios.post(`${process.env.REACT_APP_API_URL}/map/data/decesos`, {})
-    .then(res => {
-      setStatesDeads(res.data);
-    });
-  }
 
   let callStatesData = ()  => {
     axios.get(`${process.env.REACT_APP_API_URL}/estado/todos`, {})
@@ -173,8 +156,6 @@ const useHome = () => {
 
   return {
     stateData,
-    statesConfirm,
-    statesDeads,
     state,
     rows,
     dataChart,

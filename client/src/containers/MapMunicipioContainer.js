@@ -14,7 +14,6 @@ const useMapMunicipio = () => {
     const mapRef = React.useRef(null);
     const [geojson, setGeojson] = React.useState(null);
     const [fillColor, setFillColor] = React.useState(null);
-    const [map, setMap] = React.useState(null);
     const [selectedMun, setSelectedMun] = React.useState(null);
     const [ bounds, setBounds] = React.useState(FITBOUNDS["09"].limites);
     const thresholdColor = {
@@ -47,7 +46,7 @@ const useMapMunicipio = () => {
         if(stateSelected) {
             setMunGEOJSON(null);
             callMunGEOJSON(stateSelected.cve_ent);
-            console.log(FITBOUNDS[stateSelected.cve_ent].limites[0], FITBOUNDS[stateSelected.cve_ent].limites[1])
+            //console.log(FITBOUNDS[stateSelected.cve_ent].limites[0], FITBOUNDS[stateSelected.cve_ent].limites[1])
             
             setBounds(FITBOUNDS[stateSelected.cve_ent].limites);
         }
