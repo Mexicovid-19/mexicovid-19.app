@@ -224,3 +224,264 @@ export const FITBOUNDS = {
         ] 
     }
 }
+
+export const FITBOUNDS_VIEWPORT = {
+    "01": {
+        "estado": "Aguascalientes",
+        "viewport": {
+            "latitude": 22.06130618589576,
+            "longitude": -102.36582660670149,
+            "zoom": 8.22232116866355
+        }
+             
+    },
+    "02":{
+        "estado": "Baja California",
+        "viewport": {
+            "latitude": 30.355624512082457,
+            "longitude": -115.28700445975312,
+            "zoom": 5.622595009090452
+        }
+    },
+    "03":{
+        "estado": "Baja California Sur",
+        "viewport": {
+            "latitude": 25.590092078620813,
+            "longitude": -112.41390221836264,
+            "zoom": 5.62259500909047
+        }
+    },
+    "04":{
+        "estado": "Campeche",
+        "viewport": {
+            "latitude": 19.334969952763927,
+            "longitude": -90.63290325344258,
+            "zoom": 6.531068137499393
+        }
+    },
+    "05":{
+        "estado": "Coahuila", 
+        "viewport": {
+            "latitude": 27.292391698632628,
+            "longitude": -102.09159247372389,
+            "zoom": 5.453624625174818
+        }
+    },
+    "06":{
+        "estado": "Colima", /*Se activa con Chihuahua*/ 
+        "viewport": {
+            "latitude": 19.12532847074651,
+            "longitude": -104.03939048272855,
+            "zoom": 8.396316679933348
+        }
+    },
+    "07":{
+        "estado": "Chiapas", /*Se activa con cdmx*/
+        "viewport": {
+            "latitude": 16.28148890486942,
+            "longitude": -92.50305786464634,
+            "zoom": 6.344539557736259
+        }
+    },
+    "08":{
+        "estado": "Chihuahua", /*Se activa con Coahuila*/ 
+        "viewport": {
+            "latitude": 28.8039072033111,
+            "longitude": -107.00004540248341,
+            "zoom": 5.319770632954149
+        }
+    },
+    "09":{
+        "estado": "Ciudad de Mexico", /*Se activa con Colima*/ 
+        "viewport": {
+            "latitude": 19.318119356817988,
+            "longitude": -99.14367380052511,
+            "zoom": 8.885815454795152
+        }
+    },
+    "10":{
+        "estado": "Durango",
+        "viewport": {
+            "latitude": 24.658801330761648,
+            "longitude": -105.03541814125231,
+            "zoom": 5.810880326505053
+        }
+    },
+    "11":{
+        "estado": "Guanajuato",
+        "viewport": {
+            "latitude": 20.902004617541778,
+            "longitude": -100.99621750059805,
+            "zoom": 7.039736026897758
+        }
+    },
+    "12":{
+        "estado": "Guerrero",
+        "viewport": {
+            "latitude": 17.614996347914428,
+            "longitude": -100.1363216994963,
+            "zoom": 6.567941266845824
+        }
+    },
+    "13":{
+        "estado": "Hidalgo",
+        "viewport": {
+            "latitude": 20.504795173158385,
+            "longitude": -98.93919726802562,
+            "zoom": 7.253012686145176
+        }
+    },
+    "14":{
+        "estado": "Jalisco",
+        "viewport": {
+            "latitude": 20.943081359589428,
+            "longitude": -103.72869279265012,
+            "zoom": 6.0579145210601055
+        }
+    },
+    "15":{
+        "estado": "EstadodeMexico",
+        "viewport": {
+            "latitude": 19.334706361426527,
+            "longitude": -99.68016211288898,
+            "zoom": 7.065753603938508
+        }
+    },
+    "16":{
+        "estado": "Michoacan",
+        "viewport": {
+            "latitude": 19.169293606958036,
+            "longitude": -101.89916118575621,
+            "zoom": 6.7804874236496815
+        }
+    },
+    "17":{
+        "estado": "Morelos",
+        "viewport": {
+            "latitude": 18.73599399401266,
+            "longitude": -99.09892565594248,
+            "zoom": 8.463579688246847
+        }
+    },
+    "18":{
+        "estado": "Nayarit",
+        "viewport": {
+            "latitude": 21.890637796987946,
+            "longitude": -105.04333662160963,
+            "zoom": 6.781115777593456
+        }
+    },
+    "19":{
+        "estado": "Nuevo Leon",
+        "viewport": {
+            "latitude": 25.571136755450993,
+            "longitude": -100.05860602055424,
+            "zoom": 5.756449001311124
+        }
+    },
+    "20":{
+        "estado": "Oaxaca",
+        "viewport": {
+            "latitude": 17.110811852728375,
+            "longitude": -96.38237969562255,
+            "zoom": 6.396585791334932
+        }
+    },
+    "21":{
+        "estado": "Puebla",
+        "viewport": {
+            "latitude": 19.410359779403166,
+            "longitude": -97.87940770146633,
+            "zoom": 6.535794650227233
+        }
+    },
+    "22":{
+        "estado": "Queretaro",
+        "viewport": {
+            "latitude": 20.8367514130738,
+            "longitude": -100.01943499156152,
+            "zoom": 7.257739198873049
+        }
+    },
+    "23":{
+        "estado": "Quintana Roo",
+        "viewport": {
+            "latitude": 19.819025280805718,
+            "longitude": -87.98420308823768,
+            "zoom": 6.215412078243462
+        }
+    },
+    "24":{
+        "estado": "San Luis Potosi",
+        "viewport": {
+            "latitude": 22.85173329925736,
+            "longitude": -100.43597025444683,
+            "zoom": 6.21541207824347
+        }
+    },
+    "25":{
+        "estado": "Sinaloa",
+        "viewport": {
+            "latitude": 24.836431149689588,
+            "longitude": -107.7438395779053,
+            "zoom": 5.81411165909368
+        }
+    },
+    "26":{
+        "estado": "Sonora",
+        "viewport": {
+            "latitude": 29.424696069858925,
+            "longitude": -111.71250429569682,
+            "zoom": 5.319770632954145
+        }
+    },
+    "27":{
+        "estado": "Tabasco",
+        "viewport": {
+            "latitude": 17.87924479897923,
+            "longitude": -92.55083528699299,
+            "zoom": 7.02042109339879
+        }
+    },
+    "28":{
+        "estado": "Tamaulipas",
+        "viewport": {
+            "latitude": 25.03520171352085,
+            "longitude": -99.06246024273383,
+            "zoom": 5.605036813242971
+        }
+         
+    },
+    "29":{
+        "estado": "Tlaxcala",
+        "viewport": {
+            "latitude": 19.426642012513156,
+            "longitude": -98.1872985577761,
+            "zoom": 8.552101169927798
+        }
+    },
+    "30":{
+        "estado": "Veracruz",
+        "viewport": {
+            "latitude": 19.969062546725368,
+            "longitude": -96.73299806685986,
+            "zoom": 5.558973800259698
+        }
+    },
+    "31":{
+        "estado": "Yucatan",
+        "viewport": {
+            "latitude": 20.64848268421332,
+            "longitude": -88.93791236011941,
+            "zoom": 6.96774650585635
+        }
+    },
+    "32":{
+        "estado": "Zacatecas",
+        "viewport": {
+            "latitude": 23.139783593067833,
+            "longitude": -102.60634454140427,
+            "zoom": 6.041715181599953
+        }
+    }
+}

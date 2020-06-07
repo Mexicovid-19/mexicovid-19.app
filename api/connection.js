@@ -10,7 +10,7 @@ mongoose.connect(dbUrl, {
 
 //Models
 var db = mongoose.connection;
-
+ 
 //We enebled the Listener
 db.on('error', () => {
     console.error('Error occured in db connection');

@@ -4,8 +4,6 @@ import axios from 'axios';
 const useHome = () => {
   const [munDataArr, setMunDataArr] = React.useState({});
   const [stateData, setStateData] = React.useState(null);
-  const [statesConfirm, setStatesConfirm] = React.useState(null);
-  const [statesDeads, setStatesDeads] = React.useState(null);
   const [state, setState ] = React.useState({
     date: '',
     shortDate: '',
@@ -24,18 +22,11 @@ const useHome = () => {
   const [isMap, setIsMap] = React.useState(false);
   
   React.useEffect(() => {
-    callStatesConfirm();
-    callStatesDeads();
     callStatesData();
   }, []);
 
   React.useEffect(() => {
       if ( stateData ) {
-        let confirmData = [];
-        let deadData = [];
-        let rowsConfirm = [];
-        let rowsDeads = [];
-
         //dates array
         let dates = stateData[0].confirmados.map( data => data.date);
         let last_date = dates.slice(-1)[0];
@@ -51,8 +42,6 @@ const useHome = () => {
         
         if(dataChart.length == 0)
           setDataChart([createChartData(stateData, "decesos", _state.countDates, _state.dates),createChartData(stateData, "confirmados", _state.countDates, _state.dates)]);
-
-        console.log([createChartData(stateData, "decesos", _state.countDates, _state.dates),createChartData(stateData, "confirmados", _state.countDates, _state.dates)]);
       }
   }, [stateData]);
 
@@ -61,20 +50,18 @@ const useHome = () => {
         let rowsDeads = [];
         let rowsConfirm = [];
         stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
-        let confirmData = stateData.map(s => ({"estado": s.nombre, "confirmados": s.confirmados}))
-        console.log(confirmData)
+        let confirmData = stateData.map(s => ({"estado": s.abbrev, "confirmados": s.confirmados}))
         for(var i = 0; i < confirmData.length; i++) {
           //update just the last number
-          rowsConfirm.push(createTableData(i+1, confirmData[i].estado.toLowerCase(), Number(confirmData[i].confirmados[state.dateIndex].count)));
+          rowsConfirm.push(createTableData(i+1, confirmData[i].estado.toUpperCase(), Number(confirmData[i].confirmados[state.dateIndex].count)));
         }
 
         stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
-        let deadData = stateData.map(s => ({"estado": s.nombre, "decesos": s.decesos}))
-        console.log(deadData)
+        let deadData = stateData.map(s => ({"estado": s.abbrev, "decesos": s.decesos}))
         deadData.sort((a,b) => b.decesos[state.dateIndex] -a.decesos[state.dateIndex]);
         for(var i = 0; i < deadData.length; i++) {
           //update just the last number
-          rowsDeads.push(createTableData(i+1, deadData[i].estado.toLowerCase(), Number(deadData[i].decesos[state.dateIndex].count)));
+          rowsDeads.push(createTableData(i+1, deadData[i].estado.toUpperCase(), Number(deadData[i].decesos[state.dateIndex].count)));
         }
 
         setRowsTable([rowsConfirm, rowsDeads]);
@@ -88,20 +75,6 @@ const useHome = () => {
     }
   }, [rowsTable, selectedLabel]);
 
-  let callStatesConfirm = ()  => {
-    axios.post(`${process.env.REACT_APP_API_URL}/map/data/confirmados`, {})
-    .then(res => {
-      setStatesConfirm(res.data);
-    });
-  }
-
-  let callStatesDeads = ()  => {
-    axios.post(`${process.env.REACT_APP_API_URL}/map/data/decesos`, {})
-    .then(res => {
-      setStatesDeads(res.data);
-    });
-  }
-
   let callStatesData = ()  => {
     axios.get(`${process.env.REACT_APP_API_URL}/estado/todos`, {})
     .then(res => {
@@ -111,7 +84,6 @@ const useHome = () => {
   }
 
   let callMunData = (cve_ent)  => {
-    console.log(munDataArr, cve_ent);
     if(!(cve_ent in munDataArr)) {
       axios.get(`${process.env.REACT_APP_API_URL}/municipio/${cve_ent}`, {})
       .then(res => {
@@ -172,8 +144,6 @@ const useHome = () => {
 
   return {
     stateData,
-    statesConfirm,
-    statesDeads,
     state,
     rows,
     dataChart,

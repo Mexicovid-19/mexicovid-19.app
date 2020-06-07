@@ -23,7 +23,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const MunMapMov = (props) => {
     const {classes} = props;
-    const {openMapContainer,closeMapContainer,isMapMunicipio,thresholdsNum} = React.useContext(MapContext);
+    const {closeMapContainer,isMapMunicipio,thresholdsNum} = React.useContext(MapContext);
     const {selectedLabel} = React.useContext(HomeContext);
     const { mapRef } = React.useContext(MapMunicipioContext);
     

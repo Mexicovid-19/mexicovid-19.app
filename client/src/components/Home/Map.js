@@ -5,6 +5,7 @@ import { HomeContext } from '../../contexts/HomeContext';
 import CustomizedSlider from './CustomizedSlider';
 import { BLACK, WHITE, BLUE } from '../../constants/colors';
 import ColorsGradientBar from './ColorGradientBar';
+import * as colors from '../../constants/colors';
 import LoaderView from '../Loader';
 import MunMap from './munMap';
 import MunMapMov from './munMapMov';
@@ -28,26 +29,33 @@ const Map = ({classes}) => {
   const onClick = (event) => {
     if (event.features.length > 0) {
       let cve_ent = String(event.features[0].properties.CVE_ENT);
-      let nombre = event.features[0].properties.ESTADO;
       cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
-      setStateSelected(
-        {
+      let nombre = event.features[0].properties.ESTADO;
+      let indexState = stateData.findIndex(edo => edo.cve_ent == cve_ent);
+      let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
+      let totales = event.features[0].properties[selectedLabel + "#" + state.date]
+      let nuevos = totales - event.features[0].properties[selectedLabel + "#" + previousDate]
+      
+      setStateSelected({
+          data: event.features[0].properties,
           cve_ent,
           nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
-          abrev: event.features[0].properties.ABREV
-        }
-      );
+          abrev: event.features[0].properties.ABREV,
+          poblacion: stateData[indexState].poblacion,
+          ranking: indexState + 1,
+          totales: totales,
+          nuevos: nuevos,
+          pruebas: event.features[0].properties["pruebas#" + state.date]
+      });
     }
     
     setIsMapMunicipio(true);
   }
 
   const onHover = (event) => {
-    console.log(event)
     if (event.features.length > 0) {
       const nextHoveredStateId = event.features[0].id;
       if (hoveredStateId !== nextHoveredStateId) {
-        console.log(hoveredStateId)
         setHoveredStateId(nextHoveredStateId);
       }
 
@@ -90,7 +98,7 @@ const Map = ({classes}) => {
           <MunMapMov/>
         }
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
-      {geojson && geojson.features.length == 32 && <MapGL
+      {(( !isMobile && geojson && geojson.features.length == 32)||(isMap && isMobile && geojson && geojson.features.length == 32)) && <MapGL
         style={{ width: '100%', height: '100%' }}
         mapStyle='mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko'
         accessToken={process.env.REACT_APP_MAP_BOX_API_KEY}
@@ -113,11 +121,21 @@ const Map = ({classes}) => {
           onLeave={onLeave}
           onClick={onClick}
         />}
-        {hoveredState && <Popup longitude={lng} latitude={lat} closeButton={true} closeOnClick={true}>
+        {hoveredState && <Popup longitude={lng} latitude={lat} closeButton={false} closeOnClick={true} maxWidth={'600px'}>
             <div>
               <div>
-              {hoveredState.ESTADO}
-              {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel} 
+                <span className={classes.pop}>
+                  {hoveredState.ESTADO.toLowerCase()}
+                </span>
+                <span className={classes.pop1}>
+                  <svg className={classes.pop2}>
+                    <circle r="7" cx="8" cy="9" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
+                  </svg>
+                  {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel}
+                </span>
+              </div>
+              <div className={classes.moreinf}>
+                Da Click para ver más.
               </div>
             </div>
         </Popup>}
@@ -129,12 +147,44 @@ const Map = ({classes}) => {
 }
 
 const styles = () => ({
+  pop:{
+    borderBottom: '1px solid',
+    width: '100%', 
+    fontFamily: 'Raleway',
+    fontWeight: 'bold',
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize:'20px',
+    padding: '10px',
+    textTransform: 'capitalize',
+  },
+
+  pop1:{
+    display: 'flex',
+    fontSize:'18px',
+    fontFamily: 'Raleway',
+    padding: '10px',
+    justifyContent: 'center',
+    color: colors.GRAY_DARK,
+  },
+  pop2:{
+    width: '20px',
+    height: '20px', 
+    fontFamily: 'Raleway', 
+  },
+  moreinf:{
+    textAlign: 'right',
+    fontSize: '12px',
+    justifyContent: 'inherit',
+  },
+
   map: {
     height: '100% !important',
   },
 
   show: {
-    flex: '2'
+    flex: '2',
+    height: 'calc(100vh - 160px)'
   },
 
   icons: {
