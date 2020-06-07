@@ -143,8 +143,8 @@ const EnhancedTableToolbar = (props) => {
       <button>
         {!isMobile && <AspectRatioRoundedIcon className={classes.icon} onClick={clickOpen}/>}
       </button>
-      <MyResponsiveLine data={data} isMobile={isMobile} isConfirm={isConfirm}/>
-      <AlertDialogSlide handleClose={clickClose} open={openDial} data={data}/>
+      <MyResponsiveLine data={data} isMobile={isMobile} isConfirm={isConfirm} hideAxisValues/>
+      <AlertDialogSlide handleClose={clickClose} open={openDial} data={data} />
     </Toolbar>
   );
 };
@@ -166,7 +166,9 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 150,
     backgroundColor: colors.BLACK,
-    padding: '10px'
+    padding: '10px',
+    flex: 1,
+    height: '100%'
   },
 
   headerCell: {
@@ -187,7 +189,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   tableContainer: {
-    overflowY: 'scroll',
+    overflowY: 'auto',
     height: 'calc(70vh - 64px)',
     borderTop: '1px solid white'
   },

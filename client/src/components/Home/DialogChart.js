@@ -24,7 +24,7 @@ const AlertDialogSlide = (props) => {
       x: l.x.replace( new RegExp('/', 'g'), '-' ),
       y: l.y
     }))
-    _data[1].data = _data[0].data.map(l=>({
+    _data[1].data = _data[1].data.map(l=>({
       x: l.x.replace( new RegExp('/', 'g'), '-' ),
       y: l.y
     }))

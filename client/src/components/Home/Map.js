@@ -141,7 +141,7 @@ const Map = ({classes}) => {
         </Popup>}
         {hoveredStateId && <FeatureState id={hoveredStateId} source='states' state={{ hover: true }} />}
         <NavigationControl showCompass showZoom position='bottom-right' />
-        </MapGL>};
+        </MapGL>}
     </div>
   );
 }
