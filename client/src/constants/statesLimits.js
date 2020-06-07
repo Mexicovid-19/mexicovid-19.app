@@ -238,17 +238,17 @@ export const FITBOUNDS_VIEWPORT = {
     "02":{
         "estado"  : "Baja California",
         "viewport": {
-            "latitude" : 30.37029451784811,
-            "longitude": -115.11828074642392,
-            "zoom"     : 5.0169462568178425
+            "latitude" : 29.948997286919308,
+            "longitude": -115.2243229590789,
+            "zoom"     : 4.749238272376495
         }
     },
     "03":{
         "estado"  : "Baja California Sur",
         "viewport": {
-            "latitude" : 25.56903563681064,
-            "longitude": -112.41935023230837,
-            "zoom"     : 4.865534068749707
+            "latitude" : 25.022480103245385,
+            "longitude": -112.05430241630688,
+            "zoom"     : 4.714121880681555
         }
     },
     "04":{
@@ -262,9 +262,9 @@ export const FITBOUNDS_VIEWPORT = {
     "05":{
         "estado"  : "Coahuila",
         "viewport": {
-            "latitude" : 27.192268964932296,
-            "longitude": -101.94067679457066,
-            "zoom"     : 4.847975872902207
+            "latitude" : 26.756532837880044,
+            "longitude": -101.92105113873089,
+            "zoom"     : 4.545151496765902
         }
     },
     "06":{
@@ -286,9 +286,9 @@ export const FITBOUNDS_VIEWPORT = {
     "08":{
         "estado"  : "Chihuahua",   /*Se activa con Coahuila*/
         "viewport": {
-            "latitude" : 28.824403474770477,
-            "longitude": -106.46340374550135,
-            "zoom"     : 4.580267888460864
+            "latitude" : 28.23637172244625,
+            "longitude": -106.61033194667039,
+            "zoom"     : 4.2950017081720375
         }
     },
     "09":{
@@ -374,9 +374,9 @@ export const FITBOUNDS_VIEWPORT = {
     "19":{
         "estado"  : "Nuevo Leon",
         "viewport": {
-            "latitude" : 25.571136755450993,
-            "longitude": -100.05860602055424,
-            "zoom"     : 5.756449001311124
+            "latitude" : 25.04674866365376,
+            "longitude": -100.03190339618027,
+            "zoom"     : 4.714121880681532
         }
     },
     "20":{
@@ -422,17 +422,17 @@ export const FITBOUNDS_VIEWPORT = {
     "25":{
         "estado"  : "Sinaloa",
         "viewport": {
-            "latitude" : 24.836431149689588,
-            "longitude": -107.7438395779053,
-            "zoom"     : 5.81411165909368
+            "latitude" : 24.273784074805477,
+            "longitude": -107.5652745141519,
+            "zoom"     : 4.75422634261661
         }
     },
     "26":{
         "estado"  : "Sonora",
         "viewport": {
-            "latitude" : 29.471267899370233,
-            "longitude": -111.50816614610892,
-            "zoom"     : 4.562709692613381
+            "latitude" : 28.913986409963286,
+            "longitude": -111.44280329720789,
+            "zoom"     : 4.411297504545228
         }
     },
     "27":{
@@ -446,9 +446,9 @@ export const FITBOUNDS_VIEWPORT = {
     "28":{
         "estado"  : "Tamaulipas",
         "viewport": {
-            "latitude" : 25.03520171352085,
-            "longitude": -99.06246024273383,
-            "zoom"     : 5.605036813242971
+            "latitude" : 24.56710610025459,
+            "longitude": -98.94724736395142,
+            "zoom"     : 4.696563684834055
         }
          
     },
