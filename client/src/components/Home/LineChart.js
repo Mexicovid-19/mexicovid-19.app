@@ -11,6 +11,8 @@ const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false,
     var legendTx = 0;
     var colorArray = [colors.RED,colors.BLUE_LIGHT];
     var dataContent = data;
+    var lineWidth=1
+    var pointSize=2
 
     if ( isMobile ) {
         axisLeft = {
@@ -38,6 +40,8 @@ const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false,
 
     if( !isSmall ) {
         axisBottom = {
+            format: '%b %d',
+            tickValues: 'every 3 days',
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 0,
@@ -63,40 +67,102 @@ const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false,
         };
         legendTy = -20;
         legendTx = 20; 
+
+        lineWidth=4
+        pointSize=8
     }
-    console.log("object", dataContent)
+
     return(
         <ResponsiveLine
+            theme={themeBlack}
+            colors={colorArray}
+            data={dataContent}
+            margin={Defaultmargin}
+            xScale={{
+                type: 'time',
+                format: '%Y/%m/%d',
+                useUTC: false,
+                precision: 'day',
+            }}
+            xFormat="time:%Y/%m/%d"
+            yScale={{
+                type: 'linear',
+                stacked: false,
+            }}
+            axisBottom={axisBottom}
+            curve={ 'monotoneX'}
+            enableSlices={false}
+            axisTop={null}
+            axisRight={null}
+            axisLeft={axisLeft}
+            lineWidth={lineWidth}
+            pointSize={pointSize}
+            pointColor={{ from: 'color', modifiers: [] }}
+            pointBorderWidth={2}
+            pointBorderColor={{ from: 'serieColor', modifiers: [] }}
+            pointLabel="y"
+            pointLabelYOffset={-12}
+            enableArea={true}
+            areaOpacity={.6}
+            useMesh={!isSmall}
+            enableGridX={false}
+            enableGridY={false}
+            legends={[
+                {
+                    colors: 'BLUE',
+                    anchor: 'top',
+                    fill: colors.WHITE,
+                    direction: 'row',
+                    justify: false,
+                    translateX: legendTx,
+                    translateY: legendTy,
+                    itemsSpacing: 5,
+                    itemDirection: 'left-to-right',
+                    itemWidth: 90,
+                    itemHeight: 20,
+                    itemOpacity: 0.75,
+                    symbolSize: 17,
+                    symbolShape: 'circle',
+                    symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                    itemTextColor: colors.WHITE,
+                    
+                }
+            ]}
+        />
+        /*<ResponsiveLine
         theme={themeBlack}
         colors={colorArray}
         data={dataContent}
         margin={Defaultmargin}
-        Scale={{
+        xScale={{
           type: "time",
-          format: '%Y-%m-%d',
+          format: '%Y/%m/%d',
           precision: 'day',
+          useUTC: false
             // format: 'native'
         }}
-        xFormat={(value)=>new Date(value).toLocaleString().split(',')[0]}
-        axisBottom={!hideAxisValues ? {
-            format: (value)=>new Date(value).toLocaleString().split(',')[0],
-            tickValues: 5,
-        }:{
+        xFormat="time:%Y/%m/%d"
+        //xFormat={(value)=>new Date(value).toLocaleString().split(',')[0]}
+        axisBottom={{
+            format: '%b %d',
+            tickValues: 'every 2 days',
+            legend: 'time scale',
+            legendOffset: -12,
+        }}
+        :{
             format: ()=>null,
             "tickSize": 0,
             "tickPadding": 5,
             "tickRotation": 0,
         }}
+        curve={'monotoneX'}
         yScale={{ 
             type: 'linear', 
-            min: 'auto', 
-            max: 'auto', 
             stacked: false,
-            reverse: false 
+            //reverse: false 
         }}
         axisTop={null}
         axisRight={null}
-        // axisBottom={axisBottom}
         axisLeft={axisLeft}
         lineWidth={5}
         pointSize={10}
@@ -131,7 +197,7 @@ const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false,
                 
             }
         ]}
-        />
+        />*/
     )
 }
 

@@ -102,7 +102,7 @@ const useHome = () => {
   }
 
   let createChartData = (data, label, datesLen, dates) => {
-    let dataChart = [];
+    let _dataChart = [];
     let casos;
     for(var i = 0; i < datesLen; i++){
       casos = 0;
@@ -110,12 +110,12 @@ const useHome = () => {
         casos += Number(element[label][i].count);
       });
 
-      dataChart.push(chartPoint(dates[i], casos));
+      _dataChart.push(chartPoint(dates[i], casos));
     }
-    
+    console.log(_dataChart)
     return {
       id: label,
-      data: dataChart
+      data: _dataChart
     }
   }
 
@@ -124,7 +124,6 @@ const useHome = () => {
   }
 
   let changeDate = (e, pos) => {
-    console.log(state)
     let date = state.dates[pos];
     let dateIndex = pos;
     setState({
