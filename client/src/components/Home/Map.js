@@ -29,13 +29,24 @@ const Map = ({classes}) => {
   const onClick = (event) => {
     if (event.features.length > 0) {
       let cve_ent = String(event.features[0].properties.CVE_ENT);
-      let nombre = event.features[0].properties.ESTADO;
       cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
+      let nombre = event.features[0].properties.ESTADO;
+      let indexState = stateData.findIndex(edo => edo.cve_ent == cve_ent);
+      console.log(cve_ent, stateData, indexState)
+      let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
+      let totales = event.features[0].properties[selectedLabel + "#" + state.date]
+      let nuevos = totales - event.features[0].properties[selectedLabel + "#" + previousDate]
+      
       setStateSelected(
         {
           cve_ent,
           nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
-          abrev: event.features[0].properties.ABREV
+          abrev: event.features[0].properties.ABREV,
+          poblacion: stateData[indexState].poblacion,
+          ranking: indexState + 1,
+          totales: totales,
+          nuevos: nuevos,
+          pruebas: event.features[0].properties["pruebas#" + state.date]
         }
       );
     }
@@ -44,11 +55,9 @@ const Map = ({classes}) => {
   }
 
   const onHover = (event) => {
-    console.log(event)
     if (event.features.length > 0) {
       const nextHoveredStateId = event.features[0].id;
       if (hoveredStateId !== nextHoveredStateId) {
-        console.log(hoveredStateId)
         setHoveredStateId(nextHoveredStateId);
       }
 

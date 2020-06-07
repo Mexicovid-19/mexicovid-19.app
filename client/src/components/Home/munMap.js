@@ -17,24 +17,22 @@ const MunMap = ({classes}) => {
 
     const [lat, setLat] = React.useState(0);
     const [lng, setLng] = React.useState(0);
-
     
     const onHover = (event) => {
         if (event.features.length > 0) {
-          const nextHoveredStateId = event.features[0].id;
-          if (hoveredStateId !== nextHoveredStateId) {
-            console.log(hoveredStateId)
-            setHoveredStateId(nextHoveredStateId);
-          }
-    
-          const _hoveredState = event.features[0].properties;
-          if (  _hoveredState !== hoveredState) {
+            const nextHoveredStateId = event.features[0].id;
+            if (hoveredStateId !== nextHoveredStateId) {
+                setHoveredStateId(nextHoveredStateId);
+            }
+
+            const _hoveredState = event.features[0].properties;
+            if (  _hoveredState !== hoveredState) {
             setLat(event.lngLat.lat);
             setLng(event.lngLat.lng);
             setHoveredState(_hoveredState);
-          }
+            }
         }
-      };
+    };
       
     const onLeave = () => {
         if (hoveredStateId) {

@@ -120,6 +120,7 @@ const useMap = () => {
         for(var j in state.dates) {
           _geojson.features[index].properties["confirmados#" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
           _geojson.features[index].properties["decesos#" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
+          _geojson.features[index].properties["pruebas#" + state.dates[j]] = Number(stateData[cveEntIndex].pruebas[j].count);
         }
         geojsonOrdered.push(_geojson.features[index])
         _geojson.features.splice(index,1)
@@ -164,7 +165,6 @@ const useMap = () => {
     thresholdsNum,
     stateSelected,
 
-    openMapContainer,
     closeMapContainer,
     isMapMunicipio,
 

@@ -14,7 +14,6 @@ const useMapMunicipio = () => {
     const mapRef = React.useRef(null);
     const [geojson, setGeojson] = React.useState(null);
     const [fillColor, setFillColor] = React.useState(null);
-    const [map, setMap] = React.useState(null);
     const [selectedMun, setSelectedMun] = React.useState(null);
     const [ bounds, setBounds] = React.useState(null);
     const thresholdColor = {

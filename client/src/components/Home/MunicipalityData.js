@@ -16,22 +16,22 @@ const StateData = ( props ) => {
             <div className={classes.casosTotales}>
                 <Typography className={classes.casos} align={'center'}>
                     <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
-                    {numberWithCommas(3500)}
-                    / Totales
+                    {numberWithCommas(state.totales)}
+                    - Totales
                 </Typography>
             </div>
             <div className={classes.casosNuevos}>
                 <Typography className={classes.casos} align={'center'}>
                     <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
-                    {numberWithCommas(500)}
-                    / Nuevos
+                    {numberWithCommas(state.nuevos)}
+                    - Nuevos
                 </Typography>
             </div>
         </div>
         <div className={classes.datos}>
             <div className={classes.box}>
                 <Typography className={classes.numberBox} align={'center'}>
-                    1,500 
+                    {numberWithCommas(state.pruebas)}
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
                     Pruebas
@@ -39,7 +39,7 @@ const StateData = ( props ) => {
             </div>
             <div className={classes.box}>
                 <Typography className={classes.numberBox} align={'center'}>
-                    900,000
+                    {numberWithCommas(state.poblacion)}
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
                     Habitantes
@@ -49,7 +49,7 @@ const StateData = ( props ) => {
         <div className={classes.datos}>
             <div className={classes.box}>
                 <Typography className={classes.numberBox} align={'center'}>
-                    #3
+                    #{state.ranking}
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
                     Ranking
@@ -154,8 +154,8 @@ const MunicipalityData = ( props ) => {
                     {state.nombre}
                 </Typography>
             </div>
-            <MunData classes={classes} mun={mun}/>
-            {/*<StateData classes={classes} state={state}/>*/}
+            <StateData classes={classes} state={state}/>
+            {/*<MunData classes={classes} mun={mun}/>*/}
         </div>
     )
 }
