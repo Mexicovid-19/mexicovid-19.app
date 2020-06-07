@@ -3,7 +3,7 @@ import { ResponsiveLine } from '@nivo/line';
 import * as colors from '../../constants/colors';
 import { themeBlack } from '../../constants/chartThemes';
 
-const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false  }) => {
+const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false, hideAxisValues=false  }) => {
     let axisBottom = null;
     let axisLeft = null;
     var Defaultmargin = { top: 10, right: 10, bottom: 15, left: 15 };
@@ -62,23 +62,44 @@ const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false 
             left: 60 
         };
         legendTy = -20;
-        legendTx = 20;
+        legendTx = 20; 
     }
-
+    console.log("object", dataContent)
     return(
         <ResponsiveLine
         theme={themeBlack}
         colors={colorArray}
         data={dataContent}
         margin={Defaultmargin}
-        xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
+        Scale={{
+          type: "time",
+          format: '%Y-%m-%d',
+          precision: 'day',
+            // format: 'native'
+        }}
+        xFormat={(value)=>new Date(value).toLocaleString().split(',')[0]}
+        axisBottom={!hideAxisValues ? {
+            format: (value)=>new Date(value).toLocaleString().split(',')[0],
+            tickValues: 5,
+        }:{
+            format: ()=>null,
+            "tickSize": 0,
+            "tickPadding": 5,
+            "tickRotation": 0,
+        }}
+        yScale={{ 
+            type: 'linear', 
+            min: 'auto', 
+            max: 'auto', 
+            stacked: false,
+            reverse: false 
+        }}
         axisTop={null}
         axisRight={null}
-        axisBottom={axisBottom}
+        // axisBottom={axisBottom}
         axisLeft={axisLeft}
-        lineWidth={2}
-        pointSize={7}
+        lineWidth={5}
+        pointSize={10}
         pointColor={{ from: 'color', modifiers: [] }}
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor', modifiers: [] }}
@@ -103,7 +124,7 @@ const MyResponsiveLine = ({ data, isSmall=true, isMobile=false, isConfirm=false 
                 itemWidth: 90,
                 itemHeight: 20,
                 itemOpacity: 0.75,
-                symbolSize: 12,
+                symbolSize: 17,
                 symbolShape: 'circle',
                 symbolBorderColor: 'rgba(0, 0, 0, .5)',
                 itemTextColor: colors.WHITE,
