@@ -45,13 +45,9 @@ const useMapMunicipio = () => {
         if(stateSelected) {
             setMunGEOJSON(null);
             callMunGEOJSON(stateSelected.cve_ent);
-<<<<<<< HEAD
-            setBounds(FITBOUNDS[stateSelected.cve_ent].limites);
-=======
             //console.log(FITBOUNDS[stateSelected.cve_ent].limites[0], FITBOUNDS[stateSelected.cve_ent].limites[1])
             
             //setBounds(FITBOUNDS[stateSelected.cve_ent].limites);
->>>>>>> 84dd5add749be79f43af04b8cd4e7ee77ee334f4
         }
     }, [stateSelected])
     
