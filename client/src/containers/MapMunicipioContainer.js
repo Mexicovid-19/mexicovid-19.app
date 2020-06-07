@@ -48,7 +48,12 @@ const useMapMunicipio = () => {
             callMunGEOJSON(stateSelected.cve_ent);
         }
     }, [stateSelected])
-    
+
+    React.useEffect(() => {
+        console.log(viewport)
+    },[viewport])
+
+
     React.useEffect(() => {
         if(state.date && munData && munGEOJSON && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
             setFillColor(getSteps(selectedLabel));

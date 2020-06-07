@@ -14,7 +14,10 @@ import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 import ColorGradientBar from './ColorGradientBar';
 import { HomeContext } from '../../contexts/HomeContext';
 import { MapMunicipioContext } from '../../contexts/MapMunicipioContext';
-import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
+import MunicipalityDataMov from './MunicipalityDataMov';
+import MapGL, { Popup, Source, Layer, FeatureState, NavigationControl } from '@urbica/react-map-gl';
+import { numberWithCommas } from '../../Utils/numberWCommas';
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -24,8 +27,42 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const MunMapMov = (props) => {
     const {classes} = props;
     const {closeMapContainer,isMapMunicipio,thresholdsNum} = React.useContext(MapContext);
-    const {selectedLabel} = React.useContext(HomeContext);
     const { mapRef } = React.useContext(MapMunicipioContext);
+    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds } = React.useContext(MapMunicipioContext);
+    const { stateSelected } = React.useContext(MapContext);
+    const { munData, selectedLabel, state } = React.useContext(HomeContext);
+    const [hoveredState, setHoveredState] = React.useState(null)
+    const [hoveredStateId, setHoveredStateId] = React.useState(null);
+
+    const [lat, setLat] = React.useState(0);
+    const [lng, setLng] = React.useState(0);
+    
+    const onHover = (event) => {
+        if (event.features.length > 0) {
+            const nextHoveredStateId = event.features[0].id;
+            if (hoveredStateId !== nextHoveredStateId) {
+                setHoveredStateId(nextHoveredStateId);
+            }
+
+            const _hoveredState = event.features[0].properties;
+            if (  _hoveredState !== hoveredState) {
+            setLat(event.lngLat.lat);
+            setLng(event.lngLat.lng);
+            setHoveredState(_hoveredState);
+            }
+        }
+    };
+      
+    const onLeave = () => {
+        if (hoveredStateId) {
+            setHoveredStateId(null);
+        }
+
+        if (hoveredState) {
+            setHoveredState(null);
+        }
+    };
+    console.log(stateSelected);
     
     return (
         <Dialog
@@ -47,29 +84,64 @@ const MunMapMov = (props) => {
                     </Button>
                 </div>
                 <div  className={classes.titleContainer}>
-                    <p>SanLuisPotosi</p>  
+                    {stateSelected.nombre} 
                 </div>
             </DialogTitle>
             <DialogContent classes={{root:classes.rootDCont}}>
                 <div className={classes.informationContainer}>
+                    <div className={classes.infocontainer}>
+                        <MunicipalityDataMov state={stateSelected} mun={munData} selectedLabel={selectedLabel}/>
+                    </div> 
                     <div className={classes.munMapContainerMov}>
-                        <div className={classes.nombrePobContainer}>
-                            <div className={classes.pobContainer}>
-                                <div><PeopleAltRoundedIcon/></div>
-                                <div><p>Pob: 15,000</p></div>
-                            </div>
-                            <div className={classes.stateNameContainer}>
-                                <svg className={classes.dotStyle}>
-                                    <circle r="5" cx="6" cy="10" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
-                                </svg>
-                                {selectedLabel === 'confirmados' ? <p>25,000</p> : <p>1,250</p>}
-                            </div>
-                        </div>
                         <div className={classes.mapboxContainer}>
-                            <div ref={mapRef} className={classes.map}></div>
+                                <MapGL
+                                    style={{ width: '95%', height: '100%', borderRadius: '10px' }}
+                                    mapStyle='mapbox://styles/mildredg/cka6jvxnt0mpf1ilh5krfkxlw'
+                                    accessToken={process.env.REACT_APP_MAP_BOX_API_KEY}
+                                    latitude={viewport.latitude}
+                                    longitude={viewport.longitude}
+                                    zoom={viewport.zoom}
+                                    onViewportChange={setViewport}
+                                >
+                                    <Source id='states' type='geojson' data={ geojson } />
+                                    {fillColor && 
+                                    <Layer
+                                        id='states'
+                                        type='fill'
+                                        source='states'
+                                        paint={{
+                                            'fill-color': fillColor,
+                                            'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 1, 0.8],
+                                            'fill-outline-color': colors.BLACK
+                                        }}
+                                        onHover={onHover}
+                                        onLeave={onLeave}
+                                    />}
+                                    {hoveredState && 
+                                    <Popup longitude={lng} latitude={lat} closeButton={false} closeOnClick={true} maxWidth={'600px'}>
+                                        <div>
+                                            <div>
+                                                <span className={classes.pop}>
+                                                {hoveredState.NOM_MUN.toLowerCase()}
+                                                </span>
+                                                <span className={classes.pop1}>
+                                                <svg className={classes.pop2}>
+                                                    <circle r="7" cx="8" cy="9" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
+                                                </svg>
+                                                {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel}
+                                                </span>
+                                            </div>
+                                            <div className={classes.moreinf}>
+                                                Da Click para ver más.
+                                            </div>
+                                        </div>
+                                    </Popup>}
+                                    {hoveredStateId && <FeatureState id={hoveredStateId} source='states' state={{ hover: true }} />}
+                                    <NavigationControl showCompass showZoom position='top-right' />
+                                </MapGL>
                         </div>
                         <div className={classes.colorNumsContainer}>
-                            <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
+                            <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />
                         </div>
                     </div> 
                     <div className={classes.munGraphContainerMov}>
@@ -166,6 +238,8 @@ const styles = () => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        height: '450px',
+        backgroundColor: '#dadfdf',
     },
     map:{
         height: '350px',
@@ -192,6 +266,12 @@ const styles = () => ({
 	    justifyContent: 'center',
 	    alignItems: 'center',
 	    alignContent: 'stretch',
+    },
+    infocontainer: {
+        width: '100%',
+        backgroundColor: colors.WHITE,
+        borderTop: `1px solid ${colors.WHITE}`,
+        borderBottom: `1px solid ${colors.WHITE}`
     },
 });
    

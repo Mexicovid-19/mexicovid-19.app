@@ -8,10 +8,11 @@ import { HomeContext } from "../../contexts/HomeContext";
 import MapGL, { Popup, Source, Layer, FeatureState, NavigationControl } from '@urbica/react-map-gl';
 import { numberWithCommas } from '../../Utils/numberWCommas';
 import LoaderView from '../Loader';
+import ColorGradientBar from './ColorGradientBarMun';
 
 const MunMap = ({classes}) => {
     const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick } = React.useContext(MapMunicipioContext);
-    const { stateSelected } = React.useContext(MapContext);
+    const { stateSelected, thresholdsNum } = React.useContext(MapContext);
     const { munData, selectedLabel, state } = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
     const [hoveredStateId, setHoveredStateId] = React.useState(null);
@@ -82,17 +83,17 @@ const MunMap = ({classes}) => {
                     onClick={onClick}
                 />}
                 {hoveredState && 
-                <Popup longitude={lng} latitude={lat} closeButton={false} closeOnClick={true} maxWidth={'600px'}>
+                <Popup longitude={lng} latitude={lat} closeButton={false} closeOnClick={true} maxWidth={'200px'}>
                     <div>
                         <div>
                             <span className={classes.pop}>
-                            {hoveredState.NOM_MUN.toLowerCase()}
+                                {hoveredState.NOM_MUN.toLowerCase()}
                             </span>
                             <span className={classes.pop1}>
-                            <svg className={classes.pop2}>
-                                <circle r="7" cx="8" cy="9" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
-                            </svg>
-                            {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel}
+                                <svg className={classes.pop2}>
+                                    <circle r="7" cx="8" cy="9" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
+                                </svg>
+                                {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel}
                             </span>
                         </div>
                         <div className={classes.moreinf}>
@@ -102,7 +103,10 @@ const MunMap = ({classes}) => {
                 </Popup>}
                 {hoveredStateId && <FeatureState id={hoveredStateId} source='states' state={{ hover: true }} />}
                 <NavigationControl showCompass showZoom position='top-right' />
+                    <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum}/>
+
             </MapGL>}
+            
         </div>
     )
 }
@@ -147,27 +151,34 @@ const styles = () => ({
         fontWeight: 'bold',
         display: 'flex',
         justifyContent: 'center',
-        fontSize:'24px',
-        padding: '10px',
+        fontSize:'14px',
+        padding: '5px',
         textTransform: 'capitalize',
     },
     pop1:{
         display: 'flex',
-        fontSize:'22px',
+        fontSize:'12px',
         fontFamily: 'Raleway',
-        padding: '10px',
+        padding: '5px',
         justifyContent: 'center',
         color: colors.GRAY_DARK,
     },
     pop2:{
-        width: '20px',
-        height: '20px', 
+        width: '18px',
+        height: '18px', 
         fontFamily: 'Raleway', 
     },
     moreinf:{
         textAlign: 'right',
-        fontSize: '12px',
+        fontSize: '10px',
         justifyContent: 'inherit',
+    },
+    colorNumsContainer: {
+        minHeight: '15%',
+        display: 'flex',
+        justifyContent: 'center',
+        position: 'relative',
+         margin: '0px 0px 10px 0px',
     },
 });
    
