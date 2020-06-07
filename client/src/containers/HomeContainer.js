@@ -27,11 +27,6 @@ const useHome = () => {
 
   React.useEffect(() => {
       if ( stateData ) {
-        let confirmData = [];
-        let deadData = [];
-        let rowsConfirm = [];
-        let rowsDeads = [];
-
         //dates array
         let dates = stateData[0].confirmados.map( data => data.date);
         let last_date = dates.slice(-1)[0];

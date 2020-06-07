@@ -47,7 +47,7 @@ const MunMap = ({classes}) => {
     return (
         <div className={classes.container}>
             <div className={classes.containerMungraph}>
-                <MunicipalityData state={stateSelected} mun={munData}/>
+                <MunicipalityData state={stateSelected} mun={munData} selectedLabel={selectedLabel}/>
             </div> 
             {geojson && geojson.features.length > 0 && 
             <MapGL

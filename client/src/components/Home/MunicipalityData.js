@@ -9,20 +9,20 @@ import Typography from '@material-ui/core/Typography';
 import { numberWithCommas } from '../../Utils/numberWCommas';
 
 const StateData = ( props ) => {
-    const { classes, state } = props;
+    const { classes, state, selectedLabel } = props;
     return (
         <React.Fragment>
         <div className={classes.casosContainer}>
             <div className={classes.casosTotales}>
                 <Typography className={classes.casos} align={'center'}>
-                    <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
+                    <FiberManualRecordTwoToneIcon className={selectedLabel == "confirmados" ? classes.dotConfirm : classes.dotDeads}/>
                     {numberWithCommas(state.totales) + " "}
                     - Totales
                 </Typography>
             </div>
             <div className={classes.casosNuevos}>
                 <Typography className={classes.casos} align={'center'}>
-                    <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
+                    <FiberManualRecordTwoToneIcon className={selectedLabel == "confirmados" ? classes.dotConfirm : classes.dotDeads}/>
                     {numberWithCommas(state.nuevos) + " "}
                     - Nuevos
                 </Typography>
@@ -145,7 +145,7 @@ const MunData = ( props ) => {
 }
 
 const MunicipalityData = ( props ) => {
-    const { classes, state, mun} = props;
+    const { classes, state, mun, selectedLabel} = props;
     
     return (
         <div className={classes.container}>
@@ -154,7 +154,7 @@ const MunicipalityData = ( props ) => {
                     {state.nombre}
                 </Typography>
             </div>
-            <StateData classes={classes} state={state}/>
+            <StateData classes={classes} state={state} selectedLabel={selectedLabel}/>
             {/*<MunData classes={classes} mun={mun}/>*/}
         </div>
     )
