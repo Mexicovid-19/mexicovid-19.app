@@ -69,29 +69,30 @@ const StateData = ( props ) => {
 }
 
 const MunData = ( props ) => {
-    const { classes, mun } = props;
+    const { classes, mun, selectedLabel } = props;
+    console.log(mun)
     return (
         <React.Fragment>
         <div className={classes.casosContainer}>
             <div className={classes.casosTotales}>
                 <Typography className={classes.casos} align={'center'}>
-                    <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
-                    {numberWithCommas(3500)}
-                    / Totales
+                    <FiberManualRecordTwoToneIcon className={selectedLabel == "confirmados" ? classes.dotConfirm : classes.dotDeads}/>
+                    {numberWithCommas(mun.totales) + " "}
+                    - Totales
                 </Typography>
             </div>
             <div className={classes.casosNuevos}>
                 <Typography className={classes.casos} align={'center'}>
-                    <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
-                    {numberWithCommas(500)}
-                    / Nuevos
+                    <FiberManualRecordTwoToneIcon className={selectedLabel == "confirmados" ? classes.dotConfirm : classes.dotDeads}/>
+                    {numberWithCommas(mun.nuevos) + " "}
+                    - Nuevos
                 </Typography>
             </div>
         </div>
         <div className={classes.datos}>
             <div className={classes.box}>
                 <Typography className={classes.numberBox} align={'center'}>
-                    1,500 
+                    {numberWithCommas(mun.pruebas)}
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
                     Pruebas
@@ -99,7 +100,7 @@ const MunData = ( props ) => {
             </div>
             <div className={classes.box}>
                 <Typography className={classes.numberBox} align={'center'}>
-                    Alto
+                    {mun.indice}
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
                     Vulnerabilidad
@@ -107,7 +108,7 @@ const MunData = ( props ) => {
             </div>
             <div className={classes.box}>
                 <Typography className={classes.numberBox} align={'center'}>
-                    900,000
+                {numberWithCommas(mun.poblacion)}
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
                     Habitantes
@@ -117,7 +118,7 @@ const MunData = ( props ) => {
         <div className={classes.datos}>
             <div className={classes.box}>
                 <Typography className={classes.numberBox} align={'center'}>
-                    #3
+                    #{mun.rankingEstatal}
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
                     Estatal
@@ -125,7 +126,7 @@ const MunData = ( props ) => {
             </div>
             <div className={classes.box}>
                 <Typography className={classes.numberBox} align={'center'}>
-                    #3
+                    #{mun.rankingNacional}
                 </Typography>
                 <Typography className={classes.boxText} align={'center'}>
                     Nacional
@@ -151,11 +152,14 @@ const MunicipalityData = ( props ) => {
         <div className={classes.container}>
             <div className={classes.title}>
                 <Typography className={classes.state} align={'center'}>
-                    {state.nombre}
+                    {mun ? `${state.abrev} - ${mun.nombre}` : state.nombre}
                 </Typography>
             </div>
-            <StateData classes={classes} state={state} selectedLabel={selectedLabel}/>
-            {/*<MunData classes={classes} mun={mun}/>*/}
+            {mun ? 
+                <MunData classes={classes} mun={mun} selectedLabel={selectedLabel}/>
+                :
+                <StateData classes={classes} state={state} selectedLabel={selectedLabel}/>
+            }
         </div>
     )
 }

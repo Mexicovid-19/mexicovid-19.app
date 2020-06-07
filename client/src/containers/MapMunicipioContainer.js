@@ -43,29 +43,29 @@ const useMapMunicipio = () => {
     
     React.useEffect(() => {
         if(stateSelected) {
+            setSelectedMun(null);
             setMunGEOJSON(null);
             callMunGEOJSON(stateSelected.cve_ent);
-            //console.log(FITBOUNDS[stateSelected.cve_ent].limites[0], FITBOUNDS[stateSelected.cve_ent].limites[1])
-            
-            //setBounds(FITBOUNDS[stateSelected.cve_ent].limites);
         }
     }, [stateSelected])
     
     React.useEffect(() => {
-        console.log(viewport)
-    }, [viewport])
-
-    React.useEffect(() => {
         if(state.date && munData && munGEOJSON && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
             setFillColor(getSteps(selectedLabel));
             setUpGEOJson();
-            console.log(munGEOJSON.features[0].properties.CVE_ENT, FITBOUNDS_VIEWPORT[munGEOJSON.features[0].properties.CVE_ENT].viewport);
             setViewport({
                 ...viewport,
                 latitude: FITBOUNDS_VIEWPORT[munGEOJSON.features[0].properties.CVE_ENT].viewport.latitude,
                 longitude: FITBOUNDS_VIEWPORT[munGEOJSON.features[0].properties.CVE_ENT].viewport.longitude,
                 zoom: FITBOUNDS_VIEWPORT[munGEOJSON.features[0].properties.CVE_ENT].viewport.zoom,
             })
+
+            //sortMunData
+            if ( selectedLabel == "confirmados") {
+                munData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count)
+            } else {
+                munData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count)
+            }
         }
     }, [munGEOJSON, munData, state, selectedLabel]);
 
@@ -117,6 +117,48 @@ const useMapMunicipio = () => {
 
         return fillColor;
     }
+    
+    let getVulnerability = ( indice ) => {
+        switch (indice) {
+            case 3:
+                return "Alto"
+                break;
+            case 2:
+                return "Medio"
+                break;
+            case 1:
+                return "Bajo"
+                break;
+            
+            default:
+                return "No disponible"
+                break;
+        }
+    }
+
+    const onClick = (event) => {
+        if (event.features.length > 0 && munData) {
+            console.log(munData)
+            let cve_mun      = event.features[0].properties.CVE_MUN;
+            let nombre       = event.features[0].properties.NOM_MUN;
+            let indexMun     = munData.findIndex(edo => edo.cve_mun == cve_mun);
+            let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
+            let totales      = event.features[0].properties[selectedLabel + "#" + state.date]
+            let nuevos       = totales - event.features[0].properties[selectedLabel + "#" + previousDate]
+            
+            setSelectedMun({
+                data          : event.features[0].properties,
+                nombre        : nombre,
+                poblacion     : munData[indexMun].poblacion,
+                rankingEstatal: indexMun + 1,
+                rankingNacion : indexMun + 1,
+                totales       : totales,
+                nuevos        : nuevos,
+                pruebas       : event.features[0].properties["pruebas#" + state.date],
+                indice        : getVulnerability(munData[indexMun].indice_vulnerabilidad)
+            });
+        }
+    }
 
   return {
     callMunGEOJSON,
@@ -126,7 +168,9 @@ const useMapMunicipio = () => {
     geojson,
     viewport,
     setViewport,
-    bounds
+    bounds,
+    onClick,
+    selectedMun
   }
 }
 

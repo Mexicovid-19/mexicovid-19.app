@@ -56,7 +56,7 @@ const useHome = () => {
           rowsConfirm.push(createTableData(i+1, confirmData[i].estado.toUpperCase(), Number(confirmData[i].confirmados[state.dateIndex].count)));
         }
 
-        stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
+        stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
         let deadData = stateData.map(s => ({"estado": s.abbrev, "decesos": s.decesos}))
         deadData.sort((a,b) => b.decesos[state.dateIndex] -a.decesos[state.dateIndex]);
         for(var i = 0; i < deadData.length; i++) {
@@ -65,6 +65,23 @@ const useHome = () => {
         }
 
         setRowsTable([rowsConfirm, rowsDeads]);
+
+        //sortMunData
+        if (munData) {
+          if ( selectedLabel == "confirmados") {
+            stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
+            munData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count)
+          } else {
+            stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
+            munData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count)
+          }
+        } else {
+          if ( selectedLabel == "confirmados") {
+            stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
+          } else {
+            stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
+          }
+        }
     }
   }, [state]);
 
@@ -95,7 +112,6 @@ const useHome = () => {
     } else {
       setMunData(munDataArr[cve_ent]);  
     }
-    
   }
   
   let createTableData = (position, state, data) => {
