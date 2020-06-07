@@ -2,9 +2,6 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import { HomeContext } from '../contexts/HomeContext';
-import { MapMunicipioContext } from '../contexts/MapMunicipioContext';
-import * as colors from './../constants/colors';
-import { numberWithCommas } from '../Utils/numberWCommas';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
@@ -42,6 +39,31 @@ const useMap = () => {
     if(state.date && stateData && statesGeOJSON && statesGeOJSON.features.length == 32) {  
       setFillColor(getSteps(selectedLabel));
       setUpGEOJson();
+
+      if( stateSelected ) {
+        let data = stateSelected.data;
+        let cve_ent = String(data.CVE_ENT);
+        cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
+        let nombre = data.ESTADO;
+        let indexState = stateData.findIndex(edo => edo.cve_ent == cve_ent);
+        let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
+        let totales = data[selectedLabel + "#" + state.date]
+        let nuevos = totales - data[selectedLabel + "#" + previousDate]
+      
+        setStateSelected(
+          {
+            data,
+            cve_ent,
+            nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
+            abrev: data.ABREV,
+            poblacion: stateData[indexState].poblacion,
+            ranking: indexState + 1,
+            totales: totales,
+            nuevos: nuevos,
+            pruebas: data["pruebas#" + state.date]
+          }
+        );
+      }
     }
   }, [selectedLabel, statesGeOJSON, stateData, state]);
 

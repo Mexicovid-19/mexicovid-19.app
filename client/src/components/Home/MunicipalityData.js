@@ -16,14 +16,14 @@ const StateData = ( props ) => {
             <div className={classes.casosTotales}>
                 <Typography className={classes.casos} align={'center'}>
                     <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
-                    {numberWithCommas(state.totales)}
+                    {numberWithCommas(state.totales) + " "}
                     - Totales
                 </Typography>
             </div>
             <div className={classes.casosNuevos}>
                 <Typography className={classes.casos} align={'center'}>
                     <FiberManualRecordTwoToneIcon className={classes.dotDeads}/>
-                    {numberWithCommas(state.nuevos)}
+                    {numberWithCommas(state.nuevos) + " "}
                     - Nuevos
                 </Typography>
             </div>

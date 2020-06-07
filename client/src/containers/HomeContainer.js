@@ -22,7 +22,6 @@ const useHome = () => {
   const [isMap, setIsMap] = React.useState(false);
   
   React.useEffect(() => {
-    
     callStatesData();
   }, []);
 
@@ -48,8 +47,6 @@ const useHome = () => {
         
         if(dataChart.length == 0)
           setDataChart([createChartData(stateData, "decesos", _state.countDates, _state.dates),createChartData(stateData, "confirmados", _state.countDates, _state.dates)]);
-
-        console.log([createChartData(stateData, "decesos", _state.countDates, _state.dates),createChartData(stateData, "confirmados", _state.countDates, _state.dates)]);
       }
   }, [stateData]);
 
@@ -57,10 +54,8 @@ const useHome = () => {
     if(state && state.date) {
         let rowsDeads = [];
         let rowsConfirm = [];
-        console.log(stateData)
         stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
         let confirmData = stateData.map(s => ({"estado": s.abbrev, "confirmados": s.confirmados}))
-        console.log(confirmData)
         for(var i = 0; i < confirmData.length; i++) {
           //update just the last number
           rowsConfirm.push(createTableData(i+1, confirmData[i].estado.toUpperCase(), Number(confirmData[i].confirmados[state.dateIndex].count)));
@@ -68,7 +63,6 @@ const useHome = () => {
 
         stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
         let deadData = stateData.map(s => ({"estado": s.abbrev, "decesos": s.decesos}))
-        console.log(deadData)
         deadData.sort((a,b) => b.decesos[state.dateIndex] -a.decesos[state.dateIndex]);
         for(var i = 0; i < deadData.length; i++) {
           //update just the last number
@@ -95,7 +89,6 @@ const useHome = () => {
   }
 
   let callMunData = (cve_ent)  => {
-    console.log(munDataArr, cve_ent);
     if(!(cve_ent in munDataArr)) {
       axios.get(`${process.env.REACT_APP_API_URL}/municipio/${cve_ent}`, {})
       .then(res => {

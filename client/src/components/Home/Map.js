@@ -32,13 +32,12 @@ const Map = ({classes}) => {
       cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
       let nombre = event.features[0].properties.ESTADO;
       let indexState = stateData.findIndex(edo => edo.cve_ent == cve_ent);
-      console.log(cve_ent, stateData, indexState)
       let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
       let totales = event.features[0].properties[selectedLabel + "#" + state.date]
       let nuevos = totales - event.features[0].properties[selectedLabel + "#" + previousDate]
       
-      setStateSelected(
-        {
+      setStateSelected({
+          data: event.features[0].properties,
           cve_ent,
           nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
           abrev: event.features[0].properties.ABREV,
@@ -47,8 +46,7 @@ const Map = ({classes}) => {
           totales: totales,
           nuevos: nuevos,
           pruebas: event.features[0].properties["pruebas#" + state.date]
-        }
-      );
+      });
     }
     
     setIsMapMunicipio(true);

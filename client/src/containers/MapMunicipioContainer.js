@@ -32,7 +32,6 @@ const useMapMunicipio = () => {
     });
 
     const {
-        isMapMunicipio,
         stateSelected
     } = React.useContext(MapContext);
 
@@ -46,8 +45,6 @@ const useMapMunicipio = () => {
         if(stateSelected) {
             setMunGEOJSON(null);
             callMunGEOJSON(stateSelected.cve_ent);
-            //console.log(FITBOUNDS[stateSelected.cve_ent].limites[0], FITBOUNDS[stateSelected.cve_ent].limites[1])
-            
             setBounds(FITBOUNDS[stateSelected.cve_ent].limites);
         }
     }, [stateSelected])
@@ -57,11 +54,11 @@ const useMapMunicipio = () => {
     }, [viewport])
 
     React.useEffect(() => {
-        if(state.date && munData && munGEOJSON && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
+        if(state.date && munData && munGEOJSON && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
             setFillColor(getSteps(selectedLabel));
             setUpGEOJson();
         }
-    }, [munGEOJSON, munData]);
+    }, [munGEOJSON, munData, state, selectedLabel]);
 
     let callMunGEOJSON = (cve_ent)  => {
         axios.get(`${process.env.REACT_APP_API_URL}/map/municipality/find/CVE_ENT?cve_ent=${cve_ent}`, {})
