@@ -8,6 +8,10 @@ import SimulationUncertainty from './SimulationUncertainty';
 import ReactivacionEco from './ReactivacionEco';
 import { Helmet } from 'react-helmet';
 import MasterDetailView from '../MasterDetailView';
+import Calculadora from '../Calculadora';
+
+import Barchart from '../Regions';
+
 const Simulation = ({ classes }) => {
 
 	const isMobile = window.innerWidth < 1000;
@@ -32,6 +36,15 @@ const Simulation = ({ classes }) => {
 			render: ()=>(
 				<iframe src="./uncertainty" className={classes.graphContainer}></iframe>
 			)
+		},
+		{
+			title: 'Calculadora de PIB',
+			subtitle: '<b>Roberto Duran</b>',
+			escription: 'Este modelo de difusión de COVID19 constituye una versión modificada del modelo SIR. Considera parámetros sobre la infectividad y mortalidad del COVID19, el impacto del distanciamiento social y, de manera muy importante, el rezago en la información entre el número real de infectados y el número de casos confirmados.',
+			caption: 'Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey @fgmzz',
+			render: ()=>(
+				<iframe src="./uncertainty" className={classes.graphContainer}></iframe>
+			)
 		}
 	]
 
@@ -50,6 +63,7 @@ const Simulation = ({ classes }) => {
 			</Helmet>
 			<div style={{display: 'flex', height: '100vh', flexDirection: 'column'}}>
 				<Header fixed={false}/>
+
 				<div className={classes.container}>
 					<MasterDetailView 
 						sections={sections}
