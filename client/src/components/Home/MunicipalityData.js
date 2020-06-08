@@ -7,6 +7,7 @@ import FiberManualRecordTwoToneIcon from '@material-ui/icons/FiberManualRecordTw
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import Typography from '@material-ui/core/Typography';
 import { numberWithCommas } from '../../Utils/numberWCommas';
+import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
 
 const StateData = ( props ) => {
     const { classes, state, selectedLabel } = props;
@@ -147,10 +148,17 @@ const MunData = ( props ) => {
 
 const MunicipalityData = ( props ) => {
     const { classes, state, mun, selectedLabel} = props;
+    const {setIsMapMunicipio} = React.useContext(MapContext);
+
+    const onClick = (event) => {
+        setIsMapMunicipio(false);
+    }
+
     
     return (
         <div className={classes.container}>
             <div className={classes.title}>
+                <ArrowForwardIosRoundedIcon onClick={onClick}/>
                 <Typography className={classes.state} align={'center'}>
                     {mun ? `${state.abrev} - ${mun.nombre}` : state.nombre}
                 </Typography>
@@ -173,10 +181,10 @@ const styles = () => ({
         color: colors.WHITE
     },
     title: {
-        justifyContent: 'center',
+        justifyContent: 'end',
         flexDirection: 'row',
         display: 'flex',
-        alignItems: 'baseline',
+        alignItems: 'center',
         marginBottom: '10px'
     },
     state: {
