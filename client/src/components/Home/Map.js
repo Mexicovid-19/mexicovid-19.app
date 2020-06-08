@@ -51,8 +51,15 @@ const Map = ({classes}) => {
     
     setIsMapMunicipio(true);
     setIsExpanded(true);
+    if(!isMobile) {
+      setViewport({
+        longitude: -92.15971352034632,
+        latitude: 23.82078503302337,
+        zoom: 3.6937549027062824
+      });
+    }
   }
-
+  console.log(viewport)
   const onHover = (event) => {
     if (event.features.length > 0) {
       const nextHoveredStateId = event.features[0].id;

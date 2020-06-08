@@ -41,8 +41,6 @@ const MunMapMov = (props) => {
     const onClickpos = (event) => {
         onClick(event);
         scrollToRef(posRef);
-        console.log(posRef.current)
-        console.log(diagRef.current)
     }
 
     console.log(stateSelected);
