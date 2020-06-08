@@ -37,6 +37,7 @@ const useMapMunicipio = () => {
 
     const {
         munData,
+        setMunData,
         state,
         selectedLabel
     } = React.useContext(HomeContext);
@@ -48,12 +49,7 @@ const useMapMunicipio = () => {
             callMunGEOJSON(stateSelected.cve_ent);
         }
     }, [stateSelected])
-
-    React.useEffect(() => {
-        console.log(viewport)
-    },[viewport])
-
-
+    
     React.useEffect(() => {
         if(state.date && munData && munGEOJSON && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
             setFillColor(getSteps(selectedLabel));
@@ -66,11 +62,13 @@ const useMapMunicipio = () => {
             })
 
             //sortMunData
-            if ( selectedLabel == "confirmados") {
+            console.log(munData)
+            /*if ( selectedLabel == "confirmados") {
                 munData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count)
             } else {
                 munData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count)
-            }
+            }*/
+            console.log(munData)
         }
     }, [munGEOJSON, munData, state, selectedLabel]);
 
@@ -80,6 +78,23 @@ const useMapMunicipio = () => {
             setMunGEOJSON(res.data);
         });
     }
+
+    let binarySearch = (inf, sup, val, arr) => {
+        if ( inf > sup){
+          console.log(sup, inf)
+          return sup < 0 ? 0: sup;
+        }
+        else {
+          var mid = inf + Math.floor((sup - inf) /2);
+            if(arr[mid].properties.CVE_ENT == val) {
+              return mid;
+            } else if( arr[mid].properties.CVE_ENT < val) {
+              return binarySearch(mid + 1, sup, val, arr)
+            } else {
+              return binarySearch(inf, mid - 1, val, arr)
+            }
+        }
+    }    
 
     let setUpGEOJson = () => {
         let geojson = munGEOJSON;
@@ -136,7 +151,7 @@ const useMapMunicipio = () => {
                 break;
             
             default:
-                return "No disponible"
+                return "No Disponible"
                 break;
         }
     }
@@ -175,7 +190,8 @@ const useMapMunicipio = () => {
     setViewport,
     bounds,
     onClick,
-    selectedMun
+    selectedMun,
+    thresholdsNum
   }
 }
 

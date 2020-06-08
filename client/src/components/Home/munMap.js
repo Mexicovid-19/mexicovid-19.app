@@ -11,8 +11,8 @@ import LoaderView from '../Loader';
 import ColorGradientBar from './ColorGradientBarMun';
 
 const MunMap = ({classes}) => {
-    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick } = React.useContext(MapMunicipioContext);
-    const { stateSelected, thresholdsNum } = React.useContext(MapContext);
+    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick, thresholdsNum } = React.useContext(MapMunicipioContext);
+    const { stateSelected } = React.useContext(MapContext);
     const { munData, selectedLabel, state } = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
     const [hoveredStateId, setHoveredStateId] = React.useState(null);
@@ -103,7 +103,7 @@ const MunMap = ({classes}) => {
                 </Popup>}
                 {hoveredStateId && <FeatureState id={hoveredStateId} source='states' state={{ hover: true }} />}
                 <NavigationControl showCompass showZoom position='top-right' />
-                    <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum}/>
+                <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum}/>
 
             </MapGL>}
             
