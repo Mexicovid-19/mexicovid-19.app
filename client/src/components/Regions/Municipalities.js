@@ -35,7 +35,7 @@ const Municipalities = ({ classes }) => {
 			title: 'Seguimiento al COVID-19 en Municipios',
 			subtitle: 'Mediante esta visualización se da seguimiento a la evolución del número de casos de COVID19 a nivel municipal, y permite tener un seguimiento mediante la evolución a lo largo del tiempo.',
 			description: '', 
-			render: ()=>(<iframe src="./municipalitiesfollow" className={classes.graphContainer}></iframe>)
+			render: ()=>(<iframe src="https://public.tableau.com/views/mexicovid19_municipal/Mapamunicipal?:embed=y&:embed_code_version=3&:loadOrderID=0&:display_count=y&:origin=viz_share_link" className={classes.graphContainer}></iframe>)
 		},
 		{
 			title: 'Distribución geográfica de pacientes diagosticados con Covid-19',
