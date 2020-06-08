@@ -13,3 +13,7 @@ export const GRAY = '#95a6a552';
 export const GRAY_LIGHT = '#a2a2a2';
 export const GRAY_BLUE = '#dadfdf';
 export const GRAY_DARK = '#333333';
+
+export const YELLOW_SEMAFORO = '#ffe500';
+export const GREEN_SEMAFORO = '#00ff0a';
+export const RED_SEMAFORO = '#ff1100';
