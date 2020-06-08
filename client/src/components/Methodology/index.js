@@ -35,6 +35,25 @@ const Methodology = ({ classes }) => {
             <Button className={classes.label} href="#data" ><TimelineOutlinedIcon className={classes.icons}/>Visualización de Datos</Button>
             <Button className={classes.label} href="#politic" ><PolicyIcon className={classes.icons}/>Política de Divulgación</Button>
           </navbar>
+          <section id="cemexmetho" className={classes.row}>
+            <div className={classes.title}>
+              <Grid container direction="column" justify="center" alignItems="center">
+                <Grid>
+                  <div className={classes.textTitle}>Indice de vulnerabilidad en infraestructura de la vivienda (Mapa principal sección por municipios)</div>
+                </Grid>
+                <Grid>
+                  <div><img src="cemex.png" className={classes.bigIconscem} alt="Image"/></div>
+                </Grid>
+              </Grid>  
+            </div>
+            <div className={classes.contentcemex}>
+              <div  className={classes.Autortitle}>
+                Cemex-Tec : Carmen Armenta Menchaca, Araceli Ortega Díaz, Joaquin R. García Viera, Héctor A. García López, Rena Porsen Overgaard
+              </div>
+              La metodología multidimensional para la construcción de índices toma en cuenta una cota Nacional θ que describe qué unidad de análisis (persona, familia, vivienda, municipio, etc.) tiene o no el acceso a algo (achievement o logro). En el presente caso si el Municipio no tiene el logro de mantener sus carencia debajo del nivel nacional se le dará una valor de 1 ya que tiene la carencia, y cero si no es carente en cierta dimensión. 
+    	        Una vez definidos qué municipios son vulnerables, ya que sus carencias rebasan la cota nacional, la agregación de las dimensiones se realiza de acuerdo con pesos documentados. En el caso de México se ha documentado que, por derechos de acuerdo con Ley General de Desarrollo Social, las dimensiones aquí un usadas tienen peso igualitario, de tal manera que al construir el índice multidimensional seguimos la metodología del CONEVAL que agrega de manera igualitaria por dimensión. La dimensión de servicios de la vivienda  se agrega en una sola, la dimensión  características de la vivienda también se agrega en una sola, la de salud en otra (CONEVAL, 2018). Adicionalmente el Centro CEMEX-Tec de Monterrey incluyó la dimensión densidad, dando como resultado 4 dimensiones. En específico la carencia por servicios básicos en la vivienda toma el valor de si alguna de sus subdimensiones fue catalogada como carentes: viviendas sin acceso a drenaje o sin acceso a servicios de agua entubada. De igual manera la dimensión de calidad y espacios en la vivienda agrupa las carencias por hacinamiento, techo precario, muros precarios y piso de tierra en la vivienda. 
+            </div>
+          </section>
           <section id="info" className={`${classes.row} ${classes.topSection}`}>
             <div className={classes.title}>
               <Grid container direction="column" justify="center" alignItems="center">
@@ -79,22 +98,6 @@ const Methodology = ({ classes }) => {
             </div>
             <div className={classes.content}>
               Esta página es elaborada y mantenida por un grupo de profesores y estudiantes del Tecnológico de Monterrey. Las inconsistencias y errores son competencia de los autores de esta página y no de la Institución. Asimismo, las posturas y opiniones aquí vertidas representan la posición personal de los autores y no del Tecnológico de Monterrey.
-            </div>
-          </section>
-          <section id="cemexmetho" className={classes.row}>
-            <div className={classes.title}>
-              <Grid container direction="column" justify="center" alignItems="center">
-                <Grid>
-                  <div className={classes.textTitle}>Indice de vulnerabilidad en infraestructura de la vivienda</div>
-                </Grid>
-                <Grid>
-                  <div><img src="cemex.png" className={classes.bigIconscem} alt="Image"/></div>
-                </Grid>
-              </Grid>  
-            </div>
-            <div className={classes.content}>
-            La metodología multidimensional para la construcción de índices toma en cuenta una cota Nacional θ que describe qué unidad de análisis (persona, familia, vivienda, municipio, etc.) tiene o no el acceso a algo (achievement o logro). En el presente caso si el Municipio no tiene el logro de mantener sus carencia debajo del nivel nacional se le dará una valor de 1 ya que tiene la carencia, y cero si no es carente en cierta dimensión. 
-    	        Una vez definidos qué municipios son vulnerables, ya que sus carencias rebasan la cota nacional, la agregación de las dimensiones se realiza de acuerdo con pesos documentados. En el caso de México se ha documentado que, por derechos de acuerdo con Ley General de Desarrollo Social, las dimensiones aquí un usadas tienen peso igualitario, de tal manera que al construir el índice multidimensional seguimos la metodología del CONEVAL que agrega de manera igualitaria por dimensión. La dimensión de servicios de la vivienda  se agrega en una sola, la dimensión  características de la vivienda también se agrega en una sola, la de salud en otra (CONEVAL, 2018). Adicionalmente el Centro CEMEX-Tec de Monterrey incluyó la dimensión densidad, dando como resultado 4 dimensiones. En específico la carencia por servicios básicos en la vivienda toma el valor de si alguna de sus subdimensiones fue catalogada como carentes: viviendas sin acceso a drenaje o sin acceso a servicios de agua entubada. De igual manera la dimensión de calidad y espacios en la vivienda agrupa las carencias por hacinamiento, techo precario, muros precarios y piso de tierra en la vivienda. 
             </div>
           </section>
         </main>
@@ -165,6 +168,18 @@ const styles = () => ({
     textAlign: 'center',
   },
 
+  Autortitle:{
+    marginBottom: '15px',
+    fontSize: '20px',
+  },
+
+  contentcemex: {
+    padding: '20px',
+    flex: '5',
+    display: 'grid',
+    textAlign: 'justify'
+  },
+
   content: {
     padding: '20px',
     flex: '5',
@@ -193,8 +208,8 @@ const styles = () => ({
   },
 
   bigIconscem: {
-    width: '180px',
-    height: '180px',
+    width: '200px',
+    height: '200px',
     color: colors.BLACK,
   },
   

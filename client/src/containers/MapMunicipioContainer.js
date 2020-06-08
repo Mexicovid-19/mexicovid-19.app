@@ -105,6 +105,7 @@ const useMapMunicipio = () => {
                 geojson.features[index].properties["pruebas#" + munData[index].pruebas[confIndex].date] = Number(munData[index].pruebas[confIndex].count);
             }
         }
+        console.log(geojson)
         setGeojson(geojson);
     }
 
