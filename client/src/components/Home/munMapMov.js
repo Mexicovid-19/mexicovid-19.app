@@ -27,10 +27,9 @@ const MunMapMov = (props) => {
     const { mapRef } = React.useContext(MapMunicipioContext);
     const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick,thresholdsNum} = React.useContext(MapMunicipioContext);
     const { stateSelected } = React.useContext(MapContext);
-    const { selectedLabel, state } = React.useContext(HomeContext);
+    const { selectedLabel, state,isExpanded,setIsExpanded } = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
     const [hoveredStateId, setHoveredStateId] = React.useState(null);
-
 
     const diagRef = useRef(null);
     const posRef = useRef(null);

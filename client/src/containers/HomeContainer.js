@@ -141,6 +141,8 @@ const useHome = () => {
     setIsMap(bool);
   }
 
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
   return {
     stateData,
     state,
@@ -153,7 +155,9 @@ const useHome = () => {
     onChangeTab,
     callMunData,
     munData,
-    setMunData
+    setMunData,
+    isExpanded,
+    setIsExpanded
   }
 }
 
