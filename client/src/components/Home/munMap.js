@@ -12,7 +12,7 @@ import ColorGradientBar from './ColorGradientBarMun';
 
 const MunMap = ({classes}) => {
     const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick } = React.useContext(MapMunicipioContext);
-    const { stateSelected, thresholdsNum } = React.useContext(MapContext);
+    const { stateSelected, thresholdsNum} = React.useContext(MapContext);
     const { munData, selectedLabel, state } = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
     const [hoveredStateId, setHoveredStateId] = React.useState(null);
