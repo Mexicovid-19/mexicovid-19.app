@@ -73,10 +73,9 @@ const useMapMunicipio = () => {
 
             //sortMunData
             let fecha = state.dateIndex;
-            let geojsonformun = munGEOJSON;
-            console.log(selectedLabel)
-            console.log(munData[0].confirmados[fecha].count)
-            console.log(geojsonformun.features[0].properties["confirmados#"+state.date])
+            //let geojsonformun = munGEOJSON;
+            //console.log(munData[0].confirmados[fecha].count)
+            //console.log(geojsonformun.features[0].properties["confirmados#"+state.date])
             if ( selectedLabel == "confirmados") {
                 munData.sort((a,b) => b.confirmados[fecha].count - a.confirmados[fecha].count)
             } else {
@@ -173,7 +172,7 @@ const useMapMunicipio = () => {
     }
 
     const onClick = (event) => {
-        if (event.features.length > 0 && munData) {
+        if (event.features.length > 0 && munData ) {
             console.log(munData)
             console.log(munDataMap)
             let cve_mun      = event.features[0].properties.CVE_MUN;
