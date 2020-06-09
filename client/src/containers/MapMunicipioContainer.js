@@ -276,6 +276,7 @@ const useMapMunicipio = () => {
     callMunGEOJSON,
     mapRef,
     selectedMun,
+    setSelectedMun,
     fillColor,
     geojson,
     viewport,
@@ -285,7 +286,6 @@ const useMapMunicipio = () => {
     thresholdsNum,
     munGEOJSON,
     isLoading,
-
     munDataChart
   }
 }
