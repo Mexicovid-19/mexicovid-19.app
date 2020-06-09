@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const useHome = () => {
+  const PROMEDIO_MOVIL = 4;
   const [munDataArr, setMunDataArr] = React.useState({});
   const [stateData, setStateData] = React.useState(null);
   const [state, setState ] = React.useState({
@@ -18,6 +19,7 @@ const useHome = () => {
   const[rowsTable, setRowsTable] = React.useState([]);
   const[rows, setRows] = React.useState([]);
   const [dataChart, setDataChart] = React.useState([]);
+  const [stateDataChart, setStateDataChart] = React.useState([]);
   const [selectedLabel, setSelectedLabel] = React.useState(null);
   const [isMap, setIsMap] = React.useState(false);
   
@@ -41,7 +43,16 @@ const useHome = () => {
         setState(_state)
         
         if(dataChart.length == 0)
-          setDataChart([createChartData(stateData, "decesos", _state.countDates, _state.dates),createChartData(stateData, "confirmados", _state.countDates, _state.dates)]);
+          setDataChart([cleanData(stateData, "decesos", _state.countDates, _state.dates),cleanData(stateData, "confirmados", _state.countDates, _state.dates)]);
+        if(stateDataChart.length == 0){
+          var { newCases, prom } = stateChart(cleanData(stateData, "decesos", _state.countDates, _state.dates));
+          let d = newCases;
+          let dp = prom;
+          var { newCases, prom } = stateChart(cleanData(stateData, "confirmados", _state.countDates, _state.dates));
+          let c = newCases;
+          let cp = prom;
+          setStateDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
+        }
       }
   }, [stateData]);
 
@@ -101,7 +112,7 @@ const useHome = () => {
     return { position, state, data };
   }
 
-  let createChartData = (data, label, datesLen, dates) => {
+  let cleanData = (data, label, datesLen, dates) => {
     let _dataChart = [];
     let casos;
     for(var i = 0; i < datesLen; i++){
@@ -112,7 +123,7 @@ const useHome = () => {
 
       _dataChart.push(chartPoint(dates[i], casos));
     }
-    console.log(_dataChart)
+
     return {
       id: label,
       data: _dataChart
@@ -141,6 +152,41 @@ const useHome = () => {
     setIsMap(bool);
   }
 
+  let stateChart = (content) => {
+    let { data } = content;
+    let newCases = getNewCases(data);
+    let prom = getProm(newCases);
+    //console.log(newCases, prom)
+    return ({newCases, prom});
+  }
+
+  let getNewCases = (data) => {
+    //console.log(data)
+    let newCases = []
+    for(var dataIndex in data) {
+      if(dataIndex == 0) {
+        newCases.push(chartPoint(data[dataIndex].x, data[dataIndex].y))
+      } else {
+        newCases.push(chartPoint(data[dataIndex].x, data[dataIndex].y - data[dataIndex - 1].y))
+      }
+    }
+    return newCases;
+  }
+
+  let getProm = (data) => {
+    let batches = Math.floor(data.length / PROMEDIO_MOVIL);
+    let prom = []
+
+    for(var batch = 0; batch < batches; batch++) {
+      let start = batch*PROMEDIO_MOVIL;
+      let end = start + PROMEDIO_MOVIL;
+      //console.log(data.slice(start,end))
+      prom.push(chartPoint(data[start].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / PROMEDIO_MOVIL));
+    }
+    
+    return prom;
+  }
+
   return {
     stateData,
     state,
@@ -153,7 +199,9 @@ const useHome = () => {
     onChangeTab,
     callMunData,
     munData,
-    setMunData
+    setMunData,
+
+    stateDataChart
   }
 }
 
