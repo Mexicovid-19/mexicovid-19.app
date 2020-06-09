@@ -48,7 +48,7 @@ const MyResponsiveBar = ({ data, isSmall=true, isMobile=false, isConfirm=false, 
             return null
         }
 
-        let data = (series[1].data).push(series[0].data[series[0].data.length - 1])
+        
         return (
             <path d={lineGenerator(series[1].data)} fill="none" stroke="white"  stroke-width="5"/>
         );

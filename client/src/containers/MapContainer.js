@@ -121,7 +121,6 @@ const useMap = () => {
 
   let binarySearch = (inf, sup, val, arr) => {
     if ( inf > sup){
-      console.log(sup, inf)
       return sup < 0 ? 0: sup;
     }
     else {
@@ -152,9 +151,7 @@ const useMap = () => {
         }
         geojsonOrdered.push(_geojson.features[index])
         _geojson.features.splice(index,1)
-      } else {
-        console.log(index, "chale")
-      }
+      } 
     }
     
     _geojson.features = geojsonOrdered

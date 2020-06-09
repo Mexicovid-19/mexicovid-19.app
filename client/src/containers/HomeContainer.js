@@ -60,14 +60,12 @@ const useHome = () => {
 
   React.useEffect(() => {
     if ( munData ) {
-      console.log(munData)
       var { newCases, prom } = stateChart(cleanData(munData, "decesos", state.countDates, state.dates));
       let d = newCases;
       let dp = prom;
       var { newCases, prom } = stateChart(cleanData(munData, "confirmados", state.countDates, state.dates));
       let c = newCases;
       let cp = prom;
-      console.log(d, dp, c, cp)
       setStateDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
     }
 }, [munData]);
@@ -76,19 +74,19 @@ const useHome = () => {
     if(state && state.date) {
         let rowsDeads = [];
         let rowsConfirm = [];
-        stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
-        let confirmData = stateData.map(s => ({"estado": s.abbrev, "confirmados": s.confirmados}))
-        for(var i = 0; i < confirmData.length; i++) {
-          //update just the last number
-          rowsConfirm.push(createTableData(i+1, confirmData[i].estado.toUpperCase(), Number(confirmData[i].confirmados[state.dateIndex].count)));
-        }
-
         stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
         let deadData = stateData.map(s => ({"estado": s.abbrev, "decesos": s.decesos}))
         deadData.sort((a,b) => b.decesos[state.dateIndex] -a.decesos[state.dateIndex]);
         for(var i = 0; i < deadData.length; i++) {
           //update just the last number
           rowsDeads.push(createTableData(i+1, deadData[i].estado.toUpperCase(), Number(deadData[i].decesos[state.dateIndex].count)));
+        }
+
+        stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
+        let confirmData = stateData.map(s => ({"estado": s.abbrev, "confirmados": s.confirmados}))
+        for(var i = 0; i < confirmData.length; i++) {
+          //update just the last number
+          rowsConfirm.push(createTableData(i+1, confirmData[i].estado.toUpperCase(), Number(confirmData[i].confirmados[state.dateIndex].count)));
         }
 
         setRowsTable([rowsConfirm, rowsDeads]);
@@ -111,17 +109,13 @@ const useHome = () => {
   }
 
   let callMunData = (cve_ent)  => {
-    if(!(cve_ent in munDataArr)) {
-      axios.get(`${process.env.REACT_APP_API_URL}/municipio/${cve_ent}`, {})
-      .then(res => {
-        setMunData(res.data);
-        let _munObj = munDataArr;
-        _munObj[cve_ent] = res.data;
-        setMunDataArr(_munObj);
-      });
-    } else {
-      setMunData(munDataArr[cve_ent]);  
-    }
+    axios.get(`${process.env.REACT_APP_API_URL}/municipio/${cve_ent}`, {})
+    .then(res => {
+      setMunData(res.data);
+      let _munObj = munDataArr;
+      _munObj[cve_ent] = res.data;
+      setMunDataArr(_munObj);
+    });
   }
   
   let createTableData = (position, state, data) => {
@@ -191,10 +185,20 @@ const useHome = () => {
     let batches = Math.floor(data.length / PROMEDIO_MOVIL);
     let prom = []
 
+    console.log(data)
     for(var batch = 0; batch < batches; batch++) {
       let start = batch*PROMEDIO_MOVIL;
       let end = start + PROMEDIO_MOVIL;
+      console.log(start, end, batch)
       prom.push(chartPoint(data[start].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / PROMEDIO_MOVIL));
+      
+      if( data.length - end < PROMEDIO_MOVIL && data.length > end) {
+        let prom_movil = data.length - end;
+        start = end + 1;
+        end = data.length;
+        console.log(start, end, data)
+        prom.push(chartPoint(data[end - 1].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / prom_movil));
+      }
     }
     
     return prom;

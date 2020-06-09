@@ -144,7 +144,6 @@ const EnhancedTableToolbar = (props) => {
       <button>
         {!isMobile && <AspectRatioRoundedIcon className={classes.icon} onClick={clickOpen}/>}
       </button>
-      {/*<MyResponsiveLine data={data} isMobile={isMobile} isConfirm={isConfirm} hideAxisValues/>*/}
       <MyResponsiveBar data={data} isSmall={true} isMobile={isMobile} isConfirm={isConfirm}/>
       <AlertDialogSlide handleClose={clickClose} open={openDial} data={data} isConfirm={isConfirm} />
     </Toolbar>
@@ -230,7 +229,6 @@ const EnhancedTable = () => {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('ranking');
   const [selected, setSelected] = React.useState([]);
-  console.log(nationalDataChart, dataChart)
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
