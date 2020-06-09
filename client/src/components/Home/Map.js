@@ -14,7 +14,7 @@ import { numberWithCommas } from '../../Utils/numberWCommas';
 
 const Map = ({classes}) => {
   const { mapRef, thresholdsNum, isMapMunicipio, geojson,statesGeOJSON, fillColor, setStateSelected, setIsMapMunicipio} = React.useContext(MapContext);
-  const {selectedLabel, isMap, stateData, state} = React.useContext(HomeContext);
+  const {selectedLabel, isMap, stateData, state,setIsExpanded} = React.useContext(HomeContext);
   const [hoveredState, setHoveredState] = React.useState(null)
   const [hoveredStateId, setHoveredStateId] = React.useState(null);
 
@@ -50,8 +50,16 @@ const Map = ({classes}) => {
     }
     
     setIsMapMunicipio(true);
+    setIsExpanded(true);
+    if(!isMobile) {
+      setViewport({
+        longitude: -92.15971352034632,
+        latitude: 23.82078503302337,
+        zoom: 3.6937549027062824
+      });
+    }
   }
-
+  
   const onHover = (event) => {
     if (event.features.length > 0) {
       const nextHoveredStateId = event.features[0].id;

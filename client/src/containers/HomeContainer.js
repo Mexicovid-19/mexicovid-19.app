@@ -23,6 +23,7 @@ const useHome = () => {
   const [stateDataChart, setStateDataChart] = React.useState([]);
   const [selectedLabel, setSelectedLabel] = React.useState(null);
   const [isMap, setIsMap] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(false);
   
   React.useEffect(() => {
     callStatesData();
@@ -198,7 +199,7 @@ const useHome = () => {
     
     return prom;
   }
-
+  
   return {
     stateData, 
     state,
@@ -212,10 +213,11 @@ const useHome = () => {
     callMunData,
     munData,
     setMunData,
-
     nationalDataChart,
     stateDataChart,
-    PROMEDIO_MOVIL
+    PROMEDIO_MOVIL,
+    isExpanded,
+    setIsExpanded
   }
 }
 

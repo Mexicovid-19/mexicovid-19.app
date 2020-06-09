@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { Component, useRef, useEffect } from 'react';
+import { render } from 'react-dom'
 import { withStyles } from '@material-ui/core/styles';
 import { MapContext } from '../../contexts/MapContext';
 import * as colors from '../../constants/colors';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
-import ColorGradientBar from './ColorGradientBar';
+import ColorGradientBar from './ColorGradientBarMun';
 import { HomeContext } from '../../contexts/HomeContext';
 import { MapMunicipioContext } from '../../contexts/MapMunicipioContext';
 import MunicipalityDataMov from './MunicipalityDataMov';
@@ -23,45 +21,28 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
 const MunMapMov = (props) => {
     const {classes} = props;
-    const {closeMapContainer,isMapMunicipio,thresholdsNum} = React.useContext(MapContext);
+    const {closeMapContainer,isMapMunicipio} = React.useContext(MapContext);
     const { mapRef } = React.useContext(MapMunicipioContext);
-    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds } = React.useContext(MapMunicipioContext);
+    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick,thresholdsNum} = React.useContext(MapMunicipioContext);
     const { stateSelected } = React.useContext(MapContext);
-    const { munData, selectedLabel, state } = React.useContext(HomeContext);
+    const { selectedLabel, state,isExpanded,setIsExpanded } = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
     const [hoveredStateId, setHoveredStateId] = React.useState(null);
 
+    const diagRef = useRef(null);
+    const posRef = useRef(null);
     const [lat, setLat] = React.useState(0);
     const [lng, setLng] = React.useState(0);
     
-    const onHover = (event) => {
-        if (event.features.length > 0) {
-            const nextHoveredStateId = event.features[0].id;
-            if (hoveredStateId !== nextHoveredStateId) {
-                setHoveredStateId(nextHoveredStateId);
-            }
+    const scrollToRef = (ref) => diagRef.current.scrollTo(0, ref.current.offsetTop-200)   
 
-            const _hoveredState = event.features[0].properties;
-            if (  _hoveredState !== hoveredState) {
-            setLat(event.lngLat.lat);
-            setLng(event.lngLat.lng);
-            setHoveredState(_hoveredState);
-            }
-        }
-    };
-      
-    const onLeave = () => {
-        if (hoveredStateId) {
-            setHoveredStateId(null);
-        }
+    const onClickpos = (event) => {
+        onClick(event);
+        scrollToRef(posRef);
+    }
 
-        if (hoveredState) {
-            setHoveredState(null);
-        }
-    };
     console.log(stateSelected);
     
     return (
@@ -76,6 +57,7 @@ const MunMapMov = (props) => {
         }}
         hideBackdrop = {true}
         disableBackdropClick={true}
+        maxWidth={'lg'}
         >
             <DialogTitle classes={{root: classes.rootDTitle}}>
                 <div className={classes.closeContainer}>
@@ -83,14 +65,15 @@ const MunMapMov = (props) => {
                         <RemoveRoundedIcon fontSize={'large'}/>
                     </Button>
                 </div>
-                <div  className={classes.titleContainer}>
-                    {stateSelected.nombre} 
-                </div>
             </DialogTitle>
-            <DialogContent classes={{root:classes.rootDCont}}>
+            <DialogContent classes={{root:classes.rootDCont}} ref={diagRef}>
                 <div className={classes.informationContainer}>
-                    <div className={classes.infocontainer}>
-                        <MunicipalityDataMov state={stateSelected} mun={munData} selectedLabel={selectedLabel}/>
+                    <div className={classes.infocontainer} ref={posRef}>
+                        <MunicipalityDataMov state={stateSelected} mun={selectedMun} selectedLabel={selectedLabel}/>
+                    </div> 
+                    <div className={classes.munGraphContainerMov}>
+                        <div className={classes.graphmun}> 
+                        </div>
                     </div> 
                     <div className={classes.munMapContainerMov}>
                         <div className={classes.mapboxContainer}>
@@ -100,7 +83,7 @@ const MunMapMov = (props) => {
                                     accessToken={process.env.REACT_APP_MAP_BOX_API_KEY}
                                     latitude={viewport.latitude}
                                     longitude={viewport.longitude}
-                                    zoom={viewport.zoom}
+                                    zoom={viewport.zoom+.5}
                                     onViewportChange={setViewport}
                                 >
                                     <Source id='states' type='geojson' data={ geojson } />
@@ -114,39 +97,13 @@ const MunMapMov = (props) => {
                                             'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 1, 0.8],
                                             'fill-outline-color': colors.BLACK
                                         }}
-                                        onHover={onHover}
-                                        onLeave={onLeave}
+                                        onClick={onClickpos}
                                     />}
-                                    {hoveredState && 
-                                    <Popup longitude={lng} latitude={lat} closeButton={false} closeOnClick={true} maxWidth={'600px'}>
-                                        <div>
-                                            <div>
-                                                <span className={classes.pop}>
-                                                {hoveredState.NOM_MUN.toLowerCase()}
-                                                </span>
-                                                <span className={classes.pop1}>
-                                                <svg className={classes.pop2}>
-                                                    <circle r="7" cx="8" cy="9" fill={selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
-                                                </svg>
-                                                {numberWithCommas(hoveredState[ selectedLabel + "#" + state.date])} {selectedLabel}
-                                                </span>
-                                            </div>
-                                            <div className={classes.moreinf}>
-                                                Da Click para ver más.
-                                            </div>
-                                        </div>
-                                    </Popup>}
-                                    {hoveredStateId && <FeatureState id={hoveredStateId} source='states' state={{ hover: true }} />}
                                     <NavigationControl showCompass showZoom position='top-right' />
                                 </MapGL>
                         </div>
                         <div className={classes.colorNumsContainer}>
-                            <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />
-                        </div>
-                    </div> 
-                    <div className={classes.munGraphContainerMov}>
-                        <div className={classes.graphmun}>
-                            <p>UNA GRAFICA MUY PADRE</p> 
+                            <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum}/>
                         </div>
                     </div> 
                 </div>
@@ -163,6 +120,7 @@ const styles = () => ({
         top: '180px !important',
         width: '100% !important',
         margin: '0',
+
     },
     paper:{
         margin: '0px !important',
@@ -194,7 +152,7 @@ const styles = () => ({
         padding: 'inherit !important',
     },
     informationContainer: {
-        height: '1000px',
+        height: '830px',
     },  
     munMapContainerMov: {
         display: 'flow-root',
@@ -238,7 +196,7 @@ const styles = () => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '450px',
+        height: '400px',
         backgroundColor: '#dadfdf',
     },
     map:{
@@ -253,7 +211,7 @@ const styles = () => ({
          margin: '0px 0px 10px 0px',
     },
     munGraphContainerMov: {
-        height: '30% !important',
+        height: '0% !important',
         display: 'flow-root',
     },
     graphmun: {

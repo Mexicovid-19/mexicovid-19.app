@@ -11,8 +11,10 @@ const useMapMunicipio = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
 
     const [munGEOJSON, setMunGEOJSON] = React.useState(null);
+    const [munDataMap, setMunDataMap] = React.useState(null);
     const mapRef = React.useRef(null);
     const [geojson, setGeojson] = React.useState(null);
+    const [geojsonformun, setGeojsonformun] = React.useState(null);
     const [fillColor, setFillColor] = React.useState(null);
     const [selectedMun, setSelectedMun] = React.useState(null);
     const [munDataChart, setMunDataChart] = React.useState(null);
@@ -49,6 +51,7 @@ const useMapMunicipio = () => {
         if(stateSelected) {
             setSelectedMun(null);
             setMunGEOJSON(null);
+            setMunDataMap(null)
             callMunGEOJSON(stateSelected.cve_ent);
             setIsLoading(true);
         }
@@ -69,10 +72,17 @@ const useMapMunicipio = () => {
             setMunDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
             
         }
-    }, [selectedMun])
+    }, [selectedMun]);
+
+    React.useEffect(() => {
+        if( munData){
+            console.log("cambia mundatamao", munDataMap)
+            setMunDataMap([...munData]);
+        }
+    }, [munData])
     
     React.useEffect(() => {
-        if(state.date && munData && munGEOJSON && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
+        if(state.date && munData && munDataMap && munGEOJSON  && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
             setFillColor(getSteps(selectedLabel));
             setUpGEOJson();
             setViewport({
@@ -83,16 +93,20 @@ const useMapMunicipio = () => {
             })
 
             //sortMunData
-            console.log(munData)
-            /*if ( selectedLabel == "confirmados") {
-                munData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count)
+            let fecha = state.dateIndex;
+            let geojsonformun = munGEOJSON;
+            console.log(selectedLabel)
+            console.log(munData[0].confirmados[fecha].count)
+            console.log(geojsonformun.features[0].properties["confirmados#"+state.date])
+            if ( selectedLabel == "confirmados") {
+                munData.sort((a,b) => b.confirmados[fecha].count - a.confirmados[fecha].count)
             } else {
-                munData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count)
-            }*/
+                munData.sort((a,b) => b.decesos[fecha].count - a.decesos[fecha].count)
+            }
             console.log(munData)
             setIsLoading(false)
         }
-    }, [munGEOJSON, munData, state, selectedLabel]);
+    }, [munGEOJSON, munData, state, selectedLabel, munDataMap]);
 
     let callMunGEOJSON = (cve_ent)  => {
         axios.get(`${process.env.REACT_APP_API_URL}/map/municipality/find/CVE_ENT?cve_ent=${cve_ent}`, {})
@@ -120,20 +134,22 @@ const useMapMunicipio = () => {
 
     let setUpGEOJson = () => {
         let geojson = munGEOJSON;
-        for (let index = 0; index < munData.length; index++) {
-            for (const confIndex in munData[index].confirmados) {
-                geojson.features[index].properties["confirmados#" + munData[index].confirmados[confIndex].date] = Number(munData[index].confirmados[confIndex].count);
-                geojson.features[index].properties["decesos#" + munData[index].decesos[confIndex].date] = Number(munData[index].decesos[confIndex].count);
-                geojson.features[index].properties["pruebas#" + munData[index].pruebas[confIndex].date] = Number(munData[index].pruebas[confIndex].count);
+       
+        for (let index = 0; index < munDataMap.length; index++) {
+            for (const confIndex in munDataMap[index].confirmados) {
+                geojson.features[index].properties["confirmados#" + munDataMap[index].confirmados[confIndex].date] = Number(munDataMap[index].confirmados[confIndex].count);
+                geojson.features[index].properties["decesos#" + munDataMap[index].decesos[confIndex].date] = Number(munDataMap[index].decesos[confIndex].count);
+                geojson.features[index].properties["pruebas#" + munDataMap[index].pruebas[confIndex].date] = Number(munDataMap[index].pruebas[confIndex].count);
             }
         }
+        console.log(geojson)
         setGeojson(geojson);
     }
 
     let getSteps = (label) => {
         let data;
         
-        data = munData.map((mun, index) => {
+        data = munDataMap.map((mun, index) => {
             return mun[label][state.dateIndex].count;
         });
         
@@ -181,13 +197,14 @@ const useMapMunicipio = () => {
     const onClick = (event) => {
         if (event.features.length > 0 && munData) {
             console.log(munData)
+            console.log(munDataMap)
             let cve_mun      = event.features[0].properties.CVE_MUN;
             let nombre       = event.features[0].properties.NOM_MUN;
             let indexMun     = munData.findIndex(edo => edo.cve_mun == cve_mun);
             let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
             let totales      = event.features[0].properties[selectedLabel + "#" + state.date]
             let nuevos       = totales - event.features[0].properties[selectedLabel + "#" + previousDate]
-            
+            console.log(munData.findIndex(edo => edo.cve_mun == cve_mun))
             setSelectedMun({
                 data          : event.features[0].properties,
                 nombre        : nombre,
