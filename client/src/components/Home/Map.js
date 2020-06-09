@@ -59,7 +59,7 @@ const Map = ({classes}) => {
       });
     }
   }
-  console.log(viewport)
+  
   const onHover = (event) => {
     if (event.features.length > 0) {
       const nextHoveredStateId = event.features[0].id;
