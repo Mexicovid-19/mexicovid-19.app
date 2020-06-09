@@ -16,6 +16,7 @@ const useMapMunicipio = () => {
     const [fillColor, setFillColor] = React.useState(null);
     const [selectedMun, setSelectedMun] = React.useState(null);
     const [ bounds, setBounds] = React.useState(null);
+    const [isLoading, setIsLoading] = React.useState(true);
     const thresholdColor = {
         "decesos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
         "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
@@ -47,6 +48,7 @@ const useMapMunicipio = () => {
             setSelectedMun(null);
             setMunGEOJSON(null);
             callMunGEOJSON(stateSelected.cve_ent);
+            setIsLoading(true);
         }
     }, [stateSelected])
     
@@ -69,6 +71,7 @@ const useMapMunicipio = () => {
                 munData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count)
             }*/
             console.log(munData)
+            setIsLoading(false)
         }
     }, [munGEOJSON, munData, state, selectedLabel]);
 
@@ -191,7 +194,9 @@ const useMapMunicipio = () => {
     bounds,
     onClick,
     selectedMun,
-    thresholdsNum
+    thresholdsNum,
+    munGEOJSON,
+    isLoading
   }
 }
 

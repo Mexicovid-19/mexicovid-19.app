@@ -10,6 +10,7 @@ const ColorGradientBar = (props) => {
   
   return (
     <div className={classes.containerGradient}>
+      <Typography className={classes.title}>Mapa Estatal</Typography>
       <div className={selectedLabel === "confirmados" ? classes.colorsGradientBlue : classes.colorsGradientRed}></div>
       <div className={classes.numsWrapper}>
         <RemoveRoundedIcon className={classes.icons}/>
@@ -25,6 +26,9 @@ const ColorGradientBar = (props) => {
 }
 
 const styles = () => ({
+  title: {
+    color: WHITE
+  },
   icons: {
     color: WHITE,
     fontSize: '16px'
@@ -49,7 +53,6 @@ const styles = () => ({
     position: 'absolute',
     bottom: '0px',
     zIndex: '10',
-    height: '13%',
     backgroundColor: BLACK
   },
     

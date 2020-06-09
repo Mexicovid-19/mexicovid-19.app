@@ -11,7 +11,7 @@ import LoaderView from '../Loader';
 import ColorGradientBar from './ColorGradientBarMun';
 
 const MunMap = ({classes}) => {
-    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick, thresholdsNum } = React.useContext(MapMunicipioContext);
+    const { isLoading, selectedMun, geojson, fillColor, viewport, setViewport, onClick, thresholdsNum } = React.useContext(MapMunicipioContext);
     const { stateSelected } = React.useContext(MapContext);
     const { munData, selectedLabel, state } = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
@@ -45,15 +45,15 @@ const MunMap = ({classes}) => {
             setHoveredState(null);
         }
     };
-    
+    console.log(isLoading)
     return (
         <div className={classes.container}>
             <div className={classes.containerMungraph}>
                 <MunicipalityData state={stateSelected} mun={selectedMun} selectedLabel={selectedLabel}/>
             </div> 
-            {!munData && 
+            {isLoading && 
             <div className={classes.loaderContainer}>
-                <div className={classes.loader}><LoaderView/></div>
+                <div className={classes.loader}><LoaderView color={colors.WHITE} height={200} width={200}/></div>
             </div>
             }
             {geojson && geojson.features.length > 0 && 
@@ -118,7 +118,9 @@ const styles = () => ({
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: colors.BLACK
+        backgroundColor: colors.BLACK,
+        border: `1px solid ${colors.WHITE}`,
+        borderTop: '0px'
     }, 
     containerMap: {
         width: '100%',
@@ -132,6 +134,17 @@ const styles = () => ({
         borderTop: `1px solid ${colors.WHITE}`,
         borderBottom: `1px solid ${colors.WHITE}`
     },
+    loaderContainer: {
+        position: 'absolute',
+        zIndex: '100',
+        height: '55%',
+        display: 'flex',
+        width: '100%',
+        backgroundColor: colors.BLACK,
+    },
+    loader: {
+        margin: 'auto',
+    },    
     topBar: {
         borderTop: `1px solid ${colors.WHITE}`,
         display: 'inline-block',
