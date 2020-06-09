@@ -172,7 +172,6 @@ const MunicipalityData = ( props ) => {
     const {selectedMun,setSelectedMun} = React.useContext(MapMunicipioContext);
 
     const onClick = (event) => {
-        console.log(selectedMun)
         if(selectedMun){
             setSelectedMun(null);
         }else{
