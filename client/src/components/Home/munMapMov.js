@@ -9,12 +9,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
-import ColorGradientBar from './ColorGradientBarMun';
+import ColorGradientBar from './ColorGradientBarMunMov';
 import { HomeContext } from '../../contexts/HomeContext';
 import { MapMunicipioContext } from '../../contexts/MapMunicipioContext';
 import MunicipalityDataMov from './MunicipalityDataMov';
 import MapGL, { Popup, Source, Layer, FeatureState, NavigationControl } from '@urbica/react-map-gl';
 import { numberWithCommas } from '../../Utils/numberWCommas';
+import MyResponsiveBarmov from './NationChartmov';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -25,11 +26,12 @@ const MunMapMov = (props) => {
     const {classes} = props;
     const {closeMapContainer,isMapMunicipio} = React.useContext(MapContext);
     const { mapRef } = React.useContext(MapMunicipioContext);
-    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick,thresholdsNum} = React.useContext(MapMunicipioContext);
+    const { selectedMun, geojson, fillColor, viewport, setViewport, bounds, onClick,thresholdsNum, munDataChart} = React.useContext(MapMunicipioContext);
     const { stateSelected } = React.useContext(MapContext);
-    const { selectedLabel, state,isExpanded,setIsExpanded } = React.useContext(HomeContext);
+    const { selectedLabel, state,isExpanded,setIsExpanded , stateDataChart} = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
     const [hoveredStateId, setHoveredStateId] = React.useState(null);
+    const [open, setOpen] = React.useState(false)
 
     const diagRef = useRef(null);
     const posRef = useRef(null);
@@ -67,13 +69,19 @@ const MunMapMov = (props) => {
                 </div>
             </DialogTitle>
             <DialogContent classes={{root:classes.rootDCont}} ref={diagRef}>
-                <div className={classes.informationContainer}>
+                {open ? <div className={classes.informationContainermun}>
                     <div className={classes.infocontainer} ref={posRef}>
-                        <MunicipalityDataMov state={stateSelected} mun={selectedMun} selectedLabel={selectedLabel}/>
+                        <MunicipalityDataMov state={stateSelected} mun={selectedMun} selectedLabel={selectedLabel} opengrap={open} setopengrap={setOpen}/>
                     </div> 
                     <div className={classes.munGraphContainerMov}>
-                        <div className={classes.graphmun}> 
-                        </div>
+                        { selectedMun ?
+                            <div className={classes.graphmun}>
+                                <MyResponsiveBarmov data={munDataChart} isSmall={true} isConfirm={selectedLabel=='confirmados'}/>
+                            </div>:
+                            <div className={classes.graphmun}>
+                                <MyResponsiveBarmov data={stateDataChart} isSmall={true} isConfirm={selectedLabel=='confirmados'}/>
+                            </div>
+                        }
                     </div> 
                     <div className={classes.munMapContainerMov}>
                         <div className={classes.mapboxContainer}>
@@ -106,7 +114,44 @@ const MunMapMov = (props) => {
                             <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum}/>
                         </div>
                     </div> 
-                </div>
+                </div>:
+                <div className={classes.informationContainer}>
+                <div className={classes.infocontainer} ref={posRef}>
+                    <MunicipalityDataMov state={stateSelected} mun={selectedMun} selectedLabel={selectedLabel} opengrap={open} setopengrap={setOpen}/>
+                </div>  
+                <div className={classes.munMapContainerMov}>
+                    <div className={classes.mapboxContainer}>
+                            <MapGL
+                                style={{ width: '95%', height: '100%', borderRadius: '10px' }}
+                                mapStyle='mapbox://styles/mildredg/cka6jvxnt0mpf1ilh5krfkxlw'
+                                accessToken={process.env.REACT_APP_MAP_BOX_API_KEY}
+                                latitude={viewport.latitude}
+                                longitude={viewport.longitude}
+                                zoom={viewport.zoom+.5}
+                                onViewportChange={setViewport}
+                            >
+                                <Source id='states' type='geojson' data={ geojson } />
+                                {fillColor && 
+                                <Layer
+                                    id='states'
+                                    type='fill'
+                                    source='states'
+                                    paint={{
+                                        'fill-color': fillColor,
+                                        'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 1, 0.8],
+                                        'fill-outline-color': colors.BLACK
+                                    }}
+                                    onClick={onClickpos}
+                                />}
+                                <NavigationControl showCompass showZoom position='top-right' />
+                            </MapGL>
+                    </div>
+                    <div className={classes.colorNumsContainer}>
+                        <ColorGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum}/>
+                    </div>
+                </div> 
+            </div>}
+                
             </DialogContent>    
         </Dialog>
     )
@@ -152,8 +197,14 @@ const styles = () => ({
         padding: 'inherit !important',
     },
     informationContainer: {
-        height: '830px',
+        height: '860px',
     },  
+    informationContainerest: {
+        height: '1220px',
+    },
+    informationContainermun: {
+        height: '1262px',
+    },
     munMapContainerMov: {
         display: 'flow-root',
     },
@@ -211,19 +262,18 @@ const styles = () => ({
          margin: '0px 0px 10px 0px',
     },
     munGraphContainerMov: {
-        height: '0% !important',
+        height: '375px ',
         display: 'flow-root',
     },
     graphmun: {
-        borderColor: 'aqua',
-        border: 'solid',
         height: '370px',
         display: 'flex',
 	    flexDirection: 'column',
 	    flexWrap: 'nowrap',
 	    justifyContent: 'center',
 	    alignItems: 'center',
-	    alignContent: 'stretch',
+        alignContent: 'stretch',
+        color: colors.BLACK,
     },
     infocontainer: {
         width: '100%',

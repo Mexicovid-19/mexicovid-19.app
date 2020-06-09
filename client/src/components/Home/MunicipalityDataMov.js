@@ -10,7 +10,12 @@ import { numberWithCommas } from '../../Utils/numberWCommas';
 import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
 
 const StateData = ( props ) => {
-    const { classes, state, selectedLabel } = props;
+    const { classes, state, selectedLabel, dataChart , open, setOpen} = props;
+
+    const clickOpen = () => {
+        setOpen(!open);
+    };
+
     return (
         <React.Fragment>
         <div className={classes.casosContainer}>
@@ -56,11 +61,11 @@ const StateData = ( props ) => {
                     Ranking
                 </Typography>
             </div>
-            <div className={classes.box}>
+            <div className={`${classes.box} ${classes.graph}`} onClick={clickOpen}>
                 <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
                     <TimelineOutlinedIcon className={classes.icons}/>
                 </Typography>
-                <Typography className={`${classes.boxText} ${classes.graph}`} align={'center'}>
+                <Typography className={`${classes.boxText}`} align={'center'}>
                     Gráfica
                 </Typography>
             </div>
@@ -70,8 +75,12 @@ const StateData = ( props ) => {
 }
 
 const MunData = ( props ) => {
-    const { classes, mun, selectedLabel } = props;
-    
+    const { classes, mun, selectedLabel, dataChart , open, setOpen} = props;
+
+    const clickOpen = () => {
+        setOpen(!open);
+    };
+
     return (
         <React.Fragment>
             <div className={classes.casosContainer}>
@@ -119,7 +128,7 @@ const MunData = ( props ) => {
                                 Estatal
                             </Typography>
                         </div>
-                        <div className={classes.box}>
+                        <div className={classes.box} onClick={clickOpen}>
                             <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
                                 <TimelineOutlinedIcon className={classes.icons}/>
                             </Typography>
@@ -145,7 +154,7 @@ const MunData = ( props ) => {
 }
 
 const MunicipalityDataMov = ( props ) => {
-    const { classes, state, mun, selectedLabel} = props;
+    const { classes, state, mun, selectedLabel, opengrap, setopengrap} = props;
     const {setIsMapMunicipio} = React.useContext(MapContext);
 
     const onClick = (event) => {
@@ -161,9 +170,9 @@ const MunicipalityDataMov = ( props ) => {
                 </Typography>
             </div>
             {mun ? 
-                <MunData classes={classes} mun={mun} selectedLabel={selectedLabel}/>
+                <MunData classes={classes} mun={mun} selectedLabel={selectedLabel} open={opengrap} setOpen={setopengrap}/>
                 :
-                <StateData classes={classes} state={state} selectedLabel={selectedLabel}/>
+                <StateData classes={classes} state={state} selectedLabel={selectedLabel} open={opengrap} setOpen={setopengrap}/>
             }
         </div>
     )
