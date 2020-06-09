@@ -17,7 +17,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const AlertDialogSlide = (props) => {
-  const { classes, handleClose, open, data, isConfirm} = props;
+  const { classes, handleClose, open, data, isConfirm, title='Nacional'} = props;
   const [maxWidth, setMaxWidth] = React.useState('lg');
   
   
@@ -37,7 +37,7 @@ const AlertDialogSlide = (props) => {
         <Button onClick={handleClose} classes={{root: classes.cross}}>
           <CloseIcon />
         </Button>
-        <Typography className={classes.title}> Gráfica de Casos</Typography>
+  <Typography className={classes.title}> Gráfica de Casos - {title}</Typography>
         <DialogContent classes={{root: classes.chartatyle}}>
            <MyResponsiveBar data={data} isSmall={false} isConfirm={isConfirm}/>
         </DialogContent>

@@ -12,9 +12,31 @@ const MyResponsiveBar = ({ data, isSmall=true, isMobile=false, isConfirm=false, 
         else
             data = data[1]
     }   
+    
+    const CustomSymbolShape = ({
+        x, y, size, fill, borderWidth, borderColor
+    }) => {
         
+        if ( '#ffffff00' == fill) {
+            fill = '#ffffff'
+        }
+        return(
+            <rect
+                x={x}
+                y={y}
+                transform={`rotate(0 ${size/2} ${size/2})`}
+                fill={fill}
+                strokeWidth={borderWidth}
+                stroke={borderColor}
+                width={size}
+                height={size}
+                style={{ pointerEvents: 'none' }}
+            />
+        )
+    }
+
+
     const LineLayer = (props) => {
-        console.log(props)
         let {series, xScale, yScale} = props;
 
         const lineGenerator = line()
@@ -41,7 +63,6 @@ const MyResponsiveBar = ({ data, isSmall=true, isMobile=false, isConfirm=false, 
     var dataContent = data;
     var lineWidth=1
     var pointSize=2
-    console.log(dataContent)
 
     if( isConfirm ) {
         colorArray = [colors.BLUE_LIGHT,'#ffffff00'];
@@ -93,28 +114,6 @@ const MyResponsiveBar = ({ data, isSmall=true, isMobile=false, isConfirm=false, 
 
         lineWidth=4
         pointSize=8
-    }
-
-    const CustomSymbolShape = ({
-        x, y, size, fill, borderWidth, borderColor
-    }) => {
-        console.log(fill, borderColor)
-        if ( '#ffffff00' == fill) {
-            fill = '#ffffff'
-        }
-        return(
-            <rect
-                x={x}
-                y={y}
-                transform={`rotate(0 ${size/2} ${size/2})`}
-                fill={fill}
-                strokeWidth={borderWidth}
-                stroke={borderColor}
-                width={size}
-                height={size}
-                style={{ pointerEvents: 'none' }}
-            />
-        )
     }
 
     return(

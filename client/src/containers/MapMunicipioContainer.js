@@ -15,6 +15,7 @@ const useMapMunicipio = () => {
     const [geojson, setGeojson] = React.useState(null);
     const [fillColor, setFillColor] = React.useState(null);
     const [selectedMun, setSelectedMun] = React.useState(null);
+    const [munDataChart, setMunDataChart] = React.useState(null);
     const [ bounds, setBounds] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(true);
     const thresholdColor = {
@@ -40,7 +41,8 @@ const useMapMunicipio = () => {
         munData,
         setMunData,
         state,
-        selectedLabel
+        selectedLabel,
+        PROMEDIO_MOVIL
     } = React.useContext(HomeContext);
     
     React.useEffect(() => {
@@ -51,6 +53,23 @@ const useMapMunicipio = () => {
             setIsLoading(true);
         }
     }, [stateSelected])
+
+    React.useEffect(() => {
+        if( selectedMun && state) {
+            let index = selectedMun.rankingEstatal - 1; //munData is ordered
+            let data = [munData[index]]
+            console.log(data)
+            var { newCases, prom } = stateChart(cleanData(data, "decesos", state.countDates, state.dates));
+            let d = newCases;
+            let dp = prom;
+            var { newCases, prom } = stateChart(cleanData(data, "confirmados", state.countDates, state.dates));
+            let c = newCases;
+            let cp = prom;
+            console.log(d, dp, c, cp)
+            setMunDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
+            
+        }
+    }, [selectedMun])
     
     React.useEffect(() => {
         if(state.date && munData && munGEOJSON && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
@@ -183,6 +202,60 @@ const useMapMunicipio = () => {
         }
     }
 
+    let cleanData = (data, label, datesLen, dates) => {
+        let _dataChart = [];
+        let casos;
+        for(var i = 0; i < datesLen; i++){
+          casos = 0;
+          data.forEach(element => {
+            casos += Number(element[label][i].count);
+          });
+    
+          _dataChart.push(chartPoint(dates[i], casos));
+        }
+    
+        return {
+          id: label,
+          data: _dataChart
+        }
+    }
+    
+    let chartPoint = (x, y) =>{
+        return {x, y}
+    }
+
+    let stateChart = (content) => {
+        let { data } = content;
+        let newCases = getNewCases(data);
+        let prom = getProm(newCases);
+        return ({newCases, prom});
+    }
+    
+    let getNewCases = (data) => {
+        let newCases = []
+        for(var dataIndex in data) {
+          if(dataIndex == 0) {
+            newCases.push(chartPoint(data[dataIndex].x, data[dataIndex].y))
+          } else {
+            newCases.push(chartPoint(data[dataIndex].x, data[dataIndex].y - data[dataIndex - 1].y))
+          }
+        }
+        return newCases;
+    }
+    
+    let getProm = (data) => {
+        let batches = Math.floor(data.length / PROMEDIO_MOVIL);
+        let prom = []
+
+        for(var batch = 0; batch < batches; batch++) {
+            let start = batch*PROMEDIO_MOVIL;
+            let end = start + PROMEDIO_MOVIL;
+            prom.push(chartPoint(data[start].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / PROMEDIO_MOVIL));
+        }
+        
+        return prom;
+    }
+
   return {
     callMunGEOJSON,
     mapRef,
@@ -193,10 +266,11 @@ const useMapMunicipio = () => {
     setViewport,
     bounds,
     onClick,
-    selectedMun,
     thresholdsNum,
     munGEOJSON,
-    isLoading
+    isLoading,
+
+    munDataChart
   }
 }
 

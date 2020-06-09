@@ -11,9 +11,9 @@ import LoaderView from '../Loader';
 import ColorGradientBar from './ColorGradientBarMun';
 
 const MunMap = ({classes}) => {
-    const { isLoading, selectedMun, geojson, fillColor, viewport, setViewport, onClick, thresholdsNum } = React.useContext(MapMunicipioContext);
+    const { isLoading, selectedMun, geojson, fillColor, viewport, setViewport, onClick, thresholdsNum, munDataChart } = React.useContext(MapMunicipioContext);
     const { stateSelected } = React.useContext(MapContext);
-    const { munData, selectedLabel, state } = React.useContext(HomeContext);
+    const { munData, selectedLabel, state, stateDataChart } = React.useContext(HomeContext);
     const [hoveredState, setHoveredState] = React.useState(null)
     const [hoveredStateId, setHoveredStateId] = React.useState(null);
 
@@ -45,11 +45,11 @@ const MunMap = ({classes}) => {
             setHoveredState(null);
         }
     };
-    console.log(isLoading)
+    
     return (
         <div className={classes.container}>
             <div className={classes.containerMungraph}>
-                <MunicipalityData state={stateSelected} mun={selectedMun} selectedLabel={selectedLabel}/>
+                <MunicipalityData state={stateSelected} mun={selectedMun} selectedLabel={selectedLabel} dataChart={stateDataChart} munDataChart={munDataChart}/>
             </div> 
             {isLoading && 
             <div className={classes.loaderContainer}>

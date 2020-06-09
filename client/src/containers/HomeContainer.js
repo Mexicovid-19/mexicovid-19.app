@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const useHome = () => {
-  const PROMEDIO_MOVIL = 4;
+  const PROMEDIO_MOVIL = 5;
   const [munDataArr, setMunDataArr] = React.useState({});
   const [stateData, setStateData] = React.useState(null);
   const [state, setState ] = React.useState({
@@ -19,6 +19,7 @@ const useHome = () => {
   const[rowsTable, setRowsTable] = React.useState([]);
   const[rows, setRows] = React.useState([]);
   const [dataChart, setDataChart] = React.useState([]);
+  const [nationalDataChart, setNationalDataChart] = React.useState([]);
   const [stateDataChart, setStateDataChart] = React.useState([]);
   const [selectedLabel, setSelectedLabel] = React.useState(null);
   const [isMap, setIsMap] = React.useState(false);
@@ -44,17 +45,31 @@ const useHome = () => {
         
         if(dataChart.length == 0)
           setDataChart([cleanData(stateData, "decesos", _state.countDates, _state.dates),cleanData(stateData, "confirmados", _state.countDates, _state.dates)]);
-        if(stateDataChart.length == 0){
+        if(nationalDataChart.length == 0){
           var { newCases, prom } = stateChart(cleanData(stateData, "decesos", _state.countDates, _state.dates));
           let d = newCases;
           let dp = prom;
           var { newCases, prom } = stateChart(cleanData(stateData, "confirmados", _state.countDates, _state.dates));
           let c = newCases;
           let cp = prom;
-          setStateDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
+          setNationalDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
         }
       }
   }, [stateData]);
+
+  React.useEffect(() => {
+    if ( munData ) {
+      console.log(munData)
+      var { newCases, prom } = stateChart(cleanData(munData, "decesos", state.countDates, state.dates));
+      let d = newCases;
+      let dp = prom;
+      var { newCases, prom } = stateChart(cleanData(munData, "confirmados", state.countDates, state.dates));
+      let c = newCases;
+      let cp = prom;
+      console.log(d, dp, c, cp)
+      setStateDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
+    }
+}, [munData]);
 
   React.useEffect(() => {
     if(state && state.date) {
@@ -156,12 +171,10 @@ const useHome = () => {
     let { data } = content;
     let newCases = getNewCases(data);
     let prom = getProm(newCases);
-    //console.log(newCases, prom)
     return ({newCases, prom});
   }
 
   let getNewCases = (data) => {
-    //console.log(data)
     let newCases = []
     for(var dataIndex in data) {
       if(dataIndex == 0) {
@@ -180,7 +193,6 @@ const useHome = () => {
     for(var batch = 0; batch < batches; batch++) {
       let start = batch*PROMEDIO_MOVIL;
       let end = start + PROMEDIO_MOVIL;
-      //console.log(data.slice(start,end))
       prom.push(chartPoint(data[start].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / PROMEDIO_MOVIL));
     }
     
@@ -188,7 +200,7 @@ const useHome = () => {
   }
 
   return {
-    stateData,
+    stateData, 
     state,
     rows,
     dataChart,
@@ -201,7 +213,9 @@ const useHome = () => {
     munData,
     setMunData,
 
-    stateDataChart
+    nationalDataChart,
+    stateDataChart,
+    PROMEDIO_MOVIL
   }
 }
 

@@ -8,9 +8,20 @@ import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import Typography from '@material-ui/core/Typography';
 import { numberWithCommas } from '../../Utils/numberWCommas';
 import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
+import AlertDialogSlide from './DialogChart';
 
 const StateData = ( props ) => {
-    const { classes, state, selectedLabel } = props;
+    const { classes, state, selectedLabel, dataChart } = props;
+    const [open, setOpen] = React.useState(false);
+
+    const clickOpen = () => {
+        setOpen(true);
+    };
+
+    const clickClose = () => {
+        setOpen(false);
+    };  
+
     return (
         <React.Fragment>
         <div className={classes.casosContainer}>
@@ -56,22 +67,32 @@ const StateData = ( props ) => {
                     Ranking
                 </Typography>
             </div>
-            <div className={classes.box}>
+            <div className={`${classes.box} ${classes.graph}`} onClick={clickOpen}>
                 <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
                     <TimelineOutlinedIcon className={classes.icons}/>
                 </Typography>
-                <Typography className={`${classes.boxText} ${classes.graph}`} align={'center'}>
+                <Typography className={`${classes.boxText}`} align={'center'}>
                     Gráfica
                 </Typography>
             </div>
         </div>
+        <AlertDialogSlide handleClose={clickClose} open={open} data={dataChart} isConfirm={selectedLabel=='confirmados'} title={state.nombre}/>
         </React.Fragment>
     )
 }
 
 const MunData = ( props ) => {
-    const { classes, mun, selectedLabel } = props;
+    const { classes, mun, selectedLabel, dataChart } = props;
+    const [open, setOpen] = React.useState(false);
     
+    const clickOpen = () => {
+        setOpen(true);
+    };
+
+    const clickClose = () => {
+        setOpen(false);
+    };  
+
     return (
         <React.Fragment>
             <div className={classes.casosContainer}>
@@ -119,7 +140,7 @@ const MunData = ( props ) => {
                                 Estatal
                             </Typography>
                         </div>
-                        <div className={classes.box}>
+                        <div className={classes.box} onClick={clickOpen}>
                             <Typography className={`${classes.numberBox} ${classes.iconBox}`} align={'center'}>
                                 <TimelineOutlinedIcon className={classes.icons}/>
                             </Typography>
@@ -140,19 +161,19 @@ const MunData = ( props ) => {
                     </div>
                 </div>
             </div>
+            <AlertDialogSlide handleClose={clickClose} open={open} data={dataChart} isConfirm={selectedLabel=='confirmados'} title={mun.nombre}/>
         </React.Fragment>
     )
 }
 
 const MunicipalityData = ( props ) => {
-    const { classes, state, mun, selectedLabel} = props;
+    const { classes, state, mun, selectedLabel, dataChart, munDataChart} = props;
     const {setIsMapMunicipio} = React.useContext(MapContext);
 
     const onClick = (event) => {
         setIsMapMunicipio(false);
     }
 
-    
     return (
         <div className={classes.container}>
             <div className={classes.title}>
@@ -162,9 +183,9 @@ const MunicipalityData = ( props ) => {
                 </Typography>
             </div>
             {mun ? 
-                <MunData classes={classes} mun={mun} selectedLabel={selectedLabel}/>
+                <MunData classes={classes} mun={mun} selectedLabel={selectedLabel} dataChart={munDataChart}/>
                 :
-                <StateData classes={classes} state={state} selectedLabel={selectedLabel}/>
+                <StateData classes={classes} state={state} selectedLabel={selectedLabel} dataChart={dataChart}/>
             }
         </div>
     )
@@ -193,7 +214,10 @@ const styles = () => ({
     },
     state: {
         fontSize: '24px',
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
     },
     casosContainer: {
         display: 'flex',

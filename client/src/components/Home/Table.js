@@ -225,12 +225,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTable = () => {
-  const {rows, dataChart, stateDataChart, selectedLabel} = React.useContext(HomeContext);
+  const {rows, dataChart, nationalDataChart, selectedLabel} = React.useContext(HomeContext);
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('ranking');
   const [selected, setSelected] = React.useState([]);
-  console.log(stateDataChart, dataChart)
+  console.log(nationalDataChart, dataChart)
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -258,7 +258,7 @@ const EnhancedTable = () => {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar data={stateDataChart} clickOpen={handleClickOpen} clickClose={handleClose} openDial={open} isConfirm={selectedLabel == "confirmados"}/>
+        <EnhancedTableToolbar data={nationalDataChart} clickOpen={handleClickOpen} clickClose={handleClose} openDial={open} isConfirm={selectedLabel == "confirmados"}/>
         <TableContainer className={classes.tableContainer}>
           <Table
             stickyHeader
