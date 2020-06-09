@@ -223,7 +223,7 @@ const styles = () => ({
   },
 
   sidebarStyle: {
-    borderTop: '1px solid white',
+    border: '1px solid white',
     display: 'inline-block',
     position: 'absolute',
     left: '0',
