@@ -48,7 +48,7 @@ const useMapMunicipio = () => {
         if(stateSelected) {
             setSelectedMun(null);
             setMunGEOJSON(null);
-            setMunDataMap(null)
+            setMunDataMap()
             callMunGEOJSON(stateSelected.cve_ent);
         }
     }, [stateSelected])
@@ -61,7 +61,7 @@ const useMapMunicipio = () => {
     }, [munData])
     
     React.useEffect(() => {
-        if(state.date && munData && munDataMap && munGEOJSON && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
+        if(state.date && munData && munDataMap && munGEOJSON && munGEOJSON.length == munDataMap.length && selectedLabel && munGEOJSON.features[0].properties.CVE_ENT == munData[0].cve_ent) {  
             setFillColor(getSteps(selectedLabel));
             setUpGEOJson();
             setViewport({
