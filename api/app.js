@@ -14,8 +14,10 @@ var municipioRouter = require('./routes/municipio');
 var estadoRouter = require('./routes/estado');
 
 var csvEstadoRouter = require('./csvReader/estados');
+var indicatorsRouter = require('./routes/indicators');
 
 require('./connection');
+
 
 var app = express();
 
@@ -29,6 +31,7 @@ app.use('/map', mapRouter);
 app.use('/region', regionRouter);
 app.use('/municipio', municipioRouter);
 app.use('/estado', estadoRouter);
+app.use('/indicators',indicatorsRouter);
 
 app.use('/csv', csvEstadoRouter);
 

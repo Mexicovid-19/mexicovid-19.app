@@ -151,7 +151,7 @@ const useRegion = () => {
     addAll,
     deleteAll,
     changeState,
-    isState
+    isState,
   }
 }
 

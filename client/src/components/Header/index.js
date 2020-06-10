@@ -39,7 +39,7 @@ const Header = ({ classes, fixed=false}) => {
     <AppBar position={`${fixed ? 'fixed' : 'static'}`} className={classes.bar}>
       <Toolbar>
         <Link to={process.env.PUBLIC_URL} className={classes.name}>
-          <img className={classes.img} title="logo tec" src={process.env.PUBLIC_URL + '/img/Logotipo_Vertical_Blanco_Sin_Fondo_notext.png'}/>
+          {window.innerWidth > 1000 ? <img className={classes.img} title="logo tec" src={process.env.PUBLIC_URL + '/img/Logo1.png'}/>:null}
           <button variant="raised">
             <Typography variant="h6" className={classes.title}>
               COVID-19 en México
@@ -75,7 +75,7 @@ const Header = ({ classes, fixed=false}) => {
             <MenuItem><Typography variant="span" className={classes.title}>Seguimiento por Región</Typography></MenuItem>
           }/>
           <LinkElement url='/simulation' element={
-            <MenuItem><Typography variant="span" className={classes.title}>Simulaciones</Typography></MenuItem>
+            <MenuItem><Typography variant="span" className={classes.title}>Prospectiva</Typography></MenuItem>
           }/>
           <LinkElement url='/methodology' element={
             <MenuItem><Typography variant="span" className={classes.title}>Metodología</Typography></MenuItem>
@@ -95,7 +95,7 @@ const Header = ({ classes, fixed=false}) => {
             <Button className={location === '/regions' ? classes.selectedBtn : classes.button} color="inherit">Seguimiento por Regiones</Button>
           }/>
           <LinkElement url='/simulation' element={
-            <Button className={location === '/simulation' ? classes.selectedBtn : classes.button} color="inherit">Simulaciones</Button>
+            <Button className={location === '/simulation' ? classes.selectedBtn : classes.button} color="inherit">Prospectiva</Button>
           }/>
           <LinkElement url='/methodology' element={
             <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Metodología</Button>
@@ -145,7 +145,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   img: {
-    maxWidth: '30px',
+    maxWidth: '100px',
     verticalAlign: 'top',
     marginRight: '10px',
   },
@@ -162,6 +162,10 @@ const useStyles = makeStyles((theme) => ({
     menuIcon: {
       display: 'flex',
       color: colors.WHITE
+    },
+
+    img: {
+      maxWidth: '0px',
     },
   },
 

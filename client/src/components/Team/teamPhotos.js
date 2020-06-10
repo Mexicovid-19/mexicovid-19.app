@@ -127,6 +127,16 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante  de ingeniería en Tecnologías Computacionales, amante de las tecnologías emergentes. Equipo de desarrollo web.</p>
                 </div>
+                <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>María de Lourdes Badillo Granillo</p>
+                    <img src="images/lourdesBadilla.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Ingeniería en Tecnologías Computacionales. Busco desarrollar soluciones a problemas por medio de la programación y el emprendimiento.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>Eduardo Villalpando Mello</p>
+                    <img src="images/eduardovillalpan.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de ITC, apasionado por impactar positivamente la vida de muchas personas mediante la programación y el diseño</p>
+                </div>
             </Grid>      
             <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
                 Equipo de Investigación 
@@ -238,6 +248,11 @@ const PhotoGrid = ({classes}) => {
                     <p>Estudiante de Licenciaturas en Gobierno y Transformación Pública y en Economía. Sus intereses profesionales son la educación, la política mexicana, las finanzas, y la sociología.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
+                    <p className="names" align={'center'}>Brenda Guadalupe Martínez Orta</p>
+                    <img src="images/brendamartinez.jpg" className="img-responsive" alt="Image"/>
+                    <p>Estudiante de Ingeniería Física Industrial. Sus intereses van desde la astronomía hasta el análisis de datos para optimización.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
                     <p className="names" align={'center'}>Mónica Medellín Estrada</p>
                     <img src="images/monicamedellin.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Relaciones Internacionales. Sus intereses profesionales son los estudios para el desarrollo, ciudades y América Latina.</p>
@@ -300,7 +315,7 @@ const PhotoGrid = ({classes}) => {
                 <div className={classes.photoGridItem}>
                     <p className="names" align={'center'}>Idalee Vargas</p>
                     <img src="images/idaleevargas.jpg" className="img-responsive" alt="Image"/>
-                    <p>Estudiante de Licenciatura en Publicidad y Comunicación de Mercados (LPM). Sus intereses son la creatividad, redacción, nutrición y bienestar.</p>
+                    <p>Licenciatura de Economía. Intereses: Economía matemática, análisis de datos y desarrollo económico.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
                     <p className="names" align={'center'}>Arnulfo Emmanuel Zaldívar Ruenes</p>

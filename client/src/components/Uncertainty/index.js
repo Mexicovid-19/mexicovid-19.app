@@ -7,7 +7,7 @@ import {Helmet} from 'react-helmet';
 const Uncertainty = ({ classes }) => {
   const vizContainerCam = React.useRef(null);
   React.useEffect(() => {
-    const vizUrlCam = "https://public.tableau.com/views/mexicovid19_simulacin/MXCOVIDANALYSIS?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:embed_code_version=3&amp;:tabs=no&amp;:toolbar=yes&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=yes&amp;:display_count=yes&amp;:loadOrderID=0";  
+    const vizUrlCam = "https://public.tableau.com/views/R0_analysis_new_15904200198760/Calibracin?:increment_view_count=no&:embed=y&:embed_code_version=3&:loadOrderID=0&:display_count=y&:origin=viz_share_link";  
     let viz =  new window.tableau.Viz(vizContainerCam, vizUrlCam);
   })
   document.title = "Análisis de simulación del covid-19 bajo incertidumbre | MexiCOVID";
