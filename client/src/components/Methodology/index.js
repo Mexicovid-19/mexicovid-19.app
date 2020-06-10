@@ -66,8 +66,11 @@ const Methodology = ({ classes }) => {
               </Grid>  
             </div>
             <div className={classes.content}>
-              El mapa coroplético de número de contagios, la gráfica de líneas de número de contagios en el tiempo y la tabla por estados proceden de los reportes diarios que realiza la Secretaría de Salud en la conferencia de prensa otorgada a las 7 pm. Los reportes diarios pueden ser descargados de la siguiente liga oficial mantenida por la autoridad federal: Coronavirus (Covid-19) Comunicado Técnico Diario . Los datos aportados por la Secretaria de Salud se reportan en un formato .pdf; uno para casos sospechosos y otro para confirmados. Los archivos reportan cada caso individual y el estado donde ocurrió. Nuestro equipo procesa en el software estadístico R la reconfiguración de estos archivos en una base estatal. La base mencionada se puede descargar de la liga ubicada en la parte superior de esta página.
-              Los totales de casos positivos y sospechosos se calculan con base en los archivos .pdf que registran los archivos oficiales por caso y que se descargan de la liga mantenida por la autoridad federal. Las divergencias en las cifras de totales reportados por la autoridad federal en la conferencia de prensa diaria a las 7:00 PM y los totales registrados en la documentación diaria que da a conocer la Secretaría de Salud (utilizada en esta visualización), corresponden a variaciones de criterio en las fuentes fedeales y posiblemente a diferencias de horario en el corte para la elaboración de los reportes registrados por la Secretaria de Salud y aquéllos para la conferencia de prensa.
+              La información para alimentar los mapas coropléticos y las tablas que reportan el número de confirmados positivos y el número de decesos provienen de los reportes diarios que realiza la Secretaría de Salud.
+              Nuestro equipo descarga la base de datos del sitio de datos abiertos habilitados por la autoridad federal con este propósito.
+              La base de datos de pruebas es procesada para obtener el número de pruebas, positivos confirmados y decesos confirmados por COVID-19 por estados y municipios. 
+              El número de casos acumulados por fecha y los nuevos casos se obtienen utilizando la fecha de su registro en la base de datos de pruebas y no por fecha de inicio de síntomas.
+              Las pruebas y los casos positivos se agregan por entidad y municipio de residencia del paciente.
             </div>
           </section>
           <section id="data" className={classes.row}>

@@ -76,10 +76,10 @@ const MunMapMov = (props) => {
                     <div className={classes.munGraphContainerMov}>
                         { selectedMun ?
                             <div className={classes.graphmun}>
-                                <MyResponsiveBarmov data={munDataChart} isSmall={true} isConfirm={selectedLabel=='confirmados'}/>
+                                <MyResponsiveBarmov data={munDataChart} isMobile={true} isConfirm={selectedLabel=='confirmados'}/>
                             </div>:
                             <div className={classes.graphmun}>
-                                <MyResponsiveBarmov data={stateDataChart} isSmall={true} isConfirm={selectedLabel=='confirmados'}/>
+                                <MyResponsiveBarmov data={stateDataChart} isMobile={true} isConfirm={selectedLabel=='confirmados'}/>
                             </div>
                         }
                     </div> 

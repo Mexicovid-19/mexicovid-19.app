@@ -193,10 +193,10 @@ const useHome = () => {
       prom.push(chartPoint(data[start].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / PROMEDIO_MOVIL));
       
       if( data.length - end < PROMEDIO_MOVIL && data.length > end) {
-        let prom_movil = data.length - end;
         start = end + 1;
         end = data.length;
         console.log(start, end, data)
+        let prom_movil = end - start;
         prom.push(chartPoint(data[end - 1].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / prom_movil));
       }
     }

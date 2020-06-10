@@ -1,6 +1,5 @@
 import React from 'react';
 import { line, curveMonotoneX  } from "d3-shape";
-import { Bar } from "@nivo/bar";
 import { ResponsiveLine } from '@nivo/line';
 import * as colors from '../../constants/colors';
 import { themeBlack } from '../../constants/chartThemes';

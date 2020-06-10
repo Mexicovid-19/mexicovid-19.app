@@ -125,6 +125,7 @@ const useMap = () => {
     }
     else {
       var mid = inf + Math.floor((sup - inf) /2);
+      console.log(mid, inf, sup, val, arr);
         if(arr[mid].properties.CVE_ENT == val) {
           return mid;
         } else if( arr[mid].properties.CVE_ENT < val) {
@@ -139,19 +140,21 @@ const useMap = () => {
     let _geojson = JSON.parse(JSON.stringify(statesGeOJSON));;
     let geojsonOrdered = [];
     let dataCveEnt = stateData.map(el => Number(el.cve_ent))
-    
+    console.log(dataCveEnt)
     for( var cveEntIndex in dataCveEnt) {
-      let index = binarySearch(0, _geojson.features.length, dataCveEnt[cveEntIndex], _geojson.features)
-    
-      if ( index >= 0 ) {
-        for(var j in state.dates) {
-          _geojson.features[index].properties["confirmados#" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
-          _geojson.features[index].properties["decesos#" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
-          _geojson.features[index].properties["pruebas#" + state.dates[j]] = Number(stateData[cveEntIndex].pruebas[j].count);
-        }
-        geojsonOrdered.push(_geojson.features[index])
-        _geojson.features.splice(index,1)
-      } 
+      if(dataCveEnt[cveEntIndex] != 99) {
+        let index = binarySearch(0, _geojson.features.length, dataCveEnt[cveEntIndex], _geojson.features)
+      
+        if ( index >= 0 ) {
+          for(var j in state.dates) {
+            _geojson.features[index].properties["confirmados#" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
+            _geojson.features[index].properties["decesos#" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
+            _geojson.features[index].properties["pruebas#" + state.dates[j]] = Number(stateData[cveEntIndex].pruebas[j].count);
+          }
+          geojsonOrdered.push(_geojson.features[index])
+          _geojson.features.splice(index,1)
+        } 
+      }
     }
     
     _geojson.features = geojsonOrdered

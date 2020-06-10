@@ -1,11 +1,10 @@
 import React from 'react';
 import { line, curveMonotoneX  } from "d3-shape";
-import { Bar } from "@nivo/bar";
 import { ResponsiveLine } from '@nivo/line';
 import * as colors from '../../constants/colors';
 import { themeGray } from '../../constants/chartThemes';
 
-const MyResponsiveBarmov = ({ data, isSmall=true, isMobile=false, isConfirm=false, hideAxisValues=false  }) => {
+const MyResponsiveBarmov = ({ data, isMobile=false, isConfirm=false, hideAxisValues=false  }) => {
     if(data.length > 0) {
         if (!isConfirm)
             data = data[0]
@@ -56,7 +55,7 @@ const MyResponsiveBarmov = ({ data, isSmall=true, isMobile=false, isConfirm=fals
 
     let axisBottom = null;
     let axisLeft = null;
-    var Defaultmargin = { top: 10, right: 10, bottom: 15, left: 15 };
+    var Defaultmargin = { top: 80, right: 10, bottom: 15, left: 15 };
     var legendTy = 0;
     var legendTx = 0;
     var colorArray = [colors.RED,'#ffffff00'];
@@ -68,53 +67,32 @@ const MyResponsiveBarmov = ({ data, isSmall=true, isMobile=false, isConfirm=fals
         colorArray = [colors.BLUE_LIGHT,'#ffffff00'];
     } 
     
-    if ( isMobile ) {
-        axisLeft = {
-            orient: 'left',
-            tickSize: 5,
-            tickPadding: 0,
-            tickRotation: 0,
-            legend: 'CASOS',
-            legendOffset: -45,
-            legendPosition: 'middle'
-        };
+    axisBottom = {
+        format: '%b %d',
+        tickValues: 'every 3 days',
+        orient: 'bottom',
+        tickSize: 5,
+        tickPadding: 0,
+        tickRotation: -31,
+        legendOffset: 55,
+        legendPosition: 'middle',
+        legend: 'FECHA'
+    };
+    axisLeft = {
+        orient: 'left',
+        tickSize: 0,
+        tickPadding: 0,
+        tickRotation: 0,
+        legend: 'CASOS',
+        legendOffset: -45,
+        legendPosition: 'middle'
+    };
+    Defaultmargin = { top: 80, right: 10, bottom: 15, left: 50 };
+    legendTy = -20;
+    legendTx = 20; 
 
-        Defaultmargin = { top: 10, right: 10, bottom: 15, left: 50 };
-    }
-
-    if( !isSmall ) {
-        axisBottom = {
-            format: '%b %d',
-            tickValues: 'every 3 days',
-            orient: 'bottom',
-            tickSize: 5,
-            tickPadding: 0,
-            tickRotation: -31,
-            legendOffset: 55,
-            legendPosition: 'middle',
-            legend: 'FECHA'
-        };
-        axisLeft = {
-            orient: 'left',
-            tickSize: 5,
-            tickPadding: 0,
-            tickRotation: 0,
-            legend: 'CASOS',
-            legendOffset: -45,
-            legendPosition: 'middle'
-        };
-        Defaultmargin = { 
-            top: 60, 
-            right: 60, 
-            bottom: 60, 
-            left: 60 
-        };
-        legendTy = -20;
-        legendTx = 20; 
-
-        lineWidth=4
-        pointSize=8
-    }
+    lineWidth=4
+    pointSize=8
 
     return(
         <ResponsiveLine
@@ -148,7 +126,7 @@ const MyResponsiveBarmov = ({ data, isSmall=true, isMobile=false, isConfirm=fals
             pointLabelYOffset={-12}
             enableArea={true}
             areaOpacity={.6}
-            useMesh={!isSmall}
+            useMesh={true}
             enableGridX={false}
             enableGridY={false}
             layers={['grid','markers', 'axes', 'areas', 'crosshair','lines', 'slices', 'mesh', 'legends', LineLayer]}
