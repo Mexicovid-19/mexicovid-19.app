@@ -208,9 +208,9 @@ export const themeGray = {
     background: '#dadfdf',
     fontFamily: 'sans-serif',
     fontSize: 11,
-    textColor: '#fff',
+    textColor: '#000',
     text: {
-        fill: '#fff'
+        fill: '#000'
     },
     axis: {
         domain: {
@@ -228,7 +228,7 @@ export const themeGray = {
         },
         legend: {
             text: {
-                fill: '#fff',
+                fill: '#000',
             },
         },
     },
@@ -240,7 +240,7 @@ export const themeGray = {
     },
     legends: {
         text: {
-            fill: '#fff',
+            fill: '#000',
         },
     },
     labels: {

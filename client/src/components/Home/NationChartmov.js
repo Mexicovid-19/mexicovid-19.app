@@ -87,7 +87,7 @@ const MyResponsiveBarmov = ({ data, isMobile=false, isConfirm=false, hideAxisVal
         legendOffset: -45,
         legendPosition: 'middle'
     };
-    Defaultmargin = { top: 80, right: 10, bottom: 15, left: 50 };
+    Defaultmargin = { top: 80, right: 10, bottom: 75, left: 50 };
     legendTy = -20;
     legendTx = 20; 
 
