@@ -146,10 +146,15 @@ const useMapMunicipio = () => {
         });
         
         data.sort((a,b) => a - b);
-        
-        let threshold = Math.floor(data.length / 4);
+        let numColors = 8;
+
+        if ( data.length < 8) {
+            numColors = data.length;
+        } 
+        console.log(munData.length)
+        let threshold = Math.floor(data.length / numColors);
         let thresholdsNumLabel = [];
-        for(var step = 0; step < 4; step++) {
+        for(var step = 0; step < numColors; step++) {
             thresholdsNumLabel.push(data[step*threshold])
         }
         
