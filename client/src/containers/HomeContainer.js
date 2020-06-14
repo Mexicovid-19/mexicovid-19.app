@@ -48,12 +48,12 @@ const useHome = () => {
           setDataChart([cleanData(stateData, "decesos", _state.countDates, _state.dates),cleanData(stateData, "confirmados", _state.countDates, _state.dates)]);
         if(nationalDataChart.length == 0){
           var { newCases, prom } = stateChart(cleanData(stateData, "decesos", _state.countDates, _state.dates));
-          let d = newCases;
+          let d = newCases.slice(1);
           let dp = prom;
           var { newCases, prom } = stateChart(cleanData(stateData, "confirmados", _state.countDates, _state.dates));
-          let c = newCases;
+          let c = newCases.slice(1);
           let cp = prom;
-          setNationalDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
+          setNationalDataChart([[{id:"decesos por día",data:d,}, { id:"promedio móvil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio móvil de 5 días",data:cp}]]);
         }
       }
   }, [stateData]);
@@ -61,12 +61,12 @@ const useHome = () => {
   React.useEffect(() => {
     if ( munData ) {
       var { newCases, prom } = stateChart(cleanData(munData, "decesos", state.countDates, state.dates));
-      let d = newCases;
+      let d = newCases.slice(1);
       let dp = prom;
       var { newCases, prom } = stateChart(cleanData(munData, "confirmados", state.countDates, state.dates));
-      let c = newCases;
+      let c = newCases.slice(1);
       let cp = prom;
-      setStateDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
+      setStateDataChart([[{id:"decesos por día",data:d,}, { id:"promedio móvil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio móvil de 5 días",data:cp}]]);
     }
 }, [munData]);
 
@@ -165,7 +165,7 @@ const useHome = () => {
   let stateChart = (content) => {
     let { data } = content;
     let newCases = getNewCases(data);
-    let prom = getProm(newCases);
+    let prom = getProm(newCases.slice(1));
     return ({newCases, prom});
   }
 
@@ -182,25 +182,20 @@ const useHome = () => {
   }
 
   let getProm = (data) => {
-    let batches = Math.floor(data.length / PROMEDIO_MOVIL);
-    let prom = []
-
-    console.log(data)
-    for(var batch = 0; batch < batches; batch++) {
-      let start = batch*PROMEDIO_MOVIL;
+    let len = data.length;
+    let prom = [];
+    for(var avg = 0; avg < len - 4; avg ++) {
+      let start = avg;
       let end = start + PROMEDIO_MOVIL;
-      console.log(start, end, batch)
-      prom.push(chartPoint(data[start].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / PROMEDIO_MOVIL));
-      
-      if( data.length - end < PROMEDIO_MOVIL && data.length > end) {
-        start = end + 1;
-        end = data.length;
-        console.log(start, end, data)
-        let prom_movil = end - start;
-        prom.push(chartPoint(data[end - 1].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / prom_movil));
+      let div = PROMEDIO_MOVIL;
+      if( avg > len - PROMEDIO_MOVIL) {
+          end = len;
+          div = end - avg;
       }
+      
+      prom.push(chartPoint(data[start + 2].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / div));
     }
-    
+
     return prom;
   }
   

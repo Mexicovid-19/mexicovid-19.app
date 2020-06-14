@@ -125,7 +125,6 @@ const useMap = () => {
     }
     else {
       var mid = inf + Math.floor((sup - inf) /2);
-      console.log(mid, inf, sup, val, arr);
         if(arr[mid].properties.CVE_ENT == val) {
           return mid;
         } else if( arr[mid].properties.CVE_ENT < val) {
@@ -137,10 +136,9 @@ const useMap = () => {
   }
 
   let setUpGEOJson = () => {
-    let _geojson = JSON.parse(JSON.stringify(statesGeOJSON));;
+    let _geojson = JSON.parse(JSON.stringify(statesGeOJSON));
     let geojsonOrdered = [];
     let dataCveEnt = stateData.map(el => Number(el.cve_ent))
-    console.log(dataCveEnt)
     for( var cveEntIndex in dataCveEnt) {
       if(dataCveEnt[cveEntIndex] != 99) {
         let index = binarySearch(0, _geojson.features.length, dataCveEnt[cveEntIndex], _geojson.features)

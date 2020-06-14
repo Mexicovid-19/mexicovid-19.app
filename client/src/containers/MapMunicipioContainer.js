@@ -60,13 +60,12 @@ const useMapMunicipio = () => {
             let index = selectedMun.rankingEstatal - 1; //munData is ordered
             let data = [munData[index]]
             var { newCases, prom } = stateChart(cleanData(data, "decesos", state.countDates, state.dates));
-            let d = newCases;
+            let d = newCases.slice(1);
             let dp = prom;
             var { newCases, prom } = stateChart(cleanData(data, "confirmados", state.countDates, state.dates));
-            let c = newCases;
+            let c = newCases.slice(1);
             let cp = prom;
-            setMunDataChart([[{id:"decesos por dia",data:d,}, { id:"promedio movil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio movil de 5 días",data:cp}]]);
-            
+            setMunDataChart([[{id:"decesos por día",data:d,}, { id:"promedio móvil de 5 días",data:dp}], [{id:"confirmados por día",data:c}, {id:"promedio móvil de 5 días",data:cp}]]);
         }
     }, [selectedMun]);
     
@@ -239,7 +238,7 @@ const useMapMunicipio = () => {
     let stateChart = (content) => {
         let { data } = content;
         let newCases = getNewCases(data);
-        let prom = getProm(newCases);
+        let prom = getProm(newCases.slice(1));
         return ({newCases, prom});
     }
     
@@ -256,23 +255,20 @@ const useMapMunicipio = () => {
     }
     
     let getProm = (data) => {
-        let batches = Math.floor(data.length / PROMEDIO_MOVIL);
-        let prom = []
-
-        for(var batch = 0; batch < batches; batch++) {
-            let start = batch*PROMEDIO_MOVIL;
-            let end = start + PROMEDIO_MOVIL;
-            prom.push(chartPoint(data[start].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / PROMEDIO_MOVIL));
-
-            if( data.length - end < PROMEDIO_MOVIL && data.length > end) {
-                start = end + 1;
-                end = data.length;
-                console.log(start, end, data)
-                let prom_movil = end - start;
-                prom.push(chartPoint(data[end - 1].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / prom_movil));
-            }
+        let len = data.length;
+        let prom = [];
+        for(var avg = 0; avg < len - 4; avg ++) {
+        let start = avg;
+        let end = start + PROMEDIO_MOVIL;
+        let div = PROMEDIO_MOVIL;
+        if( avg > len - PROMEDIO_MOVIL) {
+            end = len;
+            div = end - avg;
         }
         
+        prom.push(chartPoint(data[start + 2].x, data.slice(start,end).reduce((a,{y}) =>  a + y, 0) / div));
+        }
+            
         return prom;
     }
 
