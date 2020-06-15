@@ -1,5 +1,7 @@
 var municipioService = require('../service/municipios');
+
 const { response } = require('../app');
+
 
 /**
  * Function to create the user in user collection.
@@ -53,7 +55,9 @@ exports.findByEnt = function (req, res) {
     });
 }
 
-
+/**
+  * Function to find all municipios
+  */
 exports.findAll = function (req, res) {
     res.writeProcessing();
     res.write('[');
@@ -69,6 +73,7 @@ exports.findAll = function (req, res) {
         })
     })
 }
+
 
 /**
  * Function to uodate the user data by filter condition.
