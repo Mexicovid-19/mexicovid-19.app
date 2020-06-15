@@ -9,6 +9,9 @@ const Calculadora = ({ classes }) => {
 
     const [age, setAge,stateValue] = React.useState('');
 
+    //porcentaje de deuda
+
+
     const {
         states,
     } = React.useContext(CalculatorContext);
@@ -19,7 +22,7 @@ const Calculadora = ({ classes }) => {
 return (
   <div>
     <ResponsiveBar
-            data={calculatorData}
+            data={"calculatorData"}
             keys={[
                 'ANO',
                 'PIB',

@@ -8,15 +8,37 @@ import SimulationUncertainty from './SimulationUncertainty';
 import ReactivacionEco from './ReactivacionEco';
 import { Helmet } from 'react-helmet';
 import MasterDetailView from '../MasterDetailView';
+
 import Calculadora from '../Calculadora';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Slider from '@material-ui/core/Slider';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Button from '@material-ui/core/Button';
+
 
 import Barchart from '../Regions';
+
+
+function valuetext(value) {
+	return `${value}°C`;
+}
 
 const Simulation = ({ classes }) => {
 
 	const isMobile = window.innerWidth < 1000;
 	document.title = "Prospectiva | MexiCOVID";
 	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
+
+	const [state, setState] = React.useState({
+		checkedA: true,
+		checkedB: true,
+	});
+	
+	const handleChange = (event) => {
+		setState({ ...state, [event.target.name]: event.target.checked });
+	};
 
 	const sections = [
 		{
@@ -43,7 +65,207 @@ const Simulation = ({ classes }) => {
 			escription: 'Este modelo de difusión de COVID19 constituye una versión modificada del modelo SIR. Considera parámetros sobre la infectividad y mortalidad del COVID19, el impacto del distanciamiento social y, de manera muy importante, el rezago en la información entre el número real de infectados y el número de casos confirmados.',
 			caption: 'Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey @fgmzz',
 			render: ()=>(
-				<iframe src="./uncertainty" className={classes.graphContainer}></iframe>
+				<div>
+					<Grid container spacing={3}>
+						<Grid item xs={12}>
+								Graficas
+						</Grid>
+						<Grid item xs={12} className={classes.container}>
+							<Grid container spacing={3}>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 1
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 2
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 3
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 4
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 5
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 6
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 7
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 8
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Typography id="discrete-slider" gutterBottom>
+											Variable 9
+										</Typography>
+										<Slider
+											defaultValue={30}
+											getAriaValueText={valuetext}
+											aria-labelledby="discrete-slider"
+											valueLabelDisplay="auto"
+											step={10}
+											marks
+											min={10}
+											max={110}
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<FormControlLabel
+											control={
+											<Switch
+												checked={state.checkedB}
+												onChange={handleChange}
+												name="checkedB"
+												color="primary"
+											/>
+											}
+											label="Variable booleana 1"
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<FormControlLabel
+											control={
+											<Switch
+												checked={state.checkedA}
+												onChange={handleChange}
+												name="checkedA"
+												color="primary"
+											/>
+											}
+											label="Variable booleana 2"
+										/>
+									</div>
+								</Grid>
+								<Grid item xs={3}>
+									<div>
+										<Button variant="contained" color="primary" disableElevation>
+											Calcular valores
+										</Button>
+									</div>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Grid>
+				</div>
 			)
 		}
 	]
