@@ -5,24 +5,11 @@ import Button from '@material-ui/core/Button';
 import LaunchIcon from '@material-ui/icons/Launch';
 import * as colors from '../../constants/colors';
 
-const SimulationUncertainty = ({ classes }) => {
+const CalculatorSimulation = ({ classes }) => {
     document.title = "Prospectiva | MexiCOVID";
 
     return (
-        <React.Fragment>
-            <section className={classes.section}>
-                <Typography className={classes.h2} variant={'h2'}>Roberto Duran</Typography>
-                <p className={classes.textcontainer}>Calculadora de PIB</p>
-                <section className={classes.bottominfocontainer} >
-                    <div className={classes.writterscontainer}>
-                        <p className={classes.textcontainer}>Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey <a href="https://twitter.com/fgmzz" target="_blank" className={classes.twitterclass}> @fgmzz</a></p>
-                    </div>
-                    <div className={classes.buttonPlace}>
-                        <Button target="_blank" href="/reactivacion-economica" className={classes.button} color="inherit">Gráfica<LaunchIcon className={classes.icon} /></Button>
-                    </div>
-                </section>
-            </section>
-        </React.Fragment>
+        
     );
 }
 
