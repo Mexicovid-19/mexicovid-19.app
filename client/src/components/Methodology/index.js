@@ -71,6 +71,11 @@ const Methodology = ({ classes }) => {
               La base de datos de pruebas es procesada para obtener el número de pruebas, positivos confirmados y decesos confirmados por COVID-19 por estados y municipios. 
               El número de casos acumulados por fecha y los nuevos casos se obtienen utilizando la fecha de su registro en la base de datos de pruebas y no por fecha de inicio de síntomas.
               Las pruebas y los casos positivos se agregan por entidad y municipio de residencia del paciente.
+              <p><Button variant="contained" color="primary" onClick={()=>{
+                window.open(`${process.env.REACT_APP_API_URL}/municipio/`, '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=800,height=800')
+              }}>
+                Descargar datos
+              </Button></p>
             </div>
           </section>
           <section id="data" className={classes.row}>
@@ -187,7 +192,10 @@ const styles = () => ({
     padding: '20px',
     flex: '5',
     display: 'flex',
-    textAlign: 'justify'
+    textAlign: 'justify',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around',
   },
 
   navbar: {

@@ -43,4 +43,14 @@
             callback(err, response);
         });
     }
+    /**
+     * Function to get all files
+     */
+    exports.getAll = (callback)=>{
+        // municipio.find({}, (err, response)=>{
+        //     callback(err,response)
+        // })
+        let stream = municipio.find({}).select('-_id -decesos._id -confirmados._id -pruebas._id').lean().cursor();
+        callback(stream)
+    }
 })()
