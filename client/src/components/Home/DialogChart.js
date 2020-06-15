@@ -7,6 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from "@material-ui/icons/Close";
 import MyResponsiveLine from './LineChart';
+import MyResponsiveBar from './NationChart';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { themeBlack } from '../../constants/chartThemes';
@@ -16,8 +17,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const AlertDialogSlide = (props) => {
-  const { classes, handleClose, open, data} = props;
+  const { classes, handleClose, open, data, isConfirm, title='Nacional'} = props;
   const [maxWidth, setMaxWidth] = React.useState('lg');
+  
+  
+
   return (
     <div>
       <Dialog
@@ -33,9 +37,9 @@ const AlertDialogSlide = (props) => {
         <Button onClick={handleClose} classes={{root: classes.cross}}>
           <CloseIcon />
         </Button>
-        <Typography className={classes.title}> Grafica de Casos</Typography>
+  <Typography className={classes.title}> Gráfica de Casos - {title}</Typography>
         <DialogContent classes={{root: classes.chartatyle}}>
-          <MyResponsiveLine data={data} isSmall={false}  />
+           <MyResponsiveBar data={data} isSmall={false} isConfirm={isConfirm}/>
         </DialogContent>
       </Dialog> 
     </div>

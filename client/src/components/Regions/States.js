@@ -169,37 +169,6 @@ const States = ({ classes }) => {
 
 	const sections = [
 		{
-			title: 'Indicadores por Estado', 
-			subtitle: 'Entre el 25 de marzo y el 12 de mayo un grupo de 32 estudiantes realizaron el seguimiento de medios locales y boletines oficiales de cada entidad federativa con la finalidad de monitorear eventos relacionados con: 1) medidas de aislamiento, 2) sucesos de inseguridad, 3) transparencia y comunicación, 4) salud pública y 5) economía. A partir de este seguimiento, los estudiantes contestaron un instrumento que denominamos ¿Quién es quién en los estados? El cual contiene 115 preguntas en torno a los cinco temas antes enunciados. Empleando la técnica de análisis factorial pudimos sintetizar la información mediante la obtención de 14 indicadores que se muestran en esta sección.',
-			description: '<b>Nota:</b> los indicadores representan los puntajes normalizados del análisis factorial; valores cercanos a cero indican ausencia o baja representación del indicador en el estado, mientras que puntajes cercanos a uno sugieren una alta representación.',
-			render: ()=>(
-				<div className={classes.graphContainer}>
-					<div>
-						<AntTabs value={value} onChange={handleChange} aria-label="ant example">
-							<AntTab label="Mapa de color" {...a11yProps(1)} />
-							<AntTab label="Totales" {...a11yProps(1)}/>
-							<AntTab label="Definiciones" {...a11yProps(1)} />
-						</AntTabs>
-					</div>
-					<SwipeableViews
-						axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-						index={value}
-						onChangeIndex={handleChangeIndex}
-					>
-						<TabPanel value={value} index={0} style={{backgroundColor:'white'}}>
-							<Heatmap></Heatmap>
-						</TabPanel>
-						<TabPanel value={value} index={1} style={{backgroundColor:'white'}}>
-							{mobileDetect() ? (<BarchartMobile />) : (<Barchart />)}	
-						</TabPanel>
-						<TabPanel value={value} index={2} style={{backgroundColor:'white'}}>
-							<IndicatorsDescription></IndicatorsDescription>
-						</TabPanel>
-					</SwipeableViews>
-				</div>
-			)
-		},
-		{
 			title: 'Número de Confirmados Positivos por Estado y por 100,000 Habitantes',
 			subtitle: '<u>Instrucciones</u>: Se seleccionan automáticamente los cinco estados con las tasas de confirmados-positivos más altas a nivel nacional. Tú puedes interactuar con el tablero, seleccionando y deseleccionando las comparaciones entre estados que quieras realizar.',
 			render: ()=>(
@@ -230,11 +199,42 @@ const States = ({ classes }) => {
 									/>
 								))}
 							</div>
-						</div>
+					</div>
 						<div className={classes.chart}>
-							{statesToChart && <MyResponsiveLine data={statesToChart} isSmall={isMobile} className={{root: classes.chartatyle}}/>}
+								{statesToChart && <MyResponsiveLine data={statesToChart} isSmall={isMobile} className={{root: classes.chartatyle}}/>}
 						</div>
 					</div>
+			)
+		},
+		{
+			title: 'Indicadores por Estado', 
+			subtitle: 'Entre el 25 de marzo y el 12 de mayo un grupo de 32 estudiantes realizaron el seguimiento de medios locales y boletines oficiales de cada entidad federativa con la finalidad de monitorear eventos relacionados con: 1) medidas de aislamiento, 2) sucesos de inseguridad, 3) transparencia y comunicación, 4) salud pública y 5) economía. A partir de este seguimiento, los estudiantes contestaron un instrumento que denominamos ¿Quién es quién en los estados? El cual contiene 115 preguntas en torno a los cinco temas antes enunciados. Empleando la técnica de análisis factorial pudimos sintetizar la información mediante la obtención de 14 indicadores que se muestran en esta sección.',
+			description: '<b>Nota:</b> los indicadores representan los puntajes normalizados del análisis factorial; valores cercanos a cero indican ausencia o baja representación del indicador en el estado, mientras que puntajes cercanos a uno sugieren una alta representación.',
+			render: ()=>(
+				<div className={classes.graphContainer}>
+					<div>
+						<AntTabs value={value} onChange={handleChange} aria-label="ant example">
+							<AntTab label="Mapa de color" {...a11yProps(1)} />
+							<AntTab label="Totales" {...a11yProps(1)}/>
+							<AntTab label="Definiciones" {...a11yProps(1)} />
+						</AntTabs>
+					</div>
+					<SwipeableViews
+						axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+						index={value}
+						onChangeIndex={handleChangeIndex}
+					>
+						<TabPanel value={value} index={0} style={{backgroundColor:'white'}}>
+							<Heatmap></Heatmap>
+						</TabPanel>
+						<TabPanel value={value} index={1} style={{backgroundColor:'white'}}>
+							{mobileDetect() ? (<BarchartMobile />) : (<Barchart />)}	
+						</TabPanel>
+						<TabPanel value={value} index={2} style={{backgroundColor:'white'}}>
+							<IndicatorsDescription></IndicatorsDescription>
+						</TabPanel>
+					</SwipeableViews>
+				</div>
 			)
 		},
 		{
@@ -357,10 +357,13 @@ const styles = () => ({
 		color: colors.GRAY_LIGHT
 	},
 
-	
+	chartline:{
+		height: '100%',
+		width: 'auto'
+	},
 
 	chart: {
-		height: '5px',
+		height: '5px!important',
 		width: '100%',
 		flex: 1
 	},
