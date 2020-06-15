@@ -154,6 +154,56 @@ const datos = [
 // This class is accessed through PIB.prototype.obtenerFinanzasPublicas
 //wip.
 class FinanzasPublicas{
+    static deficit = {
+        d_it: {
+            2020: -0.07,
+            2021: 0, 
+            2022: 0,
+            2023: 0,
+            2024: 0,
+            2025: 0
+        }, 
+        d_oil: {
+            2020: -0.48,
+            2021: -0.25,
+            2022: -0.10,
+            2023: -0.10,
+            2024: -0.10, 
+            2025: -0.10,
+        },
+        fgp: {
+            2020: 0.20,
+            2021: 0.20, 
+            2022: 0.20,
+            2023: 0.20,
+            2024: 0.20,
+            2025: 0.20
+        },
+        d_e: {
+            2020: -0.01,
+            2021: 0,
+            2022: 0,
+            2023: 0,
+            2024: 0,
+            2025: 0
+        }, 
+        d_pen: {
+            2020: 0, 
+            2021: 0, 
+            2022: 0,
+            2023: 0,
+            2024: 0,
+            2025: 0
+        }, 
+        d_cfo: {
+            2020: 0,
+            2021: 0,
+            2022: 0, 
+            2023: 0,
+            2024: 0, 
+            2025: 0
+        }
+    }
     constructor(options){
         this.pib = options.pib;
         this.inpc = options.inpc,
@@ -173,7 +223,7 @@ class FinanzasPublicas{
             Object.values(this.ingresos).reduce((a,b)=>a+b,0)
             - Object.values(this.gastoPrimario).reduce((a,b)=>a+b,0)
         ;
-        this.rfsp_p = options.rfsp_p;
+        // this.rfsp_p = options.rfsp_p;
     }
     obtenerEnPesosReales(){
         let result = {
@@ -203,7 +253,9 @@ class FinanzasPublicas{
 }
 
 
+class Deuda {
 
+}
 
 
 
