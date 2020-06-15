@@ -16,10 +16,10 @@ const MunicipalitiesFollow = ({ classes }) => {
       <Helmet>
 			<title>Seguimiento por municipio | MexiCOVID</title>
 			<meta name="description" content="Gráfico interactivo y mapa de casos de COVID-19 por municipio en México" />
-			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/municipios.PNG" />
+			<meta property="og:image" content="https://mexicovid19.app/img/mediashare/municipios.PNG" />
 			<meta name="keywords" content="seguimiento por municipio,municipio covid, coronavirus mexico tec,casos coronavirus estado,coronavirus casos, divulgacion covid"/>
 			
-      <meta property="og:image" content="http://mexicovid19.app/img/mediashare/municipios.PNG"/>
+      <meta property="og:image" content="https://mexicovid19.app/img/mediashare/municipios.PNG"/>
       <meta property="og:title" content="Seguimiento por municipio | MexiCOVID"/>
 
       </Helmet>

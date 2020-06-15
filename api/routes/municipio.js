@@ -23,9 +23,9 @@ router.get('/', municipio.findAll);
 router.put('/update', municipio.update);
 
 router.get('/load_data', function(req, res) {
-	var fs = require('fs');
-
-	fs.readFile("data/region/municipios_poblacion_entmun.csv", "utf8", function(err, data){
+    console.log("loading")
+    var fs = require('fs');
+    fs.readFile("data/region/municipios_poblacion_entmun.csv", "utf8", function(err, data){
 		if(err) {
 			res.statusMessage = "file didn't load."
 			res.status(404).end();

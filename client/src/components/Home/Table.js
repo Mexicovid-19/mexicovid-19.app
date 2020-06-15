@@ -16,6 +16,7 @@ import AspectRatioRoundedIcon from '@material-ui/icons/AspectRatioRounded';
 import * as colors from '../../constants/colors';
 import Button from "@material-ui/core/Button";
 import AlertDialogSlide from './DialogChart';
+import MyResponsiveBar from './NationChart';
 import { numberWithCommas } from '../../Utils/numberWCommas';
 
 function descendingComparator(a, b, orderBy) {
@@ -143,8 +144,8 @@ const EnhancedTableToolbar = (props) => {
       <button>
         {!isMobile && <AspectRatioRoundedIcon className={classes.icon} onClick={clickOpen}/>}
       </button>
-      <MyResponsiveLine data={data} isMobile={isMobile} isConfirm={isConfirm}/>
-      <AlertDialogSlide handleClose={clickClose} open={openDial} data={data}/>
+      <MyResponsiveBar data={data} isSmall={true} isMobile={isMobile} isConfirm={isConfirm}/>
+      <AlertDialogSlide handleClose={clickClose} open={openDial} data={data} isConfirm={isConfirm} />
     </Toolbar>
   );
 };
@@ -166,7 +167,9 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 150,
     backgroundColor: colors.BLACK,
-    padding: '10px'
+    padding: '10px',
+    flex: 1,
+    height: '100%'
   },
 
   headerCell: {
@@ -187,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   tableContainer: {
-    overflowY: 'scroll',
+    overflowY: 'auto',
     height: 'calc(70vh - 64px)',
     borderTop: '1px solid white'
   },
@@ -221,12 +224,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const EnhancedTable = () => {
-  const {rows, dataChart, selectedLabel} = React.useContext(HomeContext);
+  const {rows, dataChart, nationalDataChart, selectedLabel} = React.useContext(HomeContext);
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('ranking');
   const [selected, setSelected] = React.useState([]);
-
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -254,7 +256,7 @@ const EnhancedTable = () => {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar data={dataChart} clickOpen={handleClickOpen} clickClose={handleClose} openDial={open} isConfirm={selectedLabel == "confirmados"}/>
+        <EnhancedTableToolbar data={nationalDataChart} clickOpen={handleClickOpen} clickClose={handleClose} openDial={open} isConfirm={selectedLabel == "confirmados"}/>
         <TableContainer className={classes.tableContainer}>
           <Table
             stickyHeader

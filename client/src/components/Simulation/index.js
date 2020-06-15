@@ -41,7 +41,7 @@ const Simulation = ({ classes }) => {
 			<Helmet>
 			<title>Prospectiva | MexiCOVID</title>
 			<meta name="description" content="Prospectiva y modelos del COVID19" />
-			<meta property="og:image" content="http://mexicovid19.app/img/mediashare/incertidumbre.PNG" />
+			<meta property="og:image" content="https://mexicovid19.app/img/mediashare/incertidumbre.PNG" />
 			<meta name="keywords" content="simulacion incertidumbre, coronavirus mexico tec,casos coronavirus simulacion,coronavirus simulacion,cuanto tiempo falta coronavirus"/>
 			
 			<meta property="og:title" content="Prospectiva | MexiCOVID"/>

@@ -16,7 +16,7 @@
 
     /**
      * Funtion to find the municipio from collections.
-     * @param {*} q|uery condition or expression to find the municipio from collection.
+     * @param {*} query condition or expression to find the municipio from collection.
      * @param {*} callback callback function
      */
     exports.findMunicipio = function (query, callback) {
