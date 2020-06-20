@@ -5,11 +5,8 @@ import Button from '@material-ui/core/Button';
 import LaunchIcon from '@material-ui/icons/Launch';
 import * as colors from '../../constants/colors';
 
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Slider from '@material-ui/core/Slider';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+const CalculatorSimulation = ({ classes }) => {
+    document.title = "Prospectiva | MexiCOVID";
 
 import Calculadora from '../Calculadora';
 
@@ -28,205 +25,7 @@ const Calculator = ({ classes }) => {
 	};
     return (
         <div>
-			<Grid container spacing={3}>
-				<Grid item xs={12}>
-					<Calculadora></Calculadora>
-				</Grid>
-				<Grid item xs={12} className={classes.container}>
-				    <Grid container spacing={3}>
-						<Grid item xs={3}>
-							<div>
-								<Typography id="discrete-slider" gutterBottom>
-								    Variable 1
-								</Typography>
-								<Slider
-								    defaultValue={30}
-									getAriaValueText={valuetext}
-									aria-labelledby="discrete-slider"
-									valueLabelDisplay="auto"
-									step={10}
-									marks
-									min={10}
-									max={110}
-								/>
-							</div>
-						</Grid>
-						<Grid item xs={3}>
-						    <div>
-							    <Typography id="discrete-slider" gutterBottom>
-									Variable 2
-								</Typography>
-								<Slider
-									defaultValue={30}
-									getAriaValueText={valuetext}
-									aria-labelledby="discrete-slider"
-									valueLabelDisplay="auto"
-									step={10}
-									marks
-									min={10}
-									max={110}
-								/>
-							</div>
-						</Grid>
-						<Grid item xs={3}>
-							<div>
-								<Typography id="discrete-slider" gutterBottom>
-									Variable 3
-								</Typography>
-								<Slider
-								    defaultValue={30}
-									getAriaValueText={valuetext}
-									aria-labelledby="discrete-slider"
-									valueLabelDisplay="auto"
-									step={10}
-									marks
-									min={10}
-									max={110}
-								/>
-							</div>
-						</Grid>
-						<Grid item xs={3}>
-						    <div>
-								<Typography id="discrete-slider" gutterBottom>
-								    Variable 4
-								</Typography>
-								<Slider
-									defaultValue={30}
-									getAriaValueText={valuetext}
-									aria-labelledby="discrete-slider"
-									valueLabelDisplay="auto"
-									step={10}
-									marks
-									min={10}
-									max={110}
-								/>
-							</div>
-						</Grid>
-						<Grid item xs={3}>
-							<div>
-								<Typography id="discrete-slider" gutterBottom>
-									Variable 5
-								</Typography>
-								<Slider
-									defaultValue={30}
-									getAriaValueText={valuetext}
-									aria-labelledby="discrete-slider"
-									valueLabelDisplay="auto"
-									step={10}
-									marks
-									min={10}
-									max={110}
-								/>
-							</div>
-						</Grid>
-							<Grid item xs={3}>
-							    <div>
-								    <Typography id="discrete-slider" gutterBottom>
-											Variable 6
-								    </Typography>
-									<Slider
-										defaultValue={30}
-										getAriaValueText={valuetext}
-										aria-labelledby="discrete-slider"
-										valueLabelDisplay="auto"
-										step={10}
-										marks
-										min={10}
-										max={110}
-									/>
-								</div>
-							</Grid>
-							<Grid item xs={3}>
-								<div>
-									<Typography id="discrete-slider" gutterBottom>
-										Variable 7
-									</Typography>
-									<Slider
-										defaultValue={30}
-										getAriaValueText={valuetext}
-										aria-labelledby="discrete-slider"
-										valueLabelDisplay="auto"
-										step={10}
-										marks
-										min={10}
-										max={110}
-									/>
-								</div>
-							</Grid>
-							<Grid item xs={3}>
-								<div>
-									<Typography id="discrete-slider" gutterBottom>
-										Variable 8
-									</Typography>
-									<Slider
-										defaultValue={30}
-										getAriaValueText={valuetext}
-										aria-labelledby="discrete-slider"
-										valueLabelDisplay="auto"
-										step={10}
-										marks
-										min={10}
-										max={110}
-									/>
-								</div>
-							</Grid>
-							<Grid item xs={3}>
-								<div>
-									<Typography id="discrete-slider" gutterBottom>
-									    Variable 9
-									</Typography>
-									<Slider
-										defaultValue={30}
-										getAriaValueText={valuetext}
-										aria-labelledby="discrete-slider"
-										valueLabelDisplay="auto"
-										step={10}
-										marks
-										min={10}
-										max={110}
-									/>
-								</div>
-							</Grid>
-							<Grid item xs={3}>
-								<div>
-									<FormControlLabel
-										control={
-                                            <Switch
-                                                hecked={state.checkedB}
-                                                onChange={handleChange}
-                                                name="checkedB"
-                                                color="primary"
-                                            />
-										}
-										label="Variable booleana 1"
-									/>
-								</div>
-							</Grid>
-							<Grid item xs={3}>
-								<div>
-									<FormControlLabel
-										control={
-                                            <Switch
-                                                checked={state.checkedA}
-                                                onChange={handleChange}
-                                                name="checkedA"
-                                                color="primary"
-                                            />
-										}
-										label="Variable booleana 2"
-									/>
-								</div>
-							</Grid>
-							<Grid item xs={3}>
-								<div>
-									<Button variant="contained" color="primary" disableElevation>
-										Calcular valores
-									</Button>
-								</div>
-							</Grid>
-					</Grid>
-				</Grid>
-			</Grid>
+			hola?
 		</div>
     );
 }
@@ -301,5 +100,5 @@ const styles = () => ({
           },
         },
   });
-
+}
 export default withStyles(styles)(Calculator);

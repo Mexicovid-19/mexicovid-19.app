@@ -233,7 +233,7 @@ class FinanzasPublicas{
         }
         Object.keys(result).forEach(l=>{
             Object.keys(result[l]).forEach(key=>{
-                result.[l][key]*=this.pib;
+                result[l][key]*=this.pib;
             });
             result[l][total] = Object.values(result[l]).reduce((a,b)=>a+b, 0);
         })
@@ -243,7 +243,7 @@ class FinanzasPublicas{
         let result = {...this.obtenerEnPesosReales()};
         Object.keys(result).forEach(l=>{
             Object.keys(result[l]).forEach(key=>{
-                result.[l][key]*=this.inpc;
+                result[l][key]*=this.inpc;
             });
             result[l][total] = Object.values(result[l]).reduce((a,b)=>a+b, 0);
         })
@@ -253,15 +253,11 @@ class FinanzasPublicas{
 }
 
 
-class Deuda {
-
-}
-
 
 
 
 
 console.log(  
     datos[1].obtenerAnioSiguienteSegunTC(-10/100, 0.9/100)
-        .obtenerConEstimuloFiscal(983099, 425.85/4, 1.3)
+        // .obtenerConEstimuloFiscal(983099, 425.85/4, 1.3)
 )

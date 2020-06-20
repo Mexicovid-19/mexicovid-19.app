@@ -47,7 +47,7 @@ const Simulation = ({ classes }) => {
 			escription: 'Este modelo de difusión de COVID19 constituye una versión modificada del modelo SIR. Considera parámetros sobre la infectividad y mortalidad del COVID19, el impacto del distanciamiento social y, de manera muy importante, el rezago en la información entre el número real de infectados y el número de casos confirmados.',
 			caption: 'Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey @fgmzz',
 			render: ()=>(
-				<Calculator></Calculator>
+				<Calculadora></Calculadora>
 			)
 		}
 	]
