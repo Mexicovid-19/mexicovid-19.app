@@ -9,36 +9,18 @@ import ReactivacionEco from './ReactivacionEco';
 import { Helmet } from 'react-helmet';
 import MasterDetailView from '../MasterDetailView';
 
-import Calculadora from '../Calculadora';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Slider from '@material-ui/core/Slider';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Button from '@material-ui/core/Button';
-
+import Calculator from './Calculator';
 
 import Barchart from '../Regions';
+import calculator from './calculator';
 
 
-function valuetext(value) {
-	return `${value}°C`;
-}
 
 const Simulation = ({ classes }) => {
 
 	const isMobile = window.innerWidth < 1000;
 	document.title = "Prospectiva | MexiCOVID";
 	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
-
-	const [state, setState] = React.useState({
-		checkedA: true,
-		checkedB: true,
-	});
-	
-	const handleChange = (event) => {
-		setState({ ...state, [event.target.name]: event.target.checked });
-	};
 
 	const sections = [
 		{
