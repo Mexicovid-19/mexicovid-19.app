@@ -16,7 +16,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import CalculatorData, {PIB, datosHistoricos} from './data'
+import CalculatorData, {PIB, datosHistoricos,datosHistoricosPromedio} from './data'
 import { Bars } from 'react-chartjs-2';
 
 
@@ -42,7 +42,7 @@ return (
             keys={[
                 "PIB",
             ]}
-            data={datosHistoricos}
+            data={datosHistoricosPromedio}
             indexBy="ANO"
             margin={{ top: 50, right: 60, bottom: 50, left: 60 }}
             padding={0.3}
@@ -90,7 +90,7 @@ return (
                 tickRotation: -30,
                 legend: 'Tiempo',
                 legendPosition: 'middle',
-                legendOffset: 32
+                legendOffset: 41
             }}
             axisLeft={{
                 tickSize: 5,
@@ -102,6 +102,7 @@ return (
             }}
             labelSkipWidth={12}
             labelSkipHeight={12}
+            
             labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
             animate={true}
             motionStiffness={90}
