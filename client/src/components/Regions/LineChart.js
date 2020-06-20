@@ -36,7 +36,6 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
 	}
 
 	const DashedLine = ({ series, lineGenerator, xScale, yScale }) => {
-		console.log(series)
 		return series.map(({ id, data, color }) => (
 			<path
 				key={id}
