@@ -3,14 +3,14 @@ import React from 'react';
 import { STATE_COLORS } from '../../constants/states';
 
 const MyResponsiveLine = ({ data, isSmall=false, }) => {
-	let marginConstrains = { top: 20, right: 10, bottom: 50, left: 50 };
+	let marginConstrains = { top: 20, right: 70, bottom: 50, left: 50 };
 	let legendsConstrains = [];
 	let tickRotation = -90;
 	let grid = false;
 	let axisBottom = null
 
 	if( !isSmall ) {
-		marginConstrains = { top: 20, right: 10, bottom: 105, left: 50 };
+		marginConstrains = { top: 20, right: 70, bottom: 105, left: 50 };
 		legendsConstrains = [];
 		tickRotation = -60;
 		grid = true;
@@ -36,7 +36,6 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
 	}
 
 	const DashedLine = ({ series, lineGenerator, xScale, yScale }) => {
-		console.log(series)
 		return series.map(({ id, data, color }) => (
 			<path
 				key={id}
@@ -54,9 +53,9 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
 	}
 	
 	return(
+		<div style={{ height: 600, width: '100%'}}>
 	<ResponsiveLine
 		data={data}
-		
 		lineWidth={2}
 		margin={marginConstrains}
 		yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
@@ -129,6 +128,7 @@ const MyResponsiveLine = ({ data, isSmall=false, }) => {
             )
         }}
 	/>
+	</div>
 	)
 }
 
