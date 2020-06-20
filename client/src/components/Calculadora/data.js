@@ -101,7 +101,113 @@ class PIB{
     static obtenerPIBNsinComponentes(anio){
         return this.obtenerPIBsinComponentes(anio)*PIB.INPC[anio];
     }
+    /**
+     * Regresa FinanzasPublicas según parámetros, para el año con el respectivo PIB
+     * @returns {FinanzasPublicas} Instancia
+     * @param {object} {options}
+     */
+    obtenerFinanzasPublicas(options){
+        return new FinanzasPublicas({
+            ...options,
+            anio: this.anio, 
+            pib: this.pib, 
+            inpc: this.inpc,
+            pibNominal: this.pibNominal,
+            estimuloFiscal: this.estimuloFiscal
+        })
+    }
 
+}
+
+class FinanzasPublicas{
+    static defecit = {
+        d_it: {
+            2020: -0.07,
+            2021: 0,
+            2022: 0,
+            2023: 0,
+            2024: 0,
+            2025: 0
+        },
+        d_oil: {
+            2020: -0.48,
+            2021: -0.25,
+            2022: -0.10,
+            2023: -0.10,
+            2024: -0.10,
+            2025: -0.10
+        }, 
+        fgp: {
+            2020: 0.20,
+            2021: 0.20,
+            2022: 0.20,
+            2023: 0.20,
+            2024: 0.20,
+            2025: 0.20
+        },
+        d_e: {
+            2020: -0.01,
+            2021: 0,
+            2022: 0,
+            2023: 0,
+            2024: 0,
+            2025: 0
+        },
+        d_pen: {
+            2020: 0,
+            2021: 0,
+            2022: 0,
+            2023: 0,
+            2024: 0, 
+            2025: 0
+        }, 
+        d_cfo: {
+            2020: 0, 
+            2021: 0,
+            2022: 0,
+            2023: 0, 
+            2024: 0,
+            2025: 0
+        }
+    }
+    constructor(options){
+        this.pib = options.pib;
+        this.inpc = options.inpc;
+        this.anio = options.anio;
+        this.pibNominal = options.pibNominal;
+        
+        this.estimuloFiscal = options.estimuloFiscal;
+        this.gastoPrimario = {...options.gastoPrimario, total: Object.values(options.gastoPrimario).reduce((a, b)=>a+b, 0)};
+        this.ingresos = {...options.ingresos, total: Object.values(options.ingresos).reduce((a, b)=>a+b, 0)};
+        this.costoFinanciero = {...options.costoFinanciero, total: Object.values(options.costoFinanciero).reduce((a, b)=>a+b, 0)};
+
+        this.rfsp = this.ingresos.total - this.gastoPrimario.total - this.costoFinanciero.total;
+        this.rfsp_p = this.ingresos.total - this.gastoPrimario.total
+    }
+
+    obtenerEnPesosReales(){
+        let result = {
+            ingresos: {...this.ingresos},
+            gastoPrimario: {...this.gastoPrimario},
+            costoFinanciero: {...this.costoFinanciero}
+        };
+        Object.keys(result).forEach(l=>{
+            Object.keys(result[l]).forEach(key=>{
+                result[l][key]*=this.pib;
+            });
+        });
+        return result;
+    }
+
+    obtenerEnPesosNominales(){
+        let result = {...this.obtenerEnPesosReales()};
+        Object.keys(result).forEach(l=>{
+            Object.keys(result[l]).forEach(key=>{
+                result[l][key]*=this.inpc;
+            });
+        });
+        return result;
+    }
 }
 
 const CalculatorData = new PIB({
