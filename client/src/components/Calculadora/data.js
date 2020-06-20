@@ -641,7 +641,7 @@ const datosHistoricos = [
 ]
 
 const datosHistoricosMXN =[{
-            ANO: "2010",
+            ANO: 2010,
             PIB: 14371712,
             DA: 18614192,
             C: 9622216,
@@ -1162,6 +1162,7 @@ const datosHistoricosMXN =[{
         },
 ]
 let anios = ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"]
+let anios2 = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
 //Porcentajes
 let _datosHistoricosPromedio = {};
 let datosHistoricosPromedio = [];
@@ -1183,8 +1184,24 @@ console.log(datosHistoricosPromedio)
 
 
 //MXN
+let _datosHistoricosPromedioMXN = {};
+let datosHistoricosPromedioMXN = [];
+datosHistoricosMXN.forEach(q=>{
+    let year = anios2.find(l=>q.ANO.includes(l))
+    if(_datosHistoricosPromedioMXN[year] === undefined){
+        _datosHistoricosPromedioMXN[year] = {PIB: 0} 
+    }
+        _datosHistoricosPromedioMXN[year].PIB+=Number(q.PIB);
+})
+Object.keys(_datosHistoricosPromedioMXN).forEach(anio=>{
+    let obj = {
+        ANO: anio, 
+        ..._datosHistoricosPromedioMXN[anio]
+    }
+    datosHistoricosPromedioMXN.push(obj)
+})
+console.log(datosHistoricosPromedioMXN)
 
 
-
-export {PIB, datosHistoricos, datosHistoricosPromedio};
+export {PIB, datosHistoricos, datosHistoricosPromedio,datosHistoricosPromedioMXN};
 export default CalculatorData;
