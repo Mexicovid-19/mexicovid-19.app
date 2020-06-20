@@ -1,6 +1,6 @@
 {
   "name": "covid-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
@@ -35,6 +35,7 @@
     "nivo": "^0.31.0",
     "pure-react-carousel": "^1.27.1",
     "react": "^16.13.1",
+    "react-clear-cache": "^1.2.0",
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
@@ -62,7 +63,9 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "sitemap": "babel-node ./src/sitemap-builder.js"
+    "sitemap": "babel-node ./src/sitemap-builder.js",
+    "prebuild": "npm run generate-build-meta",
+    "generate-build-meta": "./node_modules/react-clear-cache/bin/cli.js"
   },
   "eslintConfig": {
     "extends": "react-app"
