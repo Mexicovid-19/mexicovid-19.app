@@ -8,11 +8,8 @@ import SimulationUncertainty from './SimulationUncertainty';
 import ReactivacionEco from './ReactivacionEco';
 import { Helmet } from 'react-helmet';
 import MasterDetailView from '../MasterDetailView';
-
-import Calculator from './Calculator';
-
 import Barchart from '../Regions';
-import calculator from './calculator';
+import Calculadora from '../Calculadora';
 
 
 
@@ -23,6 +20,15 @@ const Simulation = ({ classes }) => {
 	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
 
 	const sections = [
+		{
+			title: 'Calculadora de PIB',
+			subtitle: '<b>Roberto Duran</b>',
+			escription: 'Este modelo de difusión de COVID19 constituye una versión modificada del modelo SIR. Considera parámetros sobre la infectividad y mortalidad del COVID19, el impacto del distanciamiento social y, de manera muy importante, el rezago en la información entre el número real de infectados y el número de casos confirmados.',
+			caption: 'Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey @fgmzz',
+			render: ()=>(
+				<Calculadora></Calculadora>
+			)
+		},
 		{
 			title: 'Tablero para la Toma de Decisión sobre Reactivación Económica por Entidad Federativa',
 			subtitle: '<b>Dr. Fernando Gómez Zaldívar</b>',
@@ -39,15 +45,6 @@ const Simulation = ({ classes }) => {
 			caption: 'Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey @fgmzz',
 			render: ()=>(
 				<iframe src="./uncertainty" className={classes.graphContainer}></iframe>
-			)
-		},
-		{
-			title: 'Calculadora de PIB',
-			subtitle: '<b>Roberto Duran</b>',
-			escription: 'Este modelo de difusión de COVID19 constituye una versión modificada del modelo SIR. Considera parámetros sobre la infectividad y mortalidad del COVID19, el impacto del distanciamiento social y, de manera muy importante, el rezago en la información entre el número real de infectados y el número de casos confirmados.',
-			caption: 'Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey @fgmzz',
-			render: ()=>(
-				<Calculadora></Calculadora>
 			)
 		}
 	]

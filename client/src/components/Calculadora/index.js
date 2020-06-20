@@ -16,11 +16,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import CalculatorData, {PIB} from './data'
+import CalculatorData, {PIB, datosHistoricos} from './data'
+import { Bars } from 'react-chartjs-2';
 
 
 const Calculadora = ({ classes }) => {
-    // const { calculatorData } = React.useContext(CalculatorContext);
 
     const [age, setAge,stateValue] = React.useState('');
 
@@ -34,35 +34,20 @@ const Calculadora = ({ classes }) => {
 
     const [year, setYear] = React.useState(2020);
     const [valorNominal, setValorNominal] = React.useState(false);
-    //porcentaje de deuda
-    // const {
-    //     states,
-    // } = React.useContext(CalculatorContext);
 
-    // const handleChange = (event) => {
-    //     setAge(event.target.value);
-    // };
 return (
   <div>
-    {/* <ResponsiveBar
-            data={"calculatorData"}
+    <div style={{ height: "23rem", width: '100%'}}>
+        <ResponsiveBar
             keys={[
-                'ANO',
-                'PIB',
-                'DA',
-                'C',
-                'G',
-                'I',
-                'INV',
-                'XM',
-                'X',
-                'M',
-                'E'
-                 ]}
+                "PIB",
+            ]}
+            data={datosHistoricos}
             indexBy="ANO"
-            margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+            margin={{ top: 50, right: 60, bottom: 50, left: 60 }}
             padding={0.3}
-            colors={{ scheme: 'nivo' }}
+            colors="#4896C9"
+            borderColor="#4896C9"
             defs={[
                 {
                     id: 'dots',
@@ -97,14 +82,13 @@ return (
                     id: 'lines'
                 }
             ]}
-            borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
             axisTop={null}
             axisRight={null}
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
-                legend: 'country',
+                tickRotation: -30,
+                legend: 'Tiempo',
                 legendPosition: 'middle',
                 legendOffset: 32
             }}
@@ -112,42 +96,20 @@ return (
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'food',
+                legend: 'PIB (%)',
                 legendPosition: 'middle',
                 legendOffset: -40
             }}
             labelSkipWidth={12}
             labelSkipHeight={12}
             labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-            legends={[
-                {
-                    dataFrom: 'keys',
-                    anchor: 'bottom-right',
-                    direction: 'column',
-                    justify: false,
-                    translateX: 120,
-                    translateY: 0,
-                    itemsSpacing: 2,
-                    itemWidth: 100,
-                    itemHeight: 20,
-                    itemDirection: 'left-to-right',
-                    itemOpacity: 0.85,
-                    symbolSize: 20,
-                    effects: [
-                        {
-                            on: 'hover',
-                            style: {
-                                itemOpacity: 1
-                            }
-                        }
-                    ]
-                }
-            ]}
             animate={true}
             motionStiffness={90}
             motionDamping={15}
-    /> */}
-
+            groupMode="grouped"
+        />
+    </div>
+     
     <div className={classes.container}>
         <div className={classes.subsection}>
             <Typography className={classes.h3} variant='h3'>ESCENARIO BASE {!withEFN ? 'SIN' : 'CON'} ESTÍMULO FISCAL</Typography>
