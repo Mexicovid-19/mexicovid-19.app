@@ -10,8 +10,6 @@ const Calculadora = ({ classes }) => {
     const [age, setAge,stateValue] = React.useState('');
 
     //porcentaje de deuda
-
-
     const {
         states,
     } = React.useContext(CalculatorContext);

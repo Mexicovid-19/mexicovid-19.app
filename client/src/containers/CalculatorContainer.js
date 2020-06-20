@@ -4,10 +4,10 @@ import axios from 'axios';
 const useCalculator = () => {
     
 
-    const [calculatorData,setIndicators]=React.useState([]);
+    const [calculatorData,setCalculator]=React.useState([]);
     React.useEffect(() => {
         axios.post(`${process.env.REACT_APP_API_URL}/calculadora/data/calculadora`, {}).then(response => {
-            setIndicators(response.data);
+            setCalculator(response.data);
         })
     }, []);
 
