@@ -57,7 +57,7 @@ return (
             <Tooltip />
             <Legend />
             <Bar dataKey="PIB" barSize={20} fill="#413ea0" />
-            <Line type="monotone" dataKey="PorcentajePIB" stroke="#ff7300" />
+            <Line type="monotone" dataKey="TasaCrecimiento" stroke="#ff7300" />
         </ComposedChart>
     </ResponsiveContainer>
     </div>

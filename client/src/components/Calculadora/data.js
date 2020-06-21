@@ -1163,6 +1163,49 @@ const datosHistoricosMXN =[
         }
 ]
 
+const datosTCPPIB =[
+    {
+        ANO: "2010",
+        PORCENTAJE: 5.10,
+    },
+    {
+        ANO: "2011",
+        PORCENTAJE: 3.66,
+    },
+    {
+        ANO: "2012",
+        PORCENTAJE: 3.64,
+    },
+    {
+        ANO: "2013",
+        PORCENTAJE: 1.35,
+    },
+    {
+        ANO: "2014",
+        PORCENTAJE: 2.80,
+    },
+    {
+        ANO: "2015",
+        PORCENTAJE: 3.29,
+    },
+    {
+        ANO: "2016",
+        PORCENTAJE: 2.91,
+    },
+    {
+        ANO: "2017",
+        PORCENTAJE: 2.12,
+    },
+    {
+        ANO: "2018",
+        PORCENTAJE: 2.14,
+    },
+    {
+        ANO: "2019",
+        PORCENTAJE: -0.15,
+    }
+]
+
 let anios = ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"]
 let anios2 = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
 //Porcentajes
@@ -1185,6 +1228,25 @@ Object.keys(_datosHistoricosPromedio).forEach(anio=>{
 console.log(datosHistoricosPromedio)
 
 
+//Porcentajes
+let _datosHistoricosPromedioPer = {};
+let datosHistoricosPromedioPer = [];
+datosTCPPIB.forEach(q=>{
+    let year = anios.find(l=>q.ANO.includes(l))
+    if(_datosHistoricosPromedioPer[year] === undefined){
+        _datosHistoricosPromedioPer[year] = {PORCENTAJE: 0} 
+    }
+        _datosHistoricosPromedioPer[year].PORCENTAJE+=Number(q.PORCENTAJE);
+})
+Object.keys(_datosHistoricosPromedioPer).forEach(anio=>{
+    let obj = {
+        ANO: anio, 
+        ..._datosHistoricosPromedioPer[anio]
+    }
+    datosHistoricosPromedioPer.push(obj)
+})
+console.log(datosHistoricosPromedioPer)
+
 //MXN
 let _datosHistoricosPromedioMXN = {};
 let datosHistoricosPromedioMXN = [];
@@ -1199,7 +1261,10 @@ Object.keys(_datosHistoricosPromedioMXN).forEach(anio=>{
     let obj = {
         ANO: anio, 
         PIB:_datosHistoricosPromedioMXN[anio].PIB,
-        PorcentajePIB:_datosHistoricosPromedio[anio].PIB
+        PorcentajePIB:_datosHistoricosPromedio[anio].PIB,
+        TasaCrecimiento:_datosHistoricosPromedioPer[anio].PORCENTAJE,
+        CambioPIB1:_datosHistoricosPromedioMXN[anio].PIB*(_datosHistoricosPromedio[anio].PIB/10), //Estas son pruebas
+        CambioPIB:_datosHistoricosPromedioMXN[anio].PIB*(_datosHistoricosPromedio[anio].PIB/100)
     }
     datosHistoricosPromedioMXN.push(obj)
 })
