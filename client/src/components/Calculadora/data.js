@@ -1198,7 +1198,8 @@ datosHistoricosMXN.forEach(q=>{
 Object.keys(_datosHistoricosPromedioMXN).forEach(anio=>{
     let obj = {
         ANO: anio, 
-        ..._datosHistoricosPromedioMXN[anio]
+        PIB:_datosHistoricosPromedioMXN[anio].PIB,
+        PorcentajePIB:_datosHistoricosPromedio[anio].PIB
     }
     datosHistoricosPromedioMXN.push(obj)
 })

@@ -17,7 +17,11 @@ import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import CalculatorData, {PIB, datosHistoricos,datosHistoricosPromedio,datosHistoricosPromedioMXN} from './data'
-import { Bars } from 'react-chartjs-2';
+import {
+    ResponsiveContainer,
+    ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+    Legend, Scatter,
+  } from 'recharts';
 
 
 const Calculadora = ({ classes }) => {
@@ -38,77 +42,24 @@ const Calculadora = ({ classes }) => {
 return (
   <div>
     <div style={{ height: "23rem", width: '100%'}}>
-        <ResponsiveBar
-            keys={[
-                "PIB",
-            ]}
+    <ResponsiveContainer>
+        <ComposedChart
+            width={600}
+            height={400}
             data={datosHistoricosPromedioMXN}
-            indexBy="ANO"
-            margin={{ top: 50, right: 60, bottom: 50, left: 60 }}
-            padding={0.3}
-            colors="#4896C9"
-            borderColor="#4896C9"
-            defs={[
-                {
-                    id: 'dots',
-                    type: 'patternDots',
-                    background: 'inherit',
-                    color: '#38bcb2',
-                    size: 4,
-                    padding: 1,
-                    stagger: true
-                },
-                {
-                    id: 'lines',
-                    type: 'patternLines',
-                    background: 'inherit',
-                    color: '#eed312',
-                    rotation: -45,
-                    lineWidth: 6,
-                    spacing: 10
-                }
-            ]}
-            fill={[
-                {
-                    match: {
-                        id: 'fries'
-                    },
-                    id: 'dots'
-                },
-                {
-                    match: {
-                        id: 'sandwich'
-                    },
-                    id: 'lines'
-                }
-            ]}
-            axisTop={null}
-            axisRight={null}
-            axisBottom={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'Tiempo',
-                legendPosition: 'middle',
-                legendOffset: 41
+            margin={{
+            top: 20, right: 20, bottom: 20, left: 20,
             }}
-            axisLeft={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'PIB (%)',
-                legendPosition: 'middle',
-                legendOffset: -40
-            }}
-            labelSkipWidth={12}
-            labelSkipHeight={12}
-            
-            labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-            animate={true}
-            motionStiffness={90}
-            motionDamping={15}
-            groupMode="grouped"
-        />
+        >
+            <CartesianGrid stroke="#f5f5f5" />
+            <XAxis dataKey="ano" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="PIB" barSize={20} fill="#413ea0" />
+            <Line type="monotone" dataKey="PorcentajePIB" stroke="#ff7300" />
+        </ComposedChart>
+    </ResponsiveContainer>
     </div>
      
     <div className={classes.container}>
