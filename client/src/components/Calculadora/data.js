@@ -1263,8 +1263,7 @@ Object.keys(_datosHistoricosPromedioMXN).forEach(anio=>{
         PIB:_datosHistoricosPromedioMXN[anio].PIB,
         PorcentajePIB:_datosHistoricosPromedio[anio].PIB,
         TasaCrecimiento:_datosHistoricosPromedioPer[anio].PORCENTAJE,
-        CambioPIB1:_datosHistoricosPromedioMXN[anio].PIB*(_datosHistoricosPromedio[anio].PIB/10), //Estas son pruebas
-        CambioPIB:_datosHistoricosPromedioMXN[anio].PIB*(_datosHistoricosPromedio[anio].PIB/100)
+        CrecimientoMXN:_datosHistoricosPromedioMXN[anio].PIB*(_datosHistoricosPromedioPer[anio].PORCENTAJE/100)
     }
     datosHistoricosPromedioMXN.push(obj)
 })

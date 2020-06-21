@@ -56,6 +56,7 @@ return (
             <YAxis />
             <Tooltip />
             <Legend />
+            <Bar dataKey="CrecimientoMXN" barSize={20} fill="#05A1A0" />
             <Bar dataKey="PIB" barSize={20} fill="#413ea0" />
             <Line type="monotone" dataKey="TasaCrecimiento" stroke="#ff7300" />
         </ComposedChart>
