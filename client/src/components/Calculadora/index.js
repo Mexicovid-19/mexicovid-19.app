@@ -52,7 +52,7 @@ return (
             }}
         >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="ano" />
+            <XAxis dataKey="ANO" />
             <YAxis />
             <Tooltip />
             <Legend />
