@@ -16,7 +16,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import CalculatorData, {PIB, datosHistoricos,datosHistoricosPromedio} from './data'
+import CalculatorData, {PIB, datosHistoricos,datosHistoricosPromedio,datosHistoricosPromedioMXN} from './data'
 import { Bars } from 'react-chartjs-2';
 
 
@@ -42,7 +42,7 @@ return (
             keys={[
                 "PIB",
             ]}
-            data={datosHistoricosPromedio}
+            data={datosHistoricosPromedioMXN}
             indexBy="ANO"
             margin={{ top: 50, right: 60, bottom: 50, left: 60 }}
             padding={0.3}
@@ -87,7 +87,7 @@ return (
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: -30,
+                tickRotation: 0,
                 legend: 'Tiempo',
                 legendPosition: 'middle',
                 legendOffset: 41

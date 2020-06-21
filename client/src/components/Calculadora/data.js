@@ -640,8 +640,9 @@ const datosHistoricos = [
         }
 ]
 
-const datosHistoricosMXN =[{
-            ANO: 2010,
+const datosHistoricosMXN =[
+    {
+            ANO: "01/2010",
             PIB: 14371712,
             DA: 18614192,
             C: 9622216,
@@ -651,10 +652,10 @@ const datosHistoricosMXN =[{
             XM: -244506,
             X: 3997974,
             M: 4242480,
-            E: -92091,
+            E: -92091
         },
         {
-            ANO: 2010,
+            ANO: "03/2010",
             PIB: 14998393,
             DA: 19639422,
             C: 9983677,
@@ -664,10 +665,10 @@ const datosHistoricosMXN =[{
             XM: -265381,
             X: 4375648,
             M: 4641028,
-            E: 78556,
+            E: 78556
         },
         {
-            ANO: 2010,
+            ANO: "06/2010",
             PIB: 14921450,
             DA: 19717872,
             C: 10086368,
@@ -677,10 +678,10 @@ const datosHistoricosMXN =[{
             XM: -355623,
             X: 4440799,
             M: 4796422,
-            E: 150667,
+            E: 150667
         },
         {
-            ANO: 2010,
+            ANO: "09/2010",
             PIB: 15499623,
             DA: 20407448,
             C: 10514523,
@@ -690,10 +691,10 @@ const datosHistoricosMXN =[{
             XM: -198347,
             X: 4709478,
             M: 4907825,
-            E: -243065,
+            E: -243065
         },
         {
-            ANO: 2011,
+            ANO: "01/2011",
             PIB: 14902786,
             DA: 19503099,
             C: 9928610,
@@ -703,10 +704,10 @@ const datosHistoricosMXN =[{
             XM: -58428,
             X: 4541885,
             M: 4600313,
-            E: -197704,
+            E: -197704
         },
         {
-            ANO: 2011,
+            ANO: "03/2011",
             PIB: 15413082,
             DA: 20291125,
             C: 10281264,
@@ -716,10 +717,10 @@ const datosHistoricosMXN =[{
             XM: -147095,
             X: 4730948,
             M: 4878043,
-            E: -122043,
+            E: -122043
         },
         {
-            ANO: 2011,
+            ANO: "06/2011",
             PIB: 15526005,
             DA: 20602513,
             C: 10524310,
@@ -729,10 +730,10 @@ const datosHistoricosMXN =[{
             XM: -364856,
             X: 4711651,
             M: 5076507,
-            E: -31371,
+            E: -31371
         },
         {
-            ANO: 2011,
+            ANO: "09/2011",
             PIB: 16139460,
             DA: 21216618,
             C: 10823685,
@@ -742,10 +743,10 @@ const datosHistoricosMXN =[{
             XM: -186042,
             X: 4891116,
             M: 5077158,
-            E: -309709,
+            E: -309709
         },
         {
-            ANO: 2012,
+            ANO: "01/2012",
             PIB: 15619687,
             DA: 20517569,
             C: 10407114,
@@ -755,10 +756,10 @@ const datosHistoricosMXN =[{
             XM: -79496,
             X: 4818385,
             M: 4897881,
-            E: -333772,
+            E: -333772
         },
         {
-            ANO: 2012,
+            ANO: "03/2012",
             PIB: 16027317,
             DA: 21183345,
             C: 10474875,
@@ -768,10 +769,10 @@ const datosHistoricosMXN =[{
             XM: -28494,
             X: 5127534,
             M: 5156028,
-            E: -153902,
+            E: -153902
         },
         {
-            ANO: 2012,
+            ANO: "06/2012",
             PIB: 15952746,
             DA: 21165257,
             C: 10644822,
@@ -781,10 +782,10 @@ const datosHistoricosMXN =[{
             XM: -248424,
             X: 4964087,
             M: 5212511,
-            E: -50190,
+            E: -50190
         },
         {
-            ANO: 2012,
+            ANO: "09/2012",
             PIB: 16639145,
             DA: 22068126,
             C: 11003205,
@@ -794,10 +795,10 @@ const datosHistoricosMXN =[{
             XM: -231842,
             X: 5197140,
             M: 5428981,
-            E: -21062,
+            E: -21062
         },
         {
-            ANO: 2013,
+            ANO: "01/2013",
             PIB: 15720278,
             DA: 20628288,
             C: 10462851,
@@ -807,10 +808,10 @@ const datosHistoricosMXN =[{
             XM: -170509,
             X: 4737500,
             M: 4908009,
-            E: -9446,
+            E: -9446
         },
         {
-            ANO: 2013,
+            ANO: "03/2013",
             PIB: 16362711,
             DA: 21767510,
             C: 10745148,
@@ -820,10 +821,10 @@ const datosHistoricosMXN =[{
             XM: -241875,
             X: 5162924,
             M: 5404799,
-            E: 122374,
+            E: 122374
         },
         {
-            ANO: 2013,
+            ANO: "06/2013",
             PIB: 16186046,
             DA: 21594282,
             C: 10842706,
@@ -833,10 +834,10 @@ const datosHistoricosMXN =[{
             XM: -271217,
             X: 5137019,
             M: 5408236,
-            E: 38008,
+            E: 38008
         },
         {
-            ANO: 2013,
+            ANO: "09/2013",
             PIB: 16839713,
             DA: 22252463,
             C: 11226299,
@@ -846,10 +847,10 @@ const datosHistoricosMXN =[{
             XM: -67475,
             X: 5345276,
             M: 5412751,
-            E: -150936,
+            E: -150936
         },
         {
-            ANO: 2014,
+            ANO: "01/2014",
             PIB: 16135556,
             DA: 21251310,
             C: 10636123,
@@ -859,10 +860,10 @@ const datosHistoricosMXN =[{
             XM: -172756,
             X: 4942998,
             M: 5115754,
-            E: 141642,
+            E: 141642
         },
         {
-            ANO: 2014,
+            ANO: "03/2014",
             PIB: 16736971,
             DA: 22324373,
             C: 10962786,
@@ -872,10 +873,10 @@ const datosHistoricosMXN =[{
             XM: -135213,
             X: 5452189,
             M: 5587403,
-            E: 277919,
+            E: 277919
         },
         {
-            ANO: 2014,
+            ANO: "06/2014",
             PIB: 16645076,
             DA: 22391038,
             C: 11090727,
@@ -885,10 +886,10 @@ const datosHistoricosMXN =[{
             XM: -238709,
             X: 5507253,
             M: 5745962,
-            E: 92009,
+            E: 92009
         },
         {
-            ANO: 2014,
+            ANO: "09/2014",
             PIB: 17417017,
             DA: 23352512,
             C: 11496190,
@@ -898,10 +899,10 @@ const datosHistoricosMXN =[{
             XM: -32004,
             X: 5903491,
             M: 5935495,
-            E: -229905,
+            E: -229905
         },
         {
-            ANO: 2015,
+            ANO: "01/2015",
             PIB: 16697180,
             DA: 22176828,
             C: 10921789,
@@ -911,10 +912,10 @@ const datosHistoricosMXN =[{
             XM: 23278,
             X: 5502926,
             M: 5479648,
-            E: -124071,
+            E: -124071
         },
         {
-            ANO: 2015,
+            ANO: "03/2015",
             PIB: 17239434,
             DA: 23168264,
             C: 11121056,
@@ -924,10 +925,10 @@ const datosHistoricosMXN =[{
             XM: 53226,
             X: 5982056,
             M: 5928830,
-            E: 146817,
+            E: 146817
         },
         {
-            ANO: 2015,
+            ANO: "06/2015",
             PIB: 17309618,
             DA: 23481062,
             C: 11418154,
@@ -937,10 +938,10 @@ const datosHistoricosMXN =[{
             XM: -179026,
             X: 5992418,
             M: 6171444,
-            E: 153301,
+            E: 153301
         },
         {
-            ANO: 2015,
+            ANO: "09/2015",
             PIB: 17889191,
             DA: 24018892,
             C: 11924649,
@@ -950,10 +951,10 @@ const datosHistoricosMXN =[{
             XM: 33666,
             X: 6163367,
             M: 6129701,
-            E: -201411,
+            E: -201411
         },
         {
-            ANO: 2016,
+            ANO: "01/2016",
             PIB: 17197681,
             DA: 22852632,
             C: 11329619,
@@ -963,10 +964,10 @@ const datosHistoricosMXN =[{
             XM: 48243,
             X: 5703194,
             M: 5654951,
-            E: -181831,
+            E: -181831
         },
         {
-            ANO: 2016,
+            ANO: "03/2016",
             PIB: 17809346,
             DA: 23905690,
             C: 11554881,
@@ -976,10 +977,10 @@ const datosHistoricosMXN =[{
             XM: 17723,
             X: 6114066,
             M: 6096343,
-            E: 139979,
+            E: 139979
         },
         {
-            ANO: 2016,
+            ANO: "06/2016",
             PIB: 17666883,
             DA: 23975065,
             C: 11853430,
@@ -989,10 +990,10 @@ const datosHistoricosMXN =[{
             XM: -91859,
             X: 6216323,
             M: 6308182,
-            E: -43698,
+            E: -43698
         },
         {
-            ANO: 2016,
+            ANO: "09/2016",
             PIB: 18473732,
             DA: 24799333,
             C: 12348331,
@@ -1002,10 +1003,10 @@ const datosHistoricosMXN =[{
             XM: 128932,
             X: 6454533,
             M: 6325602,
-            E: -226196,
+            E: -226196
         },
         {
-            ANO: 2017,
+            ANO: "01/2017",
             PIB: 17791095,
             DA: 23893751,
             C: 11734761,
@@ -1015,10 +1016,10 @@ const datosHistoricosMXN =[{
             XM: 141863,
             X: 6244519,
             M: 6102656,
-            E: -156630,
+            E: -156630
         },
         {
-            ANO: 2017,
+            ANO: "03/2017",
             PIB: 18149132,
             DA: 24560751,
             C: 11968388,
@@ -1028,10 +1029,10 @@ const datosHistoricosMXN =[{
             XM: -21790,
             X: 6389828,
             M: 6411619,
-            E: 230645,
+            E: 230645
         },
         {
-            ANO: 2017,
+            ANO: "06/2017",
             PIB: 17943736,
             DA: 24588868,
             C: 12244444,
@@ -1041,10 +1042,10 @@ const datosHistoricosMXN =[{
             XM: -459163,
             X: 6185969,
             M: 6645132,
-            E: 255342,
+            E: 255342
         },
         {
-            ANO: 2017,
+            ANO: "09/2017",
             PIB: 18770647,
             DA: 25549561,
             C: 12645980,
@@ -1054,10 +1055,10 @@ const datosHistoricosMXN =[{
             XM: -92397,
             X: 6686518,
             M: 6778914,
-            E: 91526,
+            E: 91526
         },
         {
-            ANO: 2018,
+            ANO: "01/2018",
             PIB: 18072389,
             DA: 24508467,
             C: 12011828,
@@ -1067,10 +1068,10 @@ const datosHistoricosMXN =[{
             XM: -72073,
             X: 6364004,
             M: 6436078,
-            E: -16128,
+            E: -16128
         },
         {
-            ANO: 2018,
+            ANO: "03/2018",
             PIB: 18701100,
             DA: 25556232,
             C: 12343826,
@@ -1080,10 +1081,10 @@ const datosHistoricosMXN =[{
             XM: 106898,
             X: 6962030,
             M: 6855132,
-            E: 24897,
+            E: 24897
         },
         {
-            ANO: 2018,
+            ANO: "06/2018",
             PIB: 18395545,
             DA: 25436220,
             C: 12542439,
@@ -1093,10 +1094,10 @@ const datosHistoricosMXN =[{
             XM: -315064,
             X: 6725611,
             M: 7040675,
-            E: 188387,
+            E: 188387
         },
         {
-            ANO: 2018,
+            ANO: "09/2018",
             PIB: 19037446,
             DA: 26168678,
             C: 12816062,
@@ -1106,10 +1107,10 @@ const datosHistoricosMXN =[{
             XM: -160889,
             X: 6970343,
             M: 7131232,
-            E: 364523,
+            E: 364523
         },
         {
-            ANO: 2019,
+            ANO: "01/2019",
             PIB: 18282106,
             DA: 24833300,
             C: 12121935,
@@ -1119,10 +1120,10 @@ const datosHistoricosMXN =[{
             XM: -11913,
             X: 6539281,
             M: 6551194,
-            E: 115374,
+            E: 115374
         },
         {
-            ANO: 2019,
+            ANO: "03/2019",
             PIB: 18523717,
             DA: 25291788,
             C: 12313708,
@@ -1132,10 +1133,10 @@ const datosHistoricosMXN =[{
             XM: 336075,
             X: 7104146,
             M: 6768071,
-            E: 28729,
+            E: 28729
         },
         {
-            ANO: 2019,
+            ANO: "06/2019",
             PIB: 18348815,
             DA: 25385713,
             C: 12639218,
@@ -1145,10 +1146,10 @@ const datosHistoricosMXN =[{
             XM: -126089,
             X: 6910809,
             M: 7036898,
-            E: 154735,
+            E: 154735
         },
         {
-            ANO: 2019,
+            ANO: "09/2019",
             PIB: 18943796,
             DA: 25751833,
             C: 12936646,
@@ -1159,8 +1160,9 @@ const datosHistoricosMXN =[{
             X: 6776204,
             M: 6808037,
             E: 241893
-        },
+        }
 ]
+
 let anios = ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"]
 let anios2 = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
 //Porcentajes
@@ -1187,11 +1189,11 @@ console.log(datosHistoricosPromedio)
 let _datosHistoricosPromedioMXN = {};
 let datosHistoricosPromedioMXN = [];
 datosHistoricosMXN.forEach(q=>{
-    let year = anios2.find(l=>q.ANO.includes(l))
+    let year = anios.find(l=>q.ANO.includes(l))
     if(_datosHistoricosPromedioMXN[year] === undefined){
         _datosHistoricosPromedioMXN[year] = {PIB: 0} 
     }
-        _datosHistoricosPromedioMXN[year].PIB+=Number(q.PIB);
+        _datosHistoricosPromedioMXN[year].PIB+=0.25*Number(q.PIB);
 })
 Object.keys(_datosHistoricosPromedioMXN).forEach(anio=>{
     let obj = {
@@ -1201,6 +1203,7 @@ Object.keys(_datosHistoricosPromedioMXN).forEach(anio=>{
     datosHistoricosPromedioMXN.push(obj)
 })
 console.log(datosHistoricosPromedioMXN)
+
 
 
 export {PIB, datosHistoricos, datosHistoricosPromedio,datosHistoricosPromedioMXN};
