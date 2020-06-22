@@ -17,15 +17,19 @@ import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import CalculatorData, {PIB} from './data'
+import {
+    ResponsiveContainer,
+    ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+    Legend, Scatter, ReferenceLine
+  } from 'recharts';
 
 
 const Calculadora = ({ classes }) => {
-    // const { calculatorData } = React.useContext(CalculatorContext);
 
     const [age, setAge,stateValue] = React.useState('');
 
     const [tc_pib, setTc_pib] = React.useState(-10)
-    const [tc_g, setTc_g] = React.useState(0.09)
+    const [tc_g, setTc_g] = React.useState(-0.09)
     
     const [withEFN, setWithEFN] = React.useState(0);
     
@@ -34,128 +38,77 @@ const Calculadora = ({ classes }) => {
 
     const [year, setYear] = React.useState(2020);
     const [valorNominal, setValorNominal] = React.useState(false);
-    //porcentaje de deuda
-    // const {
-    //     states,
-    // } = React.useContext(CalculatorContext);
 
-    // const handleChange = (event) => {
-    //     setAge(event.target.value);
-    // };
+    let anioSiguiente = withEFN?(
+        CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib/100, tc_g/100 ).obtenerConEstimuloFiscal(efn, null, mult)
+    ):(
+        CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib/100, tc_g/100 )
+    )
+
+    let prediccion = PIB.obtenerPrediccion(anioSiguiente, tc_pib/100)
+
 return (
   <div>
-    {/* <ResponsiveBar
-            data={"calculatorData"}
-            keys={[
-                'ANO',
-                'PIB',
-                'DA',
-                'C',
-                'G',
-                'I',
-                'INV',
-                'XM',
-                'X',
-                'M',
-                'E'
-                 ]}
-            indexBy="ANO"
-            margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-            padding={0.3}
-            colors={{ scheme: 'nivo' }}
-            defs={[
-                {
-                    id: 'dots',
-                    type: 'patternDots',
-                    background: 'inherit',
-                    color: '#38bcb2',
-                    size: 4,
-                    padding: 1,
-                    stagger: true
-                },
-                {
-                    id: 'lines',
-                    type: 'patternLines',
-                    background: 'inherit',
-                    color: '#eed312',
-                    rotation: -45,
-                    lineWidth: 6,
-                    spacing: 10
-                }
-            ]}
-            fill={[
-                {
-                    match: {
-                        id: 'fries'
-                    },
-                    id: 'dots'
-                },
-                {
-                    match: {
-                        id: 'sandwich'
-                    },
-                    id: 'lines'
-                }
-            ]}
-            borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-            axisTop={null}
-            axisRight={null}
-            axisBottom={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'country',
-                legendPosition: 'middle',
-                legendOffset: 32
+    <div style={{ height: "23rem", width: '100%'}}>
+    <ResponsiveContainer>
+        <ComposedChart
+            width={600}
+            height={400}
+            data={prediccion}
+            margin={{
+                // top: 10, right: 10, bottom: 10, left: 10,
             }}
-            axisLeft={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'food',
-                legendPosition: 'middle',
-                legendOffset: -40
-            }}
-            labelSkipWidth={12}
-            labelSkipHeight={12}
-            labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-            legends={[
-                {
-                    dataFrom: 'keys',
-                    anchor: 'bottom-right',
-                    direction: 'column',
-                    justify: false,
-                    translateX: 120,
-                    translateY: 0,
-                    itemsSpacing: 2,
-                    itemWidth: 100,
-                    itemHeight: 20,
-                    itemDirection: 'left-to-right',
-                    itemOpacity: 0.85,
-                    symbolSize: 20,
-                    effects: [
-                        {
-                            on: 'hover',
-                            style: {
-                                itemOpacity: 1
-                            }
-                        }
-                    ]
-                }
-            ]}
-            animate={true}
-            motionStiffness={90}
-            motionDamping={15}
-    /> */}
+        >
+            <CartesianGrid stroke="#f5f5f5" />
+            <XAxis dataKey="anio" />
+            <YAxis yAxisId="percentage" orientation="right" tickFormatter={item=>100*item+'%'} domain={[-1, 1]} scale='linear'/>
+            <YAxis yAxisId="money" tickFormatter={item=>'$'+(item/1000000).toFixed(2)+'M'} scale='linear'/>
+            <Tooltip />
+            <Legend />
+            {valorNominal ? (
+                <Bar yAxisId="money" dataKey="pibNominal" barSize={20} fill="#413ea0" name="PIB N" />
+            ):(
+                <Bar yAxisId="money" dataKey="pib" barSize={20} fill="#413ea0" name="PIB ($MXN)" />
+            )}
+            
+            <Area yAxisId="money" dataKey="tc_mxn" barSize={20} fill="#05A1A0" name="TC PIB ($MXN)" />
+            <Line yAxisId="percentage" type="monotone" dataKey="tc" stroke="#ff7300" name="TC PIB (%)" />
+            <Line yAxisId="percentage" type="monotone" dataKey="inpc" stroke="#ff7300" name="TC INPC vs. 2013 (%)" />
+
+            <ReferenceLine x={year} stroke="green" yAxisId="money"/>
+        </ComposedChart>
+    </ResponsiveContainer>
+    </div>
+     
 
     <div className={classes.container}>
         <div className={classes.subsection}>
+            <Typography className={classes.h3} variant='h3'>CALCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>
+            <Typography className={classes.h3} variant='h3'>{
+                prediccion.find(l=>l.anio==year)[valorNominal?'pibNominal':'pib'].toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})
+            }</Typography>
+        </div>
+        <fieldset className={classes.fieldset} style={{flex: 3}}>
+            <Slider 
+                defaultValue={year} step={1} min={2010} max={2025}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="on"
+                onChange={(e, v)=>{ setYear(v) }}
+            ></Slider>
+        </fieldset>
+        <fieldset className={classes.fieldset}>
+            <Typography gutterBottom>Valor nominal</Typography>            
+            <Switch color="primary" value={valorNominal} onChange={(e)=>{ setValorNominal(e.target.checked) }}></Switch>
+        </fieldset>
+    </div> 
+    <div className={classes.container}>
+        <div className={classes.subsection}>
             <Typography className={classes.h3} variant='h3'>ESCENARIO BASE {!withEFN ? 'SIN' : 'CON'} ESTÍMULO FISCAL</Typography>
-            <Typography className={classes.h3} variant='h3'>{ !withEFN ? (
-                CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ).tc_dabase.toPrecision(4)
+            <Typography className={classes.h3} variant='h3'>{(( !withEFN ? (
+                anioSiguiente.tc_dabase
             ):(
-                (CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ).obtenerConEstimuloFiscal(efn, null, mult).pib / CalculatorData.pib -1).toPrecision(4)
-            )}%</Typography>
+                anioSiguiente.pib / CalculatorData.pib -1
+            ))*100).toPrecision(4)}%</Typography>
         </div>
         <fieldset className={classes.fieldset}>
             <Typography gutterBottom>Estimación de crecimiento de PIB</Typography>
@@ -203,37 +156,9 @@ return (
                 ]
             ):null}
         </fieldset>
-
     </div>
     
-    <div className={classes.container}>
-        <div className={classes.subsection}>
-            <Typography className={classes.h3} variant='h3'>CALCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>
-            <Typography className={classes.h3} variant='h3'>{(valorNominal?(
-                PIB.obtenerPIBNsinComponentes(year, CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
-            ):(
-                PIB.obtenerPIBsinComponentes(year, CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
-            )).toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})}</Typography>
-        </div>
-        <fieldset className={classes.fieldset} style={{flex: 3}}>
-            <Slider 
-                defaultValue={year} step={1} min={2020} max={2025}
-                aria-labelledby="discrete-slider"
-                valueLabelDisplay="on"
-                onChange={(e, v)=>{ setYear(v) }}
-            ></Slider>
-        </fieldset>
-        <fieldset className={classes.fieldset}>
-            <Typography gutterBottom>Valor nominal</Typography>            
-            <Switch color="primary" value={valorNominal} onChange={(e)=>{ setValorNominal(e.target.checked) }}></Switch>
-        </fieldset>
-        <fieldset className={classes.fieldset}>
-            <Typography gutterBottom>Usar valores pronosticados</Typography>            
-            <Switch color="primary" ></Switch>
-        </fieldset>
-
-        
-    </div> 
+    
 
 
   </div>
@@ -265,7 +190,8 @@ const styles = () => ({
     display: 'flex', 
     alignItems: 'baseline',
     justifyContent: 'space-between',
-    fontSize: '1.5em'
+    fontSize: '1.5em',
+    flexWrap: 'wrap'
   },
 
   fieldset: {
