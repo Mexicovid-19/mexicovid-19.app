@@ -20,7 +20,7 @@ import CalculatorData, {PIB} from './data'
 import {
     ResponsiveContainer,
     ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-    Legend, Scatter,
+    Legend, Scatter, ReferenceLine
   } from 'recharts';
 
 
@@ -39,8 +39,13 @@ const Calculadora = ({ classes }) => {
     const [year, setYear] = React.useState(2020);
     const [valorNominal, setValorNominal] = React.useState(false);
 
+    let anioSiguiente = withEFN?(
+        CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib/100, tc_g/100 ).obtenerConEstimuloFiscal(efn, null, mult)
+    ):(
+        CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib/100, tc_g/100 )
+    )
 
-    let prediccion = PIB.obtenerPrediccion(CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
+    let prediccion = PIB.obtenerPrediccion(anioSiguiente, tc_pib/100)
 
 return (
   <div>
@@ -49,31 +54,61 @@ return (
         <ComposedChart
             width={600}
             height={400}
-            data={PIB.obtenerPrediccion()}
+            data={prediccion}
             margin={{
-            top: 20, right: 20, bottom: 20, left: 20,
+                // top: 10, right: 10, bottom: 10, left: 10,
             }}
         >
             <CartesianGrid stroke="#f5f5f5" />
             <XAxis dataKey="anio" />
-            <YAxis />
+            <YAxis yAxisId="percentage" orientation="right" tickFormatter={item=>100*item+'%'} domain={[-1, 1]} scale='linear'/>
+            <YAxis yAxisId="money" tickFormatter={item=>'$'+(item/1000000).toFixed(2)+'M'} scale='linear'/>
             <Tooltip />
             <Legend />
-            <Bar dataKey="tc_mxn" barSize={20} fill="#05A1A0" />
-            <Bar dataKey="pib" barSize={20} fill="#413ea0" />
-            <Line type="monotone" dataKey="tc" stroke="#ff7300" name="TC PIB" />
+            {valorNominal ? (
+                <Bar yAxisId="money" dataKey="pibNominal" barSize={20} fill="#413ea0" name="PIB N" />
+            ):(
+                <Bar yAxisId="money" dataKey="pib" barSize={20} fill="#413ea0" name="PIB ($MXN)" />
+            )}
+            
+            <Area yAxisId="money" dataKey="tc_mxn" barSize={20} fill="#05A1A0" name="TC PIB ($MXN)" />
+            <Line yAxisId="percentage" type="monotone" dataKey="tc" stroke="#ff7300" name="TC PIB (%)" />
+            <Line yAxisId="percentage" type="monotone" dataKey="inpc" stroke="#ff7300" name="TC INPC vs. 2013 (%)" />
+
+            <ReferenceLine x={year} stroke="green" yAxisId="money"/>
         </ComposedChart>
     </ResponsiveContainer>
     </div>
      
+
+    <div className={classes.container}>
+        <div className={classes.subsection}>
+            <Typography className={classes.h3} variant='h3'>CALCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>
+            <Typography className={classes.h3} variant='h3'>{
+                prediccion.find(l=>l.anio==year)[valorNominal?'pibNominal':'pib'].toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})
+            }</Typography>
+        </div>
+        <fieldset className={classes.fieldset} style={{flex: 3}}>
+            <Slider 
+                defaultValue={year} step={1} min={2020} max={2025}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="on"
+                onChange={(e, v)=>{ setYear(v) }}
+            ></Slider>
+        </fieldset>
+        <fieldset className={classes.fieldset}>
+            <Typography gutterBottom>Valor nominal</Typography>            
+            <Switch color="primary" value={valorNominal} onChange={(e)=>{ setValorNominal(e.target.checked) }}></Switch>
+        </fieldset>
+    </div> 
     <div className={classes.container}>
         <div className={classes.subsection}>
             <Typography className={classes.h3} variant='h3'>ESCENARIO BASE {!withEFN ? 'SIN' : 'CON'} ESTÍMULO FISCAL</Typography>
-            <Typography className={classes.h3} variant='h3'>{ !withEFN ? (
-                CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ).tc_dabase.toPrecision(4)
+            <Typography className={classes.h3} variant='h3'>{(( !withEFN ? (
+                anioSiguiente.tc_dabase
             ):(
-                (CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ).obtenerConEstimuloFiscal(efn, null, mult).pib / CalculatorData.pib -1).toPrecision(4)
-            )}%</Typography>
+                anioSiguiente.pib / CalculatorData.pib -1
+            ))*100).toPrecision(4)}%</Typography>
         </div>
         <fieldset className={classes.fieldset}>
             <Typography gutterBottom>Estimación de crecimiento de PIB</Typography>
@@ -121,43 +156,9 @@ return (
                 ]
             ):null}
         </fieldset>
-
     </div>
     
-    <div className={classes.container}>
-        <div className={classes.subsection}>
-            <Typography className={classes.h3} variant='h3'>CALCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>
-            {/* <Typography className={classes.h3} variant='h3'>{(valorNominal?(
-                //PIB.obtenerPIBNsinComponentes(year, CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
-                PIB.obtenerPrediccion()
-            ):(
-                //PIB.obtenerPIBsinComponentes(year, CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
-            )).toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})}</Typography> */}
-            <Typography className={classes.h3} variant='h3'>{
-                prediccion.find(l=>l.anio==year)[valorNominal?'pibNominal':'pib'].toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})
-            }</Typography>
-
-
-        </div>
-        <fieldset className={classes.fieldset} style={{flex: 3}}>
-            <Slider 
-                defaultValue={year} step={1} min={2020} max={2025}
-                aria-labelledby="discrete-slider"
-                valueLabelDisplay="on"
-                onChange={(e, v)=>{ setYear(v) }}
-            ></Slider>
-        </fieldset>
-        <fieldset className={classes.fieldset}>
-            <Typography gutterBottom>Valor nominal</Typography>            
-            <Switch color="primary" value={valorNominal} onChange={(e)=>{ setValorNominal(e.target.checked) }}></Switch>
-        </fieldset>
-        <fieldset className={classes.fieldset}>
-            <Typography gutterBottom>Usar valores pronosticados</Typography>            
-            <Switch color="primary" ></Switch>
-        </fieldset>
-
-        
-    </div> 
+    
 
 
   </div>
@@ -189,7 +190,8 @@ const styles = () => ({
     display: 'flex', 
     alignItems: 'baseline',
     justifyContent: 'space-between',
-    fontSize: '1.5em'
+    fontSize: '1.5em',
+    flexWrap: 'wrap'
   },
 
   fieldset: {

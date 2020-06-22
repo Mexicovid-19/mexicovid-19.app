@@ -11,7 +11,7 @@ class PIB{
         2017: 2.12/100,
         2018: 2.14/100, 
         2019: -0.15/100,
-        2020: -0.1/100,
+        2020: -10/100,
         2021: 2.2/100, 
         2022: 2.0/100,
         2023: 2.0/100,
@@ -19,13 +19,22 @@ class PIB{
         2025: 2.0/100
     }
     static INPC = {
-        2019: 1266521519,
-        2020: 1303250643,
-        2021: 1348864416,
-        2022: 139607467,
-        2023: 1444937284,
-        2024: 1495510088,
-        2025: 1547852942,
+        2010: 0.8947993093,
+        2011: 0.9252885186,
+        2012: 0.9633318351,
+        2013: 1,
+        2014: 1.040186172,
+        2015: 1.068485906,
+        2016: 1.098635456,
+        2017: 1.165009032,
+        2018: 1.222086913,
+        2019: 1.266521519,
+        2020: 1.303250643,
+        2021: 1.348864416,
+        2022: 1.39607467,
+        2023: 1.444937284,
+        2024: 1.495510088,
+        2025: 1.547852942,
     }
     static story = [
         new PIB({
@@ -125,7 +134,8 @@ class PIB{
             pib: l.pib, 
             tc: l.tc, 
             tc_mxn: l.tc_mxn,
-            pibNominal: l.pibNominal
+            pibNominal: l.pibNominal,
+            inpc: l.inpc-1
         }))
     }
 
@@ -145,7 +155,7 @@ class PIB{
         this.porc_discrepanciasEstadisticas = (this.discrepanciasEstadisticas)/( this.consumo + this.inventarios + this.inversion + this.discrepanciasEstadisticas );
         this.tc_dabase = options.tc_dabase;
         this.estimuloFiscal = options.estimuloFiscal || false;
-        this.inpc = options.inpc;
+        this.inpc = options.inpc || PIB.INPC[this.anio];
         this.pibNominal = this.pib*this.inpc;
 
         this.tc = PIB.TC_PIB[this.anio];
@@ -162,7 +172,7 @@ class PIB{
     obtenerAnioSiguienteSegunTC(tc_pib, tc_g){
         let nextPIB = this.pib*(1+tc_pib);
         let nextGasto = this.gasto*(1+tc_g);
-        let tc_da = (nextPIB-nextGasto)/(this.pib-this.gasto) -1;
+        let tc_da = ((nextPIB-nextGasto)/(this.pib-this.gasto) -1);
         return new PIB({
             anio: this.anio+1,
             consumo: this.consumo*(1+tc_da),
@@ -171,7 +181,6 @@ class PIB{
             inventarios: this.inventarios*(1+tc_da),
             exportacionesNetas: this.exportacionesNetas*(1+tc_da),
             discrepanciasEstadisticas: this.discrepanciasEstadisticas*(1+tc_da),
-
             tc_dabase: tc_da
         })
     }
@@ -208,7 +217,6 @@ class PIB{
         let result = anio2020.pib
         for(let i=anio; i<2025; i++){
             result*=(1+PIB.TC_PIB[i])
-            
         }
         return result;
     }
@@ -220,18 +228,20 @@ class PIB{
     static obtenerPIBNsinComponentes(anio, anio2020){
         return this.obtenerPIBsinComponentes(anio, anio2020)*PIB.INPC[anio];
     }
-    static obtenerPrediccion(base=PIB.story[ PIB.story.length-1 ]){
+    static obtenerPrediccion(base=PIB.story[ PIB.story.length-1 ], primerTC = PIB.TC_PIB[base.anio]){
         let story = [...PIB.getStory()];
         let accum = base.pib
         for(let i=base.anio; i<=2025; i++){
             story.push({
                 anio: i,
-                tc: PIB.TC_PIB[i],
+                tc: i==base.anio?primerTC:PIB.TC_PIB[i],
                 pib: accum,
                 tc_mxn: accum*PIB.TC_PIB[i],
-                pibNominal: PIB.INPC[i]*accum
+                pibNominal: PIB.INPC[i]*accum,
+                inpc: PIB.INPC[i]-1
             })
             accum*=(1+PIB.TC_PIB[i])
+            //accum*=(1 + Number(PIB.TC_PIB[i]))
         }
         console.log(story)
         return story;
