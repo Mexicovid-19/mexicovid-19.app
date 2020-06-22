@@ -16,7 +16,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 import { TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import CalculatorData, {PIB, datosHistoricos,datosHistoricosPromedio,datosHistoricosPromedioMXN} from './data'
+import CalculatorData, {PIB} from './data'
 import {
     ResponsiveContainer,
     ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -29,7 +29,7 @@ const Calculadora = ({ classes }) => {
     const [age, setAge,stateValue] = React.useState('');
 
     const [tc_pib, setTc_pib] = React.useState(-10)
-    const [tc_g, setTc_g] = React.useState(0.09)
+    const [tc_g, setTc_g] = React.useState(-0.09)
     
     const [withEFN, setWithEFN] = React.useState(0);
     
@@ -39,6 +39,9 @@ const Calculadora = ({ classes }) => {
     const [year, setYear] = React.useState(2020);
     const [valorNominal, setValorNominal] = React.useState(false);
 
+
+    let prediccion = PIB.obtenerPrediccion(CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
+
 return (
   <div>
     <div style={{ height: "23rem", width: '100%'}}>
@@ -46,19 +49,19 @@ return (
         <ComposedChart
             width={600}
             height={400}
-            data={datosHistoricosPromedioMXN}
+            data={PIB.obtenerPrediccion()}
             margin={{
             top: 20, right: 20, bottom: 20, left: 20,
             }}
         >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="ANO" />
+            <XAxis dataKey="anio" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="CrecimientoMXN" barSize={20} fill="#05A1A0" />
-            <Bar dataKey="PIB" barSize={20} fill="#413ea0" />
-            <Line type="monotone" dataKey="TasaCrecimiento" stroke="#ff7300" />
+            <Bar dataKey="tc_mxn" barSize={20} fill="#05A1A0" />
+            <Bar dataKey="pib" barSize={20} fill="#413ea0" />
+            <Line type="monotone" dataKey="tc" stroke="#ff7300" name="TC PIB" />
         </ComposedChart>
     </ResponsiveContainer>
     </div>
@@ -124,11 +127,17 @@ return (
     <div className={classes.container}>
         <div className={classes.subsection}>
             <Typography className={classes.h3} variant='h3'>CALCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>
-            <Typography className={classes.h3} variant='h3'>{(valorNominal?(
-                PIB.obtenerPIBNsinComponentes(year, CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
+            {/* <Typography className={classes.h3} variant='h3'>{(valorNominal?(
+                //PIB.obtenerPIBNsinComponentes(year, CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
+                PIB.obtenerPrediccion()
             ):(
-                PIB.obtenerPIBsinComponentes(year, CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
-            )).toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})}</Typography>
+                //PIB.obtenerPIBsinComponentes(year, CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib, tc_g ))
+            )).toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})}</Typography> */}
+            <Typography className={classes.h3} variant='h3'>{
+                prediccion.find(l=>l.anio==year)[valorNominal?'pibNominal':'pib'].toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})
+            }</Typography>
+
+
         </div>
         <fieldset className={classes.fieldset} style={{flex: 3}}>
             <Slider 
