@@ -90,7 +90,7 @@ return (
         </div>
         <fieldset className={classes.fieldset} style={{flex: 3}}>
             <Slider 
-                defaultValue={year} step={1} min={2020} max={2025}
+                defaultValue={year} step={1} min={2010} max={2025}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="on"
                 onChange={(e, v)=>{ setYear(v) }}
