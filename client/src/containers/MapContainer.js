@@ -30,6 +30,8 @@ const useMap = () => {
         callMunData,
         stateData
   } = React.useContext(HomeContext);
+  const [defaultState, setDefaultState] = React.useState(null);
+  const [defaultStateCveEnt, setDefaultStateCveEnt] = React.useState(9);
   
   React.useEffect(() => {
     callStatesGEOJSON();
@@ -149,6 +151,11 @@ const useMap = () => {
             _geojson.features[index].properties["decesos#" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
             _geojson.features[index].properties["pruebas#" + state.dates[j]] = Number(stateData[cveEntIndex].pruebas[j].count);
           }
+          
+          if ( dataCveEnt[cveEntIndex] == defaultStateCveEnt) {
+            setDefaultState(_geojson.features[index]);
+          }
+
           geojsonOrdered.push(_geojson.features[index])
           _geojson.features.splice(index,1)
         } 
@@ -169,6 +176,7 @@ const useMap = () => {
     map,
     thresholdsNum,
     stateSelected,
+    defaultState,
 
     closeMapContainer,
     isMapMunicipio,

@@ -26,9 +26,9 @@
     "gh-pages": "^2.2.0",
     "graphql": "^14.5.8",
     "helmet": "^3.22.0",
-    "mapbox-gl": "^1.5.1",
     "iframe-resizer": "^4.2.10",
     "iframe-resizer-react": "^1.0.3",
+    "mapbox-gl": "^1.5.1",
     "markdown-to-jsx": "^6.10.3",
     "medium.css": "^1.0.2",
     "moment": "^2.24.0",
@@ -64,9 +64,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "sitemap": "babel-node ./src/sitemap-builder.js",
-    "prebuild": "npm run generate-build-meta",
-    "generate-build-meta": "./node_modules/react-clear-cache/bin/cli.js"
+    "sitemap": "babel-node ./src/sitemap-builder.js"
   },
   "eslintConfig": {
     "extends": "react-app"

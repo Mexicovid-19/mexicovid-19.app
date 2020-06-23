@@ -13,7 +13,7 @@ import MapGL, { Popup, Source, Layer, FeatureState, NavigationControl } from '@u
 import { numberWithCommas } from '../../Utils/numberWCommas';
 
 const Map = ({classes}) => {
-  const { mapRef, thresholdsNum, isMapMunicipio, geojson,statesGeOJSON, fillColor, setStateSelected, setIsMapMunicipio} = React.useContext(MapContext);
+  const { mapRef, thresholdsNum, isMapMunicipio, geojson,statesGeOJSON, fillColor, setStateSelected, setIsMapMunicipio, defaultState} = React.useContext(MapContext);
   const {selectedLabel, isMap, stateData, state,setIsExpanded} = React.useContext(HomeContext);
   const [hoveredState, setHoveredState] = React.useState(null)
   const [hoveredStateId, setHoveredStateId] = React.useState(null);
@@ -25,6 +25,58 @@ const Map = ({classes}) => {
     latitude: 24.6040,
     zoom: 3.2
   });
+
+  React.useEffect(() => {
+    if ( defaultState ) {
+      initStateSelected();
+    }
+  }, [defaultState])
+
+  let initStateSelected = () => {
+    console.log(defaultState)
+    
+    let cve_ent = String(defaultState.id);
+    cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
+    let nombre = defaultState.properties.ESTADO;
+    let indexState = stateData.findIndex(edo => edo.cve_ent == cve_ent);
+    let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
+    let totales = defaultState.properties[selectedLabel + "#" + state.date]
+    let nuevos = totales - defaultState.properties[selectedLabel + "#" + previousDate]
+    
+    setStateSelected({
+        data: defaultState.properties,
+        cve_ent,
+        nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
+        abrev: defaultState.properties.ABREV,
+        poblacion: stateData[indexState].poblacion,
+        ranking: indexState + 1,
+        totales: totales,
+        nuevos: nuevos,
+        pruebas: defaultState.properties["pruebas#" + state.date]
+    });
+
+    console.log({
+      data: defaultState.properties,
+      cve_ent,
+      nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
+      abrev: defaultState.properties.ABREV,
+      poblacion: stateData[indexState].poblacion,
+      ranking: indexState + 1,
+      totales: totales,
+      nuevos: nuevos,
+      pruebas: defaultState.properties["pruebas#" + state.date]
+  })
+
+    setIsMapMunicipio(true);
+    setIsExpanded(true);
+    if(!isMobile) {
+      setViewport({
+        longitude: -92.15971352034632,
+        latitude: 23.82078503302337,
+        zoom: 3.6937549027062824
+      });
+    }
+  }
 
   const onClick = (event) => {
     if (event.features.length > 0) {
