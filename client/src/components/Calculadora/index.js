@@ -123,9 +123,10 @@ return (
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Completa" {...a11yProps(0)} />
-          <Tab label="Tasa de crecimiento" {...a11yProps(1)} />
-          <Tab label="PIB" {...a11yProps(2)} />
+
+          <Tab label="PIB ($MXN)" {...a11yProps(0)} />
+          <Tab label="Tasa de crecimiento (%)" {...a11yProps(1)} />
+          <Tab label="Deuda como Porcentaje del PIB (%)" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -134,37 +135,29 @@ return (
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-            <div style={{ height: "23rem", width: '100%'}}>
-                <ResponsiveContainer>
-                    <ComposedChart
-                        width={600}
-                        height={400}
-                        data={prediccion}
-                        margin={{
-                            // top: 10, right: 10, bottom: 10, left: 10,
-                        }}
-                    >
-                        <CartesianGrid stroke="#f5f5f5" />
-                        <XAxis dataKey="anio" />
-                        <YAxis yAxisId="percentage" orientation="right" tickFormatter={item=>100*item+'%'} domain={[-1, 1]} scale='linear'/>
-                        <YAxis yAxisId="money" tickFormatter={item=>'$'+(item/1000000).toFixed(2)+'M'} scale='linear'/>
-                        <Tooltip />
-                        <Legend />
-                        {valorNominal ? (
-                            <Bar yAxisId="money" dataKey="pibNominal" barSize={20} fill="#413ea0" name="PIB N" />
-                        ):(
-                            <Bar yAxisId="money" dataKey="pib" barSize={20} fill="#413ea0" name="PIB ($MXN)" />
-                        )}
-                        
-                        <Area yAxisId="money" dataKey="tc_mxn" barSize={20} fill="#05A1A0" name="TC PIB ($MXN)" />
-                        <Line yAxisId="percentage" type="monotone" dataKey="tc" stroke="#ff7300" name="TC PIB (%)"/>
-                        <Line yAxisId="percentage" type="monotone" dataKey="inpc" stroke="#ff7300" name="TC INPC vs. 2013 (%)" />
-
-                        <ReferenceLine x={year} stroke="green" yAxisId="money"/>
-                    </ComposedChart>
-
-                    
-                </ResponsiveContainer>
+        <div style={{ height: "23rem", width: '100%'}}>
+                    <ResponsiveContainer>
+                        <LineChart
+                            width={600}
+                            height={400}
+                            data={prediccion}
+                            margin={{
+                            top: 5, right: 30, left: 20, bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="anio" />
+                            <YAxis tickFormatter={item=>'$'+(item/1000000).toFixed(2)+'M'} scale='linear' domain={[10000000, 22000000]}/>
+                            <Tooltip />
+                            <Legend />
+                            {valorNominal ? (
+                                <Line type="monotone" dataKey="pibNominal" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB Nominal ($MXN)" />
+                            ):(
+                                <Line type="monotone" dataKey="pib" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB ($MXN)" />
+                            )}
+                            <ReferenceLine x={year} stroke="red"/>
+                        </LineChart>
+                    </ResponsiveContainer>
             </div>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
@@ -191,28 +184,24 @@ return (
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
             <div style={{ height: "23rem", width: '100%'}}>
-                    <ResponsiveContainer>
-                        <LineChart
-                            width={600}
-                            height={400}
-                            data={prediccion}
-                            margin={{
-                            top: 5, right: 30, left: 20, bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="anio" />
-                            <YAxis tickFormatter={item=>'$'+(item/1000000).toFixed(2)+'M'} scale='linear' domain={[10000000, 22000000]}/>
-                            <Tooltip />
-                            <Legend />
-                            {valorNominal ? (
-                                <Line type="monotone" dataKey="pibNominal" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB Nominal ($MXN)" />
-                            ):(
-                                <Line type="monotone" dataKey="pib" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB ($MXN)" />
-                            )}
-                            <ReferenceLine x={year} stroke="red"/>
-                        </LineChart>
-                    </ResponsiveContainer>
+                <ResponsiveContainer>
+                    <LineChart
+                        width={600}
+                        height={400}
+                        data={prediccion}
+                        margin={{
+                        top: 5, right: 30, left: 20, bottom: 5,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="anio"/>
+                        <YAxis tickFormatter={item=>100*item+'%'} scale='linear'/>
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey="tc" stroke="#8884d8" activeDot={{ r: 8 }} name="Tasa de Crecimiento PIB (%)" />
+                        <ReferenceLine x={year} stroke="red" />
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
         </TabPanel>
       </SwipeableViews>
