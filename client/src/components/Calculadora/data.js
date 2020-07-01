@@ -139,6 +139,20 @@ class PIB{
         }))
     }
 
+    /*
+    PCPIB_RFS[t]=PCPIB_R[t]-PCPIB_E[t]-PCPIB_CF[t]
+    NEW_DEBT[t]=PCPIB_RFS[t]*PIBN[t]
+    NEW_DEBT_MXN[t]=NEW_DEBT[t]*MXNSHARE
+    NEW_DEBT_USD[t]=NEW_DEBT[t]*USDSHARE
+    DEBT_MXN[t]=DEBT_MXN[t-1]+NEW_DEBT_MXN[t]-AMORT_DEBT_MXN[t]
+    DEBT_USD[t]=DEBT_USD[t-1]+NEW_DEBT_USD[t]-AMORT_DEBT_USD[t]
+    DEBT[t]=DEBT_MXN[t]+DEBT_USD[t]*FX[t]
+    CF_MXN[t]=RateMXN[t]*DEBT_MXN[t]
+    CF_USD[t]=RateUSD[t]*DEBT_USD[t]
+    CF[t]=CF_MXN[t]+CF_USD[t]
+    PC_DEBT[t]=DEBT[t]/PIBN[t]
+    */
+
     constructor(options){
         this.anio = options.anio;
         this.gasto = options.gasto;
@@ -157,10 +171,11 @@ class PIB{
         this.estimuloFiscal = options.estimuloFiscal || false;
         this.inpc = options.inpc || PIB.INPC[this.anio];
         this.pibNominal = this.pib*this.inpc;
-
+        
+        
         this.tc = PIB.TC_PIB[this.anio];
-        this.tc_mxn = PIB.TC_PIB[this.anio]*this.pib;
 
+        this.tc_mxn = PIB.TC_PIB[this.anio]*this.pib;   
     }
 
     /**
@@ -228,20 +243,35 @@ class PIB{
     static obtenerPIBNsinComponentes(anio, anio2020){
         return this.obtenerPIBsinComponentes(anio, anio2020)*PIB.INPC[anio];
     }
+
+    // PIB.obtenerPrediccion(año2002, tasadecambio)
+
     static obtenerPrediccion(base=PIB.story[ PIB.story.length-1 ], primerTC = PIB.TC_PIB[base.anio]){
         let story = [...PIB.getStory()];
         let accum = base.pib
+        let tc;
+
         for(let i=base.anio; i<=2025; i++){
+
+            if(i>=2021){
+                tc = tc+PIB.TC_PIB[i];
+            }
+            else{
+                tc = i==base.anio?primerTC:PIB.TC_PIB[i]
+            }
+
+            //tc = i==base.anio?primerTC:PIB.TC_PIB[i]
+
             story.push({
                 anio: i,
-                tc: i==base.anio?primerTC:PIB.TC_PIB[i],
+                tc: tc,
                 pib: accum,
                 tc_mxn: accum*PIB.TC_PIB[i],
                 pibNominal: PIB.INPC[i]*accum,
                 inpc: PIB.INPC[i]-1
             })
-            accum*=(1+PIB.TC_PIB[i])
-            //accum*=(1 + Number(PIB.TC_PIB[i]))
+            //accum*=(1+tc)
+            accum*=(1 + Number(PIB.TC_PIB[i]))
         }
         console.log(story)
         return story;
@@ -267,6 +297,11 @@ class PIB{
 }
 
 class FinanzasPublicas{
+
+    static rfs = {
+
+    }
+
     static defecit = {
         d_it: {
             2020: -0.07,
@@ -328,8 +363,9 @@ class FinanzasPublicas{
         this.ingresos = {...options.ingresos, total: Object.values(options.ingresos).reduce((a, b)=>a+b, 0)};
         this.costoFinanciero = {...options.costoFinanciero, total: Object.values(options.costoFinanciero).reduce((a, b)=>a+b, 0)};
 
-        this.rfsp = this.ingresos.total - this.gastoPrimario.total - this.costoFinanciero.total;
-        this.rfsp_p = this.ingresos.total - this.gastoPrimario.total
+        this.rfs = this.ingresos.total - this.gastoPrimario.total - this.costoFinanciero.total;
+        this.rfsp_p = this.ingresos.total - this.gastoPrimario.total;
+
     }
 
     obtenerEnPesosReales(){
@@ -355,6 +391,9 @@ class FinanzasPublicas{
         });
         return result;
     }
+
+
+
 }
 /**
  * Se refiere al año actual (2019)

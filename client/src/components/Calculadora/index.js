@@ -81,7 +81,7 @@ const Calculadora = ({ classes }) => {
     const [age, setAge,stateValue] = React.useState('');
 
     const [tc_pib, setTc_pib] = React.useState(-10)
-    const [tc_g, setTc_g] = React.useState(-0.09)
+    const [tc_g, setTc_g] = React.useState(0.9)
     
     const [withEFN, setWithEFN] = React.useState(0);
     
@@ -148,12 +148,12 @@ return (
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="anio" />
                             <YAxis tickFormatter={item=>'$'+(item/1000000).toFixed(2)+'M'} scale='linear' domain={[10000000, 22000000]}/>
-                            <Tooltip />
+                            <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
                             <Legend />
                             {valorNominal ? (
                                 <Line type="monotone" dataKey="pibNominal" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB Nominal ($MXN)" />
                             ):(
-                                <Line type="monotone" dataKey="pib" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB ($MXN)" />
+                                <Line type="monotone" dataKey="pib" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB (Milones $MXN)" />
                             )}
                             <ReferenceLine x={year} stroke="red"/>
                         </LineChart>
@@ -174,7 +174,7 @@ return (
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="anio"/>
                         <YAxis tickFormatter={item=>100*item+'%'} scale='linear'/>
-                        <Tooltip />
+                        <Tooltip formatter={item=>100*item+'%'} />
                         <Legend />
                         <Line type="monotone" dataKey="tc" stroke="#8884d8" activeDot={{ r: 8 }} name="Tasa de Crecimiento PIB (%)" />
                         <ReferenceLine x={year} stroke="red" />
@@ -210,7 +210,7 @@ return (
 
     <div className={classes.container}>
         <div className={classes.subsection}>
-            <Typography className={classes.h3} variant='h3'>CALCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>
+            <Typography className={classes.h3} variant='h3'>CÁLCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>
             <Typography className={classes.h3} variant='h3'>{
                 prediccion.find(l=>l.anio==year)[valorNominal?'pibNominal':'pib'].toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})
             }</Typography>
@@ -264,7 +264,7 @@ return (
         </fieldset>
         <fieldset className={classes.fieldset}>
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                <Typography gutterBottom>Estimulo fiscal</Typography>            
+                <Typography gutterBottom>Estímulo fiscal</Typography>            
                 <Switch color="primary" value={withEFN} onChange={(e)=>{ setWithEFN(e.target.checked) }}></Switch>
             </div>
             {withEFN ? (
@@ -277,9 +277,23 @@ return (
                             setEfn(e.target.value)
                         }}
                     ></TextField>,
-                    <TextField label="Multiplicador" type="number" value={mult} onChange={e=>{
-                        setMult(e.target.value)
-                    }}></TextField>
+
+                    <fieldset className={classes.fieldset1}>
+                        <Typography gutterBottom>Multiplicador</Typography>            
+                        <Slider 
+                            defaultValue={mult} step={0.1} min={1} max={2}
+                            onChange={(e,v)=>{setMult(v)}}
+                            aria-labelledby="discrete-slider"
+                            valueLabelDisplay="auto"
+                            marks={[
+                                {value: 1.3, label: 'X 1.3'}
+                            ]}
+                        ></Slider>
+                    </fieldset>
+                    
+
+                    
+                    
                 ]
             ):null}
         </fieldset>
@@ -352,7 +366,9 @@ const styles = () => ({
     justifyContent: 'space-around',
     alignItems: 'space-around'
   },
-
+  fieldset1:{
+    marginTop: '2rem'
+  },
   subsectionButton:{
     flexBasis: '100%',
     alignSelf: 'flex-end', 
