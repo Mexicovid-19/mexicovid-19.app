@@ -21,9 +21,9 @@ const Simulation = ({ classes }) => {
 
 	const sections = [
 		{
-			title: 'Calculadora de PIB',
-			subtitle: '<b>Roberto Duran</b>',
-			escription: 'Este modelo de difusión de COVID19 constituye una versión modificada del modelo SIR. Considera parámetros sobre la infectividad y mortalidad del COVID19, el impacto del distanciamiento social y, de manera muy importante, el rezago en la información entre el número real de infectados y el número de casos confirmados.',
+			title: 'Calculadora Económica',
+			subtitle: '<b>Dr. Roberto Duran</b>',
+			description: 'En este tablero se presenta una Calculadora Económica que permite, a partir de las expectativas de los especialistas encuestados por el Banco de México y con base en las medidas fiscales sugeridas por el Centro de Estudios Espinoza Yglesias (CEEY), calcular el impacto que podría tener la aplicación de un conjunto de medidas de estímulo económico sobre el crecimiento del PIB y la trayectoria de sostenibilidad de la deuda pública.',
 			caption: 'Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey @fgmzz',
 			render: ()=>(
 				<Calculadora></Calculadora>
