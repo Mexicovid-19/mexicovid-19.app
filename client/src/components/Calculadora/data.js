@@ -335,7 +335,7 @@ class PIB{
 
     // PIB.obtenerPrediccion(año2002, tasadecambio)
 
-    static obtenerPrediccion(base, primerTC){
+    static obtenerPrediccion(base, primerTC=0.3){
         let story = [...PIB.getStory()];
         let accum = base.pib
         let tc;
@@ -354,7 +354,9 @@ class PIB{
             // if(i>=2017){
                 
                 tc = Number(PIB.TCFinal[i]).toFixed(5);
+                // console.log(i, PIB.TCFinal[i]); 
                 // tc = 0.9
+                accum=PIB.PibFinal[i];
             }
             else{
                 tc = i==base.anio?primerTC:PIB.TC_PIB[i]
@@ -371,9 +373,9 @@ class PIB{
                 inpc: PIB.INPC[i]-1
             })
             //accum*=(1+tc)
-            accum*=(1 + Number(tc))
+            if(!(i>=2021)) accum*=(1 + Number(tc))
         }
-
+        console.log("Este es el tc", PIB.TCFinal)
         return story;
     }
 

@@ -110,7 +110,6 @@ const Calculadora = ({ classes }) => {
     const handleChangeIndex = (index) => {
         setValue(index);
     };
-
 return (
   <div>
     <div className={classes1.root}>
@@ -125,7 +124,6 @@ return (
         >
           <Tab label="PIB ($MXN)" {...a11yProps(0)} />
           <Tab label="Tasa de crecimiento (%)" {...a11yProps(1)} />
-          <Tab label="Deuda como Porcentaje del PIB (%)" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -152,7 +150,7 @@ return (
                             {valorNominal ? (
                                 <Line type="monotone" dataKey="pibNominal" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB Nominal ($MXN)" />
                             ):(
-                                <Line type="monotone" dataKey="pib" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB (Milones $MXN)" />
+                                <Line type="monotone" dataKey="pib" stroke="#8884d8" activeDot={{ r: 8 }} name="PIB (Milones $MXN) | Año Base: 2019" />
                             )}
                             <ReferenceLine x={year} stroke="red"/>
                         </LineChart>
@@ -181,35 +179,14 @@ return (
                 </ResponsiveContainer>
             </div>
         </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-            <div style={{ height: "23rem", width: '100%'}}>
-                <ResponsiveContainer>
-                    <LineChart
-                        width={600}
-                        height={400}
-                        data={prediccion}
-                        margin={{
-                        top: 5, right: 30, left: 20, bottom: 5,
-                        }}
-                    >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="anio"/>
-                        <YAxis tickFormatter={item=>100*item+'%'} scale='linear'/>
-                        <Tooltip formatter={item=>100*item+'%'} />
-                        <Legend />
-                        <Line type="monotone" dataKey="tc" stroke="#8884d8" activeDot={{ r: 8 }} name="Tasa de Crecimiento PIB (%)" />
-                        <ReferenceLine x={year} stroke="red" />
-                    </LineChart>
-                </ResponsiveContainer>
-            </div>
-        </TabPanel>
+        
       </SwipeableViews>
       
     </div> 
 
     <div className={classes.container}>
         <div className={classes.subsection}>
-            <Typography className={classes.h3} variant='h3'>CÁLCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>
+            <Typography className={classes.h3} variant='h3'>CÁLCULO DE PIB {valorNominal ? 'NOMINAL':null} EN {year} </Typography>  
             <Typography className={classes.h3} variant='h3'>{
                 prediccion.find(l=>l.anio==year)[valorNominal?'pibNominal':'pib'].toLocaleString('es-MX', {style: 'currency', currency: 'MXN'})
             }</Typography>
@@ -298,13 +275,14 @@ return (
             </div>
             <fieldset className={classes.fieldset} style={{flex: 3}}>
                 <div>
+                    
                     <p>
                         Las medidas de distanciamiento social y restricciones a la movilidad impuestas para controlar la pandemia del Covid19, han tenido un impacto profundo sobre la economía a nivel global. En México, los especialistas esperan que la pandemia detone una de las recesiones económicas más profundas desde la Gran de Depresión de 1929. Asimismo, la crisis ha tenido efectos macroeconómicos que han afectado de manera asimétrica a los países emergentes. Entre estos efectos se puede contar la depreciación del tipo de cambio, la caída en el precio de las materias primas incluido el petróleo y el incremento en el riesgo soberano, lo cual ha presionado al alza las tasas de interés a largo plazo. 
-                    </p>
-                    <p>
+                    </p> 
+                    <p style={{marginTop: '1.5rem', marginBottom: '1.5rem'}}>
                         Para 2020, el entorno macroeconómico presionará de manera importante a las finanzas públicas en México incrementando los requerimientos financieros del sector público. Asimismo, la sola depreciación del tipo de cambio incrementaría el nivel de endeudamiento aun sin aplicar ningún estímulo económico. La aplicación de un estímulo económico podría mitigar los peores efectos de la recesión con un impacto en el déficit y en la deuda mínimo, ya que el PIB se incrementaría casi en la misma proporción que el estímulo debido el efecto multiplicador del gasto. En este sentido, a pesar del incremento en los niveles de endeudamiento, un estimulo correctamente focalizado podría sentar las bases para una recuperación en 2021
                     </p>
-                    <p>
+                    <p> 
                     En este tablero se presenta una Calculadora Económica que permite, a partir de las expectativas de los especialistas encuestados por el Banco de México y con base en las medidas fiscales sugeridas por el Centro de Estudios Espinoza Yglesias (CEEY), calcular el impacto que podría tener la aplicación de un conjunto de medidas de estímulo económico sobre el crecimiento del PIB y la trayectoria de sostenibilidad de la deuda pública. 
                     </p>
                 </div>
