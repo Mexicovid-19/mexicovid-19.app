@@ -116,7 +116,8 @@ class PIB{
             "inversion": 3757136.85,
             "inventarios": 128236.74,
             "exportacionesNetas": -110282.15,
-            "discrepanciasEstadisticas": 140419.59
+            "discrepanciasEstadisticas": 140419.59,
+            
         }),
         new PIB({
             "anio": 2019,
@@ -137,6 +138,94 @@ class PIB{
             pibNominal: l.pibNominal,
             inpc: l.inpc-1
         }))
+    }
+
+    //Nuevos valores
+
+    static AuxiliarBanxico = {
+        2018: 2.13595552592198/100,
+        2019: -0.145602459313576/100,
+        2020: -10/100,
+        2021: 0.3/100,
+        2022: 0.1/100,
+        2023: 0.1/100,
+        2024: 0.1/100,
+        2025: 0.1/100,
+    }
+
+    static AuxiliarEstimulo ={
+        2018: 2.13595552592198/100,
+        2019: -0.145602459313576/100,
+        2020: -10/100, //este es el que se modifica, si no entonces se modifica el del siguiente año y se dejan los bases
+        2021: 0.3/100,
+        2022: 0.1/100,
+        2023: 0.1/100,
+        2024: 0.1/100,
+        2025: 0.1/100,
+    }
+
+
+    static PibAuxiliar = {};
+
+    static PibAuxiliarFill(){
+        PIB.PibAuxiliar = {2017: 18163652.49};
+        var counter = 2017;
+        var pib;
+        while(counter <2025){
+            // PIBAuxiliar[t] = PIBAuxiliar[t-1]*(1+AuxiliarBanxico[t])
+
+            pib = PIB.PibAuxiliar[counter]*(1+PIB.AuxiliarBanxico[counter+1]);
+            PIB.PibAuxiliar[counter+1]= pib;
+            counter++;
+        }
+    }
+
+    static TCAuxiliar={};
+    
+    static TCAuxiliarFill(){
+        PIB.TCAuxiliar = {};
+        var counter = 2017;
+        var tasa;
+        while(counter<2025){
+            // PIB[t+1]/PIB[t] -1
+            tasa = PIB.PibAuxiliar[counter+1]/PIB.PibAuxiliar[counter]-1;
+            PIB.TCAuxiliar[counter+1]=tasa;
+            counter++;
+        }
+    }
+
+    static PibFinal ={};
+    
+    static PibFinalFill(){
+        PIB.PibFinal = {2017: 18163652.49};
+        var counter = 2017;
+        var pib;
+        while(counter<2025){
+            // PIBFinal[t-1]*(1 + PIBAuxiliarEstimulo[t])
+            pib = PIB.PibFinal[counter]*(1+PIB.AuxiliarEstimulo[counter+1]);
+            PIB.PibFinal[counter+1] = pib;
+            counter++;
+        }
+    }
+    
+    static TCFinal ={};
+
+    static TCFinalFill(){
+        PIB.TCFinal ={};
+        var counter = 2017;
+        var tasa;
+        while(counter<2025){
+
+            /**
+             * anterior ---> 100
+             * actual
+             */
+
+
+            tasa = PIB.PibFinal[counter+1]/(PIB.PibFinal[counter])-1;
+            PIB.TCFinal[counter+1]=tasa;
+            counter++;
+        }
     }
 
     /*
@@ -246,15 +335,26 @@ class PIB{
 
     // PIB.obtenerPrediccion(año2002, tasadecambio)
 
-    static obtenerPrediccion(base=PIB.story[ PIB.story.length-1 ], primerTC = PIB.TC_PIB[base.anio]){
+    static obtenerPrediccion(base, primerTC){
         let story = [...PIB.getStory()];
         let accum = base.pib
         let tc;
 
+        //actualizar la tasa de crecimiento 2020
+        PIB.AuxiliarEstimulo[2020]=primerTC;
+        //Update 
+        PIB.PibAuxiliarFill();
+        PIB.TCAuxiliarFill();
+        PIB.PibFinalFill();
+        PIB.TCFinalFill();
+        
         for(let i=base.anio; i<=2025; i++){
 
-            if(i>=2021){
-                tc = tc+PIB.TC_PIB[i];
+            if(i>=2021){ 
+            // if(i>=2017){
+                
+                tc = Number(PIB.TCFinal[i]).toFixed(5);
+                // tc = 0.9
             }
             else{
                 tc = i==base.anio?primerTC:PIB.TC_PIB[i]
@@ -271,9 +371,9 @@ class PIB{
                 inpc: PIB.INPC[i]-1
             })
             //accum*=(1+tc)
-            accum*=(1 + Number(PIB.TC_PIB[i]))
+            accum*=(1 + Number(tc))
         }
-        console.log(story)
+
         return story;
     }
 
@@ -295,106 +395,44 @@ class PIB{
     }
 
 }
+ 
+/// Finanzas publicas -----------------------------------------------------------------------------------------------
 
 class FinanzasPublicas{
 
-    static rfs = {
-
-    }
-
-    static defecit = {
-        d_it: {
-            2020: -0.07,
-            2021: 0,
-            2022: 0,
-            2023: 0,
-            2024: 0,
-            2025: 0
-        },
-        d_oil: {
-            2020: -0.48,
-            2021: -0.25,
-            2022: -0.10,
-            2023: -0.10,
-            2024: -0.10,
-            2025: -0.10
-        }, 
-        fgp: {
-            2020: 0.20,
-            2021: 0.20,
-            2022: 0.20,
-            2023: 0.20,
-            2024: 0.20,
-            2025: 0.20
-        },
-        d_e: {
-            2020: -0.01,
-            2021: 0,
-            2022: 0,
-            2023: 0,
-            2024: 0,
-            2025: 0
-        },
-        d_pen: {
-            2020: 0,
-            2021: 0,
-            2022: 0,
-            2023: 0,
-            2024: 0, 
-            2025: 0
-        }, 
-        d_cfo: {
-            2020: 0, 
-            2021: 0,
-            2022: 0,
-            2023: 0, 
-            2024: 0,
-            2025: 0
-        }
-    }
-    constructor(options){
-        this.pib = options.pib;
-        this.inpc = options.inpc;
-        this.anio = options.anio;
-        this.pibNominal = options.pibNominal;
+    static story = [
+        new FinanzasPublicas({
+            anio: 2017,
+            pibNominal: PIB.story.find(item=>item.anio==2019).pibNominal,
+            ingresos: {
+                petroleros: 2/100,
+                pemex: 1.78/100,
+                tributarios: 15.52/100,
+                paraestatalesNF: 11.26/100,
+                paraestatalesF: 1.26/100
+            },
+            gastos: {
+                gobiernoCentral: 14.68/100,
+                participaciones: 3.53/100,
+                paraestatalesF: 10.16/100,
+                paraestatalesNF: 0
+            },
+            costoFinanciero: {
+                intereses: 2.42/100,
+                paraestatales: 1.44/100
+            }
+        }),
         
-        this.estimuloFiscal = options.estimuloFiscal;
-        this.gastoPrimario = {...options.gastoPrimario, total: Object.values(options.gastoPrimario).reduce((a, b)=>a+b, 0)};
-        this.ingresos = {...options.ingresos, total: Object.values(options.ingresos).reduce((a, b)=>a+b, 0)};
-        this.costoFinanciero = {...options.costoFinanciero, total: Object.values(options.costoFinanciero).reduce((a, b)=>a+b, 0)};
+    ]
 
-        this.rfs = this.ingresos.total - this.gastoPrimario.total - this.costoFinanciero.total;
-        this.rfsp_p = this.ingresos.total - this.gastoPrimario.total;
 
+    constructor(options){
+        this.anio = options.anio;
+        
     }
-
-    obtenerEnPesosReales(){
-        let result = {
-            ingresos: {...this.ingresos},
-            gastoPrimario: {...this.gastoPrimario},
-            costoFinanciero: {...this.costoFinanciero}
-        };
-        Object.keys(result).forEach(l=>{
-            Object.keys(result[l]).forEach(key=>{
-                result[l][key]*=this.pib;
-            });
-        });
-        return result;
-    }
-
-    obtenerEnPesosNominales(){
-        let result = {...this.obtenerEnPesosReales()};
-        Object.keys(result).forEach(l=>{
-            Object.keys(result[l]).forEach(key=>{
-                result[l][key]*=this.inpc;
-            });
-        });
-        return result;
-    }
-
-
-
 }
+
+
 /**
  * Se refiere al año actual (2019)
  */

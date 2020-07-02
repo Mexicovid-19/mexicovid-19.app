@@ -95,9 +95,9 @@ const Calculadora = ({ classes }) => {
         CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib/100, tc_g/100 ).obtenerConEstimuloFiscal(efn, null, mult)
     ):(
         CalculatorData.obtenerAnioSiguienteSegunTC( tc_pib/100, tc_g/100 )
-    )
+    ) 
 
-    let prediccion = PIB.obtenerPrediccion(anioSiguiente, tc_pib/100)
+    let prediccion = PIB.obtenerPrediccion(anioSiguiente, anioSiguiente.pib / CalculatorData.pib -1)
     
     const classes1 = useStyles();
     const theme = useTheme();
@@ -123,7 +123,6 @@ return (
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-
           <Tab label="PIB ($MXN)" {...a11yProps(0)} />
           <Tab label="Tasa de crecimiento (%)" {...a11yProps(1)} />
           <Tab label="Deuda como Porcentaje del PIB (%)" {...a11yProps(3)} />
@@ -196,7 +195,7 @@ return (
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="anio"/>
                         <YAxis tickFormatter={item=>100*item+'%'} scale='linear'/>
-                        <Tooltip />
+                        <Tooltip formatter={item=>100*item+'%'} />
                         <Legend />
                         <Line type="monotone" dataKey="tc" stroke="#8884d8" activeDot={{ r: 8 }} name="Tasa de Crecimiento PIB (%)" />
                         <ReferenceLine x={year} stroke="red" />
@@ -231,11 +230,7 @@ return (
     <div className={classes.container}>
         <div className={classes.subsection}>
             <Typography className={classes.h3} variant='h3'>ESCENARIO BASE {!withEFN ? 'SIN' : 'CON'} ESTÍMULO FISCAL</Typography>
-            <Typography className={classes.h3} variant='h3'>{(( !withEFN ? (
-                anioSiguiente.tc_dabase
-            ):(
-                anioSiguiente.pib / CalculatorData.pib -1
-            ))*100).toPrecision(4)}%</Typography>
+            <Typography className={classes.h3} variant='h3'>{((anioSiguiente.pib / CalculatorData.pib -1)*100).toPrecision(4)}%</Typography>
         </div>
         <fieldset className={classes.fieldset}>
             <Typography gutterBottom>Estimación de crecimiento de PIB</Typography>
