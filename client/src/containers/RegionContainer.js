@@ -56,7 +56,6 @@ const useRegion = () => {
           statesToChart.push(dataChart[state]);
         }
       }
-      console.log(selectedStates)
       setstatesBool([...statesBool]);
       setSelectedStates([...selectedStates]);
       setStatesToChart([...statesToChart]);
@@ -80,7 +79,6 @@ const useRegion = () => {
   };
 
   let handleClick = () => {
-    console.log("stateValue", stateValue)
     if(stateValue === "")
       return;
 

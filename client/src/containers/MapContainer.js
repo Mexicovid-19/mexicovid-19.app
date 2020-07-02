@@ -2,115 +2,90 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 import { HomeContext } from '../contexts/HomeContext';
-import * as colors from './../constants/colors';
-import { numberWithCommas } from '../Utils/numberWCommas';
-import '../css/Map.css';
 
 const useMap = () => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
+
   const mapRef = React.useRef(null);
   const [map, setMap] = React.useState(null);
+  const [fillColor, setFillColor] = React.useState(null);
+  const [geojson, setGeojson] = React.useState(null);
   const [statesGeOJSON, setStatesGeOJSON] = React.useState(null);
   const thresholdColor = {
     "decesos": ['#fff5f0','#fee0d2','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'],
     "confirmados": ['#f7fbff','#deebf7','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'],
-    "muertes": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
+    "pruebas": ['#ffffe5','#fff7bc','#fee391','#fec44f','#fe9929','#ec7014','#cc4c02','#8c2d04']
   };
   const [thresholdsNum, setThresholdNum] = React.useState({
     "confirmados": [],
     "decesos": [],
   })
   const isMobile = window.innerWidth < 1000;
-  const[ popup , setPopup] = React.useState(new mapboxgl.Popup({ closeOnClick: false, closeOnMove: true, closeButton: false,className: 'popup-map' }));
-  
-  const {statesConfirm,
-         statesDeads,
+  const [isMapMunicipio, setIsMapMunicipio] = React.useState(false);
+  const [stateSelected, setStateSelected] = React.useState(null);
+  const {
          selectedLabel, 
          state,
-        isMap 
+        isMap,
+        callMunData,
+        stateData
   } = React.useContext(HomeContext);
+  const [defaultState, setDefaultState] = React.useState(null);
+  const [defaultStateCveEnt, setDefaultStateCveEnt] = React.useState(9);
   
   React.useEffect(() => {
-    setMap(
-      new mapboxgl.Map({
-      container: mapRef.current,
-      style: 'mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko',
-      center: [-97.8116, 24.6040],
-      zoom : 4.2
-    },));
-
-    if (isMobile){
-      setMap(
-        new mapboxgl.Map({
-        container: mapRef.current,
-        style: 'mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko',
-        center: [-100.8116, 24.6040],
-        zoom : 3.2
-      }));
-    };
-    
-
-
+    callStatesGEOJSON();
   }, []);
 
-
   React.useEffect(() => {
-    if(map) {
-      map.on('load', function() {
-        callStatesGEOJSON();
-      })
-    }
-  }, [map]);
+    if(state.date && stateData && statesGeOJSON && statesGeOJSON.features.length == 32) {  
+      setFillColor(getSteps(selectedLabel));
+      setUpGEOJson();
+      
+      if ( selectedLabel == "confirmados") {
+        stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
+      } else {
+        stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
+      }
 
-  React.useEffect(() => {
-    if(statesConfirm && statesDeads && statesGeOJSON) {  
-      let fillColor = getSteps(selectedLabel);
-      let geojson = setUpGEOJson();
-
-      map.addSource('pref', {
-        type: 'geojson',
-        data: geojson,
-        attribution: 'ⓘ Cifras oficiales del Gobierno de México'
-      });
-      console.log(" if adding layer:");
-      map.addLayer({
-        'id': 'pref',
-        'type': 'fill',
-        'source': 'pref',
-        'paint': {
-          'fill-color': fillColor,
-          'fill-opacity': [
-              'case',
-              ['boolean', ['feature-state', 'hover'], false],
-              1,
-              1,
-          ],
-          'fill-outline-color': '#FFF'
-        }
-      });
-
-      map.on('mousemove', showPopup);
-      var nav = new mapboxgl.NavigationControl();
-      map.addControl(nav, 'bottom-right');
-    }
-  }, [statesGeOJSON, statesConfirm, statesDeads]);
-
-  React.useEffect(() => {
-    if(map && state.date) {
-      let fillColor = getSteps(selectedLabel);
-      if(map.loaded() && map.isStyleLoaded()) {
-        map.setPaintProperty('pref', 'fill-color', fillColor);
-        map.on('mousemove', showPopup);
+      if( stateSelected ) {
+        let data = stateSelected.data;
+        let cve_ent = String(data.CVE_ENT);
+        cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
+        let nombre = data.ESTADO;
+        let indexState = stateData.findIndex(edo => edo.cve_ent == cve_ent);
+        let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
+        let totales = data[selectedLabel + "#" + state.date]
+        let nuevos = totales - data[selectedLabel + "#" + previousDate]
+      
+        setStateSelected(
+          {
+            data,
+            cve_ent,
+            nombre: nombre.slice(0,1) + nombre.slice(1).toLowerCase(),
+            abrev: data.ABREV,
+            poblacion: stateData[indexState].poblacion,
+            ranking: indexState + 1,
+            totales: totales,
+            nuevos: nuevos,
+            pruebas: data["pruebas#" + state.date]
+          }
+        );
       }
     }
-      
-  }, [state, selectedLabel, statesGeOJSON, statesConfirm, statesDeads]);
+  }, [selectedLabel, statesGeOJSON, stateData, state]);
 
   React.useEffect(() => {
     if(map && map.loaded() && map.isStyleLoaded()) {
       map.resize();
     }
   }, [isMap]);
+
+  React.useEffect(() => {
+    if(stateSelected) {
+      callMunData(stateSelected.cve_ent);
+    }
+  }, [stateSelected])
 
   let callStatesGEOJSON = ()  => {
     axios.post(`${process.env.REACT_APP_API_URL}/map/states`, {})
@@ -120,25 +95,24 @@ const useMap = () => {
   }
 
   let getSteps = (label) => {
-    let statesData = statesConfirm;
-
-    if(label === "decesos") {
-      statesData = statesDeads;
-    }
-
-    let data = statesData.map(stateMex => {
-      return stateMex[label][state.date]; 
+    let thresholdsNumLabel = [];
+    
+    let data = stateData.map(stateMex => {
+      return stateMex[label][state.dateIndex].count; 
     });
     
     data.sort((a,b) => a - b);
-    let thresholdsNumLabel = [data[0], data[4], data[8], data[12], data[16], data[20],data[24],data[31]];
+    let threshold = Math.floor(data.length / 8);
+    for(var step = 0; step < 8; step++) {
+      thresholdsNumLabel.push(data[step*threshold])
+    }
     
     let stepsList = thresholdsNumLabel.map((num, i) => {
         return [Number(num), thresholdColor[label][i]];
     });
     
     let fillColor = {
-      property: label + "-" + state.date,
+      property: label + "#" + state.date,
       stops: stepsList
     };
 
@@ -147,58 +121,71 @@ const useMap = () => {
     return fillColor;
   }
 
-  let showPopup = (e) => {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ["pref"]
-    });
-    
-    if(features.length > 0 && statesConfirm && statesDeads) {
-      popup
-      .setLngLat(e.lngLat)
-      .setHTML(
-        ` 
-          <div style='display: flex; flex-direction: column; align-items: center; padding: 10px'>
-            <span style='border-bottom: 1px solid; width: 100%; text-align: center; font-family: Raleway; font-weight:bold'>
-              ${features[0].properties.ESTADO}
-            </span>
-            <span style='display: flex;'>
-              <svg style='width: 15px; height: 15px; font-family: Raleway; font-weight:bold'>
-                <circle r="5" cx="6" cy="10" fill=${selectedLabel === 'confirmados' ? colors.BLUE : colors.RED} stroke-width="0" stroke="rgba(0, 0, 0, .5)"></circle>
-              </svg>
-              ${numberWithCommas(features[0].properties[ selectedLabel + "-" + state.date])} ${selectedLabel} 
-            </span>
-          </div>`
-        )
-      .setMaxWidth(400)
-      .addTo(map);
-    } else {
-        popup.remove();
+  let binarySearch = (inf, sup, val, arr) => {
+    if ( inf > sup){
+      return sup < 0 ? 0: sup;
+    }
+    else {
+      var mid = inf + Math.floor((sup - inf) /2);
+        if(arr[mid].properties.CVE_ENT == val) {
+          return mid;
+        } else if( arr[mid].properties.CVE_ENT < val) {
+          return binarySearch(mid + 1, sup, val, arr)
+        } else {
+          return binarySearch(inf, mid - 1, val, arr)
+        }
     }
   }
 
   let setUpGEOJson = () => {
-    let geojson = statesGeOJSON;
-      geojson.features = geojson.features.sort((a,b) => a.properties.CVE_ENT - b.properties.CVE_ENT);
-      console.log(geojson)
-      console.log(statesConfirm)
-      for(var i = 0; i < 32; i++) {
-        for(var j in statesConfirm[i].confirmados) {
-          geojson.features[i].properties["confirmados-" + j] = Number(statesConfirm[i].confirmados[j]);
-        }
-        for(var j in statesDeads[i].decesos) {
-          geojson.features[i].properties["decesos-" + j] = Number(statesDeads[i].decesos[j]);
-        }
+    let _geojson = JSON.parse(JSON.stringify(statesGeOJSON));
+    let geojsonOrdered = [];
+    let dataCveEnt = stateData.map(el => Number(el.cve_ent))
+    for( var cveEntIndex in dataCveEnt) {
+      if(dataCveEnt[cveEntIndex] != 99) {
+        let index = binarySearch(0, _geojson.features.length, dataCveEnt[cveEntIndex], _geojson.features)
+      
+        if ( index >= 0 ) {
+          for(var j in state.dates) {
+            _geojson.features[index].properties["confirmados#" + state.dates[j]] = Number(stateData[cveEntIndex].confirmados[j].count);
+            _geojson.features[index].properties["decesos#" + state.dates[j]] = Number(stateData[cveEntIndex].decesos[j].count);
+            _geojson.features[index].properties["pruebas#" + state.dates[j]] = Number(stateData[cveEntIndex].pruebas[j].count);
+          }
+          
+          if ( dataCveEnt[cveEntIndex] == defaultStateCveEnt) {
+            setDefaultState(_geojson.features[index]);
+          }
+
+          geojsonOrdered.push(_geojson.features[index])
+          _geojson.features.splice(index,1)
+        } 
       }
+    }
     
-    return geojson;
+    _geojson.features = geojsonOrdered
+    
+    setGeojson(_geojson);
   }
-  
+
+  let closeMapContainer = (e) => {
+    setIsMapMunicipio(false);
+  }
+
   return {
     mapRef,
     map,
-    showPopup,
-    popup,
-    thresholdsNum
+    thresholdsNum,
+    stateSelected,
+    defaultState,
+
+    closeMapContainer,
+    isMapMunicipio,
+
+    statesGeOJSON,
+    fillColor,
+    geojson,
+    setStateSelected,
+    setIsMapMunicipio
   }
 }
 

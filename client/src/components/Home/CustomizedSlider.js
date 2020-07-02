@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CustomizedSlider = () => {
 	const classes = useStyles();
-	const {state, changeDate, dataChart, onSelectLabel, selectedLabel } = React.useContext(HomeContext);
+	const {state, dataChart, onSelectLabel, selectedLabel } = React.useContext(HomeContext);
   let max = 0;
   let totalConfirm = 0;
   let totalDeads = 0;

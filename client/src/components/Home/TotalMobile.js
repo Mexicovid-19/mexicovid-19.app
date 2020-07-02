@@ -13,8 +13,7 @@ import { MONTHS } from '../../constants/date';
 
 const TotalMobile = (props) => {
   const {classes } = props;
-  const {state,  dataChart, onSelectLabel, selectedLabel} = React.useContext(HomeContext);
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const {state,  dataChart, onSelectLabel, selectedLabel,isExpanded,setIsExpanded} = React.useContext(HomeContext);
   
   let totalConfirm = 0;
   let totalDeads = 0;
