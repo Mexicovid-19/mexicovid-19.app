@@ -37,6 +37,44 @@ exports.getAll = function (req, res) {
 }
 
 /**
+ * Function to get confirmed cases per 100 habitants
+ */
+exports.getCasesPer1000Habitants = (req, res)=>{
+    estadoService.getAll((error, response)=>{
+        if(response){
+            let newResponse = response
+                // No incluir estado indefinido
+                .filter(estado=>estado.abbrev != '??')
+                // Generar daros para cada estado
+                .map(estado=>({
+                    id: estado.abbrev,
+                    data: estado.confirmados
+                        // Incluid datos cada tercer día, y el día actual
+                        .filter((caso, i)=>( i%3==0 || i==estado.confirmados.length-1 ))
+                        // Organizar en x, y. Reordenar fecha y calcular por 100k habitantes
+                        .map(casos=>({
+                            x: casos.date,
+                            // x: [casos.date.split('/')[1], casos.date.split('/')[2], casos.date.split('/')[0]].join('/'),
+                            y: ((casos.count / estado.poblacion) * 100000 ).toFixed(2)
+                        }))
+                }))
+                // Ordenar por valor de y
+                .sort((a,b)=>(
+                b.data[b.data.length-1].y - a.data[a.data.length-1].y
+                ))
+
+            res.status(200).send(newResponse);
+
+
+        } else if (error){
+            res.statusMessage = 'there where problems with the database';
+            return res.status(500).end();
+        }
+    })
+}
+
+
+/**
  * Function to find estado from estado collection.
  */
 exports.findByEnt = function (req, res) {
