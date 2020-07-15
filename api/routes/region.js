@@ -9,7 +9,7 @@ let formData = (x, y) => {
 
 router.post('/data/states', estado.getCasesPer1000Habitants)
 
-router.post('/data/states', function(req, res) {
+router.post('/data/states_old', function(req, res) {
 	var fs = require('fs');
 	var d3 = require('d3');
 	var edos_date;
