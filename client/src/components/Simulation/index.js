@@ -8,6 +8,11 @@ import SimulationUncertainty from './SimulationUncertainty';
 import ReactivacionEco from './ReactivacionEco';
 import { Helmet } from 'react-helmet';
 import MasterDetailView from '../MasterDetailView';
+import Barchart from '../Regions';
+import Calculadora from '../Calculadora';
+
+
+
 const Simulation = ({ classes }) => {
 
 	const isMobile = window.innerWidth < 1000;
@@ -15,6 +20,15 @@ const Simulation = ({ classes }) => {
 	const title = `Análisis de simulación del covid-19 bajo incertidumbre`;
 
 	const sections = [
+		{
+			title: 'Calculadora Económica',
+			subtitle: '<b>Dr. Roberto Duran & Dra. Grissel Olivera Martínez</b>',
+			description: 'En este tablero se presenta una Calculadora Económica que permite, a partir de las expectativas de los especialistas encuestados por el Banco de México y con base en las medidas fiscales sugeridas por el Centro de Estudios Espinoza Yglesias (CEEY), calcular el impacto que podría tener la aplicación de un conjunto de medidas de estímulo económico sobre el crecimiento del PIB y la trayectoria de sostenibilidad de la deuda pública.',
+			caption: 'Fernando Gómez, doctor en políticas públicas por la Escuela de Gobierno y Transformación Pública del Tecnológico de Monterrey @fgmzz',
+			render: ()=>(
+				<Calculadora></Calculadora>
+			)
+		},
 		{
 			title: 'Tablero para la Toma de Decisión sobre Reactivación Económica por Entidad Federativa',
 			subtitle: '<b>Dr. Fernando Gómez Zaldívar</b>',
@@ -50,6 +64,7 @@ const Simulation = ({ classes }) => {
 			</Helmet>
 			<div style={{display: 'flex', height: '100vh', flexDirection: 'column'}}>
 				<Header fixed={false}/>
+
 				<div className={classes.container}>
 					<MasterDetailView 
 						sections={sections}

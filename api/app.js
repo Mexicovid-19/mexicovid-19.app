@@ -15,6 +15,7 @@ var estadoRouter = require('./routes/estado');
 
 var csvEstadoRouter = require('./csvReader/estados');
 var indicatorsRouter = require('./routes/indicators');
+var calculadoraRouter = require('./routes/calculadora');
 
 require('./connection');
 
@@ -32,6 +33,7 @@ app.use('/region', regionRouter);
 app.use('/municipio', municipioRouter);
 app.use('/estado', estadoRouter);
 app.use('/indicators',indicatorsRouter);
+app.use('/calculadora',calculadoraRouter);
 
 app.use('/csv', csvEstadoRouter);
 
