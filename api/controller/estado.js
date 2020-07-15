@@ -37,6 +37,30 @@ exports.getAll = function (req, res) {
 }
 
 /**
+ * Function to get confirmed cases per 100 habitants
+ */
+exports.getCasesPer1000Habitants = (req, res)=>{
+    estadoService.getAll((error, response)=>{
+        if(response){
+            let newResponse = response.map(estado=>({
+                id: estado.abbrev,
+                data: estado.confirmados.map(casos=>({
+                    x: casos.date,
+                    y: (casos.count / estado.poblacion) * 1000
+                }))
+            }))
+            res.status(200).send(newResponse);
+
+
+        } else if (error){
+            res.statusMessage = 'there where problems with the database';
+            return res.status(500).end();
+        }
+    })
+}
+
+
+/**
  * Function to find estado from estado collection.
  */
 exports.findByEnt = function (req, res) {
