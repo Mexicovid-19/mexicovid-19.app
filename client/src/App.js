@@ -42,16 +42,8 @@ const Application = () => {
     return <GithubCallback />
   }
 
-  if(!isLatestVersion){
-    emptyCacheStorage();
-    console.log("actualizando");
-  }
-  else{
-    console.log("latest version")
-  }
   return (
     <div>
-    {isLatestVersion && (
       <div>
             <ThemeProvider theme={theme}>
               <ApolloProvider client={client}>
@@ -59,8 +51,6 @@ const Application = () => {
               </ApolloProvider>
             </ThemeProvider>
       </div>
-      
-    )}
     </div>
   )
 };

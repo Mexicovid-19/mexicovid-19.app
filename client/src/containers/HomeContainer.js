@@ -42,6 +42,7 @@ const useHome = () => {
           countDates: dates.length,
           dates : dates
         }
+
         setState(_state)
         
         if(dataChart.length == 0)
