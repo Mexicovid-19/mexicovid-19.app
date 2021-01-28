@@ -150,10 +150,12 @@ const Map = ({classes}) => {
       <div className={classes.sidebarStyle}>
         {!isMobile && <CustomizedSlider />}
       </div>
-        {
-          //isMapMunicipio ? !isMobile ? <div className={classes.munContainer}> <MunMap/> </div>: <MunMapMov/>:null
-
-          isMapMunicipio ? !isMobile?<div className={classes.munContainer}> <MunMap/> </div>:null:null
+      {isMapMunicipio ? !isMobile ? <div className={classes.munContainer}>
+          <MunMap/>
+        </div> 
+        : 
+          <MunMapMov/>:
+        null
         }
       {!isMobile && <ColorsGradientBar selectedLabel={selectedLabel} thresholdsNum={thresholdsNum} />}
       {(( !isMobile && geojson && geojson.features.length == 32)||(isMap && isMobile && geojson && geojson.features.length == 32)) && <MapGL

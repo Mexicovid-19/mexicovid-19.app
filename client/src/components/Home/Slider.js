@@ -132,8 +132,10 @@ const CustomizedSlider = () => {
 
   max = state.dates.length - 1;
   let formatedDate = new Date(state.date);
-  formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, 2020`;
   
+  formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, ${MONTHS[formatedDate.getFullYear()]}`;
+  console.log(formatedDate);
+
   return (
     <div className={classes.slider}>
     	<Typography className={classes.text}>Fecha </Typography>

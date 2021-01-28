@@ -66,7 +66,7 @@ const CustomizedSlider = () => {
 	
   max = state.dates.length - 1;
   let formatedDate = new Date(state.date);
-  formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, 2020`;
+  formatedDate = `${formatedDate.getDate()} de ${MONTHS[formatedDate.getMonth()]}, ${formatedDate.getFullYear()}`;
   
   return (
     <div className={classes.container} >
