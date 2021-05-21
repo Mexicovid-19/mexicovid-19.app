@@ -19,12 +19,12 @@ const Elecciones = ({ classes }) => {
   return (
     <div>
       <Helmet>
-          <title>Elecciones 2021 | MexiCOVID</title>
-          <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
+            <title>Elecciones 2021 | MexiCOVID</title>
+            <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
 			<meta name="keywords" content="Elecciones, electorales, elecciones 2021, elecciones México"/>
 			
-      <meta property="og:title" content="Elecciones | MexiCOVID"/>
-      <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
+            <meta property="og:title" content="Elecciones | MexiCOVID"/>
+            <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
       </Helmet>
         <div className={classes.container}>
         <Header fixed={isMobile}/>
