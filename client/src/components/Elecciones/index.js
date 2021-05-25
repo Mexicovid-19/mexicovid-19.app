@@ -41,8 +41,13 @@ const Elecciones = ({ classes }) => {
 
 const styles = () => ({
     /* Desktop */
+    header: {
+      paddingTop: '50px'
+    },
     h1: {
-        fontSize: '36px'
+        fontSize: '36px',
+        textAlign: 'center',
+        fontWeight: 'bold'
     },
 
     /* Mobile */
