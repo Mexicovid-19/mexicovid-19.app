@@ -5363,36 +5363,7 @@ const data = [
     }
 ]
 
-const otherData = [{
-    "id": "java",
-    "label": "java",
-    "value": 130,
-    "color": "hsl(2, 70%, 50%)"
-  },
-  {
-    "id": "elixir",
-    "label": "elixir",
-    "value": 133,
-    "color": "hsl(2, 70%, 50%)"
-  },
-  {
-    "id": "go",
-    "label": "go",
-    "value": 427,
-    "color": "hsl(252, 70%, 50%)"
-  },
-  {
-    "id": "make",
-    "label": "make",
-    "value": 430,
-    "color": "hsl(305, 70%, 50%)"
-  },
-  {
-    "id": "lisp",
-    "label": "lisp",
-    "value": 533,
-    "color": "hsl(254, 70%, 50%)"
-  }]
+
 
 const Distritos = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
@@ -5402,7 +5373,7 @@ const Distritos = ({ classes }) => {
     const mapContainer = useRef(null);
     const [long, setLong] = useState(-99.28);
     const [lat, setLat] = useState(19.39);
-    const [zoom, setZoom] = useState(3.5);
+    const [zoom, setZoom] = useState(3.8);
 
     const [districtData, setDistrictData] = useState([])
     const [selectedDistrictName, setSelectedDistrictName] = useState(data[0].name)
@@ -5514,7 +5485,21 @@ const Distritos = ({ classes }) => {
                 'source': 'district-source',
                 'layout': {},
                 'paint': {
-                    'fill-color': '#5AA5D7',
+                    'fill-color': [
+                        'match',
+                        ['get', 'PARTIDO'],
+                        'PAN',
+                        '#007cc2',
+                        'PRI',
+                        '#02a859',
+                        'PRD',
+                        '#fecb00',
+                        'MORENA',
+                        '#782823',
+                        'PT',
+                        '#e30100',
+                        /* other */ '#ffffff'
+                    ],
                     'fill-outline-color': '#FFF',
                     'fill-opacity': [
                         'case',
@@ -5532,7 +5517,7 @@ const Distritos = ({ classes }) => {
             });
 
             map.on('mousemove', 'district-layer', function (e) {
-                map.getCanvas().style.cursor = 'pointer';
+                //map.getCanvas().style.cursor = 'pointer';
                 if (e.features.length > 0) {
                     if (hoveredDistrictRef.current && hoveredDistrictRef.current > -1) {
 
@@ -5593,7 +5578,7 @@ const Distritos = ({ classes }) => {
                         { hover: false }
                     );
                 }
-                map.getCanvas().style.cursor = '';
+                //map.getCanvas().style.cursor = '';
                 popup.remove();
                 setHoveredDistrict(null);
             });
@@ -5608,9 +5593,8 @@ const Distritos = ({ classes }) => {
 
             map.on('click', 'district-layer', function(e) {
                 let _selectedDistrict = e.features[0].id;
-                setUpData(e.features[0].id)
+                setUpData(_selectedDistrict)
                 setSelectedDistrict(_selectedDistrict)
-                console.log(_selectedDistrict)
             })
 
         });
@@ -5626,7 +5610,7 @@ const Distritos = ({ classes }) => {
                     </div>
                 </div>
                 <div>
-                    <h2 className={classes.districtName}>Distrito: {selectedDistrictName}</h2>
+                    <h2 className={classes.districtName}>Distrito: {selectedDistrict+8}</h2>
                     {districtData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <DistritosChart data={districtData}/>
