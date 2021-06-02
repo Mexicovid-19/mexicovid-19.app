@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+var app = require('../app');
+
+console.log(process.env.PORT);
+app.listen(process.env.PORT || 5000)

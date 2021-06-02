@@ -25,7 +25,7 @@ import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
 
 const Heatmap = ({ classes }) => {
     const { indicatorsData } = React.useContext(IndicatorContext);
-    console.log(indicatorsData)
+    //console.log(indicatorsData)
     return (
         <div style={{ height: 600 ,width:'100%'}}>
             {indicatorsData.length == 0 ?

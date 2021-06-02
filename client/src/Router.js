@@ -7,13 +7,17 @@ import Team from './components/Team';
 import Methodology from './components/Methodology';
 import Regions from './components/Regions';
 
-/* Contextos */
+/* ---- Contextos ---- */
+/* viejos */
 import { RegionContextProvider } from './contexts/RegionContext';
 import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
 import { MapMunicipioContextProvider } from './contexts/MapMunicipioContext';
 import { BlogContextProvider } from './contexts/BlogContext';
 import {IndicatorContextProvider} from './contexts/IndicatorContext';
+
+/* nuevos */
+import { DistritosContextProvider } from './contexts/elecciones/DistritosContext'
 
 /* CSS */
 import './css/index.css';
@@ -71,7 +75,11 @@ const Router = () => {
         <Route path='/reactivacion-economica' component={ReaperturaEco}/>
 
         {/* Nuevas páginas */}
-        <Route path='/elecciones' component={Elecciones}/>
+        <Route path='/elecciones' >
+          <DistritosContextProvider>
+              <Elecciones/>
+          </DistritosContextProvider>
+        </Route>
 
         <Route exact path="/research">
             <BlogContextProvider>

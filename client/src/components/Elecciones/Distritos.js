@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 
 /* Material UI */
 import { withStyles } from '@material-ui/core/styles';
@@ -13,6 +13,10 @@ import DistritosChart from './DistritosChart'
 import mnDistricts from "./data/prueba.geojson";
 import distritos_geojson from "./data/distritos.geojson";
 import mapboxgl from 'mapbox-gl';
+
+/* Context */
+import { DistritosContext } from '../../contexts/elecciones/DistritosContext'
+import CurulesChart from './CurulesChart';
 
 const data = [
     {
@@ -5368,8 +5372,12 @@ const data = [
 const Distritos = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
 
+    /* context */
+    const { distritosData, distritosGanadoresData } = useContext(DistritosContext);
+
     /* Mapbox */
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    //mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY
     const mapContainer = useRef(null);
     const [long, setLong] = useState(-99.28);
     const [lat, setLat] = useState(19.39);
@@ -5459,10 +5467,10 @@ const Distritos = ({ classes }) => {
     useEffect(() => {
         setupGeoJson()
         setUpData(selectedDistrict)
-
         let map = new mapboxgl.Map({
             container: mapContainer.current,
-            style: "mapbox://styles/mapbox/dark-v10",
+            //style: "mapbox://styles/mapbox/dark-v10",
+            style: "mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko",
             center: [long, lat],
             zoom: zoom
         });
@@ -5489,16 +5497,36 @@ const Distritos = ({ classes }) => {
                         'match',
                         ['get', 'PARTIDO'],
                         'PAN',
-                        '#007cc2',
+                        '#0055BF',
                         'PRI',
-                        '#02a859',
+                        '#FF0018',
                         'PRD',
-                        '#fecb00',
-                        'MORENA',
-                        '#782823',
+                        '#FFCC00',
+                        'PVEM',
+                        '#A2CD40',
                         'PT',
-                        '#e30100',
-                        /* other */ '#ffffff'
+                        '#FFED00',
+                        'MOVIMIENTO_CIUDADANO',
+                        '#FF7A00',
+                        'MORENA',
+                        '#960016',
+                        'PES',
+                        '#7C2690',
+                        'FM',
+                        '#FF53A1',
+                        'RSP',
+                        '#313233',
+                        'Juntos Haremos Historia',
+                        '#B2242B',
+                        'Vamos Por México',
+                        '#0055BF',
+                        'CAND_IND_01',
+                        '#8FA7A9',
+                        'CAND_IND_02',
+                        '#8FA7A9',
+                        'Sin Ganador',
+                        '#CCCCCC',
+                        '#CCCCCC',
                     ],
                     'fill-outline-color': '#FFF',
                     'fill-opacity': [
@@ -5553,7 +5581,7 @@ const Distritos = ({ classes }) => {
                     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                     }
-                    var description = `<div><h3 class="popupTitle"><strong>Distrito: ${data[e.features[0].id-8].name || '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${data[e.features[0].id-8].anterior}.png'/><p class="popupYear">2020</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${data[e.features[0].id-8].actual}.png'/><p class="popupYear">2021</p></div></div></div>`
+                    var description = `<div><h3 class="popupTitle"><strong>Distrito: ${data[e.features[0].id-8].name || '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${data[e.features[0].id-8].anterior}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${data[e.features[0].id-8].actual}.png'/><p class="popupYear">2021</p></div></div></div>`
                     //console.log(coordinates)
                     popup.setLngLat(coordinates).setHTML(description).addTo(map);
 
@@ -5601,14 +5629,28 @@ const Distritos = ({ classes }) => {
 
     }, []);
 
+    const getDistrict = (id) => {
+        if(distritosData.length !== 0){
+            let data = []
+            distritosData.map(item => {
+                if(item.id === id){
+                    data.push(item);
+                }
+            })
+        }
+        return data.length !== 0 ? data[0] : null;
+    }
+
     return (
         <div>
             <div className={classes.itemsContainer}>
+                {/* Map */}
                 <div className="district-map-wrapper">
                     <div id="districtDetailMap" className={classes.map}>
                         <div style={{ height: "100%" }} ref={mapContainer}></div>
                     </div>
                 </div>
+                {/* pie chart */}
                 <div>
                     <h2 className={classes.districtName}>Distrito: {selectedDistrict+8}</h2>
                     {districtData.length !== 0 && (
@@ -5619,6 +5661,17 @@ const Distritos = ({ classes }) => {
                     )}
                 </div>
             </div>
+            {/* half pie  chart */}
+            <div>
+                <h2 className={classes.districtName}>Distribución de curules</h2>
+                {districtData.length !== 0 && (
+                    <div className={classes.chartContainer}>
+                        <CurulesChart data={districtData}/>
+                    </div>
+        
+                )}
+            </div>
+            
             
         </div>
         
@@ -5632,7 +5685,8 @@ const styles = () => ({
     justifyContent: 'space-evenly',
     maxWidth: 1600,
     margin: 'auto',
-    paddingTop: '100px'
+    paddingTop: '100px',
+    marginBottom: '100px'
   },
   map: {
     height: '800px',
@@ -5643,7 +5697,7 @@ const styles = () => ({
     height: '600px',
     width: '600px',
     margin: 'auto',
-    paddingTop: '150px'
+    paddingTop: '0px',
   },
   districtName: {
       textAlign: 'center',

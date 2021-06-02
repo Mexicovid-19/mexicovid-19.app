@@ -7,7 +7,8 @@ var cors = require("cors");
 require('./models/municipios');
 require('./models/estados');
 
-//Routes
+// ----- Routes -----
+/* viejas */
 var mapRouter = require('./routes/map');
 var regionRouter = require('./routes/region');
 var municipioRouter = require('./routes/municipio');
@@ -16,6 +17,12 @@ var estadoRouter = require('./routes/estado');
 var csvEstadoRouter = require('./csvReader/estados');
 var indicatorsRouter = require('./routes/indicators');
 var calculadoraRouter = require('./routes/calculadora');
+
+
+/* nuevas */
+var distritosRouter = require('./routes/elecciones/distritos')
+var distritosGanadorRouter = require('./routes/elecciones/distritos_ganador')
+
 
 require('./connection');
 
@@ -28,12 +35,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+/* viejas */
 app.use('/map', mapRouter);
 app.use('/region', regionRouter);
 app.use('/municipio', municipioRouter);
 app.use('/estado', estadoRouter);
 app.use('/indicators',indicatorsRouter);
 app.use('/calculadora',calculadoraRouter);
+
+/* nuevas */
+app.use('/elecciones', distritosRouter);
+app.use('/elecciones', distritosGanadorRouter);
 
 app.use('/csv', csvEstadoRouter);
 
