@@ -31,9 +31,9 @@ const Elecciones = ({ classes }) => {
             <header className={classes.header}>
                 <Typography className={classes.h1} variant={'h1'}>Elecciones Federales 2021</Typography>	
             </header>
-            <Distritos/>
+            {/* <Distritos/> */}
             <Estatal/>
-            <NuevoLeon/>
+            {/* <NuevoLeon/> */}
         </div>
     </div>
   );
