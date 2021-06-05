@@ -17,7 +17,7 @@ import { BlogContextProvider } from './contexts/BlogContext';
 import {IndicatorContextProvider} from './contexts/IndicatorContext';
 
 /* nuevos */
-import { DistritosContextProvider } from './contexts/elecciones/DistritosContext'
+import { DistritosContextProvider } from './contexts/DistritosContext'
 
 /* CSS */
 import './css/index.css';
@@ -75,10 +75,17 @@ const Router = () => {
         <Route path='/reactivacion-economica' component={ReaperturaEco}/>
 
         {/* Nuevas páginas */}
-        <Route path='/elecciones' >
+        {/* <Route path='/elecciones' >
           <DistritosContextProvider>
-              <Elecciones/>
+            <Elecciones/>
           </DistritosContextProvider>
+        </Route> */}
+        <Route path='/elecciones' >
+          <IndicatorContextProvider>
+            <RegionContextProvider>
+              <Elecciones/>
+            </RegionContextProvider>
+          </IndicatorContextProvider>
         </Route>
 
         <Route exact path="/research">
