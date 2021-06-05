@@ -68,7 +68,7 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/' element={
             <MenuItem><Typography variant="span" className={classes.title}>Inicio</Typography></MenuItem>
           }/>
-          <LinkElement url='/research' element={
+          {/* <LinkElement url='/research' element={
             <MenuItem><Typography variant="span" className={classes.title}>Investigación</Typography></MenuItem>
           }/>
           <LinkElement url='/regions' element={
@@ -79,7 +79,7 @@ const Header = ({ classes, fixed=false}) => {
           }/>
           <LinkElement url='/methodology' element={
             <MenuItem><Typography variant="span" className={classes.title}>Metodología</Typography></MenuItem>
-          }/>
+          }/> */}
           <LinkElement url='/about-us' element={
             <MenuItem><Typography variant="span" className={classes.title}>Nosotros</Typography></MenuItem>
           }/>
@@ -88,7 +88,7 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/' element={
             <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
           }/>
-          <LinkElement url='/research' element={
+         {/*  <LinkElement url='/research' element={
             <Button className={location === '/research' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
           }/>
           <LinkElement url='/regions' element={
@@ -99,7 +99,7 @@ const Header = ({ classes, fixed=false}) => {
           }/>
           <LinkElement url='/methodology' element={
             <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Metodología</Button>
-          }/>
+          }/> */}
           <LinkElement url='/about-us' element={
             <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
           }/>          
@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: 'flex',
     justifyContent: 'space-between',
-    flex: '2'
+    flex: '0.25'
   },
 
   button: {
