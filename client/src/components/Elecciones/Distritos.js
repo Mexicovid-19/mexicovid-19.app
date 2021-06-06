@@ -15,15 +15,18 @@ import DistritosChart from './DistritosChart'
 import * as d3 from "d3";
 
 /* Mapbox */
-import distritos_geojson from "./data/distritos_fed.geojson";
 import mapboxgl from 'mapbox-gl';
 
 /* Context */
-import { DistritosContext } from '../../contexts/DistritosContext'
-import { IndicatorContext } from '../../contexts/IndicatorContext';
+/* import { DistritosContext } from '../../contexts/DistritosContext'
+import { IndicatorContext } from '../../contexts/IndicatorContext'; */
 
 /* Components */
 import CurulesChart from './CurulesChart';
+
+/* Data */
+import distritos_csv from './data/distritos.csv'
+import distritos_geojson from "./data/distritos_fed.geojson"
 
 const data = [
     {
@@ -5380,8 +5383,7 @@ const Distritos = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
 
     /* context */
-    //const { distritosData, distritosGanadoresData } = useContext(DistritosContext);
-    const { indicatorsData } = React.useContext(IndicatorContext);
+    //const { distritosData, distritosGanadoresData } = useContext(DistritosContext)
 
     /* Mapbox */
     //mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
@@ -5399,76 +5401,14 @@ const Distritos = ({ classes }) => {
     const [hoveredDistrict, _setHoveredDistrict] = useState(null);
     const hoveredDistrictRef = useRef(hoveredDistrict);
 
+    var mergedGeoJSON;
+
     const setHoveredDistrict = data => {
         hoveredDistrictRef.current = data;
         _setHoveredDistrict(data);
     };
 
-    const setUpData = (id) => {
-        let _districtData = []
-        /* _districtData.push({
-            "id": "PAN",
-            "label": "PAN",
-            "value": data[id].PAN,
-            "color": "rgb(0,0,255)"
-        })
-        _districtData.push({
-            "id": "PRI",
-            "label": "PRI",
-            "value": data[id].PRI,
-            "color": "rgb(0,0,255)"
-        })
-        _districtData.push({
-            "id": "PRD",
-            "label": "PRD",
-            "value": data[id].PRD,
-            "color": "rgb(0,0,255)"
-        })
-        _districtData.push({
-            "id": "MORENA",
-            "label": "MORENA",
-            "value": data[id].MORENA,
-            "color": "rgb(0,0,255)"
-        })
-        _districtData.push({
-            "id": "PT",
-            "label": "PT",
-            "value": data[id].PT,
-            "color": "rgb(0,0,255)"
-        }) */
-        _districtData.push({
-            "id": "PAN",
-            "label": "PAN",
-            "value": Math.floor((Math.random()*10)+1),
-            "color": "rgb(0,0,255)"
-        })
-        _districtData.push({
-            "id": "PRI",
-            "label": "PRI",
-            "value": Math.floor((Math.random()*10)+1),
-            "color": "rgb(0,0,255)"
-        })
-        _districtData.push({
-            "id": "PRD",
-            "label": "PRD",
-            "value": Math.floor((Math.random()*10)+1),
-            "color": "rgb(0,0,255)"
-        })
-        _districtData.push({
-            "id": "MORENA",
-            "label": "MORENA",
-            "value": Math.floor((Math.random()*10)+1),
-            "color": "rgb(0,0,255)"
-        })
-        _districtData.push({
-            "id": "PT",
-            "label": "PT",
-            "value": Math.floor((Math.random()*10)+1),
-            "color": "rgb(0,0,255)"
-        })
-        console.log(_districtData)
-        setDistrictData(_districtData)
-    }
+    
     
     const getDistrict = (id) => {
         let dataa = []
@@ -5499,14 +5439,81 @@ const Distritos = ({ classes }) => {
         
     }
 
-    const datas = axios.post(`${process.env.REACT_APP_API_URL}/elecciones/data/distritos`, {}).then(response => {
-            return response.data
-        })
+    var loadFiles = [
+        d3.json(distritos_geojson),
+        d3.csv(distritos_csv)
+    ]; 
+
+    const setUpData = (id) => {
+      let _stateData = []
+      mergedGeoJSON.features.map(feature =>{
+        if(feature.properties.CVE_ENT == id){
+          _stateData.push({
+            "id": "PAN",
+            "label": "PAN",
+            "value": feature.properties.PAN,
+            "color": "hsl(210, 90%, 34%)"
+          })
+          _stateData.push({
+            "id": "MC",
+            "label": "MC",
+            "value": feature.properties.MC,
+            "color": "hsl(25, 87%, 57%)"
+          })
+          _stateData.push({
+            "id": "MORENA",
+            "label": "MORENA",
+            "value": feature.properties.MORENA,
+            "color": "hsl(8, 76%, 43%)"
+          })
+          _stateData.push({
+            "id": "PES",
+            "label": "PES",
+            "value": feature.properties.PES,
+            "color": "hsl(288, 45%, 34%)"
+          })
+          _stateData.push({
+            "id": "PRD",
+            "label": "PRD",
+            "value": feature.properties.PRD,
+            "color": "hsl(48, 100%, 50%)"
+          })
+          _stateData.push({
+            "id": "PRI",
+            "label": "PRI",
+            "value": feature.properties.PRI,
+            "color": "hsl(135, 37%, 48%)"
+          })
+          _stateData.push({
+            "id": "PT",
+            "label": "PT",
+            "value": feature.properties.PT,
+            "color": "hsl(3, 81%, 47%)"
+          })
+          _stateData.push({
+            "id": "PVEM",
+            "label": "PVEM",
+            "value": feature.properties.PVEM,
+            "color": "hsl(86, 50%, 58%)"
+          })
+          _stateData.push({
+            "id": "RSP",
+            "label": "RSP",
+            "value": feature.properties.RSP,
+            "color": "rgb(0,0,255)"
+          })
+
+        }
+      })
+      console.log(_stateData)
+      //setStateData(_stateData)
+    }
+
 
     useEffect(() => {
-        setUpData(selectedDistrict)
-        console.log(indicatorsData)
-        console.log(datas)
+        //setUpData(selectedDistrict)
+        //console.log(indicatorsData)
+        //console.log(datas)
         
         //console.log(distritosGanadoresData)
        /*  var loadFiles = [
@@ -5522,28 +5529,60 @@ const Distritos = ({ classes }) => {
             zoom: zoom
         });
 
-        /* Promise.all(loadFiles).then(function (data){
+        Promise.all(loadFiles).then(function (data){
             // Add zoom and rotation controls to the map.
             map.addControl(new mapboxgl.NavigationControl());
 
             //setup geosjon
             data[0].features = data[0].features.map(feature => {
-                feature.id = (feature.properties.ENTIDAD * 100) + feature.properties.DISTRITO_F;
-                console.log(feature.id)
                 data[1].forEach(prefData => {
-                    if (feature.id === prefData['ID_DISTRITO']) {
-                        feature.properties.GANADOR = prefData['GANADOR_2021'];
-                    } 
+                    if (feature.properties.ID === prefData['distrito_id']) {
+                        feature.properties.distrito_id = Number(prefData['distrito_id']);
+                        feature.properties.dto = Number(prefData['dto']);
+                        feature.properties.edo = Number(prefData['edo']);
+                        feature.properties.PAN = Number(prefData['PAN']);
+                        feature.properties.PRI = Number(prefData['PRI']);
+                        feature.properties.PRD = Number(prefData['PRD']);
+                        feature.properties.PVEM = Number(prefData['PVEM']);
+                        feature.properties.PT = Number(prefData['PT']);
+                        feature.properties.MOVIMIENTO_CIUDADANO = Number(prefData['MOVIMIENTO_CIUDADANO']);
+                        feature.properties.RSP = Number(prefData['RSP']);
+                        feature.properties.MORENA = Number(prefData['MORENA']);
+                        feature.properties.PES = Number(prefData['PES']);
+                        feature.properties.FM = Number(prefData['FM']);
+                        feature.properties.PAN_PRI_PRD = Number(prefData['PAN_PRI_PRD']);
+                        feature.properties.PAN_PRD = Number(prefData['PAN_PRD']);
+                        feature.properties.PAN_PRI = Number(prefData['PAN_PRI']);
+                        feature.properties.PRI_PRD = Number(prefData['PRI_PRD']);
+                        feature.properties.PT_MORENA_PVEM = Number(prefData['PT_MORENA_PVEM']);
+                        feature.properties.PVEM_MORENA = Number(prefData['PVEM_MORENA']);
+                        feature.properties.CAND_IND_01 = Number(prefData['CAND_IND_01']);
+                        feature.properties.CAND_IND_02 = Number(prefData['CAND_IND_02']);
+                        feature.properties.CNR = Number(prefData['CNR']);
+                        feature.properties.VN = Number(prefData['VN']);
+                        feature.properties.TOTAL_VOTOS_CALCULADOS = Number(prefData['TOTAL_VOTOS_CALCULADOS']);
+                        feature.properties.LISTA_NOMINAL_CASILLA = Number(prefData['LISTA_NOMINAL_CASILLA']);
+                        feature.properties.URBANA = Number(prefData['URBANA']);
+                        feature.properties.RURAL = Number(prefData['RURAL']);
+                        feature.properties.VPM = Number(prefData['VPM']);
+                        feature.properties.JHH = Number(prefData['JHH']);
+                        feature.properties.GANADOR = String(prefData['GANADOR']);
+                        feature.properties.GANADOR_2018 = String(prefData['GANADOR_2018']);
+                        feature.properties.GANADOR_2021 = String(prefData['GANADOR_2021']);
+                    }
                 });
                 return feature;
             });
-            var margedGeoJSON = data[0];
+            mergedGeoJSON = data[0];
+            console.log(mergedGeoJSON);
+
+            map.scrollZoom.disable();
 
             map.once("load", function () {
 
                 map.addSource('district-source', {
                     'type': 'geojson',
-                    'data': margedGeoJSON
+                    'data': mergedGeoJSON
                 });
                 //console.log(mnDistricts)
 
@@ -5555,7 +5594,7 @@ const Distritos = ({ classes }) => {
                     'paint': {
                         'fill-color': [
                             'match',
-                            ['get', 'PARTIDO'],
+                            ['get', 'GANADOR_2018'],
                             'PAN',
                             '#0055BF',
                             'PRI',
@@ -5641,9 +5680,9 @@ const Distritos = ({ classes }) => {
                         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
                             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
                         }
-                        var description = `<div><h3 class="popupTitle"><strong>Distrito: ${data[e.features[0].id-8].name || '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${data[e.features[0].id-8].anterior}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${data[e.features[0].id-8].actual}.png'/><p class="popupYear">2021</p></div></div></div>`
+                        //var description = `<div><h3 class="popupTitle"><strong>Distrito: ${data[e.features[0].id-8].name || '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${data[e.features[0].id-8].anterior}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${data[e.features[0].id-8].actual}.png'/><p class="popupYear">2021</p></div></div></div>`
                         //console.log(coordinates)
-                        popup.setLngLat(coordinates).setHTML(description).addTo(map);
+                        //popup.setLngLat(coordinates).setHTML(description).addTo(map);
 
                         let _hoveredDistrict = e.features[0].id;
                         
@@ -5686,161 +5725,7 @@ const Distritos = ({ classes }) => {
                 })
 
             });
-        }) */
-        // Add zoom and rotation controls to the map.
-        map.addControl(new mapboxgl.NavigationControl());
-
-
-        map.once("load", function () {
-
-            map.addSource('district-source', {
-                'type': 'geojson',
-                'data': distritos_geojson
-            });
-            //console.log(mnDistricts)
-
-            map.addLayer({
-                'id': 'district-layer',
-                'type': 'fill',
-                'source': 'district-source',
-                'layout': {},
-                'paint': {
-                    'fill-color': [
-                        'match',
-                        ['get', 'PARTIDO'],
-                        'PAN',
-                        '#0055BF',
-                        'PRI',
-                        '#FF0018',
-                        'PRD',
-                        '#FFCC00',
-                        'PVEM',
-                        '#A2CD40',
-                        'PT',
-                        '#FFED00',
-                        'MOVIMIENTO_CIUDADANO',
-                        '#FF7A00',
-                        'MORENA',
-                        '#960016',
-                        'PES',
-                        '#7C2690',
-                        'FM',
-                        '#FF53A1',
-                        'RSP',
-                        '#313233',
-                        'Juntos Haremos Historia',
-                        '#B2242B',
-                        'Vamos Por México',
-                        '#0055BF',
-                        'CAND_IND_01',
-                        '#8FA7A9',
-                        'CAND_IND_02',
-                        '#8FA7A9',
-                        'Sin Ganador',
-                        '#CCCCCC',
-                        '#CCCCCC',
-                    ],
-                    'fill-outline-color': '#FFF',
-                    'fill-opacity': [
-                        'case',
-                        ['boolean', ['feature-state', 'hover'], false],
-                        .8,
-                        0.5
-                    ]
-                }
-            });
-
-            var popup = new mapboxgl.Popup({
-                closeButton: false,
-                closeOnClick: false,
-                className: 'myPopup'
-            });
-
-            map.on('mousemove', 'district-layer', function (e) {
-                //map.getCanvas().style.cursor = 'pointer';
-                if (e.features.length > 0) {
-                    if (hoveredDistrictRef.current && hoveredDistrictRef.current > -1) {
-
-                        map.setFeatureState(
-                            { source: 'district-source', id: hoveredDistrictRef.current },
-                            { hover: false }
-                        );
-                    }
-                    
-                    
-                    if(e.features[0].geometry.coordinates.length  > 1){
-                        //console.log(e.features)
-                        if(e.features[0].geometry.coordinates[0][0].length == 2){
-                            var coordinates = e.features[0].geometry.coordinates[0][0].slice()
-                        } else{
-                            var coordinatesData = e.features[0].geometry.coordinates[0][0]
-                            if(coordinatesData[0].length === 2){
-                                var coordinates = coordinatesData[0]
-                            } else{
-                                //console.log(coordinatesData)
-                                var coordinates = coordinatesData[0].slice()
-                            }
-                        }
-                    } else{
-                        var coordinates = e.features[0].geometry.coordinates[0][0].slice();
-                    }
-
-            
-                    
-                    //console.log(e.features[0].geometry.coordinates.length  > 1 ? e.features[0].geometry.coordinates[0][0][0] : e.features[0].geometry.coordinates[0][0])
-
-                    
-                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                    }
-                    var pos = getDistrictPos(e.features[0].id)
-                    console.log(e.features)
-                    console.log(pos)
-                    var description = `<div><h3 class="popupTitle"><strong>Distrito: ${data[pos].name || '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${data[pos].anterior}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${data[pos].actual || ""}.png'/><p class="popupYear">2021</p></div></div></div>`
-                    //console.log(coordinates)
-                    popup.setLngLat(coordinates).setHTML(description).addTo(map);
-
-                    let _hoveredDistrict = e.features[0].id;
-                    
-                    map.setFeatureState(
-                        { source: 'district-source', id: _hoveredDistrict },
-                        { hover: true }
-                    );
-
-                    setHoveredDistrict(_hoveredDistrict);
-                }
-
-            });
-
-            // When the mouse leaves the state-fill layer, update the feature state of the
-            // previously hovered feature.
-            map.on('mouseleave', 'district-layer', function () {
-                if (hoveredDistrictRef.current) {
-                    map.setFeatureState(
-                        { source: 'district-source', id: hoveredDistrictRef.current },
-                        { hover: false }
-                    );
-                }
-                //map.getCanvas().style.cursor = '';
-                popup.remove();
-                setHoveredDistrict(null);
-            });
-
-            map.on('move', () => {
-                const { lng, lat } = map.getCenter();
-
-                setLong(lng.toFixed(4));
-                setLat(lat.toFixed(4));
-                setZoom(map.getZoom().toFixed(2));
-            });
-
-            map.on('click', 'district-layer', function(e) {
-                let _selectedDistrict = e.features[0].id;
-                setUpData(_selectedDistrict)
-                setSelectedDistrict(_selectedDistrict)
-            })
-
-        });
+        })
         
 
     }, []);
@@ -5849,41 +5734,34 @@ const Distritos = ({ classes }) => {
 
     return (
         <div>
-            {dataa && (
-                <>
-                <div className={classes.itemsContainer}>
-                    {/* Map */}
-                    <div className="district-map-wrapper">
-                        <div id="districtDetailMap" className={classes.map}>
-                            <div style={{ height: "100%" }} ref={mapContainer}></div>
-                        </div>
-                    </div>
-                    {/* pie chart */}
-                    <div>
-                        <h2 className={classes.districtName}>Distrito: {selectedDistrict+8}</h2>
-                        {districtData.length !== 0 && (
-                            <div className={classes.chartContainer}>
-                                <DistritosChart data={districtData}/>
-                            </div>
-                            
-                        )}
+            <div className={classes.itemsContainer}>
+                {/* Map */}
+                <div className="district-map-wrapper">
+                    <div id="districtDetailMap" className={classes.map}>
+                        <div style={{ height: "100%" }} ref={mapContainer}></div>
                     </div>
                 </div>
-                {/* half pie  chart */}
+                {/* pie chart */}
                 <div>
-                    <h2 className={classes.districtName}>Distribución de curules</h2>
+                    <h2 className={classes.districtName}>Distrito: {selectedDistrict+8}</h2>
                     {districtData.length !== 0 && (
                         <div className={classes.chartContainer}>
-                            <CurulesChart data={districtData}/>
+                            <DistritosChart data={districtData}/>
                         </div>
-            
+                        
                     )}
                 </div>
-                </>
-            )}
-            
-            
-            
+            </div>
+            {/* half pie  chart */}
+            <div>
+                <h2 className={classes.districtName}>Distribución de curules</h2>
+                {districtData.length !== 0 && (
+                    <div className={classes.chartContainer}>
+                        <CurulesChart data={districtData}/>
+                    </div>
+        
+                )}
+            </div>
         </div>
         
     );
