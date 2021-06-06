@@ -18,7 +18,7 @@ const PieChart_Estados = ({ data}) => (
         activeOuterRadiusOffset={8}
         borderWidth={1}
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-        enableArcLinkLabels = {false}
+        enableArcLinkLabels = {true} //{false}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}
@@ -47,81 +47,31 @@ const PieChart_Estados = ({ data}) => (
                 spacing: 10
             }
         ]}
-        // fill={[
+        // legends={[
         //     {
-        //         match: {
-        //             id: 'ruby'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'c'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'go'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'python'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'scala'
-        //         },
-        //         id: 'lines'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'lisp'
-        //         },
-        //         id: 'lines'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'elixir'
-        //         },
-        //         id: 'lines'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'javascript'
-        //         },
-        //         id: 'lines'
+        //         anchor: 'left',
+        //         direction: 'column',
+        //         justify: false,
+        //          translateX: -80,
+        //         // translateY: -95,
+        //         itemsSpacing: 5,
+        //         itemWidth: 100,
+        //         itemHeight: 18,
+        //         itemTextColor: '#000000',
+        //         itemDirection: 'right-to-left',
+        //         itemOpacity: 1,
+        //         symbolSize: 18,
+        //         symbolShape: 'circle',
+        //         effects: [
+        //             {
+        //                 on: 'hover',
+        //                 style: {
+        //                     itemTextColor: '#000'
+        //                 }
+        //             }
+        //         ]
         //     }
         // ]}
-        legends={[
-            {
-                anchor: 'left',
-                direction: 'column',
-                justify: false,
-                 translateX: -80,
-                // translateY: -95,
-                itemsSpacing: 5,
-                itemWidth: 100,
-                itemHeight: 18,
-                itemTextColor: '#000000',
-                itemDirection: 'right-to-left',
-                itemOpacity: 1,
-                symbolSize: 18,
-                symbolShape: 'circle',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemTextColor: '#000'
-                        }
-                    }
-                ]
-            }
-        ]}
     />
 )
 
