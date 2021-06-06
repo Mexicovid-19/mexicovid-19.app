@@ -10,6 +10,7 @@ import estadosRes from './data/mx_states.json'
 import estados_geojson from "./data/mx_states.geojson";
 import estados_csv from "./data/mx_states.csv";
 import gobernadores_csv from "./data/gobernadores.csv"
+import candidatos_estados_csv from "./data/nombres_candidatos.csv";
 import mapboxgl from 'mapbox-gl';
 import { axisLeft } from 'd3';
 import { HeatMap } from '@nivo/heatmap';
@@ -36,6 +37,7 @@ const Estatal = ({ classes }) => {
     const selectedStateRef = useRef(selectedState);
     var mergedGeoJSON;
     var alianzas_estados;
+    var candidatos_estados;
 
     var setHoveredState = data => {
       hoveredStateRef.current = data;
@@ -80,7 +82,8 @@ const Estatal = ({ classes }) => {
     var loadFiles = [
         d3.json(estados_geojson),
         d3.csv(estados_csv),
-        d3.csv(gobernadores_csv)
+        d3.csv(gobernadores_csv),
+        d3.csv(candidatos_estados_csv)
     ];
 
     const setupGeoJson = () => {
@@ -94,22 +97,23 @@ const Estatal = ({ classes }) => {
     const setUpData = (id) => {
       let _stateData = [] 
       var index = alianzas_estados.map(function(e) { return e.ID_ESTADO; }).indexOf(id.toString());
-      console.log(alianzas_estados[index])
+      var indexCandidatos = candidatos_estados.map(function(e) { return e.ID_ESTADO; }).indexOf(id.toString());
+      //console.log(alianzas_estados[index].PAN)
       
       // REVISAR PREP PARA CONSIDERAR SUMA DE VOTOS EN ALIANZAS
       mergedGeoJSON.features.map(feature =>{
         if(feature.properties.CVE_ENT == id && index != -1){
           if(alianzas_estados[index].PAN == '1'){
             _stateData.push({
-              "id": "PAN",
-              "label": "PAN",
+              "id": candidatos_estados[indexCandidatos].PAN,
+              "label":  "PAN",
               "value": feature.properties.PAN,
               "color": "hsl(210, 90%, 34%)"
             })
           }
           if(alianzas_estados[index].PRI == '1'){
             _stateData.push({
-              "id": "PRI",
+              "id": candidatos_estados[indexCandidatos].PRI,
               "label": "PRI",
               "value": feature.properties.PRI,
               "color": "hsl(135, 37%, 48%)"
@@ -117,7 +121,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PRD == '1'){
             _stateData.push({
-              "id": "PRD",
+              "id": candidatos_estados[indexCandidatos].PRD,
               "label": "PRD",
               "value": feature.properties.PRD,
               "color": "hsl(48, 100%, 50%)"
@@ -125,7 +129,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PVEM == '1'){
             _stateData.push({
-              "id": "PVEM",
+              "id": candidatos_estados[indexCandidatos].PVEM,
               "label": "PVEM",
               "value": feature.properties.PVEM,
               "color": "hsl(86, 50%, 58%)"
@@ -133,7 +137,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PT == '1'){
             _stateData.push({
-              "id": "PT",
+              "id": candidatos_estados[indexCandidatos].PT,
               "label": "PT",
               "value": feature.properties.PT,
               "color": "hsl(3, 81%, 47%)"
@@ -141,7 +145,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].MC == '1'){
             _stateData.push({
-              "id": "MC",
+              "id": candidatos_estados[indexCandidatos].MC,
               "label": "MC",
               "value": feature.properties.MC,
               "color": "hsl(25, 87%, 57%)"
@@ -149,7 +153,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PANAL == '1'){
             _stateData.push({
-              "id": "PANAL",
+              "id": candidatos_estados[indexCandidatos].PANAL,
               "label": "PANAL",
               "value": feature.properties.PANAL,
               "color": "hsl(181, 80%, 40%)"
@@ -157,7 +161,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].MORENA == '1'){
             _stateData.push({
-              "id": "MORENA",
+              "id": candidatos_estados[indexCandidatos].MORENA,
               "label": "MORENA",
               "value": feature.properties.MORENA,
               "color": "hsl(8, 76%, 43%)"
@@ -165,7 +169,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PES == '1'){
             _stateData.push({
-              "id": "PES",
+              "id": candidatos_estados[indexCandidatos].PES,
               "label": "PES",
               "value": feature.properties.PES,
               "color": "hsl(288, 45%, 34%)"
@@ -173,7 +177,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].FXM == '1'){
             _stateData.push({
-              "id": "FXM",
+              "id": candidatos_estados[indexCandidatos].FXM,
               "label": "FXM",
               "value": feature.properties.FXM,
               "color": "hsl(333, 78%, 65%)"
@@ -181,7 +185,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].RSP == '1'){
             _stateData.push({
-              "id": "RSP",
+              "id": candidatos_estados[indexCandidatos].RSP,
               "label": "RSP",
               "value": feature.properties.RSP,
               "color": "hsl(180, 1%, 19%)"
@@ -189,7 +193,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PAN_PRD == '1'){
             _stateData.push({
-              "id": "PAN_PRD",
+              "id": candidatos_estados[indexCandidatos].PAN_PRD,
               "label": "PAN_PRD",
               "value": feature.properties.PAN_PRD,
               "color": "hsl(210, 90%, 34%)"
@@ -197,7 +201,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PT_MORENA == '1'){
             _stateData.push({
-              "id": "PT_MORENA",
+              "id": candidatos_estados[indexCandidatos].PT_MORENA,
               "label": "PT_MORENA",
               "value": feature.properties.PT_MORENA,
               "color": "hsl(8, 76%, 43%)"
@@ -205,7 +209,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PRI_PRD == '1'){
             _stateData.push({
-              "id": "PRI_PRD",
+              "id": candidatos_estados[indexCandidatos].PRI_PRD,
               "label": "PRI_PRD",
               "value": feature.properties.PRI_PRD,
               "color": "hsl(135, 37%, 48%)"
@@ -213,7 +217,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].MORENA_PT_PVEM == '1'){
             _stateData.push({
-              "id": "MORENA_PT_PVEM",
+              "id": candidatos_estados[indexCandidatos].MORENA_PT_PVEM,
               "label": "MORENA_PT_PVEM",
               "value": feature.properties.MORENA_PT_PVEM,
               "color": "hsl(8, 76%, 43%)"
@@ -221,7 +225,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PAN_PRI_PRD == '1'){
             _stateData.push({
-              "id": "PAN_PRI_PRD",
+              "id": candidatos_estados[indexCandidatos].PAN_PRI_PRD,
               "label": "PAN_PRI_PRD",
               "value": feature.properties.PAN_PRI_PRD,
               "color": "hsl(210, 90%, 34%)"
@@ -229,7 +233,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PARTIDO_BAJA_CALIFORNIA == '1'){
             _stateData.push({
-              "id": "PARTIDO_BAJA_CALIFORNIA",
+              "id": candidatos_estados[indexCandidatos].PARTIDO_BAJA_CALIFORNIA,
               "label": "PARTIDO_BAJA_CALIFORNIA",
               "value": feature.properties.PARTIDO_BAJA_CALIFORNIA,
               "color": "hsl(20, 100%, 60%)"
@@ -237,7 +241,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PAN_PRI_PRD_PRS_HUMANISTA == '1'){
             _stateData.push({
-              "id": "PAN_PRI_PRD_PRS_HUMANISTA",
+              "id": candidatos_estados[indexCandidatos].PAN_PRI_PRD_PRS_HUMANISTA,
               "label": "PAN_PRI_PRD_PRS_HUMANISTA",
               "value": feature.properties.PAN_PRI_PRD_PRS_HUMANISTA,
               "color": "hsl(210, 90%, 34%)"
@@ -245,7 +249,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].BCS_COHERENTE == '1'){
             _stateData.push({
-              "id": "BCS_COHERENTE",
+              "id": candidatos_estados[indexCandidatos].BCS_COHERENTE,
               "label": "BCS_COHERENTE",
               "value": feature.properties.BCS_COHERENTE,
               "color": "hsl(355, 88%, 20%)"
@@ -253,7 +257,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].MORENA_PT_PVEM_PANAL == '1'){
             _stateData.push({
-              "id": "MORENA_PT_PVEM_PANAL",
+              "id": candidatos_estados[indexCandidatos].MORENA_PT_PVEM_PANAL,
               "label": "MORENA_PT_PVEM_PANAL",
               "value": feature.properties.MORENA_PT_PVEM_PANAL,
               "color": "hsl(8, 76%, 43%)"
@@ -261,7 +265,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].MORENA_PT_PANAL == '1'){
             _stateData.push({
-              "id": "MORENA_PT_PANAL",
+              "id": candidatos_estados[indexCandidatos].MORENA_PT_PANAL,
               "label": "MORENA_PT_PANAL",
               "value": feature.properties.MORENA_PT_PANAL,
               "color": "hsl(8, 76%, 43%)"
@@ -269,7 +273,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].FUERZA_SOCIAL_POR_MEXICO == '1'){
             _stateData.push({
-              "id": "FUERZA_SOCIAL_POR_MEXICO",
+              "id": candidatos_estados[indexCandidatos].FUERZA_SOCIAL_POR_MEXICO,
               "label": "FUERZA_SOCIAL_POR_MEXICO",
               "value": feature.properties.FUERZA_SOCIAL_POR_MEXICO,
               "color": "hsl(358, 88%, 40%)"
@@ -277,7 +281,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].MORENA_PANAL == '1'){
             _stateData.push({
-              "id": "MORENA_PANAL",
+              "id": candidatos_estados[indexCandidatos].MORENA_PANAL,
               "label": "MORENA_PANAL",
               "value": feature.properties.MORENA_PANAL,
               "color": "hsl(8, 76%, 43%)"
@@ -285,7 +289,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].LEVANTATE_POR_NAYARIT == '1'){
             _stateData.push({
-              "id": "LEVANTATE_POR_NAYARIT",
+              "id": candidatos_estados[indexCandidatos].LEVANTATE_POR_NAYARIT,
               "label": "LEVANTATE_POR_NAYARIT",
               "value": feature.properties.LEVANTATE_POR_NAYARIT,
               "color": "hsl(326, 70%, 82%)"
@@ -293,7 +297,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].VIVA_NAYARIT == '1'){
             _stateData.push({
-              "id": "VIVA_NAYARIT",
+              "id": candidatos_estados[indexCandidatos].VIVA_NAYARIT,
               "label": "VIVA_NAYARIT",
               "value": feature.properties.VIVA_NAYARIT,
               "color": "hsl(44, 97%, 53%)"
@@ -301,15 +305,15 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].CI1 == '1'){
             _stateData.push({
-              "id": "CI1",
-              "label": "Independiente",
+              "id": candidatos_estados[indexCandidatos].CI1,
+              "label": "INDEPENDIENTE",
               "value": feature.properties.CI1,
               "color": "hsl(180, 4%, 56%)"
             })
           }
           if(alianzas_estados[index].PAN_PRI_PRD_PARTIDO_CONCIENCIA_POPULAR == '1'){
             _stateData.push({
-              "id": "PAN_PRI_PRD_PARTIDO_CONCIENCIA_POPULAR",
+              "id": candidatos_estados[indexCandidatos].PAN_PRI_PRD_PARTIDO_CONCIENCIA_POPULAR,
               "label": "PAN_PRI_PRD_PARTIDO_CONCIENCIA_POPULAR",
               "value": feature.properties.PAN_PRI_PRD_PARTIDO_CONCIENCIA_POPULAR,
               "color": "hsl(210, 90%, 34%)"
@@ -317,7 +321,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PVEM_PT == '1'){
             _stateData.push({
-              "id": "PVEM_PT",
+              "id": candidatos_estados[indexCandidatos].PVEM_PT,
               "label": "PVEM_PT",
               "value": feature.properties.PVEM_PT,
               "color": "hsl(86, 50%, 58%)"
@@ -325,7 +329,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].MORENA_PARTIDO_SINALOENSE == '1'){
             _stateData.push({
-              "id": "MORENA_PARTIDO_SINALOENSE",
+              "id": candidatos_estados[indexCandidatos].MORENA_PARTIDO_SINALOENSE,
               "label": "MORENA_PARTIDO_SINALOENSE",
               "value": feature.properties.MORENA_PARTIDO_SINALOENSE,
               "color": "hsl(8, 76%, 43%)"
@@ -333,7 +337,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].MORENA_PT_PVEM_PANAL_PES == '1'){
             _stateData.push({
-              "id": "MORENA_PT_PVEM_PANAL_PES",
+              "id": candidatos_estados[indexCandidatos].MORENA_PT_PVEM_PANAL_PES,
               "label": "MORENA_PT_PVEM_PANAL_PES",
               "value": feature.properties.MORENA_PT_PVEM_PANAL_PES,
               "color": "hsl(8, 76%, 43%)"
@@ -341,7 +345,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PRI_PAN_PRD_PAC == '1'){
             _stateData.push({
-              "id": "PRI_PAN_PRD_PAC",
+              "id": candidatos_estados[indexCandidatos].PRI_PAN_PRD_PAC,
               "label": "PRI_PAN_PRD_PAC",
               "value": feature.properties.PRI_PAN_PRD_PAC,
               "color": "hsl(210, 90%, 34%)"
@@ -349,7 +353,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].IMPACTO_SOCIAL_SI == '1'){
             _stateData.push({
-              "id": "IMPACTO_SOCIAL_SI",
+              "id": candidatos_estados[indexCandidatos].IMPACTO_SOCIAL_SI,
               "label": "IMPACTO_SOCIAL_SI",
               "value": feature.properties.IMPACTO_SOCIAL_SI,
               "color": "hsl(349, 92%, 46%)"
@@ -357,7 +361,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PAZ == '1'){
             _stateData.push({
-              "id": "PAZ",
+              "id": candidatos_estados[indexCandidatos].PAZ,
               "label": "PAZ",
               "value": feature.properties.PAZ,
               "color": "hsl(329, 82%, 53%)"
@@ -365,7 +369,7 @@ const Estatal = ({ classes }) => {
           }
           if(alianzas_estados[index].PARTIDO_DEL_PUEBLO == '1'){
             _stateData.push({
-              "id": "PARTIDO_DEL_PUEBLO",
+              "id": candidatos_estados[indexCandidatos].PARTIDO_DEL_PUEBLO,
               "label": "PARTIDO_DEL_PUEBLO",
               "value": feature.properties.PARTIDO_DEL_PUEBLO,
               "color": "hsl(8, 53%, 44%)"
@@ -595,6 +599,9 @@ const Estatal = ({ classes }) => {
             return feature;
         });
         alianzas_estados = data[2];
+        candidatos_estados = data[3];
+        console.log(candidatos_estados);
+
         //console.log(alianzas_estados);
         //console.log(data[2]);
         mergedGeoJSON = data[0];

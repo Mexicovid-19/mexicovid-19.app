@@ -19,6 +19,7 @@ const PieChart_Estados = ({ data}) => (
         borderWidth={1}
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
         enableArcLinkLabels = {true} //{false}
+        arcLinkLabel = {d => `${d.label}`}
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}
@@ -52,7 +53,7 @@ const PieChart_Estados = ({ data}) => (
         //         anchor: 'left',
         //         direction: 'column',
         //         justify: false,
-        //          translateX: -80,
+        //         translateX: -120,
         //         // translateY: -95,
         //         itemsSpacing: 5,
         //         itemWidth: 100,
