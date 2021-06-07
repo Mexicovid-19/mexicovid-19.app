@@ -422,25 +422,25 @@ const Distritos = ({ classes }) => {
                                 '#FF53A1',
                             'RSP',
                                 '#313233',
-                            'PAN-PRI-PRD',
+                            'PAN_PRI_PRD',
                                 '#0055BF',
-                            'PAN-PRI',
+                            'PAN_PRI',
                                 '#0055BF',
-                            'PAN-PRD',
+                            'PAN_PRD',
                                 '#0055BF',
-                            'PRI-PRD',
+                            'PRI_PRD',
                                 '#FF0018',
-                            'PVEM-PT-MORENA',
+                            'PVEM_PT_MORENA',
                                 '#A2CD40',
-                            'PVEM-PT',
+                            'PVEM_PT',
                                 '#A2CD40',
-                            'PVEM-MORENA',
+                            'PVEM_MORENA',
                                 '#A2CD40',
-                            'CAND-IND-1',
+                            'CAND_IND-1',
                                 '#8FA7A9',
-                            'CAND-IND-2',
+                            'CAND_IND-2',
                                 '#8FA7A9',
-                            'CAND-IND-3',
+                            'CAND_IND-3',
                                 '#8FA7A9',
                             'Sin Ganador',
                                 '#CCCCCC',
@@ -546,8 +546,8 @@ const Distritos = ({ classes }) => {
                     )}
                 </div>
             </div>
-            {/* half pie  chart */}
-            <div className={classes.outerChartContainer}>
+            {/* curules  chart */}
+            {/* <div className={classes.outerChartContainer}>
                 <h2 className={classes.subtitle}>Estimación de la distribución de la legislatura LXV</h2>
                 {districtData.length !== 0 && (
                     <div className={classes.chartContainer}>
@@ -555,7 +555,7 @@ const Distritos = ({ classes }) => {
                     </div>
         
                 )}
-            </div>
+            </div> */}
         </div>
         
     );
