@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import * as colors from '../../constants/colors';
 import Grid from '@material-ui/core/Grid';
-import Icon from '@material-ui/core/Icon';
 import MailIcon from '@material-ui/icons/Mail';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
@@ -13,10 +12,10 @@ const PhotoGrid = ({classes}) => {
             <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
                 Equipo Interdisciplinario de Profesores
             </Typography>
-            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
+            <Grid className={classes.grid} container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItemTeacher}> 
-                    <p className="names" align={'center'}>Dr. Alejandro Díaz Domínguez</p>
-                    <img src="images/Alejandrodiaz.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'left'}>Dr. Alejandro Díaz Domínguez</p>
+                    {/* <img src="images/Alejandrodiaz.jpg" className="img-responsive" alt="Image"/> */}
                     <p>
                         <Grid>
                             <a href="mailto:alejandrod.dominguez@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>alejandrod.dominguez@tec.mx</a>
@@ -27,8 +26,8 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}>Dr. Alfredo Galván Galván</p>
-                    <img src="images/alfredogalvan.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'left'}>Dr. Alfredo Galván Galván</p>
+                    {/* <img src="images/alfredogalvan.jpg" className="img-responsive" alt="Image"/> */}
                     <p>
                         <Grid>
                             <a href="mailto:alfredo.galvan@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>alfredo.galvan@tec.mx</a>
@@ -39,8 +38,8 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}>Dr. Fernando Gómez Zaldívar</p>
-                    <img src="images/fernandogomez.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'left'}>Dr. Fernando Gómez Zaldívar</p>
+                    {/* <img src="images/fernandogomez.jpg" className="img-responsive" alt="Image"/> */}
                     <p>
                         <Grid>
                             <a href="mailto:fergo7@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>fergo7@tec.mx</a>
@@ -51,8 +50,8 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}>Dr. Diego Fabián Lozano</p>
-                    <img src="images/fabianlozano.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'left'}>Dr. Diego Fabián Lozano</p>
+                    {/* <img src="images/fabianlozano.jpg" className="img-responsive" alt="Image"/> */}
                     <p>
                         <Grid>
                             <a href="images/fabianlozano.jpg" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>dflozano@tec.mx</a>
@@ -60,8 +59,8 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}> 
-                    <p className="names" align={'center'}>Dra. Grissel Olivera Martínez</p>
-                    <img src="images/grisselolivera.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'left'}>Dra. Grissel Olivera Martínez</p>
+                    {/* <img src="images/grisselolivera.jpg" className="img-responsive" alt="Image"/> */}
                     <p>
                         <Grid>
                             <a href="mailto:grissel.olivera@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>grissel.olivera@tec.mx</a>
@@ -72,8 +71,8 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}><a href="https://www.edmundomolinamx.org/" target="_blank">Dr. Edmundo Molina</a></p>
-                    <img src="images/edmundomolina.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'left'}><a href="https://www.edmundomolinamx.org/" target="_blank">Dr. Edmundo Molina</a></p>
+                    {/* <img src="images/edmundomolina.jpg" className="img-responsive" alt="Image"/> */}
                     <p>
                         <Grid>
                             <a href="mailto:edmundo.molina@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>edmundo.molina@tec.mx</a>
@@ -84,8 +83,8 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}>
-                    <p className="names" align={'center'}><a href="http://www.robertoponcelopez.com" target="_blank">Dr. Roberto Ponce López</a></p>
-                    <img src="images/robertoponce.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'left'}><a href="http://www.robertoponcelopez.com" target="_blank">Dr. Roberto Ponce López</a></p>
+                    {/* <img src="images/robertoponce.jpg" className="img-responsive" alt="Image"/> */}
                     <p>
                         <Grid>
                             <a href="mailto:rpl@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>rpl@tec.mx</a>
@@ -96,8 +95,8 @@ const PhotoGrid = ({classes}) => {
                     </p>
                 </div>
                 <div className={classes.photoGridItemTeacher}> 
-                    <p className="names" align={'center'}>Mpa. Azucena Rojas Parra</p>
-                    <img src="images/azucenarojas.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'left'}>Mpa. Azucena Rojas Parra</p>
+                    {/* <img src="images/azucenarojas.jpg" className="img-responsive" alt="Image"/> */}
                     <p>
                         <Grid>
                             <a href="mailto:azuropa@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>azuropa@tec.mx</a>
@@ -107,38 +106,103 @@ const PhotoGrid = ({classes}) => {
                         </Grid>
                     </p>
                 </div>
+                <div className={classes.photoGridItemTeacher}> 
+                    <p className={classes.names} align={'left'}>Mto. Arturo Sánchez</p>
+                    {/* <img src="images/azucenarojas.jpg" className="img-responsive" alt="Image"/> */}
+                    <p>
+                        <Grid>
+                            <a href="mailto:arturo.sanchezg@tec.mx" target="_blank" className={classes.contactText}><MailIcon className={classes.iconspace}/>arturo.sanchezg@tec.mx</a>
+                        </Grid>
+                        <Grid container direction="row" justify="flex-start" alignItems="center">
+                            <a href="https://twitter.com/ArturoSanchezG" target="_blank" className={classes.contactText}><TwitterIcon className={classes.iconspace}/>@ArturoSanchezG</a>
+                        </Grid>
+                    </p>
+                </div>
             </Grid>
+
+            {/* actual */}
             <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
-                Equipo de Desarrollo Web 
+                Equipo de Desarrollo Web - actual 
+            </Typography>
+            <Grid className={classes.grid} container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
+                <div className={classes.photoGridItem}>
+                    <p className={classes.names} align={'center'}>Estefanía Charles</p>
+                    {/* <img src="images/angelfigueroa.jpg" className="img-responsive" alt="Image"/> */}
+                    <p>Estudiante  de ingeniería en Tecnologías Computacionales. Equipo de desarrollo web.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className={classes.names} align={'center'}>Ana Elisa Estrada</p>
+                    {/* <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/> */}
+                    <p>Estudiante  de ingeniería en Tecnologías Computacionales. Equipo de desarrollo web.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className={classes.names} align={'center'}>Abraham Cepeda</p>
+                    {/* <img src="images/mildred.jpg" className="img-responsive" alt="Image"/> */}
+                    {/* <p>Estudiante de Ingeniería en Tecnologías Computacionales, buscando tener un impacto positivo en la ciudad a través del desarrollo de nuevas tecnologías.</p> */}
+                    <p>Estudiante  de ingeniería en Tecnologías Computacionales. Equipo de desarrollo web.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className={classes.names} align={'center'}>Juan Díaz</p>
+                    {/* <img src="images/lourdesBadilla.jpg" className="img-responsive" alt="Image"/> */}
+                    <p>Estudiante  de ingeniería en Tecnologías Computacionales. Equipo de desarrollo web.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className={classes.names} align={'center'}>Javier Agostini</p>
+                    {/* <img src="images/eduardovillalpan.jpg" className="img-responsive" alt="Image"/> */}
+                    <p>Estudiante  de ingeniería en Tecnologías Computacionales. Equipo de desarrollo web.</p>
+                </div>
+            </Grid> 
+
+            {/* Anterior */}
+            <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
+                Equipo de Desarrollo Web - anterior 
             </Typography>
             <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}> 
-                    <p className="names" align={'center'}>Mildred Irais Gil Melchor</p>
-                    <img src="images/mildred.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'center'}>Mildred Irais Gil Melchor</p>
+                    {/* <img src="images/mildred.jpg" className="img-responsive" alt="Image"/> */}
                     <p>Estudiante de Ingeniería en Tecnologías Computacionales, apasionada por el desarrollo de tecnología y su impacto en la vida diaria. Equipo de desarrollo web.</p>
                 </div>
                 <div className={classes.photoGridItem}>
-                    <p className="names" align={'center'}>Ángel Francisco Figueroa Rivera</p>
-                    <img src="images/angelfigueroa.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'center'}>Ángel Francisco Figueroa Rivera</p>
+                    {/* <img src="images/angelfigueroa.jpg" className="img-responsive" alt="Image"/> */}
                     <p>Estudiante de Ingeniería Mecatrónica con intereses en el área de software y las aplicaciones móviles industriales. Equipo de desarrollo web.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
-                    <p className="names" align={'center'}>Juan Carlos Garfias</p>
-                    <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'center'}>Juan Carlos Garfias</p>
+                    {/* <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/> */}
                     <p>Estudiante  de ingeniería en Tecnologías Computacionales, amante de las tecnologías emergentes. Equipo de desarrollo web.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
-                    <p className="names" align={'center'}>María de Lourdes Badillo Granillo</p>
-                    <img src="images/lourdesBadilla.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'center'}>María de Lourdes Badillo Granillo</p>
+                    {/* <img src="images/lourdesBadilla.jpg" className="img-responsive" alt="Image"/> */}
                     <p>Estudiante de Ingeniería en Tecnologías Computacionales. Busco desarrollar soluciones a problemas por medio de la programación y el emprendimiento.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
-                    <p className="names" align={'center'}>Eduardo Villalpando Mello</p>
-                    <img src="images/eduardovillalpan.jpg" className="img-responsive" alt="Image"/>
+                    <p className={classes.names} align={'center'}>Eduardo Villalpando Mello</p>
+                    {/* <img src="images/eduardovillalpan.jpg" className="img-responsive" alt="Image"/> */}
                     <p>Estudiante de ITC, apasionado por impactar positivamente la vida de muchas personas mediante la programación y el diseño</p>
                 </div>
-            </Grid>      
+            </Grid>
+
+            {/* Información */}
             <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
+                Equipo de Información
+            </Typography>
+            <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
+                <div className={classes.photoGridItem}> 
+                    <p className={classes.names} align={'center'}>Michelle Acosta</p>
+                    {/* <img src="images/lourdesBadilla.jpg" className="img-responsive" alt="Image"/> */}
+                    <p>Estudiante de licenciatura en Gobierno y Transformación Pública. Equipo de Información.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
+                    <p className={classes.names} align={'center'}>Juan Antonio Muñoz</p>
+                    {/* <img src="images/eduardovillalpan.jpg" className="img-responsive" alt="Image"/> */}
+                    <p>Estudiante de licenciatura en Economía. Equipo de Información.</p>
+                </div>
+            </Grid>
+              
+            {/* <Typography align={'center'} variant={'h2'} classes={{root:classes.sectionTitles}}>
                 Equipo de Investigación 
             </Typography>
             <Grid container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
@@ -322,7 +386,7 @@ const PhotoGrid = ({classes}) => {
                     <img src="images/fitozaldivar.jpg" className="img-responsive" alt="Image"/>
                     <p>Estudiante de Licenciatura en Economía. Intereses profesionales en economía, finanzas, política y en investigación, búsqueda e interpretación de datos.</p>
                 </div>
-            </Grid>
+            </Grid> */}
         </div>
     );
 };
@@ -339,10 +403,14 @@ const styles = () => ({
         justifyContent: 'flex-start',
     },
 
+    grid: {
+        marginBottom: '50px'
+    },
+
     photoGridItem: {
         border: '1px solid #fff',
         width: '300px',
-        height: '300px',
+        height: '40px',
         marginTop: '30px !important',
         marginBottom: '150px !important'
     },
@@ -350,9 +418,12 @@ const styles = () => ({
     photoGridItemTeacher: {
         border: '1px solid #fff',
         width: '300px',
-        height: '300px',
+        height: '40px',
         marginTop: '30px !important',
         marginBottom: '80px !important'
+    },
+    names: {
+        fontWeight: 'bold'
     },
 
     contactText:{

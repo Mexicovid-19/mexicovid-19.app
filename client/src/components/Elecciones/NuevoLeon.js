@@ -77,7 +77,7 @@ const NuevoLeon = ({ classes }) => {
   ];
 
   const setupGeoJson = () => {
-    console.table(municipios_nl)
+    //console.table(municipios_nl)
   }
 
 //DATOS PIECHART AYUN
@@ -171,7 +171,7 @@ const setUpData = (id) => {
       })
     }
   })
-  console.log(_districtData)
+  //console.log(_districtData)
   setDistrictData(_districtData)
 }
 
@@ -275,12 +275,14 @@ const setUpDatos = (id) => {
         "value": feature.properties.MORENA,
         "color": "hsl(8, 76%, 43%)"
       })*/
-      _gobData.push({
-        "id": "Fernando Larrazabal",
-        "label": "PAN",
-        "value": feature.properties.PAN,
-        "color": "hsl(210, 90%, 34%)"
-      })
+      if(feature.properties.PAN > 0){
+          _gobData.push({
+              "id": "Fernando Larrazabal",
+              "label": "PAN",
+              "value": feature.properties.PAN,
+              "color": "hsl(210, 90%, 34%)"
+          })
+      }
       /*_gobData.push({
         "id": "PRI",
         "label": "PRI",
@@ -299,57 +301,69 @@ const setUpDatos = (id) => {
         "value": feature.properties.PT,
         "color": "hsl(3, 81%, 47%)"
       })*/
-      _gobData.push({
-        "id": "Samuel García",
-        "label": "MC",
-        "value": feature.properties.MC,
-        "color": "hsl(25, 87%, 57%)"
-      })
-      _gobData.push({
-        "id": "Carolina Garza",
-        "label": "PES",
-        "value": feature.properties.PES,
-        "color": "hsl(288, 45%, 34%)"
-      })
-      _gobData.push({
-        "id": "Virginia Siller",
-        "label": "RSP",
-        "value": feature.properties.RSP,
-        "color": "hsl(180, 1%, 19%)"
-      })
-      _gobData.push({
-        "id": "Emilio Jacques",
-        "label": "FXM",
-        "value": feature.properties.FXM,
-        "color": "hsl(333, 78%, 65%)"
-      })
+      if(feature.properties.MC > 0){
+          _gobData.push({
+              "id": "Samuel García",
+              "label": "MC",
+              "value": feature.properties.MC,
+              "color": "hsl(25, 87%, 57%)"
+          })
+      }
+      if(feature.properties.PES > 0){
+        _gobData.push({
+          "id": "Carolina Garza",
+          "label": "PES",
+          "value": feature.properties.PES,
+          "color": "hsl(288, 45%, 34%)"
+        })
+      }
+      if(feature.properties.RSP > 0){
+        _gobData.push({
+          "id": "Virginia Siller",
+          "label": "RSP",
+          "value": feature.properties.RSP,
+          "color": "hsl(180, 1%, 19%)"
+        })
+      }
+      if(feature.properties.FXM > 0){
+        _gobData.push({
+          "id": "Emilio Jacques",
+          "label": "FXM",
+          "value": feature.properties.FXM,
+          "color": "hsl(333, 78%, 65%)"
+        })
+      }
       /*_gobData.push({
         "id": "PVEM",
         "label": "PVEM",
         "value": feature.properties.PVEM,
         "color": "hsl(86, 50%, 58%)"
       })*/
-      _gobData.push({
-        "id": "Clara Luz Flores",
-        "label": "JHHNL",
-        "value": feature.properties.JHHNL,
-        "color": "hsl(8, 76%, 43%)"
-      })
+      if(feature.properties.JHHNL > 0){
+        _gobData.push({
+          "id": "Clara Luz Flores",
+          "label": "JHHNL",
+          "value": feature.properties.JHHNL,
+          "color": "hsl(8, 76%, 43%)"
+        })
+      }
       /*_gobData.push({
         "id": "NANL",
         "label": "NANL",
         "value": feature.properties.NANL,
         "color": "hsl(181, 80%, 40%)"
       })*/
-      _gobData.push({
-        "id": "Adrián de la Garza",
-        "label": "VFNL",
-        "value": feature.properties.VFNL,
-        "color": "hsl(135, 37%, 48%)"
-      })
+      if(feature.properties.VFNL > 0){
+        _gobData.push({
+          "id": "Adrián de la Garza",
+          "label": "VFNL",
+          "value": feature.properties.VFNL,
+          "color": "hsl(135, 37%, 48%)"
+        })
+      }
     }
   })
-  console.log(_gobData)
+  //console.log(_gobData)
   setGobData(_gobData)
 }
 
@@ -399,7 +413,7 @@ setUpDatos(selectedDistrict)
 
 //map.scrollZoom.disable();
 
-console.log(mergedGeoJSON);
+  //console.log(mergedGeoJSON);
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
@@ -501,7 +515,7 @@ console.log(mergedGeoJSON);
                 content += "Partido: " + _hoveredMunP + "<br>";
                 popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
                 
-                console.log(e.features)
+                //console.log(e.features)
                 map.setFeatureState(
                     { source: 'district-source', id: _hoveredDistrict,name: _hoveredMunN },
                     { party: _hoveredMunP, hover: true }
@@ -555,9 +569,9 @@ console.log(mergedGeoJSON);
             content += "Partido: " + _selectedDistrictP + "<br>";
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
 
-            console.log(e.features[0].properties.nombre);
+            //console.log(e.features[0].properties.nombre);
 
-            console.log(e.features)
+            //console.log(e.features)
             map.setFeatureState(
                 { source: 'district-source', id: _selectedDistrict, name: _selectedDistrictN},
                 { party: _selectedDistrictP, hover: true }
@@ -593,10 +607,13 @@ console.log(mergedGeoJSON);
                 </div>
             <div>
               <h2 className={classes.titleGob}> Gubernatura Nuevo León</h2>
-              <p className={classes.prep}>Avance del PREP: 99%</p>
-                    {gobData.length !== 0 && (
+                    {gobData.length !== 0 ? (
                         <div className={classes.chartContainer}>
                             <NLGobChart data={gobData}/>
+                        </div>
+                    ) : (
+                        <div className={classes.chartContainer}>
+                            <h3 className={classes.error}>No hay datos disponibles por momento</h3>
                         </div>
                     )}
                 </div>
@@ -613,16 +630,17 @@ const styles = () => ({
     justifyContent: 'space-evenly',
     maxWidth: 1600,
     margin: 'auto',
-    paddingTop: '100px'
+    paddingTop: '100px',
+    paddingBottom: '100px'
   },
   map: {
     height: '800px',
-    width: '800px',
+    width: '40vw',
     margin: 'auto',
   },
   chartContainer: {
     height: '600px',
-    width: '600px',
+    width: '40vw',
     margin: 'auto',
     paddingTop: '150px'
   },
@@ -655,7 +673,7 @@ const styles = () => ({
   },
   titleNL: {
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 50,
     fontWeight: 'bold',
     paddingTop: '50px',
     color: colors.WHITE
@@ -667,13 +685,34 @@ const styles = () => ({
     paddingTop: '50px',
     backgroundColor: colors.BLACK,
   },
+  error: {
+      color: colors.WHITE,
+      textAlign: 'center',
+      position: 'relative',
+      top: '100px',
+      fontSize: '30px'
+  },
   prep: {
-    color: colors.WHITE,
-    textAlign: 'center'
-},
+      color: colors.WHITE,
+      textAlign: 'center'
+  },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    
+    itemsContainer: {
+        display: 'block',
+        margin: 'auto',
+    },
+    map: {
+        height: '500px',
+        width: '100vw',
+    },
+    chartContainer: {
+        height: '500px',
+        width: '100vw',
+        flex: 1,
+        margin: 'auto',
+        padding: '50px',
+    },
   }
   
 });

@@ -25,7 +25,7 @@ import * as colors from '../../constants/colors';
 import CurulesChart from './CurulesChart';
 
 /* Data */
-import distritos_csv from './data/DF_PREP_PER_00052.csv'
+import distritos_csv from './data/dip_fed_PREP_PER_1139.csv'
 import distritos_geojson from "./data/distritos.geojson"
 
 
@@ -56,50 +56,58 @@ const Distritos = ({ classes }) => {
         {
             "id": "PAN",
             "label": "PAN",
-            "value": 20,
+            "value": 112,
+            "MR": 71,
+            "RP": 41,
             "color": "hsl(210, 90%, 34%)",
         },
         {
             "id": "MORENA",
             "label": "MORENA",
-            "value": 43,
+            "value": 200,
+            "MR": 76,
+            "RP": 124,
             "color": "hsl(8, 76%, 43%)",
         },
         {
             "id": "PRI",
             "label": "PRI",
-            "value": 65,
+            "value": 71,
+            "MR": 31,
+            "RP": 40,
             "color": "hsl(135, 37%, 48%)"
-        },
-        {
-            "id": "PES",
-            "label": "PES",
-            "value": 20,
-            "color": "hsl(288, 45%, 34%)"
         },
         {
             "id": "PRD",
             "label": "PRD",
-            "value": 20,
+            "value": 15,
+            "MR": 7,
+            "RP": 8,
             "color": "hsl(48, 100%, 50%)"
         },
         {
             "id": "PVEM",
             "label": "PVEM",
-            "value": 12,
+            "value": 40,
+            "MR": 28,
+            "RP": 12,
             "color": "hsl(86, 50%, 58%)"
         },
         {
             "id": "PT",
             "label": "PT",
-            "value": 20,
+            "value": 39,
+            "MR": 32,
+            "RP": 7,
             "color": "hsl(3, 81%, 47%)"
         },
         {
-            "id": "RSP",
-            "label": "RSP",
-            "value": 22,
-            "color": "rgb(0,0,255)"
+            "id": "MC",
+            "label": "MC",
+            "value": 23,
+            "MR": 7,
+            "RP": 16,
+            "color": "rgb(255, 121, 2)"
         },
     ]
 
@@ -146,6 +154,15 @@ const Distritos = ({ classes }) => {
                     "label": "PT",
                     "value": feature.properties.PT,
                     "color": "#FFED00",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.MC > 0){
+                _districtData.push({
+                    "id": "MC",
+                    "label": "MC",
+                    "value": feature.properties.MC,
+                    "color": "#FF7A00",
                     "width": 60,
                 })
             }
@@ -273,7 +290,7 @@ const Distritos = ({ classes }) => {
                     "id": "PVEM-PT-MORENA",
                     "label": "PVEM-PT-MORENA",
                     "value": feature.properties.PVEM_PT_MORENA,
-                    "color": "hsl(86, 50%, 58%)",
+                    "color": "hsl(8, 76%, 43%)",
                     "width": 100,
                 })
             }
@@ -291,7 +308,7 @@ const Distritos = ({ classes }) => {
                     "id": "PVEM-MORENA",
                     "label": "PVEM-MORENA",
                     "value": feature.properties.PVEM_MORENA,
-                    "color": "hsl(86, 50%, 58%)",
+                    "color": "hsl(8, 76%, 43%)",
                     "width": 100,
                 })
             }
@@ -300,23 +317,23 @@ const Distritos = ({ classes }) => {
                     "id": "PT-MORENA",
                     "label": "PT-MORENA",
                     "value": feature.properties.PT_MORENA,
-                    "color": "#FFED00",
+                    "color": "hsl(8, 76%, 43%)",
                     "width": 100,
                 })
             }
         }
       })
-      //console.log(_stateData)
+      ////console.log(_stateData)
       setDistrictData(_districtData)
     }
 
 
     useEffect(() => {
         //setUpData(selectedDistrict)
-        //console.log(indicatorsData)
-        //console.log(datas)
+        ////console.log(indicatorsData)
+        ////console.log(datas)
         
-        //console.log(distritosGanadoresData)
+        ////console.log(distritosGanadoresData)
        /*  var loadFiles = [
             d3.json("./data/distritos.geojson"),
             d3.csv("./data/distritos.csv")
@@ -334,7 +351,7 @@ const Distritos = ({ classes }) => {
             // Add zoom and rotation controls to the map.
             map.addControl(new mapboxgl.NavigationControl());
             
-            console.log("data[1]: ", data[0]);
+            //console.log("data[1]: ", data[0]);
 
             data[0].features = data[0].features.map((feature, i) => {
                 var prefData = data[1][i]
@@ -379,7 +396,7 @@ const Distritos = ({ classes }) => {
 
             //setup geosjon
             mergedGeoJSON = data[0];
-            console.log(mergedGeoJSON)
+            //console.log(mergedGeoJSON)
             
             setUpData(selectedDistrict)
 
@@ -391,7 +408,7 @@ const Distritos = ({ classes }) => {
                     'type': 'geojson',
                     'data': mergedGeoJSON
                 });
-                //console.log(mnDistricts)
+                ////console.log(mnDistricts)
 
                 map.addLayer({
                     'id': 'district-layer',
@@ -405,7 +422,7 @@ const Distritos = ({ classes }) => {
                             'PAN',
                                 '#0055BF',
                             'PRI',
-                                '#FF0018',
+                                '#4da864',
                             'PRD',
                                 '#FFCC00',
                             'PVEM',
@@ -431,11 +448,11 @@ const Distritos = ({ classes }) => {
                             'PRI_PRD',
                                 '#FF0018',
                             'PVEM_PT_MORENA',
-                                '#A2CD40',
+                                '#960016',
                             'PVEM_PT',
                                 '#A2CD40',
                             'PVEM_MORENA',
-                                '#A2CD40',
+                                '#960016',
                             'PT_MORENA_PES',
                                 '#960016',
                             'CAND_IND-1',
@@ -475,7 +492,7 @@ const Distritos = ({ classes }) => {
                             );
                         }
                         console.log(e.features[0])
-                        var description = `<div><h3 class="popupTitle"><strong>${STATES_ELECCIONES[e.features[0].properties.ENTIDAD-1].title || '-'}</strong></h3><h3 class="popupTitle"><strong>Distrito: ${e.features[0].properties.dto|| '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2021</p></div></div></div>`
+                        var description = `<div><h3 class="popupTitle"><strong>${STATES_ELECCIONES[e.features[0].properties.ENTIDAD-1].title || '-'}</strong></h3><h3 class="popupTitle"><strong>Distrito: ${e.features[0].properties.dto|| '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2021}.png'/><p class="popupYear">2021</p></div></div></div>`
                         popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
 
                         let _hoveredDistrict = e.features[0].id;
@@ -540,17 +557,17 @@ const Distritos = ({ classes }) => {
                 <div className={classes.outerChartContainer}>
                     <h2 className={classes.subtitle}>Estado: {STATES_ELECCIONES[district.edo-1].title}</h2>
                     <h2 className={classes.subtitle}>Distrito: {district.dto}</h2>
-                    <p className={classes.prep}>Prep: 85%</p>
+                    <p className={classes.prep}>Avance del PREP: 94%</p>
                     {districtData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <DistritosChart data={districtData}/>
                         </div>
-                        
                     )}
                 </div>
             </div>
+
             {/* curules  chart */}
-            {/* <div className={classes.outerChartContainer}>
+            <div className={classes.outerChartContainer}>
                 <h2 className={classes.subtitle}>Estimación de la distribución de la legislatura LXV</h2>
                 {districtData.length !== 0 && (
                     <div className={classes.chartContainer}>
@@ -558,7 +575,7 @@ const Distritos = ({ classes }) => {
                     </div>
         
                 )}
-            </div> */}
+            </div>
         </div>
         
     );
