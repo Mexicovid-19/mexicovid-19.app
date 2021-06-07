@@ -19,10 +19,8 @@ import { HeatMap } from '@nivo/heatmap';
 const Estatal = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
     var prevSelectedState = null;
-   
-
     /* Mapbox */
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
     const mapContainer = useRef(null);
 
     const [long, setLong] = useState(-101.68);
