@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -24,8 +24,12 @@ import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
 
 
 const Heatmap = ({ classes }) => {
+    
     const { indicatorsData } = React.useContext(IndicatorContext);
-    console.log(indicatorsData)
+    //console.log(indicatorsData)
+    useEffect(() => {
+        console.log(indicatorsData)
+    })
     return (
         <div style={{ height: 600 ,width:'100%'}}>
             {indicatorsData.length == 0 ?

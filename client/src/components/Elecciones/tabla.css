@@ -1,0 +1,18 @@
+.shadow
+{
+    box-shadow: 10px 0px 10px -5px black, -10px 0px 10px -5px black;
+    border-collapse: collapse;
+    align:center;
+}
+.foto{
+    height: 50px;
+    width: 50px;
+}
+.foto2{
+    height: 100px;
+    width: 100px;
+}
+.foto3{
+    height: 115px;
+    width: 115px;
+}

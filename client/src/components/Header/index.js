@@ -68,6 +68,13 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/' element={
             <MenuItem><Typography variant="span" className={classes.title}>Inicio</Typography></MenuItem>
           }/>
+          <LinkElement url='/covid-19' element={
+            <MenuItem><Typography variant="span" className={classes.title}>Covid19</Typography></MenuItem>
+          }/>
+          <LinkElement url='/elecciones' element={
+            <MenuItem><Typography variant="span" className={classes.title}>Elecciones 2021</Typography></MenuItem>
+          }/>
+
           {/* <LinkElement url='/research' element={
             <MenuItem><Typography variant="span" className={classes.title}>Investigación</Typography></MenuItem>
           }/>
@@ -88,7 +95,14 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/' element={
             <Button className={location === '/' ? classes.selectedBtn : classes.button} color="inherit">Inicio</Button>
           }/>
-         {/*  <LinkElement url='/research' element={
+          <LinkElement url='/covid-19' element={
+            <Button className={location === '/covid-19' ? classes.selectedBtn : classes.button} color="inherit">Covid19</Button>
+          }/>
+          <LinkElement url='/elecciones' element={
+            <Button className={location === '/elecciones' ? classes.selectedBtn : classes.button} color="inherit">Elecciones 2021</Button>
+          }/>
+          {/* <LinkElement url='/research' element={
+
             <Button className={location === '/research' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
           }/>
           <LinkElement url='/regions' element={
@@ -119,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   bar: {
-    backgroundColor: colors.BLACK + ' !important'
+    backgroundColor: 'rgb(34, 35, 35)' + ' !important'
   },
 
   name: {
@@ -129,13 +143,15 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: 'flex',
     justifyContent: 'space-between',
-    flex: '0.25'
+    //flex: '2'
   },
 
   button: {
+    marginLeft: '10px',
     '&:hover': {
       borderBottom: '1px solid',
       borderRadius: '0px',
+      
     }
   },
 

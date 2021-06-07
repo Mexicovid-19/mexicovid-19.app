@@ -1,0 +1,24 @@
+.popupLogosContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 2px solid black;
+}
+.popupImg {
+    width: 50px;
+}
+.myPopup {
+    min-width: 200px; 
+    max-width: 400px;
+}
+.popupTitle {
+    font-size: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.popupYear{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
