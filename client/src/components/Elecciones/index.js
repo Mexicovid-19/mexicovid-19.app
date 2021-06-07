@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 /* Components */
 import Header from '../Header';
 import Distritos from './Distritos'
-import Estatal from './Estatal'
+import Estatal from './Estatal2'
 import NuevoLeon from './NuevoLeon'
 
 import { Helmet } from 'react-helmet';
