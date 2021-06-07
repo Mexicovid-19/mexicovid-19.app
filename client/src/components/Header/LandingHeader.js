@@ -21,7 +21,7 @@ const LinkElement = (props) => {
   )
 }
 
-const Header = ({ classes, fixed=false}) => {
+const LandingHeader = ({ classes, fixed=false}) => {
   classes = useStyles();
   let location = window.location.pathname;
 
@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   bar: {
-    backgroundColor: 'rgb(34, 35, 35)' + ' !important'
+    backgroundColor: 'rgb(20,20,20)' + ' !important'
   },
 
   name: {
@@ -188,4 +188,4 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default Header;
+export default LandingHeader;

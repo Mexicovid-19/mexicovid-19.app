@@ -7,13 +7,17 @@ import Team from './components/Team';
 import Methodology from './components/Methodology';
 import Regions from './components/Regions';
 
-/* Contextos */
+/* ---- Contextos ---- */
+/* viejos */
 import { RegionContextProvider } from './contexts/RegionContext';
 import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
 import { MapMunicipioContextProvider } from './contexts/MapMunicipioContext';
 import { BlogContextProvider } from './contexts/BlogContext';
 import {IndicatorContextProvider} from './contexts/IndicatorContext';
+
+/* nuevos */
+//import { DistritosContextProvider } from './contexts/DistritosContext'
 
 /* CSS */
 import './css/index.css';
@@ -31,7 +35,7 @@ import Research1 from './components/Research1'
 
 /* Nuevas páginas */
 import Elecciones from './components/Elecciones'
-
+import Landing from './components/Landing'
 
 /* Blog */
 import Blog from "./containers/Blog"
@@ -44,7 +48,7 @@ const Router = () => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path='/covid-19'>
             <HomeContextProvider>
                 <MapContextProvider>
                   <MapMunicipioContextProvider>
@@ -71,7 +75,17 @@ const Router = () => {
         <Route path='/reactivacion-economica' component={ReaperturaEco}/>
 
         {/* Nuevas páginas */}
-        <Route path='/elecciones' component={Elecciones}/>
+        {/* <Route path='/elecciones' >
+          <DistritosContextProvider>
+            <Elecciones/>
+          </DistritosContextProvider>
+        </Route> */}
+        <Route path='/elecciones' >
+            <Elecciones/>
+        </Route>
+
+        {/* landing */}
+        <Route path="/" component={Landing}/>
 
         <Route exact path="/research">
             <BlogContextProvider>

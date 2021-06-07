@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import PieChart_Estados from './PieChart_Estados.js'
 import HeatMap_Estados from './HeatMap_Estados.js';
+import Header from '../Header';
+
 /* Mapbox */
 import * as d3 from 'd3';
 import estadosRes from './data/mx_states.json'
@@ -16,12 +18,19 @@ import mapboxgl from 'mapbox-gl';
 import { axisLeft } from 'd3';
 import { HeatMap } from '@nivo/heatmap';
 
+// CSS
+import "./Popup.css"
+
+// Utils
+import * as colors from '../../constants/colors';
+
 
 const Estatal = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
+    document.title = "Elecciones 2021 | MexiCOVID"
     var prevSelectedState = null;
     /* Mapbox */
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
     const mapContainer = useRef(null);
 
     const [long, setLong] = useState(-101.68);
@@ -161,6 +170,14 @@ const Estatal = ({ classes }) => {
                     "id": resultados[i].CANDIDATO,
                     "label": "MORENA",
                     "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "PES"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PES",
+                    "value": resultados[i].PORCENTAJE,
                     "color": "hsl(288, 45%, 34%)"
                 })
             }
@@ -209,7 +226,7 @@ const Estatal = ({ classes }) => {
                     "id": resultados[i].CANDIDATO,
                     "label": "MORENA_PT_PVEM",
                     "value": resultados[i].PORCENTAJE,
-                    "color": "hsl(288, 45%, 34%)"
+                    "color": "hsl(8, 76%, 43%)"
                 })
             }
             if(resultados[i].PARTIDO == "PAN_PRI_PRD"){
@@ -249,7 +266,7 @@ const Estatal = ({ classes }) => {
                     "id": resultados[i].CANDIDATO,
                     "label": "MORENA_PT_PVEM_PANAL",
                     "value": resultados[i].PORCENTAJE,
-                    "color": "hsl(288, 45%, 34%)"
+                    "color": "hsl(8, 76%, 43%)"
                 })
             }
             if(resultados[i].PARTIDO == "MORENA_PT_PANAL"){
@@ -257,7 +274,7 @@ const Estatal = ({ classes }) => {
                     "id": resultados[i].CANDIDATO,
                     "label": "MORENA_PT_PANAL",
                     "value": resultados[i].PORCENTAJE,
-                    "color": "hsl(288, 45%, 34%)"
+                    "color": "hsl(8, 76%, 43%)"
                 })
             }
             if(resultados[i].PARTIDO == "FUERZA_SOCIAL_POR_MEXICO"){
@@ -273,7 +290,7 @@ const Estatal = ({ classes }) => {
                     "id": resultados[i].CANDIDATO,
                     "label": "MORENA_PANAL",
                     "value": resultados[i].PORCENTAJE,
-                    "color": "hsl(288, 45%, 34%)"
+                    "color": "hsl(8, 76%, 43%)"
                 })
             }
             if(resultados[i].PARTIDO == "LEVANTATE_POR_NAYARIT"){
@@ -321,7 +338,7 @@ const Estatal = ({ classes }) => {
                     "id": resultados[i].CANDIDATO,
                     "label": "MORENA_PARTIDO_SINALOENSE",
                     "value": resultados[i].PORCENTAJE,
-                    "color": "hsl(288, 45%, 34%)"
+                    "color": "hsl(8, 76%, 43%)"
                 })
             }
             if(resultados[i].PARTIDO == "MORENA_PT_PVEM_PANAL_PES"){
@@ -329,7 +346,7 @@ const Estatal = ({ classes }) => {
                     "id": resultados[i].CANDIDATO,
                     "label": "MORENA_PT_PVEM_PANAL_PES",
                     "value": resultados[i].PORCENTAJE,
-                    "color": "hsl(288, 45%, 34%)"
+                    "color": "hsl(8, 76%, 43%)"
                 })
             }
             if(resultados[i].PARTIDO == "PRI_PAN_PRD_PAC"){
@@ -348,10 +365,10 @@ const Estatal = ({ classes }) => {
                     "color": "hsl(349, 92%, 46%)"
                 })
             }
-            if(resultados[i].PARTIDO == "PARTIDO_DEL_PUEBLO"){
+            if(resultados[i].PARTIDO == "PAZ"){
                 _stateData.push({
                     "id": resultados[i].CANDIDATO,
-                    "label": "PARTIDO_DEL_PUEBLO",
+                    "label": "PAZ",
                     "value": resultados[i].PORCENTAJE,
                     "color": "hsl(329, 82%, 53%)"
                 })
@@ -380,47 +397,33 @@ const Estatal = ({ classes }) => {
       setStateData(_stateData)
     } 
 
-    /* const setUpWinner = () => {
+    const setUpWinner = () => {
         var max = -1;
         var winners = [];
-        var partido;
-        var stateId;
-        var empate = "";
-        // for(var i = 0; i < resultados.length; i++){
-        //     if(resultados[i].ID_ESTADO == resultados[i+1].ID_ESTADO){
-        //         if(resultados[i].VOTO_X_CANDIDATO > resultados[i+1].VOTO_X_CANDIDATO){
-        //             winners.push({
-        //                 "ID_ESTADO": resultados[i].ID_ESTADO,
-        //                 "PARTIDO": resultados[i].PARTIDO,
-        //                 "PORCENTAJE": resultados[i].PORCENTAJE
-        //             })
-        //         } else if(resultados[i].VOTO_X_CANDIDATO < resultados[i+1].VOTO_X_CANDIDATO){
-        //             winners.push({
-        //                 "ID_ESTADO": resultados[i+1].ID_ESTADO,
-        //                 "PARTIDO": resultados[i+1].PARTIDO,
-        //                 "PORCENTAJE": resultados[i+1].PORCENTAJE
-        //             })
-        //         } else {
-        //             empate += " ";
-        //             empate += resultados[i].PARTIDO;
-        //             empate += resultados[i+1].PARTIDO;
-        //                 winners.push({
-        //                     "ID_ESTADO": resultados[i].ID_ESTADO,
-        //                     "PARTIDO": empate,
-        //                     "PORCENTAJE": "0"
-        //                 })
-        //         }
-        //     }
-        // }
-        // mergedGeoJSON.features.map(feature =>{
-        //     winners.forEach(winner => {
-        //         if(winner['ID_ESTADO'] === feature.properties.ID_ESTADO.toString()){
-        //             feature.properties.PARTIDO = winner.PARTIDO
-        //             feature.properties.GP = winner.PARTIDO
-        //         }
-        //     })
-        // })
-    } */
+        for(var i = 0; i < resultados.length - 1; i++){
+            if(i == 0){
+                winners.push({
+                    "ID_ESTADO": resultados[i].ID_ESTADO,
+                    "GANADOR": resultados[i].GANADOR
+                })
+            } else if(resultados[i].ID_ESTADO != resultados[i+1].ID_ESTADO){
+                winners.push({
+                    "ID_ESTADO": resultados[i+1].ID_ESTADO,
+                    "GANADOR": resultados[i+1].GANADOR
+                })
+            }
+        }
+        console.log(winners)
+        mergedGeoJSON.features.map(feature =>{
+            console.log(winners.length)
+            for(var i = 0; i < winners.length; i++){
+                if(Number(winners[i].ID_ESTADO) == feature.properties.CVE_ENT){
+                    feature.properties.GP = winners[i].GANADOR;
+                }
+            }
+            console.log(feature.properties.GP);
+        })
+    }
 
     useEffect(() => {
         Promise.all(loadFiles).then(function (data) {
@@ -504,6 +507,8 @@ const Estatal = ({ classes }) => {
                         '#60060e',
                         'MORENA_PT_PVEM_PANAL',
                         '#c1311a',
+                        'PT_PVEM_MORENA_PANAL',
+                        '#c1311a',
                         'MORENA_PT_PANAL',
                         '#c1311a',
                         'FUERZA_SOCIAL_POR_MEXICO',
@@ -534,7 +539,7 @@ const Estatal = ({ classes }) => {
                         '#ac4535',
                         'Sin Ganador',
                         '#CCCCCC',
-                        '#CCCCCC',
+                        '#CCCCCC'
                     ],
                     'fill-opacity': [
                         'case',
@@ -560,6 +565,7 @@ const Estatal = ({ classes }) => {
             var popup = new mapboxgl.Popup({
                 closeButton: false,
                 closeOnClick: false,
+                className: 'myPopup'
                 });
         
             map.on('mousemove', 'state-layer', function (e) {
@@ -666,33 +672,18 @@ const Estatal = ({ classes }) => {
     }, []);
 
     return (
-        <div className="state-map-wrapper">
-
-            <div className="info">
-                Estado: <strong>{hoveredStateRef ? hoveredState : ""}</strong>
-            </div>
-            <div className="info">
-                Partido Dominante: <strong>{hoveredStatePRef ? hoveredStateP : ""}</strong>
-            </div>
+        <div className={classes.itemsContainer}>
             <div id="hoveredDetailMap" className={classes.map}>
                 <div style={{ height: "100%" }} ref={mapContainer}></div>
             </div>
-            <div >
-              
+            <div className = {classes.outerChartContainer}>
                {stateData.length != 0 && (
-                 <div className = {classes.pieContainer}>
-                    <h2 className={classes.chartTitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
+                 <div className = {classes.chartContainer}>
+                    <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
                    <PieChart_Estados data = {stateData}/>
                    </div>
                )}
               </div>
-            <div >
-               {/* <h2><strong>Distribución de Votos</strong></h2> */}
-                 <div className = {classes.chartContainer}>
-                   <HeatMap_Estados data = {estadosRes}/>
-                   </div>
-              </div>
-              <div className = {classes.clearfix}></div>
        
         </div>
     );
@@ -700,40 +691,66 @@ const Estatal = ({ classes }) => {
 
 const styles = () => ({
   /* Desktop */
+  itemsContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: 'auto',
+  },
   map: {
-    height: '800px',
-    width: '800px',
+    height: 'calc(100vh -  148px)',
+    width: '50vw',
     margin: 'auto',
-    float: 'left'
+    borderBottom:  '1px solid white',
   },
-
+  outerChartContainer: {
+    paddingTop: '30px',
+    borderLeft:  '1px solid white',
+    borderBottom:  '1px solid white',
+    borderRight:  '1px solid white',
+  },
   chartContainer: {
-    height: '950px',
-    width: '950px',
+    height: '600px',
+    width: '50vw',
+    flex: 1,
     margin: 'auto',
-    paddingTop: '150px',
-    float: 'right'
+    padding: '50px',
   },
-
+  subtitle: {
+      textAlign: 'center',
+      fontSize: 35,
+      fontWeight: 'bold',
+      color: colors.WHITE
+  },
   chartTitle:{
     fontSize: '20px',
     textAlign: 'center'
   },
 
-  pieContainer: {
-    height: '600px',
-    width: '600px',
-    margin: 'auto',
-    float: 'right'
-  },
-
-  clearfix: {
-    clear: 'both'
-  },
 
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    
+    itemsContainer: {
+        display: 'block',
+        margin: 'auto',
+    },
+    map: {
+        height: '500px',
+        width: '100vw',
+    },
+    outerChartContainer: {
+        padding: '10px',
+        paddingTop: '30px',
+        borderLeft:  '1px solid white',
+        borderBottom:  '1px solid white',
+        borderRight:  '1px solid white',
+    },
+    chartContainer: {
+        height: '500px',
+        width: '100vw',
+        flex: 1,
+        margin: 'auto',
+        padding: '50px',
+    },
   }
   
 });
