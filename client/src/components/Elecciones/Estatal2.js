@@ -10,9 +10,6 @@ import Header from '../Header';
 import * as d3 from 'd3';
 import estadosRes from './data/mx_states.json'
 import estados_geojson from "./data/mx_states.geojson";
-//import estados_csv from "./data/mx_states.csv";
-//import gobernadores_csv from "./data/gobernadores.csv"
-//import candidatos_estados_csv from "./data/nombres_candidatos.csv";
 import resultados_csv from "./data/estados.csv";
 import mapboxgl from 'mapbox-gl';
 import { axisLeft } from 'd3';
@@ -43,10 +40,14 @@ const Estatal = ({ classes }) => {
     const [hoveredState, _setHoveredState] = useState(null);
     const hoveredStateRef = useRef(hoveredState);
     const selectedStateRef = useRef(selectedState);
+    const [selectedStateParticipation, _setSelectedStateParticipation] = useState(19)
+    const selectedStateParticipacionRef = useRef(selectedStateParticipation);
+    const [selectedStateActas, _setSelectedStateActas] = useState(19)
+    const selectedStateActasRef = useRef(selectedStateActas);
     var mergedGeoJSON;
     var resultados;
-    //var alianzas_estados;
-    //var candidatos_estados;
+    var participacion = [];
+    var actas = [];
 
     var setHoveredState = data => {
       hoveredStateRef.current = data;
@@ -56,6 +57,16 @@ const Estatal = ({ classes }) => {
     var setSelectedState = data => {
         selectedStateRef.current = data;
         _setSelectedState(data);
+    }
+
+    var setSelectedStateParticipation = data => {
+        selectedStateParticipacionRef.current = data;
+        _setSelectedStateParticipation(data)
+    }
+
+    var setSelectedStateActas = data => {
+        selectedStateActasRef.current = data;
+        _setSelectedStateActas(data)
     }
     
     const [hoveredStateP, _setHoveredStateP] = useState(null);
@@ -109,358 +120,355 @@ const Estatal = ({ classes }) => {
     
       for(var i = 0; i < resultados.length; i++){
         if(resultados[i].ID_ESTADO === id.toString()){
-            if(resultados[i].PARTIDO === "PAN"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PAN",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(210, 90%, 34%)"
-                    })
-                }
+            // console.log(selectedStateParticipation)
+            // console.log('hola')
+            // console.log(selectedStateActas)
+            if(resultados[i].PARTIDO == "PAN"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAN",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(210, 90%, 34%)"
+                })
             }
-            if(resultados[i].PARTIDO === "PRI"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PRI",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(135, 37%, 48%)"
-                    })
-                }
+            if(resultados[i].PARTIDO == "PRI"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PRI",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(135, 37%, 48%)"
+                })
             }
             if(resultados[i].PARTIDO == "PRD"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PRD",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(48, 100%, 50%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PRD",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(48, 100%, 50%)"
+                })
             }
             if(resultados[i].PARTIDO == "PVEM"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PVEM",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(86, 50%, 58%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PVEM",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(86, 50%, 58%)"
+                })
             }
             if(resultados[i].PARTIDO == "PT") {
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PT",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(3, 81%, 47%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PT",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(3, 81%, 47%)"
+                })
             }
             if(resultados[i].PARTIDO == "MC"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "MC",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(25, 87%, 57%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MC",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(25, 87%, 57%)"
+                })
             }
             if(resultados[i].PARTIDO == "PANAL"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PANAL",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(181, 80%, 40%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PANAL",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(181, 80%, 40%)"
+                })
             }
             if(resultados[i].PARTIDO == "MORENA"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "MORENA",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 76%, 43%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MORENA",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
             }
             if(resultados[i].PARTIDO == "PES"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PES",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(288, 45%, 34%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PES",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(288, 45%, 34%)"
+                })
             }
             if(resultados[i].PARTIDO == "RSP"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "RSP",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(180, 1%, 19%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "RSP",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(180, 1%, 19%)"
+                })
             }
             if(resultados[i].PARTIDO == "FXM"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "FXM",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(333, 78%, 65%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "FXM",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(333, 78%, 65%)"
+                })
             }
             if(resultados[i].PARTIDO == "PAN_PRD"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PAN_PRD",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(210, 90%, 34%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAN_PRD",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(210, 90%, 34%)"
+                })
             }
             if(resultados[i].PARTIDO == "PT_MORENA"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PT_MORENA",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 76%, 43%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PT_MORENA",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
             }
             if(resultados[i].PARTIDO == "PRI_PRD"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PRI_PRD",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(135, 37%, 48%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PRI_PRD",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(135, 37%, 48%)"
+                })
             }
             if(resultados[i].PARTIDO == "MORENA_PT_PVEM"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "MORENA_PT_PVEM",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 76%, 43%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MORENA_PT_PVEM",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
             }
             if(resultados[i].PARTIDO == "PAN_PRI_PRD"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PAN_PRI_PRD",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(210, 90%, 34%)"
-                    })
-                }
-            }
-            if(resultados[i].PARTIDO == "PARTIDO_BAJA_CALIFORNIA"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PARTIDO_BAJA_CALIFORNIA",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(20, 100%, 60%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAN_PRI_PRD",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(210, 90%, 34%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "PBC"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PBC",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(20, 100%, 60%)"
+                })
             }
             if(resultados[i].PARTIDO == "PAN_PRI_PRD_PRS_HUMANISTA"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PAN_PRI_PRD_PRS_HUMANISTA",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(210, 90%, 34%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAN_PRI_PRD_PRS_HUMANISTA",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(210, 90%, 34%)"
+                })
             }
             if(resultados[i].PARTIDO == "BCS_COHERENTE"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "BCS_COHERENTE",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(355, 88%, 20%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "BCS COHERENTE",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(355, 88%, 20%)"
+                })
             }
             if(resultados[i].PARTIDO == "MORENA_PT_PVEM_PANAL"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "MORENA_PT_PVEM_PANAL",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 76%, 43%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MORENA_PT_PVEM_PANAL",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
             }
             if(resultados[i].PARTIDO == "MORENA_PT_PANAL"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "MORENA_PT_PANAL",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 76%, 43%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MORENA_PT_PANAL",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
             }
             if(resultados[i].PARTIDO == "FUERZA_SOCIAL_POR_MEXICO"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "FUERZA_SOCIAL_POR_MEXICO",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(358, 88%, 40%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "FUERZA SOCIAL POR MEXICO",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(358, 88%, 40%)"
+                })
             }
             if(resultados[i].PARTIDO == "MORENA_PANAL"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "MORENA_PANAL",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 76%, 43%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MORENA_PANAL",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
             }
             if(resultados[i].PARTIDO == "LEVANTATE_POR_NAYARIT"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "LEVANTATE_POR_NAYARIT",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(326, 70%, 82%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "LEVANTATE POR NAYARIT",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(326, 70%, 82%)"
+                })
             }
             if(resultados[i].PARTIDO == "VIVA_NAYARIT"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "VIVA_NAYARIT",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(44, 97%, 53%)"
-                    })
-                } 
+                    "id": resultados[i].CANDIDATO,
+                    "label": "VIVA NAYARIT",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(44, 97%, 53%)"
+                })
             }
             if(resultados[i].PARTIDO == "INDEPENDIENTE"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "Independiente",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(180, 4%, 56%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "INDEPENDIENTE",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(180, 4%, 56%)"
+                })
             }
             if(resultados[i].PARTIDO == "PAN_PRI_PRD_PARTIDO_CONCIENCIA_POPULAR"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PAN_PRI_PRD_PARTIDO_CONCIENCIA_POPULAR",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(210, 90%, 34%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAN_PRI_PRD_PARTIDO_CONCIENCIA_POPULAR",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(210, 90%, 34%)"
+                })
             }
             if(resultados[i].PARTIDO == "PVEM_PT"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PVEM_PT",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(86, 50%, 58%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PVEM_PT",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(86, 50%, 58%)"
+                })
             }
-            if(resultados[i].PARTIDO == "MORENA_PARTIDO_SINALOENSE"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "MORENA_PARTIDO_SINALOENSE",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 76%, 43%)"
-                    })
-                }
+            if(resultados[i].PARTIDO == "MORENA_PAS"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MORENA_PAS",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
             }
             if(resultados[i].PARTIDO == "MORENA_PT_PVEM_PANAL_PES"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "MORENA_PT_PVEM_PANAL_PES",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 76%, 43%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MORENA_PT_PVEM_PANAL_PES",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
             }
             if(resultados[i].PARTIDO == "PRI_PAN_PRD_PAC"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PRI_PAN_PRD_PAC",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(210, 90%, 34%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PRI_PAN_PRD_PAC",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(210, 90%, 34%)"
+                })
             }
             if(resultados[i].PARTIDO == "IMPACTO_SOCIAL_SI"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "IMPACTO_SOCIAL_SI",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(349, 92%, 46%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "IMPACTO SOCIAL SI",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(349, 92%, 46%)"
+                })
             }
             if(resultados[i].PARTIDO == "PAZ"){
-                if(resultados[i].PORCENTAJE > 0){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PAZ",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(329, 82%, 53%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAZ",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(329, 82%, 53%)"
+                })
             }
-            if(resultados[i].PARTIDO == "PARTIDO_DEL_PUEBLO"){
-                if(resultados[i].PORCENTAJE > 0){
+            if(resultados[i].PARTIDO == "PP"){
                 _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PARTIDO_DEL_PUEBLO",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(8, 53%, 44%)"
-                    })
-                }
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PP",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 53%, 44%)"
+                })
             }
             if(resultados[i].PARTIDO == "PAN_IND"){
-                if(resultados[i].PORCENTAJE > 0){
-                    _stateData.push({
-                        "id": resultados[i].CANDIDATO,
-                        "label": "PAN_IND",
-                        "value": resultados[i].PORCENTAJE,
-                        "color": "hsl(210, 90%, 34%)"
-                    })
-                }
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAN_IND",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(210, 90%, 34%)"
+                })
             }
-         
+            if(resultados[i].PARTIDO == "MD"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "MD",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(39, 52%, 63%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "PAS"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAS",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(263, 81%, 25%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "PAC"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAC",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(302, 44%, 39%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "ENCUENTRO"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "ENCUENTRO SOCIAL",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(288, 45%, 34%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "PT_PVEM_MORENA_PANAL_ENCUENTRO"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PT_PVEM_MORENA_PANAL_ENCUENTRO",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(8, 76%, 43%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "PAN_PRI_PRD_PAC_PS"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PAN_PRI_PRD_PAC_PS",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(210, 90%, 34%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "OTROS"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "OTROS",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(110, 90%, 34%)"
+                })
+            }
+            if(resultados[i].PARTIDO == "PS"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PS",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "hsl(240, 28%, 65%)"
+                })
+            }
         }
+         
     }
        
       console.log(_stateData)
@@ -480,6 +488,12 @@ const Estatal = ({ classes }) => {
                 winners.push({
                     "ID_ESTADO": resultados[i+1].ID_ESTADO,
                     "GANADOR": resultados[i+1].GANADOR
+                })
+                
+                participacion.push({
+                    "ID_ESTADO": resultados[i].ID_ESTADO,
+                    "PARTICIPACION": resultados[i].PARTICIPACION,
+                    "ACTAS_CAPTURADAS": resultados[i].ACTAS_CAPTURADAS
                 })
             }
         }
@@ -569,7 +583,7 @@ const Estatal = ({ classes }) => {
                         '#c1311a',
                         'PAN_PRI_PRD',
                         '#0957a5',
-                        'PARTIDO_BAJA_CALIFORNIA',
+                        'PBC',
                         '#ff7733',
                         'PAN_PRI_PRD_PRS_HUMANISTA',
                         '#0957a5',
@@ -595,7 +609,7 @@ const Estatal = ({ classes }) => {
                         '#0957a5',
                         'PVEM_PT',
                         '#9bc95e',
-                        'MORENA_PARTIDO_SINALOENSE',
+                        'MORENA_PAS',
                         '#c1311a',
                         'MORENA_PT_PVEM_PANAL_PES',
                         '#c1311a',
@@ -605,8 +619,22 @@ const Estatal = ({ classes }) => {
                         '#e10931',
                         'PAZ',
                         '#e9258a',
-                        'PARTIDO DEL PUEBLO',
+                        'PP',
                         '#ac4535',
+                        'MD',
+                        '#d1ae6e',
+                        'PAS',
+                        '#340c73',
+                        'PAC',
+                        '#91388e',
+                        'ENCUENTRO',
+                        '#6e307e',
+                        'PT_PVEM_MORENA_PANAL_ENCUENTRO',
+                        '#c1311a',
+                        'PAN_PRI_PRD_PAC_PS',
+                        '#0957a5',
+                        'PS',
+                        '#8C8CBF',
                         'Sin Ganador',
                         '#CCCCCC',
                         '#CCCCCC'
@@ -726,18 +754,18 @@ const Estatal = ({ classes }) => {
                         { party: _selectedStateP, hover: true }
                     );
 
-                    if(e.features[0].properties.GP === "Sin Ganador"){
-                        setStateData([])
-                        setSelectedState(_selectedState);
-                        setSelectedStateN(_selectedStateN);
-                        setSelectedStateP(_selectedStateP);
-                    } else{
-                        setUpData(_selectedState);
-                        setSelectedState(_selectedState);
-                        setSelectedStateN(_selectedStateN);
-                        setSelectedStateP(_selectedStateP);
-                    }
                     
+                    setUpData(_selectedState);
+                    setSelectedState(_selectedState);
+                    setSelectedStateN(_selectedStateN);
+                    setSelectedStateP(_selectedStateP);
+
+                    for(var i = 0; i < participacion.length; i++){
+                        if(participacion[i].ID_ESTADO == _selectedState){
+                            setSelectedStateParticipation(participacion[i].PARTICIPACION)
+                            setSelectedStateActas(participacion[i].ACTAS_CAPTURADAS)
+                        }
+                    }
                     
                 }
 
@@ -754,22 +782,14 @@ const Estatal = ({ classes }) => {
                 <div style={{ height: "100%" }} ref={mapContainer}></div>
             </div>
             <div className = {classes.outerChartContainer}>
-               {stateData.length !== 0 ? (
+               {stateData.length != 0 && (
                  <div className = {classes.chartContainer}>
                     <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
-
-                        <PieChart_Estados data = {stateData}/>
-                   
-                </div>
-               ) : (
-                   <div className = {classes.chartContainer}>
-                        <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
-                        
-                            <h3 className={classes.error}>No hay datos disponibles por momento</h3>
-                        
-                    
-                    </div>
+                   <PieChart_Estados data = {stateData}/>
+                   </div>
                )}
+               <h3 className = {classes.subtitle2}>Actas Capturadas: {selectedStateActas}</h3>
+               <h3 className = {classes.subtitle2}>Participación Ciudadana: {selectedStateParticipation}</h3>
               </div>
        
         </div>
@@ -808,16 +828,15 @@ const styles = () => ({
       fontWeight: 'bold',
       color: colors.WHITE
   },
+  subtitle2: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.WHITE
+    },
   chartTitle:{
     fontSize: '20px',
     textAlign: 'center'
-  },
-  error: {
-      color: colors.WHITE,
-      textAlign: 'center',
-      position: 'relative',
-      top: '100px',
-      fontSize: '30px'
   },
 
 
