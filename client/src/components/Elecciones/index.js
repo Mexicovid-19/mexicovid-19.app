@@ -17,6 +17,7 @@ import Header from '../Header';
 import Distritos from './Distritos'
 import Estatal from './Estatal'
 import NuevoLeon from './NuevoLeon'
+import NuevoLeonAyun from './NuevoLeonAyun'
 
 import { Helmet } from 'react-helmet';
 
@@ -135,12 +136,13 @@ const Elecciones = ({ classes }) => {
             
             {/* Estatal */}
             <TabPanel value={value} index={1}>
-              <Estatal/>
+              
             </TabPanel>
 
             {/* NuevoLeon */}
             <TabPanel value={value} index={2}>
               <NuevoLeon/>
+              <NuevoLeonAyun/>
             </TabPanel>
             
             
