@@ -306,17 +306,17 @@ const Distritos = ({ classes }) => {
             }
         }
       })
-      //console.log(_stateData)
+      ////console.log(_stateData)
       setDistrictData(_districtData)
     }
 
 
     useEffect(() => {
         //setUpData(selectedDistrict)
-        //console.log(indicatorsData)
-        //console.log(datas)
+        ////console.log(indicatorsData)
+        ////console.log(datas)
         
-        //console.log(distritosGanadoresData)
+        ////console.log(distritosGanadoresData)
        /*  var loadFiles = [
             d3.json("./data/distritos.geojson"),
             d3.csv("./data/distritos.csv")
@@ -334,7 +334,7 @@ const Distritos = ({ classes }) => {
             // Add zoom and rotation controls to the map.
             map.addControl(new mapboxgl.NavigationControl());
             
-            console.log("data[1]: ", data[0]);
+            //console.log("data[1]: ", data[0]);
 
             data[0].features = data[0].features.map((feature, i) => {
                 var prefData = data[1][i]
@@ -379,7 +379,7 @@ const Distritos = ({ classes }) => {
 
             //setup geosjon
             mergedGeoJSON = data[0];
-            console.log(mergedGeoJSON)
+            //console.log(mergedGeoJSON)
             
             setUpData(selectedDistrict)
 
@@ -391,7 +391,7 @@ const Distritos = ({ classes }) => {
                     'type': 'geojson',
                     'data': mergedGeoJSON
                 });
-                //console.log(mnDistricts)
+                ////console.log(mnDistricts)
 
                 map.addLayer({
                     'id': 'district-layer',
@@ -474,7 +474,7 @@ const Distritos = ({ classes }) => {
                                 { hover: false }
                             );
                         }
-                        console.log(e.features[0])
+                        //console.log(e.features[0])
                         var description = `<div><h3 class="popupTitle"><strong>${STATES_ELECCIONES[e.features[0].properties.ENTIDAD-1].title || '-'}</strong></h3><h3 class="popupTitle"><strong>Distrito: ${e.features[0].properties.dto|| '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2021</p></div></div></div>`
                         popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
 

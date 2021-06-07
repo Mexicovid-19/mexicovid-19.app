@@ -97,15 +97,15 @@ const Estatal = ({ classes }) => {
     ];
 
     const setupGeoJson = () => {
-        console.table(estados_geojson)
+        //console.table(estados_geojson)
     }
 
     const setUpData = (id) => {
       let _stateData = [] 
     //   var index = alianzas_estados.map(function(e) { return e.ID_ESTADO; }).indexOf(id.toString());
     //   var indexCandidatos = candidatos_estados.map(function(e) { return e.ID_ESTADO; }).indexOf(id.toString());
-      //console.log(alianzas_estados[index].PAN)
-        // console.log(feature.properties.PARTIDO);
+      ////console.log(alianzas_estados[index].PAN)
+        // //console.log(feature.properties.PARTIDO);
     
       for(var i = 0; i < resultados.length; i++){
         if(resultados[i].ID_ESTADO === id.toString()){
@@ -463,7 +463,7 @@ const Estatal = ({ classes }) => {
         }
     }
        
-      console.log(_stateData)
+      //console.log(_stateData)
       setStateData(_stateData)
     } 
 
@@ -483,15 +483,15 @@ const Estatal = ({ classes }) => {
                 })
             }
         }
-        console.log(winners)
+        //console.log(winners)
         mergedGeoJSON.features.map(feature =>{
-            console.log(winners.length)
+            //console.log(winners.length)
             for(var i = 0; i < winners.length; i++){
                 if(Number(winners[i].ID_ESTADO) == feature.properties.CVE_ENT){
                     feature.properties.GP = winners[i].GANADOR;
                 }
             }
-            console.log(feature.properties.GP);
+            //console.log(feature.properties.GP);
         })
     }
 
@@ -510,9 +510,9 @@ const Estatal = ({ classes }) => {
             return feature;
         });
         mergedGeoJSON = data[0];
-        console.log(mergedGeoJSON);
+        //console.log(mergedGeoJSON);
         resultados = data[1];
-        console.log(resultados);
+        //console.log(resultados);
         setUpData(selectedState);
         setUpWinner();
 
@@ -660,7 +660,7 @@ const Estatal = ({ classes }) => {
         
 
 
-                    //console.log(e.features)
+                    ////console.log(e.features)
                     map.setFeatureState(
                         { source: 'state-source', id: _hoveredState, name: _hoveredStateN},
                         { party: _hoveredStateP, hover: true }
@@ -709,7 +709,7 @@ const Estatal = ({ classes }) => {
                     }
 
                     let _selectedState = e.features[0].id;
-                    console.log(_selectedState)
+                    //console.log(_selectedState)
                     let _selectedStateN = e.features[0].properties.ESTADO;
                     let _selectedStateP = e.features[0].properties.GP;
         
@@ -718,9 +718,9 @@ const Estatal = ({ classes }) => {
                     content += "Partido: " + _selectedStateP + "<br>";
                     popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
         
-                    //console.log(e.features[0].properties.ESTADO);
+                    ////console.log(e.features[0].properties.ESTADO);
         
-                    //console.log(e.features)
+                    ////console.log(e.features)
                     map.setFeatureState(
                         { source: 'state-source', id: _selectedState, name: _selectedStateN},
                         { party: _selectedStateP, hover: true }

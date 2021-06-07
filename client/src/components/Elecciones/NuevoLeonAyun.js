@@ -74,7 +74,7 @@ const NuevoLeon = ({ classes }) => {
   ];
 
   const setupGeoJson = () => {
-    console.table(municipios_nl)
+    //console.table(municipios_nl)
   }
 
 //DATOS PIECHART AYUN
@@ -196,7 +196,7 @@ const setUpData = (id) => {
       }
     }
   })
-  console.log(_districtData)
+  //console.log(_districtData)
   setDistrictData(_districtData)
 }
 //DATOS PIECHART GOB
@@ -302,7 +302,7 @@ const setUpDatos = (id) => {
       }
     }
   })
-  console.log(_gobData)
+  //console.log(_gobData)
   setGobData(_gobData)
 }
 
@@ -355,7 +355,7 @@ setUpData(selectedDistrict)
 
 //map.scrollZoom.disable();
 
-console.log(mergedGeoJSON);
+//console.log(mergedGeoJSON);
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
@@ -459,7 +459,7 @@ console.log(mergedGeoJSON);
                 popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
                 
     
-                console.log(e.features)
+                //console.log(e.features)
                 map.setFeatureState(
                     { source: 'district-source', id: _hoveredDistrict,name: _hoveredMunN },
                     { party: _hoveredMunP, hover: true }
@@ -515,9 +515,9 @@ console.log(mergedGeoJSON);
             content += "Partido: " + _selectedDistrictP + "<br>";
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
 
-            console.log(e.features[0].properties.nombre);
+            //console.log(e.features[0].properties.nombre);
 
-            console.log(e.features)
+            ////console.log(e.features)
             map.setFeatureState(
                 { source: 'district-source', id: _selectedDistrict, name: _selectedDistrictN},
                 { party: _selectedDistrictP, hover: true }
@@ -549,9 +549,13 @@ console.log(mergedGeoJSON);
             <div>
               <h2 className={classes.districtName}> Presidente Municipal</h2>
               <h2 className={classes.munName} >{hoveredMunNRef ? hoveredMunN : ""}</h2>
-                    {districtData.length !== 0 && (
+                    {districtData.length !== 0 ? (
                         <div className={classes.chartContainer}>
                             <NuevoLeonChart data={districtData}/>
+                        </div>
+                    ) : (
+                        <div className={classes.chartContainer}>
+                            <h3 className={classes.error}>No hay datos disponibles por momento</h3>
                         </div>
                     )}
                 </div>
@@ -617,11 +621,12 @@ const styles = () => ({
     paddingTop: '50px',
     color: colors.WHITE
   },
-  tabla: {
-    //textAlign: 'center',
-    //fontSize: 40,
-    //fontWeight: 'bold',
-    //paddingTop: '50px'
+  error: {
+      color: colors.WHITE,
+      textAlign: 'center',
+      position: 'relative',
+      top: '100px',
+      fontSize: '30px'
   },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
