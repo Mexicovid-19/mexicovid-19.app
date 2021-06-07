@@ -128,14 +128,8 @@ function checkValidServiceWorker(swUrl, config) {
     });
 }
 
-export function unregister() {
-  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    for(let registration in registrations) {
-      registration.unregister()
-  } })
-}
 
-/* export function unregister() {
+export function unregister() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready
       .then(registration => {
@@ -145,5 +139,5 @@ export function unregister() {
         console.error(error.message);
       });
   }
-} */
+}
 
