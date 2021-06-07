@@ -269,84 +269,106 @@ const setUpDatos = (id) => {
   let _gobData = []
   mergedGeoJSON.features.map(feature =>{
     if(feature.properties.municipio == id){
-      _gobData.push({
-        "id": "MORENA",
-        "label": "MORENA",
-        "value": feature.properties.MORENA,
-        "color": "hsl(8, 76%, 43%)"
-      })
-      _gobData.push({
-        "id": "PAN",
-        "label": "PAN",
-        "value": feature.properties.PAN,
-        "color": "hsl(210, 90%, 34%)"
-      })
-      _gobData.push({
-        "id": "PRI",
-        "label": "PRI",
-        "value": feature.properties.PRI,
-        "color": "hsl(135, 37%, 48%)"
-      })
-      _gobData.push({
-        "id": "PRD",
-        "label": "PRD",
-        "value": feature.properties.PRD,
-        "color": "hsl(48, 100%, 50%)"
-      })
-      _gobData.push({
-        "id": "PT",
-        "label": "PT",
-        "value": feature.properties.PT,
-        "color": "hsl(3, 81%, 47%)"
-      })
-      _gobData.push({
-        "id": "MC",
-        "label": "MC",
-        "value": feature.properties.MC,
-        "color": "hsl(25, 87%, 57%)"
-      })
-      _gobData.push({
-        "id": "PES",
-        "label": "PES",
-        "value": feature.properties.PES,
-        "color": "hsl(288, 45%, 34%)"
-      })
-      _gobData.push({
-        "id": "RSP",
-        "label": "RSP",
-        "value": feature.properties.RSP,
-        "color": "hsl(180, 1%, 19%)"
-      })
-      _gobData.push({
-        "id": "FXM",
-        "label": "FXM",
-        "value": feature.properties.FXM,
-        "color": "hsl(333, 78%, 65%)"
-      })
-      _gobData.push({
-        "id": "PVEM",
-        "label": "PVEM",
-        "value": feature.properties.PVEM,
-        "color": "hsl(86, 50%, 58%)"
-      })
-      _gobData.push({
-        "id": "JHHNL",
-        "label": "JHHNL",
-        "value": feature.properties.JHHNL,
-        "color": "hsl(8, 76%, 43%)"
-      })
-      _gobData.push({
-        "id": "NANL",
-        "label": "NANL",
-        "value": feature.properties.NANL,
-        "color": "hsl(181, 80%, 40%)"
-      })
-      _gobData.push({
-        "id": "VFNL",
-        "label": "VFNL",
-        "value": feature.properties.VFNL,
-        "color": "hsl(135, 37%, 48%)"
-      })
+      if(feature.properties.PAN > 0){
+          _gobData.push({
+              "id": "PAN",
+              "label": "PAN",
+              "value": feature.properties.PAN,
+              "color": "hsl(210, 90%, 34%)",
+              "width": 60,
+          })
+      }
+      if(feature.properties.MORENA > 0){
+          _gobData.push({
+              "id": "MORENA",
+              "label": "MORENA",
+              "value": feature.properties.MORENA,
+              "color": "hsl(8, 76%, 43%)",
+              "width": 60,
+          })
+      }
+      if(feature.properties.PT > 0){
+          _gobData.push({
+              "id": "PT",
+              "label": "PT",
+              "value": feature.properties.PT,
+              "color": "#FFED00",
+              "width": 60,
+          })
+      }
+      if(feature.properties.PES > 0){
+          _gobData.push({
+              "id": "PES",
+              "label": "PES",
+              "value": feature.properties.PES,
+              "color": "hsl(288, 45%, 34%)",
+              "width": 60,
+          })
+      }
+      if(feature.properties.PRD > 0){
+          _gobData.push({
+              "id": "PRD",
+              "label": "PRD",
+              "value": feature.properties.PRD,
+              "color": "hsl(48, 100%, 50%)",
+              "width": 60,
+          })
+      }
+      if(feature.properties.PRI > 0){
+          _gobData.push({
+              "id": "PRI",
+              "label": "PRI",
+              "value": feature.properties.PRI,
+              "color": "hsl(135, 37%, 48%)",
+              "width": 60,
+          })
+      }
+      if(feature.properties.PVEM > 0){
+          _gobData.push({
+              "id": "PVEM",
+              "label": "PVEM",
+              "value": feature.properties.PVEM,
+              "color": "hsl(86, 50%, 58%)",
+              "width": 60,
+          })
+      }
+      if(feature.properties.RSP > 0){
+          _gobData.push({
+              "id": "RSP",
+              "label": "RSP",
+              "value": feature.properties.RSP,
+              "color": "rgb(0,0,255)",
+              "width": 60,
+          })
+      }
+      if(feature.properties.JHHNL > 0){
+          _gobData.push({
+          "id": "JHHNL",
+          "label": "JHHNL",
+          "value": feature.properties.JHHNL,
+          "color": "hsl(8, 76%, 43%)"
+        })
+      }
+      if(feature.properties.NANL > 0){
+          _gobData.push({
+            "id": "NANL",
+            "label": "NANL",
+            "value": feature.properties.NANL,
+            "color": "hsl(181, 80%, 40%)"
+          })
+      }
+      if(feature.properties.VFNL > 0){
+          _gobData.push({
+            "id": "VFNL",
+            "label": "VFNL",
+            "value": feature.properties.VFNL,
+            "color": "hsl(135, 37%, 48%)"
+          })
+      }
+
+      
+      
+      
     }
   })
   console.log(_gobData)
@@ -611,16 +633,17 @@ const styles = () => ({
     justifyContent: 'space-evenly',
     maxWidth: 1600,
     margin: 'auto',
-    paddingTop: '100px'
+    paddingTop: '100px',
+    paddingBottom: '100px'
   },
   map: {
     height: '800px',
-    width: '800px',
+    width: '40vw',
     margin: 'auto',
   },
   chartContainer: {
     height: '600px',
-    width: '600px',
+    width: '40vw',
     margin: 'auto',
     paddingTop: '150px'
   },
@@ -667,7 +690,21 @@ const styles = () => ({
   },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    
+    itemsContainer: {
+        display: 'block',
+        margin: 'auto',
+    },
+    map: {
+        height: '500px',
+        width: '100vw',
+    },
+    chartContainer: {
+        height: '500px',
+        width: '100vw',
+        flex: 1,
+        margin: 'auto',
+        padding: '50px',
+    },
   }
   
 });

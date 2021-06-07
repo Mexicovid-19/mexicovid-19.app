@@ -48,8 +48,8 @@ const rows = [
 
 const useStyles = makeStyles({
   table: {
-    minWidth: '50%',
-    maxWidth: 50,
+    width: '95%',
+    maxWidth: '800px',
     minHeight: '50%',
     maxHeight: 100,
     margin: 'auto',
