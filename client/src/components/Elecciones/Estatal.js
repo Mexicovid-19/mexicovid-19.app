@@ -31,7 +31,7 @@ const Estatal = ({ classes }) => {
 
     const [stateData, setStateData] = useState([])
     // const [selectedStateName, setSelectedStateName] = useState(data[0].name)
-    const [selectedState, _setSelectedState] = useState(null)
+    const [selectedState, _setSelectedState] = useState(19)
     const [hoveredState, _setHoveredState] = useState(null);
     const hoveredStateRef = useRef(hoveredState);
     const selectedStateRef = useRef(selectedState);
@@ -66,7 +66,7 @@ const Estatal = ({ classes }) => {
 
     const [hoveredStateN, _setHoveredStateN] = useState(null);
     const hoveredStateNRef = useRef(hoveredStateN);
-    const [selectedStateN, _setSelectedStateN] = useState(null);
+    const [selectedStateN, _setSelectedStateN] = useState('Nuevo León');
     const selectedStateNRef = useRef(selectedStateN);
 
     var setHoveredStateN = data => {
@@ -600,12 +600,13 @@ const Estatal = ({ classes }) => {
         });
         alianzas_estados = data[2];
         candidatos_estados = data[3];
-        console.log(candidatos_estados);
+        //console.log(candidatos_estados);
 
         //console.log(alianzas_estados);
         //console.log(data[2]);
         mergedGeoJSON = data[0];
         console.log(mergedGeoJSON);
+        setUpData(selectedState);
         getWinner();
 
         map.scrollZoom.disable();
