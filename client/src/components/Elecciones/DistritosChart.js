@@ -14,10 +14,12 @@ const DistritosChart = ({data}) => {
             borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
             arcLinkLabelsSkipAngle={10}
             arcLinkLabelsTextColor="#ffffff"
+            arcLinkLabelsDiagonalLength={0}
             arcLinkLabelsThickness={2}
             arcLinkLabelsColor={{ from: 'color' }}
             arcLabelsSkipAngle={10}
             arcLabelsTextColor={{ from: 'color', modifiers: [ [ 'darker', 2 ] ] }}
+            colors = {{datum: 'data.color'}}
             defs={[
             {
                 id: 'dots',
@@ -90,16 +92,17 @@ const DistritosChart = ({data}) => {
         ]}
         legends={[
             {
-               anchor: 'bottom',
-                direction: 'row',
+               anchor: 'bottom-left',
+                direction: 'column',
                 justify: false,
                 translateX: 0,
                 translateY: 56,
-                itemsSpacing: 0,
+                itemsSpacing: 2,
+                //itemWidth: 'data.width' || 60,
                 itemWidth: 60,
                 itemHeight: 18,
                 itemTextColor: '#999',
-                itemDirection: 'top-to-bottom',
+                itemDirection: 'left-to-right',
                 itemOpacity: 1,
                 symbolSize: 18,
                 symbolShape: 'circle',

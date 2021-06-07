@@ -25,11 +25,11 @@ import * as colors from '../../constants/colors';
 import CurulesChart from './CurulesChart';
 
 /* Data */
-import distritos_csv from './data/distritos.csv'
+import distritos_csv from './data/PREP_10052.csv'
 import distritos_geojson from "./data/distritos.geojson"
 
 
-import { STATES } from '../../constants/states'
+import { STATES_ELECCIONES } from '../../constants/states'
 
 const Distritos = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
@@ -41,8 +41,8 @@ const Distritos = ({ classes }) => {
     //mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
     mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY
     const mapContainer = useRef(null);
-    const [long, setLong] = useState(-99.28);
-    const [lat, setLat] = useState(19.39);
+    const [long, setLong] = useState(-103.695);
+    const [lat, setLat] = useState(26.724);
     const [zoom, setZoom] = useState(3.8);
 
 
@@ -63,43 +63,43 @@ const Distritos = ({ classes }) => {
             "id": "MORENA",
             "label": "MORENA",
             "value": 43,
-            "color": "hsl(210, 90%, 34%)",
+            "color": "hsl(8, 76%, 43%)",
         },
         {
             "id": "PRI",
             "label": "PRI",
             "value": 65,
-            "color": "hsl(210, 90%, 34%)",
+            "color": "hsl(135, 37%, 48%)"
         },
         {
             "id": "PES",
             "label": "PES",
             "value": 20,
-            "color": "hsl(210, 90%, 34%)",
+            "color": "hsl(288, 45%, 34%)"
         },
         {
             "id": "PRD",
             "label": "PRD",
             "value": 20,
-            "color": "hsl(210, 90%, 34%)",
+            "color": "hsl(48, 100%, 50%)"
         },
         {
             "id": "PVEM",
             "label": "PVEM",
             "value": 12,
-            "color": "hsl(210, 90%, 34%)",
+            "color": "hsl(86, 50%, 58%)"
         },
         {
             "id": "PT",
             "label": "PT",
             "value": 20,
-            "color": "hsl(210, 90%, 34%)",
+            "color": "hsl(3, 81%, 47%)"
         },
         {
             "id": "RSP",
             "label": "RSP",
             "value": 22,
-            "color": "hsl(210, 90%, 34%)",
+            "color": "rgb(0,0,255)"
         },
     ]
 
@@ -122,55 +122,188 @@ const Distritos = ({ classes }) => {
       let _districtData = []
       mergedGeoJSON.features.map(feature =>{
         if(feature.properties.distrito_id === id){
-          _districtData.push({
-            "id": "PAN",
-            "label": "PAN",
-            "value": feature.properties.PAN,
-            "color": "hsl(210, 90%, 34%)"
-          })
-          _districtData.push({
-            "id": "MORENA",
-            "label": "MORENA",
-            "value": feature.properties.MORENA,
-            "color": "hsl(8, 76%, 43%)"
-          })
-          _districtData.push({
-            "id": "PES",
-            "label": "PES",
-            "value": feature.properties.PES,
-            "color": "hsl(288, 45%, 34%)"
-          })
-          _districtData.push({
-            "id": "PRD",
-            "label": "PRD",
-            "value": feature.properties.PRD,
-            "color": "hsl(48, 100%, 50%)"
-          })
-          _districtData.push({
-            "id": "PRI",
-            "label": "PRI",
-            "value": feature.properties.PRI,
-            "color": "hsl(135, 37%, 48%)"
-          })
-          _districtData.push({
-            "id": "PT",
-            "label": "PT",
-            "value": feature.properties.PT,
-            "color": "hsl(3, 81%, 47%)"
-          })
-          _districtData.push({
-            "id": "PVEM",
-            "label": "PVEM",
-            "value": feature.properties.PVEM,
-            "color": "hsl(86, 50%, 58%)"
-          })
-          _districtData.push({
-            "id": "RSP",
-            "label": "RSP",
-            "value": feature.properties.RSP,
-            "color": "rgb(0,0,255)"
-          })
+            if(feature.properties.PAN > 0){
+                _districtData.push({
+                    "id": "PAN",
+                    "label": "PAN",
+                    "value": feature.properties.PAN,
+                    "color": "hsl(210, 90%, 34%)",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.MORENA > 0){
+                _districtData.push({
+                    "id": "MORENA",
+                    "label": "MORENA",
+                    "value": feature.properties.MORENA,
+                    "color": "hsl(8, 76%, 43%)",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.PT > 0){
+                _districtData.push({
+                    "id": "PT",
+                    "label": "PT",
+                    "value": feature.properties.PT,
+                    "color": "#FFED00",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.PES > 0){
+                _districtData.push({
+                    "id": "PES",
+                    "label": "PES",
+                    "value": feature.properties.PES,
+                    "color": "hsl(288, 45%, 34%)",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.PRD > 0){
+                _districtData.push({
+                    "id": "PRD",
+                    "label": "PRD",
+                    "value": feature.properties.PRD,
+                    "color": "hsl(48, 100%, 50%)",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.PRI > 0){
+                _districtData.push({
+                    "id": "PRI",
+                    "label": "PRI",
+                    "value": feature.properties.PRI,
+                    "color": "hsl(135, 37%, 48%)",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.PVEM > 0){
+                _districtData.push({
+                    "id": "PVEM",
+                    "label": "PVEM",
+                    "value": feature.properties.PVEM,
+                    "color": "hsl(86, 50%, 58%)",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.RSP > 0){
+                _districtData.push({
+                    "id": "RSP",
+                    "label": "RSP",
+                    "value": feature.properties.RSP,
+                    "color": "rgb(0,0,255)",
+                    "width": 60,
+                })
+            }
 
+            /* Cambiar */
+            if(feature.properties.FXM > 0){
+                _districtData.push({
+                    "id": "FXM",
+                    "label": "FXM",
+                    "value": feature.properties.FXM,
+                    "color": "hsl(86, 50%, 58%)",
+                    "width": 60,
+                })
+            }
+            if(feature.properties.CAND_IND_1 > 0){
+                _districtData.push({
+                    "id": "CAND-IND-1",
+                    "label": "CAND-IND-1",
+                    "value": feature.properties.CAND_IND_1,
+                    "color": "hsl(86, 50%, 58%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.CAND_IND_2 > 0){
+                _districtData.push({
+                    "id": "CAND-IND-2",
+                    "label": "CAND-IND-2",
+                    "value": feature.properties.CAND_IND_2,
+                    "color": "hsl(86, 50%, 58%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.CAND_IND_3 > 0){
+                _districtData.push({
+                    "id": "CAND-IND-3",
+                    "label": "CAND-IND-3",
+                    "value": feature.properties.CAND_IND_3,
+                    "color": "hsl(86, 50%, 58%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.PAN_PRI_PRD > 0){
+                _districtData.push({
+                    "id": "PAN-PRI-PRD",
+                    "label": "PAN-PRI-PRD",
+                    "value": feature.properties.PAN_PRI_PRD,
+                    "color": "hsl(210, 90%, 34%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.PAN_PRI > 0){
+                _districtData.push({
+                    "id": "PAN-PRI",
+                    "label": "PAN-PRI",
+                    "value": feature.properties.PAN_PRI,
+                    "color": "hsl(210, 90%, 34%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.PAN_PRD > 0){
+                _districtData.push({
+                    "id": "PAN-PRD",
+                    "label": "PAN-PRD",
+                    "value": feature.properties.PAN_PRD,
+                    "color": "hsl(210, 90%, 34%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.PRI_PRD > 0){
+                _districtData.push({
+                    "id": "PRI-PRD",
+                    "label": "PRI-PRD",
+                    "value": feature.properties.PRI_PRD,
+                    "color": "hsl(135, 37%, 48%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.PVEM_PT_MORENA > 0){
+                _districtData.push({
+                    "id": "PVEM-PT-MORENA",
+                    "label": "PVEM-PT-MORENA",
+                    "value": feature.properties.PVEM_PT_MORENA,
+                    "color": "hsl(86, 50%, 58%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.PVEM_PT > 0){
+                _districtData.push({
+                    "id": "PVEM-PT",
+                    "label": "PVEM-PT",
+                    "value": feature.properties.PVEM_PT,
+                    "color": "hsl(86, 50%, 58%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.PVEM_MORENA > 0){
+                _districtData.push({
+                    "id": "PVEM-MORENA",
+                    "label": "PVEM-MORENA",
+                    "value": feature.properties.PVEM_MORENA,
+                    "color": "hsl(86, 50%, 58%)",
+                    "width": 100,
+                })
+            }
+            if(feature.properties.PT_MORENA > 0){
+                _districtData.push({
+                    "id": "PT-MORENA",
+                    "label": "PT-MORENA",
+                    "value": feature.properties.PT_MORENA,
+                    "color": "#FFED00",
+                    "width": 100,
+                })
+            }
         }
       })
       //console.log(_stateData)
@@ -209,33 +342,35 @@ const Distritos = ({ classes }) => {
                 feature.properties.distrito_id = Number(prefData['distrito_id']);
                 feature.properties.dto = Number(prefData['dto']);
                 feature.properties.edo = Number(prefData['edo']);
+                /* PARTIDOS */
                 feature.properties.PAN = Number(prefData['PAN']);
                 feature.properties.PRI = Number(prefData['PRI']);
                 feature.properties.PRD = Number(prefData['PRD']);
                 feature.properties.PVEM = Number(prefData['PVEM']);
                 feature.properties.PT = Number(prefData['PT']);
-                feature.properties.MOVIMIENTO_CIUDADANO = Number(prefData['MOVIMIENTO_CIUDADANO']);
-                feature.properties.RSP = Number(prefData['RSP']);
+                feature.properties.MC = Number(prefData['MC']);
                 feature.properties.MORENA = Number(prefData['MORENA']);
                 feature.properties.PES = Number(prefData['PES']);
-                feature.properties.FM = Number(prefData['FM']);
-                feature.properties.PAN_PRI_PRD = Number(prefData['PAN_PRI_PRD']);
-                feature.properties.PAN_PRD = Number(prefData['PAN_PRD']);
-                feature.properties.PAN_PRI = Number(prefData['PAN_PRI']);
-                feature.properties.PRI_PRD = Number(prefData['PRI_PRD']);
-                feature.properties.PT_MORENA_PVEM = Number(prefData['PT_MORENA_PVEM']);
-                feature.properties.PVEM_MORENA = Number(prefData['PVEM_MORENA']);
-                feature.properties.CAND_IND_01 = Number(prefData['CAND_IND_01']);
-                feature.properties.CAND_IND_02 = Number(prefData['CAND_IND_02']);
-                feature.properties.CNR = Number(prefData['CNR']);
-                feature.properties.VN = Number(prefData['VN']);
-                feature.properties.TOTAL_VOTOS_CALCULADOS = Number(prefData['TOTAL_VOTOS_CALCULADOS']);
-                feature.properties.LISTA_NOMINAL_CASILLA = Number(prefData['LISTA_NOMINAL_CASILLA']);
-                feature.properties.URBANA = Number(prefData['URBANA']);
-                feature.properties.RURAL = Number(prefData['RURAL']);
-                feature.properties.VPM = Number(prefData['VPM']);
+                feature.properties.RSP = Number(prefData['RSP']);
+                feature.properties.FXM = Number(prefData['FXM']);
+                /* CANDIDATOS */
+                feature.properties.CAND_IND_1 = Number(prefData['CAND_IND_1']);
+                feature.properties.CAND_IND_2 = Number(prefData['CAND_IND_2']);
+                feature.properties.CAND_IND_3 = Number(prefData['CAND_IND_3']);
+
+                /* ALIANZAS */
+                feature.properties.PAN_PRI_PRD = Number(prefData['PAN-PRI-PRD']);
+                feature.properties.PAN_PRD = Number(prefData['PAN-PRD']);
+                feature.properties.PAN_PRI = Number(prefData['PAN-PRI']);
+                feature.properties.PRI_PRD = Number(prefData['PRI-PRD']);
+                feature.properties.PVEM_PT_MORENA = Number(prefData['PVEM-PT-MORENA']);
+                feature.properties.PVEM_PT = Number(prefData['PVEM-PT']);
+                feature.properties.PVEM_MORENA = Number(prefData['PVEM-MORENA']);
+                feature.properties.PT_MORENA = Number(prefData['PT-MORENA']);
                 feature.properties.JHH = Number(prefData['JHH']);
-                feature.properties.GANADOR = String(prefData['GANADOR']);
+                feature.properties.VXM = Number(prefData['VXM']);
+                feature.properties.TOTAL = Number(prefData['TOTAL']);
+
                 feature.properties.GANADOR_2018 = String(prefData['GANADOR_2018']);
                 feature.properties.GANADOR_2021 = String(prefData['GANADOR_2021']);
                 
@@ -244,6 +379,7 @@ const Distritos = ({ classes }) => {
 
             //setup geosjon
             mergedGeoJSON = data[0];
+            console.log(mergedGeoJSON)
             
             setUpData(selectedDistrict)
 
@@ -267,36 +403,48 @@ const Distritos = ({ classes }) => {
                             'match',
                             ['get', 'GANADOR_2021'],
                             'PAN',
-                            '#0055BF',
+                                '#0055BF',
                             'PRI',
-                            '#FF0018',
+                                '#FF0018',
                             'PRD',
-                            '#FFCC00',
+                                '#FFCC00',
                             'PVEM',
-                            '#A2CD40',
+                                '#A2CD40',
                             'PT',
-                            '#FFED00',
-                            'MOVIMIENTO_CIUDADANO',
-                            '#FF7A00',
+                                '#FFED00',
+                            'MC',
+                                '#FF7A00',
                             'MORENA',
-                            '#960016',
+                                '#960016',
                             'PES',
-                            '#7C2690',
-                            'FM',
-                            '#FF53A1',
+                                '#7C2690',
+                            'FXM',
+                                '#FF53A1',
                             'RSP',
-                            '#313233',
-                            'PT_MORENA_PES',
-                            '#B2242B',
-                            'PAN_PRD_MC',
-                            '#0055BF',
-                            'CAND_IND_01',
-                            '#8FA7A9',
-                            'CAND_IND_02',
-                            '#8FA7A9',
+                                '#313233',
+                            'PAN-PRI-PRD',
+                                '#0055BF',
+                            'PAN-PRI',
+                                '#0055BF',
+                            'PAN-PRD',
+                                '#0055BF',
+                            'PRI-PRD',
+                                '#FF0018',
+                            'PVEM-PT-MORENA',
+                                '#A2CD40',
+                            'PVEM-PT',
+                                '#A2CD40',
+                            'PVEM-MORENA',
+                                '#A2CD40',
+                            'CAND-IND-1',
+                                '#8FA7A9',
+                            'CAND-IND-2',
+                                '#8FA7A9',
+                            'CAND-IND-3',
+                                '#8FA7A9',
                             'Sin Ganador',
-                            '#CCCCCC',
-                            '#CCCCCC',
+                                '#CCCCCC',
+                                '#CCCCCC',
                         ],
                         'fill-outline-color': '#FFF',
                         'fill-opacity': [
@@ -324,8 +472,8 @@ const Distritos = ({ classes }) => {
                                 { hover: false }
                             );
                         }
-                        
-                        var description = `<div><h3 class="popupTitle"><strong>${STATES[e.features[0].properties.ENTIDAD-1].title || '-'}</strong></h3><h3 class="popupTitle"><strong>Distrito: ${e.features[0].properties.distrito_id || '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2021</p></div></div></div>`
+                        console.log(e.features[0])
+                        var description = `<div><h3 class="popupTitle"><strong>${STATES_ELECCIONES[e.features[0].properties.ENTIDAD-1].title || '-'}</strong></h3><h3 class="popupTitle"><strong>Distrito: ${e.features[0].properties.dto|| '-'}</strong></h3><div class="popupLogosContainer"><div><img class="popupImg" src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2018</p></div><div><img class="popupImg"  src='./img/elecciones/partidos/${e.features[0].properties.GANADOR_2018}.png'/><p class="popupYear">2021</p></div></div></div>`
                         popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
 
                         let _hoveredDistrict = e.features[0].id;
@@ -388,7 +536,7 @@ const Distritos = ({ classes }) => {
                 </div>
                 {/* pie chart */}
                 <div className={classes.outerChartContainer}>
-                    <h2 className={classes.subtitle}>Estado: {STATES[district.edo-1].title}</h2>
+                    <h2 className={classes.subtitle}>Estado: {STATES_ELECCIONES[district.edo-1].title}</h2>
                     <h2 className={classes.subtitle}>Distrito: {district.dto}</h2>
                     {districtData.length !== 0 && (
                         <div className={classes.chartContainer}>
@@ -421,11 +569,8 @@ const styles = () => ({
     margin: 'auto',
   },
   map: {
-    //height: '800px',
-    //width: '800px',
-    height: 'calc(100vh - 200px)',
-    //width: 'calc(100vw - 600px)',
-    width: '60vw',
+    height: 'calc(100vh -  148px)',
+    width: '50vw',
     margin: 'auto',
     borderBottom:  '1px solid white',
   },
@@ -437,11 +582,10 @@ const styles = () => ({
   },
   chartContainer: {
     height: '600px',
-    width: '40vw',
+    width: '50vw',
     flex: 1,
     margin: 'auto',
     padding: '50px',
-
   },
   subtitle: {
       textAlign: 'center',
@@ -452,7 +596,28 @@ const styles = () => ({
 
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    
+    itemsContainer: {
+        display: 'block',
+        margin: 'auto',
+    },
+    map: {
+        height: '500px',
+        width: '100vw',
+    },
+    outerChartContainer: {
+        padding: '10px',
+        paddingTop: '30px',
+        borderLeft:  '1px solid white',
+        borderBottom:  '1px solid white',
+        borderRight:  '1px solid white',
+    },
+    chartContainer: {
+        height: '500px',
+        width: '100vw',
+        flex: 1,
+        margin: 'auto',
+        padding: '50px',
+    },
   }
   
 });

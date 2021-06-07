@@ -22,7 +22,8 @@ import { Helmet } from 'react-helmet';
 
 const AntTabs = withStyles({
   root: {
-    //borderBottom: '1px solid #e8e8e8',
+    position: 'relative',
+    top: '-10px',
   },
   indicator: {
     backgroundColor: '#1890ff',
@@ -88,13 +89,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
-  };
-}
-
 const Elecciones = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   const [value, setValue] = React.useState(0);
@@ -104,10 +98,6 @@ const Elecciones = ({ classes }) => {
   const handleChange = (event, newValue) => {
     console.log(newValue)
     setValue(newValue);
-  };
-
-  const handleChangeIndex = (index) => {
-    setValue(index);
   };
 
   document.title = "Elecciones 2021 | MexiCOVID";  
@@ -130,7 +120,7 @@ const Elecciones = ({ classes }) => {
                 </header>
 
                 {/* select bar */}
-                <AntTabs value={value} onChange={handleChange} aria-label="ant example">
+                <AntTabs value={value} onChange={handleChange} aria-label="ant example" centered>
                   <AntTab label="Diputados federales" />
                   <AntTab label="Gubernaturas" />
                   <AntTab label="Elección Nuevo León" />
@@ -184,7 +174,12 @@ const styles = () => ({
 
     /* Mobile */
     [`@media (max-width: ${1000}px)`]: {
-        
+        barContainer: {
+        backgroundColor: colors.BLACK,
+        color: colors.WHITE,
+        display: 'block',
+        border:  '1px solid white',
+      },
     }
   
 });

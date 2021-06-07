@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   bar: {
-    backgroundColor: colors.BLACK + ' !important'
+    backgroundColor: 'rgb(34, 35, 35)' + ' !important'
   },
 
   name: {
@@ -141,13 +141,15 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: 'flex',
     justifyContent: 'space-between',
-    flex: '2'
+    //flex: '2'
   },
 
   button: {
+    marginLeft: '10px',
     '&:hover': {
       borderBottom: '1px solid',
       borderRadius: '0px',
+      
     }
   },
 
