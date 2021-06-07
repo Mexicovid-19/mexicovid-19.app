@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 
 /* Material UI */
 import { withStyles } from '@material-ui/core/styles';
-import PieChart_Estados from './PieChart_Estados.js';
-import estadosRes from './data/mx_states.json';
+import PieChart_Estados from './PieChart_Estados.js'
 import HeatMap_Estados from './HeatMap_Estados.js';
 /* Mapbox */
 import * as d3 from 'd3';
@@ -20,10 +19,8 @@ import { HeatMap } from '@nivo/heatmap';
 const Estatal = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
     var prevSelectedState = null;
-   
-
     /* Mapbox */
-    mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
     const mapContainer = useRef(null);
 
     const [long, setLong] = useState(-101.68);

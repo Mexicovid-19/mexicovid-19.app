@@ -4,7 +4,6 @@ import React from 'react'
 import { ResponsiveHeatMap } from '@nivo/heatmap'
 
 const HeatMap_Estados = ({data}) => {
-
     return(
         <ResponsiveHeatMap
         data={data}
@@ -19,15 +18,11 @@ const HeatMap_Estados = ({data}) => {
             'PES',
             'FM',
             'RSP',
-            'JHH',
-            'VXP'
         ]}
         indexBy="admin_name"
-        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-        minValue={1}
+        margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
         forceSquare={true}
-        sizeVariation={0.5}
-        axisTop={{ orient: 'top', tickSize: 5, tickPadding: 5, tickRotation: -90, legend: 'Partido', legendPosition: 'middle',legendOffset: -50 }}
+        axisTop={{ orient: 'top', tickSize: 5, tickPadding: 5, tickRotation: -90, legend: '', legendOffset: 36 }}
         axisRight={null}
         axisBottom={null}
         axisLeft={{
@@ -35,15 +30,15 @@ const HeatMap_Estados = ({data}) => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'Estado',
+            legend: 'country',
             legendPosition: 'middle',
-            legendOffset: -150
+            legendOffset: -40
         }}
-        colors="blues"
+        colors= "blues"
         cellShape="circle"
         cellOpacity={1}
-        cellBorderColor={{ from: 'color', modifiers: [ [ 'darker', '0' ] ] }}
-        labelTextColor={{ from: 'color', modifiers: [ [ 'darker', '10' ] ] }}
+        cellBorderColor={{ from: 'color', modifiers: [ [ 'darker', 0.4 ] ] }}
+        labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.8 ] ] }}
         defs={[
             {
                 id: 'lines',
@@ -60,8 +55,9 @@ const HeatMap_Estados = ({data}) => {
         motionConfig="wobbly"
         motionStiffness={80}
         motionDamping={9}
+        hoverTarget="cell"
         cellHoverOthersOpacity={0.25}
     />
-        )
+)   
 }
 export default (HeatMap_Estados);
