@@ -509,7 +509,7 @@ console.log(mergedGeoJSON);
             <div>
               <h2 className={classes.districtName}> Presidente Municipal</h2>
               <h2 className={classes.munName} >{hoveredMunNRef ? hoveredMunN : ""}</h2>
-              <p className={classes.prep}>Avance del PREP: 85%</p>
+              <p className={classes.prep}>Avance del PREP: 99%</p>
                     {districtData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <NuevoLeonChart data={districtData}/>

@@ -581,7 +581,7 @@ console.log(mergedGeoJSON);
   return (
     <div>
       <h2 className={classes.titleNL}>Elección de Gobernador en Nuevo León 2021</h2>
-      <p className={classes.prep}>Avance del PREP: 85%</p>
+      <p className={classes.prep}>Avance del PREP: 99%</p>
       <div className={classes.tabla}>
         <CustomizedTables> </CustomizedTables>
       </div>
@@ -593,7 +593,7 @@ console.log(mergedGeoJSON);
                 </div>
             <div>
               <h2 className={classes.titleGob}> Gubernatura Nuevo León</h2>
-              <p className={classes.prep}>Avance del PREP: 85%</p>
+              <p className={classes.prep}>Avance del PREP: 99%</p>
                     {gobData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <NLGobChart data={gobData}/>
