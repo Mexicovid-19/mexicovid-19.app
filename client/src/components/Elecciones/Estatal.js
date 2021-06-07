@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 
 /* Material UI */
 import { withStyles } from '@material-ui/core/styles';
-import PieChart_Estados from './PieChart_Estados.js'
+import PieChart_Estados from './PieChart_Estados.js';
+import estadosRes from './data/mx_states.json';
 import HeatMap_Estados from './HeatMap_Estados.js';
 /* Mapbox */
 import * as d3 from 'd3';
