@@ -788,9 +788,9 @@ const Estatal = ({ classes }) => {
                 <div style={{ height: "100%" }} ref={mapContainer}></div>
             </div>
             <div className = {classes.outerChartContainer}>
-               {stateData.length != 0 ? (
+                <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
+               {stateData.length !== 0 ? (
                  <div className = {classes.chartContainer}>
-                    <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
                    <PieChart_Estados data = {stateData}/>
                    <h3 className = {classes.subtitle2}>Actas Capturadas: {selectedStateActas}</h3>
                    <h3 className = {classes.subtitle2}>Participación Ciudadana: {selectedStateParticipation}</h3>
