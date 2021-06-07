@@ -637,6 +637,8 @@ const Estatal = ({ classes }) => {
                         '#c1311a',
                         'PAN_PRI_PRD_PAC_PS',
                         '#0957a5',
+                        'PAN_IND',
+                        '#0957a5',
                         'PS',
                         '#8C8CBF',
                         'Sin Ganador',
@@ -786,15 +788,19 @@ const Estatal = ({ classes }) => {
                 <div style={{ height: "100%" }} ref={mapContainer}></div>
             </div>
             <div className = {classes.outerChartContainer}>
-               {stateData.length != 0 && (
+               {stateData.length != 0 ? (
                  <div className = {classes.chartContainer}>
                     <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
                    <PieChart_Estados data = {stateData}/>
+                   <h3 className = {classes.subtitle2}>Actas Capturadas: {selectedStateActas}</h3>
+                   <h3 className = {classes.subtitle2}>Participación Ciudadana: {selectedStateParticipation}</h3>
                    </div>
+               ):(
+                <div className={classes.chartContainer}>
+                    <h3 className={classes.error}>Estados sin Elección de Gobernador</h3>
+                </div>
                )}
-               <h3 className = {classes.subtitle2}>Actas Capturadas: {selectedStateActas}</h3>
-               <h3 className = {classes.subtitle2}>Participación Ciudadana: {selectedStateParticipation}</h3>
-              </div>
+            </div>
        
         </div>
     );
@@ -844,6 +850,13 @@ const styles = () => ({
     fontSize: '20px',
     textAlign: 'center'
   },
+  error: {
+    color: colors.WHITE,
+    textAlign: 'center',
+    position: 'relative',
+    top: '100px',
+    fontSize: '30px'
+},
 
 
   /* Mobile */
