@@ -74,7 +74,7 @@ const NuevoLeon = ({ classes }) => {
   ];
 
   const setupGeoJson = () => {
-    console.table(municipios_nl)
+    //console.table(municipios_nl)
   }
 
 //DATOS PIECHART AYUN
@@ -82,80 +82,88 @@ const setUpData = (id) => {
   let _districtData = []
   mergedGeoJSON.features.map(feature =>{
     if(feature.properties.municipio == id){
-      if(feature.properties.PAN > 0){
-          _districtData.push({
-              "id": "PAN",
-              "label": "PAN",
-              "value": feature.properties.PAN,
-              "color": "hsl(210, 90%, 34%)",
-              "width": 60,
-          })
-      }
       if(feature.properties.MORENA > 0){
-          _districtData.push({
-              "id": "MORENA",
-              "label": "MORENA",
-              "value": feature.properties.MORENA,
-              "color": "hsl(8, 76%, 43%)",
-              "width": 60,
-          })
+        _districtData.push({
+          "id": "MORENA",
+          "label": "MORENA",
+          "value": feature.properties.MORENA,
+          "color": "hsl(8, 76%, 43%)"
+        })
       }
-      if(feature.properties.PT > 0){
-          _districtData.push({
-              "id": "PT",
-              "label": "PT",
-              "value": feature.properties.PT,
-              "color": "#FFED00",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PES > 0){
-          _districtData.push({
-              "id": "PES",
-              "label": "PES",
-              "value": feature.properties.PES,
-              "color": "hsl(288, 45%, 34%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PRD > 0){
-          _districtData.push({
-              "id": "PRD",
-              "label": "PRD",
-              "value": feature.properties.PRD,
-              "color": "hsl(48, 100%, 50%)",
-              "width": 60,
-          })
+      if(feature.properties.PAN > 0){
+        _districtData.push({
+          "id": "PAN",
+          "label": "PAN",
+          "value": feature.properties.PAN,
+          "color": "hsl(210, 90%, 34%)"
+        })
       }
       if(feature.properties.PRI > 0){
-          _districtData.push({
-              "id": "PRI",
-              "label": "PRI",
-              "value": feature.properties.PRI,
-              "color": "hsl(135, 37%, 48%)",
-              "width": 60,
-          })
+        _districtData.push({
+          "id": "PRI",
+          "label": "PRI",
+          "value": feature.properties.PRI,
+          "color": "hsl(135, 37%, 48%)"
+        })
       }
-      if(feature.properties.PVEM > 0){
-          _districtData.push({
-              "id": "PVEM",
-              "label": "PVEM",
-              "value": feature.properties.PVEM,
-              "color": "hsl(86, 50%, 58%)",
-              "width": 60,
-          })
+      if(feature.properties.PRD > 0){ 
+        _districtData.push({
+          "id": "PRD",
+          "label": "PRD",
+          "value": feature.properties.PRD,
+          "color": "hsl(48, 100%, 50%)"
+        })
+      }
+      if(feature.properties.PT > 0){
+        _districtData.push({
+          "id": "PT",
+          "label": "PT",
+          "value": feature.properties.PT,
+          "color": "hsl(3, 81%, 47%)"
+        })
+      }
+      if(feature.properties.MC > 0){ 
+        _districtData.push({
+          "id": "MC",
+          "label": "MC",
+          "value": feature.properties.MC,
+          "color": "hsl(25, 87%, 57%)"
+        })
+      }
+      if(feature.properties.PES > 0){
+        _districtData.push({
+          "id": "PES",
+          "label": "PES",
+          "value": feature.properties.PES,
+          "color": "hsl(288, 45%, 34%)"
+        })
       }
       if(feature.properties.RSP > 0){
-          _districtData.push({
-              "id": "RSP",
-              "label": "RSP",
-              "value": feature.properties.RSP,
-              "color": "rgb(0,0,255)",
-              "width": 60,
-          })
+        _districtData.push({
+          "id": "RSP",
+          "label": "RSP",
+          "value": feature.properties.RSP,
+          "color": "hsl(180, 1%, 19%)"
+        })
+      }
+      if(feature.properties.FXM > 0){
+        _districtData.push({
+          "id": "FXM",
+          "label": "FXM",
+          "value": feature.properties.FXM,
+          "color": "hsl(333, 78%, 65%)"
+        })
+      }
+      if(feature.properties.PVEM > 0){ 
+        _districtData.push({
+          "id": "PVEM",
+          "label": "PVEM",
+          "value": feature.properties.PVEM,
+          "color": "hsl(86, 50%, 58%)"
+        })
       }
       if(feature.properties.JHHNL > 0){
-          _districtData.push({
+        _districtData.push({
           "id": "JHHNL",
           "label": "JHHNL",
           "value": feature.properties.JHHNL,
@@ -163,40 +171,40 @@ const setUpData = (id) => {
         })
       }
       if(feature.properties.NANL > 0){
-          _districtData.push({
-            "id": "NANL",
-            "label": "NANL",
-            "value": feature.properties.NANL,
-            "color": "hsl(181, 80%, 40%)"
-          })
+        _districtData.push({
+          "id": "NANL",
+          "label": "NANL",
+          "value": feature.properties.NANL,
+          "color": "hsl(181, 80%, 40%)"
+        })
       }
       if(feature.properties.VFNL > 0){
-          _districtData.push({
-            "id": "VFNL",
-            "label": "VFNL",
-            "value": feature.properties.VFNL,
-            "color": "hsl(135, 37%, 48%)"
-          })
+        _districtData.push({
+          "id": "VFNL",
+          "label": "VFNL",
+          "value": feature.properties.VFNL,
+          "color": "hsl(135, 37%, 48%)"
+        })
       }
       if(feature.properties.CI_1 > 0){
-          _districtData.push({
-            "id": "CI_1",
-            "label": "CI_1",
-            "value": feature.properties.CI_1,
-            "color": '#8A9393'
-          })
+        _districtData.push({
+          "id": "CI_1",
+          "label": "CI_1",
+          "value": feature.properties.CI_1,
+          "color": '#8A9393'
+        })
       }
       if(feature.properties.CI_2 > 0){
-          _districtData.push({
-            "id": "CI_2",
-            "label": "CI_2",
-            "value": feature.properties.CI_2,
-            "color": '#8FA7A9'
-          })
+        _districtData.push({
+          "id": "CI_2",
+          "label": "CI_2",
+          "value": feature.properties.CI_2,
+          "color": '#8FA7A9'
+        })
       }
     }
   })
-  console.log(_districtData)
+  //console.log(_districtData)
   setDistrictData(_districtData)
 }
 //DATOS PIECHART GOB
@@ -204,105 +212,87 @@ const setUpDatos = (id) => {
   let _gobData = []
   mergedGeoJSON.features.map(feature =>{
     if(feature.properties.municipio == id){
-        if(feature.properties.PAN > 0){
-          _gobData.push({
-              "id": "PAN",
-              "label": "PAN",
-              "value": feature.properties.PAN,
-              "color": "hsl(210, 90%, 34%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.MORENA > 0){
-          _gobData.push({
-              "id": "MORENA",
-              "label": "MORENA",
-              "value": feature.properties.MORENA,
-              "color": "hsl(8, 76%, 43%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PT > 0){
-          _gobData.push({
-              "id": "PT",
-              "label": "PT",
-              "value": feature.properties.PT,
-              "color": "#FFED00",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PES > 0){
-          _gobData.push({
-              "id": "PES",
-              "label": "PES",
-              "value": feature.properties.PES,
-              "color": "hsl(288, 45%, 34%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PRD > 0){
-          _gobData.push({
-              "id": "PRD",
-              "label": "PRD",
-              "value": feature.properties.PRD,
-              "color": "hsl(48, 100%, 50%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PRI > 0){
-          _gobData.push({
-              "id": "PRI",
-              "label": "PRI",
-              "value": feature.properties.PRI,
-              "color": "hsl(135, 37%, 48%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PVEM > 0){
-          _gobData.push({
-              "id": "PVEM",
-              "label": "PVEM",
-              "value": feature.properties.PVEM,
-              "color": "hsl(86, 50%, 58%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.RSP > 0){
-          _gobData.push({
-              "id": "RSP",
-              "label": "RSP",
-              "value": feature.properties.RSP,
-              "color": "rgb(0,0,255)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.JHHNL > 0){
-          _gobData.push({
-          "id": "JHHNL",
-          "label": "JHHNL",
-          "value": feature.properties.JHHNL,
-          "color": "hsl(8, 76%, 43%)"
-        })
-      }
-      if(feature.properties.NANL > 0){
-          _gobData.push({
-            "id": "NANL",
-            "label": "NANL",
-            "value": feature.properties.NANL,
-            "color": "hsl(181, 80%, 40%)"
-          })
-      }
-      if(feature.properties.VFNL > 0){
-          _gobData.push({
-            "id": "VFNL",
-            "label": "VFNL",
-            "value": feature.properties.VFNL,
-            "color": "hsl(135, 37%, 48%)"
-          })
-      }
+      _gobData.push({
+        "id": "MORENA",
+        "label": "MORENA",
+        "value": feature.properties.MORENA,
+        "color": "hsl(8, 76%, 43%)"
+      })
+      _gobData.push({
+        "id": "PAN",
+        "label": "PAN",
+        "value": feature.properties.PAN,
+        "color": "hsl(210, 90%, 34%)"
+      })
+      _gobData.push({
+        "id": "PRI",
+        "label": "PRI",
+        "value": feature.properties.PRI,
+        "color": "hsl(135, 37%, 48%)"
+      })
+      _gobData.push({
+        "id": "PRD",
+        "label": "PRD",
+        "value": feature.properties.PRD,
+        "color": "hsl(48, 100%, 50%)"
+      })
+      _gobData.push({
+        "id": "PT",
+        "label": "PT",
+        "value": feature.properties.PT,
+        "color": "hsl(3, 81%, 47%)"
+      })
+      _gobData.push({
+        "id": "MC",
+        "label": "MC",
+        "value": feature.properties.MC,
+        "color": "hsl(25, 87%, 57%)"
+      })
+      _gobData.push({
+        "id": "PES",
+        "label": "PES",
+        "value": feature.properties.PES,
+        "color": "hsl(288, 45%, 34%)"
+      })
+      _gobData.push({
+        "id": "RSP",
+        "label": "RSP",
+        "value": feature.properties.RSP,
+        "color": "rgb(0,0,255)"
+      })
+      _gobData.push({
+        "id": "FXM",
+        "label": "FXM",
+        "value": feature.properties.FXM,
+        "color": "#FF53A1"
+      })
+      _gobData.push({
+        "id": "PVEM",
+        "label": "PVEM",
+        "value": feature.properties.PVEM,
+        "color": "hsl(86, 50%, 58%)"
+      })
+      _gobData.push({
+        "id": "JHHNL",
+        "label": "JHHNL",
+        "value": feature.properties.JHHNL,
+        "color": "#B2242B"
+      })
+      _gobData.push({
+        "id": "NANL",
+        "label": "NANL",
+        "value": feature.properties.NANL,
+        "color": "#78f2ee"
+      })
+      _gobData.push({
+        "id": "VFNL",
+        "label": "VFNL",
+        "value": feature.properties.VFNL,
+        "color": "#02a859"
+      })
     }
   })
-  console.log(_gobData)
+  //console.log(_gobData)
   setGobData(_gobData)
 }
 
@@ -355,7 +345,7 @@ setUpData(selectedDistrict)
 
 //map.scrollZoom.disable();
 
-console.log(mergedGeoJSON);
+//console.log(mergedGeoJSON);
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
@@ -408,7 +398,7 @@ console.log(mergedGeoJSON);
                   '#4da864',
                   '#CCCCCC',
               ],
-              //'fill-outline-color': '#FFF',
+              'fill-outline-color': '#FFF',
               'fill-opacity': [
                   'case',
                   ['boolean', ['feature-state', 'hover'], false],
@@ -420,7 +410,7 @@ console.log(mergedGeoJSON);
           }
       });
 
-      map.addLayer({
+      /*map.addLayer({
         'id': 'district-borders',
         'type': 'line',
         'source': 'district-source',
@@ -430,7 +420,7 @@ console.log(mergedGeoJSON);
         'line-width': 1,
         'line-opacity':0.5
         }
-        });
+        });*/
 
         var popup = new mapboxgl.Popup({
             closeButton: false,
@@ -459,7 +449,7 @@ console.log(mergedGeoJSON);
                 popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
                 
     
-                console.log(e.features)
+                //console.log(e.features)
                 map.setFeatureState(
                     { source: 'district-source', id: _hoveredDistrict,name: _hoveredMunN },
                     { party: _hoveredMunP, hover: true }
@@ -515,9 +505,9 @@ console.log(mergedGeoJSON);
             content += "Partido: " + _selectedDistrictP + "<br>";
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
 
-            console.log(e.features[0].properties.nombre);
+            //console.log(e.features[0].properties.nombre);
 
-            console.log(e.features)
+            ////console.log(e.features)
             map.setFeatureState(
                 { source: 'district-source', id: _selectedDistrict, name: _selectedDistrictN},
                 { party: _selectedDistrictP, hover: true }
@@ -549,9 +539,13 @@ console.log(mergedGeoJSON);
             <div>
               <h2 className={classes.districtName}> Presidente Municipal</h2>
               <h2 className={classes.munName} >{hoveredMunNRef ? hoveredMunN : ""}</h2>
-                    {districtData.length !== 0 && (
+                    {districtData.length !== 0 ? (
                         <div className={classes.chartContainer}>
                             <NuevoLeonChart data={districtData}/>
+                        </div>
+                    ) : (
+                        <div className={classes.chartContainer}>
+                            <h3 className={classes.error}>No hay datos disponibles por momento</h3>
                         </div>
                     )}
                 </div>
@@ -617,11 +611,12 @@ const styles = () => ({
     paddingTop: '50px',
     color: colors.WHITE
   },
-  tabla: {
-    //textAlign: 'center',
-    //fontSize: 40,
-    //fontWeight: 'bold',
-    //paddingTop: '50px'
+  error: {
+      color: colors.WHITE,
+      textAlign: 'center',
+      position: 'relative',
+      top: '100px',
+      fontSize: '30px'
   },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {

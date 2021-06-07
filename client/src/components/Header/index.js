@@ -74,6 +74,7 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/elecciones' element={
             <MenuItem><Typography variant="span" className={classes.title}>Elecciones 2021</Typography></MenuItem>
           }/>
+
           {/* <LinkElement url='/research' element={
             <MenuItem><Typography variant="span" className={classes.title}>Investigación</Typography></MenuItem>
           }/>
@@ -101,6 +102,7 @@ const Header = ({ classes, fixed=false}) => {
             <Button className={location === '/elecciones' ? classes.selectedBtn : classes.button} color="inherit">Elecciones 2021</Button>
           }/>
           {/* <LinkElement url='/research' element={
+
             <Button className={location === '/research' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>
           }/>
           <LinkElement url='/regions' element={

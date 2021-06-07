@@ -37,13 +37,13 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData(<img className="foto" src='./img/elecciones/partidos/PAN.png'/>, 'Fernando Alejandro Larrazabal Brenton', '18.18%'),
-  createData(<img className="foto" src='./img/elecciones/partidos/MC.png'/>, 'Samuel Alejandro García Sepúlveda', '38.72%'),
-  createData(<img className="foto" src='./img/elecciones/partidos/PES.png'/>, 'Carolina María Garza Guerra', '0.28%'),
+  createData(<img className="foto" src='./img/elecciones/partidos/PAN.png'/>, 'Fernando Alejandro Larrazabal Brenton', '18.27%'),
+  createData(<img className="foto" src='./img/elecciones/partidos/MC.png'/>, 'Samuel Alejandro García Sepúlveda', '36.68%'),
+  createData(<img className="foto" src='./img/elecciones/partidos/PES.png'/>, 'Carolina María Garza Guerra', '0.32%'),
   createData(<img className="foto" src='./img/elecciones/partidos/RSP.png'/>, 'Virginia Daney Siller Tristán', '0.30%'),
-  createData(<img className="foto" src='./img/elecciones/partidos/FXM.png'/>, 'Emilio Jacques Rivera', '0.62%'),
-  createData(<img className="foto" src='./img/elecciones/partidos/VFNL.png'/>, 'Adrián Emilio de la Garza Santos', '27.90%'),
-  createData(<img className="foto" src='./img/elecciones/partidos/JHHNL.png'/>, 'Clara Luz Flores Carrales', '12.30%'),
+  createData(<img className="foto" src='./img/elecciones/partidos/FXM.png'/>, 'Emilio Jacques Rivera', '0.63%'),
+  createData(<img className="foto" src='./img/elecciones/partidos/priprd.png'/>, 'Adrián Emilio de la Garza Santos', '27.96%'),
+  createData(<img className="foto" src='./img/elecciones/partidos/JHHNL.png'/>, 'Clara Luz Flores Carrales', '14.02%'),
 ];
 
 const useStyles = makeStyles({
