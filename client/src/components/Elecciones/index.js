@@ -152,7 +152,8 @@ const Elecciones = ({ classes }) => {
 const styles = () => ({
     /* Desktop */
     container: {
-      background: colors.BLACK
+      background: colors.BLACK,
+      overflow: 'hidden'
     },
     header: {
       padding: '20px'

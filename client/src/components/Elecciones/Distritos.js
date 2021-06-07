@@ -25,7 +25,7 @@ import * as colors from '../../constants/colors';
 import CurulesChart from './CurulesChart';
 
 /* Data */
-import distritos_csv from './data/PREP_10052.csv'
+import distritos_csv from './data/DF_PREP_PER_00052.csv'
 import distritos_geojson from "./data/distritos.geojson"
 
 
@@ -436,6 +436,8 @@ const Distritos = ({ classes }) => {
                                 '#A2CD40',
                             'PVEM_MORENA',
                                 '#A2CD40',
+                            'PT_MORENA_PES',
+                                '#960016',
                             'CAND_IND-1',
                                 '#8FA7A9',
                             'CAND_IND-2',
@@ -538,6 +540,7 @@ const Distritos = ({ classes }) => {
                 <div className={classes.outerChartContainer}>
                     <h2 className={classes.subtitle}>Estado: {STATES_ELECCIONES[district.edo-1].title}</h2>
                     <h2 className={classes.subtitle}>Distrito: {district.dto}</h2>
+                    <p className={classes.prep}>Prep: 85%</p>
                     {districtData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <DistritosChart data={districtData}/>
@@ -592,6 +595,10 @@ const styles = () => ({
       fontSize: 35,
       fontWeight: 'bold',
       color: colors.WHITE
+  },
+  prep: {
+      color: colors.WHITE,
+      textAlign: 'center'
   },
 
   /* Mobile */
