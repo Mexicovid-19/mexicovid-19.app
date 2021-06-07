@@ -18,7 +18,7 @@ const NuevoLeon = ({ classes }) => {
   var prevSelectedMun = null;
 
   /* Mapbox */
-  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+  mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
   const mapContainer = useRef(null);
   const [long, setLong] = useState(-100.3152586);
   const [lat, setLat] = useState(25.6802019);
