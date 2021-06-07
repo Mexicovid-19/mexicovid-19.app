@@ -339,13 +339,13 @@ const setUpDatos = (id) => {
       });
       return feature;
   });
-mergedGeoJSON = data[0];
+    mergedGeoJSON = data[0];
 
-setUpData(selectedDistrict)
+    setUpData(selectedDistrict)
 
-//map.scrollZoom.disable();
+    map.scrollZoom.disable();
 
-//console.log(mergedGeoJSON);
+    //console.log(mergedGeoJSON);
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());

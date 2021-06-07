@@ -407,11 +407,11 @@ const setUpDatos = (id) => {
       });
       return feature;
   });
-mergedGeoJSON = data[0];
+  mergedGeoJSON = data[0];
 
-setUpDatos(selectedDistrict)
+  setUpDatos(selectedDistrict)
 
-//map.scrollZoom.disable();
+  map.scrollZoom.disable();
 
   //console.log(mergedGeoJSON);
 
