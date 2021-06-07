@@ -1,4 +1,3 @@
-//PIE CHART
 // install (please make sure versions match peerDependencies)
 // yarn add @nivo/core @nivo/pie
 import React from 'react'
@@ -9,7 +8,7 @@ import { ResponsivePie } from '@nivo/pie'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-const NLGobChart = ({ data}) => (
+const PieChart_Estados = ({ data}) => (
     <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -19,21 +18,21 @@ const NLGobChart = ({ data}) => (
         activeOuterRadiusOffset={8}
         borderWidth={1}
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-        enableArcLinkLabels = {true} //{false}
+        enableArcLinkLabels = {false} //{true}
         arcLinkLabel = {d => `${d.label}`}
         arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor="#ffffff"
+        arcLinkLabelsTextColor="#333333"
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: 'color' }}
         arcLabelsSkipAngle={10}
-        arcLabelsTextColor={{ from: 'color', modifiers: [ [ 'darker', 2 ] ] }}
         arcLabelsTextColor="#ffffff"
         colors = {{datum: 'data.color'}}
         valueFormat={value =>
-            `${Number(value).toLocaleString('ru-RU', {
+            `${Number(value*100).toLocaleString('ru-RU', {
                 minimumFractionDigits: 2,
             })} %`
         }
+        animate = {false}
         defs={[
             {
                 id: 'dots',
@@ -54,68 +53,19 @@ const NLGobChart = ({ data}) => (
                 spacing: 10
             }
         ]}
-        // fill={[
-        //     {
-        //         match: {
-        //             id: 'ruby'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'c'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'go'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'python'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'scala'
-        //         },
-        //         id: 'lines'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'lisp'
-        //         },
-        //         id: 'lines'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'elixir'
-        //         },
-        //         id: 'lines'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'javascript'
-        //         },
-        //         id: 'lines'
-        //     }
-        // ]}
-        /*legends={[
+        legends={[
             {
-                anchor: 'left',
+               anchor: 'bottom-left',
                 direction: 'column',
                 justify: false,
-                 translateX: -80,
-                // translateY: -95,
-                itemsSpacing: 5,
-                itemWidth: 100,
+                translateX: 0,
+                translateY: 56,
+                itemsSpacing: 2,
+                //itemWidth: 'data.width' || 60,
+                itemWidth: 60,
                 itemHeight: 18,
-                itemTextColor: '#000000',
-                itemDirection: 'right-to-left',
+                itemTextColor: '#999',
+                itemDirection: 'left-to-right',
                 itemOpacity: 1,
                 symbolSize: 18,
                 symbolShape: 'circle',
@@ -128,8 +78,8 @@ const NLGobChart = ({ data}) => (
                     }
                 ]
             }
-        ]}*/
+        ]}
     />
 )
 
-export default NLGobChart;
+export default PieChart_Estados;

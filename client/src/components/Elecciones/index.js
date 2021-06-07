@@ -5,7 +5,6 @@ import { withStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import SwipeableViews from 'react-swipeable-views';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
 
@@ -15,7 +14,7 @@ import * as colors from '../../constants/colors';
 /* Components */
 import Header from '../Header';
 import Distritos from './Distritos'
-import Estatal from './Estatal'
+import Estatal from './Estatal2'
 import NuevoLeon from './NuevoLeon'
 import NuevoLeonAyun from './NuevoLeonAyun'
 
@@ -94,10 +93,9 @@ const Elecciones = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   const [value, setValue] = React.useState(0);
 
-  const theme = useTheme();
 
   const handleChange = (event, newValue) => {
-    console.log(newValue)
+    //console.log(newValue)
     setValue(newValue);
   };
 
@@ -136,7 +134,7 @@ const Elecciones = ({ classes }) => {
             
             {/* Estatal */}
             <TabPanel value={value} index={1}>
-              
+              <Estatal/>
             </TabPanel>
 
             {/* NuevoLeon */}

@@ -29,7 +29,11 @@ const NuevoLeonChart = ({ data}) => (
         arcLabelsTextColor={{ from: 'color', modifiers: [ [ 'darker', 2 ] ] }}
         arcLabelsTextColor="#ffffff"
         colors = {{datum: 'data.color'}}
-        //animate = {false}
+        valueFormat={value =>
+            `${Number(value).toLocaleString('ru-RU', {
+                minimumFractionDigits: 2,
+            })} %`
+        }
         defs={[
             {
                 id: 'dots',

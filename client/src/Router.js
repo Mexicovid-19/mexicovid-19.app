@@ -16,9 +16,6 @@ import { MapMunicipioContextProvider } from './contexts/MapMunicipioContext';
 import { BlogContextProvider } from './contexts/BlogContext';
 import {IndicatorContextProvider} from './contexts/IndicatorContext';
 
-/* nuevos */
-import { DistritosContextProvider } from './contexts/DistritosContext'
-
 /* CSS */
 import './css/index.css';
 
