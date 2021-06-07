@@ -269,106 +269,84 @@ const setUpDatos = (id) => {
   let _gobData = []
   mergedGeoJSON.features.map(feature =>{
     if(feature.properties.municipio == id){
-      if(feature.properties.PAN > 0){
-          _gobData.push({
-              "id": "PAN",
-              "label": "PAN",
-              "value": feature.properties.PAN,
-              "color": "hsl(210, 90%, 34%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.MORENA > 0){
-          _gobData.push({
-              "id": "MORENA",
-              "label": "MORENA",
-              "value": feature.properties.MORENA,
-              "color": "hsl(8, 76%, 43%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PT > 0){
-          _gobData.push({
-              "id": "PT",
-              "label": "PT",
-              "value": feature.properties.PT,
-              "color": "#FFED00",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PES > 0){
-          _gobData.push({
-              "id": "PES",
-              "label": "PES",
-              "value": feature.properties.PES,
-              "color": "hsl(288, 45%, 34%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PRD > 0){
-          _gobData.push({
-              "id": "PRD",
-              "label": "PRD",
-              "value": feature.properties.PRD,
-              "color": "hsl(48, 100%, 50%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PRI > 0){
-          _gobData.push({
-              "id": "PRI",
-              "label": "PRI",
-              "value": feature.properties.PRI,
-              "color": "hsl(135, 37%, 48%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.PVEM > 0){
-          _gobData.push({
-              "id": "PVEM",
-              "label": "PVEM",
-              "value": feature.properties.PVEM,
-              "color": "hsl(86, 50%, 58%)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.RSP > 0){
-          _gobData.push({
-              "id": "RSP",
-              "label": "RSP",
-              "value": feature.properties.RSP,
-              "color": "rgb(0,0,255)",
-              "width": 60,
-          })
-      }
-      if(feature.properties.JHHNL > 0){
-          _gobData.push({
-          "id": "JHHNL",
-          "label": "JHHNL",
-          "value": feature.properties.JHHNL,
-          "color": "hsl(8, 76%, 43%)"
-        })
-      }
-      if(feature.properties.NANL > 0){
-          _gobData.push({
-            "id": "NANL",
-            "label": "NANL",
-            "value": feature.properties.NANL,
-            "color": "hsl(181, 80%, 40%)"
-          })
-      }
-      if(feature.properties.VFNL > 0){
-          _gobData.push({
-            "id": "VFNL",
-            "label": "VFNL",
-            "value": feature.properties.VFNL,
-            "color": "hsl(135, 37%, 48%)"
-          })
-      }
-
-      
-      
-      
+      /*_gobData.push({
+        "id": "MORENA",
+        "label": "MORENA",
+        "value": feature.properties.MORENA,
+        "color": "hsl(8, 76%, 43%)"
+      })*/
+      _gobData.push({
+        "id": "Fernando Larrazabal",
+        "label": "PAN",
+        "value": feature.properties.PAN,
+        "color": "hsl(210, 90%, 34%)"
+      })
+      /*_gobData.push({
+        "id": "PRI",
+        "label": "PRI",
+        "value": feature.properties.PRI,
+        "color": "hsl(135, 37%, 48%)"
+      })*/
+      /*_gobData.push({
+        "id": "PRD",
+        "label": "PRD",
+        "value": feature.properties.PRD,
+        "color": "hsl(48, 100%, 50%)"
+      })*/
+      /*_gobData.push({
+        "id": "PT",
+        "label": "PT",
+        "value": feature.properties.PT,
+        "color": "hsl(3, 81%, 47%)"
+      })*/
+      _gobData.push({
+        "id": "Samuel García",
+        "label": "MC",
+        "value": feature.properties.MC,
+        "color": "hsl(25, 87%, 57%)"
+      })
+      _gobData.push({
+        "id": "Carolina Garza",
+        "label": "PES",
+        "value": feature.properties.PES,
+        "color": "hsl(288, 45%, 34%)"
+      })
+      _gobData.push({
+        "id": "Virginia Siller",
+        "label": "RSP",
+        "value": feature.properties.RSP,
+        "color": "hsl(180, 1%, 19%)"
+      })
+      _gobData.push({
+        "id": "Emilio Jacques",
+        "label": "FXM",
+        "value": feature.properties.FXM,
+        "color": "hsl(333, 78%, 65%)"
+      })
+      /*_gobData.push({
+        "id": "PVEM",
+        "label": "PVEM",
+        "value": feature.properties.PVEM,
+        "color": "hsl(86, 50%, 58%)"
+      })*/
+      _gobData.push({
+        "id": "Clara Luz Flores",
+        "label": "JHHNL",
+        "value": feature.properties.JHHNL,
+        "color": "hsl(8, 76%, 43%)"
+      })
+      /*_gobData.push({
+        "id": "NANL",
+        "label": "NANL",
+        "value": feature.properties.NANL,
+        "color": "hsl(181, 80%, 40%)"
+      })*/
+      _gobData.push({
+        "id": "Adrián de la Garza",
+        "label": "VFNL",
+        "value": feature.properties.VFNL,
+        "color": "hsl(135, 37%, 48%)"
+      })
     }
   })
   console.log(_gobData)
@@ -474,7 +452,7 @@ console.log(mergedGeoJSON);
                         '#4da864',
                         '#CCCCCC',
               ],
-              //'fill-outline-color': '#FFF',
+              'fill-outline-color': '#FFF',
               'fill-opacity': [
                   'case',
                   ['boolean', ['feature-state', 'hover'], false],
@@ -485,7 +463,7 @@ console.log(mergedGeoJSON);
               ]
           }
       });
-      map.addLayer({
+      /*map.addLayer({
         'id': 'district-borders',
         'type': 'line',
         'source': 'district-source',
@@ -495,7 +473,7 @@ console.log(mergedGeoJSON);
         'line-width': 1,
         'line-opacity':0.5
         }
-        });
+        });*/
 
         var popup = new mapboxgl.Popup({
             closeButton: false,
@@ -602,7 +580,8 @@ console.log(mergedGeoJSON);
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div>
-      <h1 className={classes.titleNL}>Nuevo León</h1>
+      <h2 className={classes.titleNL}>Elección de Gobernador en Nuevo León 2021</h2>
+      <p className={classes.prep}>Avance del PREP: 99%</p>
       <div className={classes.tabla}>
         <CustomizedTables> </CustomizedTables>
       </div>
@@ -614,6 +593,7 @@ console.log(mergedGeoJSON);
                 </div>
             <div>
               <h2 className={classes.titleGob}> Gubernatura Nuevo León</h2>
+              <p className={classes.prep}>Avance del PREP: 99%</p>
                     {gobData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <NLGobChart data={gobData}/>
@@ -633,17 +613,16 @@ const styles = () => ({
     justifyContent: 'space-evenly',
     maxWidth: 1600,
     margin: 'auto',
-    paddingTop: '100px',
-    paddingBottom: '100px'
+    paddingTop: '100px'
   },
   map: {
     height: '800px',
-    width: '40vw',
+    width: '800px',
     margin: 'auto',
   },
   chartContainer: {
     height: '600px',
-    width: '40vw',
+    width: '600px',
     margin: 'auto',
     paddingTop: '150px'
   },
@@ -676,7 +655,7 @@ const styles = () => ({
   },
   titleNL: {
     textAlign: 'center',
-    fontSize: 50,
+    fontSize: 35,
     fontWeight: 'bold',
     paddingTop: '50px',
     color: colors.WHITE
@@ -688,23 +667,13 @@ const styles = () => ({
     paddingTop: '50px',
     backgroundColor: colors.BLACK,
   },
+  prep: {
+    color: colors.WHITE,
+    textAlign: 'center'
+},
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    itemsContainer: {
-        display: 'block',
-        margin: 'auto',
-    },
-    map: {
-        height: '500px',
-        width: '100vw',
-    },
-    chartContainer: {
-        height: '500px',
-        width: '100vw',
-        flex: 1,
-        margin: 'auto',
-        padding: '50px',
-    },
+    
   }
   
 });
