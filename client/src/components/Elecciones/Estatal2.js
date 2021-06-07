@@ -805,6 +805,7 @@ const styles = () => ({
   },
   map: {
     height: 'calc(100vh -  148px)',
+    minHeight: '800px',
     width: '50vw',
     margin: 'auto',
     borderBottom:  '1px solid white',
@@ -817,6 +818,7 @@ const styles = () => ({
   },
   chartContainer: {
     height: '600px',
+    minHeight: '600px',
     width: '50vw',
     flex: 1,
     margin: 'auto',
@@ -824,7 +826,7 @@ const styles = () => ({
   },
   subtitle: {
       textAlign: 'center',
-      fontSize: 35,
+      fontSize: 25,
       fontWeight: 'bold',
       color: colors.WHITE
   },

@@ -666,14 +666,14 @@ const styles = () => ({
 },
   titleGob: {
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 25,
     fontWeight: 'bold',
     paddingTop: '50px',
     color: colors.WHITE
   },
   titleNL: {
     textAlign: 'center',
-    fontSize: 50,
+    fontSize: 30,
     fontWeight: 'bold',
     paddingTop: '50px',
     color: colors.WHITE

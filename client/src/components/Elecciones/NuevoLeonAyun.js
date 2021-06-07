@@ -585,7 +585,7 @@ const styles = () => ({
   },
   districtName: {
       textAlign: 'center',
-      fontSize: 35,
+      fontSize: 25,
       fontWeight: 'bold',
       color: colors.WHITE
   },
@@ -599,7 +599,7 @@ const styles = () => ({
 },
   titleGob: {
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 25,
     fontWeight: 'bold',
     paddingTop: '50px',
     color: colors.WHITE
