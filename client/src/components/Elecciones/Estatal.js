@@ -29,6 +29,7 @@ const Estatal = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
     document.title = "Elecciones 2021 | MexiCOVID"
     var prevSelectedState = null;
+
     /* Mapbox */
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
     const mapContainer = useRef(null);

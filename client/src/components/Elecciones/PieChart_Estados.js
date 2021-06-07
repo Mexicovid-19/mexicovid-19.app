@@ -27,6 +27,11 @@ const PieChart_Estados = ({ data}) => (
         arcLabelsSkipAngle={10}
         arcLabelsTextColor="#ffffff"
         colors = {{datum: 'data.color'}}
+        valueFormat={value =>
+            `${Number(value*100).toLocaleString('ru-RU', {
+                minimumFractionDigits: 2,
+            })} %`
+        }
         animate = {false}
         defs={[
             {

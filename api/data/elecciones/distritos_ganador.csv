@@ -1,0 +1,301 @@
+ID_DISTRITO,ID_ESTADO,DISTRITO,GANADOR,GANADOR_2018,GANADOR_2021
+101,1,1,Francisco Javier Luevano Nu�ez�,PAN_PRD_MC,PAN_PRD_MC
+102,1,2,Elba Lorena Torres Diaz ,PT_MORENA_PES,PT_MORENA_PES
+103,1,3,Martha Elisa Gonzalez Estrada�,PAN_PRD_MC,PAN_PRD_MC
+201,2,1,Jesus Salvador Minor Mora�,PT_MORENA_PES,PT_MORENA_PES
+202,2,2,Marina del Pilar Avila Olmeda ,PT_MORENA_PES,PT_MORENA_PES
+203,2,3,Armando Reyes Ledesma�,PT_MORENA_PES,PT_MORENA_PES
+204,2,4,Socorro Irma Andazola Gomez�,PT_MORENA_PES,PT_MORENA_PES
+205,2,5,Mario Ismael Moreno Gil�,PT_MORENA_PES,PT_MORENA_PES
+206,2,6,Javier Julian Casta�eda Pomposo�,PT_MORENA_PES,PT_MORENA_PES
+207,2,7,Erik Isaac Morales Elvira�,PT_MORENA_PES,PT_MORENA_PES
+208,2,8,Hector Rene Cruz Aparicio�,PT_MORENA_PES,PT_MORENA_PES
+301,3,1,Ana Ruth Garcia Grande�,PT_MORENA_PES,PT_MORENA_PES
+302,3,2,Alfredo Porras Dominguez ,PT_MORENA_PES,PT_MORENA_PES
+401,4,1,Carlos Enrique Mart�nez Ake�,PT_MORENA_PES,PT_MORENA_PES
+402,4,2,Irasema del Carmen Buenfil Diaz�,PT_MORENA_PES,PT_MORENA_PES
+501,5,1,Evaristo Lenin P�rez Rivera�,PAN_PRD_MC,PAN_PRD_MC
+502,5,2,Francisco Javier Borrego Adame�,PT_MORENA_PES,PT_MORENA_PES
+503,5,3,Melba Nelia Farias Zambrano�,PT_MORENA_PES,PT_MORENA_PES
+504,5,4,Martha Hortencia Garay Cadena�,PRI_PVEM_NA,PRI_PVEM_NA
+505,5,5,Luis Fernando Salazar Fern�ndez�,PAN_PRD_MC,PAN_PRD_MC
+506,5,6,Jose Angel Perez Hernandez�,PT_MORENA_PES,PT_MORENA_PES
+507,5,7,Fernando Donato de las Fuentes Hernandez�,PRI_PVEM_NA,PRI_PVEM_NA
+601,6,1,Claudia Valeria Ya�ez Centeno Y Cabrera ,PT_MORENA_PES,PT_MORENA_PES
+602,6,2,Indira Vizcaino Silva ,PT_MORENA_PES,PT_MORENA_PES
+701,7,1,Manuela del Carmen Obrador Narvaez ,PT_MORENA_PES,PT_MORENA_PES
+702,7,2,Humberto Pedrero Moreno�,PRI_PVEM_NA,PRI_PVEM_NA
+703,7,3,Alfredo Vazquez Vazquez ,PT_MORENA_PES,PT_MORENA_PES
+704,7,4,Roque Luis Rabelo Velasco ,PT_MORENA_PES,PT_MORENA_PES
+705,7,5,Clementina Marta Dekker Gomez ,PT_MORENA_PES,PT_MORENA_PES
+706,7,6,Zoe Alejandro Robledo Aburto�,PT_MORENA_PES,PT_MORENA_PES
+707,7,7,Miguel Prado de los Santos ,PT_MORENA_PES,PT_MORENA_PES
+708,7,8,Maria Roselia Jimenez Perez�,PT_MORENA_PES,PT_MORENA_PES
+709,7,9,Leticia Arlett Aguilar Molina ,PT_MORENA_PES,PT_MORENA_PES
+710,7,10,Juan Enrique Farrera Esponda�,PT_MORENA_PES,PT_MORENA_PES
+711,7,11,Roberto Rubio Montejo,PRI_PVEM_NA,PRI_PVEM_NA
+712,7,12,Jose Luis Elorza Flores�,PT_MORENA_PES,PT_MORENA_PES
+713,7,13,Maricruz Roblero Gordillo�,PT_MORENA_PES,PT_MORENA_PES
+801,8,1,Maria Esther Mejia Cruz�,PT_MORENA_PES,PT_MORENA_PES
+802,8,2,Teresita de Jesus Vargas Meraz ,PT_MORENA_PES,PT_MORENA_PES
+803,8,3,Claudia Elena Lastra Mu�oz ,PT_MORENA_PES,PT_MORENA_PES
+804,8,4,Ulises Garcia Soto ,PT_MORENA_PES,PT_MORENA_PES
+805,8,5,Mario Mata Carrasco�,PAN_PRD_MC,PAN_PRD_MC
+806,8,6,Miguel Alonso Riggs Baeza�,PAN_PRD_MC,PAN_PRD_MC
+807,8,7,Eraclio Rodriguez Gomez�,PT_MORENA_PES,PT_MORENA_PES
+808,8,8,Alan Jesus Falomir Saenz�,PAN_PRD_MC,PAN_PRD_MC
+809,8,9,Maria de los Angeles Gutierrez Valdez�,PAN_PRD_MC,PAN_PRD_MC
+901,9,1,Erika Vanessa del Castillo Ibarra�,PT_MORENA_PES,PT_MORENA_PES
+902,9,2,Armando Gonzalez Escoto�,PT_MORENA_PES,PT_MORENA_PES
+903,9,3,Miguel Angel Jauregui Montes de Oca�,PT_MORENA_PES,PT_MORENA_PES
+904,9,4,Jose Gerardo Rodolfo Fernandez Noro�a�,PT_MORENA_PES,PT_MORENA_PES
+905,9,5,Claudia Lopez Rayon�,PT_MORENA_PES,PT_MORENA_PES
+906,9,6,Sergio Mayer Breton�,PT_MORENA_PES,PT_MORENA_PES
+907,9,7,Beatriz Rojas Mart�nez�,PT_MORENA_PES,PT_MORENA_PES
+908,9,8,Maria de Jesus Rosete Sanchez�,PT_MORENA_PES,PT_MORENA_PES
+909,9,9,Adriana Maria Guadalupe Espinosa de los Monteros Garcia�,PT_MORENA_PES,PT_MORENA_PES
+910,9,10,Javier Ariel Hidalgo Ponce�,PT_MORENA_PES,PT_MORENA_PES
+911,9,11,Rocio Barrera Badillo�,PT_MORENA_PES,PT_MORENA_PES
+912,9,12,Maria de los Dolores Padierna Luna�,PT_MORENA_PES,PT_MORENA_PES
+913,9,13,Mario Martin Delgado Carrillo�,PT_MORENA_PES,PT_MORENA_PES
+914,9,14,Alfonso Ramirez Cuellar�,PT_MORENA_PES,PT_MORENA_PES
+915,9,15,Luis Alberto Mendoza Acevedo�,PAN_PRD_MC,PAN_PRD_MC
+916,9,16,Silvia Lorena Villavicencio Ayala ,PT_MORENA_PES,PT_MORENA_PES
+917,9,17,Francisco Javier Saldivar Camacho ,PT_MORENA_PES,PT_MORENA_PES
+918,9,18,Ana Maria Rodriguez Ruiz�,PT_MORENA_PES,PT_MORENA_PES
+919,9,19,Aleida Alavez Ruiz�,PT_MORENA_PES,PT_MORENA_PES
+920,9,20,Ana Karina Rojo Pimentel�,PT_MORENA_PES,PT_MORENA_PES
+921,9,21,Flor Ivone Morales Miranda�,PT_MORENA_PES,PT_MORENA_PES
+922,9,22,Victor Gabriel Varela Lopez�,PT_MORENA_PES,PT_MORENA_PES
+923,9,23,Pablo G�mez Alvarez�,PT_MORENA_PES,PT_MORENA_PES
+924,9,24,Guadalupe Ramos Sotelo�,PT_MORENA_PES,PT_MORENA_PES
+1001,10,1,Martha Olivia Garcia Vida�a�,PT_MORENA_PES,PT_MORENA_PES
+1002,10,2,Alma Marina Vitela Rodriguez�,PT_MORENA_PES,PT_MORENA_PES
+1003,10,3,Maribel Aguilera Chairez�,PT_MORENA_PES,PT_MORENA_PES
+1004,10,4,Jorge Alejandro Salum del Palacio�,PAN_PRD_MC,PAN_PRD_MC
+1101,11,1,Ariel Rodriguez Vazquez�,PAN_PRD_MC,PAN_PRD_MC
+1102,11,2,Ricardo Villarreal Garcia�,PAN_PRD_MC,PAN_PRD_MC
+1103,11,3,Ma de los Angeles Ayala Diaz�,PAN_PRD_MC,PAN_PRD_MC
+1104,11,4,Juan Carlos Romero Hicks�,PAN_PRD_MC,PAN_PRD_MC
+1105,11,5,Ector Jaime Ramirez Barba�,PAN_PRD_MC,PAN_PRD_MC
+1106,11,6,Ma del Pilar Ortega Martinez�,PAN_PRD_MC,PAN_PRD_MC
+1107,11,7,Karen Michel Gonzalez Marquez�,PAN_PRD_MC,PAN_PRD_MC
+1108,11,8,Justino Eugenio Arriaga Rojas�,PAN_PRD_MC,PAN_PRD_MC
+1109,11,9,Janet Melanie Murillo Chavez�,PAN_PRD_MC,PAN_PRD_MC
+1110,11,10,Lilia Villafuerte Zavala�,PAN_PRD_MC,PAN_PRD_MC
+1111,11,11,Jorge Arturo Espadas Galv�n�,PAN_PRD_MC,PAN_PRD_MC
+1112,11,12,Sarai Nu�ez Ceron�,PAN_PRD_MC,PAN_PRD_MC
+1113,11,13,Emmanuel Reyes Carmona�,PAN_PRD_MC,PAN_PRD_MC
+1114,11,14,Ma Eugenia Leticia Espinosa Rivas�,PAN_PRD_MC,PAN_PRD_MC
+1115,11,15,Sergio Fernando Ascencio Barba�,PAN_PRD_MC,PAN_PRD_MC
+1201,12,1,Victor Adolfo Mojica Wences ,PT_MORENA_PES,PT_MORENA_PES
+1202,12,2,Araceli Ocampo Manzanares�,PT_MORENA_PES,PT_MORENA_PES
+1203,12,3,Ma del Carmen Cabrera Lagunas�,PT_MORENA_PES,PT_MORENA_PES
+1204,12,4,Abelina Lopez Rodriguez ,PT_MORENA_PES,PT_MORENA_PES
+1205,12,5,Javier Manzano Salazar�,PT_MORENA_PES,PT_MORENA_PES
+1206,12,6,Raymundo Garcia Gutierrez�,PAN_PRD_MC,PAN_PRD_MC
+1207,12,7,Carlos Sanchez Barrios�,PT_MORENA_PES,PT_MORENA_PES
+1208,12,8,Ruben Cayetano Garcia�,PT_MORENA_PES,PT_MORENA_PES
+1209,12,9,Maria del Rosario Merlin Garcia�,PT_MORENA_PES,PT_MORENA_PES
+1301,13,1,Fortunato Rivera Castillo�,MORENA,MORENA
+1302,13,2,Cipriano Charrez Pedraza�,MORENA,MORENA
+1303,13,3,Sandra Simey Olvera Bautista�,MORENA,MORENA
+1304,13,4,Maria Isabel Alfaro Morales�,MORENA,MORENA
+1305,13,5,Julio Cesar Angeles Mendoza�,MORENA,MORENA
+1306,13,6,Lidia Garcia Anaya ,MORENA,MORENA
+1307,13,7,Jannet Tellez Infante�,MORENA,MORENA
+1401,14,1,Eduardo Ron Ramos�,PAN_PRD_MC,PAN_PRD_MC
+1402,14,2,Martha Estela Romo Cuellar�,PAN_PRD_MC,PAN_PRD_MC
+1403,14,3,Guadalupe Romo Romo ,PAN_PRD_MC,PAN_PRD_MC
+1404,14,4,Mario Alberto Rodriguez Carrillo�,PAN_PRD_MC,PAN_PRD_MC
+1405,14,5,Lorena del Socorro Jimenez Andrade�,PT_MORENA_PES,PT_MORENA_PES
+1406,14,6,Fabiola Raquel Guadalupe Loya Hernandez�,PAN_PRD_MC,PAN_PRD_MC
+1407,14,7,Juan Carlos Villarreal Salazar ,PAN_PRD_MC,PAN_PRD_MC
+1408,14,8,Abril Alcala Padilla�,PAN_PRD_MC,PAN_PRD_MC
+1409,14,9,Carmen Julia Prudencio Gonzalez�,PAN_PRD_MC,PAN_PRD_MC
+1410,14,10,Geraldina Isabel Herrera Vega�,PAN_PRD_MC,PAN_PRD_MC
+1411,14,11,Kehila Abigail Ku Escalante ,PAN_PRD_MC,PAN_PRD_MC
+1412,14,12,Adriana Gabriela Medina Ortiz�,PAN_PRD_MC,PAN_PRD_MC
+1413,14,13,Lourdes Celenia Contreras Gonzalez�,PAN_PRD_MC,PAN_PRD_MC
+1414,14,14,Juan Francisco Ramirez Salcido�,PAN_PRD_MC,PAN_PRD_MC
+1415,14,15,Absalon Garc�a Ochoa�,PAN_PRD_MC,PAN_PRD_MC
+1416,14,16,Laura Imelda Perez Segura ,PT_MORENA_PES,PT_MORENA_PES
+1417,14,17,Juan Martin Espinoza Cardenas�,PAN_PRD_MC,PAN_PRD_MC
+1418,14,18,Monica Almeida Lopez�,PAN_PRD_MC,PAN_PRD_MC
+1419,14,19,Alberto Esquer Gutierrez�,PAN_PRD_MC,PAN_PRD_MC
+1420,14,20,Ana Priscila Gonzalez Garcia�,PAN_PRD_MC,PAN_PRD_MC
+1501,15,1,Ricardo Aguilar Castillo�,PRI_PVEM_NA,PRI_PVEM_NA
+1502,15,2,Dionicia Vazquez Garcia�,PT_MORENA_PES,PT_MORENA_PES
+1503,15,3,Maria Teresa Maru Mejia�,PT_MORENA_PES,PT_MORENA_PES
+1504,15,4,Nelly Minerva Carrasco Godinez�,PT_MORENA_PES,PT_MORENA_PES
+1505,15,5,Francisco Favela Pe�u�uri�,PT_MORENA_PES,PT_MORENA_PES
+1506,15,6,Carolina Garcia Aguilar�,PT_MORENA_PES,PT_MORENA_PES
+1507,15,7,Xochitl Nashielly Zagal Ram�rez�,PT_MORENA_PES,PT_MORENA_PES
+1508,15,8,Gustavo Contreras Montes�,PT_MORENA_PES,PT_MORENA_PES
+1509,15,9,Eduardo Zarzosa Sanchez�,PRI_PVEM_NA,PRI_PVEM_NA
+1510,15,10,Alma Delia Navarrete Rivera�,PT_MORENA_PES,PT_MORENA_PES
+1511,15,11,Mar�a Eugenia Hern�ndez Perez�,PT_MORENA_PES,PT_MORENA_PES
+1512,15,12,Felipe Rafael Arvizu de la Luz�,PT_MORENA_PES,PT_MORENA_PES
+1513,15,13,Mar�a Elizabeth D�az Garcia�,PT_MORENA_PES,PT_MORENA_PES
+1514,15,14,Claudia Angelica Dominguez Vazquez�,PT_MORENA_PES,PT_MORENA_PES
+1515,15,15,Raul Ernesto Sanchez Barrales Zavalza�,PT_MORENA_PES,PT_MORENA_PES
+1516,15,16,Emilio Manzanilla Tellez�,PT_MORENA_PES,PT_MORENA_PES
+1517,15,17,Mar�a Guadalupe Rom�n �vila�,PT_MORENA_PES,PT_MORENA_PES
+1518,15,18,Claudia Reyes Montiel�,PAN_PRD_MC,PAN_PRD_MC
+1519,15,19,Ulises Murguia Soto�,PT_MORENA_PES,PT_MORENA_PES
+1520,15,20,Juan Pablo S�nchez Rodriguez�,PT_MORENA_PES,PT_MORENA_PES
+1521,15,21,Graciela S�nchez Ortiz�,PT_MORENA_PES,PT_MORENA_PES
+1522,15,22,Mar�a Teresa Rebeca Rosa Mora R�os�,PT_MORENA_PES,PT_MORENA_PES
+1523,15,23,David Orihuela Nava�,PT_MORENA_PES,PT_MORENA_PES
+1524,15,24,Mar�a de los �ngeles Huerta del Rio�,PT_MORENA_PES,PT_MORENA_PES
+1525,15,25,Delfino L�pez Aparicio�,PT_MORENA_PES,PT_MORENA_PES
+1526,15,26,Esmeralda de los Angeles Moreno Medina�,PT_MORENA_PES,PT_MORENA_PES
+1527,15,27,Oscar Gonzalez Ya�ez ,PT_MORENA_PES,PT_MORENA_PES
+1528,15,28,Roberto Angel Dominguez Rodriguez�,PT_MORENA_PES,PT_MORENA_PES
+1529,15,29,Martha Robles Ortiz�,PT_MORENA_PES,PT_MORENA_PES
+1530,15,30,C�sar Agust�n Hern�ndez Perez�,PT_MORENA_PES,PT_MORENA_PES
+1531,15,31,Juan �ngel Bautista Bravo�,PT_MORENA_PES,PT_MORENA_PES
+1532,15,32,Luis Enrique Martinez Ventura�,PT_MORENA_PES,PT_MORENA_PES
+1533,15,33,Vicente Alberto Onofre Vazquez�,PT_MORENA_PES,PT_MORENA_PES
+1534,15,34,Miroslava Carrillo Martinez�,PT_MORENA_PES,PT_MORENA_PES
+1535,15,35,Arturo Roberto Hernandez Tapia ,PT_MORENA_PES,PT_MORENA_PES
+1536,15,36,Cruz Juvenal Roa Sanchez�,PRI_PVEM_NA,PRI_PVEM_NA
+1537,15,37,Pedro Mario Zenteno Santaella�,PT_MORENA_PES,PT_MORENA_PES
+1538,15,38,Karla Yuritzi Almaz�n Burgos�,PT_MORENA_PES,PT_MORENA_PES
+1539,15,39,Jose Luis Montalvo Luna�,PT_MORENA_PES,PT_MORENA_PES
+1540,15,40,Marco Antonio Reyes Colin�,PT_MORENA_PES,PT_MORENA_PES
+1541,15,41,Nancy Claudia Resendiz Hernandez�,PT_MORENA_PES,PT_MORENA_PES
+1601,16,1,Feliciano Flores Anguiano�,PT_MORENA_PES,PT_MORENA_PES
+1602,16,2,Esteban Barajas Barajas�,PT_MORENA_PES,PT_MORENA_PES
+1603,16,3,Mary Carmen Bernal Martinez�,PT_MORENA_PES,PT_MORENA_PES
+1604,16,4,Armando Tejeda Cid�,PAN_PRD_MC,PAN_PRD_MC
+1605,16,5,Yolanda Guerrero Barrera�,PT_MORENA_PES,PT_MORENA_PES
+1606,16,6,Anita Sanchez Castro�,PT_MORENA_PES,PT_MORENA_PES
+1607,16,7,Gonzalo Herrera Perez�,PT_MORENA_PES,PT_MORENA_PES
+1608,16,8,Ana Lilia Guill�n Quiroz�,PT_MORENA_PES,PT_MORENA_PES
+1609,16,9,Ignacio Benjamin Campos Equihua�,PT_MORENA_PES,PT_MORENA_PES
+1610,16,10,Ivan Arturo Perez Negron Ruiz ,PT_MORENA_PES,PT_MORENA_PES
+1611,16,11,Jose Guadalupe Aguilera Rojas�,PAN_PRD_MC,PAN_PRD_MC
+1612,16,12,Francisco Javier Huacus Esquivel�,PT_MORENA_PES,PT_MORENA_PES
+1701,17,1,Alejandro Mojica Toledo ,PT_MORENA_PES,PT_MORENA_PES
+1702,17,2,Alejandra Pani Barragan�,PT_MORENA_PES,PT_MORENA_PES
+1703,17,3,Juanita Guerra Mena�,PT_MORENA_PES,PT_MORENA_PES
+1704,17,4,Jorge Arturo Arguelles Victorero�,PT_MORENA_PES,PT_MORENA_PES
+1705,17,5,Jose Guadalupe Ambrocio Gachuz�,PT_MORENA_PES,PT_MORENA_PES
+1801,18,1,Miguel Pavel Jarero Velazquez�,PT_MORENA_PES,PT_MORENA_PES
+1802,18,2,Maria Geraldine Ponce Mendez�,PT_MORENA_PES,PT_MORENA_PES
+1803,18,3,Mirtha Iliana Villalvazo Amaya�,MORENA,MORENA
+1901,19,1,Hernan Salinas Wolberg�,PAN,PAN
+1902,19,2,Maria Guillermina Alvarado Moreno�,PT_MORENA_PES,PT_MORENA_PES
+1903,19,3,Jose Luis Garcia Duque�,PT_MORENA_PES,PT_MORENA_PES
+1904,19,4,Ricardo Flores Suarez�,PAN,PAN
+1905,19,5,Santiago Gonzalez Soto�,PT_MORENA_PES,PT_MORENA_PES
+1906,19,6,Annia Sarahi Gomez Cardenas�,PAN,PAN
+1907,19,7,Laura Erika de Jesus Garza Gutierrez�,PT_MORENA_PES,PT_MORENA_PES
+1908,19,8,Ernesto Vargas Contreras�,PT_MORENA_PES,PT_MORENA_PES
+1909,19,9,Juan Francisco Espinoza Eguia�,PRI,PRI
+1910,19,10,Jose Martin Lopez Cisneros ,PAN,PAN
+1911,19,11,Ernesto Alfonso Robledo Leal�,PAN,PAN
+1912,19,12,Sandra Paola Gonzalez Casta�eda�,PT_MORENA_PES,PT_MORENA_PES
+2001,20,1,Irineo Molina Espinoza�,PT_MORENA_PES,PT_MORENA_PES
+2002,20,2,Irma Juan Carlos�,PT_MORENA_PES,PT_MORENA_PES
+2003,20,3,Margarita Garcia Garcia ,PT_MORENA_PES,PT_MORENA_PES
+2004,20,4,Azael Santiago Chepi�,PT_MORENA_PES,PT_MORENA_PES
+2005,20,5,Carol Antonio Altamirano�,PT_MORENA_PES,PT_MORENA_PES
+2006,20,6,Beatriz Dominga Perez Lopez�,PT_MORENA_PES,PT_MORENA_PES
+2007,20,7,Rosalinda Dominguez Flores�,PT_MORENA_PES,PT_MORENA_PES
+2008,20,8,Angel Benjamin Robles Montoya�,PT_MORENA_PES,PT_MORENA_PES
+2009,20,9,Maria del Carmen Bautista Pelaez�,PT_MORENA_PES,PT_MORENA_PES
+2010,20,10,Daniel Gutierrez Gutierrez�,PT_MORENA_PES,PT_MORENA_PES
+2101,21,1,Miguel Acundo Gonzalez�,PT_MORENA_PES,PT_MORENA_PES
+2102,21,2,Maiella Martha Gabriela Gomez Maldonado�,PAN_PRD_MC,PAN_PRD_MC
+2103,21,3,Claudia Baez Ruiz�,PT_MORENA_PES,PT_MORENA_PES
+2104,21,4,In�s Parra Ju�rez�,PT_MORENA_PES,PT_MORENA_PES
+2105,21,5,Lizeth Sanchez Garcia�,PT_MORENA_PES,PT_MORENA_PES
+2106,21,6,Alejandro Carvajal Hidalgo�,PT_MORENA_PES,PT_MORENA_PES
+2107,21,7,Edgar Guzm�n Valdez�,PT_MORENA_PES,PT_MORENA_PES
+2108,21,8,Julieta Kristal Vences Valencia�,PT_MORENA_PES,PT_MORENA_PES
+2109,21,9,Jose Guillermo Arechiga Santamaria�,PT_MORENA_PES,PT_MORENA_PES
+2110,21,10,Nayeli Salvatori Bojalil�,PT_MORENA_PES,PT_MORENA_PES
+2111,21,11,Benjamin Saul Huerta Corona�,PT_MORENA_PES,PT_MORENA_PES
+2112,21,12,Fernando Luis Manzanilla Prieto�,PT_MORENA_PES,PT_MORENA_PES
+2113,21,13,Hector Guillermo de Jesus Jimenez Y Meneses�,PT_MORENA_PES,PT_MORENA_PES
+2114,21,14,Nelly Maceda Carrera�,PT_MORENA_PES,PT_MORENA_PES
+2115,21,15,Alejandro Barroso Chavez ,PT_MORENA_PES,PT_MORENA_PES
+2201,22,1,Sonia Rocha Acosta�,PAN_PRD_MC,PAN_PRD_MC
+2202,22,2,Jorge Luis Montes Nieves�,PT_MORENA_PES,PT_MORENA_PES
+2203,22,3,Beatriz Silvia Robles Gutierrez�,PT_MORENA_PES,PT_MORENA_PES
+2204,22,4,Felipe Fernando Macias Olvera�,PAN_PRD_MC,PAN_PRD_MC
+2205,22,5,Ana Paola Lopez Birlain�,PAN_PRD_MC,PAN_PRD_MC
+2301,23,1,Adriana Paulina Teissier Zavala�,PT_MORENA_PES,PT_MORENA_PES
+2302,23,2,Carmen Patricia Palma Olvera�,PT_MORENA_PES,PT_MORENA_PES
+2303,23,3,Mildred Concepcion Avila Vera�,PT_MORENA_PES,PT_MORENA_PES
+2304,23,4,Jesus de los Angeles Pool Moo�,PT_MORENA_PES,PT_MORENA_PES
+2401,24,1,Ma Sara Rocha Medina�,PRI_PVEM_NA,PRI_PVEM_NA
+2402,24,2,Jose Ricardo Gallardo Cardona�,PAN_PRD_MC,PAN_PRD_MC
+2403,24,3,Oscar Bautista Villegas�,PRI_PVEM_NA,PRI_PVEM_NA
+2404,24,4,Jos� Ricardo Delsol Estrada�,PT_MORENA_PES,PT_MORENA_PES
+2405,24,5,Josefina Salazar Baez�,PAN_PRD_MC,PAN_PRD_MC
+2406,24,6,Ma. Guadalupe Almaguer Pardo�,PAN_PRD_MC,PAN_PRD_MC
+2407,24,7,Marcelino Rivera Hernandez�,PAN_PRD_MC,PAN_PRD_MC
+2501,25,1,Maximiliano Ruiz Arias�,PT_MORENA_PES,PT_MORENA_PES
+2502,25,2,Jose Jaime Montes Salas�,PT_MORENA_PES,PT_MORENA_PES
+2503,25,3,Jesus Fernando Garcia Hernandez�,PT_MORENA_PES,PT_MORENA_PES
+2504,25,4,Casimiro Zamora Valdez ,PT_MORENA_PES,PT_MORENA_PES
+2505,25,5,Nancy Yadira Santiago Marcos�,PT_MORENA_PES,PT_MORENA_PES
+2506,25,6,Olegaria Carrazco Macias�,PT_MORENA_PES,PT_MORENA_PES
+2507,25,7,Merary Villegas Sanchez�,PT_MORENA_PES,PT_MORENA_PES
+2601,26,1,Manuel de Jesus Baldenebro Arredondo ,PT_MORENA_PES,PT_MORENA_PES
+2602,26,2,Ana Gabriela Guevara Espinoza�,PT_MORENA_PES,PT_MORENA_PES
+2603,26,3,Lorenia Iveth Valles Sampedro�,PT_MORENA_PES,PT_MORENA_PES
+2604,26,4,Heriberto Marcelo Aguilar Castillo�,PT_MORENA_PES,PT_MORENA_PES
+2605,26,5,Maria Wendy Brice�o Zuloaga�,PT_MORENA_PES,PT_MORENA_PES
+2606,26,6,Carlos Javier Lamarque Cano�,PT_MORENA_PES,PT_MORENA_PES
+2607,26,7,Hildelisa Gonzalez Morales�,PT_MORENA_PES,PT_MORENA_PES
+2701,27,1,Estela Nu�ez Alvarez�,PT_MORENA_PES,PT_MORENA_PES
+2702,27,2,Teresa Burelo Cortazar�,PT_MORENA_PES,PT_MORENA_PES
+2703,27,3,Gregorio Efrain Espadas Mendez�,PT_MORENA_PES,PT_MORENA_PES
+2704,27,4,Manuel Rodriguez Gonzalez�,PT_MORENA_PES,PT_MORENA_PES
+2705,27,5,Laura Patricia Avalos Maga�a�,PT_MORENA_PES,PT_MORENA_PES
+2706,27,6,Ricardo de la Pe�a Marshall�,PT_MORENA_PES,PT_MORENA_PES
+2801,28,1,Jose Salvador Rosas Quintanilla�,PAN_PRD_MC,PAN_PRD_MC
+2802,28,2,Olga Juliana Elizondo Guerra�,PT_MORENA_PES,PT_MORENA_PES
+2803,28,3,Hector Joel Villegas Gonzalez�,PT_MORENA_PES,PT_MORENA_PES
+2804,28,4,Adriana Lozano Rodriguez�,PT_MORENA_PES,PT_MORENA_PES
+2805,28,5,Mario Alberto Ramos Tamez�,PAN_PRD_MC,PAN_PRD_MC
+2806,28,6,Vicente Javier Verastegui Ostos�,PAN_PRD_MC,PAN_PRD_MC
+2807,28,7,Erasmo Gonzalez Robledo�,PT_MORENA_PES,PT_MORENA_PES
+2808,28,8,Olga Patricia Sosa Ruiz�,PT_MORENA_PES,PT_MORENA_PES
+2809,28,9,Armando Javier Zertuche Zuani�,PT_MORENA_PES,PT_MORENA_PES
+2901,29,1,Jose de la Luz Sosa Salinas ,PT_MORENA_PES,PT_MORENA_PES
+2902,29,2,Ruben Teran Aguila�,PT_MORENA_PES,PT_MORENA_PES
+2903,29,3,Lorena Cuellar Cisneros�,PT_MORENA_PES,PT_MORENA_PES
+3001,30,1,Ricardo Garcia Escalante�,PAN_PRD_MC,PAN_PRD_MC
+3002,30,2,Jesus Guzman Aviles�,PAN_PRD_MC,PAN_PRD_MC
+3003,30,3,Maria Bertha Espinoza Segura�,PT_MORENA_PES,PT_MORENA_PES
+3004,30,4,Ricardo Francisco Exsome Zapata�,PT_MORENA_PES,PT_MORENA_PES
+3005,30,5,Raquel Bonilla Herrera�,PT_MORENA_PES,PT_MORENA_PES
+3006,30,6,Jaime Humberto Perez Bernabe�,PT_MORENA_PES,PT_MORENA_PES
+3007,30,7,Rodrigo Calderon Salas�,PT_MORENA_PES,PT_MORENA_PES
+3008,30,8,Daniela Guadalupe Griego Ceballos�,PT_MORENA_PES,PT_MORENA_PES
+3009,30,9,Carmen Mora Garcia�,PT_MORENA_PES,PT_MORENA_PES
+3010,30,10,Rafael Hernandez Villalpando�,PT_MORENA_PES,PT_MORENA_PES
+3011,30,11,Flora Tania Cruz Santos�,PT_MORENA_PES,PT_MORENA_PES
+3012,30,12,Mariana Dunyaska Garcia Rojas�,PAN_PRD_MC,PAN_PRD_MC
+3013,30,13,Eleuterio Arrieta Sanchez�,PT_MORENA_PES,PT_MORENA_PES
+3014,30,14,Carmen Medel Palma�,PT_MORENA_PES,PT_MORENA_PES
+3015,30,15,Dulce Maria Corina Villegas Guarneros�,PT_MORENA_PES,PT_MORENA_PES
+3016,30,16,Juan Martinez Flores�,PT_MORENA_PES,PT_MORENA_PES
+3017,30,17,Valentin Reyes Lopez�,PT_MORENA_PES,PT_MORENA_PES
+3018,30,18,Bonifacio Aguilar Linda�,PT_MORENA_PES,PT_MORENA_PES
+3019,30,19,Paola Tenorio Adame�,PT_MORENA_PES,PT_MORENA_PES
+3020,30,20,Eulalio Juan Rios Fararoni�,PT_MORENA_PES,PT_MORENA_PES
+3101,31,1,Jesus Carlos Vidal Peniche�,PRI_PVEM_NA,PRI_PVEM_NA
+3102,31,2,Maria Ester Alonzo Morales�,PRI_PVEM_NA,PRI_PVEM_NA
+3103,31,3,Cecilia Anunciacion Patron Laviada�,PAN_PRD_MC,PAN_PRD_MC
+3104,31,4,Jose Elias Lixa Abimerhi�,PAN_PRD_MC,PAN_PRD_MC
+3105,31,5,Juan Jose Canul Perez�,PRI_PVEM_NA,PRI_PVEM_NA
+3201,32,1,Mirna Zabeida Maldonado Tapia�,PT_MORENA_PES,PT_MORENA_PES
+3202,32,2,Lyndiana Elizabeth Bugar�n Cortes�,PRI_PVEM_NA,PRI_PVEM_NA
+3203,32,3,Alfredo Femat Ba�uelos�,PT_MORENA_PES,PT_MORENA_PES
+3204,32,4,Samuel Herrera Chavez�,PT_MORENA_PES,PT_MORENA_PES
