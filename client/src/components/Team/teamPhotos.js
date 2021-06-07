@@ -196,7 +196,7 @@ const PhotoGrid = ({classes}) => {
                     <p>Estudiante de licenciatura en Gobierno y Transformación Pública. Equipo de Información.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
-                    <p className={classes.names} align={'center'}>Juan Antonio García</p>
+                    <p className={classes.names} align={'center'}>Juan Antonio Muñoz</p>
                     {/* <img src="images/eduardovillalpan.jpg" className="img-responsive" alt="Image"/> */}
                     <p>Estudiante de licenciatura en Economía. Equipo de Información.</p>
                 </div>

@@ -1,10 +1,42 @@
 import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
 
+const getPos = (id,data) => {
+    let pos = 0;
+    data.map((item, i) => {
+        if(item.id === id){
+            pos = i;
+        }
+    })
+    return pos;
+}
+
 const CurulesChart = ({data}) => {
+    const dat = data;
     return (
         <ResponsivePie
             data={data}
+            tooltip={({ datum: { id, value, color, MR, RP } }) => (
+                <div
+                    style={{
+                        padding: 12,
+                        color,
+                        background: '#222222',
+                    }}
+                >
+                    <strong>
+                        {id}: {data[getPos(id, data)].MR} MR y {data[getPos(id, data)].RP} RP
+                    </strong>
+                </div>
+            )}
+            theme={{
+                tooltip: {
+                    container: {
+                        background: '#333',
+                    },
+                },
+            }}
+
             margin={{ top: 40, right: 80, bottom: 200, left: 80 }}
             innerRadius={0.5}
             padAngle={0.7}
@@ -21,6 +53,7 @@ const CurulesChart = ({data}) => {
             arcLabelsSkipAngle={10}
             arcLabelsTextColor={{ from: 'color', modifiers: [ [ 'darker', 2 ] ] }}
             colors = {{datum: 'data.color'}}
+            //arcLabel={function(e){return e.id + " " + e.MR + " y " + e.RP}}
             defs={[
             {
                 id: 'dots',
