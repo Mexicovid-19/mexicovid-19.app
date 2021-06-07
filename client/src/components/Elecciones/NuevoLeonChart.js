@@ -9,7 +9,6 @@ import { ResponsivePie } from '@nivo/pie'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-
 const NuevoLeonChart = ({ data}) => (
     <ResponsivePie
         data={data}
@@ -30,6 +29,9 @@ const NuevoLeonChart = ({ data}) => (
         arcLabelsTextColor="#ffffff"
         colors = {{datum: 'data.color'}}
         //animate = {false}
+        valueFormat={value =>
+            `${value} %`
+        }
         defs={[
             {
                 id: 'dots',

@@ -30,6 +30,9 @@ const NLGobChart = ({ data}) => (
         arcLabelsTextColor="#ffffff"
         colors = {{datum: 'data.color'}}
         animate = {false}
+        valueFormat={value =>
+            `${value} %`
+        }
         defs={[
             {
                 id: 'dots',
