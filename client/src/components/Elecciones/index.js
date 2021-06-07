@@ -14,7 +14,7 @@ import * as colors from '../../constants/colors';
 /* Components */
 import Header from '../Header';
 import Distritos from './Distritos'
-import Estatal from './Estatal2'
+import Estatal from './Estatal'
 import NuevoLeon from './NuevoLeon'
 import NuevoLeonAyun from './NuevoLeonAyun'
 

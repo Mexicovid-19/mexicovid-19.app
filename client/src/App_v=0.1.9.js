@@ -8,7 +8,7 @@ import Router from './Router';
 import GithubCallback from './containers/GithubCallback';
 import ReactGA from 'react-ga'
 
-import { useClearCache } from "react-clear-cache";
+//import { useClearCache } from "react-clear-cache";
 
 const theme = createMuiTheme({
   typography: {
@@ -36,7 +36,7 @@ console.log(ReactGA.initialize('G-FP731512QW'))
 const Application = () => {
   const urlParams = new URLSearchParams(window.location.search);
 
-  const { isLatestVersion, emptyCacheStorage } = useClearCache({ duration: 5000 });
+  //const { isLatestVersion, emptyCacheStorage } = useClearCache({ duration: 5000 });
 
   if (urlParams.get('code')) {
     return <GithubCallback />
