@@ -9,6 +9,12 @@ const NuevoLeon = ({ classes }) => {
   return (
         <div className={classes.container}>
             <h1>NuevoLeon</h1>
+            <h1>NuevoLeon</h1>
+            <h1>NuevoLeon</h1>
+            <h1>NuevoLeon</h1>
+            <h1>NuevoLeon</h1>
+            <h1>NuevoLeon</h1>
+            <h1>NuevoLeon</h1>
         </div>
   );
 }

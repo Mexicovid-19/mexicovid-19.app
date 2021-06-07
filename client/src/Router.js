@@ -35,7 +35,7 @@ import Research1 from './components/Research1'
 
 /* Nuevas páginas */
 import Elecciones from './components/Elecciones'
-
+import Landing from './components/Landing'
 
 /* Blog */
 import Blog from "./containers/Blog"
@@ -48,7 +48,7 @@ const Router = () => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path='/covid-19'>
             <HomeContextProvider>
                 <MapContextProvider>
                   <MapMunicipioContextProvider>
@@ -81,12 +81,11 @@ const Router = () => {
           </DistritosContextProvider>
         </Route> */}
         <Route path='/elecciones' >
-          <IndicatorContextProvider>
-            <RegionContextProvider>
-              <Elecciones/>
-            </RegionContextProvider>
-          </IndicatorContextProvider>
+            <Elecciones/>
         </Route>
+
+        {/* landing */}
+        <Route path="/" component={Landing}/>
 
         <Route exact path="/research">
             <BlogContextProvider>
