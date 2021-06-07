@@ -726,11 +726,18 @@ const Estatal = ({ classes }) => {
                         { party: _selectedStateP, hover: true }
                     );
 
+                    if(e.features[0].properties.GP === "Sin Ganador"){
+                        setStateData([])
+                        setSelectedState(_selectedState);
+                        setSelectedStateN(_selectedStateN);
+                        setSelectedStateP(_selectedStateP);
+                    } else{
+                        setUpData(_selectedState);
+                        setSelectedState(_selectedState);
+                        setSelectedStateN(_selectedStateN);
+                        setSelectedStateP(_selectedStateP);
+                    }
                     
-                    setUpData(_selectedState);
-                    setSelectedState(_selectedState);
-                    setSelectedStateN(_selectedStateN);
-                    setSelectedStateP(_selectedStateP);
                     
                 }
 
@@ -747,11 +754,21 @@ const Estatal = ({ classes }) => {
                 <div style={{ height: "100%" }} ref={mapContainer}></div>
             </div>
             <div className = {classes.outerChartContainer}>
-               {stateData.length != 0 && (
+               {stateData.length !== 0 ? (
                  <div className = {classes.chartContainer}>
                     <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
-                   <PieChart_Estados data = {stateData}/>
-                   </div>
+
+                        <PieChart_Estados data = {stateData}/>
+                   
+                </div>
+               ) : (
+                   <div className = {classes.chartContainer}>
+                        <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
+                        
+                            <h3 className={classes.error}>No hay datos disponibles por momento</h3>
+                        
+                    
+                    </div>
                )}
               </div>
        
@@ -794,6 +811,13 @@ const styles = () => ({
   chartTitle:{
     fontSize: '20px',
     textAlign: 'center'
+  },
+  error: {
+      color: colors.WHITE,
+      textAlign: 'center',
+      position: 'relative',
+      top: '100px',
+      fontSize: '30px'
   },
 
 
