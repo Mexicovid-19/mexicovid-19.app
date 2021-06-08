@@ -19,13 +19,13 @@ import './css/index.css';
 
 /* otras */
 /* import AvailableBeds from './components/AvailableBeds'; */
-import ConfirmAge from './components/ConfirmAge';
-import MunicipalitiesFollow from './components/MunicipalitiesFollow';
-import DistributionEstate from './components/DistributionEstate';
+/* import ConfirmAge from './components/ConfirmAge'; */
+/* import MunicipalitiesFollow from './components/MunicipalitiesFollow'; */
+/* import DistributionEstate from './components/DistributionEstate'; */
 /* import Simulation from './components/Simulation'; */
 /* import Uncertainty from './components/Uncertainty'; */
-import ReaperturaEco from './components/ReaperturaEco';
-import Research1 from './components/Research1'
+/* import ReaperturaEco from './components/ReaperturaEco'; */
+/* import Research1 from './components/Research1' */
 
 
 /* Nuevas páginas */
@@ -62,12 +62,12 @@ const Router = () => {
         </Route> */}
         <Route path='/methodology' component={Methodology}/>
         {/* <Route path='/availablebeds' component={AvailableBeds}/> */}
-        <Route path='/confirmage' component={ConfirmAge}/>
-        <Route path='/municipalitiesfollow' component={MunicipalitiesFollow}/>
-        <Route path='/distributionestate' component={DistributionEstate}/>
+        {/* <Route path='/confirmage' component={ConfirmAge}/> */}
+        {/* <Route path='/municipalitiesfollow' component={MunicipalitiesFollow}/> */}
+        {/* <Route path='/distributionestate' component={DistributionEstate}/> */}
         {/* <Route path='/simulation' component={Simulation}/> */}
         {/* <Route path='/uncertainty' component={Uncertainty}/> */}
-        <Route path='/reactivacion-economica' component={ReaperturaEco}/>
+        {/* <Route path='/reactivacion-economica' component={ReaperturaEco}/> */}
 
         {/* Nuevas páginas */}
         {/* <Route path='/elecciones' >
@@ -88,7 +88,7 @@ const Router = () => {
             </BlogContextProvider>
         </Route>
         <Route exact path="/research/:title/:issueNumber" component={BlogPost}/>
-        <Route path='/Research1' component={Research1}/>
+        {/* <Route path='/Research1' component={Research1}/> */}
         <Route path="*" component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
