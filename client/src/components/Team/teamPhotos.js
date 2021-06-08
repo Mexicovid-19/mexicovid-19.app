@@ -32,6 +32,11 @@ const PhotoGrid = ({classes}) => {
                     <p>Estudiante  de ingeniería en Tecnologías Computacionales. Equipo de desarrollo web.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
+                    <p className={classes.names} align={'center'}>Juan Carlos Garfias</p>
+                    {/* <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/> */}
+                    <p>Estudiante  de ingeniería en Tecnologías Computacionales, amante de las tecnologías emergentes. Equipo de desarrollo web.</p>
+                </div>
+                <div className={classes.photoGridItem}> 
                     <p className={classes.names} align={'center'}>Juan Díaz</p>
                     {/* <img src="images/lourdesBadilla.jpg" className="img-responsive" alt="Image"/> */}
                     <p>Estudiante  de ingeniería en Tecnologías Computacionales. Equipo de desarrollo web.</p>
@@ -57,11 +62,6 @@ const PhotoGrid = ({classes}) => {
                     <p className={classes.names} align={'center'}>Ángel Francisco Figueroa Rivera</p>
                     {/* <img src="images/angelfigueroa.jpg" className="img-responsive" alt="Image"/> */}
                     <p>Estudiante de Ingeniería Mecatrónica con intereses en el área de software y las aplicaciones móviles industriales. Equipo de desarrollo web.</p>
-                </div>
-                <div className={classes.photoGridItem}> 
-                    <p className={classes.names} align={'center'}>Juan Carlos Garfias</p>
-                    {/* <img src="images/juancarlosgarfias.jpg" className="img-responsive" alt="Image"/> */}
-                    <p>Estudiante  de ingeniería en Tecnologías Computacionales, amante de las tecnologías emergentes. Equipo de desarrollo web.</p>
                 </div>
                 <div className={classes.photoGridItem}> 
                     <p className={classes.names} align={'center'}>María de Lourdes Badillo Granillo</p>
