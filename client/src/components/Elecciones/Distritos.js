@@ -25,7 +25,7 @@ import * as colors from '../../constants/colors';
 import CurulesChart from './CurulesChart';
 
 /* Data */
-import distritos_csv from './data/dip_fed_PREP_PER_1139.csv'
+import distritos_csv from './data/DF_PREP_PER_1954.csv'
 import distritos_geojson from "./data/distritos.geojson"
 
 
