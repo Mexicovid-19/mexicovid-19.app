@@ -42,14 +42,14 @@ const rows = [
   createData(<img className="foto" src='./img/elecciones/partidos/PES.png'/>, 'Carolina María Garza Guerra', '0.32%'),
   createData(<img className="foto" src='./img/elecciones/partidos/RSP.png'/>, 'Virginia Daney Siller Tristán', '0.30%'),
   createData(<img className="foto" src='./img/elecciones/partidos/FXM.png'/>, 'Emilio Jacques Rivera', '0.63%'),
-  createData(<img className="foto" src='./img/elecciones/partidos/priprd.png'/>, 'Adrián Emilio de la Garza Santos', '27.96%'),
+  createData(<img className="foto" src='./img/elecciones/partidos/VFNL2.png'/>, 'Adrián Emilio de la Garza Santos', '27.96%'),
   createData(<img className="foto" src='./img/elecciones/partidos/JHHNL.png'/>, 'Clara Luz Flores Carrales', '14.02%'),
 ];
 
 const useStyles = makeStyles({
   table: {
-    width: '95%',
-    maxWidth: '800px',
+    minWidth: '50%',
+    maxWidth: 50,
     minHeight: '50%',
     maxHeight: 100,
     margin: 'auto',
