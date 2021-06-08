@@ -90,7 +90,7 @@ const Estatal = ({ classes }) => {
 
     const [hoveredStateN, _setHoveredStateN] = useState(null);
     const hoveredStateNRef = useRef(hoveredStateN);
-    const [selectedStateN, _setSelectedStateN] = useState('Nuevo León');
+    const [selectedStateN, _setSelectedStateN] = useState('Nuevo Leon');
     const selectedStateNRef = useRef(selectedStateN);
 
     var setHoveredStateN = data => {
