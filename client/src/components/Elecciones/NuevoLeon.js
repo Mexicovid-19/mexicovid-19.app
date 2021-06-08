@@ -277,12 +277,14 @@ const setUpDatos = (id) => {
         "value": feature.properties.MORENA,
         "color": "hsl(8, 76%, 43%)"
       })*/
-      _gobData.push({
-        "id": "Fernando Larrazabal",
-        "label": "PAN",
-        "value": feature.properties.PAN,
-        "color": "hsl(210, 90%, 34%)"
-      })
+      if(feature.properties.PAN > 0){
+          _gobData.push({
+              "id": "Fernando Larrazabal",
+              "label": "PAN",
+              "value": feature.properties.PAN,
+              "color": "hsl(210, 90%, 34%)"
+          })
+      }
       /*_gobData.push({
         "id": "PRI",
         "label": "PRI",
@@ -301,54 +303,66 @@ const setUpDatos = (id) => {
         "value": feature.properties.PT,
         "color": "hsl(3, 81%, 47%)"
       })*/
-      _gobData.push({
-        "id": "Samuel García",
-        "label": "MC",
-        "value": feature.properties.MC,
-        "color": "hsl(25, 87%, 57%)"
-      })
-      _gobData.push({
-        "id": "Carolina Garza",
-        "label": "PES",
-        "value": feature.properties.PES,
-        "color": "hsl(288, 45%, 34%)"
-      })
-      _gobData.push({
-        "id": "Virginia Siller",
-        "label": "RSP",
-        "value": feature.properties.RSP,
-        "color": "hsl(180, 1%, 19%)"
-      })
-      _gobData.push({
-        "id": "Emilio Jacques",
-        "label": "FXM",
-        "value": feature.properties.FXM,
-        "color": "hsl(333, 78%, 65%)"
-      })
+      if(feature.properties.MC > 0){
+          _gobData.push({
+              "id": "Samuel García",
+              "label": "MC",
+              "value": feature.properties.MC,
+              "color": "hsl(25, 87%, 57%)"
+          })
+      }
+      if(feature.properties.PES > 0){
+        _gobData.push({
+          "id": "Carolina Garza",
+          "label": "PES",
+          "value": feature.properties.PES,
+          "color": "hsl(288, 45%, 34%)"
+        })
+      }
+      if(feature.properties.RSP > 0){
+        _gobData.push({
+          "id": "Virginia Siller",
+          "label": "RSP",
+          "value": feature.properties.RSP,
+          "color": "hsl(180, 1%, 19%)"
+        })
+      }
+      if(feature.properties.FXM > 0){
+        _gobData.push({
+          "id": "Emilio Jacques",
+          "label": "FXM",
+          "value": feature.properties.FXM,
+          "color": "hsl(333, 78%, 65%)"
+        })
+      }
       /*_gobData.push({
         "id": "PVEM",
         "label": "PVEM",
         "value": feature.properties.PVEM,
         "color": "hsl(86, 50%, 58%)"
       })*/
-      _gobData.push({
-        "id": "Clara Luz Flores",
-        "label": "JHHNL",
-        "value": feature.properties.JHHNL,
-        "color": "hsl(8, 76%, 43%)"
-      })
+      if(feature.properties.JHHNL > 0){
+        _gobData.push({
+          "id": "Clara Luz Flores",
+          "label": "JHHNL",
+          "value": feature.properties.JHHNL,
+          "color": "hsl(8, 76%, 43%)"
+        })
+      }
       /*_gobData.push({
         "id": "NANL",
         "label": "NANL",
         "value": feature.properties.NANL,
         "color": "hsl(181, 80%, 40%)"
       })*/
-      _gobData.push({
-        "id": "Adrián de la Garza",
-        "label": "VFNL",
-        "value": feature.properties.VFNL,
-        "color": "hsl(135, 37%, 48%)"
-      })
+      if(feature.properties.VFNL > 0){
+        _gobData.push({
+          "id": "Adrián de la Garza",
+          "label": "VFNL",
+          "value": feature.properties.VFNL,
+          "color": "hsl(135, 37%, 48%)"
+        })
+      }
     }
   })
   console.log(_gobData)
