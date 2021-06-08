@@ -70,9 +70,9 @@ const CurulesTimeChart = ({data}) => {
                 id: 'linesPANAL',
                 type: 'patternLines',
                 background: 'inherit',
-                color: '#14b5b8',
+                color: '#FFF',
                 rotation: -45,
-                lineWidth: 6,
+                lineWidth: 3,
                 spacing: 10
             },
             {
@@ -83,7 +83,16 @@ const CurulesTimeChart = ({data}) => {
                 rotation: -45,
                 lineWidth: 6,
                 spacing: 10
-            }
+            },
+            {
+                id: 'linesPVEM',
+                type: 'patternLines',
+                background: 'inherit',
+                color: '#00BB30',
+                rotation: -45,
+                lineWidth: 6,
+                spacing: 10
+            }  
         ]}
         fill={[
             {
@@ -112,27 +121,33 @@ const CurulesTimeChart = ({data}) => {
             },
             {
                 match: {
-                    id: 'Movimiento Ciudadano'
+                    id: 'MC'
                 },
                 id: 'linesMC'
             },
             {
                 match: {
-                    id: 'Partido del Trabajo'
+                    id: 'PT'
                 },
                 id: 'linesPT'
             },
             {
                 match: {
-                    id: 'Partido Nueva Alianza'
+                    id: 'PANAL'
                 },
                 id: 'linesPANAL'
             },
             {
                 match: {
-                    id: 'Partido Encuentro Social'
+                    id: 'PES'
                 },
                 id: 'linesPES'
+            },
+            {
+                match: {
+                    id: 'PVEM'
+                },
+                id: 'linesPVEM'
             }
         ]}
         borderColor={{ from: 'color', modifiers: [ [ 'brighter', '0.5' ] ] }}
