@@ -33,9 +33,13 @@ const AntTabs = withStyles({
 const AntTab = withStyles((theme) => ({
   root: {
     textTransform: 'none',
-    minWidth: 72,
+    minWidth: 40,
     fontWeight: theme.typography.fontWeightRegular,
-    marginRight: theme.spacing(4),
+    marginRight: theme.spacing(1),
+    [theme.breakpoints.down('576')]: {
+      fontSize: '10px',
+      minWidth: 30
+    },
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',
@@ -176,11 +180,14 @@ const styles = () => ({
     /* Mobile */
     [`@media (max-width: ${1000}px)`]: {
         barContainer: {
-        backgroundColor: colors.BLACK,
-        color: colors.WHITE,
-        display: 'block',
-        border:  '1px solid white',
-      },
+          backgroundColor: colors.BLACK,
+          color: colors.WHITE,
+          display: 'block',
+          border:  '1px solid white',
+        },
+        h1: {
+          fontSize: '25px'
+        }
     }
   
 });
