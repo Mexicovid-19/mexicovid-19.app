@@ -5,27 +5,25 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
 import Team from './components/Team';
 import Methodology from './components/Methodology';
-import Regions from './components/Regions';
+/* import Regions from './components/Regions'; */
 
 /* ---- Contextos ---- */
 /* viejos */
-import { RegionContextProvider } from './contexts/RegionContext';
 import { HomeContextProvider } from './contexts/HomeContext';
 import { MapContextProvider } from './contexts/MapContext';
 import { MapMunicipioContextProvider } from './contexts/MapMunicipioContext';
 import { BlogContextProvider } from './contexts/BlogContext';
-import {IndicatorContextProvider} from './contexts/IndicatorContext';
 
 /* CSS */
 import './css/index.css';
 
 /* otras */
-import AvailableBeds from './components/AvailableBeds';
+/* import AvailableBeds from './components/AvailableBeds'; */
 import ConfirmAge from './components/ConfirmAge';
 import MunicipalitiesFollow from './components/MunicipalitiesFollow';
 import DistributionEstate from './components/DistributionEstate';
-import Simulation from './components/Simulation';
-import Uncertainty from './components/Uncertainty';
+/* import Simulation from './components/Simulation'; */
+/* import Uncertainty from './components/Uncertainty'; */
 import ReaperturaEco from './components/ReaperturaEco';
 import Research1 from './components/Research1'
 
@@ -55,20 +53,20 @@ const Router = () => {
             </HomeContextProvider>
         </Route>
         <Route path='/about-us' component={Team}/>
-        <Route path='/regions' >
+        {/* <Route path='/regions' >
           <IndicatorContextProvider>
             <RegionContextProvider>
               <Regions/>
             </RegionContextProvider>
           </IndicatorContextProvider>
-        </Route>
+        </Route> */}
         <Route path='/methodology' component={Methodology}/>
-        <Route path='/availablebeds' component={AvailableBeds}/>
+        {/* <Route path='/availablebeds' component={AvailableBeds}/> */}
         <Route path='/confirmage' component={ConfirmAge}/>
         <Route path='/municipalitiesfollow' component={MunicipalitiesFollow}/>
         <Route path='/distributionestate' component={DistributionEstate}/>
-        <Route path='/simulation' component={Simulation}/>
-        <Route path='/uncertainty' component={Uncertainty}/>
+        {/* <Route path='/simulation' component={Simulation}/> */}
+        {/* <Route path='/uncertainty' component={Uncertainty}/> */}
         <Route path='/reactivacion-economica' component={ReaperturaEco}/>
 
         {/* Nuevas páginas */}

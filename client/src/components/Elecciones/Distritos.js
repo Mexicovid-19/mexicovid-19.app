@@ -38,9 +38,6 @@ import { STATES_ELECCIONES } from '../../constants/states'
 const Distritos = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
 
-    /* context */
-    //const { distritosData, distritosGanadoresData } = useContext(DistritosContext)
-
     /* Mapbox */
     //mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
     mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY
