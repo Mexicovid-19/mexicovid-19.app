@@ -18,10 +18,12 @@ const NuevoLeon = ({ classes }) => {
   var prevSelectedMun = null;
 
   /* Mapbox */
-  mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
+  mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
   const mapContainer = useRef(null);
-  const [long, setLong] = useState(-100.3152586);
-  const [lat, setLat] = useState(25.6802019);
+  //const [long, setLong] = useState(-100.3152586);
+  //const [lat, setLat] = useState(25.6802019);
+  const [long, setLong] = useState(-99.85);
+  const [lat, setLat] = useState(25.498);
   const [zoom, setZoom] = useState(6.5);
 
   const [districtData, setDistrictData] = useState([])
@@ -57,7 +59,7 @@ const NuevoLeon = ({ classes }) => {
 
   const [hoveredMunN, _setHoveredMunN] = useState(null);
   const hoveredMunNRef = useRef(hoveredMunN);
-  const [selectedDistrictN, _setSelectedDistrictN] = useState(null);
+  const [selectedDistrictN, _setSelectedDistrictN] = useState('MONTERREY');
   const selectedDistrictNRef = useRef(selectedDistrictN);
 
   var setHoveredMunN = data => {
@@ -77,7 +79,7 @@ const NuevoLeon = ({ classes }) => {
   ];
 
   const setupGeoJson = () => {
-    //console.table(municipios_nl)
+    console.table(municipios_nl)
   }
 
 //DATOS PIECHART AYUN
@@ -171,7 +173,7 @@ const setUpData = (id) => {
       })
     }
   })
-  //console.log(_districtData)
+  console.log(_districtData)
   setDistrictData(_districtData)
 }
 
@@ -275,14 +277,12 @@ const setUpDatos = (id) => {
         "value": feature.properties.MORENA,
         "color": "hsl(8, 76%, 43%)"
       })*/
-      if(feature.properties.PAN > 0){
-          _gobData.push({
-              "id": "Fernando Larrazabal",
-              "label": "PAN",
-              "value": feature.properties.PAN,
-              "color": "hsl(210, 90%, 34%)"
-          })
-      }
+      _gobData.push({
+        "id": "Fernando Larrazabal",
+        "label": "PAN",
+        "value": feature.properties.PAN,
+        "color": "hsl(210, 90%, 34%)"
+      })
       /*_gobData.push({
         "id": "PRI",
         "label": "PRI",
@@ -301,69 +301,57 @@ const setUpDatos = (id) => {
         "value": feature.properties.PT,
         "color": "hsl(3, 81%, 47%)"
       })*/
-      if(feature.properties.MC > 0){
-          _gobData.push({
-              "id": "Samuel García",
-              "label": "MC",
-              "value": feature.properties.MC,
-              "color": "hsl(25, 87%, 57%)"
-          })
-      }
-      if(feature.properties.PES > 0){
-        _gobData.push({
-          "id": "Carolina Garza",
-          "label": "PES",
-          "value": feature.properties.PES,
-          "color": "hsl(288, 45%, 34%)"
-        })
-      }
-      if(feature.properties.RSP > 0){
-        _gobData.push({
-          "id": "Virginia Siller",
-          "label": "RSP",
-          "value": feature.properties.RSP,
-          "color": "hsl(180, 1%, 19%)"
-        })
-      }
-      if(feature.properties.FXM > 0){
-        _gobData.push({
-          "id": "Emilio Jacques",
-          "label": "FXM",
-          "value": feature.properties.FXM,
-          "color": "hsl(333, 78%, 65%)"
-        })
-      }
+      _gobData.push({
+        "id": "Samuel García",
+        "label": "MC",
+        "value": feature.properties.MC,
+        "color": "hsl(25, 87%, 57%)"
+      })
+      _gobData.push({
+        "id": "Carolina Garza",
+        "label": "PES",
+        "value": feature.properties.PES,
+        "color": "hsl(288, 45%, 34%)"
+      })
+      _gobData.push({
+        "id": "Virginia Siller",
+        "label": "RSP",
+        "value": feature.properties.RSP,
+        "color": "hsl(180, 1%, 19%)"
+      })
+      _gobData.push({
+        "id": "Emilio Jacques",
+        "label": "FXM",
+        "value": feature.properties.FXM,
+        "color": "hsl(333, 78%, 65%)"
+      })
       /*_gobData.push({
         "id": "PVEM",
         "label": "PVEM",
         "value": feature.properties.PVEM,
         "color": "hsl(86, 50%, 58%)"
       })*/
-      if(feature.properties.JHHNL > 0){
-        _gobData.push({
-          "id": "Clara Luz Flores",
-          "label": "JHHNL",
-          "value": feature.properties.JHHNL,
-          "color": "hsl(8, 76%, 43%)"
-        })
-      }
+      _gobData.push({
+        "id": "Clara Luz Flores",
+        "label": "JHHNL",
+        "value": feature.properties.JHHNL,
+        "color": "hsl(8, 76%, 43%)"
+      })
       /*_gobData.push({
         "id": "NANL",
         "label": "NANL",
         "value": feature.properties.NANL,
         "color": "hsl(181, 80%, 40%)"
       })*/
-      if(feature.properties.VFNL > 0){
-        _gobData.push({
-          "id": "Adrián de la Garza",
-          "label": "VFNL",
-          "value": feature.properties.VFNL,
-          "color": "hsl(135, 37%, 48%)"
-        })
-      }
+      _gobData.push({
+        "id": "Adrián de la Garza",
+        "label": "VFNL",
+        "value": feature.properties.VFNL,
+        "color": "hsl(135, 37%, 48%)"
+      })
     }
   })
-  //console.log(_gobData)
+  console.log(_gobData)
   setGobData(_gobData)
 }
 
@@ -383,7 +371,7 @@ const setUpDatos = (id) => {
         //style: "mapbox://styles/mapbox/light-v10",
         center: [long, lat],
         zoom: zoom,
-        dragPan: false
+        //dragPan: false
     });
     data[0].features = data[0].features.map(feature => {
       data[1].forEach(prefData => {
@@ -407,13 +395,13 @@ const setUpDatos = (id) => {
       });
       return feature;
   });
-  mergedGeoJSON = data[0];
+mergedGeoJSON = data[0];
 
-  setUpDatos(selectedDistrict)
+setUpDatos(selectedDistrict)
 
-  map.scrollZoom.disable();
+//map.scrollZoom.disable();
 
-  //console.log(mergedGeoJSON);
+console.log(mergedGeoJSON);
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
@@ -496,7 +484,7 @@ const setUpDatos = (id) => {
         });
 
         map.on('mousemove', 'district-layer', function (e) {
-            map.getCanvas().style.cursor = 'pointer';
+            //map.getCanvas().style.cursor = 'pointer';
             if (e.features.length > 0) {
                 if (hoveredDistrictRef.current && hoveredDistrictRef.current > -1 && selectedDistrictRef.current != hoveredDistrictRef.current) {
 
@@ -515,7 +503,7 @@ const setUpDatos = (id) => {
                 content += "Partido: " + _hoveredMunP + "<br>";
                 popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
                 
-                //console.log(e.features)
+                console.log(e.features)
                 map.setFeatureState(
                     { source: 'district-source', id: _hoveredDistrict,name: _hoveredMunN },
                     { party: _hoveredMunP, hover: true }
@@ -569,9 +557,9 @@ const setUpDatos = (id) => {
             content += "Partido: " + _selectedDistrictP + "<br>";
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
 
-            //console.log(e.features[0].properties.nombre);
+            console.log(e.features[0].properties.nombre);
 
-            //console.log(e.features)
+            console.log(e.features)
             map.setFeatureState(
                 { source: 'district-source', id: _selectedDistrict, name: _selectedDistrictN},
                 { party: _selectedDistrictP, hover: true }
@@ -595,10 +583,11 @@ const setUpDatos = (id) => {
   return (
     <div>
       <h2 className={classes.titleNL}>Elección de Gobernador en Nuevo León 2021</h2>
-      <p className={classes.prep}>Avance del PREP: 99%</p>
+      <p className={classes.prep}>Fuente: PREP de la CENL, avance al 100%</p>
       <div className={classes.tabla}>
         <CustomizedTables> </CustomizedTables>
       </div>
+      <div> <h2 className={classes.titleGob}> Elección de Gobernador de Nuevo León por Municipio</h2> </div>
         <div className={classes.itemsContainer}>
             <div className="district-map-wrapper">
                     <div id="districtDetailMap" className={classes.map}>
@@ -606,14 +595,10 @@ const setUpDatos = (id) => {
                     </div>
                 </div>
             <div>
-              <h2 className={classes.titleGob}> Gubernatura Nuevo León</h2>
-                    {gobData.length !== 0 ? (
+            <h2 className={classes.munName} >{selectedDistrictN}</h2>
+                    {gobData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <NLGobChart data={gobData}/>
-                        </div>
-                    ) : (
-                        <div className={classes.chartContainer}>
-                            <h3 className={classes.error}>No hay datos disponibles por momento</h3>
                         </div>
                     )}
                 </div>
@@ -630,19 +615,22 @@ const styles = () => ({
     justifyContent: 'space-evenly',
     maxWidth: 1600,
     margin: 'auto',
-    paddingTop: '100px',
-    paddingBottom: '100px'
+    paddingTop: '100px'
   },
   map: {
-    height: '800px',
-    width: '40vw',
+    height: '700px',
+    width: '30vw',
     margin: 'auto',
+    borderBottom: '1px solid white',
+    borderLeft: '1px solid white',
+    borderTop: '1px solid white',
+    borderRight: '1px solid white',
   },
   chartContainer: {
     height: '600px',
-    width: '40vw',
+    width: '600px',
     margin: 'auto',
-    paddingTop: '150px'
+    paddingTop: '20px',
   },
   chartContainer2: {
     height: '600px',
@@ -662,21 +650,28 @@ const styles = () => ({
     fontWeight: 'bold',
     paddingTop: '50px',
     margin: 'auto',
-    color: colors.WHITE
+    color: colors.WHITE,
 },
   titleGob: {
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: 35,
     fontWeight: 'bold',
     paddingTop: '50px',
-    color: colors.WHITE
+    color: colors.WHITE,
+    borderBottom: '1px solid white',
+    borderLeft: '1px solid white',
+    borderTop: '1px solid white',
+    borderRight: '1px solid white',
   },
   titleNL: {
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: 'bold',
     paddingTop: '50px',
-    color: colors.WHITE
+    color: colors.WHITE,
+    borderLeft: '1px solid white',
+    borderTop: '1px solid white',
+    borderRight: '1px solid white',
   },
   tabla: {
     textAlign: 'center',
@@ -684,35 +679,28 @@ const styles = () => ({
     fontWeight: 'bold',
     paddingTop: '50px',
     backgroundColor: colors.BLACK,
-  },
-  error: {
-      color: colors.WHITE,
-      textAlign: 'center',
-      position: 'relative',
-      top: '100px',
-      fontSize: '30px'
+    borderBottom: '1px solid white',
+    borderLeft: '1px solid white',
+    borderTop: '1px solid white',
+    borderRight: '1px solid white',
   },
   prep: {
-      color: colors.WHITE,
-      textAlign: 'center'
-  },
+    color: colors.WHITE,
+    textAlign: 'center',
+    borderBottom: '1px solid white',
+    borderLeft: '1px solid white',
+    borderRight: '1px solid white',
+},
+error: {
+  color: colors.WHITE,
+  textAlign: 'center',
+  position: 'relative',
+  top: '100px',
+  fontSize: '30px'
+},
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    itemsContainer: {
-        display: 'block',
-        margin: 'auto',
-    },
-    map: {
-        height: '500px',
-        width: '100vw',
-    },
-    chartContainer: {
-        height: '500px',
-        width: '100vw',
-        flex: 1,
-        margin: 'auto',
-        padding: '50px',
-    },
+    
   }
   
 });
