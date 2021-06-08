@@ -24,9 +24,13 @@ import * as colors from '../../constants/colors';
 /* Components */
 import CurulesChart from './CurulesChart';
 
+/* Time Chart */
+import  CurulesTimeChart from './CurulesTime'
+
 /* Data */
 import distritos_csv from './data/DF_PREP_PER_1954.csv'
 import distritos_geojson from "./data/distritos.geojson"
+import curulesTime_json from './data/curulesTime.json'
 
 
 import { STATES_ELECCIONES } from '../../constants/states'
@@ -573,6 +577,17 @@ const Distritos = ({ classes }) => {
                     <div className={classes.chartContainer}>
                         <CurulesChart data={curules}/>
                     </div>
+        
+                )}
+            </div>
+
+            {/* curules  chart */}
+            <div className={classes.outerChartContainer}>
+            <h2 className={classes.subtitle}>Número de diputados en el Congreso por partido (1997-2021; totales por año suman 500 curules)</h2>
+            {districtData.length !== 0 && (
+                <div className={classes.chartContainer}>
+                    <CurulesTimeChart data={curulesTime_json}/>
+                </div>
         
                 )}
             </div>
