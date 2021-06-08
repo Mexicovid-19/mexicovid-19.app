@@ -340,13 +340,13 @@ const setUpDatos = (id) => {
       });
       return feature;
   });
-mergedGeoJSON = data[0];
+    mergedGeoJSON = data[0];
 
-setUpData(selectedDistrict)
+    setUpData(selectedDistrict)
 
-//map.scrollZoom.disable();
+    map.scrollZoom.disable();
 
-console.log(mergedGeoJSON);
+    console.log(mergedGeoJSON);
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
@@ -576,7 +576,7 @@ const styles = () => ({
   },
   chartContainer: {
     height: '600px',
-    width: '600px',
+    width: '40vw',
     margin: 'auto',
     paddingTop: '20px'
   },
@@ -630,7 +630,27 @@ const styles = () => ({
 },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    
+    itemsContainer: {
+        display: 'block',
+        margin: 'auto',
+    },
+    map: {
+        height: '500px',
+        width: '100vw',
+    },
+    chartContainer: {
+        height: '500px',
+        width: '100vw',
+        flex: 1,
+        margin: 'auto',
+        padding: '50px 10px',
+    },
+    titleNL: {
+      fontSize: 20
+    },
+    munName: {
+      fontSize: 20
+    }
   }
   
 });

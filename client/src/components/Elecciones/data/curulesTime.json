@@ -25,7 +25,7 @@
   ]
  },
  {
-  "id": "Movimiento Ciudadano",
+  "id": "MC",
   "data":[
    {    
      "x": 1997,
@@ -100,7 +100,7 @@
   ]
 },
 {
-  "id": "Partido Encuentro Social",
+  "id": "PES",
   "data":[
    {
      "x": 1997,
@@ -125,7 +125,7 @@
  ]
 },
 {
-  "id": "Partido del Trabajo",
+  "id": "PT",
   "data":[
    {    
      "x": 1997,
@@ -150,7 +150,7 @@
  ]
  },
  {
-   "id": "Independiente",
+   "id": "Indep",
    "data":[
     {
       "x": 1997,
@@ -175,7 +175,7 @@
   ]
  },
  {
-   "id": "Partido Nueva Alianza",
+   "id": "PANAL",
    "data":[
     {
       "x": 1997,

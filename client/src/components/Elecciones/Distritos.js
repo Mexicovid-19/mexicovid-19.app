@@ -639,7 +639,8 @@ const styles = () => ({
         margin: 'auto',
     },
     map: {
-        height: '500px',
+        minHeight: '400px',
+        height: '400px',
         width: '100vw',
     },
     outerChartContainer: {
@@ -654,7 +655,10 @@ const styles = () => ({
         width: '100vw',
         flex: 1,
         margin: 'auto',
-        padding: '50px',
+        padding: '50px 10px',
+    },
+    subtitle: {
+      fontSize: 20,
     },
   }
   

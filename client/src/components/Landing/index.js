@@ -23,7 +23,7 @@ function Landing({ classes }) {
                     <h1 className={classes.title}>Mexicovid-19</h1>
 
                     {/* Description */}
-                    <h3 className={classes.description}>La pandemia motivo que un grupo de estudiantes y profesores del Tecnológico de Monterrey desarrollaran una plataforma que permitiera informar la evolución temporal y geográfica de la pandemia de Covid19 en México. Hoy que México vive un proceso electoral histórico, esta plataforma permite también difundir los resultados que los institutos electorales locales y el INE empiezan a difundir de la elección del 6 de junio del 2021.</h3>
+                    <h3 className={classes.description}>La pandemia motivó que un grupo de estudiantes y profesores del Tecnológico de Monterrey desarrollaran una plataforma que permitiera informar la evolución temporal y geográfica de la pandemia de Covid19 en México. Hoy que México vive un proceso electoral histórico, esta plataforma permite también difundir los resultados que los institutos electorales locales y el INE empiezan a difundir de la elección del 6 de junio del 2021.</h3>
 
                     {/* Botones */}
                     <div className={classes.btnsContainer}>
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     overlay: {
         width: '100vw',
         height: '100vh',
-        backgroundImage: `linear-gradient(to bottom, rgba(34, 35, 35,1)10%, rgba(34, 35, 35,0.9)100%)`,
+        backgroundImage: `linear-gradient(to bottom, rgba(34, 35, 35,1)10%, rgba(34, 35, 35,0.85)100%)`,
         color: 'white',
     },
     title: {
@@ -104,11 +104,23 @@ const useStyles = makeStyles((theme) => ({
   },
 
   [`@media (max-width: ${600}px)`]: {
+    background: {
+        minHeight: '100vh',
+    },
+    overlay: {
+        minHeight: '100vh',
+        paddingBottom: '75px'
+    },
     title: {
         fontSize: '45px',
     },
+    description: {
+        fontSize: '14px'
+    },
     container: {
         position: 'relative',
+        top: '300px',
+        padding: '75px 10px 0px 10px'
     },
     btnsContainer: {
         display: 'block',
@@ -116,6 +128,11 @@ const useStyles = makeStyles((theme) => ({
     },
     btn: {
         marginBottom: '20px'
+    },
+  },
+  [`@media (max-width: ${400}px)`]: {
+    title: {
+        fontSize: '35px',
     },
   }
 }));

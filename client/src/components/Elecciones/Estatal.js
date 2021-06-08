@@ -44,9 +44,9 @@ const Estatal = ({ classes }) => {
     const [hoveredState, _setHoveredState] = useState(null);
     const hoveredStateRef = useRef(hoveredState);
     const selectedStateRef = useRef(selectedState);
-    const [selectedStateParticipation, _setSelectedStateParticipation] = useState(19)
+    const [selectedStateParticipation, _setSelectedStateParticipation] = useState('50.92%')
     const selectedStateParticipacionRef = useRef(selectedStateParticipation);
-    const [selectedStateActas, _setSelectedStateActas] = useState(19)
+    const [selectedStateActas, _setSelectedStateActas] = useState('100.00%')
     const selectedStateActasRef = useRef(selectedStateActas);
     var mergedGeoJSON;
     var resultados;
@@ -90,7 +90,7 @@ const Estatal = ({ classes }) => {
 
     const [hoveredStateN, _setHoveredStateN] = useState(null);
     const hoveredStateNRef = useRef(hoveredStateN);
-    const [selectedStateN, _setSelectedStateN] = useState('Nuevo León');
+    const [selectedStateN, _setSelectedStateN] = useState('Nuevo Leon');
     const selectedStateNRef = useRef(selectedStateN);
 
     var setHoveredStateN = data => {
@@ -488,12 +488,13 @@ const Estatal = ({ classes }) => {
                     "ID_ESTADO": resultados[i].ID_ESTADO,
                     "GANADOR": resultados[i].GANADOR
                 })
+
             } else if(resultados[i].ID_ESTADO != resultados[i+1].ID_ESTADO){
                 winners.push({
                     "ID_ESTADO": resultados[i+1].ID_ESTADO,
                     "GANADOR": resultados[i+1].GANADOR
+                    
                 })
-                
                 participacion.push({
                     "ID_ESTADO": resultados[i].ID_ESTADO,
                     "PARTICIPACION": resultados[i].PARTICIPACION,
@@ -866,7 +867,8 @@ const styles = () => ({
         margin: 'auto',
     },
     map: {
-        height: '500px',
+        minHeight: '400px',
+        height: '400px',
         width: '100vw',
     },
     outerChartContainer: {
@@ -882,6 +884,9 @@ const styles = () => ({
         flex: 1,
         margin: 'auto',
         padding: '50px',
+    },
+    subtitle: {
+      fontSize: 20,
     },
   }
   
