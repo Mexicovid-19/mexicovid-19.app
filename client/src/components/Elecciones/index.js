@@ -37,7 +37,7 @@ const AntTab = withStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
     marginRight: theme.spacing(1),
     [theme.breakpoints.down('576')]: {
-      fontSize: '10px',
+      fontSize: '12px',
       minWidth: 30
     },
     fontFamily: [
@@ -123,11 +123,20 @@ const Elecciones = ({ classes }) => {
                 </header>
 
                 {/* select bar */}
-                <AntTabs value={value} onChange={handleChange} aria-label="ant example" centered>
-                  <AntTab label="Diputados federales" />
-                  <AntTab label="Gubernaturas" />
-                  <AntTab label="Elección Nuevo León" />
-                </AntTabs>
+                {isMobile ? (
+                  <AntTabs value={value} onChange={handleChange} aria-label="ant example" centered>
+                    <AntTab label="Diputados" />
+                    <AntTab label="Gubernaturas" />
+                    <AntTab label="Nuevo León" />
+                  </AntTabs>
+                ) : (
+                  <AntTabs value={value} onChange={handleChange} aria-label="ant example" centered>
+                    <AntTab label="Diputados federales" />
+                    <AntTab label="Gubernaturas" />
+                    <AntTab label="Elección Nuevo León" />
+                  </AntTabs>
+                )}
+                
             </div>
             
 
