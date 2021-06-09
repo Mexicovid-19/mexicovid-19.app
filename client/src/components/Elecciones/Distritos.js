@@ -583,7 +583,7 @@ const Distritos = ({ classes }) => {
 
             {/* curules  chart */}
             <div className={classes.outerChartContainer}>
-            <h2 className={classes.subtitle}>Número de diputados en el Congreso por partido (1997-2021; totales por año suman 500 curules)</h2>
+            <h2 className={classes.subtitle}>Número de diputados en el Congreso por partido (elecciones intermedias de 1997-2021; totales por año suman 500 curules)</h2>
             {districtData.length !== 0 && (
                 <div className={classes.chartContainer}>
                     <CurulesTimeChart data={curulesTime_json}/>
