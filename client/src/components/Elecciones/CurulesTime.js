@@ -4,7 +4,7 @@ const CurulesTimeChart = ({data}) => {
     return (
     <ResponsiveAreaBump
         data={data}
-        margin={{ top: 80, right: 140, bottom: 80, left: 140 }}
+        margin={{ top: 80, right: 60, bottom: 80, left: 60 }}
         spacing={8}
         colors={{ scheme: 'category10' }}
         blendMode="normal"

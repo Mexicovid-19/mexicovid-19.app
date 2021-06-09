@@ -70,7 +70,7 @@ const styles = () => ({
     width: '70%',
 		margin: 'auto',
 		padding: '25px',
-    paddingTop: '128px',
+    paddingTop: '28px',
     backgroundColor: colors.WHITE
   },
   
@@ -94,7 +94,7 @@ const styles = () => ({
 		teamsContainer: {
 			width: '100%',
 			padding: '10px',
-			paddingTop: '60px'
+			paddingTop: '20px'
 		},
 		header: {
 			alignItems: 'flex-end'

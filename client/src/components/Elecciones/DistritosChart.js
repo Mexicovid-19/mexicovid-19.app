@@ -100,7 +100,7 @@ const DistritosChart = ({data}) => {
                anchor: 'bottom-left',
                 direction: 'column',
                 justify: false,
-                translateX: 0,
+                translateX: -30,
                 translateY: 56,
                 itemsSpacing: 2,
                 //itemWidth: 'data.width' || 60,

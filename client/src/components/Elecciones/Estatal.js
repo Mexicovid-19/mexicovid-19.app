@@ -529,9 +529,9 @@ const Estatal = ({ classes }) => {
             return feature;
         });
         mergedGeoJSON = data[0];
-        console.log(mergedGeoJSON);
+        //console.log(mergedGeoJSON);
         resultados = data[1];
-        console.log(resultados);
+        //console.log(resultados);
         setUpData(selectedState);
         setUpWinner();
 
@@ -826,14 +826,13 @@ const styles = () => ({
     borderLeft:  '1px solid white',
     borderBottom:  '1px solid white',
     borderRight:  '1px solid white',
+    paddingBottom: '100px'
   },
   chartContainer: {
     height: '600px',
-    minHeight: '600px',
     width: '50vw',
     flex: 1,
     margin: 'auto',
-    padding: '50px',
   },
   subtitle: {
       textAlign: 'center',
@@ -883,7 +882,6 @@ const styles = () => ({
         width: '100vw',
         flex: 1,
         margin: 'auto',
-        padding: '50px',
     },
     subtitle: {
       fontSize: 20,

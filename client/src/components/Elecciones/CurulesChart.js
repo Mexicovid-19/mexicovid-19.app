@@ -132,7 +132,7 @@ const CurulesChart = ({data}) => {
                 translateX: 0,
                 translateY: 56,
                 itemsSpacing: 0,
-                itemWidth: 60,
+                itemWidth: 40,
                 itemHeight: 18,
                 itemTextColor: '#999',
                 itemDirection: 'top-to-bottom',

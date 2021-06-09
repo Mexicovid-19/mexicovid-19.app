@@ -617,7 +617,7 @@ const setUpDatos = (id) => {
                     )}
                 </div>
             </div>
-        </div>    
+      </div>    
   );
   
 } 
@@ -627,7 +627,7 @@ const styles = () => ({
   itemsContainer: {
     display: 'flex',
     justifyContent: 'space-evenly',
-    maxWidth: 1600,
+    //maxWidth: 1600,
     margin: 'auto',
     paddingTop: '100px',
     borderBottom: '1px solid white',

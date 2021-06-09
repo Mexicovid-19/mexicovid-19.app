@@ -615,16 +615,18 @@ const styles = () => ({
   },
   chartContainer: {
     height: '600px',
-    minHeight: '600px',
+    minHeight: '500px',
     width: '50vw',
     flex: 1,
     margin: 'auto',
-    padding: '50px',
+    //padding: '50px',
   },
   subtitle: {
       textAlign: 'center',
       fontSize: 25,
       fontWeight: 'bold',
+      maxWidth: '95%',
+      margin: 'auto',
       color: colors.WHITE
   },
   prep: {
@@ -644,18 +646,18 @@ const styles = () => ({
         width: '100vw',
     },
     outerChartContainer: {
-        padding: '10px',
+        padding: '0px',
         paddingTop: '30px',
         borderLeft:  '1px solid white',
         borderBottom:  '1px solid white',
         borderRight:  '1px solid white',
     },
     chartContainer: {
-        height: '500px',
+        height: '550px',
         width: '100vw',
         flex: 1,
         margin: 'auto',
-        padding: '50px 10px',
+        //padding: '50px 10px',
     },
     subtitle: {
       fontSize: 20,
