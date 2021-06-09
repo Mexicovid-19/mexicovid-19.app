@@ -629,7 +629,11 @@ const styles = () => ({
     justifyContent: 'space-evenly',
     maxWidth: 1600,
     margin: 'auto',
-    paddingTop: '100px'
+    paddingTop: '100px',
+    borderBottom: '1px solid white',
+    borderLeft: '1px solid white',
+    //borderTop: '1px solid white',
+    borderRight: '1px solid white',
   },
   map: {
     height: '700px',
@@ -642,7 +646,7 @@ const styles = () => ({
   },
   chartContainer: {
     height: '600px',
-    width: '40vw',
+    width: '600px',
     margin: 'auto',
     paddingTop: '20px',
   },
@@ -668,18 +672,19 @@ const styles = () => ({
 },
   titleGob: {
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 30,
     fontWeight: 'bold',
     paddingTop: '50px',
+    //paddingBottom: '50px',
     color: colors.WHITE,
-    borderBottom: '1px solid white',
+    //borderBottom: '1px solid white',
     borderLeft: '1px solid white',
     borderTop: '1px solid white',
     borderRight: '1px solid white',
   },
   titleNL: {
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 30,
     fontWeight: 'bold',
     paddingTop: '50px',
     color: colors.WHITE,
@@ -695,13 +700,13 @@ const styles = () => ({
     backgroundColor: colors.BLACK,
     borderBottom: '1px solid white',
     borderLeft: '1px solid white',
-    borderTop: '1px solid white',
+    //borderTop: '1px solid white',
     borderRight: '1px solid white',
   },
   prep: {
     color: colors.WHITE,
     textAlign: 'center',
-    borderBottom: '1px solid white',
+    //borderBottom: '1px solid white',
     borderLeft: '1px solid white',
     borderRight: '1px solid white',
 },
@@ -710,34 +715,11 @@ error: {
   textAlign: 'center',
   position: 'relative',
   top: '100px',
-  fontSize: '30px'
+  fontSize: '30px',
 },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    itemsContainer: {
-        display: 'block',
-        margin: 'auto',
-    },
-    map: {
-        height: '500px',
-        width: '100vw',
-    },
-    chartContainer: {
-        height: '500px',
-        width: '100vw',
-        flex: 1,
-        margin: 'auto',
-        padding: '50px 10px',
-    },
-    titleNL: {
-      fontSize: 20,
-    },
-    titleGob: {
-      fontSize: 20
-    },
-    munName: {
-      fontSize: 20
-    },
+    
   }
   
 });
