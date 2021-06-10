@@ -483,12 +483,6 @@ const Estatal = ({ classes }) => {
                     "ID_ESTADO": resultados[i].ID_ESTADO,
                     "GANADOR": resultados[i].GANADOR
                 })
-                participacion.push({
-                    "ID_ESTADO": resultados[i].ID_ESTADO,
-                    "PARTICIPACION": resultados[i].PARTICIPACION,
-                    "ACTAS_CAPTURADAS": resultados[i].ACTAS_CAPTURADAS
-                })
-
             } else if(resultados[i].ID_ESTADO != resultados[i+1].ID_ESTADO){
                 winners.push({
                     "ID_ESTADO": resultados[i+1].ID_ESTADO,
@@ -496,7 +490,6 @@ const Estatal = ({ classes }) => {
                     
                 })
             }
-            
             participacion.push({
                 "ID_ESTADO": resultados[i].ID_ESTADO,
                 "PARTICIPACION": resultados[i].PARTICIPACION,
