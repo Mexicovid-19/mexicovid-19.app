@@ -161,12 +161,12 @@ const Elecciones = ({ classes }) => {
               <>
                 <NuevoLeon/>
                 <NuevoLeonSeccion/>
-                <div className={classes.legend}>
+                {/* <div className={classes.legend}>
                 <img className="foto" src='./img/elecciones/partidos/LEYENDA.png'/>
                 </div>
                 <div className={classes.legend2}>
                 <img className="foto2" src='./img/elecciones/partidos/LEYENDA2.png'/>
-                </div>
+                </div> */}
                 <NuevoLeonAyun/>
               </> 
             </TabPanel>

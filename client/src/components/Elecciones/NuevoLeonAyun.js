@@ -553,7 +553,7 @@ const setUpDatos = (id) => {
 const styles = () => ({
   container: {
     position: 'relative',
-    top: '-134px',
+    top: '-40px',
     borderTop: '1px solid white',
   },
   /* Desktop */
@@ -637,7 +637,7 @@ const styles = () => ({
   [`@media (max-width: ${1000}px)`]: {
     container: {
       position: 'relative',
-      top: '-120px'
+      top: '-20px'
     },
     itemsContainer: {
         display: 'block',

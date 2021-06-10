@@ -668,6 +668,9 @@ const setUpDatos = (id) => {
                       <div id="districtDetailMap" className={classes.map}>
                         <div style={{ height: "100%" }} ref={mapContainer}></div>
                       </div>
+                      <div className={classes.legend}>
+                        <img className="foto" src='./img/elecciones/partidos/LEYENDA.png'/>
+                      </div>
                 </div>
                 <div>
                     <div className={classes.chartContainer}>
@@ -754,7 +757,13 @@ const styles = () => ({
     textAlign: 'center',
     //borderLeft: '1px solid white',
     //borderRight: '1px solid white',
-},
+  },
+  legend: {
+    textAlign: 'right',
+    paddingRight: '20px',
+    position: 'relative',
+    top: '-140px'
+  },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
     itemsContainer: {

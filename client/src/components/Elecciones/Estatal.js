@@ -867,11 +867,11 @@ const styles = () => ({
         margin: 'auto',
     },
     map: {
-        height: '500px',
+        minHeight: '400px',
+        height: '400px',
         width: '100vw',
     },
     outerChartContainer: {
-        padding: '10px',
         paddingTop: '30px',
         borderLeft:  '1px solid white',
         borderBottom:  '1px solid white',
@@ -882,7 +882,11 @@ const styles = () => ({
         width: '100vw',
         flex: 1,
         margin: 'auto',
-        padding: '50px',
+        padding: '0px',
+        paddingBottom: '100px'
+    },
+    subtitle: {
+      fontSize: 20,
     },
   }
   
