@@ -38,11 +38,11 @@ const useMap = () => {
   }, []);
 
   React.useEffect(() => {
-    if(state.date && stateData && statesGeOJSON && statesGeOJSON.features.length == 32) {  
+    if(state.date && stateData && statesGeOJSON && statesGeOJSON.features.length === 32) {  
       setFillColor(getSteps(selectedLabel));
       setUpGEOJson();
       
-      if ( selectedLabel == "confirmados") {
+      if ( selectedLabel === "confirmados") {
         stateData.sort((a,b) => b.confirmados[state.dateIndex].count - a.confirmados[state.dateIndex].count);
       } else {
         stateData.sort((a,b) => b.decesos[state.dateIndex].count - a.decesos[state.dateIndex].count);
@@ -51,9 +51,9 @@ const useMap = () => {
       if( stateSelected ) {
         let data = stateSelected.data;
         let cve_ent = String(data.CVE_ENT);
-        cve_ent = cve_ent.length == 1 ? "0" + cve_ent : cve_ent;
+        cve_ent = cve_ent.length === 1 ? "0" + cve_ent : cve_ent;
         let nombre = data.ESTADO;
-        let indexState = stateData.findIndex(edo => edo.cve_ent == cve_ent);
+        let indexState = stateData.findIndex(edo => edo.cve_ent === cve_ent);
         let previousDate = state.dates[state.dateIndex - 1 > -1 ? state.dateIndex - 1 : 0]
         let totales = data[selectedLabel + "#" + state.date]
         let nuevos = totales - data[selectedLabel + "#" + previousDate]
@@ -127,7 +127,7 @@ const useMap = () => {
     }
     else {
       var mid = inf + Math.floor((sup - inf) /2);
-        if(arr[mid].properties.CVE_ENT == val) {
+        if(arr[mid].properties.CVE_ENT === val) {
           return mid;
         } else if( arr[mid].properties.CVE_ENT < val) {
           return binarySearch(mid + 1, sup, val, arr)
@@ -152,7 +152,7 @@ const useMap = () => {
             _geojson.features[index].properties["pruebas#" + state.dates[j]] = Number(stateData[cveEntIndex].pruebas[j].count);
           }
           
-          if ( dataCveEnt[cveEntIndex] == defaultStateCveEnt) {
+          if ( dataCveEnt[cveEntIndex] === defaultStateCveEnt) {
             setDefaultState(_geojson.features[index]);
           }
 

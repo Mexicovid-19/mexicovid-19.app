@@ -144,25 +144,31 @@ const Elecciones = ({ classes }) => {
 
             {/* Distritos */}
             <TabPanel value={value} index={0}>
-              <Distritos/>
+              <>
+                <Distritos/>
+              </>              
             </TabPanel>
             
             {/* Estatal */}
             <TabPanel value={value} index={1}>
-              <Estatal/>
+              <>
+                <Estatal/>
+              </>
             </TabPanel>
 
             {/* NuevoLeon */}
             <TabPanel value={value} index={2}>
-              <NuevoLeon/>
-              <NuevoLeonSeccion/>
-              <div className={classes.legend}>
-              <img className="foto" src='./img/elecciones/partidos/LEYENDA.png'/>
-              </div>
-              <div className={classes.legend2}>
-              <img className="foto2" src='./img/elecciones/partidos/LEYENDA2.png'/>
-              </div>
-              <NuevoLeonAyun/>
+              <>
+                <NuevoLeon/>
+                <NuevoLeonSeccion/>
+                <div className={classes.legend}>
+                <img className="foto" src='./img/elecciones/partidos/LEYENDA.png'/>
+                </div>
+                <div className={classes.legend2}>
+                <img className="foto2" src='./img/elecciones/partidos/LEYENDA2.png'/>
+                </div>
+                <NuevoLeonAyun/>
+              </> 
             </TabPanel>
         </div>
     </div>

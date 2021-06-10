@@ -111,9 +111,6 @@ const NuevoLeon = ({ classes }) => {
     d3.csv(seccionesNL_csv)
   ];
 
-  const setupGeoJson = () => {
-    console.table(seccionesNL)
-  }
 
 //DATOS PIECHART AYUN
 const setUpData = (id) => {
@@ -242,7 +239,7 @@ const setUpData = (id) => {
       }
     }
   })
-  console.log(_districtData)
+  //console.log(_districtData)
   setDistrictData(_districtData)
 }
 //DATOS PIECHART GOB
@@ -330,14 +327,13 @@ const setUpDatos = (id) => {
       })
     }
   })
-  console.log(_gobData)
+  //console.log(_gobData)
   setGobData(_gobData)
 }
 
   useEffect(() => {
     //CAMBIOS
     Promise.all(loadFiles).then(function (data) {
-    setupGeoJson()
     //COMENTAR ESTO SI QUIERO QUE LA GRAFICA APAREZCA HASTA QUE SE DE CLICK EN EL MAPA
     //setUpData(selectedDistrict)
     //setUpDatos(selectedDistrict)
@@ -387,7 +383,7 @@ const setUpDatos = (id) => {
 
     //map.scrollZoom.disable();
 
-    console.log(mergedGeoJSON);
+    //console.log(mergedGeoJSON);
 
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
@@ -479,7 +475,7 @@ const setUpDatos = (id) => {
                 
 
                 //AQUI PUEDE SER QUE FALTE SECCION
-                console.log(e.features)
+                //console.log(e.features)
                 map.setFeatureState(
                     { source: 'district-source', id: _hoveredDistrict,name: _hoveredMunN },
                     { party: _hoveredMunP, hover: true }
@@ -543,10 +539,10 @@ const setUpDatos = (id) => {
             content += "Participación: " + _selectedDistrictPar + "%" + "<br>";
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
 
-            console.log(e.features[0].properties.nombre);
+            //console.log(e.features[0].properties.nombre);
 
             //AQUI PUEDE QUE FALTE SECCION
-            console.log(e.features)
+            //console.log(e.features)
             map.setFeatureState(
                 { source: 'district-source', id: _selectedDistrict, name: _selectedDistrictN},
                 { party: _selectedDistrictP, hover: true }

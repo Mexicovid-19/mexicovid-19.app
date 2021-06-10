@@ -111,9 +111,6 @@ const Estatal = ({ classes }) => {
         // d3.csv(candidatos_estados_csv)
     ];
 
-    const setupGeoJson = () => {
-        console.table(estados_geojson)
-    }
 
     const setUpData = (id) => {
       let _stateData = [] 
@@ -474,8 +471,6 @@ const Estatal = ({ classes }) => {
         }
          
     }
-       
-      console.log(_stateData)
       setStateData(_stateData)
     } 
 
@@ -502,21 +497,17 @@ const Estatal = ({ classes }) => {
                 })
             }
         }
-        console.log(winners)
         mergedGeoJSON.features.map(feature =>{
-            console.log(winners.length)
             for(var i = 0; i < winners.length; i++){
                 if(Number(winners[i].ID_ESTADO) == feature.properties.CVE_ENT){
                     feature.properties.GP = winners[i].GANADOR;
                 }
             }
-            console.log(feature.properties.GP);
         })
     }
 
     useEffect(() => {
         Promise.all(loadFiles).then(function (data) {
-        setupGeoJson()
         let map = new mapboxgl.Map({
             container: mapContainer.current,
             style: "mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko",
@@ -744,7 +735,6 @@ const Estatal = ({ classes }) => {
                     }
 
                     let _selectedState = e.features[0].id;
-                    console.log(_selectedState)
                     let _selectedStateN = e.features[0].properties.ESTADO;
                     let _selectedStateP = e.features[0].properties.GP;
         
