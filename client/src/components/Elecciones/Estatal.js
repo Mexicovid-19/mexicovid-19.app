@@ -512,20 +512,15 @@ const Estatal = ({ classes }) => {
             style: "mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko",
             center: [long, lat],
             zoom: zoom,
-            dragPan: false
         });
         data[0].features = data[0].features.map(feature => {
             feature.properties.GP = "Sin Ganador";
             return feature;
         });
         mergedGeoJSON = data[0];
-        console.log(mergedGeoJSON);
         resultados = data[1];
-        console.log(resultados);
         setUpData(selectedState);
         setUpWinner();
-
-        map.scrollZoom.disable();
 
         // Add zoom and rotation controls to the map.
         map.addControl(new mapboxgl.NavigationControl());
