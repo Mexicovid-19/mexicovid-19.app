@@ -471,14 +471,6 @@ const Estatal = ({ classes }) => {
                     "color": "hsl(240, 28%, 65%)"
                 })
             }
-            if(resultados[i].PARTIDO == "INDEPENDIENTE"){
-                _stateData.push({
-                    "id": resultados[i].CANDIDATO,
-                    "label": "PS",
-                    "value": resultados[i].PORCENTAJE,
-                    "color": "  hsl(0, 0%, 30%)"
-                })
-        }
         }
          
     }
