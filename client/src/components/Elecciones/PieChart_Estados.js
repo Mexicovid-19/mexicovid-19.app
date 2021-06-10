@@ -11,7 +11,7 @@ import { ResponsivePie } from '@nivo/pie'
 const PieChart_Estados = ({ data}) => (
     <ResponsivePie
         data={data}
-        margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
         innerRadius={0.5}
         padAngle={0.7}
         cornerRadius={3}
@@ -58,8 +58,8 @@ const PieChart_Estados = ({ data}) => (
                anchor: 'bottom-left',
                 direction: 'column',
                 justify: false,
-                translateX: -30,
-                translateY: 30,
+                translateX: 0,
+                translateY: 56,
                 itemsSpacing: 2,
                 //itemWidth: 'data.width' || 60,
                 itemWidth: 60,
