@@ -90,7 +90,7 @@ const Estatal = ({ classes }) => {
 
     const [hoveredStateN, _setHoveredStateN] = useState(null);
     const hoveredStateNRef = useRef(hoveredStateN);
-    const [selectedStateN, _setSelectedStateN] = useState('Nuevo Leon');
+    const [selectedStateN, _setSelectedStateN] = useState('Nuevo León');
     const selectedStateNRef = useRef(selectedStateN);
 
     var setHoveredStateN = data => {
@@ -468,6 +468,14 @@ const Estatal = ({ classes }) => {
                     "color": "hsl(240, 28%, 65%)"
                 })
             }
+            if(resultados[i].PARTIDO == "INDEPENDIENTE"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PS",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "  hsl(0, 0%, 30%)"
+                })
+        }
         }
          
     }
@@ -520,9 +528,9 @@ const Estatal = ({ classes }) => {
             return feature;
         });
         mergedGeoJSON = data[0];
-        //console.log(mergedGeoJSON);
+        console.log(mergedGeoJSON);
         resultados = data[1];
-        //console.log(resultados);
+        console.log(resultados);
         setUpData(selectedState);
         setUpWinner();
 
@@ -631,6 +639,8 @@ const Estatal = ({ classes }) => {
                         '#0957a5',
                         'PAN_IND',
                         '#0957a5',
+                        'INDEPENDIENTE',
+                        '#4C4C4C',
                         'PS',
                         '#8C8CBF',
                         'Sin Ganador',
@@ -816,13 +826,14 @@ const styles = () => ({
     borderLeft:  '1px solid white',
     borderBottom:  '1px solid white',
     borderRight:  '1px solid white',
-    paddingBottom: '100px'
   },
   chartContainer: {
     height: '600px',
+    minHeight: '600px',
     width: '50vw',
     flex: 1,
     margin: 'auto',
+    padding: '50px',
   },
   subtitle: {
       textAlign: 'center',
@@ -856,8 +867,7 @@ const styles = () => ({
         margin: 'auto',
     },
     map: {
-        minHeight: '400px',
-        height: '400px',
+        height: '500px',
         width: '100vw',
     },
     outerChartContainer: {
@@ -866,16 +876,13 @@ const styles = () => ({
         borderLeft:  '1px solid white',
         borderBottom:  '1px solid white',
         borderRight:  '1px solid white',
-        paddingBottom: '100px'
     },
     chartContainer: {
         height: '500px',
         width: '100vw',
         flex: 1,
         margin: 'auto',
-    },
-    subtitle: {
-      fontSize: 20,
+        padding: '50px',
     },
   }
   
