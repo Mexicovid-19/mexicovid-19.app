@@ -560,7 +560,6 @@ const styles = () => ({
     position: 'relative',
     top: '-134px',
     borderTop: '1px solid white',
-    
   },
   /* Desktop */
   itemsContainer: {
@@ -569,7 +568,6 @@ const styles = () => ({
     //maxWidth: 1600,
     margin: 'auto',
     paddingTop: '100px',
-    
     //borderLeft: '1px solid white',
     //borderRight: '1px solid white',
     paddingBottom: '30px',

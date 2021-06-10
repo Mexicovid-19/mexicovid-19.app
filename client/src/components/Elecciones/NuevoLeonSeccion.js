@@ -667,8 +667,6 @@ const setUpDatos = (id) => {
         <div> <h2 className={classes.subtitle}> Resultados de la Elección de Gobernador por Sección Electoral en la Zona Metropolitana de Monterrey</h2> </div>
         <p className={classes.prep}>Partido o Coalición Ganadora y Porcentaje de Participación Electoral</p>
         <div className={classes.itemsContainer}>
-          <div className={classes.tabla}>
-            </div>
                 <div className="district-map-wrapper">
                       <div id="districtDetailMap" className={classes.map}>
                         <div style={{ height: "100%" }} ref={mapContainer}></div>

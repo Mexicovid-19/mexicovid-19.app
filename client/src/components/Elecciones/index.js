@@ -160,7 +160,7 @@ const Elecciones = ({ classes }) => {
               <img className="foto" src='./img/elecciones/partidos/LEYENDA.png'/>
               </div>
               <div className={classes.legend2}>
-              <img className="foto" src='./img/elecciones/partidos/LEYENDA2.png'/>
+              <img className="foto2" src='./img/elecciones/partidos/LEYENDA2.png'/>
               </div>
               <NuevoLeonAyun/>
             </TabPanel>
@@ -196,10 +196,10 @@ const styles = () => ({
       fontSize: 40,
       fontWeight: 'bold',
       paddingTop: '0px',
-      paddingLeft: '450px',
+      paddingLeft: '520px',
       paddingBottom: '0px',
       position:'relative',
-      top:'-100px',
+      top:'-135px',
       //borderLeft: '1px solid white',
       //borderRight: '1px solid white',
     },
@@ -207,11 +207,11 @@ const styles = () => ({
       fontSize: 40,
       fontWeight: 'bold',
       paddingTop: '0px',
-      paddingLeft: '1085px',
+      paddingLeft: '1090px',
       paddingRight: '0px',
       paddingBottom: '0px',
       position:'relative',
-      top:'-172px',
+      top:'-210px',
       //borderLeft: '1px solid white',
       //borderRight: '1px solid white',
     },
