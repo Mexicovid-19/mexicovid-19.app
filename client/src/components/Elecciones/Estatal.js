@@ -90,7 +90,7 @@ const Estatal = ({ classes }) => {
 
     const [hoveredStateN, _setHoveredStateN] = useState(null);
     const hoveredStateNRef = useRef(hoveredStateN);
-    const [selectedStateN, _setSelectedStateN] = useState('Nuevo Leon');
+    const [selectedStateN, _setSelectedStateN] = useState('Nuevo León');
     const selectedStateNRef = useRef(selectedStateN);
 
     var setHoveredStateN = data => {
@@ -471,6 +471,14 @@ const Estatal = ({ classes }) => {
                     "color": "hsl(240, 28%, 65%)"
                 })
             }
+            if(resultados[i].PARTIDO == "INDEPENDIENTE"){
+                _stateData.push({
+                    "id": resultados[i].CANDIDATO,
+                    "label": "PS",
+                    "value": resultados[i].PORCENTAJE,
+                    "color": "	hsl(0, 0%, 30%)"
+                })
+        }
         }
          
     }
@@ -640,6 +648,8 @@ const Estatal = ({ classes }) => {
                         '#0957a5',
                         'PAN_IND',
                         '#0957a5',
+                        'INDEPENDIENTE',
+                        '#4C4C4C',
                         'PS',
                         '#8C8CBF',
                         'Sin Ganador',
