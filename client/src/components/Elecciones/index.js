@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
+import "./tabla.css"
 
 /* Utils */
 import * as colors from '../../constants/colors';
@@ -17,6 +18,7 @@ import Distritos from './Distritos'
 import Estatal from './Estatal'
 import NuevoLeon from './NuevoLeon'
 import NuevoLeonAyun from './NuevoLeonAyun'
+import NuevoLeonSeccion from './NuevoLeonSeccion'
 
 import { Helmet } from 'react-helmet';
 
@@ -153,10 +155,15 @@ const Elecciones = ({ classes }) => {
             {/* NuevoLeon */}
             <TabPanel value={value} index={2}>
               <NuevoLeon/>
+              <NuevoLeonSeccion/>
+              <div className={classes.legend}>
+              <img className="foto" src='./img/elecciones/partidos/LEYENDA.png'/>
+              </div>
+              <div className={classes.legend2}>
+              <img className="foto" src='./img/elecciones/partidos/LEYENDA2.png'/>
+              </div>
               <NuevoLeonAyun/>
             </TabPanel>
-            
-            
         </div>
     </div>
   );
@@ -184,6 +191,29 @@ const styles = () => ({
       justifyContent: 'space-between',
       alignItems: 'center',
       border:  '1px solid white',
+    },
+    legend: {
+      fontSize: 40,
+      fontWeight: 'bold',
+      paddingTop: '0px',
+      paddingLeft: '450px',
+      paddingBottom: '0px',
+      position:'relative',
+      top:'-100px',
+      borderLeft: '1px solid white',
+      borderRight: '1px solid white',
+    },
+    legend2: {
+      fontSize: 40,
+      fontWeight: 'bold',
+      paddingTop: '0px',
+      paddingLeft: '1085px',
+      paddingRight: '0px',
+      paddingBottom: '0px',
+      position:'relative',
+      top:'-172px',
+      borderLeft: '1px solid white',
+      borderRight: '1px solid white',
     },
 
     /* Mobile */

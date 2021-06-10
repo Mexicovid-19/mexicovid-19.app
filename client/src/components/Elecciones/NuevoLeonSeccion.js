@@ -1,14 +1,15 @@
-//NuevoLeonAyun.js
+//NuevoLeonSeccion.js
 
 import React, { useState, useEffect, useRef } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import municipios_nl from "./data/municipios_nl.geojson";
-import municipios_csv from "./data/AyunNuevoLeon.csv";
+import seccionesNL from "./data/seccionesNL.geojson";
+import seccionesNL_csv from "./data/SeccionesNLGob.csv";
 import mapboxgl from 'mapbox-gl';
 import NuevoLeonChart from './NuevoLeonChart';
 import * as d3 from 'd3';
 import "./Popup.css"
 import * as colors from '../../constants/colors';
+import NuevoLeonSeccion2 from './NuevoLeonSeccion2';
 
 const NuevoLeon = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
@@ -19,11 +20,13 @@ const NuevoLeon = ({ classes }) => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
   //mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
   const mapContainer = useRef(null);
-  //const [long, setLong] = useState(-100.3152586);
-  //const [lat, setLat] = useState(25.6802019);
-  const [long, setLong] = useState(-99.85);
-  const [lat, setLat] = useState(25.498);
-  const [zoom, setZoom] = useState(6.5);
+  //NUEVO LEON
+  //const [long, setLong] = useState(-99.85);
+  //const [lat, setLat] = useState(25.498);
+  //SECCIONES
+  const [long, setLong] = useState(-100.3152586);
+  const [lat, setLat] = useState(25.67);
+  const [zoom, setZoom] = useState(12);
 
   const [districtData, setDistrictData] = useState([])
   const [gobData, setGobData] = useState([])
@@ -70,13 +73,94 @@ const NuevoLeon = ({ classes }) => {
       _setSelectedDistrictN(data);
   };
 
+  //SECCION
+  const [hoveredMunS, _setHoveredMunS] = useState(null);
+  const hoveredMunSRef = useRef(hoveredMunS);
+  const [selectedDistrictS, _setSelectedDistrictS] = useState(null);
+  const selectedDistrictSRef = useRef(selectedDistrictS);
+
+  var setHoveredMunS = data => {
+    hoveredMunSRef.current = data;
+      _setHoveredMunS(data);
+  };
+
+  var setSelectedDistrictS = data => {
+    selectedDistrictSRef.current = data;
+      _setSelectedDistrictS(data);
+  };
+
+  //PAN
+  const [hoveredMunPan, _setHoveredMunPan] = useState(null);
+  const hoveredMunPanRef = useRef(hoveredMunPan);
+  const [selectedDistrictPan, _setSelectedDistrictPan] = useState(null);
+  const selectedDistrictPanRef = useRef(selectedDistrictPan);
+
+  var setHoveredMunPan = data => {
+    hoveredMunPanRef.current = data;
+      _setHoveredMunPan(data);
+  };
+
+  var setSelectedDistrictPan = data => {
+    selectedDistrictPanRef.current = data;
+      _setSelectedDistrictPan(data);
+  };
+
+  //MC
+  const [hoveredMunM, _setHoveredMunM] = useState(null);
+  const hoveredMunMRef = useRef(hoveredMunM);
+  const [selectedDistrictM, _setSelectedDistrictM] = useState(null);
+  const selectedDistrictMRef = useRef(selectedDistrictM);
+
+  var setHoveredMunM = data => {
+    hoveredMunMRef.current = data;
+      _setHoveredMunM(data);
+  };
+
+  var setSelectedDistrictM = data => {
+    selectedDistrictMRef.current = data;
+      _setSelectedDistrictM(data);
+  };
+
+   //VFNL
+   const [hoveredMunVf, _setHoveredMunVf] = useState(null);
+   const hoveredMunVfRef = useRef(hoveredMunVf);
+   const [selectedDistrictVf, _setSelectedDistrictVf] = useState(null);
+   const selectedDistrictVfRef = useRef(selectedDistrictVf);
+ 
+   var setHoveredMunVf = data => {
+     hoveredMunVfRef.current = data;
+       _setHoveredMunVf(data);
+   };
+ 
+   var setSelectedDistrictVf = data => {
+     selectedDistrictVfRef.current = data;
+       _setSelectedDistrictVf(data);
+   };
+
+    //JHHNL
+    const [hoveredMunJ, _setHoveredMunJ] = useState(null);
+    const hoveredMunJRef = useRef(hoveredMunJ);
+    const [selectedDistrictJ, _setSelectedDistrictJ] = useState(null);
+    const selectedDistrictJRef = useRef(selectedDistrictJ);
+  
+    var setHoveredMunJ = data => {
+      hoveredMunJRef.current = data;
+        _setHoveredMunJ(data);
+    };
+  
+    var setSelectedDistrictJ = data => {
+      selectedDistrictJRef.current = data;
+        _setSelectedDistrictJ(data);
+    };
+ 
+
   var loadFiles = [
-    d3.json(municipios_nl),
-    d3.csv(municipios_csv)
+    d3.json(seccionesNL),
+    d3.csv(seccionesNL_csv)
   ];
 
   const setupGeoJson = () => {
-    console.table(municipios_nl)
+    console.table(seccionesNL)
   }
 
 //DATOS PIECHART AYUN
@@ -309,8 +393,8 @@ const setUpDatos = (id) => {
     let map = new mapboxgl.Map({
         container: mapContainer.current,
         //ESTILO NEGRO
-        //style: "mapbox://styles/mapbox/dark-v10",
-        style: "mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko",
+        style: "mapbox://styles/mapbox/dark-v10",
+        //style: "mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko",
         //ESTILO BLANCO
         //style: "mapbox://styles/mapbox/light-v10",
         center: [long, lat],
@@ -320,24 +404,25 @@ const setUpDatos = (id) => {
 
     data[0].features = data[0].features.map(feature => {
       data[1].forEach(prefData => {
-          if (feature.properties.nombre === prefData['nombre']) {
-              feature.properties.PAN = Number(prefData['PAN']);
-              feature.properties.PRI = Number(prefData['PRI']);
-              feature.properties.PRD = Number(prefData['PRD']);
-              feature.properties.PVEM = Number(prefData['PVEM']);
-              feature.properties.PT = Number(prefData['PT']);
-              feature.properties.CI_1 = Number(prefData['CI_1']);
-              feature.properties.CI_2 = Number(prefData['CI_2']);
-              feature.properties.MC = Number(prefData['MC']);
-              feature.properties.RSP = Number(prefData['RSP']);
-              feature.properties.MORENA = Number(prefData['MORENA']);
-              feature.properties.PES = Number(prefData['PES']);
-              feature.properties.FXM = Number(prefData['FXM']);
-              feature.properties.JHHNL = Number(prefData['JHHNL']);
-              feature.properties.VFNL = Number(prefData['VFNL']);
-              feature.properties.NANL = Number(prefData['NANL']);
-              feature.properties.GANADOR = String(prefData['Ganador']);
-          }
+        if (feature.properties.id === Number(prefData['id'])) {
+            feature.properties.PAN = Number(prefData['PAN']);
+            feature.properties.PRI = Number(prefData['PRI']);
+            feature.properties.PRD = Number(prefData['PRD']);
+            feature.properties.PVEM = Number(prefData['PVEM']);
+            feature.properties.PT = Number(prefData['PT']);
+            feature.properties.CI_1 = Number(prefData['CI_1']);
+            feature.properties.CI_2 = Number(prefData['CI_2']);
+            feature.properties.MC = Number(prefData['MC']);
+            feature.properties.RSP = Number(prefData['RSP']);
+            feature.properties.MORENA = Number(prefData['MORENA']);
+            feature.properties.PES = Number(prefData['PES']);
+            feature.properties.FXM = Number(prefData['FXM']);
+            feature.properties.JHHNL = Number(prefData['JHHNL']);
+            feature.properties.VFNL = Number(prefData['VFNL']);
+            feature.properties.NANL = Number(prefData['NANL']);
+            feature.properties.SG = Number(prefData['Sin Ganador']);
+            feature.properties.GANADOR = String(prefData['Ganador']);
+        }
       });
       return feature;
   });
@@ -345,25 +430,26 @@ const setUpDatos = (id) => {
 
     setUpData(selectedDistrict)
 
-    map.scrollZoom.disable();
+    //map.scrollZoom.disable();
 
     console.log(mergedGeoJSON);
 
     // Add zoom and rotation controls to the map.
-    map.addControl(new mapboxgl.NavigationControl());
+   map.addControl(new mapboxgl.NavigationControl());
 
     map.once("load", function () {
-
-        map.addSource('district-source', {
+    map.addSource('district-source', {
             'type': 'geojson',
             'data': mergedGeoJSON
         });
-  
+
+
         map.addLayer({
           'id': 'district-layer',
           'type': 'fill',
           'source': 'district-source',
-          'layout': {},
+          'layout':{
+            },
           'paint': {
               'fill-color': [
                   'match',
@@ -390,7 +476,7 @@ const setUpDatos = (id) => {
                   '#303131',
                   'JHHNL',
                   '#c1311a',
-                  'CI_1',
+                  'Sin Ganador',
                   '#8A9393',
                   'CI_2',
                   '#8FA7A9',
@@ -404,14 +490,17 @@ const setUpDatos = (id) => {
               'fill-opacity': [
                   'case',
                   ['boolean', ['feature-state', 'hover'], false],
-                  //0.8,
-                  //0.5
-                  1,
-                  0.80
+                  0.8,
+                  0.5
+                  //1,
+                  //0.80
               ]
           }
       });
-
+    
+        
+      //map.mapboxgl.legendControl({ position: 'topright' }).addLegend('<strong>My walk from the White House to the hill!</strong>').addTo(map);
+         
       /*map.addLayer({
         'id': 'district-borders',
         'type': 'line',
@@ -424,11 +513,21 @@ const setUpDatos = (id) => {
         }
         });*/
 
+
         var popup = new mapboxgl.Popup({
             closeButton: false,
             closeOnClick: false,
             className: 'myPopup'
         });
+
+
+        /*map.on('zoom', function () {
+            if (map.getZoom() > zoomThreshold) {
+            stateLegendEl.style.display = 'none';
+            } else {
+            stateLegendEl.style.display = 'block';
+            }
+        });*/
 
         map.on('mousemove', 'district-layer', function (e) {
             //map.getCanvas().style.cursor = 'pointer';
@@ -442,12 +541,22 @@ const setUpDatos = (id) => {
                 }
                 
                 let _hoveredDistrict = e.features[0].id;
-                let _hoveredMunN = e.features[0].properties.nombre;
+                let _hoveredMunS = e.features[0].properties.seccion;
+                let _hoveredMunN = e.features[0].properties.municipio;
                 let _hoveredMunP = e.features[0].properties.GANADOR;
-
-                var content = "<b>" + "Detalles del Municipio" + "</b>" + "<br>";
+                let _hoveredMunPan = e.features[0].properties.PAN;
+                let _hoveredMunM = e.features[0].properties.MC;
+                let _hoveredMunVf = e.features[0].properties.VFNL;
+                let _hoveredMunJ = e.features[0].properties.JHHNL;
+               
+                var content = "<b>" + "Detalles de la Sección" + "</b>" + "<br>";
+                content += "Nº Sección: " + _hoveredMunS  + "<br>";
                 content += "Municipio: " + _hoveredMunN  + "<br>";
                 content += "Partido: " + _hoveredMunP + "<br>";
+                content += "PAN: " + _hoveredMunPan + "%" + "<br>";
+                content += "MC: " + _hoveredMunM + "%" + "<br>";
+                content += "JHHNL: " + _hoveredMunJ + "%" + "<br>";
+                content += "VFNL: " + _hoveredMunVf + "%" + "<br>";
                 popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
                 
     
@@ -460,6 +569,11 @@ const setUpDatos = (id) => {
                 setHoveredDistrict(_hoveredDistrict);
                 setHoveredMunN(_hoveredMunN);
                 setHoveredMunP(_hoveredMunP);
+                setHoveredMunPan(_hoveredMunPan);
+                setHoveredMunS(_hoveredMunS);
+                setHoveredMunM(_hoveredMunM);
+                setHoveredMunJ(_hoveredMunJ);
+                setHoveredMunVf(_hoveredMunVf);
             }
 
         });
@@ -477,6 +591,10 @@ const setUpDatos = (id) => {
           setHoveredDistrict(null);
           setHoveredMunN(null);
           setHoveredMunP(null);
+          setHoveredMunPan(null);
+          setHoveredMunM(null);
+          setHoveredMunJ(null);
+          setHoveredMunVf(null);
           popup.remove();
         });
 
@@ -499,12 +617,22 @@ const setUpDatos = (id) => {
             }
 
             let _selectedDistrict = e.features[0].properties.municipio;
-            let _selectedDistrictN = e.features[0].properties.nombre;
+            let _selectedDistrictS = e.features[0].properties.seccion;
+            let _selectedDistrictN = e.features[0].properties.municipio;
             let _selectedDistrictP = e.features[0].properties.GANADOR;
+            let _selectedDistrictPan = e.features[0].properties.PAN;
+            let _selectedDistrictM = e.features[0].properties.MC;
+            let _selectedDistrictVf = e.features[0].properties.VFNL;
+            let _selectedDistrictJ = e.features[0].properties.JHHNL;
 
-            var content = "<b>" + "Detalles del Municipio" + "</b>" + "<br>";
+            var content = "<b>" + "Detalles de la Sección" + "</b>" + "<br>";
+            content += "Nº Sección: " + _selectedDistrictS  + "<br>";
             content += "Municipio: " + _selectedDistrictN  + "<br>";
             content += "Partido: " + _selectedDistrictP + "<br>";
+            content += "PAN: " + _selectedDistrictPan + "%"+"<br>";
+            content += "MC: " + _selectedDistrictM + "%"+"<br>";
+            content += "JHHNL: " + _selectedDistrictJ + "%"+"<br>";
+            content += "VFNL: " + _selectedDistrictVf + "%"+"<br>";
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
 
             console.log(e.features[0].properties.nombre);
@@ -520,6 +648,10 @@ const setUpDatos = (id) => {
             setSelectedDistrict(_selectedDistrict);
             setSelectedDistrictN(_selectedDistrictN);
             setSelectedDistrictP(_selectedDistrictP);
+            setSelectedDistrictPan(_selectedDistrictPan);
+            setSelectedDistrictM(_selectedDistrictM);
+            setSelectedDistrictJ(_selectedDistrictJ);
+            setSelectedDistrictVf(_selectedDistrictVf);
         }
 
     });
@@ -532,20 +664,20 @@ const setUpDatos = (id) => {
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div>
-        <div> <h2 className={classes.titleNL}> Elección de Ayuntamientos de Nuevo León por Municipio</h2> </div>
+        <div> <h2 className={classes.titleNL}> Resultados de la Elección de Gobernador por Sección Electoral en la Zona Metropolitana de Monterrey</h2> </div>
+        <p className={classes.prep}>Partido o Coalición Ganadora y Porcentaje de Participación Electoral</p>
         <div className={classes.itemsContainer}>
+        <div className={classes.tabla}>
+        </div>
             <div className="district-map-wrapper">
                     <div id="districtDetailMap" className={classes.map}>
                         <div style={{ height: "100%" }} ref={mapContainer}></div>
                     </div>
                 </div>
             <div>
-              <h2 className={classes.munName} >{selectedDistrictN}</h2>
-                    {districtData.length !== 0 && (
-                        <div className={classes.chartContainer}>
-                            <NuevoLeonChart data={districtData}/>
+                <div className={classes.chartContainer}>
+                            <NuevoLeonSeccion2/>
                         </div>
-                    )}
                 </div>
             </div>
         </div>    
@@ -563,7 +695,7 @@ const styles = () => ({
     maxWidth: 1600,
     margin: 'auto',
     paddingTop: '100px',
-    borderBottom: '1px solid white',
+    //borderBottom: '1px solid white',
     borderLeft: '1px solid white',
     //borderTop: '1px solid white',
     borderRight: '1px solid white',
@@ -583,7 +715,7 @@ const styles = () => ({
     height: '600px',
     width: '600px',
     margin: 'auto',
-    paddingTop: '20px'
+    //paddingTop: '20px'
   },
   chartContainer2: {
     height: '600px',
@@ -625,33 +757,44 @@ const styles = () => ({
     borderRight: '1px solid white',
   },
   tabla: {
-    //textAlign: 'center',
-    //fontSize: 40,
-    //fontWeight: 'bold',
-    //paddingTop: '50px'
+    textAlign: 'center',
+    fontSize: 40,
+    fontWeight: 'bold',
+    paddingTop: '50px',
+    paddingBottom: '0px'
+  },
+  tabla2: {
+    textAlign: 'center',
+    fontSize: 40,
+    fontWeight: 'bold',
+    paddingTop: '50px',
+    paddingBottom: '0px',
+    position:'relative',
+    top:'-100px',
   },
   prep: {
     color: colors.WHITE,
-    textAlign: 'center'
+    textAlign: 'center',
+    borderLeft: '1px solid white',
+    borderRight: '1px solid white',
 },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
     itesmContainer:{
-      display:'block',
-      margin: 'auto',
-    },
-    map:{
-      heigth:'500px',
-      width:'100vw',
-    },
-    chartContainer:{
-      height: '500px',
-      width: '100vw',
-      flex: 1,
-      margin:'auto',
-      padding:'50px 10px',
-    }
-    
+        display:'block',
+        margin: 'auto',
+      },
+      map:{
+        heigth:'500px',
+        width:'100vw',
+      },
+      chartContainer:{
+        height: '500px',
+        width: '100vw',
+        flex: 1,
+        margin:'auto',
+        padding:'50px 10px',
+      }
   }
   
 });

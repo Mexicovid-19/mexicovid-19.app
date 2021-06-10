@@ -1,13 +1,10 @@
-//NuevoLeon.js
+//NuevoLeonSeccion2.js
 
 import React, { useState, useEffect, useRef } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import Header from '../Header';
-import municipios_nl from "./data/municipios_nl.geojson";
-import gobNL_csv from "./data/GobNuevoLeon.csv";
+import seccionesNL from "./data/seccionesNL.geojson";
+import seccionesNL_csv from "./data/SeccionesNLGob.csv";
 import mapboxgl from 'mapbox-gl';
-import NLGobChart from './NLGobChart';
-import CustomizedTables from './tablaNLGob';
 import * as d3 from 'd3';
 import "./Popup.css"
 import * as colors from '../../constants/colors';
@@ -21,17 +18,19 @@ const NuevoLeon = ({ classes }) => {
   mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_API_KEY;
   //mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
   const mapContainer = useRef(null);
-  //const [long, setLong] = useState(-100.3152586);
-  //const [lat, setLat] = useState(25.6802019);
-  const [long, setLong] = useState(-99.85);
-  const [lat, setLat] = useState(25.498);
-  const [zoom, setZoom] = useState(6.5);
+  //NUEVO LEON
+  //const [long, setLong] = useState(-99.85);
+  //const [lat, setLat] = useState(25.498);
+  //SECCIONES
+  const [long, setLong] = useState(-100.3152586);
+  const [lat, setLat] = useState(25.67);
+  const [zoom, setZoom] = useState(12);//o 13
 
   const [districtData, setDistrictData] = useState([])
   const [gobData, setGobData] = useState([])
   //const [selectedDistrictName, setSelectedDistrictName] = useState(data[0].name)
+  //const [selectedDistrict, setSelectedDistrict] = useState(0)
   const [selectedDistrict, setSelectedDistrict] = useState(40)
-  //const [selectedDistrict, _setSelectedDistrict] = useState(null)
   const [hoveredDistrict, _setHoveredDistrict] = useState(null);
   const hoveredDistrictRef = useRef(hoveredDistrict);
   const selectedDistrictRef = useRef(selectedDistrict);
@@ -52,7 +51,6 @@ const NuevoLeon = ({ classes }) => {
       _setHoveredMunP(data);
   };
 
-
   var setSelectedDistrictP = data => {
     selectedDistrictPRef.current = data;
       _setSelectedDistrictP(data);
@@ -68,19 +66,53 @@ const NuevoLeon = ({ classes }) => {
       _setHoveredMunN(data);
   };
 
- 
   var setSelectedDistrictN = data => {
     selectedDistrictNRef.current = data;
       _setSelectedDistrictN(data);
   };
 
+  //SECCION
+  const [hoveredMunS, _setHoveredMunS] = useState(null);
+  const hoveredMunSRef = useRef(hoveredMunS);
+  const [selectedDistrictS, _setSelectedDistrictS] = useState(null);
+  const selectedDistrictSRef = useRef(selectedDistrictS);
+
+  var setHoveredMunS = data => {
+    hoveredMunSRef.current = data;
+      _setHoveredMunS(data);
+  };
+
+  var setSelectedDistrictS = data => {
+    selectedDistrictSRef.current = data;
+      _setSelectedDistrictS(data);
+  };
+
+  //PARTICIPACION
+  const [hoveredMunPar, _setHoveredMunPar] = useState(null);
+  const hoveredMunParRef = useRef(hoveredMunPar);
+  const [selectedDistrictPar, _setSelectedDistrictPar] = useState(null);
+  const selectedDistrictParRef = useRef(selectedDistrictPar);
+
+  var setHoveredMunPar = data => {
+    hoveredMunParRef.current = data;
+      _setHoveredMunPar(data);
+  };
+
+  var setSelectedDistrictPar = data => {
+    selectedDistrictParRef.current = data;
+      _setSelectedDistrictPar(data);
+  };
+
+
+
+
   var loadFiles = [
-    d3.json(municipios_nl),
-    d3.csv(gobNL_csv)
+    d3.json(seccionesNL),
+    d3.csv(seccionesNL_csv)
   ];
 
   const setupGeoJson = () => {
-    console.table(municipios_nl)
+    console.table(seccionesNL)
   }
 
 //DATOS PIECHART AYUN
@@ -88,282 +120,214 @@ const setUpData = (id) => {
   let _districtData = []
   mergedGeoJSON.features.map(feature =>{
     if(feature.properties.municipio == id){
-      _districtData.push({
-        "id": "MORENA",
-        "label": "MORENA",
-        "value": feature.properties.MORENA,
-        "color": "hsl(8, 76%, 43%)"
-      })
-      _districtData.push({
-        "id": "PAN",
-        "label": "PAN",
-        "value": feature.properties.PAN,
-        "color": "hsl(210, 90%, 34%)"
-      })
-      _districtData.push({
-        "id": "PRI",
-        "label": "PRI",
-        "value": feature.properties.PRI,
-        "color": "hsl(135, 37%, 48%)"
-      })
-      _districtData.push({
-        "id": "PRD",
-        "label": "PRD",
-        "value": feature.properties.PRD,
-        "color": "hsl(48, 100%, 50%)"
-      })
-      _districtData.push({
-        "id": "PT",
-        "label": "PT",
-        "value": feature.properties.PT,
-        "color": "hsl(3, 81%, 47%)"
-      })
-      _districtData.push({
-        "id": "MC",
-        "label": "MC",
-        "value": feature.properties.MC,
-        "color": "hsl(25, 87%, 57%)"
-      })
-      _districtData.push({
-        "id": "PES",
-        "label": "PES",
-        "value": feature.properties.PES,
-        "color": "hsl(288, 45%, 34%)"
-      })
-      _districtData.push({
-        "id": "RSP",
-        "label": "RSP",
-        "value": feature.properties.RSP,
-        "color": "rgb(0,0,255)"
-      })
-      _districtData.push({
-        "id": "FXM",
-        "label": "FXM",
-        "value": feature.properties.FXM,
-        "color": "#FF53A1"
-      })
-      _districtData.push({
-        "id": "PVEM",
-        "label": "PVEM",
-        "value": feature.properties.PVEM,
-        "color": "hsl(86, 50%, 58%)"
-      })
-      _districtData.push({
-        "id": "JHHNL",
-        "label": "JHHNL",
-        "value": feature.properties.JHHNL,
-        "color": "#B2242B"
-      })
-      _districtData.push({
-        "id": "NANL",
-        "label": "NANL",
-        "value": feature.properties.NANL,
-        "color": "#78f2ee"
-      })
-      _districtData.push({
-        "id": "VFNL",
-        "label": "VFNL",
-        "value": feature.properties.VFNL,
-        "color": "#02a859"
-      })
-      _districtData.push({
-        "id": "CI",
-        "label": "CI",
-        "value": feature.properties.CI,
-        "color": "#8FA7A9"
-      })
-    }
-  })
-  console.log(_districtData)
-  setDistrictData(_districtData)
-}
-
-//DATOS PIECHART GOB CON NOMBRES
-/*const setUpDatos = (id) => {
-  let _gobData = []
-  mergedGeoJSON.features.map(feature =>{
-    if(feature.properties.municipio == id){
-      _gobData.push({
-        "id": "Clara Luz Flores",
-        "label": "MORENA",
-        "value": feature.properties.MORENA,
-        "color": "hsl(8, 76%, 43%)"
-      })
-      _gobData.push({
-        "id": "Fernando Larrazabal",
-        "label": "PAN",
-        "value": feature.properties.PAN,
-        "color": "hsl(210, 90%, 34%)"
-      })
-      _gobData.push({
-        "id": "Adrián de la Garza",
-        "label": "PRI",
-        "value": feature.properties.PRI,
-        "color": "hsl(135, 37%, 48%)"
-      })
-      _gobData.push({
-        "id": "Adrián de la Garza",
-        "label": "PRD",
-        "value": feature.properties.PRD,
-        "color": "hsl(48, 100%, 50%)"
-      })
-      _gobData.push({
-        "id": "Clara Luz Flores",
-        "label": "PT",
-        "value": feature.properties.PT,
-        "color": "hsl(3, 81%, 47%)"
-      })
-      _gobData.push({
-        "id": "Samuel García",
-        "label": "MC",
-        "value": feature.properties.MC,
-        "color": "hsl(25, 87%, 57%)"
-      })
-      _gobData.push({
-        "id": "Carolina Garza ",
-        "label": "PES",
-        "value": feature.properties.PES,
-        "color": "hsl(288, 45%, 34%)"
-      })
-      _gobData.push({
-        "id": "Virginia Siller",
-        "label": "RSP",
-        "value": feature.properties.RSP,
-        "color": "hsl(180, 1%, 19%)"
-      })
-      _gobData.push({
-        "id": "Emilio Jacques",
-        "label": "FXM",
-        "value": feature.properties.FXM,
-        "color": "hsl(333, 78%, 65%)"
-      })
-      _gobData.push({
-        "id": "Clara Luz Flores",
-        "label": "PVEM",
-        "value": feature.properties.PVEM,
-        "color": "hsl(86, 50%, 58%)"
-      })
-      _gobData.push({
-        "id": "Clara Luz Flores",
-        "label": "JHHNL",
-        "value": feature.properties.JHHNL,
-        "color": "hsl(8, 76%, 43%)"
-      })
-      _gobData.push({
-        "id": "Clara Luz Flores",
-        "label": "NANL",
-        "value": feature.properties.NANL,
-        "color": "hsl(181, 80%, 40%)"
-      })
-      _gobData.push({
-        "id": "Adrián de la Garza",
-        "label": "VFNL",
-        "value": feature.properties.VFNL,
-        "color": "hsl(135, 37%, 48%)"
-      })
-    }
-  })
-  console.log(_gobData)
-  setGobData(_gobData)
-}*/
-
-//DATOS PIECHART GOB SIN NOMBRES
-const setUpDatos = (id) => {
-  let _gobData = []
-  mergedGeoJSON.features.map(feature =>{
-    if(feature.properties.municipio == id){
-      /*_gobData.push({
-        "id": "MORENA",
-        "label": "MORENA",
-        "value": feature.properties.MORENA,
-        "color": "hsl(8, 76%, 43%)"
-      })*/
-      if(feature.properties.PAN > 0){
-          _gobData.push({
-              "id": "Fernando Larrazabal",
-              "label": "PAN",
-              "value": feature.properties.PAN,
-              "color": "hsl(210, 90%, 34%)"
-          })
+      if(feature.properties.MORENA > 0){
+        _districtData.push({
+          "id": "MORENA",
+          "label": "MORENA",
+          "value": feature.properties.MORENA,
+          "color": "hsl(8, 76%, 43%)"
+        })
       }
-      /*_gobData.push({
-        "id": "PRI",
-        "label": "PRI",
-        "value": feature.properties.PRI,
-        "color": "hsl(135, 37%, 48%)"
-      })*/
-      /*_gobData.push({
-        "id": "PRD",
-        "label": "PRD",
-        "value": feature.properties.PRD,
-        "color": "hsl(48, 100%, 50%)"
-      })*/
-      /*_gobData.push({
-        "id": "PT",
-        "label": "PT",
-        "value": feature.properties.PT,
-        "color": "hsl(3, 81%, 47%)"
-      })*/
-      if(feature.properties.MC > 0){
-          _gobData.push({
-              "id": "Samuel García",
-              "label": "MC",
-              "value": feature.properties.MC,
-              "color": "hsl(25, 87%, 57%)"
-          })
+      if(feature.properties.PAN > 0){
+        _districtData.push({
+          "id": "PAN",
+          "label": "PAN",
+          "value": feature.properties.PAN,
+          "color": "hsl(210, 90%, 34%)"
+        })
+      }
+      if(feature.properties.PRI > 0){
+        _districtData.push({
+          "id": "PRI",
+          "label": "PRI",
+          "value": feature.properties.PRI,
+          "color": "hsl(135, 37%, 48%)"
+        })
+      }
+      if(feature.properties.PRD > 0){ 
+        _districtData.push({
+          "id": "PRD",
+          "label": "PRD",
+          "value": feature.properties.PRD,
+          "color": "hsl(48, 100%, 50%)"
+        })
+      }
+      if(feature.properties.PT > 0){
+        _districtData.push({
+          "id": "PT",
+          "label": "PT",
+          "value": feature.properties.PT,
+          "color": "hsl(3, 81%, 47%)"
+        })
+      }
+      if(feature.properties.MC > 0){ 
+        _districtData.push({
+          "id": "MC",
+          "label": "MC",
+          "value": feature.properties.MC,
+          "color": "hsl(25, 87%, 57%)"
+        })
       }
       if(feature.properties.PES > 0){
-        _gobData.push({
-          "id": "Carolina Garza",
+        _districtData.push({
+          "id": "PES",
           "label": "PES",
           "value": feature.properties.PES,
           "color": "hsl(288, 45%, 34%)"
         })
       }
       if(feature.properties.RSP > 0){
-        _gobData.push({
-          "id": "Virginia Siller",
+        _districtData.push({
+          "id": "RSP",
           "label": "RSP",
           "value": feature.properties.RSP,
           "color": "hsl(180, 1%, 19%)"
         })
       }
       if(feature.properties.FXM > 0){
-        _gobData.push({
-          "id": "Emilio Jacques",
+        _districtData.push({
+          "id": "FXM",
           "label": "FXM",
           "value": feature.properties.FXM,
           "color": "hsl(333, 78%, 65%)"
         })
       }
-      /*_gobData.push({
-        "id": "PVEM",
-        "label": "PVEM",
-        "value": feature.properties.PVEM,
-        "color": "hsl(86, 50%, 58%)"
-      })*/
+      if(feature.properties.PVEM > 0){ 
+        _districtData.push({
+          "id": "PVEM",
+          "label": "PVEM",
+          "value": feature.properties.PVEM,
+          "color": "hsl(86, 50%, 58%)"
+        })
+      }
       if(feature.properties.JHHNL > 0){
-        _gobData.push({
-          "id": "Clara Luz Flores",
+        _districtData.push({
+          "id": "JHHNL",
           "label": "JHHNL",
           "value": feature.properties.JHHNL,
           "color": "hsl(8, 76%, 43%)"
         })
       }
-      /*_gobData.push({
-        "id": "NANL",
-        "label": "NANL",
-        "value": feature.properties.NANL,
-        "color": "hsl(181, 80%, 40%)"
-      })*/
+      if(feature.properties.NANL > 0){
+        _districtData.push({
+          "id": "NANL",
+          "label": "NANL",
+          "value": feature.properties.NANL,
+          "color": "hsl(181, 80%, 40%)"
+        })
+      }
       if(feature.properties.VFNL > 0){
-        _gobData.push({
-          "id": "Adrián de la Garza",
+        _districtData.push({
+          "id": "VFNL",
           "label": "VFNL",
           "value": feature.properties.VFNL,
           "color": "hsl(135, 37%, 48%)"
         })
       }
+      if(feature.properties.CI_1 > 0){
+        _districtData.push({
+          "id": "CI_1",
+          "label": "CI_1",
+          "value": feature.properties.CI_1,
+          "color": '#8A9393'
+        })
+      }
+      if(feature.properties.CI_2 > 0){
+        _districtData.push({
+          "id": "CI_2",
+          "label": "CI_2",
+          "value": feature.properties.CI_2,
+          "color": '#8FA7A9'
+        })
+      }
+    }
+  })
+  console.log(_districtData)
+  setDistrictData(_districtData)
+}
+//DATOS PIECHART GOB
+const setUpDatos = (id) => {
+  let _gobData = []
+  mergedGeoJSON.features.map(feature =>{
+    if(feature.properties.municipio == id){
+      _gobData.push({
+        "id": "MORENA",
+        "label": "MORENA",
+        "value": feature.properties.MORENA,
+        "color": "hsl(8, 76%, 43%)"
+      })
+      _gobData.push({
+        "id": "PAN",
+        "label": "PAN",
+        "value": feature.properties.PAN,
+        "color": "hsl(210, 90%, 34%)"
+      })
+      _gobData.push({
+        "id": "PRI",
+        "label": "PRI",
+        "value": feature.properties.PRI,
+        "color": "hsl(135, 37%, 48%)"
+      })
+      _gobData.push({
+        "id": "PRD",
+        "label": "PRD",
+        "value": feature.properties.PRD,
+        "color": "hsl(48, 100%, 50%)"
+      })
+      _gobData.push({
+        "id": "PT",
+        "label": "PT",
+        "value": feature.properties.PT,
+        "color": "hsl(3, 81%, 47%)"
+      })
+      _gobData.push({
+        "id": "MC",
+        "label": "MC",
+        "value": feature.properties.MC,
+        "color": "hsl(25, 87%, 57%)"
+      })
+      _gobData.push({
+        "id": "PES",
+        "label": "PES",
+        "value": feature.properties.PES,
+        "color": "hsl(288, 45%, 34%)"
+      })
+      _gobData.push({
+        "id": "RSP",
+        "label": "RSP",
+        "value": feature.properties.RSP,
+        "color": "rgb(0,0,255)"
+      })
+      _gobData.push({
+        "id": "FXM",
+        "label": "FXM",
+        "value": feature.properties.FXM,
+        "color": "#FF53A1"
+      })
+      _gobData.push({
+        "id": "PVEM",
+        "label": "PVEM",
+        "value": feature.properties.PVEM,
+        "color": "hsl(86, 50%, 58%)"
+      })
+      _gobData.push({
+        "id": "JHHNL",
+        "label": "JHHNL",
+        "value": feature.properties.JHHNL,
+        "color": "#B2242B"
+      })
+      _gobData.push({
+        "id": "NANL",
+        "label": "NANL",
+        "value": feature.properties.NANL,
+        "color": "#78f2ee"
+      })
+      _gobData.push({
+        "id": "VFNL",
+        "label": "VFNL",
+        "value": feature.properties.VFNL,
+        "color": "#02a859"
+      })
     }
   })
   console.log(_gobData)
@@ -371,6 +335,7 @@ const setUpDatos = (id) => {
 }
 
   useEffect(() => {
+    //CAMBIOS
     Promise.all(loadFiles).then(function (data) {
     setupGeoJson()
     //COMENTAR ESTO SI QUIERO QUE LA GRAFICA APAREZCA HASTA QUE SE DE CLICK EN EL MAPA
@@ -380,31 +345,37 @@ const setUpDatos = (id) => {
     let map = new mapboxgl.Map({
         container: mapContainer.current,
         //ESTILO NEGRO
-        //style: "mapbox://styles/mapbox/dark-v10",
-        style: "mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko",
+        style: "mapbox://styles/mapbox/dark-v10",
+        //style: "mapbox://styles/mildredg/ck8xwex5j19ei1iqkha7x2sko",
         //ESTILO BLANCO
         //style: "mapbox://styles/mapbox/light-v10",
         center: [long, lat],
         zoom: zoom,
         //dragPan: false
     });
+
     data[0].features = data[0].features.map(feature => {
       data[1].forEach(prefData => {
-          if (feature.properties.nombre === prefData['nombre']) {
+          if (feature.properties.id === Number(prefData['id'])) {
               feature.properties.PAN = Number(prefData['PAN']);
               feature.properties.PRI = Number(prefData['PRI']);
               feature.properties.PRD = Number(prefData['PRD']);
               feature.properties.PVEM = Number(prefData['PVEM']);
               feature.properties.PT = Number(prefData['PT']);
-              feature.properties.CI = Number(prefData['CI']);
+              feature.properties.CI_1 = Number(prefData['CI_1']);
+              feature.properties.CI_2 = Number(prefData['CI_2']);
               feature.properties.MC = Number(prefData['MC']);
               feature.properties.RSP = Number(prefData['RSP']);
               feature.properties.MORENA = Number(prefData['MORENA']);
               feature.properties.PES = Number(prefData['PES']);
               feature.properties.FXM = Number(prefData['FXM']);
-              feature.properties.VFNL = Number(prefData['VFNL']);
               feature.properties.JHHNL = Number(prefData['JHHNL']);
+              feature.properties.VFNL = Number(prefData['VFNL']);
               feature.properties.NANL = Number(prefData['NANL']);
+              feature.properties.SG = Number(prefData['Sin Ganador']);
+              feature.properties.PARTICIPACION = Number(prefData['PARTICIPACION']);
+              feature.properties.COLOR = String(prefData['COLOR']);
+              //feature.properties.municipio = String(prefData['nombre']);
               feature.properties.GANADOR = String(prefData['Ganador']);
           }
       });
@@ -412,7 +383,7 @@ const setUpDatos = (id) => {
   });
     mergedGeoJSON = data[0];
 
-    setUpDatos(selectedDistrict)
+    setUpData(selectedDistrict)
 
     //map.scrollZoom.disable();
 
@@ -436,50 +407,34 @@ const setUpDatos = (id) => {
           'paint': {
               'fill-color': [
                   'match',
-                  ['get', 'GANADOR'],
-                        'PAN',
-                        '#0957a5',
-                        'PRI',
-                        '#4da864',
-                        'PRD',
-                        '#FFCC00',
-                        'PVEM',
-                        '#9bc95e',
-                        'PT',
-                        '#d92017',
-                        'MC',
-                        '#f18132',
-                        'MORENA',
-                        '#c1311a',
-                        'PES',
-                        '#6e307e',
-                        'FXM',
-                        '#eb609f',
-                        'RSP',
-                        '#303131',
-                        'JHHNL',
-                        '#c1311a',
-                        'CI_1',
-                        '#8A9393',
-                        'CI_2',
-                        '#8FA7A9',
-                        'NANL',
-                        '#14b5b8',
-                        'VFNL',
-                        '#4da864',
-                        '#CCCCCC',
+                  ['get', 'COLOR'],
+                  'CERO',
+                  '#f2e0ff',
+                  'VEINTE',
+                  '#e8c7ff',
+                  'CUARENTA',
+                  '#ddadff',
+                  'SESENTA',
+                  '#cc85ff',
+                  'OCHENTA',
+                  '#b957ff',
+                  'CIEN',
+                  '#9705ff',
+                  '#CCCCCC',
               ],
               'fill-outline-color': '#FFF',
               'fill-opacity': [
                   'case',
                   ['boolean', ['feature-state', 'hover'], false],
-                  //0.8,
-                  //0.5
-                  1,
-                  0.80
+                  0.8,
+                  0.5
+                  //1,
+                  //0.80
               ]
           }
-      });
+      })
+
+
       /*map.addLayer({
         'id': 'district-borders',
         'type': 'line',
@@ -510,14 +465,20 @@ const setUpDatos = (id) => {
                 }
                 
                 let _hoveredDistrict = e.features[0].id;
-                let _hoveredMunN = e.features[0].properties.nombre;
+                let _hoveredMunS = e.features[0].properties.seccion;
+                let _hoveredMunN = e.features[0].properties.municipio;
                 let _hoveredMunP = e.features[0].properties.GANADOR;
+                let _hoveredMunPar = e.features[0].properties.PARTICIPACION;
 
-                var content = "<b>" + "Detalles del Municipio" + "</b>" + "<br>";
+                var content = "<b>" + "Detalles de la Sección" + "</b>" + "<br>";
+                content += "Nº Sección: " + _hoveredMunS  + "<br>";
                 content += "Municipio: " + _hoveredMunN  + "<br>";
                 content += "Partido: " + _hoveredMunP + "<br>";
+                content += "Participación: " + _hoveredMunPar + "%" + "<br>";
                 popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
                 
+
+                //AQUI PUEDE SER QUE FALTE SECCION
                 console.log(e.features)
                 map.setFeatureState(
                     { source: 'district-source', id: _hoveredDistrict,name: _hoveredMunN },
@@ -527,9 +488,14 @@ const setUpDatos = (id) => {
                 setHoveredDistrict(_hoveredDistrict);
                 setHoveredMunN(_hoveredMunN);
                 setHoveredMunP(_hoveredMunP);
+                setHoveredMunPar(_hoveredMunPar);
+                setHoveredMunS(_hoveredMunS);
             }
 
         });
+
+        // When the mouse leaves the state-fill layer, update the feature state of the
+        // previously hovered feature.
 
         map.on('mouseleave', 'district-layer', function () {
           if (hoveredDistrictRef.current && selectedDistrictRef.current != hoveredDistrictRef.current) {
@@ -538,10 +504,11 @@ const setUpDatos = (id) => {
                   { party: hoveredMunPRef.current,hover: false }
               );
           }
-        
           setHoveredDistrict(null);
           setHoveredMunN(null);
           setHoveredMunP(null);
+          setHoveredMunS(null);
+          setHoveredMunPar(null);
           popup.remove();
         });
 
@@ -552,7 +519,7 @@ const setUpDatos = (id) => {
             setLat(lat.toFixed(4));
             setZoom(map.getZoom().toFixed(2));
         });
-     
+
       map.on('click', 'district-layer', function (e) {
         if (e.features.length > 0) {
             if (selectedDistrictRef.current && selectedDistrictRef.current > -1) {
@@ -564,16 +531,21 @@ const setUpDatos = (id) => {
             }
 
             let _selectedDistrict = e.features[0].properties.municipio;
-            let _selectedDistrictN = e.features[0].properties.nombre;
+            let _selectedDistrictS = e.features[0].properties.seccion;
+            let _selectedDistrictN = e.features[0].properties.municipio;
             let _selectedDistrictP = e.features[0].properties.GANADOR;
+            let _selectedDistrictPar = e.features[0].properties.PARTICIPACION;
 
-            var content = "<b>" + "Detalles del Municipio" + "</b>" + "<br>";
+            var content = "<b>" + "Detalles de la Sección" + "</b>" + "<br>";
+            content += "Nº Sección: " + _selectedDistrictS  + "<br>";
             content += "Municipio: " + _selectedDistrictN  + "<br>";
             content += "Partido: " + _selectedDistrictP + "<br>";
+            content += "Participación: " + _selectedDistrictPar + "%" + "<br>";
             popup.setLngLat(e.lngLat).setHTML(content).addTo(map);
 
             console.log(e.features[0].properties.nombre);
 
+            //AQUI PUEDE QUE FALTE SECCION
             console.log(e.features)
             map.setFeatureState(
                 { source: 'district-source', id: _selectedDistrict, name: _selectedDistrictN},
@@ -585,6 +557,8 @@ const setUpDatos = (id) => {
             setSelectedDistrict(_selectedDistrict);
             setSelectedDistrictN(_selectedDistrictN);
             setSelectedDistrictP(_selectedDistrictP);
+            setSelectedDistrictPar(_selectedDistrictPar);
+            setSelectedDistrictS(_selectedDistrictS);
         }
 
     });
@@ -597,31 +571,19 @@ const setUpDatos = (id) => {
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div>
-      <h2 className={classes.titleNL}>Elección de Gobernador en Nuevo León 2021</h2>
-      <p className={classes.prep}>Fuente: PREP de la CEENL, avance al 100%</p>
-      <div className={classes.tabla}>
-        <CustomizedTables> </CustomizedTables>
-      </div>
-      <div> <h2 className={classes.titleGob}> Elección de Gobernador de Nuevo León por Municipio</h2> </div>
         <div className={classes.itemsContainer}>
             <div className="district-map-wrapper">
                     <div id="districtDetailMap" className={classes.map}>
                         <div style={{ height: "100%" }} ref={mapContainer}></div>
                     </div>
                 </div>
-            <div>
-            <h2 className={classes.munName} >{selectedDistrictN}</h2>
-                    {gobData.length !== 0 && (
-                        <div className={classes.chartContainer}>
-                            <NLGobChart data={gobData}/>
-                        </div>
-                    )}
-                </div>
             </div>
         </div>    
   );
   
-} 
+}
+
+//{hoveredMunNRef ? hoveredMunN : ""}
 
 const styles = () => ({
   /* Desktop */
@@ -630,13 +592,16 @@ const styles = () => ({
     justifyContent: 'space-evenly',
     maxWidth: 1600,
     margin: 'auto',
-    paddingTop: '100px',
-    borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
+    paddingLeft: '170px',
+    //paddingTop: '100px',
+    //borderBottom: '1px solid white',
+    //borderLeft: '1px solid white',
     //borderTop: '1px solid white',
-    borderRight: '1px solid white',
+    //borderRight: '1px solid white',
   },
   map: {
+    //height: '800px',
+    //width: '40vw',
     height: '700px',
     width: '30vw',
     margin: 'auto',
@@ -649,7 +614,7 @@ const styles = () => ({
     height: '600px',
     width: '600px',
     margin: 'auto',
-    paddingTop: '20px',
+    paddingTop: '20px'
   },
   chartContainer2: {
     height: '600px',
@@ -669,9 +634,16 @@ const styles = () => ({
     fontWeight: 'bold',
     paddingTop: '50px',
     margin: 'auto',
-    color: colors.WHITE,
+    color: colors.WHITE
 },
   titleGob: {
+    textAlign: 'center',
+    fontSize: 35,
+    fontWeight: 'bold',
+    paddingTop: '50px',
+    color: colors.WHITE
+  },
+  titleNL: {
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
@@ -683,60 +655,37 @@ const styles = () => ({
     borderTop: '1px solid white',
     borderRight: '1px solid white',
   },
-  titleNL: {
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
-    paddingTop: '50px',
-    color: colors.WHITE,
-    borderLeft: '1px solid white',
-    borderTop: '1px solid white',
-    borderRight: '1px solid white',
-  },
   tabla: {
-    textAlign: 'center',
-    fontSize: 40,
-    fontWeight: 'bold',
-    paddingTop: '50px',
-    backgroundColor: colors.BLACK,
-    borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
-    //borderTop: '1px solid white',
-    borderRight: '1px solid white',
+    //textAlign: 'center',
+    //fontSize: 40,
+    //fontWeight: 'bold',
+    //paddingTop: '50px'
   },
   prep: {
     color: colors.WHITE,
-    textAlign: 'center',
-    //borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
-    borderRight: '1px solid white',
-},
-error: {
-  color: colors.WHITE,
-  textAlign: 'center',
-  position: 'relative',
-  top: '100px',
-  fontSize: '30px',
+    textAlign: 'center'
 },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
     itesmContainer:{
-      display:'block',
-      margin: 'auto',
-    },
-    map:{
-      heigth:'500px',
-      width:'100vw',
-    },
-    chartContainer:{
-      height: '500px',
-      width: '100vw',
-      flex: 1,
-      margin:'auto',
-      padding:'50px 10px',
-    }
+        display:'block',
+        margin: 'auto',
+      },
+      map:{
+        heigth:'500px',
+        width:'100vw',
+      },
+      chartContainer:{
+        height: '500px',
+        width: '100vw',
+        flex: 1,
+        margin:'auto',
+        padding:'50px 10px',
+      }
+    
   }
   
 });
+
 
 export default withStyles(styles)(NuevoLeon);
