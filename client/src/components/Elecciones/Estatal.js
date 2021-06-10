@@ -876,6 +876,7 @@ const styles = () => ({
         borderLeft:  '1px solid white',
         borderBottom:  '1px solid white',
         borderRight:  '1px solid white',
+        paddingBottom: '100px'
     },
     chartContainer: {
         height: '500px',

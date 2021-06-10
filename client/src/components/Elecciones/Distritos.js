@@ -568,7 +568,7 @@ const Distritos = ({ classes }) => {
             </div>
 
             {/* curules  chart */}
-            <div className={classes.outerChartContainer}>
+            <div className={classes.outerChartContainer2}>
                 <h2 className={classes.subtitle}>Estimación de la distribución de la legislatura LXV</h2>
                 {districtData.length !== 0 && (
                     <div className={classes.chartContainer}>
@@ -579,7 +579,7 @@ const Distritos = ({ classes }) => {
             </div>
 
             {/* curules  chart */}
-            <div className={classes.outerChartContainer}>
+            <div className={classes.outerChartContainer2}>
             <h2 className={classes.subtitle}>Número de diputados en el Congreso por partido (1997-2021; totales por año suman 500 curules)</h2>
             {districtData.length !== 0 && (
                 <div className={classes.chartContainer}>
@@ -612,6 +612,10 @@ const styles = () => ({
     borderLeft:  '1px solid white',
     borderBottom:  '1px solid white',
     borderRight:  '1px solid white',
+  },
+  outerChartContainer2: {
+    paddingTop: '50px',
+    borderBottom:  '1px solid white',
   },
   chartContainer: {
     height: '600px',
@@ -651,6 +655,10 @@ const styles = () => ({
         borderLeft:  '1px solid white',
         borderBottom:  '1px solid white',
         borderRight:  '1px solid white',
+    },
+    outerChartContainer2: {
+        padding: '0px',
+        paddingTop: '30px',
     },
     chartContainer: {
         height: '550px',

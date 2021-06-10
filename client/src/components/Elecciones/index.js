@@ -200,8 +200,8 @@ const styles = () => ({
       paddingBottom: '0px',
       position:'relative',
       top:'-100px',
-      borderLeft: '1px solid white',
-      borderRight: '1px solid white',
+      //borderLeft: '1px solid white',
+      //borderRight: '1px solid white',
     },
     legend2: {
       fontSize: 40,
@@ -212,8 +212,8 @@ const styles = () => ({
       paddingBottom: '0px',
       position:'relative',
       top:'-172px',
-      borderLeft: '1px solid white',
-      borderRight: '1px solid white',
+      //borderLeft: '1px solid white',
+      //borderRight: '1px solid white',
     },
 
     /* Mobile */

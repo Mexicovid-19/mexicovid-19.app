@@ -597,12 +597,12 @@ const setUpDatos = (id) => {
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div>
-      <h2 className={classes.titleNL}>Elección de Gobernador en Nuevo León 2021</h2>
+      <h2 className={classes.subtitle}>Elección de Gobernador en Nuevo León 2021</h2>
       <p className={classes.prep}>Fuente: PREP de la CEENL, avance al 100%</p>
       <div className={classes.tabla}>
         <CustomizedTables> </CustomizedTables>
       </div>
-      <div> <h2 className={classes.titleGob}> Elección de Gobernador de Nuevo León por Municipio</h2> </div>
+      <div> <h2 className={classes.subtitle}> Elección de Gobernador de Nuevo León por Municipio</h2> </div>
         <div className={classes.itemsContainer}>
             <div className="district-map-wrapper">
                     <div id="districtDetailMap" className={classes.map}>
@@ -610,7 +610,7 @@ const setUpDatos = (id) => {
                     </div>
                 </div>
             <div>
-            <h2 className={classes.munName} >{selectedDistrictN}</h2>
+            <h2 className={classes.districtTitle} >{selectedDistrictN}</h2>
                     {gobData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <NLGobChart data={gobData}/>
@@ -628,13 +628,13 @@ const styles = () => ({
   itemsContainer: {
     display: 'flex',
     justifyContent: 'space-evenly',
-    maxWidth: 1600,
+    //maxWidth: 1600,
     margin: 'auto',
     paddingTop: '100px',
     borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
+    //borderLeft: '1px solid white',
     //borderTop: '1px solid white',
-    borderRight: '1px solid white',
+    //borderRight: '1px solid white',
   },
   map: {
     height: '700px',
@@ -670,28 +670,27 @@ const styles = () => ({
     paddingTop: '50px',
     margin: 'auto',
     color: colors.WHITE,
-},
-  titleGob: {
+  },
+  subtitle: {
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+    paddingTop: '50px',
+    padding: '0px 10px',
+    //paddingBottom: '50px',
+    color: colors.WHITE,
+    //borderBottom: '1px solid white',
+    //borderLeft: '1px solid white',
+    borderTop: '1px solid white',
+    //borderRight: '1px solid white',
+  },
+  districtTitle: {
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
     paddingTop: '50px',
     //paddingBottom: '50px',
     color: colors.WHITE,
-    //borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
-    borderTop: '1px solid white',
-    borderRight: '1px solid white',
-  },
-  titleNL: {
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
-    paddingTop: '50px',
-    color: colors.WHITE,
-    borderLeft: '1px solid white',
-    borderTop: '1px solid white',
-    borderRight: '1px solid white',
   },
   tabla: {
     textAlign: 'center',
@@ -700,41 +699,46 @@ const styles = () => ({
     paddingTop: '50px',
     backgroundColor: colors.BLACK,
     borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
+    //borderLeft: '1px solid white',
     //borderTop: '1px solid white',
-    borderRight: '1px solid white',
+    //borderRight: '1px solid white',
   },
   prep: {
     color: colors.WHITE,
     textAlign: 'center',
     //borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
-    borderRight: '1px solid white',
-},
-error: {
-  color: colors.WHITE,
-  textAlign: 'center',
-  position: 'relative',
-  top: '100px',
-  fontSize: '30px',
-},
+    //borderLeft: '1px solid white',
+    //borderRight: '1px solid white',
+    padding: '0px 10px',
+  },
+  error: {
+    color: colors.WHITE,
+    textAlign: 'center',
+    position: 'relative',
+    top: '100px',
+    fontSize: '30px',
+  },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    itesmContainer:{
-      display:'block',
-      margin: 'auto',
+    itemsContainer: {
+        display: 'block',
+        margin: 'auto',
     },
-    map:{
-      heigth:'500px',
-      width:'100vw',
+    map: {
+        minHeight: '400px',
+        height: '400px',
+        width: '100vw',
     },
-    chartContainer:{
-      height: '500px',
-      width: '100vw',
-      flex: 1,
-      margin:'auto',
-      padding:'50px 10px',
-    }
+    chartContainer: {
+        height: '550px',
+        width: '100vw',
+        flex: 1,
+        margin: 'auto',
+        //padding: '50px 10px',
+    },
+    subtitle: {
+      fontSize: 20,
+    },
   }
   
 });

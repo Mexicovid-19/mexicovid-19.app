@@ -664,20 +664,20 @@ const setUpDatos = (id) => {
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div>
-        <div> <h2 className={classes.titleNL}> Resultados de la Elección de Gobernador por Sección Electoral en la Zona Metropolitana de Monterrey</h2> </div>
+        <div> <h2 className={classes.subtitle}> Resultados de la Elección de Gobernador por Sección Electoral en la Zona Metropolitana de Monterrey</h2> </div>
         <p className={classes.prep}>Partido o Coalición Ganadora y Porcentaje de Participación Electoral</p>
         <div className={classes.itemsContainer}>
-        <div className={classes.tabla}>
-        </div>
-            <div className="district-map-wrapper">
-                    <div id="districtDetailMap" className={classes.map}>
+          <div className={classes.tabla}>
+            </div>
+                <div className="district-map-wrapper">
+                      <div id="districtDetailMap" className={classes.map}>
                         <div style={{ height: "100%" }} ref={mapContainer}></div>
-                    </div>
+                      </div>
                 </div>
-            <div>
-                <div className={classes.chartContainer}>
-                            <NuevoLeonSeccion2/>
-                        </div>
+                <div>
+                    <div className={classes.chartContainer}>
+                        <NuevoLeonSeccion2/>
+                    </div>
                 </div>
             </div>
         </div>    
@@ -692,13 +692,13 @@ const styles = () => ({
   itemsContainer: {
     display: 'flex',
     justifyContent: 'space-evenly',
-    maxWidth: 1600,
+    //maxWidth: 1600,
     margin: 'auto',
     paddingTop: '100px',
     //borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
+    //borderLeft: '1px solid white',
     //borderTop: '1px solid white',
-    borderRight: '1px solid white',
+    //borderRight: '1px solid white',
   },
   map: {
     //height: '800px',
@@ -706,22 +706,11 @@ const styles = () => ({
     height: '700px',
     width: '30vw',
     margin: 'auto',
+    marginBottom: '30px',
     borderBottom: '1px solid white',
     borderLeft: '1px solid white',
     borderTop: '1px solid white',
     borderRight: '1px solid white',
-  },
-  chartContainer: {
-    height: '600px',
-    width: '600px',
-    margin: 'auto',
-    //paddingTop: '20px'
-  },
-  chartContainer2: {
-    height: '600px',
-    width: '600px',
-    margin: 'auto',
-    paddingTop: '150px'
   },
   districtName: {
       textAlign: 'center',
@@ -737,14 +726,7 @@ const styles = () => ({
     margin: 'auto',
     color: colors.WHITE
 },
-  titleGob: {
-    textAlign: 'center',
-    fontSize: 35,
-    fontWeight: 'bold',
-    paddingTop: '50px',
-    color: colors.WHITE
-  },
-  titleNL: {
+  subtitle: {
     textAlign: 'center',
     fontSize: 30,
     fontWeight: 'bold',
@@ -752,9 +734,9 @@ const styles = () => ({
     //paddingBottom: '50px',
     color: colors.WHITE,
     //borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
+    //borderLeft: '1px solid white',
     borderTop: '1px solid white',
-    borderRight: '1px solid white',
+    //borderRight: '1px solid white',
   },
   tabla: {
     textAlign: 'center',
@@ -775,26 +757,30 @@ const styles = () => ({
   prep: {
     color: colors.WHITE,
     textAlign: 'center',
-    borderLeft: '1px solid white',
-    borderRight: '1px solid white',
+    //borderLeft: '1px solid white',
+    //borderRight: '1px solid white',
 },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    itesmContainer:{
-        display:'block',
+    itemsContainer: {
+        display: 'block',
         margin: 'auto',
-      },
-      map:{
-        heigth:'500px',
-        width:'100vw',
-      },
-      chartContainer:{
-        height: '500px',
+    },
+    map: {
+        minHeight: '400px',
+        height: '400px',
+        width: '100vw',
+    },
+    /* chartContainer: {
+        height: '550px',
         width: '100vw',
         flex: 1,
-        margin:'auto',
-        padding:'50px 10px',
-      }
+        margin: 'auto',
+        //padding: '50px 10px',
+    }, */
+    subtitle: {
+      fontSize: 20,
+    },
   }
   
 });

@@ -19,10 +19,8 @@ const Footer = ({ classes}) => {
           <Typography className={classes.title}>Menu</Typography>
           <div className={classes.columns}>
             <Link to={url+'/'} className={classes.name}><Typography className={classes.rows}>Inicio</Typography></Link>
-            <Link to={url+'/research'} onClick={click} className={classes.name}><Typography className={classes.rows}>Investigación</Typography></Link>
-            <Link to={url+'/regions'} onClick={click} className={classes.name}><Typography className={classes.rows}>Gráficos por Región</Typography></Link>
-            <Link to={url+'/simulation'} onClick={click} className={classes.name}><Typography className={classes.rows}>Prospectiva</Typography></Link>
-            <Link to={url+'/methodology'} onClick={click} className={classes.name}><Typography className={classes.rows}>Metodologías</Typography></Link>
+            <Link to={url+'/elecciones'} onClick={click} className={classes.name}><Typography className={classes.rows}>Elecciones 2021</Typography></Link>
+            <Link to={url+'/covid-19'} onClick={click} className={classes.name}><Typography className={classes.rows}>Covid-19</Typography></Link>
             <Link to={url+'/about-us'} onClick={click} className={classes.name}><Typography className={classes.rows}>Acerca de Nosotros</Typography></Link>
           </div>
         </div>

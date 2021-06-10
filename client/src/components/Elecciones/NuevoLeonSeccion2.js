@@ -571,14 +571,12 @@ const setUpDatos = (id) => {
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div>
-        <div className={classes.itemsContainer}>
-            <div className="district-map-wrapper">
-                    <div id="districtDetailMap" className={classes.map}>
-                        <div style={{ height: "100%" }} ref={mapContainer}></div>
-                    </div>
-                </div>
-            </div>
-        </div>    
+      <div className="district-map-wrapper">
+          <div id="districtDetailMap" className={classes.map}>
+              <div style={{ height: "100%" }} ref={mapContainer}></div>
+          </div>
+      </div>
+    </div>    
   );
   
 }
@@ -590,7 +588,7 @@ const styles = () => ({
   itemsContainer: {
     display: 'flex',
     justifyContent: 'space-evenly',
-    maxWidth: 1600,
+    //maxWidth: 1600,
     margin: 'auto',
     paddingLeft: '170px',
     //paddingTop: '100px',
@@ -651,9 +649,9 @@ const styles = () => ({
     //paddingBottom: '50px',
     color: colors.WHITE,
     //borderBottom: '1px solid white',
-    borderLeft: '1px solid white',
+    //borderLeft: '1px solid white',
     borderTop: '1px solid white',
-    borderRight: '1px solid white',
+    //borderRight: '1px solid white',
   },
   tabla: {
     //textAlign: 'center',
@@ -667,21 +665,11 @@ const styles = () => ({
 },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
-    itesmContainer:{
-        display:'block',
-        margin: 'auto',
-      },
-      map:{
-        heigth:'500px',
-        width:'100vw',
-      },
-      chartContainer:{
-        height: '500px',
+    map: {
+        minHeight: '400px',
+        height: '400px',
         width: '100vw',
-        flex: 1,
-        margin:'auto',
-        padding:'50px 10px',
-      }
+    },
     
   }
   
