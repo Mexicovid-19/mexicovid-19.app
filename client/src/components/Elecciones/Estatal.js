@@ -483,6 +483,11 @@ const Estatal = ({ classes }) => {
                     "ID_ESTADO": resultados[i].ID_ESTADO,
                     "GANADOR": resultados[i].GANADOR
                 })
+                participacion.push({
+                    "ID_ESTADO": resultados[i].ID_ESTADO,
+                    "PARTICIPACION": resultados[i].PARTICIPACION,
+                    "ACTAS_CAPTURADAS": resultados[i].ACTAS_CAPTURADAS
+                })
 
             } else if(resultados[i].ID_ESTADO != resultados[i+1].ID_ESTADO){
                 winners.push({
@@ -490,12 +495,13 @@ const Estatal = ({ classes }) => {
                     "GANADOR": resultados[i+1].GANADOR
                     
                 })
-                participacion.push({
-                    "ID_ESTADO": resultados[i].ID_ESTADO,
-                    "PARTICIPACION": resultados[i].PARTICIPACION,
-                    "ACTAS_CAPTURADAS": resultados[i].ACTAS_CAPTURADAS
-                })
             }
+            
+            participacion.push({
+                "ID_ESTADO": resultados[i].ID_ESTADO,
+                "PARTICIPACION": resultados[i].PARTICIPACION,
+                "ACTAS_CAPTURADAS": resultados[i].ACTAS_CAPTURADAS
+            })
         }
         mergedGeoJSON.features.map(feature =>{
             for(var i = 0; i < winners.length; i++){
