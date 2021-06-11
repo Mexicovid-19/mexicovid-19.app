@@ -28,7 +28,7 @@ import CurulesChart from './CurulesChart';
 import  CurulesTimeChart from './CurulesTime'
 
 /* Data */
-import distritos_csv from './data/DF_PREP_PER_1954.csv'
+import distritos_csv from './data/DF_PREP_PER_848.csv'
 import distritos_geojson from "./data/distritos.geojson"
 import curulesTime_json from './data/curulesTime.json'
 
@@ -48,7 +48,7 @@ const Distritos = ({ classes }) => {
 
 
     const [districtData, setDistrictData] = useState([])
-    const [district, setDistrict] = useState({edo: 19, dto: 10});
+    const [district, setDistrict] = useState({edo: 19, dto: 10, participacion: 58.4});
     const [selectedDistrict, setSelectedDistrict] = useState(1910)
     const [hoveredDistrict, _setHoveredDistrict] = useState(null);
     const hoveredDistrictRef = useRef(hoveredDistrict);
@@ -389,8 +389,10 @@ const Distritos = ({ classes }) => {
                 feature.properties.VXM = Number(prefData['VXM']);
                 feature.properties.TOTAL = Number(prefData['TOTAL']);
 
+            
                 feature.properties.GANADOR_2018 = String(prefData['GANADOR_2018']);
                 feature.properties.GANADOR_2021 = String(prefData['GANADOR_2021']);
+                feature.properties.PARTICIPACION = String(prefData['PARTICIPACION'])
                 
                 return feature;
             });
@@ -534,7 +536,7 @@ const Distritos = ({ classes }) => {
                     let _selectedDistrict = e.features[0].id;
                     setUpData(_selectedDistrict)
                     setSelectedDistrict(_selectedDistrict)
-                    setDistrict({dto: e.features[0].properties.dto, edo: e.features[0].properties.edo})
+                    setDistrict({dto: e.features[0].properties.dto, edo: e.features[0].properties.edo, participacion: e.features[0].properties.PARTICIPACION})
                 })
 
             });
@@ -558,12 +560,14 @@ const Distritos = ({ classes }) => {
                 <div className={classes.outerChartContainer}>
                     <h2 className={classes.subtitle}>Estado: {STATES_ELECCIONES[district.edo-1].title}</h2>
                     <h2 className={classes.subtitle}>Distrito: {district.dto}</h2>
-                    <p className={classes.prep}>Avance del PREP: 94%</p>
+                    <p className={classes.prep}>Fuente: Cómputos Distritales</p>
+                    <p className={classes.prep}>Participación: {district.participacion}%</p>
                     {districtData.length !== 0 && (
                         <div className={classes.chartContainer}>
                             <DistritosChart data={districtData}/>
                         </div>
                     )}
+                    <p className={classes.prep}>Fuente: Cómputos Distritales</p>
                 </div>
             </div>
 
