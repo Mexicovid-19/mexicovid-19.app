@@ -574,7 +574,7 @@ const styles = () => ({
     width: '30vw',
     margin: 'auto',
     borderBottom: '1px solid white',
-    //borderLeft: '1px solid white',
+    borderLeft: '1px solid white',
     borderTop: '1px solid white',
     borderRight: '1px solid white',
   },

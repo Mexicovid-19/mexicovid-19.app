@@ -401,7 +401,7 @@ const setUpDatos = (id) => {
 
     data[0].features = data[0].features.map(feature => {
       data[1].forEach(prefData => {
-        if (feature.properties.id === Number(prefData['id'])) {
+        if (feature.properties.seccion === Number(prefData['seccion'])) {
             feature.properties.PAN = Number(prefData['PAN']);
             feature.properties.PRI = Number(prefData['PRI']);
             feature.properties.PRD = Number(prefData['PRD']);
@@ -537,7 +537,7 @@ const setUpDatos = (id) => {
                     );
                 }
                 
-                let _hoveredDistrict = e.features[0].id;
+                let _hoveredDistrict = e.features[0].seccion;
                 let _hoveredMunS = e.features[0].properties.seccion;
                 let _hoveredMunN = e.features[0].properties.municipio;
                 let _hoveredMunP = e.features[0].properties.GANADOR;

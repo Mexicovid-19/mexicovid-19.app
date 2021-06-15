@@ -594,7 +594,7 @@ const setUpDatos = (id) => {
   return (
     <div>
       <h2 className={classes.subtitle}>Elección de Gobernador en Nuevo León 2021</h2>
-      <p className={classes.prep}>Fuente: PREP de la CEENL, avance al 100%</p>
+      <p className={classes.prep}>Fuente: Cómputo Electoral CEE NL</p>
       <div className={classes.tabla}>
         <CustomizedTables> </CustomizedTables>
       </div>

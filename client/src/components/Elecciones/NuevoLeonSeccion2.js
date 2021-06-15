@@ -352,7 +352,7 @@ const setUpDatos = (id) => {
 
     data[0].features = data[0].features.map(feature => {
       data[1].forEach(prefData => {
-          if (feature.properties.id === Number(prefData['id'])) {
+          if (feature.properties.seccion === Number(prefData['seccion'])) {
               feature.properties.PAN = Number(prefData['PAN']);
               feature.properties.PRI = Number(prefData['PRI']);
               feature.properties.PRD = Number(prefData['PRD']);
