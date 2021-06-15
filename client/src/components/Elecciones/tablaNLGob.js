@@ -37,7 +37,7 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData(<img className="foto" src='./img/elecciones/partidos/PAN.png'/>, 'Fernando Alejandro Larrazabal Brenton', '18.27%'),
+  createData(<img className="foto" src='./img/elecciones/partidos/PAN.png'/>, 'Fernando Alejandro Larrazabal Brenton', '18.26%'),
   createData(<img className="foto" src='./img/elecciones/partidos/MC.png'/>, 'Samuel Alejandro García Sepúlveda', '36.68%'),
   createData(<img className="foto" src='./img/elecciones/partidos/PES.png'/>, 'Carolina María Garza Guerra', '0.32%'),
   createData(<img className="foto" src='./img/elecciones/partidos/RSP.png'/>, 'Virginia Daney Siller Tristán', '0.30%'),
@@ -73,7 +73,7 @@ export default function CustomizedTables() {
           <TableRow>
             <StyledTableCell align ="center">PARTIDO</StyledTableCell>
             <StyledTableCell align="center">CANDIDATO</StyledTableCell>
-            <StyledTableCell align="center">PORCENTAJE PREP</StyledTableCell>
+            <StyledTableCell align="center">COMPUTO ELECTORAL</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody class="shadow">
