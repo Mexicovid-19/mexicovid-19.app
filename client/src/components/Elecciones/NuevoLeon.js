@@ -620,6 +620,11 @@ const setUpDatos = (id) => {
 } 
 
 const styles = () => ({
+  container: {
+    position: 'relative',
+    top: '-40px',
+    borderTop: '1px solid white',
+  },
   /* Desktop */
   itemsContainer: {
     display: 'flex',
@@ -627,6 +632,7 @@ const styles = () => ({
     //maxWidth: 1600,
     margin: 'auto',
     paddingTop: '100px',
+    paddingBottom: '60px',
     borderBottom: '1px solid white',
     //borderLeft: '1px solid white',
     //borderTop: '1px solid white',
@@ -682,8 +688,8 @@ const styles = () => ({
   },
   districtTitle: {
     textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: 'normal',
     paddingTop: '50px',
     //paddingBottom: '50px',
     color: colors.WHITE,
@@ -693,6 +699,7 @@ const styles = () => ({
     fontSize: 40,
     fontWeight: 'bold',
     paddingTop: '50px',
+    paddingBottom: '60px',
     backgroundColor: colors.BLACK,
     borderBottom: '1px solid white',
     //borderLeft: '1px solid white',

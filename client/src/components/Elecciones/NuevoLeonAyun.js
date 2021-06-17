@@ -565,7 +565,7 @@ const styles = () => ({
     paddingTop: '100px',
     //borderLeft: '1px solid white',
     //borderRight: '1px solid white',
-    paddingBottom: '30px',
+    paddingBottom: '60px',
   },
   map: {
     //height: '800px',
@@ -618,8 +618,8 @@ const styles = () => ({
   },
   districtTitle: {
     textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: 'normal',
     paddingTop: '50px',
     color: colors.WHITE,
   },
