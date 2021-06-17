@@ -16,7 +16,7 @@ const NuevoLeon = ({ classes }) => {
   return (
     <div className={classes.container}>
         <div> <h2 className={classes.subtitle}> Distribución del voto por tipo de elección en Nuevo León y por partido </h2> </div>
-        <h2 className={classes.subtitle5}> En esta gráfica se presentan los porcentajes de votación a nivel estado de cuatro partidos políticos para cuatro tipos de elección. Los partidos son el PAN, el PRI, MC y Morena y los tipos de elección son para la gubernatura, para ayuntamientos, diputaciones locales y diputaciones federales. </h2> 
+        <h2 className={classes.subtitle5}> En esta gráfica se presentan los porcentajes de votación a nivel estado de cuatro partidos políticos para cuatro tipos de elección. Los partidos son el PAN, el PRI, MC y Morena y los tipos de elección son para la gubernatura, para ayuntamientos, diputaciones locales y diputaciones federales. El gráfico sirve para dimensionar el voto dividido por tipo de elección en Nuevo León.</h2> 
         <div className={classes.itemsContainer}>
                 <div>
                         <div className={classes.chartContainer}>
