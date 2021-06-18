@@ -19,6 +19,8 @@ import Estatal from './Estatal'
 import NuevoLeon from './NuevoLeon'
 import NuevoLeonAyun from './NuevoLeonAyun'
 import NuevoLeonSeccion from './NuevoLeonSeccion'
+import Porcentajes from './Porcentajes'
+//import Diputados from './Diputados'
 
 import { Helmet } from 'react-helmet';
 
@@ -168,6 +170,9 @@ const Elecciones = ({ classes }) => {
                 <img className="foto2" src='./img/elecciones/partidos/LEYENDA2.png'/>
                 </div> */}
                 <NuevoLeonAyun/>
+                <Porcentajes/>
+                {/*<Diputados/>*/}
+                
               </> 
             </TabPanel>
         </div>
@@ -236,5 +241,6 @@ const styles = () => ({
     }
   
 });
+
 
 export default withStyles(styles)(Elecciones);

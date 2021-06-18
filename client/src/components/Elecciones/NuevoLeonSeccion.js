@@ -686,6 +686,11 @@ const setUpDatos = (id) => {
 //{hoveredMunNRef ? hoveredMunN : ""}
 
 const styles = () => ({
+  container: {
+    position: 'relative',
+    top: '-40px',
+    borderTop: '1px solid white',
+  },
   /* Desktop */
   itemsContainer: {
     display: 'flex',
@@ -788,6 +793,5 @@ const styles = () => ({
   }
   
 });
-
 
 export default withStyles(styles)(NuevoLeon);
