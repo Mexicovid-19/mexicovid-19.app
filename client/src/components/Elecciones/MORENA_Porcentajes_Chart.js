@@ -4,6 +4,7 @@ import { ResponsiveFunnel } from "@nivo/funnel";
 //const stepColors = ['#940022', '#98364C', '#9E5465', '#A06F7A']
 const stepColors = ['#A06F7A', '#9E5465', '#98364C', '#940022']
 
+
 const data = [
   {
     id: "Gob",

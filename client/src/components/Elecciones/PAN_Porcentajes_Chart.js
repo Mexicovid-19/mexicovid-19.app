@@ -1,6 +1,7 @@
 import React from "react";
 import { ResponsiveFunnel } from "@nivo/funnel";
 
+
 //const stepColors = ['#0957a5', '#639EF8', '#7CAEF4', '#AFCAF0']
 const stepColors = ['#AFCAF0', '#7CAEF4', '#639EF8', '#0957a5']
 

@@ -9,6 +9,7 @@ const data = [
     value: 36.72,
     label: "Gubernatura",
   },
+
   {
     id: "Ayun",
     value: 22.24,

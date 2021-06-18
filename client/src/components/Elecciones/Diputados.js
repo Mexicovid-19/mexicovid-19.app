@@ -7,6 +7,7 @@ import * as d3 from 'd3';
 import "./Popup.css"
 import * as colors from '../../constants/colors';
 
+
 const NuevoLeon = ({ classes }) => {
 
   document.title = "Elecciones 2021 | MexiCOVID";  

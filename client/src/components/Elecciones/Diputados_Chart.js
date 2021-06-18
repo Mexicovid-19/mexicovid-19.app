@@ -2,6 +2,7 @@ import { ResponsiveSunburst } from '@nivo/sunburst'
 import React from "react";
 
 
+
 //const stepColors = ['#0957a5', '#4da864', '#940022', '#d92017', '#9bc95e']
 //const stepColors = ['#940022', '#4da864', '#0957a5', '#d92017', '#9bc95e']
 //MORENA, PRI, PAN, PT, PVEM

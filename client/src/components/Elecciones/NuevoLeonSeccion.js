@@ -794,5 +794,4 @@ const styles = () => ({
   
 });
 
-
 export default withStyles(styles)(NuevoLeon);

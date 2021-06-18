@@ -659,7 +659,6 @@ const styles = () => ({
       fontSize: 20,
     },
   }
-  
 });
 
 
