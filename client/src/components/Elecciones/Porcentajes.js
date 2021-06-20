@@ -23,6 +23,9 @@ const NuevoLeon = ({ classes }) => {
                         <div className={classes.chartContainer}>
                             <h2 className={classes.subtitle4}>PAN</h2>
                             <PAN_Porcentajes_Chart/> 
+                            <div className={classes.legend}>
+                              <img className="foto4" src='./img/elecciones/partidos/LFunnelPAN.png'/>
+                            </div>
                            <div><h2 className={classes.subtitle2}>En el caso del PAN se observa una diferencia de unos 12 puntos entre el porcentaje que obtuvo para la elección a la gubernatura y la elección para diputaciones federales. En medio, se aprecian diferencias entre 6 y 9 puntos con respecto a las elecciones para ayuntamientos y diputaciones locales.</h2></div>
                         </div>
                 </div>
@@ -30,6 +33,9 @@ const NuevoLeon = ({ classes }) => {
                         <div className={classes.chartContainer}>
                             <h2 className={classes.subtitle4}>PRI</h2>
                             <PRI_Porcentajes_Chart/>
+                            <div className={classes.legend}>
+                              <img className="foto4" src='./img/elecciones/partidos/LFunnelPRI.png'/>
+                            </div>
                             <div><h2 className={classes.subtitle2}>En el caso del PRI, la diferencia entre porcentajes de votación según el tipo de elección no excede los dos puntos. Entre la elección a la gubernatura y la de ayuntamientos se observa una diferencia mejor a un punto. Respecto a las diputaciones tanto locales como federales se aprecia una distancia de 2%.</h2></div>
                         </div>
                 </div>
@@ -37,6 +43,9 @@ const NuevoLeon = ({ classes }) => {
                         <div className={classes.chartContainer}>
                             <h2 className={classes.subtitle4}>MC</h2>
                             <MC_Porcentajes_Chart/>
+                            <div className={classes.legend}>
+                              <img className="foto4" src='./img/elecciones/partidos/LFunnelMC.png'/>
+                            </div>
                             <div><h2 className={classes.subtitle2}>Para MC, esta diferencia resulta más notoria: casi 18 por ciento entre el porcentaje de votos para la gubernatura y las elecciones tanto para diputaciones federales como locales. En el caso de ayuntamientos, la distancia es de 15 puntos con respecto a la elección a la gubernatura.</h2></div>
                         </div>
                 </div>
@@ -44,6 +53,9 @@ const NuevoLeon = ({ classes }) => {
                         <div className={classes.chartContainer}>
                         <h2 className={classes.subtitle4}>MORENA</h2>
                             <MORENA_Porcentajes_Chart/>
+                            <div className={classes.legend}>
+                              <img className="foto4" src='./img/elecciones/partidos/LFunnelMORENA.png'/>
+                            </div>
                             <div><h2 className={classes.subtitle2}>Finalmente, en el caso de Morena, la diferencia entre la elección a la gubernatura y la elección para diputaciones federales es de cuatro puntos, tres con respecto a las diputaciones locales y medio punto con ayuntamientos.</h2></div>
                         </div>
                 </div>
@@ -100,10 +112,10 @@ const styles = () => ({
     //maxWidth: '95%',
   },
   chartContainer2: {
-    height: '600px',
-    width: '600px',
+    height: '300px',
+    width: '200px',
     margin: 'auto',
-    paddingTop: '150px'
+    //paddingTop: '150px'
   },
   districtName: {
       textAlign: 'center',
@@ -174,6 +186,19 @@ const styles = () => ({
   prep: {
     color: colors.WHITE,
     textAlign: 'center'
+},
+legend: {
+  textAlign: 'center',
+  //paddingLeft: '100px',
+  paddingBottom: '15px',
+  position: 'relative',
+  //top: '500px'
+},
+legend2: {
+  textAlign: 'left',
+  paddingLeft: '300px',
+  position: 'relative',
+  top: '600px'
 },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {

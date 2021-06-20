@@ -1,7 +1,6 @@
 import React from "react";
 import { ResponsiveFunnel } from "@nivo/funnel";
 
-
 //const stepColors = ['#0957a5', '#639EF8', '#7CAEF4', '#AFCAF0']
 const stepColors = ['#AFCAF0', '#7CAEF4', '#639EF8', '#0957a5']
 
@@ -27,6 +26,7 @@ const data = [
     label: "Diputados Federales",
   }
 ];
+
 const MyResponsiveFunnel = ({ data }) => (
   <ResponsiveFunnel
     data={data}
@@ -53,7 +53,7 @@ const MyResponsiveFunnel = ({ data }) => (
 );
 export default function App() {
   return (
-    <div style={{ width: 300, height: 300 }}>
+    <div style={{ width: 250, height: 300, paddingLeft: '50px'}}>
       <MyResponsiveFunnel data={data} />
     </div>
   );
