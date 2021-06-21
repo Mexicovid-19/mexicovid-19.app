@@ -23,6 +23,7 @@ import * as colors from '../../constants/colors';
 
 /* Components */
 import CurulesChart from './CurulesChart';
+import DiputadosCambiosChart from './DiputadosCambiosChart.js';
 
 /* Time Chart */
 import  CurulesTimeChart from './CurulesTime'
@@ -31,9 +32,11 @@ import  CurulesTimeChart from './CurulesTime'
 import distritos_csv from './data/DF_PREP_PER_848.csv'
 import distritos_geojson from "./data/distritos.geojson"
 import curulesTime_json from './data/curulesTime.json'
+import diputados_csv from './data/cambio_ganador.csv'
 
 
 import { STATES_ELECCIONES } from '../../constants/states'
+import { number } from 'prop-types';
 
 const Distritos = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
@@ -46,12 +49,66 @@ const Distritos = ({ classes }) => {
     const [lat, setLat] = useState(26.724);
     const [zoom, setZoom] = useState(3.8);
 
+   
 
     const [districtData, setDistrictData] = useState([])
+    const [diputadosData, setDiputadosData] = useState(Array.from({length: 10},()=> Array.from({length: 10}, () => 0)));
     const [district, setDistrict] = useState({edo: 19, dto: 10, participacion: 58.4});
     const [selectedDistrict, setSelectedDistrict] = useState(1910)
     const [hoveredDistrict, _setHoveredDistrict] = useState(null);
     const hoveredDistrictRef = useRef(hoveredDistrict);
+    const chordColor = [
+        {
+            "id": "PAN_PRD_MC",
+            "label": "PAN_PRD_MC",
+            "color": "hsl(210, 90%, 34%)",
+        }, 
+        {
+            "id": "MC",
+            "label": "MC",
+            "color": "hsl(25, 87%, 57%)",
+        },
+        {
+            "id": "MORENA",
+            "label": "MORENA",
+            "color": "hsl(8, 76%, 43%)",
+        }, 
+        {
+            "id": "PT_MORENA_PES",
+            "label": "PT_MORENA_PES",
+            "color": "hsl(8, 76%, 43%)",
+        }, 
+        {
+            "id": "PAN",
+            "label": "PAN",
+            "color": "hsl(210, 90%, 34%)",
+        }, 
+        {
+            "id": "PRI_PVEM_NA",
+            "label": "PRI_PVEM_NA",
+            "color": "hsl(135, 37%, 48%)",
+        },
+        {
+            "id": "PAN_PRI_PRD",
+            "label": "PAN_PRI_PRD",
+            "color": "hsl(210, 90%, 34%)",
+        }, 
+        {
+            "id": "PRI",
+            "label": "PRI",
+            "color": "hsl(135, 37%, 48%)",
+        }, 
+        {
+            "id": "PVEM",
+            "label": "PVEM",
+            "color": "hsl(86, 50%, 58%)",
+        }, 
+        {
+            "id": "PVEM_PT_MORENA",
+            "label": "PVEM_PT_MORENA",
+            "color": "hsl(8, 76%, 43%)",
+        }, 
+    ]
 
     const curules = [
         {
@@ -122,7 +179,8 @@ const Distritos = ({ classes }) => {
 
     var loadFiles = [
         d3.json(distritos_geojson),
-        d3.csv(distritos_csv)
+        d3.csv(distritos_csv),
+        d3.csv(diputados_csv)
         /* d3.json("data/distritos_fed.geojson"),
         d3.csv("data/distritos.csv"), */
     ]; 
@@ -328,6 +386,232 @@ const Distritos = ({ classes }) => {
       setDistrictData(_districtData)
     }
 
+    const setUpChordData = (data) => {
+        const matrix = [
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0]
+        ];
+
+        for(var i = 0; i < data.length; i++){
+            if(data[i].ganador18 == 'PAN_PRD_MC'){
+                if(data[i].ganador21 == 'MC'){
+                    matrix[2][0] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][0] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][0] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][0] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][0] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][0] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][0] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][0] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][0] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'MC'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][1] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][1] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][1] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][1] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][1] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][1] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][1] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][1] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][1] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'MORENA'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][2] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MC'){
+                    matrix[2][2] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][2] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][2] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][2] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][2] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][2] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][2] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][2] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'PT_MORENA_PES'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][3] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MC'){
+                    matrix[2][3] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][3] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][3] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][3] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][3] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][3] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][3] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][3] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'PAN'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][4] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MC'){
+                    matrix[2][4] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][4] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][4] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][4] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][4] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][4] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][4] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][4] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'PRI_PVEM_NA'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][5] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MC'){
+                    matrix[2][5] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][5] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][5] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][5] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][5] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][5] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][5] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][5] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'PAN_PRI_PRD'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][6] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MC'){
+                    matrix[2][6] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][6] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][6] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][6] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][6] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][6] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][6] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][6] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'PRI'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][7] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MC'){
+                    matrix[2][7] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][7] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][7] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][7] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][7] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][7] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][7] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][7] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'PVEM'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][8] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MC'){
+                    matrix[2][8] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][8] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][8] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][8] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][8] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][8] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][8] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM_PT_MORENA'){
+                    matrix[9][8] = Number(data[i].numero_cambio);
+                }
+            } else if(data[i].ganador18 == 'PVEM_PT_MORENA'){
+                if(data[i].ganador21 == 'PAN_PRD_MC'){
+                    matrix[0][9] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MC'){
+                    matrix[2][9] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'MORENA'){
+                    matrix[1][9] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PT_MORENA_PES'){
+                    matrix[3][9] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN'){
+                    matrix[4][9] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI_PVEM_NA'){
+                    matrix[5][9] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PAN_PRI_PRD'){
+                    matrix[6][9] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PRI'){
+                    matrix[7][9] = Number(data[i].numero_cambio);
+                } else if(data[i].ganador21 == 'PVEM'){
+                    matrix[8][9] = Number(data[i].numero_cambio);
+                }
+            } 
+        }
+        
+        //console.log(matrix);
+
+        setDiputadosData(matrix);
+        //console.log(diputadosData);
+        console.log(chordColor)
+        
+    }
+
 
     useEffect(() => {
         //setUpData(selectedDistrict)
@@ -400,8 +684,13 @@ const Distritos = ({ classes }) => {
             //setup geosjon
             mergedGeoJSON = data[0];
             //console.log(mergedGeoJSON)
+            let diputadosCSV = data[2];
             
             setUpData(selectedDistrict)
+
+            setUpChordData(diputadosCSV);
+            console.log('hola');
+            console.log(diputadosData);
 
             //map.scrollZoom.disable();
 
@@ -589,6 +878,17 @@ const Distritos = ({ classes }) => {
                 <div className={classes.chartContainer}>
                     <CurulesTimeChart data={curulesTime_json}/>
                 </div>
+        
+                )}
+            </div>
+
+            {/* Chord  chart */}
+            <div className={classes.outerChartContainer2}>
+                <h2 className={classes.subtitle}>Cambio de diputados de mayoría relativa por coalición ganadora o partido del 2018 al 2021</h2>
+                {diputadosData.length !== 0 && (
+                    <div className={classes.chartContainer}>
+                        <DiputadosCambiosChart matrix={diputadosData}/>
+                    </div>
         
                 )}
             </div>

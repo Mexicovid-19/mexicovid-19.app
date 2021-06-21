@@ -15,6 +15,7 @@
     "@mui-treasury/components": "^1.5.2",
     "@nivo/bar": "^0.70.1",
     "@nivo/bump": "^0.70.1",
+    "@nivo/chord": "^0.70.1",
     "@nivo/core": "^0.70.1",
     "@nivo/funnel": "^0.70.1",
     "@nivo/heatmap": "^0.70.1",
