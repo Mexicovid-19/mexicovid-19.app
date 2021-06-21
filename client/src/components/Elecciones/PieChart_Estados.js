@@ -8,7 +8,7 @@ import { ResponsivePie } from '@nivo/pie'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-const PieChart_Estados = ({ data}) => (
+const PieChart_Estados = ({data}) => (
     <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
