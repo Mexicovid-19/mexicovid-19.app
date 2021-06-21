@@ -80,6 +80,7 @@ const styles = () => ({
     top: '-40px',
     bottom: '400px',
     borderTop: '1px solid white',
+    paddingBottom: '50px'
   //  margin: '2px 1em 0 -10px',
   },
   /* Desktop */
@@ -153,6 +154,8 @@ const styles = () => ({
     color: colors.WHITE,
     paddingLeft: '10px',
     paddingRight: '10px',
+    maxWidth: '95%',
+    margin: 'auto'
   },
   subtitle3: {
     textAlign: 'center',
@@ -201,7 +204,7 @@ legend2: {
   top: '600px'
 },
   /* Mobile */
-  [`@media (max-width: ${1000}px)`]: {
+  [`@media (max-width: ${1200}px)`]: {
     container: {
       position: 'relative',
       top: '-20px'
@@ -209,6 +212,7 @@ legend2: {
     itemsContainer: {
         display: 'block',
         margin: 'auto',
+        paddingBottom: '0px'
     },
     map: {
         minHeight: '400px',

@@ -52,7 +52,7 @@ const MyResponsiveFunnel = ({ data }) => (
 );
 export default function App() {
   return (
-    <div style={{ width: 300, height: 300 }}>
+    <div style={{ width: 300, height: 300, margin: 'auto' }}>
       <MyResponsiveFunnel data={data} />
     </div>
   );
