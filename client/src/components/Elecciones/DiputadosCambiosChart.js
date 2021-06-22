@@ -2,6 +2,7 @@
 // yarn add @nivo/core @nivo/chord
 import React from 'react'
 import { ResponsiveChord } from '@nivo/chord'
+import { TableTooltip, BasicTooltip, Chip} from '@nivo/tooltip'
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
@@ -35,6 +36,8 @@ const DiputadosCambiosChart = ({ matrix }) => (
         ribbonOpacity={0.5}
         ribbonBorderWidth={1}
         ribbonBorderColor={{ from: 'color', modifiers: [ [ 'darker', 0.4 ] ] }}
+        ribbonTooltip = {RibbonTooltip}
+        arcTooltip = {ArcTooltip}
         enableLabel={true}
         label="id"
         labelOffset={12}
@@ -76,6 +79,30 @@ const DiputadosCambiosChart = ({ matrix }) => (
         //          ]
         //      }
         // ]}
+    />
+)
+
+const ArcTooltip = ({ arc }) => (
+    <BasicTooltip
+        id = { `Total de distritos que pasaron a ${arc.label}`}
+        value = {arc.formattedValue}
+        color = {arc.color}
+        enableChip = {true}
+    />
+)
+
+const RibbonTooltip = ({ribbon}) => (
+    <TableTooltip 
+        rows = {[
+            [
+            <Chip key="chip" color = {ribbon.source.color} />,
+            <strong key = "value">{ribbon.source.value}</strong>,
+            'distritos pasaron del',
+            <strong key = "id">{ribbon.target.id}</strong>,
+            'a',
+            <strong key = "id">{ribbon.source.id}</strong>
+            ]
+        ]}
     />
 )
 

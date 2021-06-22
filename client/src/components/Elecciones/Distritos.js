@@ -860,6 +860,17 @@ const Distritos = ({ classes }) => {
                 </div>
             </div>
 
+            {/* Chord  chart */}
+            <div className={classes.outerChartContainer2}>
+                <h2 className={classes.subtitle}>Cambio de diputados de mayoría relativa por coalición ganadora o partido del 2018 al 2021</h2>
+                {diputadosData.length !== 0 && (
+                    <div className={classes.chartContainer}>
+                        <DiputadosCambiosChart matrix={diputadosData}/>
+                    </div>
+        
+                )}
+            </div>
+
             {/* curules  chart */}
             <div className={classes.outerChartContainer2}>
                 <h2 className={classes.subtitle}>Estimación de la distribución de la legislatura LXV</h2>
@@ -875,20 +886,9 @@ const Distritos = ({ classes }) => {
             <div className={classes.outerChartContainer2}>
             <h2 className={classes.subtitle}>Número de diputados en el Congreso por partido (elecciones intermedias de 1997-2021; totales por año suman 500 curules</h2>
             {districtData.length !== 0 && (
-                <div className={classes.chartContainer}>
+                <div className={classes.chordChartContainer}>
                     <CurulesTimeChart data={curulesTime_json}/>
                 </div>
-        
-                )}
-            </div>
-
-            {/* Chord  chart */}
-            <div className={classes.outerChartContainer2}>
-                <h2 className={classes.subtitle}>Cambio de diputados de mayoría relativa por coalición ganadora o partido del 2018 al 2021</h2>
-                {diputadosData.length !== 0 && (
-                    <div className={classes.chartContainer}>
-                        <DiputadosCambiosChart matrix={diputadosData}/>
-                    </div>
         
                 )}
             </div>
@@ -926,8 +926,15 @@ const styles = () => ({
     minHeight: '500px',
     width: '50vw',
     flex: 1,
-    margin: 'auto',
+    margin: 'auto'
     //padding: '50px',
+  },
+  chordChartContainer: {
+    height: '700px',
+    minHeight: '500px',
+    width: '60vw',
+    flex: 1,
+    margin: 'auto'
   },
   subtitle: {
       textAlign: 'center',
