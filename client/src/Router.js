@@ -31,6 +31,7 @@ import './css/index.css';
 /* Nuevas páginas */
 import Elecciones from './components/Elecciones'
 import Landing from './components/Landing'
+import Sentiment from './components/Sentiment'
 
 /* Blog */
 import Blog from "./containers/Blog"
@@ -70,14 +71,8 @@ const Router = () => {
         {/* <Route path='/reactivacion-economica' component={ReaperturaEco}/> */}
 
         {/* Nuevas páginas */}
-        {/* <Route path='/elecciones' >
-          <DistritosContextProvider>
-            <Elecciones/>
-          </DistritosContextProvider>
-        </Route> */}
-        <Route path='/elecciones' >
-            <Elecciones/>
-        </Route>
+        <Route path='/elecciones' component={Elecciones}/>
+        <Route path='/sentiment-analysis' component={Sentiment}/>
 
         {/* landing */}
         <Route path="/" component={Landing}/>

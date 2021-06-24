@@ -55,6 +55,7 @@
     "react-leaf-carousel": "^2.0.0",
     "react-loader-spinner": "^3.1.14",
     "react-new-window": "^0.1.2",
+    "react-page-scroller": "^2.1.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-share": "^4.1.0",
