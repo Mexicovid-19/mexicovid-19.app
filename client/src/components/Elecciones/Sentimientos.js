@@ -19,7 +19,7 @@ const Sentimientos = ({ classes }) => {
     [
         {
           "id": "Samuel",
-          "color": "hsl(153, 70%, 50%)",
+          "color": "hsl(25, 87%, 57%)",
           "data": [
             {
                 "x": "31 de marzo del 2021",
@@ -41,7 +41,7 @@ const Sentimientos = ({ classes }) => {
         },
         {
           "id": "Fernando",
-          "color": "hsl(111, 70%, 50%)",
+          "color": "hsl(210, 90%, 34%)",
           "data": [
               {
                 "x": "31 de marzo del 2021",
@@ -64,7 +64,7 @@ const Sentimientos = ({ classes }) => {
         },
         {
           "id": "Clara",
-          "color": "hsl(342, 70%, 50%)",
+          "color": "hsl(8, 76%, 43%)",
           "data": [
             {
                 "x": "31 de marzo del 2021",
@@ -86,7 +86,7 @@ const Sentimientos = ({ classes }) => {
         },
         {
           "id": "Adrian",
-          "color": "hsl(254, 70%, 50%)",
+          "color": "hsl(135, 37%, 48%)",
           "data": [
             {
               "x": "31 de marzo del 2021",
@@ -110,7 +110,7 @@ const Sentimientos = ({ classes }) => {
     const samuelG = [
         {
             "id": "Samuel",
-            "color": "hsl(153, 70%, 50%)",
+            "color": "hsl(25, 87%, 57%)",
             "data": [
               {
                   "x": "31 de marzo del 2021",
@@ -135,7 +135,7 @@ const Sentimientos = ({ classes }) => {
     const claraLF = [
         {
             "id": "Clara",
-            "color": "hsl(342, 70%, 50%)",
+            "color": "hsl(8, 76%, 43%)",
             "data": [
               {
                   "x": "31 de marzo del 2021",
@@ -159,7 +159,7 @@ const Sentimientos = ({ classes }) => {
     const adrianG = [
         {
             "id": "Adrian",
-            "color": "hsl(254, 70%, 50%)",
+            "color": "hsl(135, 37%, 48%)",
             "data": [
               {
                 "x": "31 de marzo del 2021",
@@ -184,7 +184,7 @@ const Sentimientos = ({ classes }) => {
     const fernandoF=[
         {
             "id": "Fernando",
-            "color": "hsl(111, 70%, 50%)",
+            "color": "hsl(210, 90%, 34%)",
             "data": [
                 {
                   "x": "31 de marzo del 2021",

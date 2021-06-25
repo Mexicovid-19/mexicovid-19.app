@@ -34,7 +34,7 @@ const CompoundLine = ({data}) => (
             legendOffset: -40,
             legendPosition: 'middle'
         }}
-        colors={{ scheme: 'category10' }}
+        colors={{ datum: 'color' }}
         pointSize={10}
         pointColor={{ theme: 'background' }}
         pointBorderWidth={2}
