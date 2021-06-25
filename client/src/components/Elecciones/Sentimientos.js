@@ -63,7 +63,7 @@ const Sentimientos = ({ classes }) => {
           ]
         },
         {
-          "id": "Clara",
+          "id": "Clara Luz",
           "color": "hsl(8, 76%, 43%)",
           "data": [
             {
@@ -112,47 +112,47 @@ const Sentimientos = ({ classes }) => {
             "id": "Samuel",
             "color": "hsl(25, 87%, 57%)",
             "data": [
-              {
-                  "x": "31 de marzo del 2021",
-                  "y": 0.263719874
-                },
                 {
-                  "x": "30 de abril del 2021",
-                  "y": 0.055920529
-                },
-                {
-                  "x": "31 de mayo del 2021",
-                  "y": 0.373281815
-                },
-                {
-                  "x": "30 de junio del 2021",
-                  "y": 0.773179606
-                }
+                    "x": "31 de marzo del 2021",
+                    "y": 0.263719874
+                  },
+                  {
+                    "x": "30 de abril del 2021",
+                    "y": 0.055920529
+                  },
+                  {
+                    "x": "31 de mayo del 2021",
+                    "y": 0.373281815
+                  },
+                  {
+                    "x": "30 de junio del 2021",
+                    "y": 0.773179606
+                  }
             ]
           }
 
     ];
     const claraLF = [
         {
-            "id": "Clara",
+            "id": "Clara Luz",
             "color": "hsl(8, 76%, 43%)",
             "data": [
-              {
-                  "x": "31 de marzo del 2021",
-                  "y": 0.063719874
-                },
                 {
-                  "x": "30 de abril del 2021",
-                  "y": 0.055920529
-                },
-                {
-                  "x": "31 de mayo del 2021",
-                  "y": 0.173281815
-                },
-                {
-                  "x": "30 de junio del 2021",
-                  "y": 0.173179606
-                }
+                    "x": "31 de marzo del 2021",
+                    "y": 0.063719874
+                  },
+                  {
+                    "x": "30 de abril del 2021",
+                    "y": 0.055920529
+                  },
+                  {
+                    "x": "31 de mayo del 2021",
+                    "y": 0.173281815
+                  },
+                  {
+                    "x": "30 de junio del 2021",
+                    "y": 0.173179606
+                  }
             ]
           }
     ];
@@ -161,22 +161,22 @@ const Sentimientos = ({ classes }) => {
             "id": "Adrian",
             "color": "hsl(135, 37%, 48%)",
             "data": [
-              {
-                "x": "31 de marzo del 2021",
-                "y": 0.258238091
-              },
-              {
-                "x": "30 de abril del 2021",
-                "y": 0.203839314
-              },
-              {
-                "x": "31 de mayo del 2021",
-                "y": 0.197265361
-              },
-              {
-                "x": "30 de junio del 2021",
-                "y": 0.257063083
-              }
+                {
+                    "x": "31 de marzo del 2021",
+                    "y": 0.258238091
+                  },
+                  {
+                    "x": "30 de abril del 2021",
+                    "y": 0.203839314
+                  },
+                  {
+                    "x": "31 de mayo del 2021",
+                    "y": 0.197265361
+                  },
+                  {
+                    "x": "30 de junio del 2021",
+                    "y": 0.257063083
+                  }
             ]
           }
     ];
@@ -187,21 +187,21 @@ const Sentimientos = ({ classes }) => {
             "color": "hsl(210, 90%, 34%)",
             "data": [
                 {
-                  "x": "31 de marzo del 2021",
-                  "y": 0.163719874
-                },
-                {
-                  "x": "30 de abril del 2021",
-                  "y": 0.255920529
-                },
-                {
-                  "x": "31 de mayo del 2021",
-                  "y": 0.073281815
-                },
-                {
-                  "x": "30 de junio del 2021",
-                  "y": 0.073179606
-                }
+                    "x": "31 de marzo del 2021",
+                    "y": 0.163719874
+                  },
+                  {
+                    "x": "30 de abril del 2021",
+                    "y": 0.255920529
+                  },
+                  {
+                    "x": "31 de mayo del 2021",
+                    "y": 0.073281815
+                  },
+                  {
+                    "x": "30 de junio del 2021",
+                    "y": 0.073179606
+                  }
               
             ]
           }
@@ -212,6 +212,7 @@ const Sentimientos = ({ classes }) => {
     document.title = "Elecciones 2021 | MexiCOVID"
     useEffect(() => {
     }, []);
+    
 
     return (
         <div className={classes.itemsContainer}>
