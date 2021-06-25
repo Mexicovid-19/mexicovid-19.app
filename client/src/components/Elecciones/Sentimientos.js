@@ -216,13 +216,13 @@ const Sentimientos = ({ classes }) => {
     return (
         <div className={classes.itemsContainer}>
             <div className = {classes.chartContainer}style={{height: "100%"}}>
-                <h2 className={classes.subtitle}><strong>Distribución de Votos Hola</strong></h2>
+                <h2 className={classes.subtitle}><strong>Analisis Sentimientoa Texto</strong></h2>
                 <h2 className={classes.subtitle5}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra sollicitudin sem nec efficitur. Nullam eu varius lectus. Aliquam orci velit, mattis et ullamcorper tempor, ultrices eu ipsum. Mauris sed nunc aliquet, convallis libero id, pretium tellus. Donec aliquam nibh diam, a euismod turpis semper vitae. Morbi sollicitudin, justo vitae ullamcorper suscipit, libero justo rutrum nunc, vel dictum erat sapien sed nisi. Donec in nibh vitae eros lacinia semper sed sit amet neque. Phasellus ut elit a arcu hendrerit faucibus et at enim. Duis condimentum orci non enim pretium ornare. Aenean mattis semper eleifend. Vivamus et nisl at lacus euismod facilisis. Vivamus auctor tristique odio id maximus. Vivamus tincidunt porta urna id euismod. Maecenas nec vulputate metus.</h2>
                 <h2 className={classes.subtitle5}>Nam blandit risus tortor, malesuada efficitur erat iaculis a. Etiam nunc arcu, faucibus id lectus eget, ornare imperdiet arcu. Duis luctus nisl id lobortis blandit. Integer facilisis velit ac lacus condimentum lobortis. Vestibulum nisi diam, euismod sit amet tincidunt nec, tempus porta tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec venenatis venenatis consequat. Sed suscipit eros ac consequat ultricies. Duis vitae viverra nisi. Mauris malesuada est nisl, venenatis vulputate felis accumsan in. Quisque ultricies, nulla ut sollicitudin viverra, ante lacus consectetur sem, id condimentum nunc ante iaculis dolor. Suspendisse tempor leo ac leo lobortis consequat. Vestibulum a maximus sem. Cras leo sem, feugiat sit amet mattis quis, commodo vitae eros. Phasellus blandit sem ac mattis volutpat. Curabitur egestas fermentum consequat.</h2> 
             </div>
             <div className = {classes.outerChartContainer}>
                 <div className = {classes.chartContainer}>
-                <h2 className={classes.subtitle}><strong>Distribución de Votos Soy Yo</strong></h2>
+                <h2 className={classes.subtitle}><strong>Analisis Sentimientos Gráfica</strong></h2>
                 <CompoundLine data = {value}/>
                 <div className = {classes.chartContainer}>
                     <FormControl className= {classes.formControl}>
