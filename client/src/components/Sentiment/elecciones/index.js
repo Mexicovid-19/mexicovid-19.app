@@ -1,8 +1,10 @@
 import React from 'react';
 
+/* Slides */
 import Landing from './Landing'
 import Redes from './Redes'
 import Phrase from './Phrase'
+import Sentiment from './Sentiment'
 
 import { Fullpage, Slide } from 'fullpage-react';
 
@@ -75,6 +77,9 @@ class FullpageReact extends React.Component {
       </Slide>,
       <Slide>
           <Phrase/>
+      </Slide>,
+      <Slide>
+        <Sentiment/>
       </Slide>
     ];
     fullPageOptions.slides = verticalSlides;
