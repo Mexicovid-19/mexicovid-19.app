@@ -4,7 +4,11 @@ import React from 'react';
 import Landing from './Landing'
 import Redes from './Redes'
 import Phrase from './Phrase'
-import Sentiment from './Sentiment'
+import SentimentPositividad from './SentimentPositividad.js';
+import SentimentCompound from './SentimentCompound.js';
+import SentimentTrust from './SentimentTrust.js';
+import SentimentNegativity from './SentimentNegativity.js';
+import SentimentAnticipation from './SentimentAnticipation.js';
 
 import { Fullpage, Slide } from 'fullpage-react';
 
@@ -79,7 +83,19 @@ class FullpageReact extends React.Component {
           <Phrase/>
       </Slide>,
       <Slide>
-        <Sentiment/>
+        <SentimentTrust/>
+      </Slide>,
+      <Slide>
+        <SentimentCompound/>
+      </Slide>,
+      <Slide>
+        <SentimentPositividad/>
+      </Slide>,
+      <Slide>
+        <SentimentNegativity/>
+      </Slide>,
+      <Slide>
+        <SentimentAnticipation/>
       </Slide>
     ];
     fullPageOptions.slides = verticalSlides;
