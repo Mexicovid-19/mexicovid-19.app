@@ -23,8 +23,6 @@ import Porcentajes from './Porcentajes'
 //import Diputados from './Diputados'
 
 import { Helmet } from 'react-helmet';
-import Sentimientos from './Sentimientos';
-
 const AntTabs = withStyles({
   root: {
     position: 'relative',
@@ -133,14 +131,12 @@ const Elecciones = ({ classes }) => {
                     <AntTab label="Diputados" />
                     <AntTab label="Gubernaturas" />
                     <AntTab label="Nuevo León" />
-                    <AntTab label="Sentimientos" />
                   </AntTabs>
                 ) : (
                   <AntTabs value={value} onChange={handleChange} aria-label="ant example" centered>
                     <AntTab label="Diputados federales" />
                     <AntTab label="Gubernaturas" />
                     <AntTab label="Elección Nuevo León" />
-                    <AntTab label="Análisis de Sentimientos" />
                   </AntTabs>
                 )}
                 
@@ -177,11 +173,6 @@ const Elecciones = ({ classes }) => {
                 {/*<Diputados/>*/}
                 
               </> 
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-              <>
-                <Sentimientos/>
-              </>              
             </TabPanel>
         </div>
     </div>
