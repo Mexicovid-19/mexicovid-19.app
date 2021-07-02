@@ -10,9 +10,9 @@ import { ResponsiveLine } from '@nivo/line'
 const CompoundLine = ({data}) => (
     <ResponsiveLine
         data={data}
-        margin={{ top: 50, right: 30, bottom: 50, left: 30 }}
+        margin={{ top: 50, right: 50, bottom: 50, left: 50 }}
         xScale={{ type: 'point' }}
-        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
+        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
         yFormat=" >-.2f"
         axisTop={null}
         axisRight={null}
