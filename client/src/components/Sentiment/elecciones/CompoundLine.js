@@ -10,7 +10,7 @@ import { ResponsiveLine } from '@nivo/line'
 const CompoundLine = ({data}) => (
     <ResponsiveLine
         data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{ top: 50, right: 30, bottom: 50, left: 30 }}
         xScale={{ type: 'point' }}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         yFormat=" >-.2f"
@@ -45,7 +45,7 @@ const CompoundLine = ({data}) => (
         pointBorderColor={{ from: 'serieColor' }}
         pointLabelYOffset={-12}
         useMesh={true}
-        legends={[
+        /* legends={[
             {
                 anchor: 'bottom-right',
                 direction: 'column',
@@ -61,6 +61,7 @@ const CompoundLine = ({data}) => (
                 symbolSize: 12,
                 symbolShape: 'circle',
                 symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                translateX: 10,
                 effects: [
                     {
                         on: 'hover',
@@ -71,7 +72,7 @@ const CompoundLine = ({data}) => (
                     }
                 ],
             }
-        ]}
+        ]} */
     />
 )
 

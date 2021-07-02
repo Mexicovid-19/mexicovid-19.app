@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import './css/index.css';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
+//CSS
+import "./App.css"
+
 import { ApolloProvider } from '@apollo/react-hooks';
 import { client } from './Utils/apollo';
 import Router from './Router';

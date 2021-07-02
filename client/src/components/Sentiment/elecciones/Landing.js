@@ -73,14 +73,21 @@ const useStyles = makeStyles((theme) => ({
         margin: ' auto',
         position: 'absolute',
         bottom: '-15px',
-        left: '50%'
+        left: 'calc(50% - 1px)'
     },
 
-  [`@media (max-width: ${999}px)`]: {
-    title: {
-        fontSize: '40px',
-        lineHeight: '40px',
-    },
+  [`@media (max-width: ${1000}px)`]: {
+        background: {
+            height: 'calc(100vh - 56px)',
+        },
+        overlay: {
+            height: 'calc(100vh - 56px)',
+        },
+        title: {
+            fontSize: '40px',
+            lineHeight: '40px',
+        },
+
   },
 
   [`@media (max-width: ${600}px)`]: {

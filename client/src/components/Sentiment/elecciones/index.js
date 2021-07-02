@@ -42,6 +42,8 @@ class FullpageReact extends React.Component {
     this.onSlideChangeStart = this.onSlideChangeStart.bind(this);
     this.onSlideChangeEnd = this.onSlideChangeEnd.bind(this);
   }
+  
+  isMobile = window.innerWidth < 1000;
 
   onSlideChangeStart(name) {
     if (!this.horizontalNav) {
@@ -67,10 +69,6 @@ class FullpageReact extends React.Component {
     this.setState(updatedState);
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     const verticalSlides = [
       <Slide>
@@ -80,7 +78,7 @@ class FullpageReact extends React.Component {
         <Redes/>
       </Slide>,
       <Slide>
-          <Phrase/>
+        <Phrase/>
       </Slide>,
       <Slide>
         <SentimentTrust/>
@@ -101,8 +99,23 @@ class FullpageReact extends React.Component {
     fullPageOptions.slides = verticalSlides;
 
     return (
-      <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions}>
-      </Fullpage>
+      <>
+        {this.isMobile ? (
+          <>
+            <Landing/>
+            <Redes/>
+            <Phrase/>
+            <SentimentTrust/>
+            <SentimentCompound/>
+            <SentimentPositividad/>
+            <SentimentNegativity/>
+            <SentimentAnticipation/>
+          </>
+        ) : (
+          <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions}>
+          </Fullpage>
+        )}
+      </>
     );
   }
 }
@@ -116,5 +129,6 @@ function scrollNavEnd(nav) {
   // make the nav absolute when scroll finishes
   nav.style.position = 'absolute';
 }
+
 
 export default FullpageReact;
