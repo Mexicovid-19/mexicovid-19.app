@@ -3,12 +3,15 @@ import React, { useEffect, useState } from 'react'
 /* Material UI */
 import { makeStyles } from '@material-ui/core/styles';
 import {Select, MenuItem, FormControl, InputLabel} from '@material-ui/core';
+import ArrowRightAltRoundedIcon from '@material-ui/icons/ArrowRightAltRounded';
 
 // Utils
 import * as colors from '../../../constants/colors';
 import CompoundLine from './CompoundLine.js';
 import { TransparentInput } from '../../../Utils/components/Select'
 
+//Components
+import Legend from './Legend';
 
 
 export default function SentimentSubjectivity({ classes }) {
@@ -561,31 +564,36 @@ export default function SentimentSubjectivity({ classes }) {
                          <div className={classes.titleContainer}>
                             <h2 className={classes.subtitle}><strong>Analisis Subjetividad Gráfica</strong></h2>
                         </div>
+                        <div className={classes.scrollContainer}>
+                          <p className={classes.scrollText}>scroll</p>
+                          <ArrowRightAltRoundedIcon className={classes.scrollIcon}/>
+                        </div>
                         <div className={classes.chartContainer}>
                             <CompoundLine data={state.data}/>
                         </div>
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                <InputLabel component="legend" style={{ color: "white", fontSize: "20px", fontWeight: 'bolder'}}>Candidatos</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-outlined-label"
-                                    id="demo-simple-select-outlined"
-                                    value={state.candidato}
-                                    onChange={handleChange}
-                                    label="Pais"
-                                    input={<TransparentInput style={{marginBottom: 30}}/>}
-                                >
-                                    <MenuItem value={0}>Todos los candidatos</MenuItem>
-                                    <MenuItem value={1}>Samuel García</MenuItem>
-                                    <MenuItem value={2}>Clara Luz Florez</MenuItem>
-                                    <MenuItem value={3}>Fernando Larrazábal</MenuItem>
-                                    <MenuItem value={4}>Adrian de la Garza</MenuItem>
-                                </Select>
+                        <div className={classes.chartFooterContainer}>
+                            <FormControl variant="outlined" className={classes.formControl}>
+                              <InputLabel component="legend" style={{ color: "white", fontSize: "20px", fontWeight: 'bolder'}}>Candidatos</InputLabel>
+                              <Select
+                                  labelId="demo-simple-select-outlined-label"
+                                  id="demo-simple-select-outlined"
+                                  value={state.candidato}
+                                  onChange={handleChange}
+                                  label="Pais"
+                                  input={<TransparentInput style={{marginBottom: 30}}/>}
+                              >
+                                  <MenuItem value={0}>Todos los candidatos</MenuItem>
+                                  <MenuItem value={1}>Samuel García</MenuItem>
+                                  <MenuItem value={2}>Clara Luz Florez</MenuItem>
+                                  <MenuItem value={3}>Fernando Larrazábal</MenuItem>
+                                  <MenuItem value={4}>Adrian de la Garza</MenuItem>
+                              </Select>
                             </FormControl>
-                    </div>
-                    <div className={classes.itemContainer}>
-                        <div style={{flex: '0.5'}}>
-                            <h2 className={classes.subtitle}><strong>Analisis Subjetividad Texto</strong></h2>
+                            <Legend/>
                         </div>
+                    </div>
+                    <div className={classes.itemContainer2}>
+                        <h2 className={classes.subtitle}><strong>Analisis Subjetividad Texto</strong></h2>
                         <h2 className={classes.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra sollicitudin sem nec efficitur. Nullam eu varius lectus. Aliquam orci velit, mattis et ullamcorper tempor, ultrices eu ipsum. Mauris sed nunc aliquet, convallis libero id, pretium tellus. Donec aliquam nibh diam, a euismod turpis semper vitae. Morbi sollicitudin, justo vitae ullamcorper suscipit, libero justo rutrum nunc, vel dictum erat sapien sed nisi. Donec in nibh vitae eros lacinia semper sed sit amet neque. Phasellus ut elit a arcu hendrerit faucibus et at enim. Duis condimentum orci non enim pretium ornare. Aenean mattis semper eleifend. Vivamus et nisl at lacus euismod facilisis. Vivamus auctor tristique odio id maximus. Vivamus tincidunt porta urna id euismod. Maecenas nec vulputate metus.</h2>
                     </div>
                 </div>
@@ -598,12 +606,7 @@ export default function SentimentSubjectivity({ classes }) {
 const useStyles = makeStyles((theme) => ({
     component:{
         width: '100%',
-        height:'100vh',
         background: 'rgb(34, 35, 35)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center'
     },
     line: {
         width: '2px',
@@ -637,33 +640,99 @@ const useStyles = makeStyles((theme) => ({
         flex: 1
     },
     itemsContainer: {
-        display: 'flex',
-        justifyContent: 'space-between',
         padding: '20px 20px'
     },
     itemContainer: {
-        padding: 30
+        padding: 30,
+        overflowX: 'scroll',
+        flex: 1
+    },
+    itemContainer2: {
+        padding: 30,
+        overflowX: 'scroll',
+        flex: 0.3
     },
     description: {
         color: colors.WHITE,
-        paddingTop: 60
+        paddingTop: 50,
+        textAlign: 'justify'
     },
     chartContainer: {
         height: '600px',
         minHeight: '600px',
-        width: '50vw',
+        minWidth: 800,
         flex: 1,
         margin: 'auto',
+    },
+    chartFooterContainer: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems:  'center'
     },
     formControl: {
         minWidth: 100,
         flex: 1,
-        marginLeft: 20
+        marginRight: 20
+    },
+    scrollContainer: {
+      color: 'white',
+      display: 'flex',
+      alignItems: 'center',
+      textAlign: 'right',
+      position: 'relative',
+      top: '30px'
+    },
+    scrollText: {
+      marginBottom: 0,
+      marginRight: 5,
+      flex: 1
+    },
+    scrollIcon: {
+      
+    },
+    [`@media (min-width: ${1001}px)`]: {
+        component:{
+            width: '100%',
+            height:'100vh',
+            background: 'rgb(34, 35, 35)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+        },
+        itemsContainer: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '20px 20px'
+        },
+        chartContainer: {
+            //width: '50vw',
+            flex: 1,
+        },
+        subtitle: {
+            fontSize: 20,
+        },
+        scrollContainer: {
+          display: 'none'
+        },
+        formControl: {
+          position: 'relative',
+          top: 15
+        }
     },
     [`@media (max-width: ${1000}px)`]: {
         subtitle: {
             fontSize: 20,
         },
-    }
+    },
+    [`@media (max-width: ${576}px)`]: {
+        chartFooterContainer: {
+          display: 'block'
+        },
+        description: {
+          textAlign: 'justify',
+          paddingTop: 20
+        }
+    },
 }));
 
