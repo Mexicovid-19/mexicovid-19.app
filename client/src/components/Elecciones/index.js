@@ -21,6 +21,9 @@ import NuevoLeonAyun from './NuevoLeonAyun'
 import NuevoLeonSeccion from './NuevoLeonSeccion'
 import Porcentajes from './Porcentajes'
 //import Diputados from './Diputados'
+import CirclePacking_Mujeres from './CirclePacking_Mujeres'
+import MujeresAyunLoc from './MujeresAyunLoc'
+import HistDipFed from './HistDipFed'
 
 import { Helmet } from 'react-helmet';
 
@@ -132,12 +135,14 @@ const Elecciones = ({ classes }) => {
                     <AntTab label="Diputados" />
                     <AntTab label="Gubernaturas" />
                     <AntTab label="Nuevo León" />
+                    <AntTab label="Participación Mujeres" />
                   </AntTabs>
                 ) : (
                   <AntTabs value={value} onChange={handleChange} aria-label="ant example" centered>
                     <AntTab label="Diputados federales" />
                     <AntTab label="Gubernaturas" />
                     <AntTab label="Elección Nuevo León" />
+                    <AntTab label="Participación Mujeres" />
                   </AntTabs>
                 )}
                 
@@ -174,6 +179,15 @@ const Elecciones = ({ classes }) => {
                 {/*<Diputados/>*/}
                 
               </> 
+            </TabPanel>
+            {/* Participación Mujeres */}
+            <TabPanel value={value} index={3}>
+              <>
+
+                <CirclePacking_Mujeres/>
+                <MujeresAyunLoc/>
+                <HistDipFed/>
+              </>
             </TabPanel>
         </div>
     </div>
