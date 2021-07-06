@@ -85,28 +85,28 @@ class FullpageReact extends React.Component {
         <Phrase/>
       </Slide>,
       <Slide>
-        <SentimentTrust/>
+        <SentimentAnticipation/>
       </Slide>,
       <Slide>
         <SentimentCompound/>
       </Slide>,
       <Slide>
-        <SentimentPositividad/>
-      </Slide>,
-      <Slide>
-        <SentimentNegativity/>
-      </Slide>,
-      <Slide>
-        <SentimentAnticipation/>
+        <SentimentTrust/>
       </Slide>,
       <Slide>
         <SentimentFear/>
       </Slide>,
       <Slide>
+        <SentimentNegativity/>
+      </Slide>,      
+      <Slide>
         <SentimentNeutrality/>
       </Slide>,
       <Slide>
         <SentimentPolarity/>
+      </Slide>,
+      <Slide>
+        <SentimentPositividad/>
       </Slide>,
       <Slide>
         <SentimentSubjectivity/>
@@ -121,11 +121,16 @@ class FullpageReact extends React.Component {
             <Landing/>
             <Redes/>
             <Phrase/>
-            <SentimentTrust/>
-            <SentimentCompound/>
-            <SentimentPositividad/>
-            <SentimentNegativity/>
             <SentimentAnticipation/>
+            <SentimentCompound/>
+            <SentimentTrust/>
+            <SentimentFear/>
+            <SentimentNegativity/>
+            <SentimentNeutrality/>
+            <SentimentPolarity/>
+            <SentimentPositividad/>
+            <SentimentSubjectivity/>
+            
           </>
         ) : (
           <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions}>
