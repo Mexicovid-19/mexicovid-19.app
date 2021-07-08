@@ -54,7 +54,7 @@ const NuevoLeon = ({ classes }) => {
                 totalProgress = {progress}
                 paused
               >
-                <p className = {classes.text} style = {{marginTop: '30px',padding: '20px', backgroundColor: 'rgba(0,0,0,0.3)', borderRadius: '25px'}}>
+                <p className = {classes.text} style = {{marginTop: '30px',padding: '20px', backgroundColor: 'rgba(20,20,20,0.92)', borderRadius: '25px'}}>
                 La gráfica muestra los resultados por estado y por circunscripción electoral de una elección histórica en la que 900 mujeres ocuparán 
                 cargos de diputaciones federales de mayoría, diputaciones locales de mayoría y presidencias municipales. Se observa que la tercera circunscripción 
                 concentra la mayor participación de mujeres electas para alguno de los tres cargos mencionados y, a nivel estado, es el Estado de México 
@@ -65,7 +65,7 @@ const NuevoLeon = ({ classes }) => {
               </Tween>
             )}
           </Scene>
-          <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
+          {/* <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
             {(progress) => (
               <Tween
               from = {{
@@ -84,7 +84,7 @@ const NuevoLeon = ({ classes }) => {
               }}
                 totalProgress = {progress}
                 paused
-              >
+              > */}
                 <div className={classes.itemsContainer}>
                         <div className={classes.chartContainer}>
                         <h2 className={classes.subtitle2}>1era Circunscripción</h2>
@@ -115,10 +115,10 @@ const NuevoLeon = ({ classes }) => {
                             <CirclePacking5_Chart/>
                             </div>
                 </div>
-              </Tween>
+              {/* </Tween>
             )}
 
-          </Scene>
+          </Scene> */}
         </Controller>
 
           {/* <div className={classes.itemsContainer}>
