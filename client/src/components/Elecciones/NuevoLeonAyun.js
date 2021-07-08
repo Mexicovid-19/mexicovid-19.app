@@ -10,6 +10,9 @@ import * as d3 from 'd3';
 import "./Popup.css"
 import * as colors from '../../constants/colors';
 
+// Animation
+import Fade from 'react-reveal/Fade'
+
 const NuevoLeon = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   //NUEVO
@@ -527,6 +530,7 @@ const setUpDatos = (id) => {
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div className={classes.container}>
+      <Fade bottom>
         <div> <h2 className={classes.subtitle}> Elección de Ayuntamientos de Nuevo León por Municipio</h2> </div>
         <div className={classes.itemsContainer}>
             <div className="district-map-wrapper">
@@ -543,6 +547,7 @@ const setUpDatos = (id) => {
                     )}
                 </div>
             </div>
+            </Fade>
         </div>    
   );
   

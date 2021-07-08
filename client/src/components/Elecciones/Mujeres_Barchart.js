@@ -9,13 +9,13 @@ const data = [
   { sf: "Camp", Dip_Loc: 66.67, Ayun: 46.2 },
   { sf: "Chis", Dip_Loc: 58.33, Ayun: 16.3 },
   { sf: "Chih", Dip_Loc: 45.45, Ayun: 17.9 },
-  { sf: "Coah", Dip_Loc: 0, Ayun: 31.6 },
+  { sf: "*Coah", Dip_Loc: 0, Ayun: 31.6 },
   { sf: "Col", Dip_Loc: 50.00, Ayun: 60 },
   { sf: "CDMX", Dip_Loc: 60.61, Ayun: 50 },
-  { sf: "Dgo", Dip_Loc: 40.00, Ayun: 0 },
+  { sf: "*Dgo", Dip_Loc: 40.00, Ayun: 0 },
   { sf: "Gto", Dip_Loc: 45.45, Ayun: 30.4 },
   { sf: "Gro", Dip_Loc: 46.43, Ayun: 18.5 },
-  { sf: "Hgo", Dip_Loc: 44.44, Ayun: 0 },
+  { sf: "*Hgo", Dip_Loc: 44.44, Ayun: 0 },
   { sf: "Edo. Mex", Dip_Loc: 37.78, Ayun: 37.6 },
   { sf: "Jal", Dip_Loc: 65.00, Ayun: 19.2 },
   { sf: "Mich", Dip_Loc: 62.50, Ayun: 21.4 },
@@ -23,15 +23,15 @@ const data = [
   { sf: "Nay", Dip_Loc: 50.00, Ayun: 35 },
   { sf: "NL", Dip_Loc: 42.31, Ayun: 17.6},
   { sf: "Oax", Dip_Loc: 56.00, Ayun: 30.1 },
-  { sf: "Pue", Dip_Loc: 57.69, Ayun: 0 },
+  { sf: "Pue", Dip_Loc: 57.69, Ayun: 19.4 },
   { sf: "Qro", Dip_Loc: 53.33, Ayun: 27.8 },
-  { sf: "Q.Roo", Dip_Loc: 0, Ayun: 63.6 },
+  { sf: "*Q.Roo", Dip_Loc: 0, Ayun: 63.6 },
   { sf: "SLP", Dip_Loc: 46.67, Ayun: 29.3 },
   { sf: "Sin", Dip_Loc: 54.17, Ayun: 38.9 },
   { sf: "Son", Dip_Loc: 52.38, Ayun: 25 },
   { sf: "Tab", Dip_Loc: 52.38, Ayun: 47.1 },
   { sf: "Tamps", Dip_Loc: 54.55, Ayun: 44.2 },
-  { sf: "Tlx", Dip_Loc: 53.33, Ayun: 0 },
+  { sf: "Tlx", Dip_Loc: 53.33, Ayun: 8.9 },
   { sf: "Ver", Dip_Loc: 40.00, Ayun: 22.6 },
   { sf: "Yuc", Dip_Loc: 60.00, Ayun: 30.2 },
   { sf: "Zac", Dip_Loc: 44.44, Ayun: 20.7 }
@@ -165,6 +165,7 @@ export default function App() {
           //width: `calc(50% - ${axisWidth/2}px)`, height: `${height}px`,margin: 'auto', align: 'center'
           width: '50vw', height: 600, margin: 'auto', minHeight: 500, flex: 1, paddingTop: 40
           }}
+          
         >
           <ResponsiveBar {...propsFreelancer} />
         </div>

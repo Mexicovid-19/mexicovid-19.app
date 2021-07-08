@@ -87,7 +87,7 @@ const data =
           {
             "name": "Ayun",
             "color": "#F0049A",
-            "value": 0,
+            "value": 42,
           }
         ]
       },
@@ -108,7 +108,7 @@ const data =
           {
             "name": "Ayun",
             "color": "#F0049A",
-            "value": 0,
+            "value": 4,
           }
         ]
       }

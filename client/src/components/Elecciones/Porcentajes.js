@@ -10,12 +10,16 @@ import * as d3 from 'd3';
 import "./Popup.css"
 import * as colors from '../../constants/colors';
 
+// Animation
+import Fade from 'react-reveal/Fade'
+
 
 const NuevoLeon = ({ classes }) => {
 
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div className={classes.container}>
+      <Fade bottom>
         <div> <h2 className={classes.subtitle}> Distribución del voto por tipo de elección en Nuevo León y por partido </h2> </div>
         <h2 className={classes.subtitle5}> En esta gráfica se presentan los porcentajes de votación a nivel estado de cuatro partidos políticos para cuatro tipos de elección. Los partidos son el PAN, el PRI, MC y Morena y los tipos de elección son para la gubernatura, para ayuntamientos, diputaciones locales y diputaciones federales. El gráfico sirve para dimensionar el voto dividido por tipo de elección en Nuevo León.</h2> 
         <div className={classes.itemsContainer}>
@@ -69,6 +73,7 @@ De estas comparaciones parecía claro que MC resultó, en el agregado estatal, m
  
 
 Esto nos sugiere que resulta útil comparar los tipos de elección a nivel entidad federativa para detectar la existencia de posibles patrones diferenciados, los cuales nos ayudan a explorar posibles razones que nos permitan entender qué significa un determinado porcentaje de votación para la gubernatura, en el contexto de las elecciones que se celebraron de manera simultánea en un mismo estado. </h2></div>
+</Fade>
         </div>    
   );
   
