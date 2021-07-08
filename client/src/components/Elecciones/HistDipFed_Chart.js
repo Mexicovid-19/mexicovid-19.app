@@ -1,7 +1,7 @@
 import React from "react";
 import { ResponsiveStream } from "@nivo/stream";
 
-const stepColors = ['#0416F0', '#F0049A']
+const stepColors = ['#61109c', '#F0049A']
 
 const data = [
     {
@@ -227,7 +227,7 @@ const MyResponsiveStream = ({ data }) => (
 
 export default function App() {
   return (
-    <div style={{width: '100vw', height: 700, margin: 'auto', minHeight: 700, flex: 1, paddingTop: 30
+    <div style={{width: '100vw', height: 700, margin: 'auto', minHeight: 700, flex: 1, paddingTop: 10
     }}>
          
       <MyResponsiveStream data={data} />

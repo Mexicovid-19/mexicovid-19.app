@@ -7,27 +7,103 @@ import * as d3 from 'd3';
 import "./Popup.css"
 import * as colors from '../../constants/colors';
 
+// Animation
+import Fade from 'react-reveal/Fade';
+import { Controller, Scene } from 'react-scrollmagic';
+import { Tween } from 'react-gsap';
 
 const HistDipFed = ({ classes }) => {
 
     document.title = "Elecciones 2021 | MexiCOVID";  
     return (
-      <div className={classes.container}>
+      <div id = "trigger2" className={classes.container}>
+        <Fade bottom>
           <div> <h2 className={classes.subtitle}>Porcentaje de diputaciones federales por sexo</h2> </div>
           <p className={classes.subtitle2}>1952-2024</p>
-          <div className={classes.itemsContainer}>
+
+          <Controller>
+            <Scene duration = {100} triggerElement = "#trigger2" offset = {285}>
+              {(progress) => (
+                <Tween
+                from = {{
+                  css: {
+                    opacity: '1',
+                    zIndex: '9'
+                  },
+                  ease: 'Circ.easeOutExpo',
+                }}
+                to = {{
+                  css: {
+                    opacity: '0',
+                    zIndex: '0'
+                  },
+                  ease: 'Circ.easeOutExpo',
+                }}
+                  totalProgress = {progress}
+                  paused
+                >
+                  <p id = "textTrigger" className = {classes.text} style = {{marginTop: '30px',padding: '20px', backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '25px'}}>
+                  Finalmente, con los datos públicos del Centro de Estudios para el logro 
+                  de la Igualdad de Género (antes CEAMEG) y del Instituto Nacional Electoral; esta última visualización ilustra 
+                  el recorrido histórico de la participación política de las mujeres en la Cámara de Diputados a nivel federal.
+
+                  <br></br>
+                  <br></br>
+
+                  La gráfica muestra que transcurrieron casi siete décadas para que las mujeres estén a un paso de alcanzar la tan 
+                  anhelada paridad. Puntualmente, se observa que entre 1952 y 1955 las mujeres representaban tan solo el .6% de las 
+                  diputaciones federales; en la entrante LXV legislatura que comienza este 2021 y concluye en 2024, las mujeres  ya 
+                  representan el  49.20% de las curules.
+                  </p>
+
+                </Tween>
+              )}
+            </Scene>
+            <Scene duration = {100} triggerElement = "#trigger2" offset = {285}>
+              {(progress) => (
+                <Tween 
+                  from = {{
+                    css: {
+                      opacity: '0.2',
+                      zIndex: '0'
+                    },
+                    ease: 'Circ.easeOutExpo',
+                  }}
+                  to = {{
+                    css: {
+                      opacity: '1',
+                      zIndex: '9'
+                    },
+                    ease: 'Circ.easeOutExpo',
+                  }}
+                  totalProgress = {progress}
+                  paused
+                  >
+                    <div className={classes.itemsContainer}>
+                      <div className={classes.chartContainer}>
+                      <HistDipFed_Chart/>
+                      </div>
+                    </div>
+                  </Tween>
+                  
+                )}
+            </Scene>
+          </Controller>
+          {/* <div className={classes.itemsContainer}>
 
           <div className={classes.chartContainer}>
           <HistDipFed_Chart/>
           </div>
+          
 
 
-              {/*<div>
+              <div>
               <HistDipFed_Chart/>
-              </div>*/}
-                  
               </div>
-          </div>    
+                  
+              </div> */}
+          </Fade>
+        </div>    
     );
     
   }
@@ -84,7 +160,21 @@ const HistDipFed = ({ classes }) => {
     prep: {
       color: colors.WHITE,
       textAlign: 'center'
-  },
+    },
+    text: {
+      textAlign: 'center',
+      fontSize: 18,
+      maxWidth: '95%',
+      margin: 'auto',
+      paddingTop: '30px',
+      color: colors.WHITE,
+      position: 'absolute',
+      //zIndex: 9,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      left: 0,
+      right: 0
+    },
     /* Mobile */
     [`@media (max-width: ${1000}px)`]: {
       container: {

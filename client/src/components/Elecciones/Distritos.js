@@ -38,6 +38,9 @@ import diputados_csv from './data/cambio_ganador.csv'
 import { STATES_ELECCIONES } from '../../constants/states'
 import { number } from 'prop-types';
 
+// Animation
+import Fade from 'react-reveal/Fade'
+
 const Distritos = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
 
@@ -840,6 +843,7 @@ const Distritos = ({ classes }) => {
         <div>
             <div className={classes.itemsContainer}>
                 {/* Map */}
+                <Fade bottom>
                 <div className="district-map-wrapper">
                     <div id="districtDetailMap" className={classes.map}>
                         <div style={{ height: "100%" }} ref={mapContainer}></div>
@@ -858,9 +862,11 @@ const Distritos = ({ classes }) => {
                     )}
                     <p className={classes.prep}>Fuente: Cómputos Distritales</p>
                 </div>
+                </Fade>
             </div>
 
             {/* Chord  chart */}
+            <Fade bottom>
             <div className={classes.outerChartContainer2}>
                 <h2 className={classes.subtitle}>Cambio de diputados de mayoría relativa por coalición ganadora o partido del 2018 al 2021</h2>
                 {diputadosData.length !== 0 && (
@@ -870,8 +876,10 @@ const Distritos = ({ classes }) => {
         
                 )}
             </div>
+            </Fade>
 
             {/* curules  chart */}
+            <Fade bottom>
             <div className={classes.outerChartContainer2}>
                 <h2 className={classes.subtitle}>Estimación de la distribución de la legislatura LXV</h2>
                 {districtData.length !== 0 && (
@@ -881,8 +889,10 @@ const Distritos = ({ classes }) => {
         
                 )}
             </div>
+            </Fade>
 
             {/* curules  chart */}
+            <Fade bottom>
             <div className={classes.outerChartContainer2}>
             <h2 className={classes.subtitle}>Número de diputados en el Congreso por partido (elecciones intermedias de 1997-2021; totales por año suman 500 curules</h2>
             {districtData.length !== 0 && (
@@ -892,6 +902,7 @@ const Distritos = ({ classes }) => {
         
                 )}
             </div>
+            </Fade>
         </div>
         
     );

@@ -11,11 +11,17 @@ import * as d3 from 'd3';
 import "./Popup.css"
 import * as colors from '../../constants/colors';
 
+// Animation
+import Fade from 'react-reveal/Fade'
+import { Controller, Scene } from 'react-scrollmagic';
+import { Tween } from 'react-gsap';
+
 const NuevoLeon = ({ classes }) => {
 
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
-    <div className={classes.container}>
+    <div id = "trigger3" className={classes.container}>
+      <Fade bottom>
         <div> <h2 className={classes.subtitle}>Número de mujeres electas por estado y circunscripción electoral para diputaciones locales, diputaciones federales y presidencias municipales</h2> </div>
         <p className={classes.prep}>Elección del 6 de Junio del 2021</p>
         {/*<div className={classes.itemsContainer}>
@@ -27,8 +33,95 @@ const NuevoLeon = ({ classes }) => {
             <CirclePacking4_Chart/>
             <CirclePacking5_Chart/>
   </div>*/}
+        <Controller>
+          <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
+            {(progress) => (
+              <Tween
+              from = {{
+                css: {
+                  opacity: '1',
+                  zIndex: '9'
+                }, 
+                ease: 'Circ.easeOutExpo',
+              }}
+              to = {{
+                css: {
+                  opacity: '0',
+                  zIndex: '1'
+                },
+                ease: 'Circ.easeOutExpo',
+              }}
+                totalProgress = {progress}
+                paused
+              >
+                <p className = {classes.text} style = {{marginTop: '30px',padding: '20px', backgroundColor: 'rgba(0,0,0,0.3)', borderRadius: '25px'}}>
+                La gráfica muestra los resultados por estado y por circunscripción electoral de una elección histórica en la que 900 mujeres ocuparán 
+                cargos de diputaciones federales de mayoría, diputaciones locales de mayoría y presidencias municipales. Se observa que la tercera circunscripción 
+                concentra la mayor participación de mujeres electas para alguno de los tres cargos mencionados y, a nivel estado, es el Estado de México 
+                la entidad donde hay mayores puestos de elección popular ganados por mujeres. Pese a que, el resultado final se conocerá una vez que se 
+                definan la integración definitiva de los congresos con diputaciones de representación proporcional; la visualización ya evidencia los 
+                primeros resultados de la reforma “paridad en todo”.
+                </p>
+              </Tween>
+            )}
+          </Scene>
+          <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
+            {(progress) => (
+              <Tween
+              from = {{
+                css: {
+                  opacity: '0.1',
+                  zIndex: '1'
+                },
+                ease: 'Circ.easeOutExpo',
+              }}
+              to = {{
+                css: {
+                  opacity: '1',
+                  zIndex: '9'
+                },
+                ease: 'Circ.easeOutExpo',
+              }}
+                totalProgress = {progress}
+                paused
+              >
+                <div className={classes.itemsContainer}>
+                        <div className={classes.chartContainer}>
+                        <h2 className={classes.subtitle2}>1era Circunscripción</h2>
+                        <p className={classes.prep}>Baja California, Baja California Sur, Chihuahua, Durango, Jalisco, Nayarit, Sinaloa y Sonora</p>
+                        <CirclePacking1_Chart/>
+                        </div>
+                        <div className={classes.chartContainer}>
+                        <h2 className={classes.subtitle2}>2da Circunscripción</h2>
+                        <p className={classes.prep}>Aguascalientes, Coahuila, Guanajuato, Nuevo León, Querétaro,
+                        San Luis Potosí, Tamaulipas y Zacatecas</p>
+                        <CirclePacking2_Chart/>
+                        </div>
+                        <div className={classes.chartContainer}>
+                        <h2 className={classes.subtitle2}>3era Circunscripción</h2>
+                        <p className={classes.prep}>Campeche, Chiapas, Oaxaca, Quintana Roo, Tabasco, Veracruz y Yucatán</p>
+                        <CirclePacking3_Chart/>
+                        </div>
+                </div>
+                <div className={classes.itemsContainer}>
+                            <div className={classes.chartContainer}>
+                            <h2 className={classes.subtitle2}>4ta Circunscripción</h2>
+                            <p className={classes.prep}>CDMX, Guerrero, Morelos, Puebla y Tlaxcala</p>
+                            <CirclePacking4_Chart/>
+                            </div>
+                            <div className={classes.chartContainer}>
+                            <h2 className={classes.subtitle2}>5ta Circunscripción</h2>
+                            <p className={classes.prep}>Colima, Hidalgo, México y Michoacán</p>
+                            <CirclePacking5_Chart/>
+                            </div>
+                </div>
+              </Tween>
+            )}
 
-          <div className={classes.itemsContainer}>
+          </Scene>
+        </Controller>
+
+          {/* <div className={classes.itemsContainer}>
                         <div className={classes.chartContainer}>
                         <h2 className={classes.subtitle2}>1era Circunscripción</h2>
                         <p className={classes.prep}>Baja California, Baja California Sur, Chihuahua, Durango, Jalisco, Nayarit, Sinaloa y Sonora</p>
@@ -57,7 +150,8 @@ San Luis Potosí, Tamaulipas y Zacatecas</p>
                         <p className={classes.prep}>Colima, Hidalgo, México y Michoacán</p>
                         <CirclePacking5_Chart/>
                         </div>
-            </div>
+            </div> */}
+            </Fade>
 
         </div>    
   );
@@ -77,7 +171,7 @@ const styles = () => ({
     justifyContent: 'space-evenly',
     //maxWidth: 1600,
     margin: 'auto',
-    paddingTop: '100px',
+    paddingTop: '60px',
     //borderLeft: '1px solid white',
     //borderRight: '1px solid white',
     paddingBottom: '30px',
@@ -158,7 +252,21 @@ const styles = () => ({
   prep: {
     color: colors.WHITE,
     textAlign: 'center',
-},
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 18,
+    maxWidth: '95%',
+    margin: 'auto',
+    paddingTop: '30px',
+    color: colors.WHITE,
+    position: 'absolute',
+    zIndex: 9,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    left: 0,
+    right: 0
+  },
   /* Mobile */
   [`@media (max-width: ${1000}px)`]: {
     container: {
