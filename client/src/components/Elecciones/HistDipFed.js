@@ -103,7 +103,7 @@ const HistDipFed = ({ classes }) => {
                   
               </div> */}
           </Fade>
-        </div>    
+        </div>
     );
     
   }

@@ -49,6 +49,7 @@
     "nivo": "^0.31.0",
     "pure-react-carousel": "^1.27.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.6.1",
     "react-chartjs-2": "^2.9.0",
     "react-clear-cache": "^1.2.0",
     "react-dom": "^16.13.1",

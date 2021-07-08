@@ -24,6 +24,7 @@ import Porcentajes from './Porcentajes'
 import CirclePacking_Mujeres from './CirclePacking_Mujeres'
 import MujeresAyunLoc from './MujeresAyunLoc'
 import HistDipFed from './HistDipFed'
+import MujeresCreditos from './MujeresCreditos'
 
 import { Helmet } from 'react-helmet';
 
@@ -187,6 +188,7 @@ const Elecciones = ({ classes }) => {
                 <CirclePacking_Mujeres/>
                 <MujeresAyunLoc/>
                 <HistDipFed/>
+                <MujeresCreditos/>
               </>
             </TabPanel>
         </div>
