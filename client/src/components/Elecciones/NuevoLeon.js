@@ -604,7 +604,7 @@ const setUpDatos = (id) => {
         <CustomizedTables> </CustomizedTables>
       </div>
       </Fade>
-
+      
       <Fade bottom>
       <div> <h2 className={classes.subtitle}> Elección de Gobernador de Nuevo León por Municipio</h2> </div>
         <div className={classes.itemsContainer}>
