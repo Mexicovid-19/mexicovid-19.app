@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
-/* axios */
-import axios from 'axios';
+import React, { useState, useEffect, useRef } from 'react'
 
 /* Material UI */
 import { withStyles } from '@material-ui/core/styles';
@@ -614,16 +612,6 @@ const Distritos = ({ classes }) => {
 
 
     useEffect(() => {
-        //setUpData(selectedDistrict)
-        ////console.log(indicatorsData)
-        ////console.log(datas)
-        
-        ////console.log(distritosGanadoresData)
-       /*  var loadFiles = [
-            d3.json("./data/distritos.geojson"),
-            d3.csv("./data/distritos.csv")
-        ]; */
-
         let map = new mapboxgl.Map({
             container: mapContainer.current,
             //style: "mapbox://styles/mapbox/dark-v10",

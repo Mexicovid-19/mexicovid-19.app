@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
         background: 'white',
         margin: ' auto',
         position: 'absolute',
-        bottom: '-15px',
+        bottom: '0px',
         left: 'calc(50% - 1px)'
     },
 

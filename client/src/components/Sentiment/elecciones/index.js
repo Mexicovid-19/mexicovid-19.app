@@ -13,6 +13,7 @@ import SentimentFear from './SentimentFear.js';
 import SentimentNeutrality from './SentimentNeutrality.js';
 import SentimentPolarity from './SentimentPolarity.js';
 import SentimentSubjectivity from './SentimentSubjectivity.js';
+import SentimentMain from './SentimentMain.js'
 
 import { Fullpage, Slide } from 'fullpage-react';
 
@@ -79,16 +80,13 @@ class FullpageReact extends React.Component {
         <Landing/>
       </Slide>,
       <Slide>
-        <Redes/>
-      </Slide>,
-      <Slide>
-        <Phrase/>
-      </Slide>,
-      <Slide>
-        <SentimentTrust/>
+        <SentimentMain/>
       </Slide>,
       <Slide>
         <SentimentCompound/>
+      </Slide>,
+      <Slide>
+        <SentimentTrust/>
       </Slide>,
       <Slide>
         <SentimentPositividad/>
@@ -110,6 +108,12 @@ class FullpageReact extends React.Component {
       </Slide>,
       <Slide>
         <SentimentSubjectivity/>
+      </Slide>,
+      <Slide>
+        <Redes/>
+      </Slide>,
+      <Slide>
+        <Phrase/>
       </Slide>      
     ];
     fullPageOptions.slides = verticalSlides;
@@ -119,18 +123,30 @@ class FullpageReact extends React.Component {
         {this.isMobile ? (
           <>
             <Landing/>
-            <Redes/>
-            <Phrase/>
-            <SentimentTrust/>
+            <SentimentMain/>
             <SentimentCompound/>
+            <SentimentTrust/>
             <SentimentPositividad/>
             <SentimentNegativity/>
             <SentimentAnticipation/>
+            <Redes/>
+            <Phrase/>
           </>
         ) : (
-          <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions}>
-          </Fullpage>
+          <>
+            <Landing/>
+            <SentimentMain/>
+            <SentimentCompound/>
+            <SentimentTrust/>
+            <SentimentPositividad/>
+            <SentimentNegativity/>
+            <SentimentAnticipation/>
+            <Redes/>
+            <Phrase/>
+          </>
         )}
+        {/* <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions}>
+          </Fullpage> */}
       </>
     );
   }

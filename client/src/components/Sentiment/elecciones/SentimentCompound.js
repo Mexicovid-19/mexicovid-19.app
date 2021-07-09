@@ -13,11 +13,29 @@ import { TransparentInput } from '../../../Utils/components/Select'
 //Components
 import Legend from './Legend';
 
+/* D3 */
+import * as d3 from "d3";
+
+/* Data */
+import adrian_csv from './data/AdrianCompoundRT.csv'
+import clara_csv from './data/ClaraCompoundRT.csv'
+import fernando_csv from './data/FernandoCompoundRT.csv'
+import samuel_csv from './data/SamuelCompoundRT.csv'
 
 export default function SentimentCompound({ classes }) {
     classes = useStyles();
 
-    const todosLosCandidatos= 
+    const [state, setState] = useState({
+        data: [],
+        samuel: [],
+        clara: [],
+        fernando: [],
+        adrian: [],
+        todos: [],
+        candidato: 0,
+    })
+
+    /* const todosLosCandidatos= 
     [
         {
           "id": "Samuel",
@@ -333,6 +351,8 @@ export default function SentimentCompound({ classes }) {
           }
 
     ];
+
+    
     const claraLF = [
         {
             "id": "Clara Luz",
@@ -525,30 +545,162 @@ export default function SentimentCompound({ classes }) {
               }              
             ]
           }
-    ];
+    ]; */
 
-    const [state, setState] = useState({
-        data: todosLosCandidatos,
-        candidato: 0,
-    })
+    var loadFiles = [
+      d3.csv(adrian_csv),
+      d3.csv(samuel_csv),
+      d3.csv(clara_csv),
+      d3.csv(fernando_csv)
+    ]
+
+    useEffect(() => {
+      Promise.all(loadFiles).then(function (data){
+
+        //data
+        let todos = []
+        let samuel = []
+        let clara = []
+        let fernando = []
+        let adrian = []
+
+        for (let index = 0; index < 4; index++) {
+            //vars
+            let numSemana = data[index][0].numSemana
+            let semana = data[index][0].creacion
+            let candidatoData = []
+            let numRetweets = 0
+            let compound = 0
+
+            
+            data[index].map((item) => {
+              if(numSemana != item.numSemana){
+                /* console.log("week change", item.numSemana)
+                console.log("day", item.creacion)
+                console.log("rt", item.retweet_count)
+                console.log("compound", item.compoundRT) */
+                candidatoData.push({
+                  "x": semana,
+                  "y": compound/numRetweets
+                })
+
+                semana = item.creacion
+                numSemana = item.numSemana
+                numRetweets = parseInt(item.retweet_count)
+                compound = parseInt(item.compoundRT)
+
+              } else{
+                numRetweets += parseInt(item.retweet_count)
+                compound += parseInt(item.compoundRT)
+              }
+            
+          })
+          candidatoData.push({
+            "x": semana,
+            "y": compound/numRetweets
+          })
+          switch (index) {
+            case 0:
+                adrian = [
+                  {
+                    "id": "Adrian",
+                    "color": "hsl(135, 37%, 48%)",
+                    "data": candidatoData
+                  }
+                ]
+                todos.push({
+                    "id": "Adrian",
+                    "color": "hsl(135, 37%, 48%)",
+                    "data": candidatoData
+                })
+                console.log("adrian", adrian)
+              break;
+            case 1:
+                samuel = [
+                  {
+                    "id": "Samuel",
+                    "color": "hsl(25, 87%, 57%)",
+                    "data": candidatoData
+                  }
+                ]
+                todos.push({
+                    "id": "Samuel",
+                    "color": "hsl(25, 87%, 57%)",
+                    "data": candidatoData
+                })
+                console.log("samuel", samuel)
+              break;
+            case 2:
+                clara = [
+                  {
+                    "id": "Clara Luz",
+                    "color": "hsl(8, 76%, 43%)",
+                    "data": candidatoData
+                  }
+                ]
+                todos.push({
+                    "id": "Clara Luz",
+                    "color": "hsl(8, 76%, 43%)",
+                    "data": candidatoData
+                })
+                console.log("clara", clara)
+              break;
+            case 3:
+                fernando = [
+                  {
+                    "id": "Fernando",
+                    "color": "hsl(210, 90%, 34%)",
+                    "data": candidatoData
+                  }
+                ]
+                todos.push({
+                    "id": "Fernando",
+                    "color": "hsl(210, 90%, 34%)",
+                    "data": candidatoData
+                })
+                console.log("fernando", fernando)
+              break;
+            default:
+              break;
+          }
+          
+          
+        }
+        setState({...state, 
+            todos: todos,
+            data: todos,
+            samuel: samuel,
+            clara: clara,
+            adrian: adrian,
+            fernando: fernando
+        })
+        
+        
+        
+      })
+      
+
+    },[])
+
+    
 
 
     const handleChange = e => {
         switch (e.target.value) {
             case 0:
-                setState({...state, data: todosLosCandidatos, candidato: e.target.value})
+                setState({...state, data: state.todos, candidato: e.target.value})
                 break;
             case 1:
-                setState({...state, data: samuelG, candidato: e.target.value})
+                setState({...state, data: state.samuel, candidato: e.target.value})
                 break;
             case 2:
-                setState({...state, data: claraLF, candidato: e.target.value})
+                setState({...state, data: state.clara, candidato: e.target.value})
                 break;
             case 3:
-                setState({...state, data: fernandoF, candidato: e.target.value})
+                setState({...state, data: state.fernando, candidato: e.target.value})
                 break;
             case 4:
-                setState({...state, data: adrianG, candidato: e.target.value})
+                setState({...state, data: state.adrian, candidato: e.target.value})
                 break;
             default:
                 break;

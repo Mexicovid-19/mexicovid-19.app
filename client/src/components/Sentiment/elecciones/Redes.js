@@ -36,18 +36,16 @@ const useStyles = makeStyles((theme) => ({
         height: '50px',
         background: 'white',
         margin: ' auto',
-        position: 'absolute',
+        position: 'relative',
         top: '0px',
-        left: '50%'
     },
     lineB: {
         width: '2px',
         height: '50px',
         background: 'white',
         margin: ' auto',
-        position: 'absolute',
+        position: 'relative',
         bottom: '0px',
-        left: '50%'
     },
 }));
 
