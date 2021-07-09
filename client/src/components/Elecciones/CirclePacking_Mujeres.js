@@ -22,7 +22,7 @@ const NuevoLeon = ({ classes }) => {
   return (
     <div id = "trigger3" className={classes.container}>
       <Fade bottom>
-        <div> <h2 className={classes.subtitle}>Número de mujeres electas por estado y circunscripción electoral para diputaciones locales, diputaciones federales y presidencias municipales</h2> </div>
+        <div> <h2 className={classes.subtitle}>Número de mujeres electas por estado y circunscripción electoral para diputaciones locales de mayoría relativa, diputaciones federales de mayoría relativa y presidencias municipales</h2> </div>
         <p className={classes.prep}>Elección del 6 de Junio del 2021</p>
         {/*<div className={classes.itemsContainer}>
             <CirclePacking1_Chart/>
@@ -56,7 +56,7 @@ const NuevoLeon = ({ classes }) => {
               >
                 <p className = {classes.text} style = {{marginTop: '30px',padding: '20px', backgroundColor: 'rgba(20,20,20,0.92)', borderRadius: '25px'}}>
                 La gráfica muestra los resultados por estado y por circunscripción electoral de una elección histórica en la que 900 mujeres ocuparán 
-                cargos de diputaciones federales de mayoría, diputaciones locales de mayoría y presidencias municipales. Se observa que la tercera circunscripción 
+                cargos de diputaciones federales de mayoría relativa, diputaciones locales de mayoría relativa y presidencias municipales. Se observa que la tercera circunscripción 
                 concentra la mayor participación de mujeres electas para alguno de los tres cargos mencionados y, a nivel estado, es el Estado de México 
                 la entidad donde hay mayores puestos de elección popular ganados por mujeres. Pese a que, el resultado final se conocerá una vez que se 
                 definan la integración definitiva de los congresos con diputaciones de representación proporcional; la visualización ya evidencia los 
@@ -231,6 +231,8 @@ const styles = () => ({
     paddingTop: '80px',
     //paddingBottom: '50px',
     color: colors.WHITE,
+    maxWidth: '98%',
+    margin: 'auto'
     //borderBottom: '1px solid white',
     //borderLeft: '1px solid white',
     //borderTop: '1px solid white',

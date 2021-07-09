@@ -18,7 +18,7 @@ const HistDipFed = ({ classes }) => {
     return (
       <div id = "trigger2" className={classes.container}>
         <Fade bottom>
-          <div> <h2 className={classes.subtitle}>Porcentaje de diputaciones federales por sexo</h2> </div>
+          <div> <h2 className={classes.subtitle}>Porcentaje de diputaciones federales de mayoría relativa por sexo</h2> </div>
           <p className={classes.subtitle2}>1952-2024</p>
 
           <Controller>
