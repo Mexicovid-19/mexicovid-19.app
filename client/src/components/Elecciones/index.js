@@ -21,6 +21,10 @@ import NuevoLeonAyun from './NuevoLeonAyun'
 import NuevoLeonSeccion from './NuevoLeonSeccion'
 import Porcentajes from './Porcentajes'
 //import Diputados from './Diputados'
+import CirclePacking_Mujeres from './CirclePacking_Mujeres'
+import MujeresAyunLoc from './MujeresAyunLoc'
+import HistDipFed from './HistDipFed'
+import MujeresCreditos from './MujeresCreditos'
 
 import { Helmet } from 'react-helmet';
 const AntTabs = withStyles({
@@ -98,7 +102,7 @@ TabPanel.propTypes = {
 
 const Elecciones = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(3);
 
 
   const handleChange = (event, newValue) => {
@@ -127,16 +131,18 @@ const Elecciones = ({ classes }) => {
 
                 {/* select bar */}
                 {isMobile ? (
-                  <AntTabs value={value} onChange={handleChange} aria-label="ant example" centered>
+                  <AntTabs defaultChecked value={value} onChange={handleChange} aria-label="ant example" centered>
                     <AntTab label="Diputados" />
                     <AntTab label="Gubernaturas" />
                     <AntTab label="Nuevo León" />
+                    <AntTab label="Participación Mujeres" />
                   </AntTabs>
                 ) : (
-                  <AntTabs value={value} onChange={handleChange} aria-label="ant example" centered>
+                  <AntTabs value={value} onChange={handleChange} aria-label="ant example">
                     <AntTab label="Diputados federales" />
                     <AntTab label="Gubernaturas" />
                     <AntTab label="Elección Nuevo León" />
+                    <AntTab label="Participación Mujeres"/>
                   </AntTabs>
                 )}
                 
@@ -173,6 +179,16 @@ const Elecciones = ({ classes }) => {
                 {/*<Diputados/>*/}
                 
               </> 
+            </TabPanel>
+            {/* Participación Mujeres */}
+            <TabPanel value={value} index={3}>
+              <>
+
+                <CirclePacking_Mujeres/>
+                <MujeresAyunLoc/>
+                <HistDipFed/>
+                <MujeresCreditos/>
+              </>
             </TabPanel>
         </div>
     </div>

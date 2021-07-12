@@ -11,6 +11,9 @@ import "./Popup.css"
 import * as colors from '../../constants/colors';
 import NuevoLeonSeccion2 from './NuevoLeonSeccion2';
 
+// Animation
+import Fade from 'react-reveal/Fade'
+
 const NuevoLeon = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   //NUEVO
@@ -661,6 +664,7 @@ const setUpDatos = (id) => {
   document.title = "Elecciones 2021 | MexiCOVID";  
   return (
     <div>
+      <Fade bottom>
         <div> <h2 className={classes.subtitle}> Resultados de la Elección de Gobernador por Sección Electoral en la Zona Metropolitana de Monterrey</h2> </div>
         <p className={classes.prep}>Partido o Coalición Ganadora y Porcentaje de Participación Electoral</p>
         <div className={classes.itemsContainer}>
@@ -678,6 +682,7 @@ const setUpDatos = (id) => {
                     </div>
                 </div>
             </div>
+            </Fade>
         </div>    
   );
   

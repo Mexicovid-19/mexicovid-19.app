@@ -24,6 +24,8 @@ import "./Popup.css"
 // Utils
 import * as colors from '../../constants/colors';
 
+// Animation
+import Fade from 'react-reveal/Fade'
 
 const Estatal = ({ classes }) => {
     const isMobile = window.innerWidth < 1000;
@@ -771,23 +773,25 @@ const Estatal = ({ classes }) => {
 
     return (
         <div className={classes.itemsContainer}>
-            <div id="hoveredDetailMap" className={classes.map}>
-                <div style={{ height: "100%" }} ref={mapContainer}></div>
-            </div>
-            <div className = {classes.outerChartContainer}>
-                <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
-               {stateData.length !== 0 ? (
-                 <div className = {classes.chartContainer}>
-                   <PieChart_Estados data = {stateData}/>
-                   <h3 className = {classes.subtitle2}>Actas Capturadas: {selectedStateActas}</h3>
-                   <h3 className = {classes.subtitle2}>Participación Ciudadana: {selectedStateParticipation}</h3>
-                   </div>
-               ):(
-                <div className={classes.chartContainer}>
-                    <h3 className={classes.error}>Estados sin Elección de Gobernador</h3>
+            <Fade bottom>
+                <div id="hoveredDetailMap" className={classes.map}>
+                    <div style={{ height: "100%" }} ref={mapContainer}></div>
                 </div>
-               )}
-            </div>
+                <div className = {classes.outerChartContainer}>
+                    <h2 className={classes.subtitle}><strong>Distribución de Votos {selectedStateN}</strong></h2>
+                {stateData.length !== 0 ? (
+                    <div className = {classes.chartContainer}>
+                    <PieChart_Estados data = {stateData}/>
+                    <h3 className = {classes.subtitle2}>Actas Capturadas: {selectedStateActas}</h3>
+                    <h3 className = {classes.subtitle2}>Participación Ciudadana: {selectedStateParticipation}</h3>
+                    </div>
+                ):(
+                    <div className={classes.chartContainer}>
+                        <h3 className={classes.error}>Estados sin Elección de Gobernador</h3>
+                    </div>
+                )}
+                </div>
+            </Fade>
        
         </div>
     );
