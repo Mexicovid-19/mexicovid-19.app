@@ -1,15 +1,66 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 /* Material UI */
 import { makeStyles } from '@material-ui/core/styles';
 
 /* Router */
 
+import * as d3 from "d3"
+import tweets from "./data/tweets.csv"
+
+
 /* Components */
 import Header from '../../Header'
 
 function Landing({ classes }) {
     classes = useStyles();
+
+    var loadFiles = [
+        d3.csv(tweets)
+    ]
+
+    useEffect(() => {
+        Promise.all(loadFiles).then(function (data){
+
+            let tweetsArray = []
+            let tweetCount = []
+
+
+            data[0].map((item) => {
+                var tweet =  item.tweet.substring(parseInt(item.pos) -  1)
+                let arr = tweet.split(" ")
+                arr.map((t) => {
+                    
+
+                    if(t.indexOf("#") !== -1){
+                        var tempTweet = t
+                        tempTweet.replaceAll("...","")
+                        tempTweet.replaceAll(")","")
+                        tempTweet.replaceAll("(","")
+                        tempTweet.replaceAll(".","")
+                        tempTweet.replaceAll(":","")
+                        tempTweet.replaceAll("\r","")
+                        tempTweet.replaceAll("\n","")
+                        console.log(tempTweet)
+                        let pos = tweetsArray.indexOf(tempTweet)
+                        if(pos !== -1){
+                            tweetCount[pos].count += 1 
+                        } else{
+                            tweetsArray.push(tempTweet)
+                            tweetCount.push({
+                                tweet: tempTweet,
+                                count: 1
+                            })
+                        }
+                    }
+                })
+            })
+            console.log(tweetsArray)
+            tweetCount.sort((a, b) => (a.count < b.count ? -1 : 1))
+            console.log(tweetCount)
+        })
+    },[])
+
     return (
         <div className={classes.component}>
             <Header/>

@@ -109,7 +109,7 @@ export default function SentimentMain({ classes }) {
             default:
               break;
           }
-          console.log("todos", todos)
+          //console.log("todos", todos)
           
           
         }
