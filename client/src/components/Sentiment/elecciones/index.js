@@ -86,25 +86,28 @@ class FullpageReact extends React.Component {
         <SentimentCompound/>
       </Slide>,
       <Slide>
-        <SentimentTrust/>
-      </Slide>,
-      <Slide>
-        <SentimentPositividad/>
-      </Slide>,
-      <Slide>
-        <SentimentNegativity/>
-      </Slide>,
-      <Slide>
         <SentimentAnticipation/>
+      </Slide>,
+      <Slide>
+        <SentimentCompound/>
+      </Slide>,
+      <Slide>
+        <SentimentTrust/>
       </Slide>,
       <Slide>
         <SentimentFear/>
       </Slide>,
       <Slide>
+        <SentimentNegativity/>
+      </Slide>,      
+      <Slide>
         <SentimentNeutrality/>
       </Slide>,
       <Slide>
         <SentimentPolarity/>
+      </Slide>,
+      <Slide>
+        <SentimentPositividad/>
       </Slide>,
       <Slide>
         <SentimentSubjectivity/>
