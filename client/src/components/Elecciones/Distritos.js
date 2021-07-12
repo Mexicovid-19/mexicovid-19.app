@@ -913,6 +913,7 @@ const styles = () => ({
   },
   outerChartContainer: {
     paddingTop: '30px',
+    minWidth: '50vw',
     borderLeft:  '1px solid white',
     borderBottom:  '1px solid white',
     borderRight:  '1px solid white',
