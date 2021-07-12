@@ -75,9 +75,9 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/elecciones' element={
             <MenuItem><Typography variant="span" className={classes.title}>Elecciones 2021</Typography></MenuItem>
           }/>
-          <LinkElement url='/sentiment-analysis' element={
+          {/* <LinkElement url='/sentiment-analysis' element={
             <MenuItem><Typography variant="span" className={classes.title}>Análisis de sentimientos</Typography></MenuItem>
-          }/>
+          }/> */}
 
           {/* <LinkElement url='/research' element={
             <MenuItem><Typography variant="span" className={classes.title}>Investigación</Typography></MenuItem>
@@ -105,9 +105,9 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/elecciones' element={
             <Button className={location === '/elecciones' ? classes.selectedBtn : classes.button} color="inherit">Elecciones 2021</Button>
           }/>
-          <LinkElement url='/sentiment-analysis' element={
+          {/* <LinkElement url='/sentiment-analysis' element={
             <Button className={location === '/sentiment-analysis' ? classes.selectedBtn : classes.button} color="inherit">Análisis de sentimientos</Button>
-          }/>
+          }/> */}
           {/* <LinkElement url='/research' element={
 
             <Button className={location === '/research' ? classes.selectedBtn : classes.button} color="inherit">Investigación</Button>

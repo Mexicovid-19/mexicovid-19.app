@@ -1,4 +1,7 @@
-import React from 'react';
+import React from "react";
+import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
+import ReactFullpage from "@fullpage/react-fullpage";
+
 
 /* Slides */
 import Landing from './Landing'
@@ -6,6 +9,7 @@ import Redes from './Redes'
 import Phrase from './Phrase'
 import SentimentPositividad from './SentimentPositividad.js';
 import SentimentCompound from './SentimentCompound.js';
+import SentimentCompoundAlt from './SentimentCompoundAlt.js';
 import SentimentTrust from './SentimentTrust.js';
 import SentimentNegativity from './SentimentNegativity.js';
 import SentimentAnticipation from './SentimentAnticipation.js';
@@ -15,155 +19,97 @@ import SentimentPolarity from './SentimentPolarity.js';
 import SentimentSubjectivity from './SentimentSubjectivity.js';
 import SentimentMain from './SentimentMain.js'
 
-import { Fullpage, Slide } from 'fullpage-react';
 
-const fullPageOptions = {
-  // for mouse/wheel events
-  // represents the level of force required to generate a slide change on non-mobile, 0 is default
-  scrollSensitivity: 2,
-
-  // for touchStart/touchEnd/mobile scrolling
-  // represents the level of force required to generate a slide change on mobile, 0 is default
-  touchSensitivity: 2,
-  scrollSpeed: 500,
-  resetSlides: true,
-  hideScrollBars: true,
-  enableArrowKeys: true,
-
-  // optional, set the initial vertical slide
-  activeSlide: 0
-};
-
-class FullpageReact extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: {
-        Fullpage: 0,
-        horizontalSlider1: 0
-      }
-    };
-
-    this.onSlideChangeStart = this.onSlideChangeStart.bind(this);
-    this.onSlideChangeEnd = this.onSlideChangeEnd.bind(this);
+class FullpageWrapper extends React.Component {
+  onLeave(origin, destination, direction) {
+    console.log("Leaving section " + origin.index);
+  }
+  afterLoad(origin, destination, direction) {
+    console.log("After load: " + destination.index);
   }
   
   isMobile = window.innerWidth < 1000;
 
-  onSlideChangeStart(name) {
-    if (!this.horizontalNav) {
-      this.horizontalNav = document.getElementById('horizontal-nav');
-    }
-
-    if (name === 'horizontalSlider1') {
-      scrollNavStart(this.horizontalNav);
-    }
-  }
-
-  onSlideChangeEnd(name, newState) {
-    if (name === 'horizontalSlider1') {
-      scrollNavEnd(this.horizontalNav);
-    }
-
-    const oldActive = this.state.active;
-    const sliderState = {
-      [name]: newState.activeSlide
-    };
-
-    const updatedState = Object.assign(oldActive, sliderState);
-    this.setState(updatedState);
-  }
-
+  
   render() {
-    const verticalSlides = [
-      <Slide>
-        <Landing/>
-      </Slide>,
-      <Slide>
-        <SentimentMain/>
-      </Slide>,
-      <Slide>
-        <SentimentCompound/>
-      </Slide>,
-      <Slide>
-        <SentimentAnticipation/>
-      </Slide>,
-      <Slide>
-        <SentimentCompound/>
-      </Slide>,
-      <Slide>
-        <SentimentTrust/>
-      </Slide>,
-      <Slide>
-        <SentimentFear/>
-      </Slide>,
-      <Slide>
-        <SentimentNegativity/>
-      </Slide>,      
-      <Slide>
-        <SentimentNeutrality/>
-      </Slide>,
-      <Slide>
-        <SentimentPolarity/>
-      </Slide>,
-      <Slide>
-        <SentimentPositividad/>
-      </Slide>,
-      <Slide>
-        <SentimentSubjectivity/>
-      </Slide>,
-      <Slide>
-        <Redes/>
-      </Slide>,
-      <Slide>
-        <Phrase/>
-      </Slide>      
-    ];
-    fullPageOptions.slides = verticalSlides;
+    if(this.isMobile){ 
+        return (
+            <>
+              <Landing/>
+              <SentimentMain/>
+              <SentimentCompound/>
+              <SentimentCompoundAlt/>
+              <SentimentTrust/>
+              <SentimentPositividad/>
+              <SentimentNegativity/>
+              <SentimentAnticipation/>
+              <Redes/>
+              <Phrase/>
+            </>
+        )
+    } else{
+        return (
+           <ReactFullpage
+                scrollOverflow={true}
+                sectionsColor={["orange", "purple", "green"]}
+                onLeave={this.onLeave.bind(this)}
+                afterLoad={this.afterLoad.bind(this)}
+                render={() => {
+                  return (
+                    <div id="fullpage-wrapper">
+                      <div className="section section1">
+                        <Landing/>
+                      </div>
+                      <div className="section">
+                        <SentimentMain/>
+                      </div>
+                      <div className="section">
+                        <SentimentCompound/>
+                      </div>
+                      <div className="section">
+                        <SentimentCompoundAlt/>
+                      </div>
+                      <div className="section">
+                        <SentimentAnticipation/>
+                      </div>
+                      <div className="section">
+                        <SentimentTrust/>
+                      </div>
+                      <div className="section">
+                        <SentimentFear/>
+                      </div>
+                      <div className="section">
+                        <SentimentNegativity/>
+                      </div>
+                      <div className="section">
+                        <SentimentNeutrality/>
+                      </div>
+                      <div className="section">
+                        <SentimentPositividad/>
+                      </div>
+                      <div className="section">
+                        <SentimentPolarity/>
+                      </div>
+                      <div className="section">
+                        <SentimentSubjectivity/>
+                      </div>
+                      <div className="section">
+                        <Redes/>
+                      </div>
+                      <div className="section">
+                        <Phrase/>
+                      </div>
+                    </div>
+                  );
+                }}
+            />   
+        )
+      }
+    
 
-    return (
-      <>
-        {this.isMobile ? (
-          <>
-            <Landing/>
-            <SentimentMain/>
-            <SentimentCompound/>
-            <SentimentTrust/>
-            <SentimentPositividad/>
-            <SentimentNegativity/>
-            <SentimentAnticipation/>
-            <Redes/>
-            <Phrase/>
-          </>
-        ) : (
-          <>
-            <Landing/>
-            <SentimentMain/>
-            <SentimentCompound/>
-            <SentimentTrust/>
-            <SentimentPositividad/>
-            <SentimentNegativity/>
-            <SentimentAnticipation/>
-            <Redes/>
-            <Phrase/>
-          </>
-        )}
-        {/* <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions}>
-          </Fullpage> */}
-      </>
-    );
   }
 }
 
-function scrollNavStart(nav) {
-  // make the nav fixed when we start scrolling horizontally
-  nav.style.position = 'fixed';
-}
+//ReactDOM.render(<FullpageWrapper />, document.getElementById("react-root"));
 
-function scrollNavEnd(nav) {
-  // make the nav absolute when scroll finishes
-  nav.style.position = 'absolute';
-}
-
-
-export default FullpageReact;
+export default FullpageWrapper;
