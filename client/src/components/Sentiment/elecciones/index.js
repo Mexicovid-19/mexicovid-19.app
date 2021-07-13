@@ -18,6 +18,7 @@ import SentimentNeutrality from './SentimentNeutrality.js';
 import SentimentPolarity from './SentimentPolarity.js';
 import SentimentSubjectivity from './SentimentSubjectivity.js';
 import SentimentMain from './SentimentMain.js'
+import LifeOfTweet from './LifeOfTweet'
 
 
 class FullpageWrapper extends React.Component {
@@ -36,6 +37,7 @@ class FullpageWrapper extends React.Component {
         return (
             <>
               <Landing/>
+              <LifeOfTweet/>
               <SentimentMain/>
               <SentimentCompound/>
               <SentimentCompoundAlt/>
@@ -59,6 +61,9 @@ class FullpageWrapper extends React.Component {
                     <div id="fullpage-wrapper">
                       <div className="section section1">
                         <Landing/>
+                      </div>
+                      <div className="section">
+                        <LifeOfTweet/>
                       </div>
                       <div className="section">
                         <SentimentMain/>

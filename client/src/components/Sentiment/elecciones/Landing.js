@@ -19,7 +19,7 @@ function Landing({ classes }) {
         d3.csv(tweets)
     ]
 
-    useEffect(() => {
+    /* useEffect(() => {
         Promise.all(loadFiles).then(function (data){
 
             let tweetsArray = []
@@ -59,7 +59,7 @@ function Landing({ classes }) {
             tweetCount.sort((a, b) => (a.count < b.count ? -1 : 1))
             console.log(tweetCount)
         })
-    },[])
+    },[]) */
 
     return (
         <div className={classes.component}>

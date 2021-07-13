@@ -26,7 +26,7 @@ const CompoundLine = ({data}) => (
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: 0,
+            tickRotation: -45,
             legendOffset: 50,
             legendPosition: 'middle'
         }}
