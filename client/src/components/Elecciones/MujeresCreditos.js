@@ -19,14 +19,14 @@ const MujeresCreditos = ({ classes }) => {
     return (
       <div id = "trigger2" className={classes.container}>
         <Fade bottom cascade>
-            <h1 className={classes.subtitle2} style = {{paddingTop: '30px', paddingBottom: '20px'}}>Participantes y personas involucradas</h1>
+            <h1 className={classes.subtitle2} style = {{paddingTop: '30px', paddingBottom: '20px', paddingRight: '20px', paddingLeft: '20px'}}>Participantes y personas involucradas</h1>
             <Grid className={classes.grid} container item xs spacing={3} direction="row"  justify="space-around"  alignItems="center">
                 <div className={classes.photoGridItem}>
                     <p className={classes.names} align={'center'}>TEXTO Y ANÁLISIS</p>
                     {/* <img src="images/angelfigueroa.jpg" className="img-responsive" alt="Image"/> */}
                     <br/>
                     <p>Grissel Olivera</p>
-                    <p>Azucena Roja</p>
+                    <p>Azucena Rojas</p>
                     <p>Yunuel Cruz</p>
                 </div>
                 <div className={classes.photoGridItem}> 
