@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
 /* Material UI */
+import { withStyles } from "@material-ui/core/styles";
 import { makeStyles } from '@material-ui/core/styles';
 import {Select, MenuItem, FormControl, InputLabel} from '@material-ui/core';
 import ArrowRightAltRoundedIcon from '@material-ui/icons/ArrowRightAltRounded';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 // Utils
 import * as colors from '../../../constants/colors';
@@ -13,10 +17,86 @@ import { TransparentInput } from '../../../Utils/components/Select'
 //Components
 import Legend from './Legend';
 
-export default function SentimentCompound({ classes }) {
+export default function SentimentCheckBoxDoble({ classes }) {
     classes = useStyles();
-
-    
+    const StyledFormControlLabel = withStyles({
+        root: {
+            color:'white',
+        },
+      })(FormControlLabel);
+    const CustomAdrianCheckbox = withStyles({
+        root: {
+          color: "#4AA461",
+          '&$checked': {
+            color: "#4AA461",
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />); 
+      const CustomAdrianCheckbox2 = withStyles({
+        root: {
+          color: "#73ff96",
+          '&$checked': {
+            color: "#73ff96",
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />); 
+      
+    const CustomClaraCheckbox = withStyles({
+        root: {
+          color: "#C1311B",
+          '&$checked': {
+            color: "#C1311B",
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);
+    const CustomClaraCheckbox2 = withStyles({
+        root: {
+          color: "#e35944",
+          '&$checked': {
+            color: "#e35944",
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);
+    const CustomSamuelCheckbox = withStyles({
+        root: {
+          color: "#F18131",
+          '&$checked': {
+            color: "#F18131",
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);  
+      const CustomSamuelCheckbox2 = withStyles({
+        root: {
+          color: "#ffb987",
+          '&$checked': {
+            color: "#ffb987",
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);      
+    const CustomFernandoCheckbox = withStyles({
+        root: {
+          color: "#0958A5",
+          '&$checked': {
+            color: "#0958A5",
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);
+      const CustomFernandoCheckbox2 = withStyles({
+        root: {
+          color: "#52a8ff",
+          '&$checked': {
+            color: "#52a8ff",
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);      
     const todos = [
         {
             "id": "Samuel",
@@ -82,7 +162,7 @@ export default function SentimentCompound({ classes }) {
           },
           {
             "id": "Clara Luz",
-            "color": "hsl(8, 76%, 43%)",
+            "color": "hsl(25, 100%, 76%)",
             "data": [
               {
                 "x": "01/03/21",
@@ -267,11 +347,6 @@ export default function SentimentCompound({ classes }) {
             ]
           }
     ]
-
-    const [state, setState] = useState({
-        data: todos,
-        candidato: 0,
-    })
 
     const samuel = [
         {
@@ -661,27 +736,21 @@ export default function SentimentCompound({ classes }) {
 
     
 
-    const handleChange = e => {
-        switch (e.target.value) {
-            case 0:
-                setState({...state, data: todos, candidato: e.target.value})
-                break;
-            case 1:
-                setState({...state, data: samuel, candidato: e.target.value})
-                break;
-            case 2:
-                setState({...state, data: clara, candidato: e.target.value})
-                break;
-            case 3:
-                setState({...state, data: fernando, candidato: e.target.value})
-                break;
-            case 4:
-                setState({...state, data: adrian, candidato: e.target.value})
-                break;
-            default:
-                break;
-        }
+    const [state, setState] = useState({
+      checkedA: true,
+      checkedB: true,
+      checkedC: true,
+      checkedD: true,
+      checkedE: true,
+      checkedF: true,
+      checkedG: true,
+      checkedH: true,
+    });
+
+    const handleChange = (event) => {
+      setState({ ...state, [event.target.name]: event.target.checked });
     };
+
     return (
         <div className={classes.component}>
             <div className={classes.line}></div>
@@ -689,41 +758,126 @@ export default function SentimentCompound({ classes }) {
                 <div className={classes.itemsContainer}>
                     <div className={classes.itemContainer}>
                          <div className={classes.titleContainer}>
-                            <h2 className={classes.subtitle}><strong>Analisis Compound Gráfica (Ponderado)</strong></h2>
+                            <h2 className={classes.subtitle}><strong>Analisis Compound Gráfica (Ponderado) Con Checkbox</strong></h2>
                         </div>
                         <div className={classes.scrollContainer}>
                           <p className={classes.scrollText}>scroll</p>
                           <ArrowRightAltRoundedIcon className={classes.scrollIcon}/>
                         </div>
                         <div className={classes.chartContainer}>
-                          <CompoundLine data={state.data}/>
+                          <CompoundLine data= {todos} />
                           {todos.length  !== 0 && (
                             <></>
                           )}
                         </div>
                         <div className={classes.chartFooterContainer}>
-                            <FormControl variant="outlined" className={classes.formControl}>
-                              <InputLabel component="legend" style={{ color: "white", fontSize: "20px", fontWeight: 'bolder'}}>Candidatos</InputLabel>
-                              <Select
-                                  labelId="demo-simple-select-outlined-label"
-                                  id="demo-simple-select-outlined"
-                                  value={state.candidato}
-                                  onChange={handleChange}
-                                  label="Pais"
-                                  input={<TransparentInput style={{marginBottom: 30}}/>}
-                              >
-                                  <MenuItem value={0}>Todos los candidatos</MenuItem>
-                                  <MenuItem value={1}>Samuel García</MenuItem>
-                                  <MenuItem value={2}>Clara Luz Florez</MenuItem>
-                                  <MenuItem value={3}>Fernando Larrazábal</MenuItem>
-                                  <MenuItem value={4}>Adrian de la Garza</MenuItem>
-                              </Select>
-                            </FormControl>
-                            <Legend/>
+                        <div className={classes.groups}>
+                        <div className={classes.formContainer}>
+                        <InputLabel component="legend" style={{ color: "white", fontSize: "20px", fontWeight: 'bolder', textAlign: 'center', paddingTop: '10px', paddingRight: '50',toptextAlign: 'center'}}>Candidatos</InputLabel>
+                        <div className={classes.form}>  
+                        <FormGroup>
+      <StyledFormControlLabel
+        control={
+          <CustomAdrianCheckbox
+            checked={state.checkedA}
+            onChange={handleChange}
+            name="checkedA"
+          />
+        }
+        labelPlacement="top"
+        label ="Adrián"/>
+        
+        <StyledFormControlLabel
+        control={
+          <CustomFernandoCheckbox
+          checked={state.checkedC}
+          onChange={handleChange}
+          name="checkedC"
+          />
+        }
+        labelPlacement="bottom"
+        label="Fernando"/>
+        </FormGroup>
+        <FormGroup>
+        <StyledFormControlLabel
+        control={
+          <CustomClaraCheckbox
+            checked={state.checkedB}
+            onChange={handleChange}
+            name="checkedB"
+          />
+        }
+        labelPlacement="top"
+        label="Clara"/>
+              <StyledFormControlLabel
+        control={
+          <CustomSamuelCheckbox
+            checked={state.checkedD}
+            onChange={handleChange}
+            name="checkedD"
+          />
+        }
+        labelPlacement="bottom"
+        label="Samuel"/>
+        </FormGroup>
+        </div>
+        </div>
+        <div className={classes.formContainer}>
+                        <InputLabel component="legend" style={{ color: "white", fontSize: "20px", fontWeight: 'bolder', textAlign: 'center', paddingTop: '10px', paddingRight: '50',toptextAlign: 'center'}}>Candidatos</InputLabel>
+        <div className={classes.form}>
+                        <FormGroup>
+      <StyledFormControlLabel
+        control={
+          <CustomAdrianCheckbox2
+            checked={state.checkedE}
+            onChange={handleChange}
+            name="checkedE"
+          />
+        }
+        labelPlacement="top"
+        label ="Adrián"/>
+        
+        <StyledFormControlLabel
+        control={
+          <CustomFernandoCheckbox2
+            checked={state.checkedG}
+            onChange={handleChange}
+            name="checkedG"
+          />
+        }
+        labelPlacement="bottom"
+        label="Fernando"/>
+        </FormGroup>
+        <FormGroup>
+        <StyledFormControlLabel
+        control={
+          <CustomClaraCheckbox2
+            checked={state.checkedF}
+            onChange={handleChange}
+            name="checkedF"
+          />
+        }
+        labelPlacement="top"
+        label="Clara"/>
+              <StyledFormControlLabel
+        control={
+          <CustomSamuelCheckbox2
+            checked={state.checkedH}
+            onChange={handleChange}
+            name="checkedH"
+          />
+        }
+        labelPlacement="bottom"
+        label="Samuel"/>
+        </FormGroup>
+        </div>
+        </div>
+        </div>
+
                         </div>
                     </div>
                     <div className={classes.itemContainer2}>
-                        <h2 className={classes.subtitle}><strong>Analisis Compound Texto</strong></h2>
+                        <h2 className={classes.subtitle}><strong>Analisis Compound Texto Con Checkbox</strong></h2>
                         <h2 className={classes.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra sollicitudin sem nec efficitur. Nullam eu varius lectus. Aliquam orci velit, mattis et ullamcorper tempor, ultrices eu ipsum. Mauris sed nunc aliquet, convallis libero id, pretium tellus. Donec aliquam nibh diam, a euismod turpis semper vitae. Morbi sollicitudin, justo vitae ullamcorper suscipit, libero justo rutrum nunc, vel dictum erat sapien sed nisi. Donec in nibh vitae eros lacinia semper sed sit amet neque. Phasellus ut elit a arcu hendrerit faucibus et at enim. Duis condimentum orci non enim pretium ornare. Aenean mattis semper eleifend. Vivamus et nisl at lacus euismod facilisis. Vivamus auctor tristique odio id maximus. Vivamus tincidunt porta urna id euismod. Maecenas nec vulputate metus.</h2>
                     </div>
                 </div>
@@ -734,6 +888,11 @@ export default function SentimentCompound({ classes }) {
 }
 
 const useStyles = makeStyles((theme) => ({
+
+    groups:{
+        display: 'flex',
+        flexDirection: 'row',
+    },
     component:{
         width: '100%',
         background: 'rgb(34, 35, 35)',
@@ -769,6 +928,23 @@ const useStyles = makeStyles((theme) => ({
         color: colors.WHITE,
         flex: 1
     },
+    formContainer:{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        background: 'rgba(255,255,255,0.05)',
+        padding:'0px',
+        borderRadius: '15px',
+        flex: '0.5',
+        margin: '20px'
+    },
+    form:{
+        display: 'flex',
+        justifyContent: 'space-between',
+        borderRadius: '15px',
+        flex: '0.5',
+        margin: '20px'
+    },
     itemsContainer: {
         padding: '20px 20px'
     },
@@ -782,6 +958,7 @@ const useStyles = makeStyles((theme) => ({
         overflowX: 'scroll',
         flex: 0.3
     },
+
     description: {
         color: colors.WHITE,
         paddingTop: 50,

@@ -2,22 +2,14 @@ import React from "react";
 import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
 import ReactFullpage from "@fullpage/react-fullpage";
 
-
 /* Slides */
 import Landing from './Landing'
 import Redes from './Redes'
 import Phrase from './Phrase'
-import SentimentPositividad from './SentimentPositividad.js';
-import SentimentCompound from './SentimentCompound.js';
-import SentimentCompoundAlt from './SentimentCompoundAlt.js';
-import SentimentTrust from './SentimentTrust.js';
-import SentimentNegativity from './SentimentNegativity.js';
-import SentimentAnticipation from './SentimentAnticipation.js';
-import SentimentFear from './SentimentFear.js';
-import SentimentNeutrality from './SentimentNeutrality.js';
-import SentimentPolarity from './SentimentPolarity.js';
-import SentimentSubjectivity from './SentimentSubjectivity.js';
 import SentimentMain from './SentimentMain.js'
+import FearVsTrust from "./FearVsTrust"
+import PositivityVsNegativity from "./PositivityVsNegativity"
+import CompoundPonderado from './CompoundPonderado'
 
 
 class FullpageWrapper extends React.Component {
@@ -37,12 +29,9 @@ class FullpageWrapper extends React.Component {
             <>
               <Landing/>
               <SentimentMain/>
-              <SentimentCompound/>
-              <SentimentCompoundAlt/>
-              <SentimentTrust/>
-              <SentimentPositividad/>
-              <SentimentNegativity/>
-              <SentimentAnticipation/>
+              <CompoundPonderado/>
+              <FearVsTrust/>
+              <PositivityVsNegativity/>                              
               <Redes/>
               <Phrase/>
             </>
@@ -64,35 +53,14 @@ class FullpageWrapper extends React.Component {
                         <SentimentMain/>
                       </div>
                       <div className="section">
-                        <SentimentCompound/>
+                        <CompoundPonderado/>
                       </div>
                       <div className="section">
-                        <SentimentCompoundAlt/>
-                      </div>
+                        <PositivityVsNegativity/>
+                      </div>        
                       <div className="section">
-                        <SentimentAnticipation/>
-                      </div>
-                      <div className="section">
-                        <SentimentTrust/>
-                      </div>
-                      <div className="section">
-                        <SentimentFear/>
-                      </div>
-                      <div className="section">
-                        <SentimentNegativity/>
-                      </div>
-                      <div className="section">
-                        <SentimentNeutrality/>
-                      </div>
-                      <div className="section">
-                        <SentimentPositividad/>
-                      </div>
-                      <div className="section">
-                        <SentimentPolarity/>
-                      </div>
-                      <div className="section">
-                        <SentimentSubjectivity/>
-                      </div>
+                        <FearVsTrust/>
+                      </div>                     
                       <div className="section">
                         <Redes/>
                       </div>
