@@ -1,97 +1,197 @@
-import React from 'react'
+import React from 'react';
 
-import Header from '../Header'
-
+/* Material UI */
+import { withStyles, useTheme } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import PropTypes from 'prop-types';
+import MediaCard from './CardTemplate';
+/* Utils */
 import * as colors from '../../constants/colors';
 
-import { makeStyles } from '@material-ui/core/styles';
+/* Components */
+import Header from '../Header';
 
-import MediaCard from './CardTemplate';
+import { Helmet } from 'react-helmet';
+const AntTabs = withStyles({
+  root: {
+    position: 'relative',
+    top: '-10px',
+  },
+  indicator: {
+    backgroundColor: '#1890ff',
+  },
+})(Tabs);
 
-function index() {
-    return (
-        <>
-        <Header></Header>
-        <MediaCard></MediaCard>
-        </>
-    )
+const AntTab = withStyles((theme) => ({
+  root: {
+    textTransform: 'none',
+    minWidth: 40,
+    fontWeight: theme.typography.fontWeightRegular,
+    marginRight: theme.spacing(1),
+    [theme.breakpoints.down('576')]: {
+      fontSize: '12px',
+      minWidth: 30
+    },
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:hover': {
+      color: '#40a9ff',
+      opacity: 1,
+    },
+    '&$selected': {
+      color: '#1890ff',
+      fontWeight: theme.typography.fontWeightMedium,
+    },
+    '&:focus': {
+      color: '#40a9ff',
+    },
+  },
+  selected: {},
+}))((props) => <Tab disableRipple {...props} />);
+
+
+
+
+const Loteria = ({ classes }) => {
+  const isMobile = window.innerWidth < 1000;
+  const [value, setValue] = React.useState(3);
+
+
+  const handleChange = (event, newValue) => {
+    //console.log(newValue)
+    setValue(newValue);
+  };
+
+  document.title = "Loteria | MexiCOVID";  
+  return (
+    <div>
+      <Helmet>
+            <title>Elecciones 2021 | MexiCOVID</title>
+            <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
+			<meta name="keywords" content="Elecciones, electorales, elecciones 2021, elecciones México"/>
+			
+            <meta property="og:title" content="Elecciones | MexiCOVID"/>
+            <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
+      </Helmet>
+        <Header fixed={isMobile}/>
+        <div className={classes.pagina}>
+          <div className={classes.tablero}>
+            <div className={classes.fila}>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+            </div> 
+            <div className={classes.fila}>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+            </div>
+            <div className={classes.fila}>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+            </div>      
+            <div className={classes.fila}>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+            </div>                  
+          </div>
+        </div>
+        </div>
+  );
 }
+
 const styles = () => ({
     /* Desktop */
-    itemsContainer: {
+    pagina:{
+      backgroundColor: colors.BLACK,
+      padding: '20px'
+    },
+    tablero:{
+      display:'flex',
+      flexDirection:'column',
+    },
+    fila:{
+      display:'flex',
+      flexDirection:'row',
+    },
+    container: {
+      background: colors.BLACK,
+      overflow: 'hidden'
+    },
+    header: {
+      padding: '20px'
+    },
+    h1: {
+        fontSize: '36px',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        margin: '0'
+    },
+    barContainer: {
+      backgroundColor: colors.BLACK,
+      color: colors.WHITE,
       display: 'flex',
       justifyContent: 'space-between',
-      margin: 'auto',
+      alignItems: 'center',
+      border:  '1px solid white',
     },
-   
-    outerChartContainer: {
-      paddingTop: '30px',
-      borderLeft:  '1px solid white',
-      borderBottom:  '1px solid white',
-      borderRight:  '1px solid white',
-    },
-    chartContainer: {
-      height: '600px',
-      minHeight: '600px',
-      width: '50vw',
-      flex: 1,
-      margin: 'auto',
-      padding: '50px',
-    },
-    subtitle: {
-        textAlign: 'center',
-        fontSize: 35,
-        fontWeight: 'bold',
-        color: colors.WHITE
-    },
-    subtitle2: {
-      textAlign: 'center',
-      fontSize: 20,
+    legend: {
+      fontSize: 40,
       fontWeight: 'bold',
-      color: colors.WHITE
-      },
-    chartTitle:{
-      fontSize: '20px',
-      textAlign: 'center'
+      paddingTop: '0px',
+      paddingLeft: '520px',
+      paddingBottom: '0px',
+      position:'relative',
+      top:'-135px',
+      //borderLeft: '1px solid white',
+      //borderRight: '1px solid white',
     },
-    error: {
-      color: colors.WHITE,
-      textAlign: 'center',
-      position: 'relative',
-      top: '100px',
-      fontSize: '30px'
-  },
-  
-  
+    legend2: {
+      fontSize: 40,
+      fontWeight: 'bold',
+      paddingTop: '0px',
+      paddingLeft: '1090px',
+      paddingRight: '0px',
+      paddingBottom: '0px',
+      position:'relative',
+      top:'-210px',
+      //borderLeft: '1px solid white',
+      //borderRight: '1px solid white',
+    },
+
     /* Mobile */
     [`@media (max-width: ${1000}px)`]: {
-      itemsContainer: {
+        barContainer: {
+          backgroundColor: colors.BLACK,
+          color: colors.WHITE,
           display: 'block',
-          margin: 'auto',
-      },
-      map: {
-          minHeight: '400px',
-          height: '400px',
-          width: '100vw',
-      },
-      outerChartContainer: {
-          paddingTop: '30px',
-          borderLeft:  '1px solid white',
-          borderBottom:  '1px solid white',
-          borderRight:  '1px solid white',
-      },
-      chartContainer: {
-          height: '500px',
-          width: '100vw',
-          flex: 1,
-          margin: 'auto',
-          padding: '0px',
-          paddingBottom: '100px'
-      },
-      subtitle: {
-        fontSize: 20,
-      },
+          border:  '1px solid white',
+        },
+        h1: {
+          fontSize: '25px'
+        }
     }
-    
-  });
-export default index
+  
+});
+
+
+export default withStyles(styles)(Loteria);
