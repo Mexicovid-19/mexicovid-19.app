@@ -112,6 +112,9 @@ const LandingHeader = ({ classes, fixed=false}) => {
           <LinkElement url='/methodology' element={
             <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Metodología</Button>
           }/> */}
+           <LinkElement url='/loteria' element={
+            <Button className={location === '/loteria' ? classes.selectedBtn : classes.button} color="inherit">Lotería Nacional</Button>
+          }/>
           <LinkElement url='/about-us' element={
             <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
           }/>          

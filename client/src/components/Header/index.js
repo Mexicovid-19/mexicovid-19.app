@@ -91,6 +91,9 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/methodology' element={
             <MenuItem><Typography variant="span" className={classes.title}>Metodología</Typography></MenuItem>
           }/> */}
+          <LinkElement url='/loteria' element={
+            <MenuItem><Typography variant="span" className={classes.title}>Lotería Nacional</Typography></MenuItem>
+          }/>
           <LinkElement url='/about-us' element={
             <MenuItem><Typography variant="span" className={classes.title}>Nosotros</Typography></MenuItem>
           }/>
@@ -121,6 +124,9 @@ const Header = ({ classes, fixed=false}) => {
           <LinkElement url='/methodology' element={
             <Button className={location === '/methodology' ? classes.selectedBtn : classes.button} color="inherit">Metodología</Button>
           }/> */}
+          <LinkElement url='/loteria' element={
+            <Button className={location === '/loteria' ? classes.selectedBtn : classes.button} color="inherit">Lotería Nacional</Button>
+          }/>
           <LinkElement url='/about-us' element={
             <Button className={location === '/about-us' ? classes.selectedBtn : classes.button} color="inherit">Nosotros</Button>
           }/>          

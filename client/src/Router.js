@@ -32,7 +32,7 @@ import './css/index.css';
 import Elecciones from './components/Elecciones'
 import Landing from './components/Landing'
 import Sentiment from './components/Sentiment'
-
+import Loteria from './components/Loteria'
 /* Blog */
 import Blog from "./containers/Blog"
 import BlogPost from "./containers/BlogPost";
@@ -72,6 +72,7 @@ const Router = () => {
 
         {/* Nuevas páginas */}
         <Route path='/elecciones' component={Elecciones}/>
+        <Route path='/loteria' component={Loteria}/>
         <Route path='/sentiment-analysis' component={Sentiment}/>
 
         {/* landing */}
