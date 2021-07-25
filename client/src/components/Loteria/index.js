@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import MediaCard from './CardTemplate';
+import { Aguascalientes, BajaCalifornia, BajaCaliforniaSur, Campeche, Coahuila, Colima, Chiapas, Chihuahua, CDMX } from './CardTemplate';
 /* Utils */
 import * as colors from '../../constants/colors';
 
@@ -90,29 +90,20 @@ const Loteria = ({ classes }) => {
         <div className={classes.pagina}>
           <div className={classes.tablero}>
             <div className={classes.fila}>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
+              <Aguascalientes/>
+              <BajaCalifornia/>
+              <BajaCaliforniaSur/>
             </div> 
             <div className={classes.fila}>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
+              <Campeche/>
+              <Coahuila/>
+              <Colima/>
             </div>
             <div className={classes.fila}>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-            </div>      
-            <div className={classes.fila}>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-            </div>                  
+              <Chiapas/>
+              <Chihuahua/>
+              <CDMX/>
+            </div>                 
           </div>
         </div>
         </div>
@@ -123,7 +114,9 @@ const styles = () => ({
     /* Desktop */
     pagina:{
       backgroundColor: colors.BLACK,
-      padding: '20px'
+      padding: '20px',
+      display: 'flex',
+      flexDirection: 'column'
     },
     tablero:{
       display:'flex',

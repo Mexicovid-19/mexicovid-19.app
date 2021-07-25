@@ -10,15 +10,240 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 200,
-    margin: "15px",
+    margin: 15,
+    maxWidth: 345,
   },
   media: {
-    maxHeight: 100,
+    height: 140,
   },
 });
 
-export default function MediaCard() {
+export function Aguascalientes() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://upload.wikimedia.org/wikipedia/commons/9/93/Aguascalientes_con_vista_al_poniente.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Aguascalientes
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function BajaCalifornia() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://upload.wikimedia.org/wikipedia/commons/6/6a/Sun_Up_at_Gonsaga_Bay%2C_Baja_California%2C_Mexico_-_panoramio.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Baja California
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function BajaCaliforniaSur() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://upload.wikimedia.org/wikipedia/commons/b/b0/A_Postcard_From_Cabo_San_Lucas_%2856014870%29.jpeg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Baja California Sur
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function Campeche() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://upload.wikimedia.org/wikipedia/commons/7/74/Atardecer_en_la_Torre_del_Fuerte_San_Jos%C3%A9_el_Alto.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Campeche
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function Coahuila() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://upload.wikimedia.org/wikipedia/commons/6/66/Vista_panoramica_centro_mva.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Coahuila de Zaragoza∫
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function Colima() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://upload.wikimedia.org/wikipedia/commons/7/79/Kiosco_de_Colima_-_panoramio.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Colima
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function Chiapas() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://upload.wikimedia.org/wikipedia/commons/d/dd/DSC_7701_CHIFLON_MI_AMOR.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Chiapas
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function Chihuahua() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://upload.wikimedia.org/wikipedia/commons/6/6e/Wulfenite_mexique.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Chihuahua
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function CDMX() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://realestatemarket.com.mx/images/2020/03-Marzo/2503/torizan_17_proyectos_inmobiliarios_en_Paseo_de_la_Reforma___.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Ciudad de México
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+export function Durango() {
   const classes = useStyles();
 
   return (
@@ -31,7 +256,7 @@ export default function MediaCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+          Durango
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
