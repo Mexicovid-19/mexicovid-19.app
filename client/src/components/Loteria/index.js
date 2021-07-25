@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import MediaCard from './CardTemplate';
+import MediaCard from './PopperCard';
 /* Utils */
 import * as colors from '../../constants/colors';
 
@@ -75,14 +75,14 @@ const Loteria = ({ classes }) => {
     setValue(newValue);
   };
 
-  document.title = "Loteria | MexiCOVID";  
+  document.title = "Loteria | MexiCOVID";
   return (
     <div>
       <Helmet>
             <title>Elecciones 2021 | MexiCOVID</title>
             <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
 			<meta name="keywords" content="Elecciones, electorales, elecciones 2021, elecciones México"/>
-			
+
             <meta property="og:title" content="Elecciones | MexiCOVID"/>
             <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
       </Helmet>
@@ -94,7 +94,7 @@ const Loteria = ({ classes }) => {
               <MediaCard/>
               <MediaCard/>
               <MediaCard/>
-            </div> 
+            </div>
             <div className={classes.fila}>
               <MediaCard/>
               <MediaCard/>
@@ -106,13 +106,13 @@ const Loteria = ({ classes }) => {
               <MediaCard/>
               <MediaCard/>
               <MediaCard/>
-            </div>      
+            </div>
             <div className={classes.fila}>
               <MediaCard/>
               <MediaCard/>
               <MediaCard/>
               <MediaCard/>
-            </div>                  
+            </div>
           </div>
         </div>
         </div>
@@ -190,7 +190,7 @@ const styles = () => ({
           fontSize: '25px'
         }
     }
-  
+
 });
 
 
