@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import { Aguascalientes, BajaCalifornia, BajaCaliforniaSur, Campeche, Coahuila, Colima, Chiapas, Chihuahua, CDMX } from './CardTemplate';
+import MediaCard, { Aguascalientes, BajaCalifornia, BajaCaliforniaSur, Campeche, Coahuila, Colima, Chiapas, Chihuahua, CDMX } from './CardTemplate';
 /* Utils */
 import * as colors from '../../constants/colors';
 
@@ -90,7 +90,7 @@ const Loteria = ({ classes }) => {
         <div className={classes.pagina}>
           <div className={classes.tablero}>
             <div className={classes.fila}>
-              <Aguascalientes/>
+              <MediaCard/>
               <BajaCalifornia/>
               <BajaCaliforniaSur/>
             </div> 
