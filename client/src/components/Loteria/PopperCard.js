@@ -14,19 +14,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimplePopper() {
+export default function SimplePopper(props) {
   const [show, setShow] = useState(false);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
+  const handleClick = (showThis) => {
+    if(!props.showing&&showThis){
+      setShow(true);
+      props.setShowing(true);
+    }
+    else if(!showThis) {
+      setShow(false);
+      props.setShowing(false);
+    }
+  }
+  //
+  // const handleClick = (event) => {
+  //   setAnchorEl(anchorEl ? null : event.currentTarget);
+  // };
+  //
+  // const open = Boolean(anchorEl);
+  // const id = open ? "simple-popper" : undefined;
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popper" : undefined;
-
-  /* 
+  /*
   return (
     <div>
       <button aria-describedby={id} type="button" onClick={handleClick}>
@@ -36,15 +47,15 @@ export default function SimplePopper() {
         <div className={classes.paper}>Something</div>
       </Popper>
     </div>
-  ); 
+  );
   */
 
   return (
     <div className="App">
-      <button onClick={() => setShow(true)}>
+      <button onClick={() => handleClick(true)}>
         <CardTemplate></CardTemplate>
       </button>
-      <Modal title="Nuevo Leon" onClose={() => setShow(false)} show={show}>
+      <Modal title="Nuevo Leon" onClose={() => handleClick(false)} show={show}>
         <p>COVID-19 NL</p>
       </Modal>
     </div>

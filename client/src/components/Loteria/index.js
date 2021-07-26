@@ -68,7 +68,7 @@ const AntTab = withStyles((theme) => ({
 const Loteria = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   const [value, setValue] = React.useState(3);
-
+  const [showing, setShowing] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     //console.log(newValue)
@@ -90,28 +90,28 @@ const Loteria = ({ classes }) => {
         <div className={classes.pagina}>
           <div className={classes.tablero}>
             <div className={classes.fila}>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
             </div>
             <div className={classes.fila}>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
             </div>
             <div className={classes.fila}>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
             </div>
             <div className={classes.fila}>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
-              <MediaCard/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard setShowing = {setShowing} showing = {showing}/>
             </div>
           </div>
         </div>
