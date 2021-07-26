@@ -1,21 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
-import CardTemplate from './CardTemplate';
-
-//test #1
-
+import React from "react";
+import ReactDOM from "react-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import Popper from "@material-ui/core/Popper";
+import CardTemplate from "./CardTemplate";
+import Modal from "./Modal";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    border: '1px solid',
+    border: "1px solid",
     padding: theme.spacing(1),
     backgroundColor: theme.palette.background.paper,
   },
 }));
 
 export default function SimplePopper() {
+  const [show, setShow] = useState(false);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -24,8 +24,9 @@ export default function SimplePopper() {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popper' : undefined;
+  const id = open ? "simple-popper" : undefined;
 
+  /* 
   return (
     <div>
       <button aria-describedby={id} type="button" onClick={handleClick}>
@@ -35,16 +36,28 @@ export default function SimplePopper() {
         <div className={classes.paper}>Something</div>
       </Popper>
     </div>
+  ); 
+  */
+
+  return (
+    <div className="App">
+      <button onClick={() => setShow(true)}>
+        <CardTemplate></CardTemplate>
+      </button>
+      <Modal title="Nuevo Leon" onClose={() => setShow(false)} show={show}>
+        <p>COVID-19 NL</p>
+      </Modal>
+    </div>
   );
 }
 
-class App extends React.Component{
-  render(){
-    return(
+class App extends React.Component {
+  render() {
+    return (
       <>
-      <SimplePopper/>
+        <SimplePopper />
       </>
     );
   }
 }
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
