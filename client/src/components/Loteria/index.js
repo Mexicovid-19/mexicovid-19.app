@@ -90,7 +90,7 @@ const Loteria = ({ classes }) => {
         <div className={classes.pagina}>
           <div className={classes.tablero}>
             <div className={classes.fila}>
-              <MediaCard/>
+              <Aguascalientes/>
               <BajaCalifornia/>
               <BajaCaliforniaSur/>
             </div> 

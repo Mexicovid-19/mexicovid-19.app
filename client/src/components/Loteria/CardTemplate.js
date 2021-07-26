@@ -22,29 +22,6 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard(){
-  const classes = useStyles();
-
-  return (
-  <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          image="https://upload.wikimedia.org/wikipedia/commons/9/93/Aguascalientes_con_vista_al_poniente.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  )
-}
 export function Aguascalientes() {
   const classes = useStyles();
 
