@@ -29,26 +29,6 @@ export default function SimplePopper(props) {
       props.setShowing(false);
     }
   }
-  //
-  // const handleClick = (event) => {
-  //   setAnchorEl(anchorEl ? null : event.currentTarget);
-  // };
-  //
-  // const open = Boolean(anchorEl);
-  // const id = open ? "simple-popper" : undefined;
-
-  /*
-  return (
-    <div>
-      <button aria-describedby={id} type="button" onClick={handleClick}>
-        <CardTemplate/>
-      </button>
-      <Popper id={id} open={open} anchorEl={anchorEl}>
-        <div className={classes.paper}>Something</div>
-      </Popper>
-    </div>
-  );
-  */
 
   return (
     <div className="App">
@@ -61,14 +41,3 @@ export default function SimplePopper(props) {
     </div>
   );
 }
-
-class App extends React.Component {
-  render() {
-    return (
-      <>
-        <SimplePopper />
-      </>
-    );
-  }
-}
-ReactDOM.render(<App />, document.getElementById("root"));
