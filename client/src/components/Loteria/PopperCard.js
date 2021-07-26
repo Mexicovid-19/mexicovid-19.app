@@ -19,23 +19,13 @@ export default function SimplePopper(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = (showThis) => {
-    if(!props.showing&&showThis){
-      setShow(true);
-      props.setShowing(true);
-    }
-    else if(!showThis) {
-      setShow(false);
-      props.setShowing(false);
-    }
-  }
 
   return (
     <div className="App">
-      <button onClick={() => handleClick(true)}>
+      <button onClick={() => setShow(true)}>
         <CardTemplate></CardTemplate>
       </button>
-      <Modal title="Nuevo Leon" onClose={() => handleClick(false)} show={show}>
+      <Modal title="Nuevo Leon" onClose={() => setShow(false)} show={show}>
         <p>COVID-19 NL</p>
       </Modal>
     </div>

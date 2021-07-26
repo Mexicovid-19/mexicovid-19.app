@@ -90,28 +90,28 @@ const Loteria = ({ classes }) => {
         <div className={classes.pagina}>
           <div className={classes.tablero}>
             <div className={classes.fila}>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
             </div>
             <div className={classes.fila}>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
             </div>
             <div className={classes.fila}>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
             </div>
             <div className={classes.fila}>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
-              <MediaCard setShowing = {setShowing} showing = {showing}/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
+              <MediaCard/>
             </div>
           </div>
         </div>
