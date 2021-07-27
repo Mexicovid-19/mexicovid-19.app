@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { colors } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -16,6 +17,8 @@ const useStyles = makeStyles({
     width: 200,
     textAlign: 'center',
     height:300,
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
   },
   media: {
     height: 200,
@@ -26,20 +29,19 @@ export function Aguascalientes() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea className={classes.root}>
         <CardMedia
+          component="img"
           className={classes.media}
           image="https://upload.wikimedia.org/wikipedia/commons/9/93/Aguascalientes_con_vista_al_poniente.jpg"
           title="Contemplative Reptile"
         />
-        <CardContent>
+        <CardContent style={{background: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Aguascalientes_con_vista_al_poniente.jpg'}}>
           <Typography gutterBottom variant="h5" component="h2">
             Aguascalientes
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
   );
 }
 

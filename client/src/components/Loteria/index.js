@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, {useState } from 'react'
 /* Material UI */
 import { withStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -7,14 +6,16 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import MediaCard, { Aguascalientes, BajaCalifornia, BajaCaliforniaSur, Campeche, Coahuila, Colima, Chiapas, Chihuahua, CDMX } from './CardTemplate';
+/*import { Aguascalientes, BajaCalifornia, BajaCaliforniaSur, Campeche, Coahuila, Colima, Chiapas, Chihuahua, CDMX } from './CardTemplate';*/
 /* Utils */
 import * as colors from '../../constants/colors';
-
+import estadosMexicanos from './estados/estados.json';
 /* Components */
 import Header from '../Header';
+import { Aguascalientes, BajaCalifornia, BajaCaliforniaSur, Campeche, Coahuila, Colima, Chiapas, Chihuahua, CDMX } from './NuevaTarjeta';
 
 import { Helmet } from 'react-helmet';
+/*import { aguascalientes, aguascalientes } from './estados/estados';*/
 const AntTabs = withStyles({
   root: {
     position: 'relative',
@@ -62,18 +63,13 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-
-
+const estados = estadosMexicanos;
 
 const Loteria = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   const [value, setValue] = React.useState(3);
 
-
-  const handleChange = (event, newValue) => {
-    //console.log(newValue)
-    setValue(newValue);
-  };
+  console.log(estados)
 
   document.title = "Loteria | MexiCOVID";  
   return (
