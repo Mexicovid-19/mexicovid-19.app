@@ -1,10 +1,199 @@
-   [{
-    "id": 1,
-    "estado": "Aguascalientes",
-    "texto": "HelloHelloHelloHello"
+   [
+    { "id": 0,
+      "estado": "México Nacional",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/93/Aguascalientes_con_vista_al_poniente.jpg",
+      "texto": ""
     },
     {
-    "id": 2,
-    "estado": "Baja California",
-    "texto": "HelloHelloHelloHello"
-    }]
+      "id": 1,
+      "estado": "Aguascalientes",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/93/Aguascalientes_con_vista_al_poniente.jpg",
+      "texto": ""
+    },
+    {
+      "id": 2,
+      "estado": "Baja California",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Sun_Up_at_Gonsaga_Bay%2C_Baja_California%2C_Mexico_-_panoramio.jpg",
+      "texto": ""
+    },
+    {
+      "id": 3,
+      "estado": "Baja California Sur",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/b0/A_Postcard_From_Cabo_San_Lucas_%2856014870%29.jpeg",
+      "texto": ""
+    },
+    {
+      "id": 4,
+      "estado": "Campeche",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/74/Atardecer_en_la_Torre_del_Fuerte_San_Jos%C3%A9_el_Alto.jpg",
+      "texto": ""
+    },
+    {
+      "id": 5,
+      "estado": "Coahuila",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/66/Vista_panoramica_centro_mva.jpg",
+      "texto": ""
+    },
+    {
+      "id": 6,
+      "estado": "Colima",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/79/Kiosco_de_Colima_-_panoramio.jpg",
+      "texto": ""
+    },
+    {
+      "id": 7,
+      "estado": "Chiapas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/d/dd/DSC_7701_CHIFLON_MI_AMOR.jpg",
+      "texto": ""
+    },
+    {
+      "id": 8,
+      "estado": "Chihuahua",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Wulfenite_mexique.jpg",
+      "texto": ""
+    },        
+    {
+      "id": 9,
+      "estado": "Ciudad de México",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Columna_a_la_Independencia_%2816175251966%29.jpg/683px-Columna_a_la_Independencia_%2816175251966%29.jpg",
+      "texto": ""
+    },
+    {
+      "id": 10,
+      "estado": "Durango",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Contrastes_del_Sagrado_Coraz%C3%B3n_de_Jes%C3%BAs.jpg/1280px-Contrastes_del_Sagrado_Coraz%C3%B3n_de_Jes%C3%BAs.jpg",
+      "texto": ""
+    },
+    {
+      "id": 11,
+      "estado": "Guanajuato",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Guanajuato%2C_Guanajuato_%2823784476462%29.jpg/1280px-Guanajuato%2C_Guanajuato_%2823784476462%29.jpg",
+      "texto": ""
+    },
+    {
+      "id": 12,
+      "estado": "Guerrero",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Acapulco_Cliff_Diver.jpg/708px-Acapulco_Cliff_Diver.jpg",
+      "texto": ""
+    },
+    {
+      "id": 13,
+      "estado": "Hidalgo",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Cascada._-_panoramio_%281%29.jpg/685px-Cascada._-_panoramio_%281%29.jpg",
+      "texto": ""
+    },
+    {
+      "id": 14,
+      "estado": "Jalisco",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Paisaje_agavero_de_Jose_Cuervo_en_Tequila%2C_Jalisco.jpg/1280px-Paisaje_agavero_de_Jose_Cuervo_en_Tequila%2C_Jalisco.jpg",
+      "texto": ""
+    },
+    {
+      "id": 15,
+      "estado": "Estado de México",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Laguna_del_sol.jpg/1280px-Laguna_del_sol.jpg",
+      "texto": ""
+    },
+    {
+      "id": 16,
+      "estado": "Michoacán",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/D%C3%ADa_de_Muertos._Pante%C3%B3n_de_Tzintzuntzan%2C_Michoac%C3%A1n%2C_M%C3%A9xico.jpg/1280px-D%C3%ADa_de_Muertos._Pante%C3%B3n_de_Tzintzuntzan%2C_Michoac%C3%A1n%2C_M%C3%A9xico.jpg",
+      "texto": ""
+    },
+    {
+      "id": 17,
+      "estado": "Morelos",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Tepoztlan_church_IMG_5490.jpg",
+      "texto": ""
+    },
+    {
+      "id": 18,
+      "estado": "Nayarit",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Mexican_sunshine%21.JPG/1024px-Mexican_sunshine%21.jpg",
+      "texto": ""
+    },
+    {
+      "id": 19,
+      "estado": "Nuevo León",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cerro_de_la_Silla_-_Flickr_-_eperales.jpg/1280px-Cerro_de_la_Silla_-_Flickr_-_eperales.jpg",
+      "texto": ""
+    },
+    {
+      "id": 20,
+      "estado": "Oaxaca",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/f6/El_Camino_es_Finito.jpg",
+      "texto": ""
+    },
+    {
+      "id": 21,
+      "estado": "Puebla",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Catedral_de_Puebla%2C_M%C3%A9xico%2C_2013-10-11%2C_DD_17.JPG/905px-Catedral_de_Puebla%2C_M%C3%A9xico%2C_2013-10-11%2C_DD_17.jpg",
+      "texto": ""
+    },
+    {
+      "id": 22,
+      "estado": "Querétaro",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Calle_Miguel_Hidalgo%2C_Pe%C3%B1a_de_Bernal%2C_Quer%C3%A9taro_%2824172169019%29.jpg/1024px-Calle_Miguel_Hidalgo%2C_Pe%C3%B1a_de_Bernal%2C_Quer%C3%A9taro_%2824172169019%29.jpg",
+      "texto": ""
+    },
+    {
+      "id": 23,
+      "estado": "Quintana Roo",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Holbox_Island_Mexico_%28125163517%29.jpeg/1024px-Holbox_Island_Mexico_%28125163517%29.jpeg",
+      "texto": ""
+    },
+    {
+      "id": 24,
+      "estado": "San Luis Potosí",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cascada_%22El_Meco%22.jpg/1280px-Cascada_%22El_Meco%22.jpg",
+      "texto": ""
+    },
+    {
+      "id": 25,
+      "estado": "Sinaloa",
+      "imagen": "https://commons.wikimedia.org/wiki/File:Blvd._Ni%C3%B1os_H%C3%A9roes.jpg",
+      "texto": ""
+    },
+    {
+      "id": 26,
+      "estado": "Sonora",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/20091211_-_Puerto_Penasco_-63.jpg/1024px-20091211_-_Puerto_Penasco_-63.jpg",
+      "texto": ""
+    },
+    {
+      "id": 27,
+      "estado": "Tabasco",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Santa_igleisia_Catolica_de_Villa_La_Venta.jpg/1024px-Santa_igleisia_Catolica_de_Villa_La_Venta.jpg",
+      "texto": ""
+    },
+    {
+      "id": 28,
+      "estado": "Tamaulipas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Edificio_de_la_Luz.9.jpg",
+      "texto": ""
+    },
+    {
+      "id": 29,
+      "estado": "Tlaxcala",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Canto_del_Bosque_Santuario_de_la_Luci%C3%A9rnaga%2C_San_Felipe_Hidalgo_%28Unsplash_PYpxtshj4g%29.jpg/1024px-Canto_del_Bosque_Santuario_de_la_Luci%C3%A9rnaga%2C_San_Felipe_Hidalgo_%28Unsplash_PYpxtshj4g%29.jpg",
+      "texto": ""
+    },
+    {
+      "id": 30,
+      "estado": "Veracruz",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Caf%C3%A9_en_Teocelo.png",
+      "texto": ""
+    },
+    {
+      "id": 31,
+      "estado": "Yucatán",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Caliza_Chichen_Itz%C3%A1.jpg/768px-Caliza_Chichen_Itz%C3%A1.jpg",
+      "texto": ""
+    },
+    {
+      "id": 32,
+      "estado": "Zacatecas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg/1280px-Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg",
+      "texto": ""
+    }
+   ]
