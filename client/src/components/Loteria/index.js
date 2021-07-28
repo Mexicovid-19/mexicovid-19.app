@@ -17,6 +17,7 @@ import estadosMexicanos from './estados/estados.json';
 import {NewCard} from './NuevaTarjeta';
 import SimplePopper from './PopperCard';
 import BackTo from './BackTo';
+import ForwardTo from './ForwardTo';
 
 
 
@@ -75,6 +76,18 @@ const Loteria = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   const [value, setValue] = React.useState(3);
   const [showing, setShowing] = React.useState(false);
+  const [indexButton, setIndexButton]= React.useState({
+    index: 1,
+    carta1:1,
+    carta2: 2,
+    carta3: 3,
+    carta4: 4,
+    carta5: 5,
+    carta6: 6,
+    carta7: 7,
+    carta8: 8,
+    carta9: 9,
+  })
 
   console.log(estados)
 
@@ -98,29 +111,27 @@ const Loteria = ({ classes }) => {
         <div className={classes.pagina}>
           <div className={classes.tablero}>
             <div className={classes.fila}>
-              <SimplePopper index={22}/>
-              <NewCard index={8}/>
-              <NewCard index={9}/>
+              <SimplePopper index={indexButton.carta1}/>
+              <SimplePopper index={indexButton.carta2}/>
+              <SimplePopper index={indexButton.carta3}/>
             </div> 
             <div className={classes.fila}>
-              <NewCard index={15}/>
-              <NewCard index={16}/>
-              <NewCard index={19}/>
+              <SimplePopper index={indexButton.carta4}/>
+              <SimplePopper index={indexButton.carta5}/>
+              <SimplePopper index={indexButton.carta6}/>
             </div>
             <div className={classes.fila}>
-              <NewCard index={23}/>
-              <NewCard index={26}/>
-              <NewCard index={32}/>
+              <SimplePopper index={indexButton.carta7}/>
+              <SimplePopper index={indexButton.carta8}/>
+              <SimplePopper index={indexButton.carta9}/>
             </div>
             <div className={classes.fila}>
             <div className={classes.control}>
-        <BackTo index={2}/>
+        <BackTo index={1}/>
         <div className={classes.controlTexto}>
         <Typography>0/4</Typography>
         </div>
-        <IconButton aria-label="arrowForward" className={classes.margin}>
-          <ArrowForwardIosIcon fontSize="large" />
-        </IconButton>
+<ForwardTo index={3}/>
               
               </div>               
             </div>
