@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   root: {
-      color: '#fff',
+      color: "#4AA461",
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
