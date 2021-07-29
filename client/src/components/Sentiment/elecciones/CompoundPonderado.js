@@ -389,7 +389,7 @@ control={
   />
 }
 labelPlacement="top"
-label="Clara Luz"/>
+label="Clara"/>
       <StyledFormControlLabel
 control={
   <CustomSamuelCheckbox
