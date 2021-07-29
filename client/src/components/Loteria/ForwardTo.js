@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ForwardTo({index}) {
+export default function ForwardTo({onClick1},{index}) {
   const classes = useStyles();
   var num=index;
   if (num<4 && 1<=num){
   return (
     <div>
-        <IconButton aria-label="ArrowForward" color="primary">
+        <IconButton onClick={onClick1} aria-label="ArrowForward" color="primary">
           <ArrowForwardIos fontSize="large" />
         </IconButton>
     </div>
@@ -30,7 +30,7 @@ export default function ForwardTo({index}) {
   else if(4<=num){
     return (
         <div>
-            <IconButton aria-label="ArrowForward" disabled >
+            <IconButton onClick={onClick1} aria-label="ArrowForward" disabled >
               <ArrowForwardIos fontSize="large"/>
             </IconButton>
         </div>

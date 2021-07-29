@@ -87,9 +87,22 @@ const Loteria = ({ classes }) => {
     carta7: 7,
     carta8: 8,
     carta9: 9,
-  })
+  });
 
-  console.log(estados)
+  const handleChangeBack = () => {
+    var guia = indexButton.index
+    if( 1<guia){
+      setIndexButton({...indexButton, [indexButton.guia]: [indexButton.guia]-1, [indexButton.carta1]: [indexButton.carta1]-9, [indexButton.carta2]:[indexButton.carta2]-9, [indexButton.carta3]: [indexButton.carta3]-9, [indexButton.carta4]:[indexButton.carta4]-9, [indexButton.carta5]: [indexButton.carta5]-9, [indexButton.carta6]: [indexButton.carta6]-9, [indexButton.carta7]: [indexButton.carta7]-9, [indexButton.carta8]: [indexButton.carta8]-9, [indexButton.carta9]: [indexButton.carta9]-9 })
+    }
+  };
+
+  const handleChangeFW = () => {
+    var guia = indexButton.index
+    if( guia<4){
+      setIndexButton({...indexButton, [indexButton.guia]: [indexButton.guia]+1, [indexButton.carta1]: [indexButton.carta1]+9, [indexButton.carta2]:[indexButton.carta2]+9, [indexButton.carta3]: [indexButton.carta3]+9, [indexButton.carta4]:[indexButton.carta4]+9, [indexButton.carta5]: [indexButton.carta5]+9, [indexButton.carta6]: [indexButton.carta6]+9, [indexButton.carta7]: [indexButton.carta7]+9, [indexButton.carta8]: [indexButton.carta8]+9, [indexButton.carta9]: [indexButton.carta9]+9 })
+    }
+  };
+  console.log(estados);
 
   document.title = "Loteria | MexiCOVID";  
   return (
@@ -127,11 +140,11 @@ const Loteria = ({ classes }) => {
             </div>
             <div className={classes.fila}>
             <div className={classes.control}>
-        <BackTo index={1}/>
+        <BackTo onClick1={handleChangeBack} index={indexButton.index}/>
         <div className={classes.controlTexto}>
         <Typography>0/4</Typography>
         </div>
-<ForwardTo index={3}/>
+        <ForwardTo onClick1={handleChangeFW} index={indexButton.index}/>
               
               </div>               
             </div>
