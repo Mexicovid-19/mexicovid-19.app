@@ -22,6 +22,7 @@ import ForwardTo from './ForwardTo';
 
 
 import { Helmet } from 'react-helmet';
+import { index } from 'd3';
 /*import { aguascalientes, aguascalientes } from './estados/estados';*/
 const AntTabs = withStyles({
   root: {
@@ -95,15 +96,15 @@ const Loteria = ({ classes }) => {
       setIndexButton(
         {
           index: indexButton.index-1,
-          carta1:indexButton.carta1-1,
-          carta2: indexButton.carta2-1,
-          carta3: indexButton.carta3-1,
-          carta4: indexButton.carta4-1,
-          carta5: indexButton.carta5-1,
-          carta6: indexButton.carta6-1,
-          carta7: indexButton.carta7-1,
-          carta8: indexButton.carta8-1,
-          carta9: indexButton.carta9-1,
+          carta1:indexButton.carta1-9,
+          carta2: indexButton.carta2-9,
+          carta3: indexButton.carta3-9,
+          carta4: indexButton.carta4-9,
+          carta5: indexButton.carta5-9,
+          carta6: indexButton.carta6-9,
+          carta7: indexButton.carta7-9,
+          carta8: indexButton.carta8-9,
+          carta9: indexButton.carta9-9,
         }
       );
     }
@@ -115,15 +116,15 @@ const Loteria = ({ classes }) => {
       setIndexButton(
         {
           index: indexButton.index+1,
-          carta1:indexButton.carta1+1,
-          carta2: indexButton.carta2+1,
-          carta3: indexButton.carta3+1,
-          carta4: indexButton.carta4+1,
-          carta5: indexButton.carta5+1,
-          carta6: indexButton.carta6+1,
-          carta7: indexButton.carta7+1,
-          carta8: indexButton.carta8+1,
-          carta9: indexButton.carta9+1,
+          carta1:indexButton.carta1+9,
+          carta2: indexButton.carta2+9,
+          carta3: indexButton.carta3+9,
+          carta4: indexButton.carta4+9,
+          carta5: indexButton.carta5+9,
+          carta6: indexButton.carta6+9,
+          carta7: indexButton.carta7+9,
+          carta8: indexButton.carta8+9,
+          carta9: indexButton.carta9+9,
         }
       );
     }
@@ -168,7 +169,7 @@ const Loteria = ({ classes }) => {
             <div className={classes.control}>
               <BackTo onClick1={handleChangeBack} index={indexButton.index}/>
               <div className={classes.controlTexto}>
-              <Typography>0/4</Typography>
+              <Typography>{indexButton.index}/4</Typography>
             </div>
             <ForwardTo onClick1={handleChangeFW} index={indexButton.index}/>
 
