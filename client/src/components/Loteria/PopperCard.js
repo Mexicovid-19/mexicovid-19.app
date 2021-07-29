@@ -21,7 +21,6 @@ export default function SimplePopper(props) {
   const [show, setShow] = useState(false);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  var num = props.index
  const estado= estadosMexicanos[props.index]    
   return (
     <div className="App">
