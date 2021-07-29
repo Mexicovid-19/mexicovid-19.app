@@ -34,7 +34,7 @@ export default function SimplePopper({index}) {
       <button onClick={() => setShow(true)}>
         <NewCard index={index}/>
       </button>
-      <Modal title={nombreEstado} currentTrafficLight = {semaforoActual} dateOfChange = {fechaDeCambio} lastTrafficLight = {semaforoAnterior} changeonClose={() => setShow(false)} show={show}>
+      <Modal title={nombreEstado} currentTrafficLight = {semaforoActual} dateOfChange = {fechaDeCambio} lastTrafficLight = {semaforoAnterior} onClose={() => setShow(false)} show={show}>
         <p>{infoEstado}</p>
       </Modal>
     </div>

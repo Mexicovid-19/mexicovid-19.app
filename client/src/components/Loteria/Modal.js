@@ -1,6 +1,7 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
+import Semaforo from "./Semaforo.js"
 import "./Modal.css";
 
 const Modal = (props) => {
@@ -20,7 +21,11 @@ const Modal = (props) => {
           </div>
           <div className="modal-body">{props.children}</div>
           <div className="modal-footer">
-            <div className="fecha-de-cabio">
+            <div className="semaforoActual">
+              <Semaforo color = {props.currentTrafficLight}/>
+              {props.currentTrafficLight}
+            </div>
+            <div className="fecha-de-cambio">
               <h4>Ultima fecha de cambio</h4>
               <p>{props.dateOfChange}</p>
             </div>

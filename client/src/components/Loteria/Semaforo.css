@@ -1,0 +1,41 @@
+.traffic-light {
+  display: table;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.traffic-light li {
+  background-color: black;
+}
+
+.traffic-light li span {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
+.traffic-light li span.on {
+  opacity: 1;
+}
+
+.traffic-light li span.off {
+  opacity: 0.3;
+}
+
+.traffic-light li:nth-of-type(1) span {
+  background-color: red;
+}
+
+.traffic-light li:nth-of-type(2) span {
+  background-color: orange;
+}
+
+.traffic-light li:nth-of-type(3) span {
+  background-color: yellow;
+}
+
+.traffic-light li:nth-of-type(4) span {
+  background-color: green;
+}
