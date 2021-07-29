@@ -23,7 +23,6 @@ const Modal = (props) => {
           <div className="modal-footer">
             <div className="semaforoActual">
               <Semaforo color = {props.currentTrafficLight}/>
-              {props.currentTrafficLight}
             </div>
             <div className="fecha-de-cambio">
               <h4>Ultima fecha de cambio</h4>

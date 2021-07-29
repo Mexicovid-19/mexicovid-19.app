@@ -15,14 +15,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const estadosMexicanos = estados
 
-const estadosMexicanos= estados
-
-export default function SimplePopper({index}) {
+export default function SimplePopper(props) {
   const [show, setShow] = useState(false);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const estado= estadosMexicanos[index]
+  const estado= estadosMexicanos[props.index]
   const infoEstado= estados.texto;
   const nombreEstado = estado.estado;
   const semaforoActual = estado.semaforoActual;
@@ -31,12 +30,15 @@ export default function SimplePopper({index}) {
 
   return (
     <div className="App">
-      <button onClick={() => setShow(true)}>
-        <NewCard index={index}/>
+      <button onClick={() => {setShow(true);}}>
+        <NewCard index={props.index}/>
       </button>
       <Modal title={nombreEstado} currentTrafficLight = {semaforoActual} dateOfChange = {fechaDeCambio} lastTrafficLight = {semaforoAnterior} onClose={() => setShow(false)} show={show}>
         <p>{infoEstado}</p>
+        <Modal title={estado.estado} onClose={() => setShow(false)} show={show}>
+          <p>{estado.id}</p>
+        </Modal>
       </Modal>
-    </div>
-  );
-}
+      </div>
+      );
+      }

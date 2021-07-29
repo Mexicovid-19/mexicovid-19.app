@@ -12,9 +12,9 @@
       "estado": "Aguascalientes",
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/93/Aguascalientes_con_vista_al_poniente.jpg",
       "texto": "",
-      "semaforoActual" : "naranja",
+      "semaforoActual" : "rojo",
       "ultimaFechaDeCambio": "12 julio",
-      "semaforoAnterior": "amarillo"
+      "semaforoAnterior": "verde"
     },
     {
       "id": 2,
@@ -29,14 +29,17 @@
       "id": 3,
       "estado": "Baja California Sur",
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/b0/A_Postcard_From_Cabo_San_Lucas_%2856014870%29.jpeg",
-      "texto": ""
+      "texto": "",
+      "semaforoActual" : "amarillo",
+      "ultimaFechaDeCambio": "12 julio",
+      "semaforoAnterior": "amarillo"
     },
     {
       "id": 4,
       "estado": "Campeche",
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/7/74/Atardecer_en_la_Torre_del_Fuerte_San_Jos%C3%A9_el_Alto.jpg",
       "texto": "",
-      "semaforoActual" : "naranja",
+      "semaforoActual" : "verde",
       "ultimaFechaDeCambio": "12 julio",
       "semaforoAnterior": "amarillo"
     },
@@ -161,7 +164,10 @@
       "id": 18,
       "estado": "Nayarit",
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Mexican_sunshine%21.JPG/1024px-Mexican_sunshine%21.jpg",
-      "texto": ""
+      "texto": "",
+      "semaforoActual" : "naranja",
+      "ultimaFechaDeCambio": "12 julio",
+      "semaforoAnterior": "amarillo"
     },
     {
       "id": 19,
@@ -185,7 +191,10 @@
       "id": 21,
       "estado": "Puebla",
       "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Catedral_de_Puebla%2C_M%C3%A9xico%2C_2013-10-11%2C_DD_17.JPG/905px-Catedral_de_Puebla%2C_M%C3%A9xico%2C_2013-10-11%2C_DD_17.jpg",
-      "texto": ""
+      "texto": "",
+      "semaforoActual" : "naranja",
+      "ultimaFechaDeCambio": "12 julio",
+      "semaforoAnterior": "amarillo"
     },
     {
       "id": 22,

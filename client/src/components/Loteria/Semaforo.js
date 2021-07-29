@@ -38,7 +38,7 @@ export default function TrafficLight(props) {
         <span className={props.color === "naranja" ? "on":"off"}/>
       </li>
       <li key = {3}>
-        <span className={props.color === "amarrillo" ? "on":"off"}/>
+        <span className={props.color === "amarillo" ? "on":"off"}/>
       </li>
       <li key = {4}>
         <span className={props.color === "verde" ? "on":"off"}/>
