@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BackTo({onClick1},{index}) {
+export default function BackTo(props) {
   const classes = useStyles();
-  var num=index;
+  var num=props.index;
   if (num<=4 && 1<num){
   return (
     <div>
-        <IconButton onClick={onClick1} aria-label="ArrowBack" color="primary">
+        <IconButton onClick={props.onClick1} aria-label="ArrowBack" color="primary">
           <ArrowBackIosIcon fontSize="large" />
         </IconButton>
     </div>
@@ -35,7 +35,7 @@ export default function BackTo({onClick1},{index}) {
   else if(num<=1){
     return (
         <div>
-            <IconButton onClick={onClick1} aria-label="ArrowBack" disabled >
+            <IconButton onClick={props.onClick1} aria-label="ArrowBack" disabled >
               <ArrowBackIosIcon fontSize="large"/>
             </IconButton>
         </div>

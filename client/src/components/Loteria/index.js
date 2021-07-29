@@ -26,7 +26,7 @@ import { Helmet } from 'react-helmet';
 const AntTabs = withStyles({
   root: {
     position: 'relative',
-    top: '-10px',
+    top: '+10px',
   },
   indicator: {
     backgroundColor: '#1890ff',
@@ -92,63 +92,89 @@ const Loteria = ({ classes }) => {
   const handleChangeBack = () => {
     var guia = indexButton.index
     if( 1<guia){
-      setIndexButton({...indexButton, [indexButton.guia]: [indexButton.guia]-1, [indexButton.carta1]: [indexButton.carta1]-9, [indexButton.carta2]:[indexButton.carta2]-9, [indexButton.carta3]: [indexButton.carta3]-9, [indexButton.carta4]:[indexButton.carta4]-9, [indexButton.carta5]: [indexButton.carta5]-9, [indexButton.carta6]: [indexButton.carta6]-9, [indexButton.carta7]: [indexButton.carta7]-9, [indexButton.carta8]: [indexButton.carta8]-9, [indexButton.carta9]: [indexButton.carta9]-9 })
+      setIndexButton(
+        {
+          index: indexButton.index-1,
+          carta1:indexButton.carta1-1,
+          carta2: indexButton.carta2-1,
+          carta3: indexButton.carta3-1,
+          carta4: indexButton.carta4-1,
+          carta5: indexButton.carta5-1,
+          carta6: indexButton.carta6-1,
+          carta7: indexButton.carta7-1,
+          carta8: indexButton.carta8-1,
+          carta9: indexButton.carta9-1,
+        }
+      );
     }
   };
 
   const handleChangeFW = () => {
     var guia = indexButton.index
     if( guia<4){
-      setIndexButton({...indexButton, [indexButton.guia]: [indexButton.guia]+1, [indexButton.carta1]: [indexButton.carta1]+9, [indexButton.carta2]:[indexButton.carta2]+9, [indexButton.carta3]: [indexButton.carta3]+9, [indexButton.carta4]:[indexButton.carta4]+9, [indexButton.carta5]: [indexButton.carta5]+9, [indexButton.carta6]: [indexButton.carta6]+9, [indexButton.carta7]: [indexButton.carta7]+9, [indexButton.carta8]: [indexButton.carta8]+9, [indexButton.carta9]: [indexButton.carta9]+9 })
+      setIndexButton(
+        {
+          index: indexButton.index+1,
+          carta1:indexButton.carta1+1,
+          carta2: indexButton.carta2+1,
+          carta3: indexButton.carta3+1,
+          carta4: indexButton.carta4+1,
+          carta5: indexButton.carta5+1,
+          carta6: indexButton.carta6+1,
+          carta7: indexButton.carta7+1,
+          carta8: indexButton.carta8+1,
+          carta9: indexButton.carta9+1,
+        }
+      );
     }
   };
   console.log(estados);
 
-  document.title = "Loteria | MexiCOVID";  
+  document.title = "Loteria | MexiCOVID";
   return (
     <div style={{ height: "100%"}} >
       <Helmet>
-            <title>Elecciones 2021 | MexiCOVID</title>
-            <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
-			<meta name="keywords" content="Elecciones, electorales, elecciones 2021, elecciones México"/>
-			
-            <meta property="og:title" content="Elecciones | MexiCOVID"/>
-            <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
+        <title>Elecciones 2021 | MexiCOVID</title>
+        <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
+        <meta name="keywords" content="Elecciones, electorales, elecciones 2021, elecciones México"/>
+
+        <meta property="og:title" content="Elecciones | MexiCOVID"/>
+        <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
       </Helmet>
-        <Header fixed={isMobile}/>
-        <div className={classes.barContainer}>
+      <Header fixed={isMobile}/>
+      <div className={classes.barContainer}>
         <header className={classes.header}>
-                    <Typography className={classes.h1} variant={'h1'}>Proceso electoral 2021</Typography>	
-                </header>
-                </div>
-        <div className={classes.pagina}>
-          <div className={classes.tablero}>
-            <div className={classes.fila}>
-              <SimplePopper index={indexButton.carta1}/>
-              <SimplePopper index={indexButton.carta2}/>
-              <SimplePopper index={indexButton.carta3}/>
-            </div> 
-            <div className={classes.fila}>
-              <SimplePopper index={indexButton.carta4}/>
-              <SimplePopper index={indexButton.carta5}/>
-              <SimplePopper index={indexButton.carta6}/>
-            </div>
-            <div className={classes.fila}>
-              <SimplePopper index={indexButton.carta7}/>
-              <SimplePopper index={indexButton.carta8}/>
-              <SimplePopper index={indexButton.carta9}/>
-            </div>
-            <div className={classes.fila}>
+          <Typography className={classes.h1} variant={'h1'}>Proceso electoral 2021</Typography>
+        </header>
+      </div>
+      <div className={classes.pagina}>
+        <div className={classes.tablero}>
+          <div className={classes.fila}>
+            <SimplePopper index={indexButton.carta1}/>
+            <SimplePopper index={indexButton.carta2}/>
+            <SimplePopper index={indexButton.carta3}/>
+          </div>
+          <div className={classes.fila}>
+            <SimplePopper index={indexButton.carta4}/>
+            <SimplePopper index={indexButton.carta5}/>
+            <SimplePopper index={indexButton.carta6}/>
+          </div>
+          <div className={classes.fila}>
+            <SimplePopper index={indexButton.carta7}/>
+            <SimplePopper index={indexButton.carta8}/>
+            <SimplePopper index={indexButton.carta9}/>
+          </div>
+          <div className={classes.fila}>
             <div className={classes.control}>
-        <BackTo onClick1={handleChangeBack} index={indexButton.index}/>
-        <div className={classes.controlTexto}>
-        <Typography>0/4</Typography>
-        </div>
-        <ForwardTo onClick1={handleChangeFW} index={indexButton.index}/>
-              
-              </div>               
+              <BackTo onClick1={handleChangeBack} index={indexButton.index}/>
+              <div className={classes.controlTexto}>
+              <Typography>0/4</Typography>
             </div>
-              
+            <ForwardTo onClick1={handleChangeFW} index={indexButton.index}/>
+
+            </div>
+          </div>
+
           </div>
         </div>
         </div>
@@ -172,12 +198,12 @@ const styles = () => ({
     color: colors.WHITE,
     fontSize: '35px',
     textAlign: 'center',
-    fontWeight: 'bold',    
+    fontWeight: 'bold',
   },
   controlTexto:{
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center'   
+    justifyContent: 'center'
   },
   barContainer: {
     backgroundColor: colors.BLACK,
@@ -246,7 +272,7 @@ h2: {
       paddingLeft: '520px',
       paddingBottom: '0px',
       position:'relative',
-      top:'-135px',
+      top:'+135px',
       //borderLeft: '1px solid white',
       //borderRight: '1px solid white',
     },
@@ -275,7 +301,7 @@ h2: {
           fontSize: '25px'
         }
     }
-  
+
 });
 
 
