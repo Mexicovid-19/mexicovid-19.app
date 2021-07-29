@@ -23,14 +23,18 @@ export default function SimplePopper({index}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const estado= estadosMexicanos[index]
-  const infoEstado= estados.texto
+  const infoEstado= estados.texto;
+  const nombreEstado = estado.estado;
+  const semaforoActual = estado.semaforoActual;
+  const fechaDeCambio = estado.ultimaFechaDeCambio;
+  const semaforoAnterior = estado.semaforoAnterior;
 
   return (
     <div className="App">
       <button onClick={() => setShow(true)}>
         <NewCard index={index}/>
       </button>
-      <Modal title="Nuevo Leon" onClose={() => setShow(false)} show={show}>
+      <Modal title={nombreEstado} currentTrafficLight = {semaforoActual} dateOfChange = {fechaDeCambio} lastTrafficLight = {semaforoAnterior} changeonClose={() => setShow(false)} show={show}>
         <p>{infoEstado}</p>
       </Modal>
     </div>

@@ -20,6 +20,14 @@ const Modal = (props) => {
           </div>
           <div className="modal-body">{props.children}</div>
           <div className="modal-footer">
+            <div className="fecha-de-cabio">
+              <h4>Ultima fecha de cambio</h4>
+              <p>{props.dateOfChange}</p>
+            </div>
+            <div className="semaforo-anterior">
+              <h4>Semaforo anterior</h4>
+              <p>{props.lastTrafficLight}</p>
+            </div>
             <button onClick={props.onClose} className="button">
               Close
             </button>
