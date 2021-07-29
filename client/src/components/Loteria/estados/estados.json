@@ -10,7 +10,7 @@
     {
       "id": 1,
       "estado": "Aguascalientes",
-      "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/93/Aguascalientes_con_vista_al_poniente.jpg",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/53/Monumento_Al_Encierro.jpg",
       "texto": "",
       "semaforoActual" : "rojo",
       "ultimaFechaDeCambio": "12 julio",
@@ -73,7 +73,7 @@
     {
       "id": 8,
       "estado": "Chihuahua",
-      "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Wulfenite_mexique.jpg",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Artesan%C3%ADas_en_Barrancas_del_Cobre%2C_Chihuahua.jpg/768px-Artesan%C3%ADas_en_Barrancas_del_Cobre%2C_Chihuahua.jpg",
       "texto": "",
       "semaforoActual" : "naranja",
       "ultimaFechaDeCambio": "12 julio",
@@ -294,5 +294,41 @@
       "semaforoActual" : "naranja",
       "ultimaFechaDeCambio": "12 julio",
       "semaforoAnterior": "amarillo"
-    }
+    },
+    {
+      "id": 32,
+      "estado": "Zacatecas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg/1280px-Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg",
+      "texto": "",
+      "semaforoActual" : "naranja",
+      "ultimaFechaDeCambio": "12 julio",
+      "semaforoAnterior": "amarillo"
+    },
+    {
+      "id": 32,
+      "estado": "Zacatecas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg/1280px-Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg",
+      "texto": "",
+      "semaforoActual" : "naranja",
+      "ultimaFechaDeCambio": "12 julio",
+      "semaforoAnterior": "amarillo"
+    },
+    {
+      "id": 32,
+      "estado": "Zacatecas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg/1280px-Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg",
+      "texto": "",
+      "semaforoActual" : "naranja",
+      "ultimaFechaDeCambio": "12 julio",
+      "semaforoAnterior": "amarillo"
+    },
+    {
+      "id": 32,
+      "estado": "Zacatecas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg/1280px-Telef%C3%A9rico_de_Zacatecas_-_panoramio.jpg",
+      "texto": "",
+      "semaforoActual" : "naranja",
+      "ultimaFechaDeCambio": "12 julio",
+      "semaforoAnterior": "amarillo"
+    }                
    ]
