@@ -15,23 +15,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const estadosMexicanos = estados
 
-const estadosMexicanos= estados
-
-export default function SimplePopper({index}) {
+export default function SimplePopper(props) {
   const [show, setShow] = useState(false);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const estado= estadosMexicanos[index]
-  const infoEstado= estados.texto
-
+  var num = props.index
+ const estado= estadosMexicanos[props.index]    
   return (
     <div className="App">
-      <button onClick={() => setShow(true)}>
-        <NewCard index={index}/>
+      <button onClick={() => {setShow(true);}}>
+        <NewCard index={props.index}/>
       </button>
-      <Modal title="Nuevo Leon" onClose={() => setShow(false)} show={show}>
-        <p>{infoEstado}</p>
+      <Modal title={estado.estado} onClose={() => setShow(false)} show={show}>
+        <p>{estado.id}</p>
       </Modal>
     </div>
   );
