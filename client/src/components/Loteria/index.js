@@ -22,7 +22,7 @@ import ForwardTo from './ForwardTo';
 
 
 import { Helmet } from 'react-helmet';
-import { index } from 'd3';
+import { index, style } from 'd3';
 /*import { aguascalientes, aguascalientes } from './estados/estados';*/
 const AntTabs = withStyles({
   root: {
@@ -135,17 +135,17 @@ const Loteria = ({ classes }) => {
   return (
     <div style={{ height: "100%"}} >
       <Helmet>
-        <title>Elecciones 2021 | MexiCOVID</title>
+        <title>COVID-19 en México | MexiCOVID</title>
         <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
         <meta name="keywords" content="Elecciones, electorales, elecciones 2021, elecciones México"/>
 
-        <meta property="og:title" content="Elecciones | MexiCOVID"/>
+        <meta property="og:title" content="MexiCOVID"/>
         <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
       </Helmet>
       <Header fixed={isMobile}/>
       <div className={classes.barContainer}>
         <header className={classes.header}>
-          <Typography className={classes.h1} variant={'h1'}>Proceso electoral 2021</Typography>
+          <Typography className={classes.h1} variant={'h1'}>COVID-19 en México</Typography>
         </header>
       </div>
       <div className={classes.pagina}>
@@ -160,12 +160,12 @@ const Loteria = ({ classes }) => {
             <SimplePopper index={indexButton.carta5}/>
             <SimplePopper index={indexButton.carta6}/>
           </div>
-          <div className={classes.fila}>
+          <div className={classes.fila}style= {{'height':'260'}}>
             <SimplePopper index={indexButton.carta7}/>
             <SimplePopper index={indexButton.carta8}/>
             <SimplePopper index={indexButton.carta9}/>
           </div>
-          <div className={classes.fila}>
+            <div className={classes.fila} style= {{'height':'260'}} >
             <div className={classes.control}>
               <BackTo onClick1={handleChangeBack} index={indexButton.index}/>
               <div className={classes.controlTexto}>
@@ -239,11 +239,13 @@ h2: {
       display:'flex',
       flexDirection:'column',
       width: 510,
+      height: 840,
     },
     fila:{
       display:'flex',
       flexDirection:'row',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      height: 260,
     },
     container: {
       background: colors.BLACK,
