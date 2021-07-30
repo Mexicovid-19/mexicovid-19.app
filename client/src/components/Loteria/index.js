@@ -7,180 +7,34 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
 import Header from '../Header';
-import IconButton from '@material-ui/core/IconButton';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 /* Utils */
 import * as colors from '../../constants/colors';
-import estadosMexicanos from './estados/estados.json';
-/* Components */
-import {NewCard} from './NuevaTarjeta';
-import SimplePopper from './PopperCard';
-import BackTo from './BackTo';
-import ForwardTo from './ForwardTo';
-
-
-
+import LoteriaPag from './Loteria';
 import { Helmet } from 'react-helmet';
-import { index, style } from 'd3';
-/*import { aguascalientes, aguascalientes } from './estados/estados';*/
-const AntTabs = withStyles({
-  root: {
-    position: 'relative',
-    top: '+10px',
-  },
-  indicator: {
-    backgroundColor: '#1890ff',
-  },
-})(Tabs);
-
-const AntTab = withStyles((theme) => ({
-  root: {
-    textTransform: 'none',
-    minWidth: 40,
-    fontWeight: theme.typography.fontWeightRegular,
-    marginRight: theme.spacing(1),
-    [theme.breakpoints.down('576')]: {
-      fontSize: '12px',
-      minWidth: 30
-    },
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:hover': {
-      color: '#40a9ff',
-      opacity: 1,
-    },
-    '&$selected': {
-      color: '#1890ff',
-      fontWeight: theme.typography.fontWeightMedium,
-    },
-    '&:focus': {
-      color: '#40a9ff',
-    },
-  },
-  selected: {},
-}))((props) => <Tab disableRipple {...props} />);
-
-const estados = estadosMexicanos;
-
-const Loteria = ({ classes }) => {
+document.title = "Loteria | MexiCOVID";
+const LaLoteria = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   const [value, setValue] = React.useState(3);
-  const [showing, setShowing] = React.useState(false);
-  const [indexButton, setIndexButton]= React.useState({
-    index: 1,
-    carta1:1,
-    carta2: 2,
-    carta3: 3,
-    carta4: 4,
-    carta5: 5,
-    carta6: 6,
-    carta7: 7,
-    carta8: 8,
-    carta9: 9,
-  });
+return (
+  <div>
+  <Helmet>
+  <title>COVID-19 en México | MexiCOVID</title>
+  <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
+  <meta name="keywords" content="Elecciones, electorales, elecciones 2021, elecciones México"/>
 
-  const handleChangeBack = () => {
-    var guia = indexButton.index
-    if( 1<guia){
-      setIndexButton(
-        {
-          index: indexButton.index-1,
-          carta1:indexButton.carta1-9,
-          carta2: indexButton.carta2-9,
-          carta3: indexButton.carta3-9,
-          carta4: indexButton.carta4-9,
-          carta5: indexButton.carta5-9,
-          carta6: indexButton.carta6-9,
-          carta7: indexButton.carta7-9,
-          carta8: indexButton.carta8-9,
-          carta9: indexButton.carta9-9,
-        }
-      );
-    }
-  };
-
-  const handleChangeFW = () => {
-    var guia = indexButton.index
-    if( guia<4){
-      setIndexButton(
-        {
-          index: indexButton.index+1,
-          carta1:indexButton.carta1+9,
-          carta2: indexButton.carta2+9,
-          carta3: indexButton.carta3+9,
-          carta4: indexButton.carta4+9,
-          carta5: indexButton.carta5+9,
-          carta6: indexButton.carta6+9,
-          carta7: indexButton.carta7+9,
-          carta8: indexButton.carta8+9,
-          carta9: indexButton.carta9+9,
-        }
-      );
-    }
-  };
-  console.log(estados);
-
-  document.title = "Loteria | MexiCOVID";
-  return (
-    <div style={{ height: "100%"}} >
-      <Helmet>
-        <title>COVID-19 en México | MexiCOVID</title>
-        <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
-        <meta name="keywords" content="Elecciones, electorales, elecciones 2021, elecciones México"/>
-
-        <meta property="og:title" content="MexiCOVID"/>
-        <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
-      </Helmet>
-      <Header fixed={isMobile}/>
-      <div className={classes.barContainer}>
-        <header className={classes.header}>
-          <Typography className={classes.h1} variant={'h1'}>COVID-19 en México</Typography>
-        </header>
-      </div>
-      <div className={classes.pagina}>
-        <div className={classes.tablero}>
-          <div className={classes.fila}>
-            <SimplePopper index={indexButton.carta1}/>
-            <SimplePopper index={indexButton.carta2}/>
-            <SimplePopper index={indexButton.carta3}/>
-          </div>
-          <div className={classes.fila}>
-            <SimplePopper index={indexButton.carta4}/>
-            <SimplePopper index={indexButton.carta5}/>
-            <SimplePopper index={indexButton.carta6}/>
-          </div>
-          <div className={classes.fila}style= {{'height':'260'}}>
-            <SimplePopper index={indexButton.carta7}/>
-            <SimplePopper index={indexButton.carta8}/>
-            <SimplePopper index={indexButton.carta9}/>
-          </div>
-            <div className={classes.fila} style= {{'height':'260'}} >
-            <div className={classes.control}>
-              <BackTo onClick1={handleChangeBack} index={indexButton.index}/>
-              <div className={classes.controlTexto}>
-              <Typography>{indexButton.index}/4</Typography>
-            </div>
-            <ForwardTo onClick1={handleChangeFW} index={indexButton.index}/>
-
-            </div>
-          </div>
-
-          </div>
-        </div>
-        </div>
-  );
-}
+  <meta property="og:title" content="MexiCOVID"/>
+  <meta property="og:description" content="Información sobre las elecciones federales en 2021 en MexiCOVID19"/>
+  </Helmet>
+  <Header fixed={isMobile}/>
+  <div className={classes.barContainer}>
+  <header className={classes.header}>
+    <Typography className={classes.h1} variant={'h1'}>COVID-19 en México</Typography>
+  </header>
+  </div>
+  <LoteriaPag/>
+  </div>
+  )
+};
 
 const styles = () => ({
   margin: {
@@ -230,15 +84,16 @@ h2: {
     /* Desktop */
     pagina:{
       backgroundColor: colors.BLACK,
-      padding: '20px',
+      paddingTop: '20px',
       display: 'flex',
+      maxWidth: '95%',
       height: '50vw',
-      flexDirection: 'column',
+      flexDirection: 'row',
     },
     tablero:{
       display:'flex',
       flexDirection:'column',
-      width: 510,
+      width: '30vw',
       height: 840,
     },
     fila:{
@@ -308,4 +163,4 @@ h2: {
 });
 
 
-export default withStyles(styles)(Loteria);
+export default withStyles(styles)(LaLoteria);

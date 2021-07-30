@@ -15,7 +15,6 @@ const family = 'Rubik';
 
 const useStyles = makeStyles(() => ({
   card: {
-    borderColor: 'white',
     position: 'relative',
     borderRadius: 16,
     padding: 16,
@@ -33,8 +32,10 @@ const useStyles = makeStyles(() => ({
     marginLeft: 10,
     },
   img: {
+    border: '1px solid black',
     position: 'absolute',
   },
+
 }));
 
 const useOfferInfoStyles = makeStyles(() => {
@@ -81,7 +82,9 @@ export const NewCard = React.memo(function NewCard({index}) {
       <Card className={cx(styles.card, shadowStyles.root)}>
           <CardMedia
             classes={mediaStyles}
-            image={backgroundEstado}/>                            
+            image={backgroundEstado}
+            border= 'white'
+            />                   
          <Info useStyles={useOfferInfoStyles}>
             <InfoTitle>{nombreEstado}</InfoTitle>
           </Info>
