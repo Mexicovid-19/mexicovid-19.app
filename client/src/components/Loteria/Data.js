@@ -1,6 +1,6 @@
-export const data = [{
+export const casos = [{
         "id": "Casos Confirmados",
-        "color": "hsl(25, 87%, 57%)",
+        "color": "hsl(246, 87%, 70%)",
         "data":[
             {
               "x": "01/06/21",
@@ -126,7 +126,7 @@ export const data = [{
     }]
  export const muertes = [{
         "id": "Defunciones",
-        "color": "hsl(25, 87%, 57%)",
+        "color": "hsl(4, 87%, 70%)",
         "data": [
             {
               "x": "01/06/21",

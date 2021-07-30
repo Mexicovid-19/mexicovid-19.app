@@ -16,7 +16,7 @@ const LaLoteria = ({ classes }) => {
   const isMobile = window.innerWidth < 1000;
   const [value, setValue] = React.useState(3);
 return (
-  <div>
+  <div className= {classes.completa}>
   <Helmet>
   <title>COVID-19 en México | MexiCOVID</title>
   <meta name="description" content="Elecciones electorales 2021 en MexiCOVID19" />
@@ -37,6 +37,9 @@ return (
 };
 
 const styles = () => ({
+  completa:{
+    backgroundColor: colors.BLACK
+  },
   margin: {
     margin: 1,
   },
