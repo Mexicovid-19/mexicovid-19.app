@@ -2,21 +2,36 @@ import React, { useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
 import Semaforo from "./Semaforo.js";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
+import NationalGraph from "./NationalGraph";
+import { casos, muertes } from "./Data";
 import "./Modal.css";
 
 const Modal = (props) => {
-  const closeOnEscapeKeyDown = (e) => {
-    if ((e.charCode || e.keyCode) === 27) {
-      props.onClose();
+  const [graphData, setGraphData] = React.useState({
+    checkedA: true,
+    nationalData: casos,
+    tipoDatos: "Casos Nacionales Activos",
+  });
+  const handleChange = (event) => {
+    if (event.target.checked == true) {
+      setGraphData({
+        ...graphData,
+        [event.target.name]: event.target.checked,
+        nationalData: casos,
+        tipoDatos: "Casos Nacionales Activos",
+      });
+    } else {
+      setGraphData({
+        ...graphData,
+        [event.target.name]: event.target.checked,
+        nationalData: muertes,
+        tipoDatos: "Defunciones Nacionales",
+      });
     }
   };
-
-  useEffect(() => {
-    document.body.addEventListener("keydown", closeOnEscapeKeyDown);
-    return function cleanup() {
-      document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
-    };
-  }, []);
 
   return ReactDOM.createPortal(
     <CSSTransition
@@ -44,6 +59,27 @@ const Modal = (props) => {
               </div>
             </div>
             {/* div semaforo ends */}
+
+            <div>
+              <div>
+                <h2>
+                  <strong> {graphData.tipoDatos} Gráfica</strong>
+                </h2>
+              </div>
+              <NationalGraph data={graphData.nationalData} />
+              <FormGroup row>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={graphData.checkedA}
+                      onChange={handleChange}
+                      name="checkedA"
+                    />
+                  }
+                  label={graphData.tipoDatos}
+                />
+              </FormGroup>
+            </div>
 
             {/* div data starts */}
             <div id="wrapper" className="data-padding">
