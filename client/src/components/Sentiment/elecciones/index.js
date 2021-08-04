@@ -10,7 +10,7 @@ import SentimentMain from './SentimentMain.js'
 import FearVsTrust from "./FearVsTrust"
 import PositivityVsNegativity from "./PositivityVsNegativity"
 import CompoundPonderado from './CompoundPonderado'
-
+import Topicos from "./Topicos";
 
 class FullpageWrapper extends React.Component {
   onLeave(origin, destination, direction) {
@@ -29,6 +29,7 @@ class FullpageWrapper extends React.Component {
             <>
               <Landing/>
               <SentimentMain/>
+              <Topicos/>
               <CompoundPonderado/>
               <FearVsTrust/>
               <PositivityVsNegativity/>                              
@@ -51,6 +52,9 @@ class FullpageWrapper extends React.Component {
                       </div>
                       <div className="section">
                         <SentimentMain/>
+                      </div>
+                      <div className="section">
+                        <Topicos/>
                       </div>
                       <div className="section">
                         <CompoundPonderado/>
