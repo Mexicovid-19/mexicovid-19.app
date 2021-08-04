@@ -40,6 +40,7 @@ export default function SimplePopper(props) {
         lastTrafficLight={semaforoAnterior}
         onClose={() => setShow(false)}
         show={show}
+        color={semaforoActual}
       >
         <p>{infoEstado}</p>
       </Modal>

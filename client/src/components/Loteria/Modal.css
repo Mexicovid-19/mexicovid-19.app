@@ -12,7 +12,23 @@
   transition: all 0.3s ease-in-out;
   pointer-events: none;
 }
-
+.principal {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+}
+.semaforo{
+  width: 120px;
+}
+.semaforo-anterior{
+  display: flex;
+  flex-direction: column;
+}
+.graphContainer{
+  min-height: 300px;
+  height: 300px;
+  width: 600px;
+}
 .modal.enter-done {
   opacity: 1;
   pointer-events: visible;

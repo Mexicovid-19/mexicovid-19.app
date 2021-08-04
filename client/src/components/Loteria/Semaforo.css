@@ -3,6 +3,8 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  max-width: 120;
+  width: 100px;
 }
 
 .traffic-light li {

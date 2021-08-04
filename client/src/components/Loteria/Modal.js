@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { makeStyles } from "@material-ui/core";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
 import Semaforo from "./Semaforo.js";
@@ -7,9 +8,11 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import NationalGraph from "./NationalGraph";
 import { casos, muertes } from "./Data";
+import TrafficLight from "./TrafficLight.js";
 import "./Modal.css";
 
 const Modal = (props) => {
+  const classes = useStyles();
   const [graphData, setGraphData] = React.useState({
     checkedA: true,
     nationalData: casos,
@@ -49,24 +52,22 @@ const Modal = (props) => {
           {/* div modal header ends */}
 
           {/* div modal footer starts */}
-          <div className="modal-footer">
+          <div className='modal-footer'>
             {/* div semaforo starts */}
-            <div className="semaforoActual">
-              <Semaforo color={props.currentTrafficLight} />
+            <div className= 'principal'>
+              <div className= 'semaforo'>
+              <TrafficLight color={props.color}/>
+              </div>
+              <div className='graphContainer'>
+            <NationalGraph data={graphData.nationalData}/>
+            </div>
+            </div> 
               <div className="semaforo-anterior">
                 <h4>Semaforo anterior</h4>
                 <p>{props.lastTrafficLight}</p>
               </div>
-            </div>
             {/* div semaforo ends */}
-
-            <div>
               <div>
-                <h2>
-                  <strong> {graphData.tipoDatos} Gráfica</strong>
-                </h2>
-              </div>
-              <NationalGraph data={graphData.nationalData} />
               <FormGroup row>
                 <FormControlLabel
                   control={
@@ -78,7 +79,12 @@ const Modal = (props) => {
                   }
                   label={graphData.tipoDatos}
                 />
-              </FormGroup>
+                </FormGroup>
+                <h2>
+                  <strong> {graphData.tipoDatos} Gráfica</strong>
+                </h2>
+              </div>
+  
             </div>
 
             {/* div data starts */}
@@ -104,10 +110,26 @@ const Modal = (props) => {
           </div>
           {/* div modal footer ends */}
         </div>
-      </div>
+      
     </CSSTransition>,
     document.getElementById("root")
   );
 };
 
 export default Modal;
+
+const useStyles = () => ({
+  semaforoActual:{
+
+  },
+  footer:{
+    margin: '5%',
+    display:'flex'
+
+  },
+  graphContainer:{
+    display: 'flex',
+    height: '600px',
+    minHeight: '600px',
+  }
+});
