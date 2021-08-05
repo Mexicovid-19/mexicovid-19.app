@@ -162,13 +162,16 @@ const LoteriaPag = ({ classes }) => {
 
 const styles = () => ({
   grafica: {
+    marginTop: '25px',
     width: "60%",
     height: "80%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    color: '#fafafa'
   },
   subtitle: {
+    marginBottom:'5px',
     textAlign: "center",
     fontSize: 25,
     fontWeight: "bold",
