@@ -4,7 +4,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgbargba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,15 +19,20 @@
 }
 .semaforo{
   width: 120px;
+  margin-bottom: '10px';
 }
 .semaforo-anterior{
+  margin-top: '10px';
   display: flex;
   flex-direction: column;
 }
+.button{
+  padding-bottom: 10px;
+}
 .graphContainer{
   min-height: 300px;
-  height: 300px;
-  width: 600px;
+  height: 400px;
+  width: 700px;
 }
 .modal.enter-done {
   opacity: 1;
@@ -40,7 +45,8 @@
 
 .modal-content {
   width: 1100px;
-  background-color: #fff;
+  background-color: #333333;
+  color: #fafafa;
   transition: all 0.3s ease-in-out;
   transform: translateY(-200px);
 }
@@ -80,6 +86,7 @@
 
 .data-padding{
   padding-top: 30px;
+  padding-bottom: 15px;
 }
 
 #wrapper {

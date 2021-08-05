@@ -55,16 +55,16 @@ const Modal = (props) => {
           <div className='modal-footer'>
             {/* div semaforo starts */}
             <div className= 'principal'>
-              <div className= 'semaforo'>
+              <div className= 'semaforo' style={{marginbottom: '10px'}}>
               <TrafficLight color={props.color}/>
               </div>
               <div className='graphContainer'>
             <NationalGraph data={graphData.nationalData}/>
             </div>
             </div> 
-              <div className="semaforo-anterior">
-                <h4>Semaforo anterior</h4>
-                <p>{props.lastTrafficLight}</p>
+              <div className="semaforo-anterior" >
+                <h4 style={{marginTop: '5px'}}>Semaforo anterior</h4>
+                <p style={{marginTop: '5px'}}>{props.lastTrafficLight}</p>
               </div>
             {/* div semaforo ends */}
               <div>
