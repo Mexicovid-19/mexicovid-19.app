@@ -319,17 +319,17 @@ export default function CompoundPonderado({classes}){
   var result = candidatosBase
 
   const handleChange = (event) => {
-    result= state.data
+    result = state.data
     var manualId= 0;
-    manualId= event.target.id;
-    if(event.target.checked == true){
+    manualId = event.target.id;
+    if(event.target.checked === true){
       result[manualId].data = candidatosBase[manualId].data
-      setState({ ...state, [event.target.name]: event.target.checked ,data: result});
+      setState({ ...state, [event.target.name]: event.target.checked, data: result});
       console.log(result)
     }
-    else if (event.target.checked == false){
+    else if (event.target.checked === false){
       result[manualId].data = []
-      setState({ ...state, [event.target.name]: event.target.checked ,data: result});
+      setState({ ...state, [event.target.name]: event.target.checked, data: result});
     }
   };
   return (
@@ -354,57 +354,57 @@ export default function CompoundPonderado({classes}){
                 <InputLabel component="legend" style={{ color: "white", fontSize: "20px", fontWeight: 'bolder', textAlign: 'center', paddingTop: '10px', paddingRight: '50',toptextAlign: 'center'}}>Candidatos</InputLabel>
                 <div className={classes.form}>  
                 <FormGroup>
-<StyledFormControlLabel
-control={
-  <CustomAdrianCheckbox
-    checked={state.Adrian}
-    onChange={handleChange}
-    name="Adrian"
-    id={0}
-  />
-}
-labelPlacement="top"
-label ="Adrián"/>
+                  <StyledFormControlLabel
+                  control={
+                    <CustomAdrianCheckbox
+                      checked={state.Adrian}
+                      onChange={handleChange}
+                      name="Adrian"
+                      id={0}
+                    />
+                  }
+                  labelPlacement="top"
+                  label ="Adrián"/>
 
-<StyledFormControlLabel
-control={
-  <CustomFernandoCheckbox
-  checked={state.Fernando}
-  onChange={handleChange}
-  name="Fernando"
-  id={2}
-  />
-}
-labelPlacement="bottom"
-label="Fernando"/>
-</FormGroup>
-<FormGroup>
-<StyledFormControlLabel
-control={
-  <CustomClaraCheckbox
-    checked={state.Clara}
-    onChange={handleChange}
-    name="Clara"
-    id={1}
-  />
-}
-labelPlacement="top"
-label="Clara Luz"/>
-      <StyledFormControlLabel
-control={
-  <CustomSamuelCheckbox
-    checked={state.Samuel}
-    onChange={handleChange}
-    name="Samuel"
-    id={3}
-  />
-}
-labelPlacement="bottom"
-label="Samuel"/>
-</FormGroup>
-</div>
-</div>
-</div>
+                  <StyledFormControlLabel
+                  control={
+                    <CustomFernandoCheckbox
+                    checked={state.Fernando}
+                    onChange={handleChange}
+                    name="Fernando"
+                    id={2}
+                    />
+                  }
+                  labelPlacement="bottom"
+                  label="Fernando"/>
+                  </FormGroup>
+                  <FormGroup>
+                  <StyledFormControlLabel
+                  control={
+                    <CustomClaraCheckbox
+                      checked={state.Clara}
+                      onChange={handleChange}
+                      name="Clara"
+                      id={1}
+                    />
+                  }
+                  labelPlacement="top"
+                  label="Clara"/>
+                        <StyledFormControlLabel
+                  control={
+                    <CustomSamuelCheckbox
+                      checked={state.Samuel}
+                      onChange={handleChange}
+                      name="Samuel"
+                      id={3}
+                    />
+                  }
+                  labelPlacement="bottom"
+                  label="Samuel"/>
+                  </FormGroup>
+                  </div>
+                  </div>
+                  </div>
 
                 </div>
             </div>
