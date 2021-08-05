@@ -366,50 +366,50 @@ export default function CompoundPonderado({classes}){
                   labelPlacement="top"
                   label ="Adrián"/>
 
-                  <StyledFormControlLabel
-                  control={
-                    <CustomFernandoCheckbox
-                    checked={state.Fernando}
-                    onChange={handleChange}
-                    name="Fernando"
-                    id={2}
-                    />
-                  }
-                  labelPlacement="bottom"
-                  label="Fernando"/>
-                  </FormGroup>
-                  <FormGroup>
-                  <StyledFormControlLabel
-                  control={
-                    <CustomClaraCheckbox
-                      checked={state.Clara}
-                      onChange={handleChange}
-                      name="Clara"
-                      id={1}
-                    />
-                  }
-                  labelPlacement="top"
-                  label="Clara"/>
-                        <StyledFormControlLabel
-                  control={
-                    <CustomSamuelCheckbox
-                      checked={state.Samuel}
-                      onChange={handleChange}
-                      name="Samuel"
-                      id={3}
-                    />
-                  }
-                  labelPlacement="bottom"
-                  label="Samuel"/>
-                  </FormGroup>
-                  </div>
-                  </div>
-                  </div>
+<StyledFormControlLabel
+control={
+  <CustomFernandoCheckbox
+  checked={state.Fernando}
+  onChange={handleChange}
+  name="Fernando"
+  id={2}
+  />
+}
+labelPlacement="bottom"
+label="Fernando"/>
+</FormGroup>
+<FormGroup>
+<StyledFormControlLabel
+control={
+  <CustomClaraCheckbox
+    checked={state.Clara}
+    onChange={handleChange}
+    name="Clara"
+    id={1}
+  />
+}
+labelPlacement="top"
+label="Clara"/>
+      <StyledFormControlLabel
+control={
+  <CustomSamuelCheckbox
+    checked={state.Samuel}
+    onChange={handleChange}
+    name="Samuel"
+    id={3}
+  />
+}
+labelPlacement="bottom"
+label="Samuel"/>
+</FormGroup>
+</div>
+</div>
+</div>
 
                 </div>
             </div>
             <div className={classes.itemContainer2}>
-                <h2 className={classes.subtitle}><strong>Analisis Compound Texto Con Checkbox</strong></h2>
+                <h2 className={classes.subtitle}><strong>Analisis Compound Texto</strong></h2>
                 <h2 className={classes.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra sollicitudin sem nec efficitur. Nullam eu varius lectus. Aliquam orci velit, mattis et ullamcorper tempor, ultrices eu ipsum. Mauris sed nunc aliquet, convallis libero id, pretium tellus. Donec aliquam nibh diam, a euismod turpis semper vitae. Morbi sollicitudin, justo vitae ullamcorper suscipit, libero justo rutrum nunc, vel dictum erat sapien sed nisi. Donec in nibh vitae eros lacinia semper sed sit amet neque. Phasellus ut elit a arcu hendrerit faucibus et at enim. Duis condimentum orci non enim pretium ornare. Aenean mattis semper eleifend. Vivamus et nisl at lacus euismod facilisis. Vivamus auctor tristique odio id maximus. Vivamus tincidunt porta urna id euismod. Maecenas nec vulputate metus.</h2>
             </div>
         </div>
