@@ -52,22 +52,22 @@ const Modal = (props) => {
           {/* div modal header ends */}
 
           {/* div modal footer starts */}
-          <div className='modal-footer'>
+          <div className="modal-footer">
             {/* div semaforo starts */}
-            <div className= 'principal'>
-              <div className= 'semaforo' style={{marginbottom: '10px'}}>
-              <TrafficLight color={props.color}/>
+            <div className="principal">
+              <div className="semaforo" style={{ marginbottom: "10px" }}>
+                <TrafficLight color={props.color} />
               </div>
-              <div className='graphContainer'>
-            <NationalGraph data={graphData.nationalData}/>
+              <div className="graphContainer">
+                <NationalGraph data={graphData.nationalData} />
+              </div>
             </div>
-            </div> 
-              <div className="semaforo-anterior" >
-                <h4 style={{marginTop: '5px'}}>Semaforo anterior</h4>
-                <p style={{marginTop: '5px'}}>{props.lastTrafficLight}</p>
-              </div>
+            <div className="semaforo-anterior">
+              <h4 style={{ marginTop: "5px" }}>Semaforo anterior</h4>
+              <p style={{ marginTop: "5px" }}>{props.lastTrafficLight}</p>
+            </div>
             {/* div semaforo ends */}
-              <div>
+            <div>
               <FormGroup row>
                 <FormControlLabel
                   control={
@@ -79,14 +79,11 @@ const Modal = (props) => {
                   }
                   label={graphData.tipoDatos}
                 />
-                </FormGroup>
-                <h2>
-                  <strong> {graphData.tipoDatos} Gráfica</strong>
-                </h2>
-              </div>
-  
+              </FormGroup>
+              <h2>
+                <strong> {graphData.tipoDatos} Gráfica</strong>
+              </h2>
             </div>
-
             {/* div data starts */}
             <div id="wrapper" className="data-padding">
               <div>
@@ -103,14 +100,13 @@ const Modal = (props) => {
               </div>
             </div>
             {/* div data ends */}
-
             <button onClick={props.onClose} className="button">
               Close
             </button>
           </div>
-          {/* div modal footer ends */}
         </div>
-      
+        {/* div modal footer ends */}
+      </div>
     </CSSTransition>,
     document.getElementById("root")
   );
@@ -119,17 +115,14 @@ const Modal = (props) => {
 export default Modal;
 
 const useStyles = () => ({
-  semaforoActual:{
-
+  semaforoActual: {},
+  footer: {
+    margin: "5%",
+    display: "flex",
   },
-  footer:{
-    margin: '5%',
-    display:'flex'
-
+  graphContainer: {
+    display: "flex",
+    height: "600px",
+    minHeight: "600px",
   },
-  graphContainer:{
-    display: 'flex',
-    height: '600px',
-    minHeight: '600px',
-  }
 });

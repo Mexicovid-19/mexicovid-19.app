@@ -131,7 +131,11 @@ const LoteriaPag = ({ classes }) => {
               <div className={classes.controlTexto}>
                 <Typography>{indexButton.index}/4</Typography>
               </div>
-              <ForwardTo onClick1={handleChangeFW} index={indexButton.index} style={{fill:'#fafafa'}}/>
+              <ForwardTo
+                onClick1={handleChangeFW}
+                index={indexButton.index}
+                style={{ fill: "#fafafa" }}
+              />
             </div>
           </div>
         </div>
@@ -162,16 +166,16 @@ const LoteriaPag = ({ classes }) => {
 
 const styles = () => ({
   grafica: {
-    marginTop: '25px',
+    marginTop: "25px",
     width: "60%",
     height: "80%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    color: '#fafafa'
+    color: "#fafafa",
   },
   subtitle: {
-    marginBottom:'5px',
+    marginBottom: "5px",
     textAlign: "center",
     fontSize: 25,
     fontWeight: "bold",
@@ -195,7 +199,7 @@ const styles = () => ({
     fontSize: "35px",
     textAlign: "center",
     fontWeight: "bold",
-    alignItems: 'center'
+    alignItems: "center",
   },
   controlTexto: {
     display: "flex",
