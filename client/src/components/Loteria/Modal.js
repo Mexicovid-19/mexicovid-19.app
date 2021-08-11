@@ -72,6 +72,11 @@ const Modal = (props) => {
                     label={graphData.tipoDatos}
                   />
                 </FormGroup>
+                <div>
+                  <h2>
+                    <strong> {graphData.tipoDatos} Gráfica</strong>
+                  </h2>
+                </div>
               </div>
             </div>
             <div className="semaforo-anterior">
@@ -79,11 +84,7 @@ const Modal = (props) => {
               <p style={{ marginTop: "5px" }}>{props.lastTrafficLight}</p>
             </div>
             {/* div semaforo ends */}
-            <div>
-              <h2>
-                <strong> {graphData.tipoDatos} Gráfica</strong>
-              </h2>
-            </div>
+
             {/* div data starts */}
             <div id="wrapper" className="data-padding">
               <div>
