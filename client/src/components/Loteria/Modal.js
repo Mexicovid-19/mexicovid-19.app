@@ -60,6 +60,18 @@ const Modal = (props) => {
               </div>
               <div className="graphContainer">
                 <NationalGraph data={graphData.nationalData} />
+                <FormGroup row>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={graphData.checkedA}
+                        onChange={handleChange}
+                        name="checkedA"
+                      />
+                    }
+                    label={graphData.tipoDatos}
+                  />
+                </FormGroup>
               </div>
             </div>
             <div className="semaforo-anterior">
@@ -68,18 +80,6 @@ const Modal = (props) => {
             </div>
             {/* div semaforo ends */}
             <div>
-              <FormGroup row>
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={graphData.checkedA}
-                      onChange={handleChange}
-                      name="checkedA"
-                    />
-                  }
-                  label={graphData.tipoDatos}
-                />
-              </FormGroup>
               <h2>
                 <strong> {graphData.tipoDatos} Gráfica</strong>
               </h2>
