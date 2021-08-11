@@ -26,7 +26,7 @@ const NationalGraph = ({data}) => (
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: 0,
+            tickRotation: 90,
             legendOffset: 50,
             legendPosition: 'middle'
         }}

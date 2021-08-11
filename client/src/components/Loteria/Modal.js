@@ -15,7 +15,7 @@ const Modal = (props) => {
   const classes = useStyles();
   const [graphData, setGraphData] = React.useState({
     checkedA: true,
-    nationalData: casos,
+    nationalData: [casos[0]],
     tipoDatos: "Casos Nacionales Activos",
   });
   const handleChange = (event) => {
@@ -23,14 +23,14 @@ const Modal = (props) => {
       setGraphData({
         ...graphData,
         [event.target.name]: event.target.checked,
-        nationalData: casos,
+        nationalData: [casos[0]],
         tipoDatos: "Casos Nacionales Activos",
       });
     } else {
       setGraphData({
         ...graphData,
         [event.target.name]: event.target.checked,
-        nationalData: muertes,
+        nationalData: [muertes[0]],
         tipoDatos: "Defunciones Nacionales",
       });
     }
