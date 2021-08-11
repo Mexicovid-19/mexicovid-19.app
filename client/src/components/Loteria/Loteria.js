@@ -444,7 +444,7 @@ const LoteriaPag = ({ classes }) => {
 
   document.title = "Loteria | MexiCOVID";
   return (
-    <div>
+    <div className="container">
       <div className={classes.pagina}>
         <div className={classes.tablero}>
           <div className={classes.fila}>
@@ -502,6 +502,10 @@ const LoteriaPag = ({ classes }) => {
 };
 
 const styles = () => ({
+  container: {
+    background: colors.BLACK,
+    overflow: "hidden",
+  },
   grafica: {
     marginTop: "25px",
     width: "60%",
@@ -570,7 +574,7 @@ const styles = () => ({
     paddingTop: "20px",
     display: "flex",
     maxWidth: "95%",
-    height: "50vw",
+    height: "100vh",
     flexDirection: "row",
     justifyContent: "space-between",
   },
