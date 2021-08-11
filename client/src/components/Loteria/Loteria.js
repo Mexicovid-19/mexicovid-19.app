@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
 /* Material UI */
 import { withStyles, useTheme } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import PropTypes from "prop-types";
-import Header from "../Header";
-import IconButton from "@material-ui/core/IconButton";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 /* Utils */
 import * as colors from "../../constants/colors";
 import estadosMexicanos from "./estados/estados.json";
@@ -17,383 +9,70 @@ import estadosMexicanos from "./estados/estados.json";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
-import { NewCard } from "./NuevaTarjeta";
 import SimplePopper from "./PopperCard";
 import BackTo from "./BackTo";
 import ForwardTo from "./ForwardTo";
 import NationalGraph from "./NationalGraph";
-import { casos, muertes } from "./Data";
-import { display } from "@material-ui/system";
-import * as d3 from 'd3';
+import { casos as casosBase, muertes as muertesBase } from "./Data";
+import * as d3 from "d3";
 import csv from "./estados/estados_casos.csv";
-/*import { aguascalientes, aguascalientes } from './estados/estados';*/
-
-const estados = estadosMexicanos;
-
-const NacionalCSV = []
-
-const casosTotales = casos 
-const decesosTotales = muertes
-//console.log(nacionalPrueba);
-
 
 const LoteriaPag = ({ classes }) => {
-  useEffect(()=>
-  d3.csv(csv, function(data){
-    if(data["ESTADO"]=="01"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[0].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[0].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="02"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[1].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[1].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="03"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[2].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[2].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="04"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[3].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[3].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="05"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[4].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[4].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="06"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[5].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[5].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="07"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[6].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[6].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="08"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[7].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[7].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="09"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[8].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[8].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="10"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[9].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[9].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="11"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[10].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[10].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="12"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[11].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[11].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="13"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[12].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[12].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="14"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[13].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[13].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="15"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[14].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[14].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="16"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[15].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[15].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="17"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[16].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[16].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="18"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[17].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[17].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="19"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[18].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[18].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="20"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[19].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[19].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="21"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[20].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[20].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="22"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[21].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[21].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="23"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[22].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[22].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="24"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[23].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[23].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="25"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[24].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[24].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="26"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[25].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[25].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="27"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[26].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[26].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="28"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[27].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[27].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="29"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[28].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[28].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="30"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[29].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[29].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="31"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[30].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[30].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
-  else if(data["ESTADO"]=="32"){
-    if (!data["FECHA_DOMINGO"].includes("2020")){
-      casos[31].data.push({
-      "x" : data["FECHA_DOMINGO"],
-      "y" : +data["CONFIRMADOS"],})
-      muertes[31].data.push({
-        "x" : data["FECHA_DOMINGO"],
-        "y" : +data["DECESOS"],})
-  }
-  }
+  const [casos, setCasos] = useState(casosBase);
+  const [muertes, setMuertes] = useState(muertesBase);
 
-  
-  
-}));
-
-
-//  console.log
-  const [graphData, setGraphData] = React.useState({
+  const [graphData, setGraphData] = useState({
     checkedA: true,
     nationalData: [casos[0]],
     tipoDatos: "Casos Nacionales Activos",
   });
+
+  useEffect(() => {
+    const casosTemp = casos;
+    const muertesTemp = muertes;
+    d3.csv(csv, (data) => {
+      if (isNaN(data["ESTADO"]) || isNaN(parseFloat(data["ESTADO"]))) {
+        return;
+      }
+
+      const estado = parseInt(data["ESTADO"]);
+      if (estado < 0 || estado > 32) {
+        return;
+      }
+
+      if (!data["FECHA_DOMINGO"].includes("2020")) {
+        casosTemp[estado - 1].data.push({
+          x: data["FECHA_DOMINGO"],
+          y: +data["CONFIRMADOS"],
+        });
+        muertesTemp[estado - 1].data.push({
+          x: data["FECHA_DOMINGO"],
+          y: +data["DECESOS"],
+        });
+      }
+    });
+
+    setCasos(casosTemp);
+    setMuertes(muertesTemp);
+  }, []);
+
   const handleChange = (event) => {
-    if (event.target.checked == true) {
+    if (event.target.checked === true) {
       setGraphData({
-        ...graphData,
-        [event.target.name]: event.target.checked,
+        checkedA: true,
         nationalData: [casos[0]],
         tipoDatos: "Casos Nacionales Activos",
       });
     } else {
       setGraphData({
-        ...graphData,
-        [event.target.name]: event.target.checked,
+        checkedA: false,
         nationalData: [muertes[0]],
         tipoDatos: "Defunciones Nacionales",
       });
     }
   };
 
-  const isMobile = window.innerWidth < 1000;
-  const [value, setValue] = React.useState(3);
-  const [showing, setShowing] = React.useState(false);
-  const [indexButton, setIndexButton] = React.useState({
+  const [indexButton, setIndexButton] = useState({
     index: 1,
     carta1: 1,
     carta2: 2,
@@ -590,26 +269,8 @@ const styles = () => ({
     justifyContent: "center",
     height: 260,
   },
-  container: {
-    background: colors.BLACK,
-    overflow: "hidden",
-  },
   header: {
     padding: "20px",
-  },
-  h1: {
-    fontSize: "36px",
-    textAlign: "center",
-    fontWeight: "bold",
-    margin: "0",
-  },
-  barContainer: {
-    backgroundColor: colors.BLACK,
-    color: colors.WHITE,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    border: "1px solid white",
   },
   legend: {
     fontSize: 40,
