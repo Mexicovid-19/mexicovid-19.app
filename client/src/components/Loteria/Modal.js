@@ -87,21 +87,25 @@ const Modal = (props) => {
             {/* div data starts */}
             <div id="wrapper" className="data-padding">
               <div>
-                Casos COVID-19<div>6325</div>
+                Casos COVID-19
               </div>
+              <div>6325</div>
               <div>
-                Aumento de casos COVID-19<div>1520</div>
+                Aumento de casos COVID-19
               </div>
+              <div>1520</div>
               <div>
-                Defunciones<div>1200</div>
+                Defunciones
               </div>
+              <div>1200</div>
               <div>
-                Aumento defunciones<div>320</div>
+                Aumento defunciones
               </div>
+              <div>320</div>
             </div>
             {/* div data ends */}
             <button onClick={props.onClose} className="button">
-              Close
+              Cerrar
             </button>
           </div>
         </div>
