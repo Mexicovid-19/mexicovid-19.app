@@ -339,7 +339,7 @@ export default function CompoundPonderado({classes}){
         <div className={classes.itemsContainer}>
             <div className={classes.itemContainer}>
                  <div className={classes.titleContainer}>
-                    <h2 className={classes.subtitle}><strong>Analisis Compound Gráfica (Ponderado)</strong></h2>
+                    <h2 className={classes.subtitle}><strong>Análisis de Sentimientos: Compound por Fecha y por Candidato</strong></h2>
                 </div>
                 <div className={classes.scrollContainer}>
                   <p className={classes.scrollText}>scroll</p>
@@ -409,8 +409,8 @@ label="Samuel"/>
                 </div>
             </div>
             <div className={classes.itemContainer2}>
-                <h2 className={classes.subtitle}><strong>Analisis Compound Texto</strong></h2>
-                <h2 className={classes.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra sollicitudin sem nec efficitur. Nullam eu varius lectus. Aliquam orci velit, mattis et ullamcorper tempor, ultrices eu ipsum. Mauris sed nunc aliquet, convallis libero id, pretium tellus. Donec aliquam nibh diam, a euismod turpis semper vitae. Morbi sollicitudin, justo vitae ullamcorper suscipit, libero justo rutrum nunc, vel dictum erat sapien sed nisi. Donec in nibh vitae eros lacinia semper sed sit amet neque. Phasellus ut elit a arcu hendrerit faucibus et at enim. Duis condimentum orci non enim pretium ornare. Aenean mattis semper eleifend. Vivamus et nisl at lacus euismod facilisis. Vivamus auctor tristique odio id maximus. Vivamus tincidunt porta urna id euismod. Maecenas nec vulputate metus.</h2>
+                <h2 className={classes.subtitle}><strong>Hallazgos Principales</strong></h2>
+                <h2 className={classes.description}> El “compound” o compuesto es una métrica disponible en la librería Vader para análisis de sentimientos. El puntaje es la suma de los puntajes de los puntajes positivos, negativos y neutrales y posteriormente es normalizado entre -1 (un sentimiento muy negativo) y +1 (un sentimiento muy positivo). El lector o lectora puede comparar en este gráfico interactivo la evolución de esta métrica en los tweets asociados por candidatura durante la campaña. Las métricas menores a cero indican negatividad. Las métricas mayores a cero indican positividad. <br/> Se pueda apreciar que Samuel García fue el candidato más polarizante durante la campaña y la fluctuación de su curva da cuenta de ello. Tuvo dos descensos importantes asociados a contenido negativo sobre él: el primero en la semana del 11 de abril (asociado a una campaña negativa del PRI) y el segundo en la semana del 2 de mayo (asociado también a una campaña negativa que lo vinculó con López Obrador y exceso de gastos de campaña).  Clara Luz también fue una candidata que polarizó y tuvo subidas y bajadas en esta medida compuesta a lo largo de la campaña. Fernando Larrázabal y Adrián de la Garza se mantuvieron en la franja positiva. El candidato con los sentimientos más positivos durante la campaña fue Fernando Larrázabal.</h2>
             </div>
         </div>
     </div>

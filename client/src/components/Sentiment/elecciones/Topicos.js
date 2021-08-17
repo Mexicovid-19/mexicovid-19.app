@@ -26,30 +26,36 @@ export default function Topicos({ classes }) {
     const topicosFernando= Fernando
     const topicosSamuel= Samuel
 
-
+    const textoAdrian= "El análisis de tópicos se construyó utilizando la técnica de Latent Dirichlet Analysis (LDA) del contenido de los tweets donde se menciona a Adrián de la Garza. El análisis del contenido identificó cinco tópicos recurrentes: 1) Promesas de gobierno hechas por el candidato; 2) Contenido auto promocional del candidato; 3) Contenido asociado a la participación en los debates con otros candidatos; 4) Ataques a su rival Samuel García; 5) Ataques recibidos por el candidato, principalmente de parte del presidente López Obrador. El gráfico ilustra varios ciclos interesantes. En primer lugar, la presencia en redes se incrementó hacia el final de la campaña. Los ataques al rival y las propuestas alcanzaron un pico concurrente el 18 de abril. Esta fecha coincidió con el esfuerzo de posicionar al candidato Adrián de la Garza como puntero, esfuerzo que terminaría fracasando. Por el contrario, los ataques a Adrián de la Garza tuvieron su punto más álgido en la semana del 9 de mayo, cuando recibió señalamientos de mal uso de recursos en campaña por parte del presidente López Obrador en una conferencia mañanera.  De forma interesante, los tópicos que observamos en redes sociales reflejan los eventos más importantes ocurridos durante la campaña."
+    const textoClara= "En el caso de la candidata Clara Luz Flores, se identifican los cinco temas más importantes en el contenido en redes sociales de la campaña. Hay un tema predominante que etiquetamos como “Promesas de gobierno”. Este tema engloba todos los mensajes relacionados con temáticas de gobierno y de la campaña. También incluye defensas de los ataques que recibió la candidata. Al analizar el contenido de texto y el contexto de las palabras en cada mensaje, el algoritmo clasifica como un solo tópico las propuestas y defensa de campaña, a diferencia del caso de Adrián de la Garza que lo separa en dos categorías. La curva en azul identifica el número de mensajes asociados con el tópico más importante y se pueden observar los picos en la campaña. El pico de finales de marzo corresponde a la defensa de los videos que relacionaban a la candidata con una secta. El pico de mayo corresponde al relanzamiento de la campaña."
+    const textoFernando= "El tema más relevante en redes sociales de la campaña de Fernando Larrazábal fue su participación en los debates y la disputa entorno a su no participación en un debate organizado por un medio local. Fuera de este tema, se identificaron pocos tópicos y presencia de estos en la campaña. Se puede observar un aumento en la presencia de los ataques a otros candidatos y partidos conforme se fue aproximando el día de la elección. Llama la atención que la herramienta no identificó propuestas o campaña positiva como un tópico en el contenido en la red asociado a este candidato."
+    const textoSamuel = "El candidato Samuel García fue el más atacado en redes sociales y esto se puede apreciar en los tópicos recurrentes que se encontraron en el análisis de texto. Tres de los cinco tópicos más importantes son ataques al candidato. El cuarto tópico recoge los elementos propositivos de su campaña. Llama la atención el quinto tópico referente al debate. Este último fue un tópico recurrente en el análisis de texto de los cuatro candidatos, particularmente la decisión de varios de ellos de no asistir al debate organizado por un medio de comunicación local. El gráfico de Samuel García muestra los picos de los eventos que marcaron su campaña: la asistencia al debate y los ataques en torno a su trayectoria pública. "
     const [state, setState] = useState({
         data: topicosAdrian,
         candidato: 0,      
-        nombre: "Adrian"
+        nombre: "Adrián de la Garza",
+        texto:  textoAdrian
     })
+
+
     console.log(state.data[0].id)
 
 
     const handleChange = e => {
       switch (e.target.value) {        
           case 0:
-              setState({...state, data: topicosAdrian, candidato: e.target.value, nombre: "Adrian"})
+              setState({...state, data: topicosAdrian, candidato: e.target.value, nombre: "Adrián de la Garza", texto: textoAdrian})
               break;
           case 1:
-              setState({...state, data: topicosClara, candidato: e.target.value, nombre: "Clara"})
+              setState({...state, data: topicosClara, candidato: e.target.value, nombre: "Clara Luz Flores", texto: textoClara})
               
               break;
           case 2:
-              setState({...state, data: topicosFernando, candidato: e.target.value, nombre: "Fernando"})
+              setState({...state, data: topicosFernando, candidato: e.target.value, nombre: "Fernando Larrazábal", texto: textoFernando})
               
               break;    
           case 3:
-              setState({...state, data: topicosSamuel, candidato: e.target.value, nombre: "Samuel"})
+              setState({...state, data: topicosSamuel, candidato: e.target.value, nombre: "Samuel García", texto: textoSamuel})
               
               break;                    
           default:
@@ -64,7 +70,8 @@ export default function Topicos({ classes }) {
                 <div className={classes.itemsContainer}>
                     <div className={classes.itemContainer}>
                          <div className={classes.titleContainer}>
-                            <h2 className={classes.subtitle}><strong>Tópicos {state.nombre}</strong></h2>
+                            <h2 className={classes.subtitle}><strong>Principales Tópicos Identificados en Twitter Asociados al contenido donde se menciona al Candidato</strong></h2>
+                            <h2 className={classes.subtitle}><strong>{state.nombre}</strong></h2>
                             <FormControl variant="outlined" className={classes.formControl}>
                               <Select
                                   labelId="demo-simple-select-outlined-label"
@@ -93,8 +100,8 @@ export default function Topicos({ classes }) {
                         </div>
                     </div>
                     <div className={classes.itemContainer2}>
-                        <h2 className={classes.subtitle}><strong>Analisis Anticipación Texto</strong></h2>
-                        <h2 className={classes.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra sollicitudin sem nec efficitur. Nullam eu varius lectus. Aliquam orci velit, mattis et ullamcorper tempor, ultrices eu ipsum. Mauris sed nunc aliquet, convallis libero id, pretium tellus. Donec aliquam nibh diam, a euismod turpis semper vitae. Morbi sollicitudin, justo vitae ullamcorper suscipit, libero justo rutrum nunc, vel dictum erat sapien sed nisi. Donec in nibh vitae eros lacinia semper sed sit amet neque. Phasellus ut elit a arcu hendrerit faucibus et at enim. Duis condimentum orci non enim pretium ornare. Aenean mattis semper eleifend. Vivamus et nisl at lacus euismod facilisis. Vivamus auctor tristique odio id maximus. Vivamus tincidunt porta urna id euismod. Maecenas nec vulputate metus.</h2>
+                        <h2 className={classes.subtitle}><strong>Análisis de Tópicos</strong></h2>
+                        <h2 className={classes.description}> {state.texto}</h2>
                     </div>
                     
                 </div>
@@ -139,6 +146,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         fontSize: 25,
         fontWeight: 'bold',
+        wordWrap: 'normal',
         color: colors.WHITE,
         flex: 1
     },

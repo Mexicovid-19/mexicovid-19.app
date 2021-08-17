@@ -629,7 +629,7 @@ export default function PositivityVsNegativity({ classes }) {
                 <div className={classes.itemsContainer}>
                     <div className={classes.itemContainer}>
                          <div className={classes.titleContainer}>
-                            <h2 className={classes.subtitle}><strong>Análisis de Positividad vs Negatividad</strong></h2>
+                            <h2 className={classes.subtitle}><strong>Análisis de Sentimientos: Positividad y Negatividad por Fecha y por Candidato</strong></h2>
                         </div>
                         <div className={classes.scrollContainer}>
                           <p className={classes.scrollText}>scroll</p>
@@ -756,8 +756,8 @@ export default function PositivityVsNegativity({ classes }) {
                         </div>
                     </div>
                     <div className={classes.itemContainer2}>
-                        <h2 className={classes.subtitle}><strong>Análisis de Positividad vs Negatividad Texto</strong></h2>
-                        <h2 className={classes.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra sollicitudin sem nec efficitur. Nullam eu varius lectus. Aliquam orci velit, mattis et ullamcorper tempor, ultrices eu ipsum. Mauris sed nunc aliquet, convallis libero id, pretium tellus. Donec aliquam nibh diam, a euismod turpis semper vitae. Morbi sollicitudin, justo vitae ullamcorper suscipit, libero justo rutrum nunc, vel dictum erat sapien sed nisi. Donec in nibh vitae eros lacinia semper sed sit amet neque. Phasellus ut elit a arcu hendrerit faucibus et at enim. Duis condimentum orci non enim pretium ornare. Aenean mattis semper eleifend. Vivamus et nisl at lacus euismod facilisis. Vivamus auctor tristique odio id maximus. Vivamus tincidunt porta urna id euismod. Maecenas nec vulputate metus.</h2>
+                        <h2 className={classes.subtitle}><strong>Hallazgos Principales</strong></h2>
+                        <h2 className={classes.description}>El candidato con mayor cantidad de tweets positivos prácticamente durante toda la campaña fue Adrián de la Garza, seguido por Lárrazabal. Samuel García, el candidato ganador, fue quien tuvo menos grados de positividad en los textos que le mencionaron. Por su parte, hubo una trayectoria ascendente en la positividad de Clara Luz Flores. Respecto a la negatividad, los dos candidatos con el puntaje más alto en este rubro fueron Samuel García y Clara Luz. Se observan cambios interesantes que reflejan los eventos relevantes de la campaña como el aumento en el nivel de negatividad de Adrián de la Garza en la última fase de la campaña. Los candidatos con grados menores de negatividad durante la mayor parte de la campaña fueron Fernando Larrázabal y Adrián de la Garza. <br/> Al igual que en el análisis de tópicos, llama la atención que el candidato ganador en la elección tuvo el puntaje más alto de negatividad en la campaña. Y que los candidatos del PAN y el PRI tuvieron los puntajes más altos de positividad. Hay dos explicaciones plausibles a este fenómeno. En primer lugar, lo que sucede en las redes sociales es un microcosmos nacional alejando de la realidad del electorado de Nuevo León. En segundo lugar, quizás el mejor predictor de desempeño electoral de un candidato es la polarización que genera. Opiniones demasiado positivas pueden estar ligadas a un comportamiento atípico y poco orgánico llevado por bots.</h2>
                     </div>
                 </div>
             </div>

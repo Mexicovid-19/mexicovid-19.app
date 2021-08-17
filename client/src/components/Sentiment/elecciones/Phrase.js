@@ -12,7 +12,7 @@ export default function Phrase({ classes }) {
             <div className={classes.phraseContainer}>
                 <div className={classes.phraseInnerContainer}>
                     <FormatQuoteRoundedIcon style={{fontSize: 35, color: 'white'}}/>
-                    <h3 className={classes.phrase}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h3>
+                    <h3 className={classes.phrase}>Así se observa la red de usuarios de Twitter generando contenido relacionado con la elección de Nuevo León. Los nodos corresponden a los usuarios. Las uniones representan interacción entre los nodos en la red social. La colorimetría identifica distintas comunidades. Se puede apreciar la red relativamente aislada de Samuel García, así como la proximidad entre la red de Clara Luz con la de López Obrador.</h3>
                     <p className={classes.author}>——— Roberto Ponce López</p>
                 </div>
                 
