@@ -840,8 +840,10 @@ const useStyles = makeStyles((theme) => ({
 
     description: {
         color: colors.WHITE,
-        paddingTop: 50,
-        textAlign: 'justify'
+        paddingTop: 20,
+        textAlign: 'justify',
+        fontSize: 12,
+        lineHeight: '12pt'
     },
     chartContainer: {
         height: '600px',
