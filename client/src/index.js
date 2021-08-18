@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
-import App from './App_v=0.4.0';
+import App from './App_v=0.4.2';
 
 ReactDOM.render(
     <BrowserRouter basename={process.env.PUBLIC_URL}>

@@ -19,142 +19,289 @@ import { Tween } from 'react-gsap';
 const NuevoLeon = ({ classes }) => {
 
   document.title = "Elecciones 2021 | MexiCOVID";  
-  return (
-    <div id = "trigger3" className={classes.container}>
-      <Fade bottom>
-        <div> <h2 className={classes.subtitle}>Número de mujeres electas por estado y circunscripción electoral para diputaciones locales de mayoría relativa, diputaciones federales de mayoría relativa y presidencias municipales</h2> </div>
-        <p className={classes.prep}>Elección del 6 de Junio del 2021</p>
-        {/*<div className={classes.itemsContainer}>
-            <CirclePacking1_Chart/>
-            <CirclePacking2_Chart/>
-            <CirclePacking3_Chart/>
-            </div>
-          <div className={classes.itemsContainer}>
-            <CirclePacking4_Chart/>
-            <CirclePacking5_Chart/>
-  </div>*/}
-        <Controller>
-          <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
-            {(progress) => (
-              <Tween
-              from = {{
-                css: {
-                  opacity: '1',
-                  zIndex: '9'
-                }, 
-                ease: 'Circ.easeOutExpo',
-              }}
-              to = {{
-                css: {
-                  opacity: '0',
-                  zIndex: '1'
-                },
-                ease: 'Circ.easeOutExpo',
-              }}
-                totalProgress = {progress}
-                paused
-              >
-                <p className = {classes.text} style = {{marginTop: '30px',padding: '20px', backgroundColor: 'rgba(20,20,20,0.92)', borderRadius: '25px'}}>
-                La gráfica muestra los resultados por estado y por circunscripción electoral de una elección histórica en la que 900 mujeres ocuparán 
-                cargos de diputaciones federales de mayoría relativa, diputaciones locales de mayoría relativa y presidencias municipales. Se observa que la tercera circunscripción 
-                concentra la mayor participación de mujeres electas para alguno de los tres cargos mencionados y, a nivel estado, es el Estado de México 
-                la entidad donde hay mayores puestos de elección popular ganados por mujeres. Pese a que, el resultado final se conocerá una vez que se 
-                definan la integración definitiva de los congresos con diputaciones de representación proporcional; la visualización ya evidencia los 
-                primeros resultados de la reforma “paridad en todo”.
-                </p>
-              </Tween>
-            )}
-          </Scene>
-          {/* <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
-            {(progress) => (
-              <Tween
-              from = {{
-                css: {
-                  opacity: '0.1',
-                  zIndex: '1'
-                },
-                ease: 'Circ.easeOutExpo',
-              }}
-              to = {{
-                css: {
-                  opacity: '1',
-                  zIndex: '9'
-                },
-                ease: 'Circ.easeOutExpo',
-              }}
-                totalProgress = {progress}
-                paused
-              > */}
-                <div className={classes.itemsContainer}>
-                        <div className={classes.chartContainer}>
-                        <h2 className={classes.subtitle2}>1era Circunscripción</h2>
-                        <p className={classes.prep}>Baja California, Baja California Sur, Chihuahua, Durango, Jalisco, Nayarit, Sinaloa y Sonora</p>
-                        <CirclePacking1_Chart/>
-                        </div>
-                        <div className={classes.chartContainer}>
-                        <h2 className={classes.subtitle2}>2da Circunscripción</h2>
-                        <p className={classes.prep}>Aguascalientes, Coahuila, Guanajuato, Nuevo León, Querétaro,
-                        San Luis Potosí, Tamaulipas y Zacatecas</p>
-                        <CirclePacking2_Chart/>
-                        </div>
-                        <div className={classes.chartContainer}>
-                        <h2 className={classes.subtitle2}>3era Circunscripción</h2>
-                        <p className={classes.prep}>Campeche, Chiapas, Oaxaca, Quintana Roo, Tabasco, Veracruz y Yucatán</p>
-                        <CirclePacking3_Chart/>
-                        </div>
-                </div>
-                <div className={classes.itemsContainer}>
-                            <div className={classes.chartContainer}>
-                            <h2 className={classes.subtitle2}>4ta Circunscripción</h2>
-                            <p className={classes.prep}>CDMX, Guerrero, Morelos, Puebla y Tlaxcala</p>
-                            <CirclePacking4_Chart/>
-                            </div>
-                            <div className={classes.chartContainer}>
-                            <h2 className={classes.subtitle2}>5ta Circunscripción</h2>
-                            <p className={classes.prep}>Colima, Hidalgo, México y Michoacán</p>
-                            <CirclePacking5_Chart/>
-                            </div>
-                </div>
-              {/* </Tween>
-            )}
-
-          </Scene> */}
-        </Controller>
-
-          {/* <div className={classes.itemsContainer}>
-                        <div className={classes.chartContainer}>
-                        <h2 className={classes.subtitle2}>1era Circunscripción</h2>
-                        <p className={classes.prep}>Baja California, Baja California Sur, Chihuahua, Durango, Jalisco, Nayarit, Sinaloa y Sonora</p>
-                        <CirclePacking1_Chart/>
-                        </div>
-                        <div className={classes.chartContainer}>
-                        <h2 className={classes.subtitle2}>2da Circunscripción</h2>
-                        <p className={classes.prep}>Aguascalientes, Coahuila, Guanajuato, Nuevo León, Querétaro,
-San Luis Potosí, Tamaulipas y Zacatecas</p>
-                        <CirclePacking2_Chart/>
-                        </div>
-                        <div className={classes.chartContainer}>
-                        <h2 className={classes.subtitle2}>3era Circunscripción</h2>
-                        <p className={classes.prep}>Campeche, Chiapas, Oaxaca, Quintana Roo, Tabasco, Veracruz y Yucatán</p>
-                        <CirclePacking3_Chart/>
-                        </div>
-            </div>
+  var width = window.innerWidth;
+  if(width >= 760){
+    
+    return (
+      <div id = "trigger3" className={classes.container}>
+        <Fade bottom>
+          <div> <h2 className={classes.subtitle}>Número de mujeres electas por estado y circunscripción electoral para diputaciones locales de mayoría relativa, diputaciones federales de mayoría relativa y presidencias municipales</h2> </div>
+          <p className={classes.prep}>Elección del 6 de Junio del 2021</p>
+          {/*<div className={classes.itemsContainer}>
+              <CirclePacking1_Chart/>
+              <CirclePacking2_Chart/>
+              <CirclePacking3_Chart/>
+              </div>
             <div className={classes.itemsContainer}>
-                        <div className={classes.chartContainer}>
-                        <h2 className={classes.subtitle2}>4ta Circunscripción</h2>
-                        <p className={classes.prep}>CDMX, Guerrero, Morelos, Puebla y Tlaxcala</p>
-                        <CirclePacking4_Chart/>
-                        </div>
-                        <div className={classes.chartContainer}>
-                        <h2 className={classes.subtitle2}>5ta Circunscripción</h2>
-                        <p className={classes.prep}>Colima, Hidalgo, México y Michoacán</p>
-                        <CirclePacking5_Chart/>
-                        </div>
-            </div> */}
-            </Fade>
+              <CirclePacking4_Chart/>
+              <CirclePacking5_Chart/>
+            </div>*/}
+      
+          <Controller>
+            <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
+              {(progress) => (
+                <Tween
+                from = {{
+                  css: {
+                    opacity: '1',
+                    zIndex: '9'
+                  }, 
+                  ease: 'Circ.easeOutExpo',
+                }}
+                to = {{
+                  css: {
+                    opacity: '0',
+                    zIndex: '1'
+                  },
+                  ease: 'Circ.easeOutExpo',
+                }}
+                  totalProgress = {progress}
+                  paused
+                >
+                  <div id = "trigger3" className = {classes.container}>
+                  <p className = {classes.text} style = {{marginTop: '30px',padding: '20px', backgroundColor: 'rgba(20,20,20,0.92)', borderRadius: '25px'}}>
+                  La gráfica muestra los resultados por estado y por circunscripción electoral de una elección histórica en la que 900 mujeres ocuparán 
+                  cargos de diputaciones federales de mayoría relativa, diputaciones locales de mayoría relativa y presidencias municipales. Se observa que la tercera circunscripción 
+                  concentra la mayor participación de mujeres electas para alguno de los tres cargos mencionados y, a nivel estado, es el Estado de México 
+                  la entidad donde hay mayores puestos de elección popular ganados por mujeres. Pese a que, el resultado final se conocerá una vez que se 
+                  definan la integración definitiva de los congresos con diputaciones de representación proporcional; la visualización ya evidencia los 
+                  primeros resultados de la reforma “paridad en todo”.
+                  </p>
+                  </div>
+                </Tween>
+              )}
+            </Scene>
+            {/* <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
+              {(progress) => (
+                <Tween
+                from = {{
+                  css: {
+                    opacity: '0.1',
+                    zIndex: '1'
+                  },
+                  ease: 'Circ.easeOutExpo',
+                }}
+                to = {{
+                  css: {
+                    opacity: '1',
+                    zIndex: '9'
+                  },
+                  ease: 'Circ.easeOutExpo',
+                }}
+                  totalProgress = {progress}
+                  paused
+                > */}
+                  <div className={classes.itemsContainer}>
+                          <div className={classes.chartContainer}>
+                          <h2 className={classes.subtitle2}>1era Circunscripción</h2>
+                          <p className={classes.prep}>Baja California, Baja California Sur, Chihuahua, Durango, Jalisco, Nayarit, Sinaloa y Sonora</p>
+                          <CirclePacking1_Chart/>
+                          </div>
+                          <div className={classes.chartContainer}>
+                          <h2 className={classes.subtitle2}>2da Circunscripción</h2>
+                          <p className={classes.prep}>Aguascalientes, Coahuila, Guanajuato, Nuevo León, Querétaro,
+                          San Luis Potosí, Tamaulipas y Zacatecas</p>
+                          <CirclePacking2_Chart/>
+                          </div>
+                          <div className={classes.chartContainer}>
+                          <h2 className={classes.subtitle2}>3era Circunscripción</h2>
+                          <p className={classes.prep}>Campeche, Chiapas, Oaxaca, Quintana Roo, Tabasco, Veracruz y Yucatán</p>
+                          <CirclePacking3_Chart/>
+                          </div>
+                  </div>
+                  <div className={classes.itemsContainer}>
+                              <div className={classes.chartContainer}>
+                              <h2 className={classes.subtitle2}>4ta Circunscripción</h2>
+                              <p className={classes.prep}>CDMX, Guerrero, Morelos, Puebla y Tlaxcala</p>
+                              <CirclePacking4_Chart/>
+                              </div>
+                              <div className={classes.chartContainer}>
+                              <h2 className={classes.subtitle2}>5ta Circunscripción</h2>
+                              <p className={classes.prep}>Colima, Hidalgo, México y Michoacán</p>
+                              <CirclePacking5_Chart/>
+                              </div>
+                  </div>
+                {/* </Tween>
+              )}
 
-        </div>    
-  );
+            </Scene> */}
+          </Controller>
+
+            {/* <div className={classes.itemsContainer}>
+                          <div className={classes.chartContainer}>
+                          <h2 className={classes.subtitle2}>1era Circunscripción</h2>
+                          <p className={classes.prep}>Baja California, Baja California Sur, Chihuahua, Durango, Jalisco, Nayarit, Sinaloa y Sonora</p>
+                          <CirclePacking1_Chart/>
+                          </div>
+                          <div className={classes.chartContainer}>
+                          <h2 className={classes.subtitle2}>2da Circunscripción</h2>
+                          <p className={classes.prep}>Aguascalientes, Coahuila, Guanajuato, Nuevo León, Querétaro,
+                          San Luis Potosí, Tamaulipas y Zacatecas</p>
+                          <CirclePacking2_Chart/>
+                          </div>
+                          <div className={classes.chartContainer}>
+                          <h2 className={classes.subtitle2}>3era Circunscripción</h2>
+                          <p className={classes.prep}>Campeche, Chiapas, Oaxaca, Quintana Roo, Tabasco, Veracruz y Yucatán</p>
+                          <CirclePacking3_Chart/>
+                          </div>
+                          </div>
+                          <div className={classes.itemsContainer}>
+                          <div className={classes.chartContainer}>
+                          <h2 className={classes.subtitle2}>4ta Circunscripción</h2>
+                          <p className={classes.prep}>CDMX, Guerrero, Morelos, Puebla y Tlaxcala</p>
+                          <CirclePacking4_Chart/>
+                          </div>
+                          <div className={classes.chartContainer}>
+                          <h2 className={classes.subtitle2}>5ta Circunscripción</h2>
+                          <p className={classes.prep}>Colima, Hidalgo, México y Michoacán</p>
+                          <CirclePacking5_Chart/>
+                          </div>
+                          </div> */}
+              </Fade>
+
+          </div>    
+          );
+          } else {
+            return (
+              <div id = "trigger3" className={classes.container}>
+                <Fade bottom>
+                  <div> <h2 className={classes.subtitle}>Número de mujeres electas por estado y circunscripción electoral para diputaciones locales de mayoría relativa, diputaciones federales de mayoría relativa y presidencias municipales</h2> </div>
+                  <p className={classes.prep}>Elección del 6 de Junio del 2021</p>
+                  {/*<div className={classes.itemsContainer}>
+                      <CirclePacking1_Chart/>
+                      <CirclePacking2_Chart/>
+                      <CirclePacking3_Chart/>
+                      </div>
+                    <div className={classes.itemsContainer}>
+                      <CirclePacking4_Chart/>
+                      <CirclePacking5_Chart/>
+                    </div>*/}
+              
+                  <Controller>
+                    <Scene duration = {150} triggerElement = "#trigger3" offset = {560}>
+                      {(progress) => (
+                        <Tween
+                        from = {{
+                          css: {
+                            opacity: '1',
+                            zIndex: '9'
+                          }, 
+                          ease: 'Circ.easeOutExpo',
+                        }}
+                        to = {{
+                          css: {
+                            opacity: '0',
+                            zIndex: '1'
+                          },
+                          ease: 'Circ.easeOutExpo',
+                        }}
+                          totalProgress = {progress}
+                          paused
+                        >
+                          <div id = "trigger3" className = {classes.container}>
+                          <p className = {classes.text} style = {{marginTop: '30px',padding: '20px', backgroundColor: 'rgba(20,20,20,0.92)', borderRadius: '25px'}}>
+                          La gráfica muestra los resultados por estado y por circunscripción electoral de una elección histórica en la que 900 mujeres ocuparán 
+                          cargos de diputaciones federales de mayoría relativa, diputaciones locales de mayoría relativa y presidencias municipales. Se observa que la tercera circunscripción 
+                          concentra la mayor participación de mujeres electas para alguno de los tres cargos mencionados y, a nivel estado, es el Estado de México 
+                          la entidad donde hay mayores puestos de elección popular ganados por mujeres. Pese a que, el resultado final se conocerá una vez que se 
+                          definan la integración definitiva de los congresos con diputaciones de representación proporcional; la visualización ya evidencia los 
+                          primeros resultados de la reforma “paridad en todo”.
+                          </p>
+                          </div>
+                        </Tween>
+                      )}
+                    </Scene>
+                    {/* <Scene duration = {150} triggerElement = "#trigger3" offset = {325}>
+                      {(progress) => (
+                        <Tween
+                        from = {{
+                          css: {
+                            opacity: '0.1',
+                            zIndex: '1'
+                          },
+                          ease: 'Circ.easeOutExpo',
+                        }}
+                        to = {{
+                          css: {
+                            opacity: '1',
+                            zIndex: '9'
+                          },
+                          ease: 'Circ.easeOutExpo',
+                        }}
+                          totalProgress = {progress}
+                          paused
+                        > */}
+                          <div className={classes.itemsContainer}>
+                                  <div className={classes.chartContainer}>
+                                  <h2 className={classes.subtitle2}>1era Circunscripción</h2>
+                                  <p className={classes.prep}>Baja California, Baja California Sur, Chihuahua, Durango, Jalisco, Nayarit, Sinaloa y Sonora</p>
+                                  <CirclePacking1_Chart/>
+                                  </div>
+                                  <div className={classes.chartContainer}>
+                                  <h2 className={classes.subtitle2}>2da Circunscripción</h2>
+                                  <p className={classes.prep}>Aguascalientes, Coahuila, Guanajuato, Nuevo León, Querétaro,
+                                  San Luis Potosí, Tamaulipas y Zacatecas</p>
+                                  <CirclePacking2_Chart/>
+                                  </div>
+                                  <div className={classes.chartContainer}>
+                                  <h2 className={classes.subtitle2}>3era Circunscripción</h2>
+                                  <p className={classes.prep}>Campeche, Chiapas, Oaxaca, Quintana Roo, Tabasco, Veracruz y Yucatán</p>
+                                  <CirclePacking3_Chart/>
+                                  </div>
+                          </div>
+                          <div className={classes.itemsContainer}>
+                                      <div className={classes.chartContainer}>
+                                      <h2 className={classes.subtitle2}>4ta Circunscripción</h2>
+                                      <p className={classes.prep}>CDMX, Guerrero, Morelos, Puebla y Tlaxcala</p>
+                                      <CirclePacking4_Chart/>
+                                      </div>
+                                      <div className={classes.chartContainer}>
+                                      <h2 className={classes.subtitle2}>5ta Circunscripción</h2>
+                                      <p className={classes.prep}>Colima, Hidalgo, México y Michoacán</p>
+                                      <CirclePacking5_Chart/>
+                                      </div>
+                          </div>
+                        {/* </Tween>
+                      )}
+        
+                    </Scene> */}
+                  </Controller>
+        
+                    {/* <div className={classes.itemsContainer}>
+                                  <div className={classes.chartContainer}>
+                                  <h2 className={classes.subtitle2}>1era Circunscripción</h2>
+                                  <p className={classes.prep}>Baja California, Baja California Sur, Chihuahua, Durango, Jalisco, Nayarit, Sinaloa y Sonora</p>
+                                  <CirclePacking1_Chart/>
+                                  </div>
+                                  <div className={classes.chartContainer}>
+                                  <h2 className={classes.subtitle2}>2da Circunscripción</h2>
+                                  <p className={classes.prep}>Aguascalientes, Coahuila, Guanajuato, Nuevo León, Querétaro,
+                                  San Luis Potosí, Tamaulipas y Zacatecas</p>
+                                  <CirclePacking2_Chart/>
+                                  </div>
+                                  <div className={classes.chartContainer}>
+                                  <h2 className={classes.subtitle2}>3era Circunscripción</h2>
+                                  <p className={classes.prep}>Campeche, Chiapas, Oaxaca, Quintana Roo, Tabasco, Veracruz y Yucatán</p>
+                                  <CirclePacking3_Chart/>
+                                  </div>
+                                  </div>
+                                  <div className={classes.itemsContainer}>
+                                  <div className={classes.chartContainer}>
+                                  <h2 className={classes.subtitle2}>4ta Circunscripción</h2>
+                                  <p className={classes.prep}>CDMX, Guerrero, Morelos, Puebla y Tlaxcala</p>
+                                  <CirclePacking4_Chart/>
+                                  </div>
+                                  <div className={classes.chartContainer}>
+                                  <h2 className={classes.subtitle2}>5ta Circunscripción</h2>
+                                  <p className={classes.prep}>Colima, Hidalgo, México y Michoacán</p>
+                                  <CirclePacking5_Chart/>
+                                  </div>
+                                  </div> */}
+                      </Fade>
+        
+                  </div>    
+                  );  
+          }
   
 }
 
