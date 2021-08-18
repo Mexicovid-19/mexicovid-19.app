@@ -409,7 +409,7 @@ label="Samuel"/>
                 </div>
             </div>
             <div className={classes.itemContainer2}>
-                <h2 className={classes.subtitle}><strong>Hallazgos Principales</strong></h2>
+                <h2 className={classes.subtitle}><strong>Sobre el Análisis de Sentimientos</strong></h2>
                 <h2 className={classes.description}> El “compound” o compuesto es una métrica disponible en la librería Vader para análisis de sentimientos. El puntaje es la suma de los puntajes de los puntajes positivos, negativos y neutrales y posteriormente es normalizado entre -1 (un sentimiento muy negativo) y +1 (un sentimiento muy positivo). El lector o lectora puede comparar en este gráfico interactivo la evolución de esta métrica en los tweets asociados por candidatura durante la campaña. Las métricas menores a cero indican negatividad. Las métricas mayores a cero indican positividad. <br/> Se pueda apreciar que Samuel García fue el candidato más polarizante durante la campaña y la fluctuación de su curva da cuenta de ello. Tuvo dos descensos importantes asociados a contenido negativo sobre él: el primero en la semana del 11 de abril (asociado a una campaña negativa del PRI) y el segundo en la semana del 2 de mayo (asociado también a una campaña negativa que lo vinculó con López Obrador y exceso de gastos de campaña).  Clara Luz también fue una candidata que polarizó y tuvo subidas y bajadas en esta medida compuesta a lo largo de la campaña. Fernando Larrázabal y Adrián de la Garza se mantuvieron en la franja positiva. El candidato con los sentimientos más positivos durante la campaña fue Fernando Larrázabal.</h2>
             </div>
         </div>

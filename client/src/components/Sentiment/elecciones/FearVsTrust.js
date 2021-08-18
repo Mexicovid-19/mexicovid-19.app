@@ -756,7 +756,7 @@ export default function FearVsTrust({ classes }) {
                         </div>
                     </div>
                     <div className={classes.itemContainer2}>
-                        <h2 className={classes.subtitle}><strong>Hallazgos Principales</strong></h2>
+                        <h2 className={classes.subtitle}><strong>Sobre el Análisis de Sentimientos</strong></h2>
                         <h2 className={classes.description}> El lexicón de sentimientos asocia la presencia de palabras que denotan disgusto, abandono, alerta, tristeza y negatividad en un texto con miedo.  Por el contrario, las palabras que se asocian con confianza tienen que ver con positivad, felicidad y anticipación. Clara Luz Flores fue la candidata que despertó mayores niveles de miedo a partir de los textos analizados, con la excepción de dos momentos en la campaña. El primero tiene que ver con las denuncias de Adrián de la Garza a Samuel García sobre sus vínculos familiares. El segundo tiene que ver con las denuncias de López Obrador a la campaña de Adrián de la Garza. En esos dos momentos, Samuel y Adrián presentaron niveles más altos de miedo que Clara Luz Flores. <br/> Respecto al sentimiento de confianza, en este caso Adrián de la Garza y Fernando Larrazábal tuvieron los puntajes más altos de los cuatro candidatos. Samuel García tuvo los niveles más bajos de confianza. Curiosamente, la métrica de confianza sube para Samuel cuando ocurre la denuncia de Adrián de la Garza sobre sus vínculos familiares. En este episodio suben ambos miedo y confianza por Samuel. Este fenómeno requiere de un estudio más detallado al respecto.</h2>
                     </div>
                 </div>
